@@ -1,0 +1,48 @@
+<div
+  class="z-11 -left-2/6 fixed top-0 h-svh w-1/6 overflow-hidden transition-all duration-300 ease-in hover:left-0"
+>
+  <svg
+    class="z-11 fixed left-0 top-32 h-12 w-4 overflow-hidden"
+    viewBox="0 0 54 103"
+    fill="none"
+  >
+    <path
+      id="Arrow"
+      d="M0.488281 99.221V4.50801C0.488281 1.17401 4.50928 -0.50699 6.88228 1.83501L50.8053 45.181C54.5313 48.858 54.5313 54.871 50.8053 58.548L6.88228 101.894C4.50928 104.236 0.488281 102.555 0.488281 99.221Z"
+      [attr.fill]="arrowFillColor"
+    />
+  </svg>
+  <div
+    class="from-aquila-50 via-aquila-400 to-aquila-900 grid h-screen w-full grid-cols-1 grid-rows-12 bg-gradient-to-br brightness-125"
+  >
+    <div
+      class="relative row-span-2 row-start-1 grid h-full w-full grid-cols-1 grid-rows-2"
+    >
+      <div class="absolute bottom-0 w-full">
+        <app-aquila-sidebar-aquila-code></app-aquila-sidebar-aquila-code>
+      </div>
+    </div>
+
+    <!-- Main container here -->
+    <div class="row-span-10 h-full w-full">
+      <!-- Home -->
+      <!-- <div class="grid h-full w-full grid-rows-12">
+    <div class="row-span-1"> -->
+      <div class="">
+        <app-aquila-sidebar-button-home></app-aquila-sidebar-button-home>
+      </div>
+      <!-- </div> -->
+      <!-- <div class="row-span-1 h-full w-full"> -->
+      <div class="">
+        <app-aquila-sidebar-button-ships></app-aquila-sidebar-button-ships>
+      </div>
+      <div class="absolute h-full w-full">
+        <app-aquila-sidebar-button-play></app-aquila-sidebar-button-play>
+      </div>
+      <!-- Ships -->
+      <!-- </div> -->
+      <!-- <div class="w-8 h-8 rounded-full border border-[#c427fb]"></div> -->
+      <!-- </div> -->
+    </div>
+  </div>
+</div>

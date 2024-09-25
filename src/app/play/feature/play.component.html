@@ -1,0 +1,13 @@
+<main id="app" class="h-full w-full border-8 border-blue-400">
+  <app-aquila-phaser-game class="h-full w-full"> </app-aquila-phaser-game>
+  <app-aquila-phaser-debugger-test></app-aquila-phaser-debugger-test>
+
+  <div class="z20 fixed right-0 top-0 h-1/6 w-1/6 bg-blue-700">
+    <div
+      class="bg-aquila-400 whitespace-pre-wrap text-wrap break-words text-emerald-50"
+    >
+      Controls
+      {{ gameControls | json }}
+    </div>
+  </div>
+</main>

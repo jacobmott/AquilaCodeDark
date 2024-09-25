@@ -1,0 +1,35 @@
+@tailwind base; /* This injects the base styles https://tailwindcss.com/docs/preflight https://github.com/sindresorhus/modern-normalize */
+@tailwind components;
+@tailwind utilities;
+
+/* You can add global styles to this file, and also import other style files */
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  /* https://www.youtube.com/watch?v=veEqYQlfNx8 The problems with viewport units */
+  /* width: 100vw; */
+  height: 100vh;
+}
+
+@layer base {
+  * {
+    @apply box-border;
+  }
+}
+
+@layer utilities {
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  /* Hide scrollbar for IE, Edge and Firefox */
+  .no-scrollbar {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+}

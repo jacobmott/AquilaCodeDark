@@ -1,0 +1,34 @@
+<div [ngClass]="getClasses()">
+  <svg
+    class="z-11 fixed -bottom-4 left-1 h-12 w-4 -rotate-90 transform overflow-hidden"
+    viewBox="0 0 54 103"
+    fill="none"
+    (pointerdown)="onPointerDown($event)"
+  >
+    <path
+      id="Arrow"
+      d="M0.488281 99.221V4.50801C0.488281 1.17401 4.50928 -0.50699 6.88228 1.83501L50.8053 45.181C54.5313 48.858 54.5313 54.871 50.8053 58.548L6.88228 101.894C4.50928 104.236 0.488281 102.555 0.488281 99.221Z"
+      [attr.fill]="arrowFillColor"
+    />
+  </svg>
+
+  <div class="flex h-4/6 w-full flex-row overflow-x-scroll overflow-y-scroll">
+    <div class="whitespace-pre-wrap text-wrap break-words text-emerald-50">
+      {{ dataPoint.dataPoint1 }}
+    </div>
+  </div>
+
+  <div
+    (scroll)="onScroll($event)"
+    #scrollMe
+    class="scrollbar h-2/6 w-full overflow-y-scroll text-wrap text-xs leading-snug text-white sm:text-xs md:text-xs lg:text-sm xl:text-base"
+  >
+    <div *ngFor="let data of scrolledData" class="w-full">
+      <span class="text-orange-400">{{ data.identifier }}</span>
+      &nbsp;
+      <span class="whitespace-pre-wrap text-wrap break-words text-emerald-50">{{
+        data.data
+      }}</span>
+    </div>
+  </div>
+</div>
