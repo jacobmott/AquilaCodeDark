@@ -30,6 +30,7 @@ export class AquilaPlayer extends UserComponent {
   currentRotation: number = 0;
   characterController!: RAPIER.KinematicCharacterController;
   castShapes: CastShape[] = [];
+  lastHits!: Map<string, RAPIER.ColliderShapeCastHit>;
 
   wDown: boolean = false;
   aDown: boolean = false;
@@ -42,6 +43,8 @@ export class AquilaPlayer extends UserComponent {
   fDown: boolean = false;
 
   canDoFAction: boolean = true;
+
+  rotationLock: boolean = false;
 
   constructor(
     gameObject: Phaser.GameObjects.GameObject,
@@ -81,6 +84,7 @@ export class AquilaPlayer extends UserComponent {
       }
     });
     this.playerColliders = new Map<string, RAPIER.Collider>();
+    this.lastHits = new Map<string, RAPIER.ColliderShapeCastHit>();
   }
 
   // override awake() {}
@@ -233,11 +237,15 @@ export class AquilaPlayer extends UserComponent {
       return;
     }
 
-    this.castShapes.forEach((shape) => {
-      shape.shape.x += shape.direction.x * 200 * (delta / 1000);
-      shape.shape.y += shape.direction.y * 200 * (delta / 1000);
+    // this.castShapes.forEach((shape) => {
+    //   shape.shape.x += shape.direction.x * 4000 * (delta / 1000);
+    //   shape.shape.y += shape.direction.y * 4000 * (delta / 1000);
+    // });
+    this.lastHits?.forEach((hit) => {
+      this.graphics.lineStyle(10, 0xff0000, 1);
+      this.graphics.fillStyle(0xff0000, 1);
+      this.graphics.fillPoint(hit.witness1.x, hit.witness1.y, 100);
     });
-
     let moved = false;
     let rotated = false;
     const desiredTranslation = { x: 0, y: 0 };
@@ -248,17 +256,23 @@ export class AquilaPlayer extends UserComponent {
       this.scene.cameras.main.startFollow(this.spineObject);
       moved = true;
     }
-    if (this.aDown || this.dDown) {
-      rotated = true;
-    }
-
     if (this.aDown) {
-      this.currentRotation += this.rotationSpeed * (delta / 1000);
+      rotated = true;
+      this.checkIfCanRotate(delta, 'left');
     } else if (this.dDown) {
-      this.currentRotation -= this.rotationSpeed * (delta / 1000);
+      rotated = true;
+      this.checkIfCanRotate(delta, 'right');
     }
 
-    if (rotated) {
+    if (!this.rotationLock) {
+      if (this.aDown) {
+        this.currentRotation += this.rotationSpeed * (delta / 1000);
+      } else if (this.dDown) {
+        this.currentRotation -= this.rotationSpeed * (delta / 1000);
+      }
+    }
+
+    if (rotated && !this.rotationLock) {
       const result = this.currentRotation;
       if (result >= 360) {
         this.currentRotation = result - 360;
@@ -365,18 +379,19 @@ export class AquilaPlayer extends UserComponent {
       // console.log("rotationSpeed: " + this.rotationSpeed);
     }
 
-    if (this.fDown) {
-      if (this.canDoFAction) {
-        setTimeout(() => {
-          this.canDoFAction = true;
-        }, 1000);
-        this.canDoFAction = false;
-        this.castShape(delta);
-      }
-    }
+    // if (this.fDown) {
+    //   if (this.canDoFAction) {
+    //     setTimeout(() => {
+    //       this.canDoFAction = true;
+    //     }, 1000);
+    //     this.canDoFAction = false;
+    //     this.checkIfCanRotate(delta);
+    //   }
+    // }
 
     this.movePlayer(desiredTranslation, moved);
     this.updateAngularDebugPanel();
+    this.rotationLock = false;
   }
 
   // override update(time: number, delta: number) {}
@@ -398,14 +413,25 @@ export class AquilaPlayer extends UserComponent {
     });
   }
 
-  castShape(delta: number) {
+  checkIfCanRotate(delta: number, direction: string) {
     const collider: RAPIER.Collider = this.playerCollider;
     const shape: RAPIER.ConvexPolygon = collider.shape as RAPIER.ConvexPolygon;
-
     console.log('Shape:');
     console.dir(shape);
 
-    let shapeVertices: string = shape.vertices.toString();
+    const scaleFactor = 1.1;
+    const scaledVertices = shape.vertices.map(
+      (vertex: number, index: number) => {
+        vertex = vertex * scaleFactor;
+        return vertex;
+      },
+    );
+    const scaledShape: RAPIER.ConvexPolygon = new RAPIER.ConvexPolygon(
+      scaledVertices,
+      false,
+    );
+
+    let shapeVertices: string = scaledVertices.toString();
     shapeVertices = shapeVertices.replace(/,/g, ' ');
     console.log('Vertices:' + shapeVertices);
     console.log(
@@ -422,6 +448,12 @@ export class AquilaPlayer extends UserComponent {
       0x0000ff,
       0.5,
     );
+
+    // polygon.setScale(1.1, 1.1);
+    // const newShape: RAPIER.ConvexPolygon = new RAPIER.ConvexPolygon(
+    //   polygon.geom.points,
+    //   true,
+    // );
     polygon.alpha = 1;
     polygon.setOrigin(0, 0);
     // Create two example shapes: one dynamic and one static
@@ -436,19 +468,66 @@ export class AquilaPlayer extends UserComponent {
 
     // Shape cast vector (i.e., the movement vector along which you want to check for collisions)
     // const castDirection = new RAPIER.Vector2(0, -1); // Move downward
-    const rotationTrunc = Math.trunc(this.currentRotation);
-    const castDirection = new RAPIER.Vector2(
-      this.sinCosTable.getCos(rotationTrunc),
-      this.sinCosTable.getSin(rotationTrunc),
-    );
-    const castMaxToi = 10000.0; // Maximum time of impact (TOI)
 
+    let rotation = this.currentRotation;
+    if (this.aDown) {
+      rotation += this.rotationSpeed * (delta / 1000);
+    } else if (this.dDown) {
+      rotation -= this.rotationSpeed * (delta / 1000);
+    }
+
+    let rotationTruncLeft = Math.trunc(rotation);
+    let rotationTruncRight = rotationTruncLeft;
+    // rotationTrunc = rotationTrunc + 90;
+
+    rotationTruncLeft = rotationTruncLeft + 90;
+    rotationTruncRight = rotationTruncRight - 90;
+
+    if (rotationTruncLeft >= 360) {
+      rotationTruncLeft = rotationTruncLeft - 360;
+    } else if (rotationTruncLeft <= 0) {
+      rotationTruncLeft = 360 + rotationTruncLeft;
+    }
+
+    if (rotationTruncRight >= 360) {
+      rotationTruncRight = rotationTruncRight - 360;
+    } else if (rotationTruncRight <= 0) {
+      rotationTruncRight = 360 + rotationTruncRight;
+    }
+
+    const castDirectionLeft = new RAPIER.Vector2(
+      this.sinCosTable.getCos(rotationTruncLeft),
+      this.sinCosTable.getSin(rotationTruncLeft),
+    );
+    const castMaxToi = 20.0; // Maximum time of impact (TOI)
+    const castDirectionRight = new RAPIER.Vector2(
+      this.sinCosTable.getCos(rotationTruncRight),
+      this.sinCosTable.getSin(rotationTruncRight),
+    );
     // Perform shape cast
     const hit: RAPIER.ColliderShapeCastHit = this.rapierWorld.castShape(
       dynamicPosition,
       dynamicRotation,
-      castDirection,
-      shape,
+      castDirectionLeft,
+      scaledShape,
+      0,
+      castMaxToi,
+      false,
+      undefined,
+      undefined,
+      undefined,
+      undefined,
+      (collider: RAPIER.Collider) => {
+        if (collider === this.playerCollider) {
+          return false;
+        } else return true;
+      }, // Collision filter function (returns true for all colliders)
+    ) as RAPIER.ColliderShapeCastHit;
+    const hit2: RAPIER.ColliderShapeCastHit = this.rapierWorld.castShape(
+      dynamicPosition,
+      dynamicRotation,
+      castDirectionRight,
+      scaledShape,
       0,
       castMaxToi,
       false,
@@ -465,24 +544,51 @@ export class AquilaPlayer extends UserComponent {
 
     // Check for the result of the shape cast
     if (hit) {
+      this.lastHits.set('hit', hit);
       console.dir(hit);
       console.log('Shape cast hit detected!');
       // console.log(`Collider handle: ${hit.colliderHandle}`);
       console.log(`TOI (time of impact): ${hit.normal1}`);
       // console.log(`Impact point: ${hit.witness1.toArray()}`);
       // console.log(`Normal at impact: ${hit.normal1.toArray()}`);
-      const normal1 = hit.normal1;
-      const desiredTranslation = { x: 0, y: 0 };
-      desiredTranslation.x += this.speed * (delta / 1000) * normal1.x;
-      desiredTranslation.y += this.speed * (delta / 1000) * normal1.y;
-      this.movePlayer(desiredTranslation, true);
+      // const normal1 = hit.normal1;
+      // const desiredTranslation = { x: 0, y: 0 };
+      // desiredTranslation.x += this.speed * (delta / 1000) * normal1.x;
+      // desiredTranslation.y += this.speed * (delta / 1000) * normal1.y;
+      // this.movePlayer(desiredTranslation, true);
+      this.rotationLock = true;
+    } else if (hit2) {
+      this.lastHits.set('hit2', hit2);
+      console.dir(hit2);
+      console.log('Shape cast hit detected!');
+      // console.log(`Collider handle: ${hit.colliderHandle}`);
+      console.log(`TOI (time of impact): ${hit2.normal1}`);
+      // console.log(`Impact point: ${hit.witness1.toArray()}`);
+      // console.log(`Normal at impact: ${hit.normal1.toArray()}`);
+      // const normal1 = hit.normal1;
+      // const desiredTranslation = { x: 0, y: 0 };
+      // desiredTranslation.x += this.speed * (delta / 1000) * normal1.x;
+      // desiredTranslation.y += this.speed * (delta / 1000) * normal1.y;
+      // this.movePlayer(desiredTranslation, true);
+      this.rotationLock = true;
     } else {
       console.log('No collision detected.');
     }
 
-    this.drawShapeCast(dynamicPosition, castDirection, castMaxToi, polygon, [
-      hit,
-    ]);
+    this.drawShapeCast(
+      dynamicPosition,
+      castDirectionLeft,
+      castMaxToi,
+      polygon,
+      [hit],
+    );
+    this.drawShapeCast(
+      dynamicPosition,
+      castDirectionRight,
+      castMaxToi,
+      polygon,
+      [hit2],
+    );
   }
 
   drawShapeCast(
@@ -508,19 +614,20 @@ export class AquilaPlayer extends UserComponent {
     this.graphics.strokeLineShape(line);
     // Draw cast shape at start
     // this.drawShape(start.x, start.y, shape, 0x0000ff, 0.3);
-    const shapeObject = new Phaser.GameObjects.Image(
-      this.scene,
-      start.x,
-      start.y,
-      'star',
-      0,
-    ).setDepth(100);
+    // const shapeObject = new Phaser.GameObjects.Image(
+    //   this.scene,
+    //   start.x,
+    //   start.y,
+    //   'star',
+    //   0,
+    // ).setDepth(100);
     this.castShapes.push({
       shape: shape,
       maxToi: maxToi,
       direction: direction,
     });
-    this.scene.add.existing(shape);
+
+    // this.scene.add.existing(shape);
     // Draw hits
     hits.forEach((hit, index) => {
       if (!(hit !== null && hit.witness1 !== null)) {

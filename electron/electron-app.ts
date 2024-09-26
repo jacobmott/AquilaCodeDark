@@ -1,13 +1,17 @@
 import { app, BrowserWindow } from 'electron';
 import * as path from 'path';
-import debug from 'electron-debug';
+// import debug from 'electron-debug';
+
+// import { createRequire } from 'module';
+// const electronReload = createRequire(import.meta.url)('electron-reload');
+
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-debug();
+// debug();
 
 function createWindow() {
   // Create the browser window.
@@ -24,6 +28,12 @@ function createWindow() {
 
   // Open the DevTools.
   mainWindow.webContents.openDevTools();
+  // console.log('dirname', __dirname);
+  const dirnameE = __dirname.replace(/dist\\aquila-code-dark/g, '');
+  // electronReload(__dirname, {
+  //   electron: path.join(dirnameE, 'node_modules', '.bin', 'electron'),
+  //   hardResetMethod: 'exit',
+  // });
 }
 
 // This method will be called when Electron has finished
