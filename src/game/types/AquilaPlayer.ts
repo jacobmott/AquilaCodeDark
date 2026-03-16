@@ -450,6 +450,12 @@ export class AquilaPlayer extends UserComponent {
     this.characterController.computeColliderMovement(
       this.playerCollider,
       desiredTranslation,
+      undefined,
+      undefined,
+      (collider: RAPIER.Collider) => {
+        // Ignore projectile colliders (membership group 0x0002)
+        return (collider.collisionGroups() & 0xFFFF0000) !== 0x00020000;
+      },
     );
     const correctedMovement = this.characterController.computedMovement();
     // Compute the player's collider movement considering obstacles
@@ -566,7 +572,12 @@ export class AquilaPlayer extends UserComponent {
       (collider: RAPIER.Collider) => {
         if (collider === this.playerCollider) {
           return false;
-        } else return true;
+        }
+        // Ignore projectile colliders (membership group 0x0002)
+        if ((collider.collisionGroups() & 0xFFFF0000) === 0x00020000) {
+          return false;
+        }
+        return true;
       }, // Collision filter function (returns true for all colliders)
     ) as RAPIER.ColliderShapeCastHit;
     const hit2: RAPIER.ColliderShapeCastHit = this.rapierWorld.castShape(
@@ -584,7 +595,12 @@ export class AquilaPlayer extends UserComponent {
       (collider: RAPIER.Collider) => {
         if (collider === this.playerCollider) {
           return false;
-        } else return true;
+        }
+        // Ignore projectile colliders (membership group 0x0002)
+        if ((collider.collisionGroups() & 0xFFFF0000) === 0x00020000) {
+          return false;
+        }
+        return true;
       }, // Collision filter function (returns true for all colliders)
     ) as RAPIER.ColliderShapeCastHit;
 
