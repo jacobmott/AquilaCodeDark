@@ -4,6 +4,7 @@ import * as spine from '@esotericsoftware/spine-phaser';
 import RAPIER from '@dimforge/rapier2d-compat';
 import { SinCosTable } from '../sincostabl';
 import { EventBus } from '../EventBus';
+import { AquilaProjectile } from './AquilaProjectile';
 
 type CastShape = {
   shape: Phaser.GameObjects.Polygon;
@@ -41,8 +42,12 @@ export class AquilaPlayer extends UserComponent {
   cDown: boolean = false;
   vDown: boolean = false;
   fDown: boolean = false;
+  spaceDown: boolean = false;
 
   canDoFAction: boolean = true;
+  canShoot: boolean = true;
+  shootCooldown: number = 250; // ms between shots
+  projectiles: AquilaProjectile[] = [];
 
   rotationLock: boolean = false;
 
@@ -81,6 +86,9 @@ export class AquilaPlayer extends UserComponent {
       }
       if (key.key === 'f') {
         this.fDown = key.isDown;
+      }
+      if (key.key === 'space') {
+        this.spaceDown = key.isDown;
       }
     });
     this.playerColliders = new Map<string, RAPIER.Collider>();
@@ -196,6 +204,8 @@ export class AquilaPlayer extends UserComponent {
       );
 
       playerCollider.setActiveEvents(RAPIER.ActiveEvents.COLLISION_EVENTS);
+      // Collision group 0x0001 interacts with 0x0004 (environment/enemies), NOT 0x0002 (projectiles)
+      playerCollider.setCollisionGroups(0x00010004);
       playerCollider.setEnabled(false);
       this.playerColliders.set(name, playerCollider);
       // this.rapierWorld.contactPair(
@@ -389,9 +399,45 @@ export class AquilaPlayer extends UserComponent {
     //   }
     // }
 
+    if (this.spaceDown) {
+      this.shoot();
+    }
+
+    // Update projectiles
+    this.projectiles.forEach((p) => p.update(delta));
+    this.projectiles = this.projectiles.filter((p) => p.alive);
+
     this.movePlayer(desiredTranslation, moved);
     this.updateAngularDebugPanel();
     this.rotationLock = false;
+  }
+
+  shoot() {
+    if (!this.canShoot) return;
+    this.canShoot = false;
+    setTimeout(() => {
+      this.canShoot = true;
+    }, this.shootCooldown);
+
+    const rotationTrunc = Math.trunc(this.currentRotation);
+    const dirX = this.sinCosTable.getCos(rotationTrunc);
+    const dirY = this.sinCosTable.getSin(rotationTrunc);
+
+    // Spawn projectile ahead of the ship
+    const pos = this.playerRigidBody.translation();
+    const spawnOffset = 150;
+    const spawnX = pos.x + dirX * spawnOffset;
+    const spawnY = pos.y + dirY * spawnOffset;
+
+    const projectile = new AquilaProjectile(
+      this.scene,
+      this.rapierWorld,
+      spawnX,
+      spawnY,
+      dirX,
+      dirY,
+    );
+    this.projectiles.push(projectile);
   }
 
   // override update(time: number, delta: number) {}

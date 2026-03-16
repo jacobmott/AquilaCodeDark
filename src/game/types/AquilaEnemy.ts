@@ -37,6 +37,8 @@ export class AquilaEnemy extends UserComponent {
       enemyBody,
     );
     enemyCollider.setRestitution(1);
+    // Collision group 0x0004 interacts with player (0x0001) and projectiles (0x0002)
+    enemyCollider.setCollisionGroups(0x00040003);
   }
 
   // override update(time: number, delta: number) {}

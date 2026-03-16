@@ -57,6 +57,7 @@ export class PlayComponent implements AfterViewInit, OnDestroy, OnInit {
       increaseRotationSpeed: 'c',
       decreaseRotationSpeed: 'v',
       castRapierPhysicsShape: 'f',
+      shoot: 'space',
     },
   };
 

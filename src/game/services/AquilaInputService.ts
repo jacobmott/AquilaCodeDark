@@ -18,6 +18,7 @@ export class AquilaInputService {
   keyV!: Phaser.Input.Keyboard.Key;
   keyF!: Phaser.Input.Keyboard.Key;
   keyT!: Phaser.Input.Keyboard.Key;
+  keySpace!: Phaser.Input.Keyboard.Key;
 
   wDown: boolean = false;
   aDown: boolean = false;
@@ -29,6 +30,7 @@ export class AquilaInputService {
   vDown: boolean = false;
   fDown: boolean = false;
   tDown: boolean = false;
+  spaceDown: boolean = false;
 
   label: Phaser.GameObjects.Text;
   label2: Phaser.GameObjects.Text;
@@ -91,6 +93,9 @@ export class AquilaInputService {
     );
     this.keyT = this.scene.input.keyboard!.addKey(
       Phaser.Input.Keyboard.KeyCodes.T,
+    );
+    this.keySpace = this.scene.input.keyboard!.addKey(
+      Phaser.Input.Keyboard.KeyCodes.SPACE,
     );
 
     //Need camera class that passes in this logic so its not here, so we decouple this input
@@ -184,6 +189,7 @@ export class AquilaInputService {
     const vDown = this.keyV.isDown; //rotation speed decrease
     const fDown = this.keyF.isDown; //cast shape
     const tDown = this.keyT.isDown; //turn on/off debug graphics
+    const spaceDown = this.keySpace.isDown; //shoot
 
     //if something changed.. then notify the observers
     if (wDown !== this.wDown) {
@@ -225,6 +231,10 @@ export class AquilaInputService {
     if (tDown !== this.tDown) {
       this.tDown = tDown;
       this.updateKeys({ key: 't', isDown: tDown } as KeyData);
+    }
+    if (spaceDown !== this.spaceDown) {
+      this.spaceDown = spaceDown;
+      this.updateKeys({ key: 'space', isDown: spaceDown } as KeyData);
     }
   }
 

@@ -65,6 +65,8 @@ export class AquilaObstacle extends UserComponent {
         rigidBody,
       );
       collider.setActiveEvents(RAPIER.ActiveEvents.COLLISION_EVENTS);
+      // Collision group 0x0004 interacts with player (0x0001) and projectiles (0x0002)
+      collider.setCollisionGroups(0x00040003);
     });
   }
 
