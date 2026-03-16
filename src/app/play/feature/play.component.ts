@@ -38,29 +38,6 @@ export class PlayComponent implements AfterViewInit, OnDestroy, OnInit {
   public spritePosition = { x: 0, y: 0 };
   public canMoveSprite = false;
 
-  gameControls = {
-    camera: {
-      zoomin: 'mousewheel up',
-      zoomout: 'mousewheel down',
-      pan: 'hold down left mouse button and drag',
-    },
-    debug: {
-      toggleRapierPhysicsDebugGraphics: 't',
-    },
-    playerControls: {
-      rotateLeft: 'a',
-      rotateRight: 'd',
-      forward: 'w',
-      backwards: 's',
-      increaseSpeed: 'e',
-      decreaseSpeed: 'r',
-      increaseRotationSpeed: 'c',
-      decreaseRotationSpeed: 'v',
-      castRapierPhysicsShape: 'f',
-      shoot: 'space',
-    },
-  };
-
   // This is a reference from the PhaserGame component
   @ViewChild(PhaserGame) phaserRef!: PhaserGame;
 

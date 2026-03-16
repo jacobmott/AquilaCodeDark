@@ -47,8 +47,9 @@ const config: Phaser.Types.Core.GameConfig = {
     target: 60,
   },
   scale: {
-    mode: Phaser.Scale.FIT,
-    autoCenter: Phaser.Scale.CENTER_BOTH,
+    mode: Phaser.Scale.RESIZE,
+    width: '100%',
+    height: '100%',
   },
 };
 

@@ -1,7 +1,7 @@
 import RAPIER from '@dimforge/rapier2d-compat';
 import { AquilaSoundService } from '../services/AquilaSoundService';
 
-export class AquilaProjectile {
+export class AquilaEnemyProjectile {
   scene: Phaser.Scene;
   rapierWorld: RAPIER.World;
   graphics: Phaser.GameObjects.Container;
@@ -9,14 +9,11 @@ export class AquilaProjectile {
   rigidBody: RAPIER.RigidBody;
   collider: RAPIER.Collider;
   colliderHandle: number;
-  speed: number = 4000;
-  lifetime: number = 8000; // ms before auto-destroy
+  speed: number = 625;
+  lifetime: number = 9000;
   elapsed: number = 0;
   alive: boolean = true;
-  dirX: number;
-  dirY: number;
 
-  private static explosionTextureCreated = false;
   private static rocketTextureCreated = false;
 
   constructor(
@@ -29,57 +26,43 @@ export class AquilaProjectile {
   ) {
     this.scene = scene;
     this.rapierWorld = rapierWorld;
-    this.dirX = directionX;
-    this.dirY = directionY;
 
-    // Create rocket texture once
-    if (!AquilaProjectile.rocketTextureCreated) {
+    // Create blue rocket texture once
+    if (!AquilaEnemyProjectile.rocketTextureCreated) {
       const gfx = scene.make.graphics({ x: 0, y: 0 }, false);
-      // Rocket body (pointing right at rotation 0)
-      gfx.fillStyle(0xcc2222, 1);
+      gfx.fillStyle(0x2266cc, 1);
       gfx.fillTriangle(30, 10, 0, 0, 0, 20); // nose cone
-      gfx.fillStyle(0xff4444, 1);
+      gfx.fillStyle(0x44aaff, 1);
       gfx.fillRect(0, 2, 20, 16); // body
-      gfx.fillStyle(0xffaa00, 1);
+      gfx.fillStyle(0x66ccff, 1);
       gfx.fillTriangle(0, 0, -6, -4, 0, 8); // top fin
       gfx.fillTriangle(0, 20, -6, 24, 0, 12); // bottom fin
-      gfx.generateTexture('rocket_red', 36, 24);
+      gfx.generateTexture('rocket_blue', 36, 24);
       gfx.destroy();
-      AquilaProjectile.rocketTextureCreated = true;
-    }
-
-    // Create reusable particle texture
-    if (!AquilaProjectile.explosionTextureCreated) {
-      const gfx = scene.make.graphics({ x: 0, y: 0 }, false);
-      gfx.fillStyle(0xffffff, 1);
-      gfx.fillCircle(8, 8, 8);
-      gfx.generateTexture('explosion_particle', 16, 16);
-      gfx.destroy();
-      AquilaProjectile.explosionTextureCreated = true;
+      AquilaEnemyProjectile.rocketTextureCreated = true;
     }
 
     // Rocket visual
     const angle = Math.atan2(directionY, directionX);
-    const rocketImage = scene.add.image(0, 0, 'rocket_red').setOrigin(0.5);
+    const rocketImage = scene.add.image(0, 0, 'rocket_blue').setOrigin(0.5);
     const container = scene.add.container(x, y, [rocketImage]);
     container.setDepth(200);
     container.setRotation(angle);
     this.graphics = container;
 
-    // Flame trail emitter - follows the rocket
+    // Flame trail emitter
     this.flameEmitter = scene.add.particles(x, y, 'explosion_particle', {
-      speed: { min: 100, max: 300 },
-      scale: { start: 2.5, end: 0 },
-      alpha: { start: 0.8, end: 0 },
+      speed: { min: 80, max: 200 },
+      scale: { start: 2, end: 0 },
+      alpha: { start: 0.7, end: 0 },
       lifespan: { min: 500, max: 1500 },
-      frequency: 5,
-      tint: [0xff4400, 0xff8800, 0xffcc00, 0xffff44],
+      frequency: 8,
+      tint: [0x4488ff, 0x66ccff, 0xaaddff, 0xffffff],
       angle: { min: (angle * 180 / Math.PI) + 150, max: (angle * 180 / Math.PI) + 210 },
       emitting: true,
     });
     this.flameEmitter.setDepth(199);
 
-    // Rapier dynamic rigid body
     const bodyDesc = RAPIER.RigidBodyDesc.dynamic()
       .setTranslation(x, y)
       .setLinvel(directionX * this.speed, directionY * this.speed)
@@ -88,15 +71,14 @@ export class AquilaProjectile {
 
     this.rigidBody = rapierWorld.createRigidBody(bodyDesc);
 
-    // Ball collider
     const colliderDesc = RAPIER.ColliderDesc.ball(15)
       .setActiveEvents(RAPIER.ActiveEvents.COLLISION_EVENTS)
-      .setCollisionGroups(0x00020004)
+      .setCollisionGroups(0x00080001)
       .setRestitution(0);
     this.collider = rapierWorld.createCollider(colliderDesc, this.rigidBody);
     this.colliderHandle = this.collider.handle;
 
-    AquilaSoundService.playFireSound();
+    AquilaSoundService.playEnemyFireSound();
   }
 
   update(delta: number) {
@@ -108,7 +90,6 @@ export class AquilaProjectile {
       return;
     }
 
-    // Sync visual to physics position
     const pos = this.rigidBody.translation();
     this.graphics.x = pos.x;
     this.graphics.y = pos.y;
@@ -120,14 +101,13 @@ export class AquilaProjectile {
     AquilaSoundService.playProjectileExplodeSound();
     const pos = this.rigidBody.translation();
 
-    // Burst of particles at impact point
     const emitter = this.scene.add.particles(pos.x, pos.y, 'explosion_particle', {
       speed: { min: 200, max: 800 },
       scale: { start: 2.5, end: 0 },
       alpha: { start: 1, end: 0 },
       lifespan: { min: 200, max: 500 },
       quantity: 20,
-      tint: [0xff4444, 0xff8800, 0xffff00],
+      tint: [0x4488ff, 0x44aaff, 0xffffff],
       emitting: false,
       maxParticles: 20,
     });

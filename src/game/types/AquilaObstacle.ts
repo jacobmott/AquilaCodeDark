@@ -20,9 +20,6 @@ export class AquilaObstacle extends UserComponent {
 
   override start() {
     this.setupLargeWallPhysics();
-    const cam2 = this.scene.cameras.add(0, 0, 500, 500, false, 'cam2');
-    cam2.setZoom(0.1);
-    cam2.startFollow(this.image, true, 1, 1);
   }
 
   setupLargeWallPhysics() {

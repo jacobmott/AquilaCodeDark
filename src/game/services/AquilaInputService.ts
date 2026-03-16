@@ -18,7 +18,9 @@ export class AquilaInputService {
   keyV!: Phaser.Input.Keyboard.Key;
   keyF!: Phaser.Input.Keyboard.Key;
   keyT!: Phaser.Input.Keyboard.Key;
+  keyG!: Phaser.Input.Keyboard.Key;
   keySpace!: Phaser.Input.Keyboard.Key;
+  keyEsc!: Phaser.Input.Keyboard.Key;
 
   wDown: boolean = false;
   aDown: boolean = false;
@@ -30,7 +32,9 @@ export class AquilaInputService {
   vDown: boolean = false;
   fDown: boolean = false;
   tDown: boolean = false;
+  gDown: boolean = false;
   spaceDown: boolean = false;
+  escDown: boolean = false;
 
   label: Phaser.GameObjects.Text;
   label2: Phaser.GameObjects.Text;
@@ -94,8 +98,14 @@ export class AquilaInputService {
     this.keyT = this.scene.input.keyboard!.addKey(
       Phaser.Input.Keyboard.KeyCodes.T,
     );
+    this.keyG = this.scene.input.keyboard!.addKey(
+      Phaser.Input.Keyboard.KeyCodes.G,
+    );
     this.keySpace = this.scene.input.keyboard!.addKey(
       Phaser.Input.Keyboard.KeyCodes.SPACE,
+    );
+    this.keyEsc = this.scene.input.keyboard!.addKey(
+      Phaser.Input.Keyboard.KeyCodes.ESC,
     );
 
     //Need camera class that passes in this logic so its not here, so we decouple this input
@@ -126,7 +136,7 @@ export class AquilaInputService {
     );
 
     this.scene.input.on('pointermove', (pointer: any) => {
-      if (!pointer.isDown) return;
+      if (!pointer.isDown || pointer.button !== 1) return;
       this.scene.cameras.main.stopFollow();
       this.scene.cameras.main.scrollX -=
         (pointer.x - pointer.prevPosition.x) / this.scene.cameras.main.zoom;
@@ -189,7 +199,9 @@ export class AquilaInputService {
     const vDown = this.keyV.isDown; //rotation speed decrease
     const fDown = this.keyF.isDown; //cast shape
     const tDown = this.keyT.isDown; //turn on/off debug graphics
+    const gDown = this.keyG.isDown; //spawn enemy
     const spaceDown = this.keySpace.isDown; //shoot
+    const escDown = this.keyEsc.isDown; //pause
 
     //if something changed.. then notify the observers
     if (wDown !== this.wDown) {
@@ -232,9 +244,17 @@ export class AquilaInputService {
       this.tDown = tDown;
       this.updateKeys({ key: 't', isDown: tDown } as KeyData);
     }
+    if (gDown !== this.gDown) {
+      this.gDown = gDown;
+      this.updateKeys({ key: 'g', isDown: gDown } as KeyData);
+    }
     if (spaceDown !== this.spaceDown) {
       this.spaceDown = spaceDown;
       this.updateKeys({ key: 'space', isDown: spaceDown } as KeyData);
+    }
+    if (escDown !== this.escDown) {
+      this.escDown = escDown;
+      this.updateKeys({ key: 'esc', isDown: escDown } as KeyData);
     }
   }
 

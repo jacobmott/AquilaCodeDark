@@ -5,6 +5,7 @@ import RAPIER from '@dimforge/rapier2d-compat';
 import { SinCosTable } from '../sincostabl';
 import { EventBus } from '../EventBus';
 import { AquilaProjectile } from './AquilaProjectile';
+import { AquilaSoundService } from '../services/AquilaSoundService';
 
 type CastShape = {
   shape: Phaser.GameObjects.Polygon;
@@ -50,6 +51,11 @@ export class AquilaPlayer extends UserComponent {
   projectiles: AquilaProjectile[] = [];
 
   rotationLock: boolean = false;
+  private aura!: Phaser.GameObjects.Graphics;
+  private exhaustEmitterL!: Phaser.GameObjects.Particles.ParticleEmitter;
+  private exhaustEmitterR!: Phaser.GameObjects.Particles.ParticleEmitter;
+  private isMoving: boolean = false;
+  private engineSound: { setIntensity: (t: number) => void; stop: () => void } | null = null;
 
   constructor(
     gameObject: Phaser.GameObjects.GameObject,
@@ -140,6 +146,46 @@ export class AquilaPlayer extends UserComponent {
 
     this.graphics = this.scene.add.graphics();
     this.spineObject.animationState.setAnimation(0, '0', false);
+
+    // Blue aura around player
+    this.aura = this.scene.add.graphics();
+    this.aura.setDepth(99);
+    this.drawAura(this.aura, 0x3388ff, 600);
+    this.scene.tweens.add({
+      targets: this.aura,
+      alpha: { from: 1, to: 0.5 },
+      duration: 1200,
+      yoyo: true,
+      repeat: -1,
+      ease: 'Sine.easeInOut',
+    });
+
+    // Ensure particle texture exists before creating emitters
+    if (!this.scene.textures.exists('explosion_particle')) {
+      const gfx = this.scene.make.graphics({ x: 0, y: 0 }, false);
+      gfx.fillStyle(0xffffff, 1);
+      gfx.fillCircle(8, 8, 8);
+      gfx.generateTexture('explosion_particle', 16, 16);
+      gfx.destroy();
+    }
+
+    // Engine exhaust emitters (left and right engines)
+    const exhaustConfig = {
+      speed: { min: 100, max: 300 },
+      scale: { start: 3, end: 0 },
+      alpha: { start: 0.8, end: 0 },
+      lifespan: { min: 200, max: 500 },
+      frequency: 30,
+      tint: [0x4488ff, 0x66aaff, 0x88ccff, 0xaaddff],
+      emitting: true,
+    };
+    this.exhaustEmitterL = this.scene.add.particles(0, 0, 'explosion_particle', { ...exhaustConfig });
+    this.exhaustEmitterL.setDepth(98);
+    this.exhaustEmitterR = this.scene.add.particles(0, 0, 'explosion_particle', { ...exhaustConfig });
+    this.exhaustEmitterR.setDepth(98);
+
+    // Engine sound
+    this.engineSound = AquilaSoundService.createEngineSound(30, 0.10);
   }
 
   setupCharacterController() {
@@ -204,8 +250,8 @@ export class AquilaPlayer extends UserComponent {
       );
 
       playerCollider.setActiveEvents(RAPIER.ActiveEvents.COLLISION_EVENTS);
-      // Collision group 0x0001 interacts with 0x0004 (environment/enemies), NOT 0x0002 (projectiles)
-      playerCollider.setCollisionGroups(0x00010004);
+      // Collision group 0x0001 interacts with 0x0004 (environment/enemies) and 0x0008 (enemy projectiles)
+      playerCollider.setCollisionGroups(0x0001000C);
       playerCollider.setEnabled(false);
       this.playerColliders.set(name, playerCollider);
       // this.rapierWorld.contactPair(
@@ -251,11 +297,11 @@ export class AquilaPlayer extends UserComponent {
     //   shape.shape.x += shape.direction.x * 4000 * (delta / 1000);
     //   shape.shape.y += shape.direction.y * 4000 * (delta / 1000);
     // });
-    this.lastHits?.forEach((hit) => {
-      this.graphics.lineStyle(10, 0xff0000, 1);
-      this.graphics.fillStyle(0xff0000, 1);
-      this.graphics.fillPoint(hit.witness1.x, hit.witness1.y, 100);
-    });
+    // this.lastHits?.forEach((hit) => {
+    //   this.graphics.lineStyle(10, 0xff0000, 1);
+    //   this.graphics.fillStyle(0xff0000, 1);
+    //   this.graphics.fillPoint(hit.witness1.x, hit.witness1.y, 100);
+    // });
     let moved = false;
     let rotated = false;
     const desiredTranslation = { x: 0, y: 0 };
@@ -399,8 +445,21 @@ export class AquilaPlayer extends UserComponent {
     //   }
     // }
 
-    if (this.spaceDown) {
-      this.shoot();
+    if (this.scene.input.activePointer.isDown && this.scene.input.activePointer.button === 0) {
+      const px = this.scene.input.activePointer.x;
+      const py = this.scene.input.activePointer.y;
+      const cams = this.scene.cameras.cameras;
+      let overSubCam = false;
+      for (const cam of cams) {
+        if (cam === this.scene.cameras.main) continue;
+        if (px >= cam.x && px < cam.x + cam.width && py >= cam.y && py < cam.y + cam.height) {
+          overSubCam = true;
+          break;
+        }
+      }
+      if (!overSubCam) {
+        this.shoot();
+      }
     }
 
     // Update projectiles
@@ -410,6 +469,34 @@ export class AquilaPlayer extends UserComponent {
     this.movePlayer(desiredTranslation, moved);
     this.updateAngularDebugPanel();
     this.rotationLock = false;
+
+    // Sync aura position
+    const pos = this.playerRigidBody.translation();
+    this.aura.setPosition(pos.x, pos.y);
+
+    // Update exhaust position and intensity
+    this.isMoving = moved;
+    const rotTrunc = Math.trunc(this.currentRotation);
+    const tailDirX = -this.sinCosTable.getCos(rotTrunc);
+    const tailDirY = -this.sinCosTable.getSin(rotTrunc);
+    const tailOffset = 400;
+    const engineSpread = 110; // perpendicular offset for each engine
+    const perpX = -tailDirY;
+    const perpY = tailDirX;
+    const tailCenterX = pos.x + tailDirX * tailOffset;
+    const tailCenterY = pos.y + tailDirY * tailOffset;
+    this.exhaustEmitterL.setPosition(tailCenterX + perpX * engineSpread, tailCenterY + perpY * engineSpread);
+    this.exhaustEmitterR.setPosition(tailCenterX - perpX * engineSpread, tailCenterY - perpY * engineSpread);
+    const emitters = [this.exhaustEmitterL, this.exhaustEmitterR];
+    for (const em of emitters) {
+      em.setParticleSpeed(moved ? 1800 : 600, moved ? 5400 : 1800);
+      em.setParticleScale(moved ? 36 : 12, 0);
+      em.setFrequency(moved ? 1 : 3);
+      em.setParticleLifespan(moved ? 4500 : 1500);
+    }
+
+    // Update engine sound
+    this.engineSound?.setIntensity(moved ? 1 : 0);
   }
 
   shoot() {
@@ -419,12 +506,18 @@ export class AquilaPlayer extends UserComponent {
       this.canShoot = true;
     }, this.shootCooldown);
 
-    const rotationTrunc = Math.trunc(this.currentRotation);
-    const dirX = this.sinCosTable.getCos(rotationTrunc);
-    const dirY = this.sinCosTable.getSin(rotationTrunc);
-
-    // Spawn projectile ahead of the ship
+    // Aim toward the mouse cursor in world space
+    const pointer = this.scene.input.activePointer;
+    const worldPoint = this.scene.cameras.main.getWorldPoint(pointer.x, pointer.y);
     const pos = this.playerRigidBody.translation();
+    const dx = worldPoint.x - pos.x;
+    const dy = worldPoint.y - pos.y;
+    const len = Math.sqrt(dx * dx + dy * dy);
+    if (len === 0) return;
+    const dirX = dx / len;
+    const dirY = dy / len;
+
+    // Spawn projectile ahead of the ship toward cursor
     const spawnOffset = 150;
     const spawnX = pos.x + dirX * spawnOffset;
     const spawnY = pos.y + dirY * spawnOffset;
@@ -440,10 +533,24 @@ export class AquilaPlayer extends UserComponent {
     this.projectiles.push(projectile);
   }
 
+  getProjectileByColliderHandle(handle: number): AquilaProjectile | undefined {
+    return this.projectiles.find((p) => p.alive && p.colliderHandle === handle);
+  }
+
+  isPlayerColliderHandle(handle: number): boolean {
+    for (const [, collider] of this.playerColliders) {
+      if (collider.handle === handle) return true;
+    }
+    return false;
+  }
+
   // override update(time: number, delta: number) {}
 
   movePlayer(desiredTranslation: any, moved: boolean) {
     if (!moved) {
+      // Still sync aura when not moving
+      const pos = this.playerRigidBody.translation();
+      this.aura.setPosition(pos.x, pos.y);
       return;
     }
     // Compute the player's collider movement considering obstacles
@@ -463,6 +570,17 @@ export class AquilaPlayer extends UserComponent {
       x: this.playerRigidBody.translation().x + correctedMovement.x,
       y: this.playerRigidBody.translation().y + correctedMovement.y,
     });
+  }
+
+  private drawAura(gfx: Phaser.GameObjects.Graphics, color: number, radius: number) {
+    gfx.clear();
+    const steps = 6;
+    for (let i = steps; i >= 1; i--) {
+      const r = radius * (i / steps);
+      const alpha = 0.25 * (1 - (i - 1) / steps);
+      gfx.fillStyle(color, alpha);
+      gfx.fillCircle(0, 0, r);
+    }
   }
 
   checkIfCanRotate(delta: number, direction: string) {
@@ -662,18 +780,9 @@ export class AquilaPlayer extends UserComponent {
   ) {
     this.graphics.clear();
 
-    // Draw cast line
+    // Debug cast line disabled
     const endX = start.x + direction.x * this.speed;
     const endY = start.y + direction.y * this.speed;
-    this.graphics.lineStyle(10, 0x0000ff, 1);
-    this.graphics.lineBetween(
-      start.x * 50,
-      start.y * 50,
-      endX * 100,
-      endY * 100,
-    );
-    const line = new Phaser.Geom.Line(start.x, start.y, endX, endY);
-    this.graphics.strokeLineShape(line);
     // Draw cast shape at start
     // this.drawShape(start.x, start.y, shape, 0x0000ff, 0.3);
     // const shapeObject = new Phaser.GameObjects.Image(
@@ -713,9 +822,9 @@ export class AquilaPlayer extends UserComponent {
       // Draw cast shape at hit point
       // const shape = new RAPIER.Cuboid(2, 2);
       // this.drawShape(hit.witness1.x, hit.witness1.y, shape, 0xff0000, 0.5);
-      this.graphics.lineStyle(10, 0xff0000, 1);
-      this.graphics.fillStyle(0xff0000, 1);
-      this.graphics.fillPoint(hit.witness1.x, hit.witness1.y, 100);
+      // this.graphics.lineStyle(10, 0xff0000, 1);
+      // this.graphics.fillStyle(0xff0000, 1);
+      // this.graphics.fillPoint(hit.witness1.x, hit.witness1.y, 100);
     });
   }
 
@@ -778,6 +887,11 @@ export class AquilaPlayer extends UserComponent {
     tempPt.x = cartPt.x - cartPt.y;
     tempPt.y = (cartPt.x + cartPt.y) / 2;
     return tempPt;
+  }
+
+  stopEngineSound() {
+    this.engineSound?.stop();
+    this.engineSound = null;
   }
 
   // override destroy() {}
