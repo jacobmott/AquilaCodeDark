@@ -16,6 +16,12 @@
       "archive": "Docs/History/setup/HANDOFF.before-wrap-20261115T004049Z.md",
       "sha256": "1a45bc1a551601d5db061e31a8b50f33e74ae4b0e91bb553010dae11d5011ca5",
       "reason": "Exact pre-wrap checkpoint; superseded under explicit wrap and publication request"
+    },
+    {
+      "source": "Docs/Handoffs/HANDOFF_2026-11-14_setup.md",
+      "archive": "Docs/History/setup/HANDOFF.pre-publication-receipt-20261115T004323Z.md",
+      "sha256": "7407199c77c4a4d21dd1d5d84eaa64d26b03a17be3cb53553737e79b74e75493",
+      "reason": "Exact wrapped checkpoint before verified publication update"
     }
   ]
 }

@@ -1,0 +1,12 @@
+Aquila setup is wrapped; the setup commit is pushed and verified at origin/main.
+Repository: D:/OtherProjects/AquilaCodeDark.
+Read AGENTS.md, Docs/TaskRoutes.md and the full Docs/Handoffs/HANDOFF_2026-11-14_setup.md.
+Publication evidence: Docs/Setup/publication.json; verify current Git and remote state.
+Shared lessons: LESSONS.md; read only matching knowledge notes.
+Report: http://127.0.0.1:8952/?agentreport=1&paseoAgent=b7e0bf61-02ac-459c-86c6-c78251a6ae6f
+No inbox submissions were read. The report server remains running; no transfers remain active.
+All 1,557 assets passed backup and restore checks. Build and six safety checks passed.
+Fresh client sessions, gameplay and real generation capture remain untested.
+User choices: 1. Discuss desired site changes. 2. Verify fresh sessions or game runtime.
+Traps: preserve peer staging; exclude secrets from assets; website deployment needs separate authority.
+Do not start any of this. Read, say where things stand, then wait.

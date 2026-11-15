@@ -132,9 +132,49 @@ def main(output):
     )
     wrap += decide.whats_next("aquila-setup-r3-next", "Publication checks run first. Site discussion follows; no site edits have started.", short="Publication first")
     rounds = page.entry(3, "Wrap and publication", wrap, when="2026-11-15 UTC") + rounds
+    publication_path = ROOT / "Docs/Setup/publication.json"
+    if publication_path.is_file():
+        published = json.loads(publication_path.read_text())
+        (out / "publication.json").write_bytes(publication_path.read_bytes())
+        (out / "restart-prompt.txt").write_bytes((ROOT / "Docs/Handoffs/PROMPT_2026-11-15_setup.txt").read_bytes())
+        close = decide.recap(
+            "Session wrapped. Setup commit pushed and verified. Notes, lessons and restart prompt saved. Next discussion: what should change on the site?",
+            [
+                ("Published", "The setup commit is verified on the remote branch."),
+                ("Saved", "Final handoff, restart prompt, lessons and publication evidence are saved."),
+                ("Checks", "Six safety checks, startup checks, Git guard and report page checks pass."),
+                ("Limits", "Fresh sessions and gameplay remain untested. The report opened and passed a browser snapshot check."),
+                ("Next", "Choose the first site change to discuss."),
+            ],
+            {
+                "did": "Wrapped the setup session, committed owned files, pushed and verified the remote.",
+                "why": "The owner requested publication before discussing site work.",
+                "working": "Setup and saved knowledge are published; asset backup and restore checks passed.",
+                "not_working": "Fresh client sessions, gameplay and real generation capture remain untested.",
+                "next": "Discuss the desired site changes before implementation.",
+            },
+        )
+        close += decide.info_thread(
+            "aquila-setup-r4-info", "Session wrapped; setup commit pushed and verified.",
+            body_html=table([
+                ("Source commit", "<code>" + escape(published["commit"]) + "</code>"),
+                ("Remote", "<code>origin/main</code>; exact source commit verified after push."),
+                ("Scope", "64 owned setup paths published. Game source, dependencies and peer staging preserved."),
+                ("Knowledge", "Saved restore and index-handling lessons, current checkpoint and restart prompt."),
+                ("Capture", "Aquila connected with no scoped issues. The shared capture check is no longer stale."),
+                ("Report", "Opened in the workspace browser; current round and site question verified by snapshot."),
+                ("Site", "No site changes or deployment started."),
+            ]) + '<p><a href="publication.json">Publication evidence</a> · <a href="handoff.md">Final handoff</a> · <a href="restart-prompt.txt">Restart prompt</a></p>',
+            short="Published setup",
+        )
+        close += decide.question("aquila-site-r4-scope", "What would you like to change on the site first?", [], short="Site changes")
+        close += decide.whats_next("aquila-setup-r4-next", "Site planning waits for your changes. No site implementation or deployment has started.", short="Site discussion")
+        rounds = page.entry(4, "Wrapped and published", close, when="2026-11-15 UTC") + rounds
     doc = page.document("Aquila repository setup", "<main>" + rounds + "</main>", "repo-setup", folder=HERE)
     decide.require_ok(doc, root=out)
     decide.save_questions(doc, folder=HERE)
+    questions = HERE / "questions.json"
+    questions.write_text(questions.read_text(encoding="utf-8"), encoding="utf-8", newline="\n")
     (out / "index.html").write_text(doc, encoding="utf-8", newline="\n")
     print(out / "index.html")
 

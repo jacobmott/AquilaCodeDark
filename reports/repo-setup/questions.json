@@ -1,5 +1,16 @@
 {
  "about": "Every question this lane's page has asked, open and answered. Added and updated, never removed. Submitted answers are the files in inbox/.",
  "page_folder": "repo-setup",
- "questions": []
+ "questions": [
+  {
+   "id": "aquila-site-r4-scope",
+   "short": "Site changes",
+   "ask": "What would you like to change on the site first?",
+   "why": null,
+   "options": [],
+   "state": "open",
+   "answer": null,
+   "page": "Aquila repository setup"
+  }
+ ]
 }
