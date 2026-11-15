@@ -1,0 +1,6 @@
+# Aquila-local context settings. Global tools and personal memories remain intact.
+[memories]
+use_memories = false
+
+[mcp_servers.robinhood-trading]
+enabled = false

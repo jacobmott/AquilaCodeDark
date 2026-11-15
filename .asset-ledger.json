@@ -1,0 +1,15 @@
+{
+  "schema": "asset-ledger.repo/1",
+  "repository": "aquila-code-dark",
+  "layout": "record-files",
+  "capture": {
+    "roots": [
+      "Assets",
+      "Docs"
+    ],
+    "projects": {
+      "Assets": "aquila-code-dark-game",
+      "Docs": "aquila-code-dark-game"
+    }
+  }
+}

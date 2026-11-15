@@ -1,0 +1,17 @@
+{
+  "schema": "aquila.git-exceptions/1",
+  "exceptions": {
+    "public/favicon.ico": {
+      "sha256": "f9102be80297c0529207607be5277b4f90bca89d65988fa1771b91c7894e815f",
+      "reason": "Existing app favicon; unchanged baseline only"
+    },
+    "src/app/ships/ui/ship-card/ship-card.component.svg": {
+      "sha256": "044edabd8fd2ee2de463f83e554d0f17fd7088eb56064002c328dc8eba74247a",
+      "reason": "Existing embedded raster in Angular SVG template; separate UI extraction task"
+    },
+    "src/app/snippets.html": {
+      "sha256": "b5b224ebf5200e41a98753d0f377429af29ec49308e077ec4d5e36412e8dc436",
+      "reason": "Pre-existing HTML snippet with embedded raster; exact baseline only, no new encoded assets"
+    }
+  }
+}

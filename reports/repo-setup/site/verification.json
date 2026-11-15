@@ -1,0 +1,166 @@
+{
+  "checked_utc": "2026-11-15T00:10:13.944842+00:00",
+  "repo": "D:\\OtherProjects\\AquilaCodeDark",
+  "base_commit": "37218b8",
+  "setup_complete": true,
+  "storage": {
+    "bucket": "jacobmott-aquila-code-dark",
+    "files": 1557,
+    "bytes": 3358920163,
+    "manifest_key": "_manifests/20261114T235953Z-53fdcd47.json",
+    "manifest_sha256": "71e1591a395684b89211afac1c67ed974b3d55727e151c582c4dbcb35f9c2f59",
+    "restore_verified": true,
+    "receipt": "storage-receipt.json",
+    "security": {
+      "all_four_public_access_blocks": true,
+      "ownership": "BucketOwnerEnforced",
+      "encryption": "AES256",
+      "tls_required": true,
+      "versioning": "off",
+      "remote_inventory_verified": true
+    }
+  },
+  "claude_memory": {
+    "accounts": [
+      {
+        "profile": ".claude",
+        "link": "C:\\Users\\jacob\\.claude\\projects\\D--OtherProjects-AquilaCodeDark\\memory",
+        "target": "C:\\Users\\jacob\\ClaudeMemory\\aquila-code-dark\\memory",
+        "applied": true,
+        "index_sha256": "9BC941DA1526CB0898EFD76DDFCCA0F45D1C11FAE1747B6C7363AF78CDC9FEE7"
+      },
+      {
+        "profile": ".claude-content",
+        "link": "C:\\Users\\jacob\\.claude-content\\projects\\D--OtherProjects-AquilaCodeDark\\memory",
+        "target": "C:\\Users\\jacob\\ClaudeMemory\\aquila-code-dark\\memory",
+        "applied": true,
+        "index_sha256": "9BC941DA1526CB0898EFD76DDFCCA0F45D1C11FAE1747B6C7363AF78CDC9FEE7"
+      },
+      {
+        "profile": ".claude-duskforge3",
+        "link": "C:\\Users\\jacob\\.claude-duskforge3\\projects\\D--OtherProjects-AquilaCodeDark\\memory",
+        "target": "C:\\Users\\jacob\\ClaudeMemory\\aquila-code-dark\\memory",
+        "applied": true,
+        "index_sha256": "9BC941DA1526CB0898EFD76DDFCCA0F45D1C11FAE1747B6C7363AF78CDC9FEE7"
+      }
+    ],
+    "routing_verified": true,
+    "fresh_model_loading_tested": false
+  },
+  "codex": {
+    "repo_config": ".codex/config.toml",
+    "repo_trusted": true,
+    "skills": [
+      "newsession",
+      "session-wrap"
+    ],
+    "fresh_session_tested": false
+  },
+  "services": {
+    "asset_ledger": {
+      "checked_utc": "2026-11-15T00:07:40.565344+00:00",
+      "registration": [
+        {
+          "id": "aquila-code-dark",
+          "name": "Aquila Code Dark",
+          "joined": true,
+          "native_connected": true,
+          "layout": "record-files"
+        }
+      ],
+      "capture_state": "stale",
+      "capture_stale": true,
+      "last_completed_epoch": 1794700162.4425235,
+      "running": true,
+      "aquila_issues": [],
+      "local_check_queued": true,
+      "generation_tested": false
+    },
+    "knowledge_hub": {
+      "providers": [
+        "anthropic",
+        "cursor",
+        "openai"
+      ],
+      "search_and_exact_read_passed": true,
+      "receipt": "knowledge-hub-verification.json"
+    },
+    "research_console": {
+      "project": "aquila-code-dark",
+      "health_passed": true,
+      "pending_lookup_passed": true,
+      "submitted_research": false
+    },
+    "agent_report": {
+      "slug": "repo-setup",
+      "page_checks": "passed",
+      "http": {
+        "status": 200,
+        "content_verified": true
+      },
+      "browser": "unavailable: no connected Paseo browser host",
+      "global_hooks": "existing Claude accounts and Codex configurations verified; not reinstalled",
+      "url": "http://127.0.0.1:8952/",
+      "chat_link": "[127.0.0.1:8952](http://127.0.0.1:8952/?agentreport=1&paseoAgent=b7e0bf61-02ac-459c-86c6-c78251a6ae6f)"
+    }
+  },
+  "checks": {
+    "application_build": {
+      "command": "npm run build:prod",
+      "result": "passed",
+      "node": "v25.8.1",
+      "npm": "11.11.0",
+      "limitation": "Odd-numbered Node warning; build success does not establish version support or gameplay acceptance"
+    },
+    "safety_tests": {
+      "command": ".venv-tools/Scripts/python.exe -B -m unittest discover -s scripts/tests -v",
+      "passed": 6
+    },
+    "skills": {
+      "validated": 4,
+      "result": "passed"
+    },
+    "startup_context": "passed after final handoff",
+    "git_guard": {
+      "result": "passed",
+      "indexed_files": 219,
+      "shared_index_preserved": true
+    },
+    "whitespace": "passed in private index; exact historical README archive excluded to preserve its original bytes",
+    "preservation": {
+      "history_hashes_verified": true,
+      "three_account_memory_hashes_verified": true,
+      "game_source_and_dependencies_unchanged": true,
+      "served_files_match_disk": 4,
+      "shared_staged_content_preserved": true
+    },
+    "initial_shared_index_sha256": "305f1a618c88547df7b916031453537d35db21c778df962bf607c3f63d2143e0",
+    "shared_staging": {
+      "equals_HEAD": true,
+      "entry_sha256": "7d9594ca42e683693f643f1753987007e37a8ac533dc4773156d158afc61ecb5",
+      "current_index_sha256": "6f60c637629a50568d506155b24111ddd3d382453306bea2f3eee6576d6eb8b0",
+      "note": "Index byte hash refreshed later; staged content still matches baseline HEAD. No index rewrite performed."
+    }
+  },
+  "preserved": {
+    "game_source": true,
+    "application_dependencies": true,
+    "shared_index": true,
+    "other_s3_project_policy_statements": 13,
+    "live_website": true
+  },
+  "not_performed": [
+    "Git commit",
+    "Git push",
+    "website deployment",
+    "paid generation",
+    "research submission",
+    "fresh client sessions",
+    "gameplay or Electron runtime acceptance",
+    "browser-rendered report check"
+  ],
+  "evidence_limits": [
+    "Asset Ledger connection verified; its shared capture check remains overdue. A supported local check was queued.",
+    "Configured client files and hooks do not prove model loading or compliance."
+  ]
+}

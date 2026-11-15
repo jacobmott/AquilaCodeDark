@@ -1,0 +1,7 @@
+{
+  "schema": "aquila.asset-storage/1",
+  "bucket": "jacobmott-aquila-code-dark",
+  "region": "us-east-1",
+  "folders": ["src/assets", "AllAssets", "Tiled", "Assets", "Screenshots", "Videos"],
+  "default_namespace": "assets"
+}

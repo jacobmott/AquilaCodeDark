@@ -1,0 +1,21 @@
+{
+  "source": "README.md",
+  "archive": "Docs/History/setup/README.before-20261114.md",
+  "archived_date_utc": "2026-11-14",
+  "sha256": "28d6e44f92863980362b61f1c03d7693d865326cbd5f4864fec568781d92692c",
+  "authority": "Historical instructions only; not current transfer or deployment permission",
+  "provisional_checkpoint": {
+    "source": "Docs/Handoffs/HANDOFF_2026-11-14_setup.md",
+    "archive": "Docs/History/setup/HANDOFF.provisional-20261114.md",
+    "sha256": "32d7bba5b30c3b7ca546fbf7886a65bf2abfc908cf828e432701bca2d738834b",
+    "reason": "Provisional setup checkpoint superseded after verification"
+  },
+  "checkpoints": [
+    {
+      "source": "Docs/Handoffs/HANDOFF_2026-11-14_setup.md",
+      "archive": "Docs/History/setup/HANDOFF.before-wrap-20261115T004049Z.md",
+      "sha256": "1a45bc1a551601d5db061e31a8b50f33e74ae4b0e91bb553010dae11d5011ca5",
+      "reason": "Exact pre-wrap checkpoint; superseded under explicit wrap and publication request"
+    }
+  ]
+}

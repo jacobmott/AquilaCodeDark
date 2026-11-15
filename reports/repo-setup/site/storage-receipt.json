@@ -1,0 +1,33 @@
+{
+  "bucket": "jacobmott-aquila-code-dark",
+  "region": "us-east-1",
+  "backup": {
+    "mode": "backup",
+    "applied": true,
+    "files": 1557,
+    "bytes": 3358920163,
+    "new_files": 1557,
+    "new_bytes": 3358920163,
+    "conflicts": [],
+    "manifest_key": "_manifests/20261114T235953Z-53fdcd47.json",
+    "manifest_sha256": "71e1591a395684b89211afac1c67ed974b3d55727e151c582c4dbcb35f9c2f59",
+    "verified": "upload checksum and remote metadata; restore pending"
+  },
+  "restore": {
+    "mode": "restore",
+    "applied": true,
+    "files": 1557,
+    "bytes": 3358920163,
+    "manifest_key": "_manifests/20261114T235953Z-53fdcd47.json",
+    "target": "D:\\OtherProjects\\AquilaCodeDark\\.runtime\\restores\\initial-verified",
+    "verified": "all restored file bytes and SHA-256 hashes match manifest"
+  },
+  "restore_verified": true,
+  "first_restore_attempt": {
+    "status": "failed closed during concurrent Windows path resolution",
+    "partial_target": ".runtime/restores/initial",
+    "retained": true,
+    "fix": "Prepare directory tree serially, then resolve existing parents strictly",
+    "regression": "128 nested files restored concurrently; nonempty target retry refused"
+  }
+}

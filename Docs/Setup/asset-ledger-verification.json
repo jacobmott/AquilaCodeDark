@@ -1,0 +1,19 @@
+{
+  "checked_utc": "2026-11-15T00:07:40.565344+00:00",
+  "registration": [
+    {
+      "id": "aquila-code-dark",
+      "name": "Aquila Code Dark",
+      "joined": true,
+      "native_connected": true,
+      "layout": "record-files"
+    }
+  ],
+  "capture_state": "stale",
+  "capture_stale": true,
+  "last_completed_epoch": 1794700162.4425235,
+  "running": true,
+  "aquila_issues": [],
+  "local_check_queued": true,
+  "generation_tested": false
+}

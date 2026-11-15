@@ -1,6 +1,16 @@
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 
 # My specific ignore rules
+# Local agent state, private evidence and generated assets
+.runtime/
+.venv-tools/
+.claude/settings.local.json
+*.ledger-record.json
+*.ledger-draft.json
+reports/**/inbox/
+reports/**/media/
+reports/**/site/media/
+Assets/Diagnostics/
 docker init
 Screenshots
 Videos

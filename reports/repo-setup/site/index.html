@@ -1,0 +1,2280 @@
+<!doctype html>
+<html lang="en" data-theme="dark"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="report-build" content="20261114T184156-052f54">
+<title>Aquila repository setup</title>
+<script>try{var t=localStorage.getItem("report-theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t}catch(e){}if(history.scrollRestoration)history.scrollRestoration="manual";</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap">
+<style>.copy{display:grid;gap:4px;min-width:0}
+.copyhead{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.lbl{font:600 .72rem var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.cbtn{font:600 .8rem var(--mono);padding:.35rem .8rem;border-radius:6px;border:1px solid var(--accent);background:var(--accent);color:var(--accent-ink);cursor:pointer}
+.cbtn:hover{filter:brightness(1.08)}
+.cbtn:focus-visible,pre:focus-visible,summary:focus-visible{outline:2px solid var(--sea);outline-offset:2px}
+.cbtn.done{background:transparent;color:var(--ok);border-color:var(--ok)}
+pre{margin:0;white-space:pre-wrap;word-break:break-word;font:.84rem/1.5 var(--mono);background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:10px 12px}
+main img{cursor:zoom-in}
+.lb{position:fixed;inset:0;z-index:50;background:var(--lb-bg);color:var(--lb-fg);display:grid;grid-template-rows:1fr auto;
+  padding:calc(env(safe-area-inset-top,0px) + 8px) 8px calc(env(safe-area-inset-bottom,0px) + 8px)}
+.lbstage{overflow:auto;display:grid;place-items:center;min-height:0}
+.lb img{max-width:100%;max-height:calc(100vh - 90px);object-fit:contain;cursor:zoom-in;border-radius:4px}
+.lb.zoom .lbstage{place-items:start center}
+.lb.zoom img{max-width:none;max-height:none;cursor:zoom-out}
+.lbcap{margin:6px 0 0;text-align:center;font:.8rem var(--mono);color:var(--lb-fg)}
+.lbbtn{position:fixed;z-index:51;background:var(--lb-btn);color:var(--lb-fg);border:0;border-radius:50%;width:44px;height:44px;
+  font:1.8rem/1 var(--body);cursor:pointer}
+.lbbtn:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.lbclose{top:calc(env(safe-area-inset-top,0px) + 10px);right:12px}
+.lbprev{left:10px;top:50%;transform:translateY(-50%)}
+.lbnext{right:10px;top:50%;transform:translateY(-50%)}
+/* Large video viewer: true shape, as big as the screen allows; the browser's own full screen never crops. */
+video:fullscreen,video:-webkit-full-screen{object-fit:contain!important;aspect-ratio:auto!important;width:100%!important;height:100%!important;max-height:none!important;background:#000}
+.vbig{justify-self:start;font:600 .72rem var(--mono);padding:.3rem .6rem;border-radius:5px;border:1px solid var(--accent);background:transparent;color:var(--accent);cursor:pointer}
+.vbig:hover{background:var(--accent);color:var(--accent-ink)}
+.vbig:focus-visible{outline:2px solid var(--sea);outline-offset:2px}
+.vtools{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.vspeed{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.vspeedlbl{font:600 .72rem var(--mono);color:var(--muted)}
+.vrate{font:700 .78rem var(--mono);min-height:36px;padding:.35rem .65rem;border-radius:8px;cursor:pointer;
+  border:1.5px solid var(--line);background:var(--surface);color:var(--ink)}
+.vrate[aria-pressed="true"]{border-color:var(--accent);background:var(--accent);color:var(--accent-ink)}
+.vrate:focus-visible{outline:2px solid var(--sea);outline-offset:2px}
+.vbig.trio{background:var(--accent);color:var(--accent-ink);font-size:.8rem;padding:.45rem .8rem}
+.vlb{position:fixed;inset:0;z-index:60;background:var(--lb-bg);color:var(--lb-fg);display:grid;grid-template-rows:auto minmax(0,1fr);gap:8px;
+  padding:calc(env(safe-area-inset-top,0px) + 10px) 12px calc(env(safe-area-inset-bottom,0px) + 10px)}
+.vlbbar{display:flex;flex-wrap:wrap;gap:.6rem;align-items:center;justify-content:center;font:.8rem var(--mono)}
+.vlbbar button{font:600 .85rem var(--mono);padding:.4rem .9rem;border-radius:6px;border:1px solid var(--lb-fg);background:transparent;color:var(--lb-fg);cursor:pointer}
+.vlbbar button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.vlbpanes{display:flex;gap:12px;justify-content:center;align-items:center;min-height:0;overflow:auto}
+.vlbpanes figure{margin:0;display:grid;gap:4px;justify-items:center;min-width:0;flex:0 1 auto}
+.vlbpanes video,.vlbpanes img{display:block;height:calc(100vh - 120px);width:auto;max-width:calc((100vw - 48px) / var(--n,1));object-fit:contain;background:#000;border-radius:4px;cursor:default}
+.vlbpanes figcaption{font:.75rem var(--mono);color:var(--lb-fg)}
+@media (max-width:700px){.vlbpanes{flex-direction:column;justify-content:flex-start}.vlbpanes video,.vlbpanes img{height:auto;max-height:80vh;max-width:100%}}
+
+/* The report page (reply layout, Jake 2026-10-16): the newest round on top as one reply, older rounds folded below as
+   history. The look Jake approved on the try: Linear's dark, calm page; Cursor's headline and to-do box; Claude's
+   folding rows. Dark by default, a Light button in the top bar.
+   Meaning colours stay, as small dots, edges and labels rather than coloured boxes: violet an open question, orange
+   something to do, blue an answer to his note, green picked / sent / done, teal What's next, rose info, amber Look at
+   this and the size of an S3 upload. Markup comes from decide.py and reply.py; decide.js adds the write boxes and
+   runs the bottom bar; reply.js runs the folds and the theme button. Every old variable name is kept, so a builder's
+   own inline styles still work. */
+
+:root, :root[data-theme="dark"] {
+  --bg:#0b0b0d; --surface:#121316; --panel:#121316; --panel2:#17181c; --line:#232429; --line2:#2e3036;
+  --ink:#ececef; --ink2:#b9bbc2; --muted:#80838d;
+  --ask:#a78bfa; --req:#fb923c; --reply:#60a5fa; --done:#4ade80; --next:#2dd4bf; --info:#fb7185; --seen:#fbbf24;
+  --done-ink:#04140a; --accent:#f5b942; --accent-ink:#1a1205; --sea:#60a5fa; --ok:#4ade80;
+  --ask-soft:rgba(167,139,250,.10); --ask-line:rgba(167,139,250,.45);
+  --req-soft:rgba(251,146,60,.10); --req-line:rgba(251,146,60,.45);
+  --reply-soft:rgba(96,165,250,.10); --reply-line:rgba(96,165,250,.45);
+  --next-soft:rgba(45,212,191,.10); --next-line:rgba(45,212,191,.45);
+  --info-soft:rgba(251,113,133,.10); --info-line:rgba(251,113,133,.45);
+  --done-soft:rgba(74,222,128,.09); --seen-soft:rgba(251,191,36,.25);
+  --lb-bg:rgba(6,7,9,.95); --lb-fg:#e8e9ec; --lb-btn:rgba(255,255,255,.12);
+  --display:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --body:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,Consolas,"Courier New",monospace;
+  --space-xs:4px; --space-sm:8px; --space-md:16px; --space-lg:24px; --space-xl:32px; --space-2xl:48px;
+  --shadow-md:none; --shadow-lg:none;
+  --col:880px;
+  color-scheme:dark;
+}
+:root[data-theme="light"] {
+  --bg:#fbfbfa; --surface:#ffffff; --panel:#ffffff; --panel2:#f4f4f2; --line:#e6e6e3; --line2:#d9d9d5;
+  --ink:#16171a; --ink2:#3c3e44; --muted:#6c6f77;
+  --ask:#6d28d9; --req:#c2410c; --reply:#1d4ed8; --done:#15803d; --next:#0f766e; --info:#be123c; --seen:#b45309;
+  --done-ink:#ffffff; --accent:#b7791f; --accent-ink:#ffffff; --sea:#1d4ed8; --ok:#15803d;
+  --ask-soft:rgba(109,40,217,.07); --ask-line:rgba(109,40,217,.40);
+  --req-soft:rgba(194,65,12,.07); --req-line:rgba(194,65,12,.40);
+  --reply-soft:rgba(29,78,216,.07); --reply-line:rgba(29,78,216,.40);
+  --next-soft:rgba(15,118,110,.07); --next-line:rgba(15,118,110,.40);
+  --info-soft:rgba(190,18,60,.07); --info-line:rgba(190,18,60,.40);
+  --done-soft:rgba(21,128,61,.07); --seen-soft:rgba(180,83,9,.22);
+  color-scheme:light;
+}
+
+/* ---------- the page */
+[hidden]:not([hidden=until-found i]) { display:none !important; }
+* { box-sizing:border-box; }
+html { scroll-behavior:smooth; scroll-padding-top:16px; scroll-padding-bottom:200px; }
+@media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } }
+body { margin:0; padding-bottom:200px; background:var(--bg); color:var(--ink); font:15.5px/1.65 var(--body);
+  -webkit-font-smoothing:antialiased; overflow-x:clip; }
+.wrap { max-width:var(--col); margin:0 auto; padding:24px 24px 40px; }
+.wrap:not(.rpage) { display:grid; gap:var(--space-2xl); }
+a { color:inherit; text-decoration-color:var(--line2); text-underline-offset:3px; }
+a:hover { text-decoration-color:var(--ink2); }
+p { margin:0 0 10px; }
+h1, h2, h3 { font-family:var(--display); text-wrap:balance; }
+h3 { font-size:16px; font-weight:600; margin:18px 0 8px; }
+.note, .muted { color:var(--muted); }
+code, pre, kbd { font-family:var(--mono); font-size:.88em; }
+pre { background:var(--panel2); border:1px solid var(--line); border-radius:8px; padding:10px 12px; overflow:auto;
+  white-space:pre-wrap; overflow-wrap:anywhere; }
+ul, ol { padding-left:1.3em; }
+li { margin:2px 0; }
+button { font:inherit; color:inherit; }
+button.ghost { background:none; border:1px solid var(--line); color:var(--ink2); border-radius:7px; padding:3px 10px;
+  font-size:12.5px; cursor:pointer; }
+button.ghost:hover { border-color:var(--line2); color:var(--ink); }
+table { border-collapse:collapse; width:100%; font-size:13.5px; margin:8px 0 12px; }
+th, td { text-align:left; vertical-align:top; padding:7px 10px; border-bottom:1px solid var(--line); }
+th { font-weight:500; color:var(--muted); font-size:12px; }
+.tablebox { overflow-x:auto; }
+.tablebox table { background:transparent; }
+.code { font:500 11px var(--mono); color:var(--ink2); background:var(--panel2); border:1px solid var(--line);
+  border-radius:5px; padding:1px 5px; margin-right:7px; }
+.copy { border:1px solid var(--line); border-radius:9px; margin:8px 0; overflow:hidden; display:grid; }
+.copyhead { display:flex; justify-content:space-between; align-items:center; gap:8px; padding:5px 10px;
+  font-size:12px; color:var(--muted); background:var(--panel2); }
+.copy pre { margin:0; border:0; border-radius:0; }
+.cbtn { font-size:12px; background:none; border:1px solid var(--line); color:var(--ink2); border-radius:6px;
+  padding:2px 9px; cursor:pointer; }
+.cbtn.done { color:var(--done); border-color:var(--done); }
+.waiting { border-left:2px solid var(--accent); padding:4px 0 4px 14px; margin:8px 0; }
+
+/* the top bar */
+.crumbs { display:flex; align-items:center; gap:12px; font-size:13px; color:var(--muted); padding-bottom:14px;
+  border-bottom:1px solid var(--line); margin-bottom:40px; min-width:0; }
+.crumb-t { color:var(--ink2); font-weight:500; white-space:nowrap; }
+.crumb-n { min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.crumb-r { margin-left:auto; display:flex; gap:14px; align-items:center; white-space:nowrap; }
+
+/* ---------- the reply on top */
+.status { display:flex; flex-wrap:wrap; gap:8px; align-items:center; font-size:13px; color:var(--muted); margin:0 0 14px; }
+.pill { display:inline-flex; align-items:center; gap:7px; color:var(--ink); font-weight:500; }
+.pill::before { content:""; width:8px; height:8px; border-radius:50%; background:var(--muted); }
+.pill.needs::before { background:var(--ask); box-shadow:0 0 0 3px var(--ask-soft); }
+.pill.calm::before { background:var(--done); }
+.pill .p-sent { display:none; }
+html.dsent .pill .p-open { display:none; }
+html.dsent .pill .p-sent { display:inline; }
+html.dsent .pill::before { background:var(--accent); box-shadow:none; animation:pulse 1.6s ease-in-out infinite; }
+@keyframes pulse { 0%, 100% { opacity:1; } 50% { opacity:.3; } }
+.turn > h1 { font-size:36px; line-height:1.12; letter-spacing:-.025em; font-weight:600; margin:0 0 14px; }
+.lead { font-size:17.5px; line-height:1.6; color:var(--ink2); margin:0 0 16px; }
+/* bro, quick 5, then Plain English, on top of every round (decide.recap, Jake 2026-11-06 and 11-07): neutral, no
+   meaning colour */
+.recap { display:grid; gap:10px; margin:0 0 18px; }
+.recap > section { border:1px solid var(--line); border-radius:12px; background:var(--panel); padding:12px 16px; }
+.recap .rlabel { font:600 11px var(--mono); letter-spacing:.06em; text-transform:uppercase; color:var(--muted);
+  margin:0 0 6px; }
+.recap .brotext { font-size:16.5px; line-height:1.6; color:var(--ink); margin:0; }
+.recap .quick5 p:not(.rlabel) { margin:0 0 4px; color:var(--ink2); }
+.recap .quick5 strong { color:var(--ink); font-weight:600; }
+.recap .plain dl { display:grid; grid-template-columns:max-content 1fr; gap:4px 14px; margin:0; }
+.recap .plain dt { color:var(--ink); font-weight:600; }
+.recap .plain dd { margin:0; color:var(--ink2); }
+@media (max-width:560px) { .recap .plain dl { grid-template-columns:1fr; gap:0; } .recap .plain dd { margin:0 0 6px; } }
+.jumps { display:flex; flex-wrap:wrap; gap:6px; margin:0 0 28px; }
+.jumps a { font-size:12.5px; color:var(--ink2); text-decoration:none; border:1px solid var(--line); border-radius:999px;
+  padding:3px 11px; background:var(--panel); }
+.jumps a:hover { border-color:var(--line2); color:var(--ink); }
+.hero { margin:0 0 8px; }
+.loose { display:grid; gap:14px; margin:8px 0 0; min-width:0; }
+.part { margin-top:44px; min-width:0; }
+.part > h2 { display:flex; align-items:center; gap:9px; font-size:13px; font-weight:600; letter-spacing:.01em;
+  color:var(--ink2); margin:0 0 14px; }
+.sdot { width:7px; height:7px; border-radius:50%; background:var(--muted); }
+.sdot.s-ask { background:var(--ask); } .sdot.s-req { background:var(--req); } .sdot.s-ans { background:var(--reply); }
+.sdot.s-info { background:var(--info); }
+.count { font:500 11.5px var(--mono); color:var(--muted); border:1px solid var(--line); border-radius:999px; padding:0 7px; }
+.pagewide { margin-top:44px; display:grid; gap:18px; }
+
+/* ---------- a question */
+.q, .qblock { position:relative; display:grid; grid-template-columns:minmax(0,1fr); gap:12px; border:1px solid var(--line);
+  border-radius:14px; background:var(--panel); padding:20px 22px 18px; margin-bottom:18px; scroll-margin-top:24px;
+  scroll-margin-bottom:200px; counter-reset:opt; }
+.q > *, .qblock > * { min-width:0; max-width:100%; }
+.q.flash { animation:qflash 1.2s ease-out; }
+@keyframes qflash { 0% { box-shadow:0 0 0 6px var(--ask-line); } 100% { box-shadow:0 0 0 0 transparent; } }
+.qhead { display:flex; align-items:center; gap:8px; }
+.qlabel { font:600 11px var(--mono); letter-spacing:.06em; text-transform:uppercase; color:var(--ask); }
+.qstate { font:600 10.5px var(--mono); letter-spacing:.06em; text-transform:uppercase; color:var(--ask);
+  border:1px solid var(--ask-line); border-radius:999px; padding:1px 8px; }
+.q.done .qlabel { color:var(--done); }
+.q.done .qstate { color:var(--done-ink); background:var(--done); border-color:var(--done); }
+.ask { margin:0; font-size:17px; line-height:1.5; font-weight:600; letter-spacing:-.006em; color:var(--ink); }
+.qwhy { margin:0; color:var(--ink2); }
+.upsize { display:inline-block; justify-self:start; margin:0; padding:.2rem .7rem; border-radius:8px; background:var(--accent);
+  color:var(--accent-ink); font:700 1.45rem/1.15 var(--mono); }
+.qexcerpt { margin:0; padding:2px 0 2px 14px; border-left:2px solid var(--line2); color:var(--ink2); display:grid; gap:6px; }
+.qexcerpt p, .qexcerpt ul, .qexcerpt ol { margin:0; }
+.qxhead { font-size:12px; color:var(--muted); margin:0; }
+.qrefs { margin:0; display:flex; flex-wrap:wrap; align-items:center; gap:6px 8px; font-size:13.5px; }
+.qrefhead { font-size:12px; color:var(--muted); }
+a.qref { display:inline-flex; align-items:center; gap:6px; border:1px solid var(--line); border-radius:999px; padding:2px 11px;
+  background:var(--panel2); color:var(--ink); text-decoration:none; }
+a.qref:hover { border-color:var(--line2); }
+a.qref::after { content:"\2192"; color:var(--muted); }
+a.qref[target="_blank"]::after { content:"\2197"; }
+.qtarget { outline:2px solid var(--seen); outline-offset:6px; border-radius:6px; scroll-margin-top:28px; }
+.from { font:500 11px var(--mono); color:var(--muted); border:1px solid var(--line2); border-radius:999px;
+  padding:0 7px; margin-left:6px; white-space:nowrap; vertical-align:2px; }
+
+/* pictures and video beside a question */
+.qanchors, .cmpgrid, .grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:14px; margin:4px 0; }
+.qanchors > figure.look, .grid > figure.look, .qanchors > figure:only-child, .grid > figure:only-child { grid-column:1 / -1; }
+:is(main, .wrap) figure { margin:0; display:grid; gap:6px; min-width:0; max-width:100%; align-content:start; position:relative; }
+:is(main, .wrap) img, :is(main, .wrap) video { max-width:100%; height:auto; }
+:is(main, .wrap) figure > img, :is(main, .wrap) figure > video { display:block; width:100%; height:auto; max-height:76vh;
+  object-fit:contain; background:#000; border-radius:9px; border:1px solid var(--line); }
+:is(main, .wrap) figure > figcaption { font-size:12.5px; line-height:1.45; color:var(--muted); overflow-wrap:anywhere; }
+.lookat { margin:0; justify-self:start; font:600 11px var(--body); color:var(--accent-ink); background:var(--accent);
+  border-radius:5px; padding:2px 7px; }
+figure.look > img, figure.look > video, figure.qpic.look > img, figure.qpic.look > video { outline:2px solid var(--accent);
+  outline-offset:2px; }
+
+/* the choices */
+.opts { display:grid; gap:8px; margin:6px 0 0; }
+.opts:has(.qpic) { grid-template-columns:repeat(2,minmax(0,1fr)); gap:14px; }
+.opts .qsetacts { grid-column:1 / -1; display:flex; flex-wrap:wrap; gap:8px; }
+button.pick { display:flex; gap:11px; align-items:flex-start; width:100%; text-align:left; font:inherit; font-size:14.5px;
+  line-height:1.5; color:var(--ink); background:var(--panel2); border:1px solid var(--line); border-radius:10px;
+  padding:10px 12px; cursor:pointer; transition:border-color .12s, background .12s, opacity .12s; }
+.opts > button.pick { counter-increment:opt; }
+.opts > button.pick::before { content:counter(opt, upper-alpha); flex:none; width:20px; height:20px; margin-top:1px;
+  border-radius:6px; border:1px solid var(--line2); font:600 11px/18px var(--mono); text-align:center; color:var(--muted); }
+button.pick[data-mode="multi"]::before { border-radius:4px; }
+button.pick:hover { border-color:var(--line2); }
+button.pick.on { border-color:var(--done); background:var(--done-soft); }
+.opts > button.pick.on::before { content:"\2713"; background:var(--done); border-color:var(--done); color:var(--done-ink); }
+.q.done button.pick:not(.on) { opacity:.55; }
+.q.done button.pick:not(.on):hover { opacity:.9; }
+button.pick:disabled { cursor:default; opacity:.7; }
+button.pick:focus-visible, button.qok:focus-visible, #decidebar button:focus-visible { outline:2px solid var(--ask);
+  outline-offset:2px; }
+/* a box next to the thing it picks (decide.pick / pick_with): a take's player in a table, a clip */
+.opts:empty { display:none; }
+button.pick.here { display:inline-flex; width:auto; align-items:center; gap:7px; padding:5px 11px 5px 9px; font-size:13px;
+  font-weight:500; line-height:1.3; border-radius:8px; vertical-align:middle; white-space:nowrap; }
+button.pick.here::before { content:""; flex:none; width:14px; height:14px; border-radius:4px; border:1.5px solid var(--line2);
+  font:700 10px/12px var(--body); text-align:center; }
+button.pick.here[data-mode="single"]::before { border-radius:50%; }
+button.pick.here.on::before { content:"\2713"; background:var(--done); border-color:var(--done); color:var(--done-ink); }
+button.pick.here.mine:not(.on) { border-color:var(--ask-line); }
+.minetag { font-size:11px; color:var(--ask); }
+.pickwith { display:inline-flex; flex-wrap:wrap; align-items:center; gap:8px; max-width:100%; }
+.pickwith > audio { width:220px; max-width:100%; height:36px; }
+.q.done button.pick.here:not(.on) { opacity:1; }
+td .pickwith, td > button.pick.here { margin:2px 0; }
+.opts .qpic { margin:0; display:grid; gap:8px; align-content:start; min-width:0; }
+.opts .qpic > img, .opts .qpic > video { max-height:62vh; }
+.opts .qpic button.pick { justify-content:center; font-weight:500; }
+.opts .qpic.mine > img, .opts .qpic.mine > video { outline:2px solid var(--ask-line); outline-offset:2px; }
+.opts .qpic:has(button.pick.on) > img, .opts .qpic:has(button.pick.on) > video { outline:2px solid var(--done); outline-offset:2px; }
+
+/* the write box (decide.js), and the same box on a request, What's next and info */
+.qfree, .reqfree, .nxfree, .ifree { display:grid; gap:6px; scroll-margin-bottom:200px; }
+.qfree label, .reqfree label, .nxfree label, .ifree label { font-size:12.5px; color:var(--muted); }
+.qfree.asked label { color:var(--ask); font-weight:500; }
+.qrow, .reqrow, .nxrow, .irow { display:flex; gap:8px; align-items:stretch; }
+.qfree textarea, .reqfree textarea, .nxfree textarea, .ifree textarea, #decide-note { flex:1; min-width:0; min-height:46px;
+  max-height:60vh; resize:vertical; font:15px/1.5 var(--body); color:var(--ink); background:transparent;
+  border:1px solid var(--line); border-radius:10px; padding:10px 12px; overflow:auto; overflow-wrap:anywhere; outline:none; }
+.qfree textarea:focus, .reqfree textarea:focus, .nxfree textarea:focus, .ifree textarea:focus, #decide-note:focus {
+  border-color:var(--line2); background:var(--panel2); }
+button.qok, button.reqok, button.nxok, button.iok { align-self:flex-end; font:500 12.5px var(--body); padding:6px 12px;
+  border-radius:8px; cursor:pointer; background:var(--panel2); color:var(--ink2); border:1px solid var(--line); }
+button.qok:hover, button.reqok:hover, button.nxok:hover, button.iok:hover { color:var(--ink); border-color:var(--line2); }
+.held, .reqheld, .nxheld, .iheld { margin:0; padding:8px 12px; border-radius:10px; font-size:14px; white-space:pre-wrap;
+  overflow-wrap:anywhere; border:1px solid var(--line); color:var(--ink2); }
+.held { border-color:var(--done-soft); background:var(--done-soft); }
+.held b, .reqheld b, .nxheld b, .iheld b { color:var(--ink); font-weight:600; }
+.reqheld.sent { background:var(--done-soft); }
+.hop { display:none; }
+.shotbar { display:flex; flex-wrap:wrap; gap:8px; align-items:center; }
+.shotadd { font:500 12px var(--body); padding:4px 10px; border-radius:7px; cursor:pointer; background:none;
+  border:1px solid var(--line); color:var(--ink2); }
+.shotadd:hover { border-color:var(--line2); color:var(--ink); }
+.shothint { font-size:12px; color:var(--muted); }
+.shots { display:flex; flex-wrap:wrap; gap:8px; }
+.shots:empty { display:none; }
+.shot { margin:0; display:grid; gap:4px; width:min(170px,46%); }
+.shot img { width:100%; max-height:140px; object-fit:contain; background:var(--bg); border-radius:7px; border:1px solid var(--line);
+  cursor:zoom-in; }
+.shot figcaption { font:11px var(--mono); color:var(--muted); overflow-wrap:anywhere; }
+.shotx { font:500 11px var(--body); border:1px solid var(--line); background:none; color:var(--ink2); border-radius:6px; cursor:pointer; padding:2px 6px; }
+article.hot, label.hot, .qfree.hot textarea, .reqfree.hot textarea, .nxfree.hot textarea, .ifree.hot textarea {
+  outline:2px dashed var(--ink2); outline-offset:3px; }
+
+/* ---------- to do */
+.todo { border:1px solid var(--line); border-radius:14px; background:var(--panel); overflow:hidden; }
+.req { position:relative; display:grid; grid-template-columns:minmax(0,1fr); gap:10px; padding:16px 18px 16px 46px;
+  scroll-margin-top:24px; scroll-margin-bottom:200px; min-width:0; }
+.req > * { min-width:0; max-width:100%; }
+.req + .req { border-top:1px solid var(--line); }
+.req::before { content:""; position:absolute; left:18px; top:21px; width:15px; height:15px; border-radius:5px;
+  border:1.5px solid var(--req); }
+.req.flash { animation:rflash 1.2s ease-out; }
+@keyframes rflash { 0% { box-shadow:inset 0 0 0 2px var(--req-line); } 100% { box-shadow:inset 0 0 0 0 transparent; } }
+.reqhead { display:flex; gap:8px; align-items:center; }
+.reqlabel { font:600 11px var(--mono); letter-spacing:.06em; text-transform:uppercase; color:var(--req); }
+.reqstate { display:none; }
+.reqask { margin:0; font-size:16px; font-weight:600; line-height:1.5; color:var(--ink); }
+.reqsum { margin:0; color:var(--ink2); font-size:14.5px; }
+.reqinfo { display:grid; gap:10px; min-width:0; }
+
+/* ---------- your notes, answered */
+.reply { position:relative; display:grid; grid-template-columns:minmax(0,1fr); gap:10px; padding:4px 0 4px 16px;
+  border-left:2px solid var(--reply); margin-bottom:22px; scroll-margin-top:24px; min-width:0; }
+.reply > * { min-width:0; max-width:100%; }
+.replyhead { display:none; }
+.replyto { margin:0; color:var(--ink2); font-size:14px; }
+.replyto a, .replyback a { color:var(--reply); }
+.replynote { margin:0; padding:2px 0 2px 12px; border-left:2px solid var(--line2); color:var(--ink2); font-style:italic;
+  white-space:pre-wrap; overflow-wrap:anywhere; }
+.replybody { display:grid; gap:10px; min-width:0; }
+.replyback { margin:0; font-size:13px; }
+
+/* ---------- what I did: info and outside, folded into rows */
+details.row { border:1px solid var(--line); border-radius:11px; background:var(--panel); margin-bottom:8px; min-width:0; }
+details.row > summary, details.strip > summary, details.hround > summary, details.sub > summary { list-style:none; cursor:pointer; }
+details > summary::-webkit-details-marker { display:none; }
+details.row > summary { display:flex; gap:10px; align-items:center; padding:11px 14px; font-size:14.5px; }
+.row-dot { flex:none; width:7px; height:7px; border-radius:50%; background:var(--muted); }
+.row-dot.s-info { background:var(--info); }
+.row-t { min-width:0; }
+.row-body { padding:12px 16px 14px; border-top:1px solid var(--line); font-size:14.5px; min-width:0; overflow-wrap:anywhere; }
+.chev { margin-left:auto; color:var(--muted); transition:transform .15s; font-size:16px; line-height:1; }
+details[open] > summary > .chev { transform:rotate(90deg); }
+article.info { display:grid; grid-template-columns:minmax(0,1fr); gap:10px; min-width:0; scroll-margin-top:24px; }
+article.info > * { min-width:0; max-width:100%; }
+.row-body article.info > .ihead, .row-body article.info > .iask { display:none; }
+.ihead { display:flex; gap:8px; }
+.ilabel { font:600 11px var(--mono); letter-spacing:.06em; text-transform:uppercase; color:var(--info); }
+.iask { margin:0; font-weight:600; }
+.isum { margin:0; color:var(--ink2); }
+.ibody { display:grid; gap:10px; min-width:0; }
+aside.outside { display:grid; grid-template-columns:minmax(0,1fr); gap:10px; min-width:0; }
+.outlabel { margin:0; font:600 11px var(--mono); letter-spacing:.06em; text-transform:uppercase; color:var(--muted); }
+.outwhy { margin:0; font-weight:600; }
+.outbody { display:grid; gap:10px; min-width:0; }
+details.sub { margin:8px 0; }
+details.sub > summary { font-size:13px; color:var(--ink2); }
+details.sub > summary::before { content:"\203A  "; display:inline-block; transition:transform .15s; }
+details.sub[open] > summary::before { transform:rotate(90deg); }
+
+/* ---------- next */
+.nextline { margin-top:44px; padding-top:18px; border-top:1px solid var(--line); }
+.next { position:relative; display:grid; grid-template-columns:minmax(0,1fr); gap:8px; padding-left:30px; min-width:0;
+  scroll-margin-top:24px; scroll-margin-bottom:200px; }
+.next + .next { margin-top:18px; }
+.next > * { min-width:0; max-width:100%; }
+.next::before { content:"\2192"; position:absolute; left:2px; top:16px; color:var(--next); font-size:18px; }
+.nexthead { display:flex; gap:8px; }
+.nxlabel { font:600 11px var(--mono); letter-spacing:.06em; text-transform:uppercase; color:var(--next); }
+.nxask { margin:0; color:var(--ink); }
+.nxsum { margin:0; color:var(--muted); }
+.nxinfo { display:grid; gap:10px; min-width:0; }
+
+/* ---------- how we got here */
+details.strip { margin:4px 0; border:1px solid var(--line); border-radius:12px; background:var(--panel2); min-width:0; }
+details.strip > summary { display:flex; gap:10px; align-items:center; padding:10px 14px; font-size:13.5px; color:var(--ink2); }
+.strip-icon { color:var(--ask); font-size:15px; }
+.steps { list-style:none; margin:0; padding:2px 16px 12px 14px; }
+.step { display:grid; grid-template-columns:16px minmax(0,1fr); gap:12px; padding:14px 0 6px; border-top:1px solid var(--line); margin:0; }
+.step .dot { width:9px; height:9px; margin-top:6px; border-radius:50%; background:var(--line2); }
+.step:last-child .dot { background:var(--ask); }
+.step-main { min-width:0; }
+.step-meta { font-size:12px; color:var(--muted); margin:0 0 2px; }
+.step-meta a { color:var(--ink2); }
+.step-ask { font-weight:500; margin:0 0 8px; }
+.step-more { font-size:12px; color:var(--muted); }
+.grid.thumbs { grid-template-columns:repeat(3,minmax(0,1fr)); gap:8px; margin:6px 0 8px; }
+.thumbs figure > figcaption { font-size:11.5px; }
+.thumbs .vtools .vspeed { display:none; }
+.thumbs .vtools { justify-content:flex-end; }
+.you { margin:6px 0 4px; padding:4px 0 4px 12px; border-left:2px solid var(--done); font-size:14px; color:var(--ink2); }
+.you p { margin:0 0 4px; white-space:pre-wrap; overflow-wrap:anywhere; }
+.you.none { border-left-color:var(--line2); color:var(--muted); }
+.you-k { font-size:11px; font-weight:600; color:var(--done); margin-right:7px; text-transform:uppercase; letter-spacing:.04em; }
+.you-words.clamp { display:-webkit-box; -webkit-line-clamp:4; -webkit-box-orient:vertical; overflow:hidden; }
+.you-more { font-size:12px; color:var(--ink2); background:none; border:0; padding:0; cursor:pointer; text-decoration:underline;
+  text-underline-offset:3px; text-decoration-color:var(--line2); }
+
+/* ---------- history */
+#history { margin-top:96px; }
+#history > h2 { font-size:22px; letter-spacing:-.015em; font-weight:600; margin:0 0 6px; }
+#history > .muted { font-size:14px; margin-bottom:22px; }
+.day { position:sticky; top:0; z-index:2; margin:0; padding:12px 0 8px; font-size:12px; font-weight:600; color:var(--muted);
+  letter-spacing:.03em; background:var(--bg); border-bottom:1px solid var(--line); }
+details.hround { border-bottom:1px solid var(--line); scroll-margin-top:44px; }
+details.hround > summary { display:grid; grid-template-columns:84px minmax(0,1fr) 16px; gap:14px; align-items:baseline; padding:13px 0; }
+details.hround > summary:hover .htitle { color:var(--ink); }
+.hnum { font:500 12px var(--mono); color:var(--muted); }
+.hmain { display:grid; min-width:0; }
+.htitle { font-weight:500; color:var(--ink2); }
+.hdigest { font-size:13px; color:var(--muted); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.hbody { padding:4px 0 26px 98px; min-width:0; display:grid; gap:14px; }
+.hq { min-width:0; }
+.hk { font-size:11px; font-weight:600; letter-spacing:.05em; text-transform:uppercase; color:var(--muted); margin:0 0 4px; }
+.hk.s-ask { color:var(--ask); } .hk.s-req { color:var(--req); } .hk.s-ans { color:var(--reply); }
+.hask { margin:0 0 6px; }
+.hask p { margin:0 0 6px; }
+.hnext { display:flex; gap:10px; color:var(--ink2); font-size:14px; }
+.hnext .arrow { color:var(--next); }
+.hextra { min-width:0; overflow-wrap:anywhere; }
+.grid.stills { margin:8px 0; }
+.quote { margin:8px 0; padding:2px 0 2px 14px; border-left:2px solid var(--line2); color:var(--ink2); white-space:pre-wrap; }
+.answer { border-left:2px solid var(--reply); padding-left:14px; }
+
+/* ---------- video tools (viewer.js adds them under every video) */
+.vtools { display:flex; flex-wrap:wrap; align-items:center; gap:6px; margin-top:2px; }
+.vtools .vspeed { display:flex; gap:4px; align-items:center; }
+.vtools .vspeedlbl { font-size:11.5px; color:var(--muted); margin-right:2px; }
+.vtools button { font:500 11.5px var(--mono); color:var(--ink2); background:var(--panel2); border:1px solid var(--line);
+  border-radius:6px; padding:2px 7px; cursor:pointer; }
+.vtools .vspeed .vrate[aria-pressed="true"] { color:var(--bg); background:var(--ink2); border-color:var(--ink2); }
+.vtools .vbig { margin-left:auto; font-family:var(--body); }
+
+/* ---------- the bar at the bottom */
+#decidebar { position:fixed; left:0; right:0; bottom:0; z-index:40; display:grid; gap:6px;
+  padding:10px max(24px, calc((100vw - var(--col)) / 2 + 24px)) calc(10px + env(safe-area-inset-bottom, 0px));
+  border-top:1px solid var(--line); background:color-mix(in srgb, var(--bg) 86%, transparent); backdrop-filter:blur(12px); }
+#decidebar .row { display:flex; flex-wrap:wrap; gap:8px 10px; align-items:center; }
+#decidebar .dprogress { font-size:13px; color:var(--ink2); margin-right:auto; }
+#decidebar .dprogress b { color:var(--ink); font-weight:600; }
+#decidebar .dprogress b.rprog { color:var(--req); }
+#decidebar button { font:500 13px var(--body); padding:7px 12px; border-radius:8px; cursor:pointer; background:none;
+  color:var(--ink2); border:1px solid var(--line); }
+#decidebar button:hover { color:var(--ink); border-color:var(--line2); }
+#decide-back { color:var(--ask) !important; border-color:var(--ask-line) !important; }
+#decide-submit { background:var(--ink) !important; color:var(--bg) !important; border-color:var(--ink) !important;
+  font-weight:600 !important; padding:8px 18px !important; }
+#decide-submit:disabled { opacity:.45; cursor:default; }
+#decide-submit.sent { background:var(--done) !important; border-color:var(--done) !important; color:var(--done-ink) !important; opacity:1; }
+#decide-submit.hopflash { animation:subflash 1.2s ease-out; }
+@keyframes subflash { 0% { box-shadow:0 0 0 6px var(--accent); } 100% { box-shadow:0 0 0 0 transparent; } }
+#decidebar label { display:grid; gap:4px; font-size:12px; color:var(--muted); }
+#decide-status { margin:0; font-size:13px; color:var(--muted); }
+#decide-status:empty { display:none; }
+#decide-status.ok { color:var(--done); }
+#decide-status.warn { color:var(--accent); }
+#decidebar .dsync { margin:-2px 0 0; font:11px var(--mono); color:var(--muted); }
+#decidebar .dsync:empty { display:none; }
+#decidebar .dsync.warn { color:var(--accent); }
+#decidebar .dcopy { display:grid; gap:6px; }
+#decidebar .dcopy pre { max-height:30vh; overflow:auto; margin:0; }
+@media (max-width:640px) {
+  #decidebar .dprogress { flex-basis:100%; }
+  #decidebar button { flex:1 1 auto; }
+}
+
+/* ---------- old pages with no rounds, and the old lists if a page still shows them */
+.entry { display:grid; grid-template-columns:minmax(0,1fr); gap:var(--space-md); padding:var(--space-lg); border:1px solid var(--line);
+  border-radius:14px; background:var(--panel); min-width:0; }
+.entry > * { min-width:0; max-width:100%; }
+.entry > header { display:flex; flex-wrap:wrap; align-items:baseline; justify-content:space-between; gap:4px 12px; }
+.entry > header .when { font:500 12px var(--mono); color:var(--muted); }
+#qindex, #rindex, #nindex, #yindex, #iindex, #oindex { display:grid; gap:10px; border:1px solid var(--line); border-radius:12px;
+  padding:14px 16px; background:var(--panel); }
+#qindex .links, #rindex .links, #nindex .links, #yindex .links, #iindex .links, #oindex .links { display:flex; flex-wrap:wrap; gap:6px; }
+a.qlink, a.rlink, a.nlink, a.ylink, a.ilink, a.olink { display:inline-flex; gap:8px; align-items:center; text-decoration:none;
+  border:1px solid var(--line); border-radius:999px; padding:3px 11px; font-size:12.5px; color:var(--ink2); }
+a.qlink .qans, a.rlink .rsub, a.nlink .nsub, a.ylink .ysub, a.ilink .isub, a.olink .osub { display:none; }
+.mark { font:600 10.5px var(--mono); text-transform:uppercase; color:var(--muted); }
+
+/* ---------- a picture or video whose file is not on this PC (reply.js) */
+img.gone, video.gone, audio.gone, .gone ~ .vtools { display:none !important; }
+.gone-note { margin:0; padding:18px 14px; border:1px dashed var(--line2); border-radius:8px; background:var(--panel2);
+  color:var(--ink2); font-size:13px; overflow-wrap:anywhere; }
+
+@media (max-width:640px) {
+  .qanchors, .cmpgrid, .grid, .opts:has(.qpic), .grid.thumbs { grid-template-columns:minmax(0,1fr); }
+  details.hround > summary { grid-template-columns:minmax(0,1fr) 16px; }
+  .hnum { display:none; }
+  .hbody { padding-left:0; }
+  .turn > h1 { font-size:28px; }
+  .req { padding-left:40px; }
+}
+@media (prefers-reduced-motion:reduce) {
+  .q.flash, .req.flash, #decide-submit.hopflash, html.dsent .pill::before { animation:none; }
+}
+</style></head><body>
+<main class="wrap rpage"><header class="crumbs"><span class="crumb-t">Aquila repository setup</span><span class="crumb-r"><a href="#history">History</a><button type="button" id="theme" class="ghost">Light</button></span></header><article class="turn" id="turn"><p class="status"><span class="pill calm"><span class="p-open">Nothing waits on you</span><span class="p-sent">Sent, waiting for the next reply</span></span><span class="sep">·</span><span>Nov 15, 2026</span><span class="sep">·</span><span>Round 3</span></p><h1>Wrap and publication</h1><div class="recap"><section class="bro"><p class="rlabel">Bro</p><p class="brotext">Wrap saved. Commit and push now authorized. This session's setup files are being published; site changes come next for discussion.</p></section><section class="quick5"><p class="rlabel">Quick 5</p><p><strong>1 - Saved</strong> - Final checkpoint, restart prompt and reusable lessons saved.</p><p><strong>2 - Scope</strong> - Only this session's setup changes belong in the commit.</p><p><strong>3 - Assets</strong> - Existing private backup and verified restore remain in place.</p><p><strong>4 - Capture</strong> - Aquila remains connected. The shared capture check is no longer stale.</p><p><strong>5 - Next</strong> - Discuss desired site changes after publication finishes.</p></section><section class="plain"><p class="rlabel">Plain English</p><dl><dt>What I did</dt><dd>Saved the wrap and reviewed owned publication files.</dd><dt>Why it matters</dt><dd>The owner requested a wrap, commit and push before discussing site work.</dd><dt>What's working</dt><dd>Setup, backups and project records are ready; shared staging remains preserved.</dd><dt>What's not</dt><dd>Publication remains pending in this checkpoint.</dd><dt>What's next</dt><dd>Commit, push, verify the remote, then discuss site changes.</dd></dl></section></div><p class="lead">Wrap saved; commit and push authorized.</p><p class="jumps"><a href="#part-did">what I did</a><a href="#history">history: 2 earlier rounds</a></p><section class="part" id="part-did"><h2><span class="sdot s-info"></span>What I did</h2><details class="row"><summary><span class="row-dot s-info"></span><span class="row-t">Wrap and scope</span><span class="chev">›</span></summary><div class="row-body"><article class="info" id="i-aquila-setup-r3-info" data-i="aquila-setup-r3-info" data-short="Wrap and scope"><div class="ihead"><span class="ilabel">Info</span></div><p class="iask">Wrap saved; commit and push authorized.</p><div class="ibody"><p>New lessons cover restore verification and Git index metadata. No game source or dependencies changed.</p><p>Fresh client sessions, gameplay and report rendering remain untested. No site deployment is authorized.</p></div></article></div></details></section><div class="nextline"><article class="next" id="n-aquila-setup-r3-next" data-n="aquila-setup-r3-next" data-short="Publication first"><div class="nexthead"><span class="nxlabel">What's next</span></div><p class="nxask">Publication checks run first. Site discussion follows; no site edits have started.</p></article></div></article><section id="history"><h2>History</h2><p class="muted">2 earlier rounds, newest first. Nothing here waits on you: anything still open is asked again in the reply on top.</p><p class="day">Nov 15, 2026</p><details class="hround" id="h2"><summary><span class="hnum">Round 2</span><span class="hmain"><span class="htitle">Saved, not published</span><span class="hdigest">Set up and saved, yes. Setup changes remain uncommitted and unpushed.</span></span><span class="chev">›</span></summary><div class="hbody"><div class="recap"><section class="bro"><p class="rlabel">Bro</p><p class="brotext">Setup and notes are saved. Assets are backed up. Setup changes have not been committed or pushed. Fresh sessions and gameplay remain untested.</p></section><section class="quick5"><p class="rlabel">Quick 5</p><p><strong>1 - Setup</strong> - Repository infrastructure installed locally.</p><p><strong>2 - Saved</strong> - Knowledge, evidence and the handoff are saved.</p><p><strong>3 - Backup</strong> - All 1,557 assets passed backup and restore checks.</p><p><strong>4 - Git</strong> - Setup changes remain uncommitted and unpushed.</p><p><strong>5 - Limits</strong> - Fresh sessions and gameplay remain untested; shared capture was overdue at the last check.</p></section><section class="plain"><p class="rlabel">Plain English</p><dl><dt>What I did</dt><dd>Checked current Git status and the latest commit.</dd><dt>Why it matters</dt><dd>Confirm whether the setup was committed and pushed.</dd><dt>What's working</dt><dd>Setup, saved project notes and verified asset backup are in place.</dd><dt>What's not</dt><dd>Setup changes are not committed or pushed.</dd><dt>What's next</dt><dd>Publication waits for a commit-and-push request.</dd></dl></section></div><details class="row"><summary><span class="row-dot s-info"></span><span class="row-t">Set up and saved, yes. Setup changes remain uncommitted and unpushed.</span><span class="chev">›</span></summary><div class="row-body"><table><thead><tr><th>Area</th><th>Result</th></tr></thead><tbody><tr><td>Current commit</td><td><code>37218b8</code>; unchanged from the task's starting commit.</td></tr><tr><td>Working files</td><td>Setup files remain modified or untracked. Shared staging remains empty.</td></tr><tr><td>Commit rule</td><td>Commit only on the user's request in this session. The latest message was treated as a status check.</td></tr></tbody></table></div></details><div class="hnext"><span class="arrow">→</span><div>Commit and push remain pending. No publication ran during this status check.</div></div></div></details><details class="hround" id="h1"><summary><span class="hnum">Round 1</span><span class="hmain"><span class="htitle">Repository setup</span><span class="hdigest">Approved repository setup saved locally; verification limits remain explicit.</span></span><span class="chev">›</span></summary><div class="hbody"><div class="recap"><section class="bro"><p class="rlabel">Bro</p><p class="brotext">Repo setup saved. Session skills, shared knowledge, three Claude accounts and service links are ready. All 1,557 assets passed backup and restore checks. No commit or push. Fresh agent sessions and gameplay remain untested.</p></section><section class="quick5"><p class="rlabel">Quick 5</p><p><strong>1 - Sessions</strong> - Shared project knowledge and both session skills installed for Claude and Codex.</p><p><strong>2 - Ownership</strong> - Commit rules protect other sessions; the local Git guard blocks new media and secrets.</p><p><strong>3 - Memory</strong> - Three Claude accounts point to one memory folder; Codex uses project records.</p><p><strong>4 - Storage</strong> - 1,557 assets backed up and restored; every size and hash matches.</p><p><strong>5 - Connections</strong> - All four tools linked. Build and six safety checks pass; browser verification unavailable.</p></section><section class="plain"><p class="rlabel">Plain English</p><dl><dt>What I did</dt><dd>Set up shared knowledge, session skills, private storage, memory and service links.</dd><dt>Why it matters</dt><dd>Future sessions need one reliable place for project knowledge, assets and handoffs.</dd><dt>What's working</dt><dd>Local setup checks, service bindings and the application build pass.</dd><dt>What's not</dt><dd>No connected report browser. Fresh client sessions and gameplay remain untested.</dd><dt>What's next</dt><dd>Setup remains uncommitted. Further publication or game work needs its own request.</dd></dl></section></div><details class="row"><summary><span class="row-dot s-info"></span><span class="row-t">Approved repository setup saved locally; verification limits remain explicit.</span><span class="chev">›</span></summary><div class="row-body"><table><thead><tr><th>Area</th><th>Result</th></tr></thead><tbody><tr><td>Session history</td><td>Project knowledge, task routes, decisions, lessons, checkpoints and restart guidance saved.</td></tr><tr><td>Session skills</td><td>New-session and session-wrap entry points validated for Claude and Codex.</td></tr><tr><td>Git ownership</td><td>Explicit owned paths and hunks only. Shared staging preserved. Local pre-commit guard enabled.</td></tr><tr><td>Legacy media</td><td>Three exact-hash exceptions preserve existing media. Authored SVG templates remain allowed.</td></tr><tr><td>Claude memory</td><td>All three accounts resolve to the same memory file. Existing account settings preserved.</td></tr><tr><td>Codex</td><td>Project instructions, skill discovery and trusted repository settings configured.</td></tr><tr><td>Asset backup</td><td>1,557 assets backed up and restored; every size and hash matches. Total: 3,358,920,163 bytes.</td></tr><tr><td>Storage privacy</td><td>Dedicated private bucket created. Legacy Aquila public reads blocked; other project policies preserved.</td></tr><tr><td>Website</td><td>Existing website still responds. No deployment or hosting changes.</td></tr><tr><td>Asset Ledger</td><td>Repository connected. Shared capture check overdue; local check queued. No generation ran.</td></tr><tr><td>Research Console</td><td>Aquila binding and project lookup pass. No research submitted.</td></tr><tr><td>Knowledge Hub</td><td>Three providers registered. Codex search and exact passage retrieval pass, including hash verification.</td></tr><tr><td>Agent Report</td><td>Shared kit, launcher and hooks linked. Page checks and local HTTP pass.</td></tr><tr><td>Application</td><td>Production Angular and Electron compilation passes. Existing dependency versions preserved.</td></tr><tr><td>Limits</td><td>Fresh model loading, report rendering, gameplay and real generation capture remain untested.</td></tr><tr><td>Preservation</td><td>Original setup notes archived. Game source and shared Git index preserved. No commit or push.</td></tr></tbody></table><p>Restore checks found a Windows path issue. Directory preparation was fixed; concurrent restore regression checks now pass.</p><p><a href="verification.json">Verification</a> · <a href="storage-receipt.json">Backup and restore receipt</a> · <a href="security-verification.json">Privacy checks</a></p><p><a href="startup-guide.md">Session guide</a> · <a href="storage-guide.md">Storage guide</a> · <a href="recovery-guide.md">Recovery guide</a> · <a href="handoff.md">Current handoff</a></p></div></details><div class="hnext"><span class="arrow">→</span><div>No further work started. Fresh sessions can load the saved handoff; publication requires its own request.</div></div></div></details></section></main>
+<div id="decidebar" data-turn="round3" data-voice="2" data-media="1" data-recap="2" data-slug="repo-setup" role="region" aria-label="Your answers"><p id="decide-status" aria-live="polite"></p><label hidden>Note for everything, if a button doesn't cover it<textarea id="decide-note" rows="6"></textarea></label><div class="row"><span class="dprogress"></span><button type="button" id="decide-next">Next open question</button><button type="button" id="decide-notebtn" aria-expanded="false">Add a note</button><button type="button" id="decide-top">Back to top</button><button type="button" id="decide-submit">Submit</button></div></div>
+<div class="lb" id="lb" hidden role="dialog" aria-modal="true" aria-label="Enlarged image">
+  <button type="button" class="lbbtn lbclose" id="lbclose" aria-label="Close">&times;</button>
+  <button type="button" class="lbbtn lbprev" id="lbprev" aria-label="Previous image">&#8249;</button>
+  <div class="lbstage" id="lbstage"><img id="lbimg" alt=""></div>
+  <button type="button" class="lbbtn lbnext" id="lbnext" aria-label="Next image">&#8250;</button>
+  <p class="lbcap" id="lbcap"></p>
+</div>
+<div class="vlb" id="vlb" hidden role="dialog" aria-modal="true" aria-label="Video, large">
+  <div class="vlbbar"><button type="button" id="vlbplay">Play from the start</button><button type="button" id="vlbpause">Pause</button>
+    <span id="vlbcap"></span><button type="button" id="vlbclose">Close</button></div>
+  <div class="vlbpanes" id="vlbpanes"></div>
+</div>
+
+<script>/* Questions on a review page (kit v2, 2026-10-06). Works with the markup decide.py writes and with the older
+   hand-written markup (article.q / div.q with id "q-<id>", button.pick with data-q, data-mode, data-v, data-label;
+   #qindex; #decidebar with #decide-note, #decide-status, #decide-submit).
+
+   What it does: numbers the open questions; adds a write-your-own box with OK to each; keeps every click, typed
+   answer and the note in this browser (they survive a reload) until Submit; turns a question, its button and its
+   link in the list at the top green when it has an answer, and shows the answer in that link; runs the bottom bar
+   (how many are answered, a button to the next open question, the note, Submit).
+
+   Submit sends every answer at once, by the first route that works:
+     1. the published page's own store (Artifact capability db, collection "decisions"; Claude reads it back),
+     2. the local server (Tools/review_page.py: POST /api/decide -> Docs/ReviewPages/<slug>/inbox/),
+     3. otherwise the answers appear as text with a Copy button, to paste in the chat.
+   It remembers that it was sent, and says so if anything changes afterwards.
+
+   Requests (Duskforge's kit v3, 2026-10-07): article.req with id "r-<id>" (decide.request) and #rindex
+   (decide.request_index). Each open request gets a number, a "To do" state, an open reply box (its label is
+   data-reply when given, else "Your reply, or a question back."; always open, by the developer's ruling of
+   2026-10-07) and a link in #rindex. A request stays a request thread. Submit sends replies beside the answers as
+   "requests": [{r, reply}] (no key when there are none), including text typed without OK. A page without requests
+   behaves as kit v2. */
+(() => {
+  if (history.scrollRestoration) history.scrollRestoration = 'manual';
+  if (location.hash) history.replaceState(null, '', location.pathname + location.search);
+  let stayed = false;
+  const pinTop = () => {
+    if (stayed) return;
+    const root = document.documentElement;
+    const previous = root.style.scrollBehavior;
+    root.style.scrollBehavior = 'auto';
+    window.scrollTo(0, 0);
+    root.style.scrollBehavior = previous;
+  };
+  pinTop();
+  requestAnimationFrame(pinTop);
+  window.addEventListener('load', pinTop, { once: true });
+  ['wheel', 'touchstart', 'keydown', 'pointerdown'].forEach((t) => {
+    window.addEventListener(t, () => { stayed = true; }, { once: true, passive: true });
+  });
+  const bar = document.getElementById('decidebar');
+  if (!bar) return;
+  const slug = bar.dataset.slug || 'page';
+  const KEY = 'decide:' + slug;
+  // the round on top (reply layout, 2026-10-16). A Submit made on an older reply does not make this one "Sent".
+  const TURN = bar.dataset.turn || '';
+  // A Submit from before rounds were marked counts only while the answers are still exactly what it sent.
+  const ofThisTurn = (s) => {
+    if (!s) return null;
+    if (s.turn && TURN) return s.turn === TURN ? s : null;
+    return s.sig === signature() ? s : null;
+  };
+  const $$ = (sel, root) => Array.from((root || document).querySelectorAll(sel));
+  const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+
+  // ---------- questions on the page
+  const allBlocks = $$('.q[id^="q-"], .qblock[id^="q-"]');
+  const blocks = allBlocks;
+  const qidOf = (b) => b.id.slice(2);
+  const order = blocks.map(qidOf);
+  const blockOf = {};
+  blocks.forEach((b) => { blockOf[qidOf(b)] = b; });
+  const picks = (q) => $$('button.pick').filter((b) => q === undefined || b.dataset.q === q);
+
+  // ---------- requests on the page (kit v3). Maps have no prototype, so an odd id or #hash can never hit one.
+  const map = () => Object.create(null);
+  const rAll = $$('.req[id^="r-"]');
+  const rBlocks = rAll;
+  const ridOf = (b) => b.id.slice(2);
+  const rorder = rBlocks.map(ridOf);
+  const rblockOf = map();
+  rBlocks.forEach((b) => { rblockOf[ridOf(b)] = b; });
+  const rAnyOf = map();
+  rAll.forEach((b) => { rAnyOf[ridOf(b)] = b; });
+  // a saved reply belongs to one wording of a request: when the words change, the old reply is not brought back
+  const hashOf = (s) => {
+    let h = 2166136261;
+    for (let i = 0; i < s.length; i += 1) { h ^= s.charCodeAt(i); h = Math.imul(h, 16777619); }
+    return (h >>> 0).toString(36);
+  };
+  const askSig = map();
+  rBlocks.forEach((b) => { askSig[ridOf(b)] = hashOf(((b.querySelector('.reqask') || {}).textContent || '').trim()); });
+  const yBlocks = $$('.reply[id^="y-"]');
+  const yorder = yBlocks.map((b) => b.id.slice(2));
+  const yblockOf = map();
+  yBlocks.forEach((b) => { yblockOf[b.id.slice(2)] = b; });
+  const nAll = $$('.next[id^="n-"]');
+  const nBlocks = nAll;
+  const nidOf = (b) => b.id.slice(2);
+  const norder = nBlocks.map(nidOf);
+  const nblockOf = map();
+  nBlocks.forEach((b) => { nblockOf[nidOf(b)] = b; });
+  const nAskSig = map();
+  nBlocks.forEach((b) => { nAskSig[nidOf(b)] = hashOf(((b.querySelector('.nxask') || {}).textContent || '').trim()); });
+  const iAll = $$('article.info[id^="i-"]');
+  const iBlocks = iAll;
+  const iidOf = (b) => b.id.slice(2);
+  const iorder = iBlocks.map(iidOf);
+  const iblockOf = map();
+  iBlocks.forEach((b) => { iblockOf[iidOf(b)] = b; });
+  const iAskSig = map();
+  iBlocks.forEach((b) => { iAskSig[iidOf(b)] = hashOf(((b.querySelector('.iask') || {}).textContent || '').trim()); });
+
+  // ---------- saved state (this browser only; a blocked storage just means nothing is remembered)
+  let saved = {};
+  try { saved = JSON.parse(localStorage.getItem(KEY) || '{}') || {}; } catch (e) { saved = {}; }
+  const on = new Set(saved.on || []);
+  const valuesOf = (q) => Array.from(on).filter((k) => k.split('\t')[0] === q).map((k) => k.slice(q.length + 1));
+  const replies = Object.assign({}, saved.replies || {});
+  const drafts = Object.assign({}, saved.drafts || {});
+  let submitted = saved.submitted || null;
+  let synced = saved.synced || null;
+  let sending = false;
+  const pictures = map();
+  if (saved.pictures && typeof saved.pictures === 'object') {
+    Object.keys(saved.pictures).forEach((k) => {
+      const items = saved.pictures[k];
+      if (!Array.isArray(items)) return;
+      const ok = items.filter((im) => im && typeof im.id === 'string' && typeof im.type === 'string' && typeof im.data === 'string');
+      if (ok.length) pictures[k] = ok.slice(0, 8);
+    });
+  }
+  const picsOf = (key) => pictures[key] || [];
+  const pubPics = (key, withData) => picsOf(key).map((im) => {
+    const o = { id: im.id, name: im.name || 'picture', type: im.type };
+    if (withData) o.data = im.data;
+    return o;
+  });
+  function newPicId() {
+    return Math.random().toString(36).slice(2, 10) + Math.random().toString(36).slice(2, 6);
+  }
+  function renderPics(key) {
+    const host = document.querySelector('[data-pics="' + key + '"]');
+    if (!host) return;
+    host.textContent = '';
+    picsOf(key).forEach((im) => {
+      const fig = document.createElement('figure');
+      fig.className = 'shot';
+      const img = document.createElement('img');
+      img.src = 'data:' + im.type + ';base64,' + im.data;
+      img.alt = im.name || 'picture';
+      const cap = document.createElement('figcaption');
+      cap.textContent = im.name || 'picture';
+      const rm = document.createElement('button');
+      rm.type = 'button';
+      rm.className = 'shotx';
+      rm.textContent = 'Remove';
+      rm.addEventListener('click', () => {
+        pictures[key] = picsOf(key).filter((x) => x.id !== im.id);
+        if (!pictures[key].length) delete pictures[key];
+        renderPics(key);
+        changed();
+        send([{ op: 'images', key: key, items: pubPics(key, true) }]);
+      });
+      fig.append(img, cap, rm);
+      host.append(fig);
+    });
+  }
+  function knownImageType(file) {
+    const t = String(file.type || '').toLowerCase();
+    if (t === 'image/jpg' || t === 'image/pjpeg') return 'image/jpeg';
+    return /^image\/(png|jpeg|webp|gif)$/.test(t) ? t : '';
+  }
+  function readAsImage(file) {
+    return new Promise((resolve) => {
+      const reader = new FileReader();
+      reader.onload = () => {
+        const m = String(reader.result || '').match(/^data:(image\/(?:png|jpeg|webp|gif));base64,(.+)$/);
+        resolve(m ? { name: file.name, type: m[1], data: m[2] } : null);
+      };
+      reader.onerror = () => resolve(null);
+      reader.readAsDataURL(file);
+    });
+  }
+  function pngFromBitmap(file) {
+    const url = URL.createObjectURL(file);
+    return new Promise((resolve) => {
+      const img = new Image();
+      img.onload = () => {
+        const canvas = document.createElement('canvas');
+        canvas.width = img.naturalWidth || img.width;
+        canvas.height = img.naturalHeight || img.height;
+        if (!canvas.width || !canvas.height) { URL.revokeObjectURL(url); resolve(null); return; }
+        canvas.getContext('2d').drawImage(img, 0, 0);
+        canvas.toBlob((blob) => {
+          URL.revokeObjectURL(url);
+          if (!blob) { resolve(null); return; }
+          const named = String(file.name || 'picture').replace(/\.[^.]+$/, '') || 'picture';
+          readAsImage(new File([blob], named + '.png', { type: 'image/png' })).then(resolve);
+        }, 'image/png');
+      };
+      img.onerror = () => { URL.revokeObjectURL(url); resolve(null); };
+      img.src = url;
+    });
+  }
+  async function normalizeImage(file) {
+    if (!file || file.size > 12000000) return { error: 'That picture is over 12 MB. Use a smaller one.' };
+    if (knownImageType(file)) {
+      const read = await readAsImage(file);
+      return read || { error: 'That picture could not be read.' };
+    }
+    const drawn = await pngFromBitmap(file);
+    return drawn || null;
+  }
+  async function addPics(key, files) {
+    const incoming = Array.from(files || []).filter(Boolean);
+    if (!incoming.length) return;
+    const ready = [];
+    let warned = '';
+    for (let i = 0; i < incoming.length; i += 1) {
+      const img = await normalizeImage(incoming[i]);
+      if (!img) continue;
+      if (img.error) { warned = img.error; continue; }
+      ready.push(img);
+    }
+    if (!ready.length) {
+      setStatus(warned || 'No picture in that paste. Click the box and paste a screenshot, or drop a picture on the card.', 'warn');
+      return;
+    }
+    const before = picsOf(key).length;
+    const cur = picsOf(key).slice();
+    ready.forEach((img) => {
+      if (cur.length >= 8) warned = 'Eight pictures is the limit on one box.';
+      else cur.push({ id: newPicId(), name: String(img.name || 'picture').slice(0, 180), type: img.type, data: img.data });
+    });
+    const got = cur.length - before;
+    if (cur.length) pictures[key] = cur;
+    renderPics(key);
+    changed();
+    send([{ op: 'images', key: key, items: pubPics(key, true) }]);
+    const noun = got === 1 ? 'Picture added. It stays on this card and goes with Submit.' : got + ' pictures added. They stay on this card and go with Submit.';
+    setStatus(warned || noun, warned ? 'warn' : 'ok');
+  }
+  function clipboardFiles(data) {
+    if (!data) return [];
+    const raw = [];
+    const listed = data.files && data.files.length ? Array.from(data.files) : [];
+    if (listed.length) raw.push.apply(raw, listed);
+    else {
+      const items = data.items || [];
+      for (let i = 0; i < items.length; i += 1) {
+        if (items[i].kind !== 'file') continue;
+        const file = items[i].getAsFile();
+        if (file) raw.push(file);
+      }
+    }
+    const out = [];
+    raw.forEach((file) => {
+      const twin = out.find((have) => have.size === file.size && have.name === file.name);
+      if (!twin) out.push(file);
+      else if (!twin.type && file.type) out[out.indexOf(twin)] = file;
+    });
+    return out;
+  }
+  function bindPageDrop() {
+    if (document.documentElement.dataset.dropbound) return;
+    document.documentElement.dataset.dropbound = '1';
+    let hot = null;
+    const hostOf = (node) => (node && node.closest ? node.closest('[data-dropkey]') : null);
+    const clearHot = () => { if (hot) hot.classList.remove('hot'); hot = null; };
+    document.addEventListener('dragover', (e) => {
+      const types = e.dataTransfer ? Array.from(e.dataTransfer.types || []) : [];
+      if (types.indexOf('Files') < 0) return;
+      e.preventDefault();
+      const host = hostOf(e.target);
+      if (hot !== host) clearHot();
+      hot = host;
+      if (hot) hot.classList.add('hot');
+    });
+    document.addEventListener('drop', (e) => {
+      if (!e.dataTransfer || !Array.from(e.dataTransfer.types || []).includes('Files')) return;
+      e.preventDefault();
+      const host = hostOf(e.target);
+      clearHot();
+      if (!host || !host.dataset.dropkey) {
+        setStatus('Drop the picture on the card it belongs to.', 'warn');
+        return;
+      }
+      addPics(host.dataset.dropkey, e.dataTransfer.files);
+    });
+  }
+  function wireShots(box, ta, key) {
+    if (!box || !ta || box.querySelector('.shots')) return;
+    const row = document.createElement('div');
+    row.className = 'shotbar';
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'shotadd';
+    btn.textContent = 'Add a picture';
+    const input = document.createElement('input');
+    input.type = 'file';
+    input.accept = 'image/png,image/jpeg,image/webp,image/gif';
+    input.multiple = true;
+    input.hidden = true;
+    btn.addEventListener('click', () => input.click());
+    input.addEventListener('change', () => { addPics(key, input.files); input.value = ''; });
+    const host = document.createElement('div');
+    host.className = 'shots';
+    host.dataset.pics = key;
+    row.append(btn, input);
+    const hint = document.createElement('span');
+    hint.className = 'shothint';
+    hint.textContent = 'Click the box and paste a picture, or drop one on this card.';
+    row.append(hint);
+    const held = box.querySelector('.held, .reqheld, .nxheld, .iheld');
+    if (held) held.before(row, host);
+    else box.append(row, host);
+    const dropHost = box.closest('article') || box;
+    dropHost.dataset.dropkey = key;
+    bindPageDrop();
+    ta.addEventListener('paste', (e) => {
+      const files = clipboardFiles(e.clipboardData);
+      if (!files.length) return;
+      e.preventDefault();
+      addPics(key, files);
+    });
+    renderPics(key);
+  }
+  function grow(t) {
+    t.style.height = 'auto';
+    t.style.height = Math.min(t.scrollHeight + 2, Math.max(240, window.innerHeight * 0.6)) + 'px';
+  }
+  const rreplies = map();   // request id -> reply held with OK (or by Submit)
+  const rdrafts = map();    // request id -> text typed since
+  const nreplies = map();
+  const ndrafts = map();
+  const ireplies = map();
+  const idrafts = map();
+  const restore = (from, into, blocks, sigs) => {
+    if (!from || typeof from !== 'object') return;
+    Object.keys(from).forEach((r) => {
+      const x = from[r];
+      if (blocks[r] && x && typeof x.t === 'string' && x.a === sigs[r]) into[r] = x.t;
+    });
+  };
+  restore(saved.requests, rreplies, rblockOf, askSig);
+  restore(saved.rdrafts, rdrafts, rblockOf, askSig);
+  restore(saved.next, nreplies, nblockOf, nAskSig);
+  restore(saved.ndrafts, ndrafts, nblockOf, nAskSig);
+  restore(saved.info, ireplies, iblockOf, iAskSig);
+  restore(saved.idrafts, idrafts, iblockOf, iAskSig);
+  const withSig = (m, sigs) => { const o = {}; Object.keys(m).forEach((r) => { o[r] = { a: sigs[r], t: m[r] }; }); return o; };
+  function store() {
+    const s = { on: Array.from(on), replies: replies, drafts: drafts, note: noteEl ? noteEl.value : '', submitted: submitted, synced: synced };
+    if (rorder.length) { s.requests = withSig(rreplies, askSig); s.rdrafts = withSig(rdrafts, askSig); }
+    if (norder.length) { s.next = withSig(nreplies, nAskSig); s.ndrafts = withSig(ndrafts, nAskSig); }
+    if (iorder.length) { s.info = withSig(ireplies, iAskSig); s.idrafts = withSig(idrafts, iAskSig); }
+    if (Object.keys(pictures).length) s.pictures = pictures;
+    try { localStorage.setItem(KEY, JSON.stringify(s)); }
+    catch (e) {
+      try { delete s.pictures; localStorage.setItem(KEY, JSON.stringify(s)); } catch (e2) {}
+    }
+  }
+
+  // ---------- the bottom bar (older pages have only the note, status and Submit: the rest is added)
+  let noteEl = document.getElementById('decide-note');
+  let status = document.getElementById('decide-status');
+  const submit = document.getElementById('decide-submit');
+  if (!status) { status = document.createElement('p'); status.id = 'decide-status'; bar.prepend(status); }
+  status.setAttribute('role', 'status');
+  status.setAttribute('aria-live', 'polite');
+  let syncEl = bar.querySelector('.dsync');
+  if (!syncEl) { syncEl = document.createElement('p'); syncEl.className = 'dsync'; status.after(syncEl); }
+  let row = submit ? submit.closest('.row') : null;
+  if (!row) { row = document.createElement('div'); row.className = 'row'; bar.appendChild(row); }
+  let progress = bar.querySelector('.dprogress');
+  if (!progress) { progress = document.createElement('span'); progress.className = 'dprogress'; row.prepend(progress); }
+  let next = document.getElementById('decide-next');
+  if (!next) {
+    next = document.createElement('button'); next.type = 'button'; next.id = 'decide-next';
+    next.textContent = 'Next open question'; progress.after(next);
+  }
+  let back = document.getElementById('decide-back');
+  if (!back) {
+    back = document.createElement('button'); back.type = 'button'; back.id = 'decide-back'; back.hidden = true;
+    next.before(back);
+  }
+  let noteBtn = document.getElementById('decide-notebtn');
+  const noteLabel = noteEl ? noteEl.closest('label') : null;
+  if (noteEl && !noteBtn) {
+    noteBtn = document.createElement('button'); noteBtn.type = 'button'; noteBtn.id = 'decide-notebtn';
+    next.after(noteBtn);
+    if (noteLabel && noteLabel.parentElement === row) bar.insertBefore(noteLabel, row);
+  }
+  let topBtn = document.getElementById('decide-top');
+  if (!topBtn) {
+    topBtn = document.createElement('button'); topBtn.type = 'button'; topBtn.id = 'decide-top';
+    topBtn.textContent = 'Back to top';
+    if (submit) submit.before(topBtn); else row.appendChild(topBtn);
+  }
+  topBtn.addEventListener('click', () => {
+    window.scrollTo(0, 0);
+    if (history.replaceState) history.replaceState(null, '', location.pathname);
+  });
+  if (submit && submit.parentElement !== row) row.appendChild(submit);
+  if (noteEl && saved.note) noteEl.value = saved.note;
+  const noteOpen = (open) => {
+    if (!noteLabel || !noteBtn) return;
+    noteLabel.hidden = !open;
+    noteBtn.textContent = open ? 'Hide note' : (noteEl.value.trim() ? 'Note (1)' : 'Add a note');
+    noteBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  };
+  noteOpen(!!(noteEl && noteEl.value.trim()));
+  if (noteEl && noteLabel) {
+    wireShots(noteLabel, noteEl, 'note');
+    grow(noteEl);
+  }
+
+  // ---------- each question: number, state badge, write-your-own box
+  blocks.forEach((b, i) => {
+    const q = qidOf(b);
+    let label = b.querySelector('.qlabel');
+    if (!label) { label = document.createElement('span'); label.className = 'qlabel'; b.prepend(label); }
+    let head = b.querySelector('.qhead');
+    if (!head) { head = document.createElement('div'); head.className = 'qhead'; label.before(head); head.appendChild(label); }
+    label.textContent = 'Question ' + (i + 1) + ' of ' + blocks.length;
+    let badge = head.querySelector('.qstate');
+    if (!badge) { badge = document.createElement('span'); badge.className = 'qstate'; head.appendChild(badge); }
+    if (!b.querySelector('.qfree')) {
+      const box = document.createElement('div');
+      box.className = 'qfree';
+      const tid = 'qreply-' + q;
+      box.innerHTML = '<label for="' + esc(tid) + '">None of these. Write your own answer, or ask something back.</label>'
+        + '<div class="qrow"><textarea id="' + esc(tid) + '" class="qreply" rows="3"></textarea>'
+        + '<button type="button" class="qok">OK</button></div>'
+        + '<p class="held" hidden></p>';
+      b.appendChild(box);
+    }
+    const ta = b.querySelector('.qreply');
+    if (ta) {
+      ta.value = drafts[q] !== undefined ? drafts[q] : (replies[q] || '');
+      grow(ta);
+    }
+    wireShots(b.querySelector('.qfree'), ta, 'q:' + q);
+  });
+  picks().forEach((p) => {
+    if (on.has(p.dataset.q + '\t' + p.dataset.v)) p.classList.add('on');
+    p.setAttribute('aria-pressed', p.classList.contains('on') ? 'true' : 'false');
+  });
+
+  // ---------- each request: number, state, the reply box (always open)
+  rBlocks.forEach((b, i) => {
+    const r = ridOf(b);
+    let head = b.querySelector('.reqhead');
+    if (!head) { head = document.createElement('div'); head.className = 'reqhead'; b.prepend(head); }
+    let label = head.querySelector('.reqlabel');
+    if (!label) { label = document.createElement('span'); label.className = 'reqlabel'; head.prepend(label); }
+    label.textContent = 'Request ' + (i + 1) + ' of ' + rBlocks.length;
+    let badge = head.querySelector('.reqstate');
+    if (!badge) { badge = document.createElement('span'); badge.className = 'reqstate'; head.appendChild(badge); }
+    badge.textContent = 'To do';
+    if (!b.querySelector('.reqfree')) {
+      const prompt = b.dataset.reply || '';
+      const box = document.createElement('div');
+      box.className = 'reqfree';
+      box.id = 'reqfree-' + r;
+      const tid = 'reqreply-' + r;
+      box.innerHTML = '<label for="' + esc(tid) + '"></label>'
+        + '<div class="reqrow"><textarea id="' + esc(tid) + '" class="reqreply" rows="3"></textarea>'
+          + '<button type="button" class="reqok">OK</button></div>'
+          + '<p class="reqheld" aria-live="polite" hidden></p>';
+        box.querySelector('label').textContent = prompt || 'Your reply, or a question back.';
+        b.appendChild(box);
+      }
+      const ta = b.querySelector('.reqreply');
+      if (ta) {
+        ta.value = rdrafts[r] !== undefined ? rdrafts[r] : (rreplies[r] || '');
+        grow(ta);
+      }
+      wireShots(b.querySelector('.reqfree'), ta, 'r:' + r);
+  });
+
+  nBlocks.forEach((b, i) => {
+    const id = nidOf(b);
+    let head = b.querySelector('.nexthead');
+    if (!head) { head = document.createElement('div'); head.className = 'nexthead'; b.prepend(head); }
+    let label = head.querySelector('.nxlabel');
+    if (!label) { label = document.createElement('span'); label.className = 'nxlabel'; head.prepend(label); }
+    label.textContent = "What's next" + (nBlocks.length > 1 ? ' ' + (i + 1) + ' of ' + nBlocks.length : '');
+    if (!b.querySelector('.nxfree')) {
+      const prompt = b.dataset.reply || '';
+      const box = document.createElement('div');
+      box.className = 'nxfree';
+      const tid = 'nxreply-' + id;
+      box.innerHTML = '<label for="' + esc(tid) + '"></label>'
+        + '<div class="nxrow"><textarea id="' + esc(tid) + '" class="nxreply" rows="3"></textarea>'
+        + '<button type="button" class="nxok">OK</button></div>'
+        + '<p class="nxheld" aria-live="polite" hidden></p>';
+      box.querySelector('label').textContent = prompt || 'Your reply, or a change.';
+      b.appendChild(box);
+    }
+    const ta = b.querySelector('.nxreply');
+    if (ta) {
+      ta.value = ndrafts[id] !== undefined ? ndrafts[id] : (nreplies[id] || '');
+      grow(ta);
+    }
+    wireShots(b.querySelector('.nxfree'), ta, 'n:' + id);
+  });
+
+  iBlocks.forEach((b, i) => {
+    const id = iidOf(b);
+    const label = b.querySelector('.ilabel');
+    if (label) label.textContent = 'Info' + (iBlocks.length > 1 ? ' ' + (i + 1) + ' of ' + iBlocks.length : '');
+    if (!b.querySelector('.ifree')) {
+      const prompt = b.dataset.reply || '';
+      const box = document.createElement('div');
+      box.className = 'ifree';
+      const tid = 'ireply-' + id;
+      box.innerHTML = '<label for="' + esc(tid) + '"></label>'
+        + '<div class="irow"><textarea id="' + esc(tid) + '" class="ireply" rows="3"></textarea>'
+        + '<button type="button" class="iok">OK</button></div>'
+        + '<p class="iheld" hidden></p>';
+      box.querySelector('label').textContent = prompt || 'Your reply, or a change.';
+      b.appendChild(box);
+    }
+    const ta = b.querySelector('.ireply');
+    if (ta) {
+      ta.value = idrafts[id] !== undefined ? idrafts[id] : (ireplies[id] || '');
+      grow(ta);
+    }
+    wireShots(b.querySelector('.ifree'), ta, 'i:' + id);
+  });
+
+  // ---------- the list at the top
+  const index = document.getElementById('qindex');
+  const linkOf = {};
+  if (index) {
+    let links = index.querySelector('.links');
+    if (!links) { links = document.createElement('div'); links.className = 'links'; index.appendChild(links); }
+    $$('a.qlink', index).forEach((a) => {
+      const q = a.dataset.q || (a.getAttribute('href') || '').replace(/^#q-/, '');
+      if (!blockOf[q]) { a.hidden = true; return; }
+      linkOf[q] = a;
+    });
+    order.forEach((q) => {
+      let a = linkOf[q];
+      const b = blockOf[q];
+      const fallback = b.dataset.short || ((b.querySelector('.ask') || {}).textContent || q).trim();
+      if (!a) { a = document.createElement('a'); a.className = 'qlink'; a.href = '#q-' + q; a.dataset.q = q; links.appendChild(a); }
+      const old = a.querySelector('.qtitle');
+      let title = old ? old.textContent : a.textContent.replace(/^\s*(Open|Done)\s*/i, '').trim();
+      if (!title) title = fallback;
+      a.innerHTML = '<span class="mark"></span><span class="qtitle"></span><span class="qans"></span>';
+      a.querySelector('.qtitle').textContent = title;
+      links.appendChild(a);   // in page order
+      linkOf[q] = a;
+    });
+    if (!document.getElementById('qindex-tally')) {
+      const t = document.createElement('span'); t.id = 'qindex-tally'; t.className = 'tally';
+      const h = index.querySelector('h2');
+      if (h) {
+        const head = document.createElement('div'); head.className = 'qihead';
+        h.before(head); head.append(h, t);
+      } else index.prepend(t);
+    }
+  }
+
+  // ---------- the requests list, right below the questions list (shown only while a request is open)
+  const rindex = document.getElementById('rindex');
+  const rlinkOf = map();
+  if (rindex) {
+    let rlinks = rindex.querySelector('.links');
+    if (!rlinks) { rlinks = document.createElement('div'); rlinks.className = 'links'; rindex.appendChild(rlinks); }
+    rlinks.textContent = '';
+    rorder.forEach((r) => {
+      const b = rblockOf[r];
+      const a = document.createElement('a');
+      a.className = 'rlink';
+      a.href = '#r-' + r;
+      a.dataset.r = r;
+      a.innerHTML = '<span class="mark">To do</span><span class="rtitle"></span><span class="rsub"></span>';
+      a.querySelector('.rtitle').textContent = b.dataset.short || ((b.querySelector('.reqask') || {}).textContent || r).trim();
+      rlinks.appendChild(a);
+      rlinkOf[r] = a;
+    });
+    rindex.hidden = rorder.length === 0;
+  }
+
+  const nindex = document.getElementById('nindex');
+  const nlinkOf = map();
+  if (nindex) {
+    let nlinks = nindex.querySelector('.links');
+    if (!nlinks) { nlinks = document.createElement('div'); nlinks.className = 'links'; nindex.appendChild(nlinks); }
+    nlinks.textContent = '';
+    norder.forEach((id) => {
+      const b = nblockOf[id];
+      const a = document.createElement('a');
+      a.className = 'nlink';
+      a.href = '#n-' + id;
+      a.dataset.n = id;
+      a.innerHTML = '<span class="mark">Next</span><span class="ntitle"></span><span class="nsub"></span>';
+      a.querySelector('.ntitle').textContent = b.dataset.short || ((b.querySelector('.nxask') || {}).textContent || id).trim();
+      nlinks.appendChild(a);
+      nlinkOf[id] = a;
+    });
+    nindex.hidden = norder.length === 0;
+  }
+
+  const iindex = document.getElementById('iindex');
+  const ilinkOf = map();
+  if (iindex) {
+    let ilinks = iindex.querySelector('.links');
+    if (!ilinks) { ilinks = document.createElement('div'); ilinks.className = 'links'; iindex.appendChild(ilinks); }
+    ilinks.textContent = '';
+    iorder.forEach((id) => {
+      const b = iblockOf[id];
+      const a = document.createElement('a');
+      a.className = 'ilink';
+      a.href = '#i-' + id;
+      a.dataset.i = id;
+      a.innerHTML = '<span class="mark">Info</span><span class="ititle"></span><span class="isub"></span>';
+      a.querySelector('.ititle').textContent = b.dataset.short || ((b.querySelector('.iask') || {}).textContent || id).trim();
+      ilinks.appendChild(a);
+      ilinkOf[id] = a;
+    });
+    iindex.hidden = iorder.length === 0;
+  }
+
+  const oAll = $$('aside.outside[id^="o-"]');
+  const oidOf = (b) => b.id.slice(2);
+  const oorder = oAll.map(oidOf);
+  const oblockOf = map();
+  oAll.forEach((b) => { oblockOf[oidOf(b)] = b; });
+  const oindex = document.getElementById('oindex');
+  if (oindex) {
+    let olinks = oindex.querySelector('.links');
+    if (!olinks) { olinks = document.createElement('div'); olinks.className = 'links'; oindex.appendChild(olinks); }
+    olinks.textContent = '';
+    oorder.forEach((id) => {
+      const b = oblockOf[id];
+      const a = document.createElement('a');
+      a.className = 'olink';
+      a.href = '#o-' + id;
+      a.dataset.o = id;
+      a.innerHTML = '<span class="mark">Outside</span><span class="otitle"></span><span class="osub"></span>';
+      a.querySelector('.otitle').textContent = b.dataset.short || id;
+      a.querySelector('.osub').textContent = ((b.querySelector('.outwhy') || {}).textContent || '').trim();
+      olinks.appendChild(a);
+    });
+    const otally = document.getElementById('oindex-tally');
+    if (otally) otally.textContent = oorder.length === 1 ? '1 outside' : oorder.length + ' outside';
+    oindex.hidden = oorder.length === 0;
+  }
+
+  // ---------- answers
+  function answerOf(q) {
+    const vals = picks(q).filter((p) => p.classList.contains('on'))
+      .map((p) => ({ v: p.dataset.v, label: p.dataset.label || p.textContent.trim() }));
+    const seen = new Set();
+    const uniq = vals.filter((v) => (seen.has(v.v) ? false : seen.add(v.v)));
+    const reply = (replies[q] || '').trim();
+    return { values: uniq, reply: reply };
+  }
+  const isDone = (q) => {
+    const a = answerOf(q);
+    return a.values.length > 0 || !!a.reply || picsOf('q:' + q).length > 0;
+  };
+  function summary(q) {
+    const a = answerOf(q);
+    const parts = a.values.map((v) => v.label);
+    if (a.reply) parts.push('"' + a.reply + '"');
+    const n = picsOf('q:' + q).length;
+    if (n) parts.push(n === 1 ? '1 picture' : n + ' pictures');
+    return parts.join(', ');
+  }
+  const replyOf = (r) => ((rdrafts[r] !== undefined ? rdrafts[r] : rreplies[r]) || '').trim();
+  function bodyOf(withData) {
+    const answers = [];
+    order.forEach((q) => {
+      const a = answerOf(q);
+      const images = pubPics('q:' + q, withData);
+      if (!a.values.length && !a.reply && !images.length) return;
+      const sample = picks(q)[0];
+      const item = { q: q, mode: (sample && sample.dataset.mode) || 'single', values: a.values };
+      if (a.reply) item.reply = a.reply;
+      if (images.length) item.images = images;
+      answers.push(item);
+    });
+    const extra = new Set(picks().filter((p) => p.classList.contains('on') && !blockOf[p.dataset.q] && !p.disabled)
+      .map((p) => p.dataset.q));
+    extra.forEach((q) => {
+      const a = answerOf(q);
+      const sample = picks(q)[0];
+      answers.push({ q: q, mode: (sample && sample.dataset.mode) || 'single', values: a.values });
+    });
+    const body = { slug: slug, answers: answers, note: noteEl ? noteEl.value.trim() : '' };
+    const noteImages = pubPics('note', withData);
+    if (noteImages.length) body.note_images = noteImages;
+    const rs = [];
+    rorder.forEach((r) => {
+      const reply = replyOf(r);
+      const images = pubPics('r:' + r, withData);
+      if (!reply && !images.length) return;
+      const item = { r: r, ask: askSig[r] };
+      if (reply) item.reply = reply;
+      if (images.length) item.images = images;
+      rs.push(item);
+    });
+    if (rs.length) body.requests = rs;
+    const ns = [];
+    norder.forEach((id) => {
+      const reply = ((ndrafts[id] !== undefined ? ndrafts[id] : nreplies[id]) || '').trim();
+      const images = pubPics('n:' + id, withData);
+      if (!reply && !images.length) return;
+      const item = { n: id, ask: nAskSig[id] };
+      if (reply) item.reply = reply;
+      if (images.length) item.images = images;
+      ns.push(item);
+    });
+    if (ns.length) body.next = ns;
+    const infos = [];
+    iorder.forEach((id) => {
+      const reply = ((idrafts[id] !== undefined ? idrafts[id] : ireplies[id]) || '').trim();
+      const images = pubPics('i:' + id, withData);
+      if (!reply && !images.length) return;
+      const item = { i: id, ask: iAskSig[id] };
+      if (reply) item.reply = reply;
+      if (images.length) item.images = images;
+      infos.push(item);
+    });
+    if (infos.length) body.info = infos;
+    return body;
+  }
+  const payload = () => bodyOf(true);
+  const signature = () => JSON.stringify(bodyOf(false));
+  // A typed question draft still needs OK; never label that unsent edit as Sent.
+  const hasDraftChanges = () => order.some((q) => drafts[q] !== undefined
+    && drafts[q].trim() !== (replies[q] || '').trim());
+
+  // ---------- drawing the state
+  function setStatus(text, kind) {
+    status.textContent = text;
+    status.className = kind || '';
+  }
+  const timeOf = (iso) => { try { return new Date(iso).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }); } catch (e) { return iso; } };
+  // a request's reply shows as ready to send or sent (in words); the request itself stays "To do"
+  function renderRequests() {
+    const sentAt = submitted && submitted.rsent ? timeOf(submitted.at) : '';
+    rorder.forEach((r) => {
+      const b = rblockOf[r];
+      const text = replyOf(r);
+      const sent = !!(text && sentAt && submitted.rsent[r] === text);
+      const heldText = rdrafts[r] === undefined ? (rreplies[r] || '').trim() : '';
+      const held = b.querySelector('.reqheld');
+      if (held) {
+        const html = heldText ? '<b>' + (sent ? 'Your reply, sent at ' + esc(sentAt) + ':' : 'Your reply, ready to send:')
+          + '</b> ' + esc(heldText) : '';
+        if (held.dfHtml !== html) { held.innerHTML = html; held.dfHtml = html; }   // the same words are not read out again
+        held.hidden = !heldText;
+        held.classList.toggle('sent', sent && !!heldText);
+      }
+      const a = rlinkOf[r];
+      if (a) {
+        const sum = ((b.querySelector('.reqsum') || {}).textContent || '').trim();
+        a.querySelector('.rsub').textContent = text ? (sent ? 'Reply sent: "' : 'Reply ready to send: "') + text + '"' : sum;
+        a.classList.toggle('replied', !!text);
+      }
+    });
+    const tally = document.getElementById('rindex-tally');
+    if (tally) tally.textContent = rorder.length + ' open';
+  }
+  function render() {
+    let done = 0;
+    order.forEach((q) => {
+      const b = blockOf[q];
+      const d = isDone(q);
+      if (d) done += 1;
+      b.classList.toggle('done', d);
+      const badge = b.querySelector('.qstate');
+      if (badge) badge.textContent = d ? 'Done' : 'Open';
+      const held = b.querySelector('.held');
+      if (held) {
+        const r = (replies[q] || '').trim();
+        held.hidden = !r;
+        held.innerHTML = r ? '<b>Your answer:</b> ' + esc(r) : '';
+      }
+      const a = linkOf[q];
+      if (a) {
+        a.classList.toggle('done', d);
+        a.querySelector('.mark').textContent = d ? 'Done' : 'Open';
+        a.querySelector('.qans').textContent = d ? summary(q) : 'not answered yet';
+      }
+    });
+    picks().forEach((p) => p.setAttribute('aria-pressed', p.classList.contains('on') ? 'true' : 'false'));
+    renderRequests();
+    norder.forEach((id) => {
+      const b = nblockOf[id];
+      const text = ((ndrafts[id] !== undefined ? ndrafts[id] : nreplies[id]) || '').trim();
+      const held = b.querySelector('.nxheld');
+      if (held) {
+        held.hidden = !text || ndrafts[id] !== undefined;
+        held.innerHTML = text && ndrafts[id] === undefined ? '<b>Your reply, ready to send:</b> ' + esc(text) : '';
+      }
+      const a = nlinkOf[id];
+      if (a) {
+        const sum = ((b.querySelector('.nxsum') || {}).textContent || '').trim();
+        a.querySelector('.nsub').textContent = text ? 'Reply ready: "' + text + '"' : sum;
+      }
+    });
+    const ntally = document.getElementById('nindex-tally');
+    if (ntally) ntally.textContent = norder.length === 1 ? '1 open' : norder.length + ' open';
+    iorder.forEach((id) => {
+      const b = iblockOf[id];
+      const text = ((idrafts[id] !== undefined ? idrafts[id] : ireplies[id]) || '').trim();
+      const held = b.querySelector('.iheld');
+      if (held) {
+        held.hidden = !text || idrafts[id] !== undefined;
+        held.innerHTML = text && idrafts[id] === undefined ? '<b>Your reply, ready to send:</b> ' + esc(text) : '';
+      }
+      const a = ilinkOf[id];
+      if (a) {
+        const sum = ((b.querySelector('.isum') || {}).textContent || '').trim();
+        a.querySelector('.isub').textContent = text ? 'Reply ready: "' + text + '"' : sum;
+      }
+    });
+    const itally = document.getElementById('iindex-tally');
+    if (itally) itally.textContent = iorder.length === 1 ? '1 round' : iorder.length + ' rounds';
+    const total = order.length;
+    const rn = rorder.length;
+    const all = total > 0 && done === total;
+    if (index) index.classList.toggle('alldone', all);
+    if (index && rn) index.hidden = total === 0;   // only requests open: no empty Questions box above them
+    bar.classList.toggle('alldone', all);
+    const tally = document.getElementById('qindex-tally');
+    if (tally) tally.textContent = done + ' of ' + total + ' answered';
+    const rprog = rn ? '<b class="rprog">' + rn + '</b> ' + (rn === 1 ? 'request' : 'requests') + ' to do' : '';
+    progress.innerHTML = (total ? '<b>' + done + ' of ' + total + '</b> answered' : '') + (total && rn ? ' &middot; ' : '') + rprog;
+    next.hidden = all || total === 0;
+    const draftChanged = hasDraftChanges();
+    const mine = ofThisTurn(submitted);
+    const sent = !!(mine && mine.sig === signature() && !draftChanged);
+    bar.classList.toggle('sent', sent && !sending);
+    document.documentElement.classList.toggle('dsent', sent && !sending);
+    if (submit) {
+      const body = payload();
+      const n = body.answers.length;
+      const m = (body.requests || []).length;
+      const parts = [];
+      if (n) parts.push(n + (n === 1 ? ' answer' : ' answers'));
+      if (m) parts.push(m + (m === 1 ? ' reply' : ' replies'));
+      const nx = (body.next || []).length;
+      if (nx) parts.push(nx === 1 ? "what's next" : nx + " what's next");
+      const ni = (body.info || []).length;
+      if (ni) parts.push(ni === 1 ? 'info' : ni + ' info');
+      submit.textContent = sending ? 'Sending...' : sent ? 'Sent'
+        : parts.length ? 'Submit ' + parts.join(' + ') : 'Submit';
+      submit.classList.toggle('sent', sent && !sending);
+      submit.disabled = sending || sent;
+    }
+    if (sending) {
+      setStatus('Sending...');
+    } else if (draftChanged) {
+      setStatus('Your written answer has unsent changes. Press OK beside it, then Submit.', 'warn');
+    } else if (mine) {
+      if (sent) setStatus('Sent at ' + timeOf(mine.at) + '. Waiting for the next reply. Tell me in the chat that you submitted.', 'ok');
+      else setStatus('Changed since you sent at ' + timeOf(mine.at) + '. Press Submit again to send the new answers.', 'warn');
+    } else if (!total) {
+      setStatus(rn ? 'Requests are orange. To reply to one, write in its box; Submit sends it.' : '');
+    } else if (all) {
+      setStatus('Every question has an answer. Press Submit, then tell me in the chat.', 'ok');
+    } else {
+      setStatus('Pick an option in each question, or write your own answer and press OK. Submit sends them all at once.');
+    }
+    if (noteBtn && noteLabel && noteLabel.hidden) noteOpen(false);
+  }
+  function changed() { store(); render(); }
+
+  // ---------- jumping
+  function flash(b) {
+    b.classList.remove('flash');
+    void b.offsetWidth;
+    b.classList.add('flash');
+  }
+  let landing = 0;
+  ['wheel', 'touchstart', 'keydown', 'mousedown'].forEach((t) => window.addEventListener(t, () => { landing += 1; }, { passive: true }));
+  function land(el) {
+    const mine = ++landing;
+    el.scrollIntoView({ block: 'start' });
+    const want = parseFloat(getComputedStyle(el).scrollMarginTop) || 0;
+    const until = Date.now() + 4000;
+    let last = null;
+    const check = () => {
+      if (mine !== landing) return;
+      const top = el.getBoundingClientRect().top;
+      if (last !== null && Math.abs(top - last) < 2 && Math.abs(top - want) > 40) el.scrollIntoView({ block: 'start', behavior: 'instant' });
+      last = top;
+      if (Date.now() < until) setTimeout(check, 200);
+    };
+    setTimeout(check, 200);
+  }
+  let backTo = null;
+  const unmark = () => $$('.qtarget').forEach((el) => el.classList.remove('qtarget'));
+  function goTo(q) {
+    const b = blockOf[q];
+    if (!b) return;
+    backTo = null;
+    back.hidden = true;
+    unmark();
+    land(b);
+    flash(b);
+    if (history.replaceState) history.replaceState(null, '', '#q-' + q);
+  }
+  function hopNav(ids, blockFor, listId, words) {
+    if (!document.getElementById(listId)) return;   // the reply layout (2026-10-16) has no lists to hop back to
+    ids.forEach((id, i) => {
+      const card = blockFor[id];
+      if (!card || card.querySelector(':scope > .hop')) return;
+      const row = document.createElement('div');
+      row.className = 'hop';
+      const make = (text, dest, off) => {
+        const b = document.createElement('button');
+        b.type = 'button';
+        b.textContent = text;
+        if (off || !dest) b.disabled = true;
+        else b.addEventListener('click', () => {
+          const list = dest.id === listId;
+          if (!list) { backTo = null; back.hidden = true; unmark(); }
+          land(dest);
+          if (!list) flash(dest);
+          if (history.replaceState) history.replaceState(null, '', '#' + dest.id);
+        });
+        return b;
+      };
+      const goSubmit = document.createElement('button');
+      goSubmit.type = 'button';
+      goSubmit.className = 'hopsubmit';
+      goSubmit.textContent = 'Go to Submit';
+      const submitBtn = document.getElementById('decide-submit');
+      if (!submitBtn) goSubmit.disabled = true;
+      else goSubmit.addEventListener('click', () => {
+        window.scrollTo(0, document.documentElement.scrollHeight);
+        submitBtn.focus({ preventScroll: true });
+        if (document.activeElement !== submitBtn) {
+          const bar = document.getElementById('decidebar');
+          if (bar) { bar.tabIndex = -1; bar.focus({ preventScroll: true }); }
+        }
+        submitBtn.classList.remove('hopflash');
+        void submitBtn.offsetWidth;
+        submitBtn.classList.add('hopflash');
+        if (history.replaceState) history.replaceState(null, '', '#decide-submit');
+      });
+      row.append(
+        make(words.list, document.getElementById(listId), false),
+        make(words.prev, i > 0 ? blockFor[ids[i - 1]] : null, i <= 0),
+        make(words.next, i < ids.length - 1 ? blockFor[ids[i + 1]] : null, i >= ids.length - 1),
+        goSubmit
+      );
+      card.appendChild(row);
+    });
+  }
+  hopNav(order, blockOf, 'qindex', { list: 'Back to question list', prev: 'Previous question', next: 'Next question' });
+  hopNav(rorder, rblockOf, 'rindex', { list: 'Back to request list', prev: 'Previous request', next: 'Next request' });
+  hopNav(yorder, yblockOf, 'yindex', { list: 'Back to answer list', prev: 'Previous answer', next: 'Next answer' });
+  hopNav(norder, nblockOf, 'nindex', { list: "Back to what's next", prev: "Previous", next: "Next" });
+  hopNav(iorder, iblockOf, 'iindex', { list: 'Back to info', prev: 'Previous', next: 'Next' });
+  next.addEventListener('click', () => {
+    const open = order.filter((q) => !isDone(q));
+    if (!open.length) return;
+    const y = window.scrollY + 40;
+    const after = open.find((q) => blockOf[q].getBoundingClientRect().top + window.scrollY > y);
+    goTo(after || open[0]);
+  });
+  if (index) index.addEventListener('click', (e) => {
+    const a = e.target.closest('a.qlink');
+    if (!a || !blockOf[a.dataset.q]) return;
+    e.preventDefault();
+    goTo(a.dataset.q);
+  });
+  document.addEventListener('click', (e) => {
+    const a = e.target.closest('a[href^="#"]');
+    if (!a || a.classList.contains('qlink') || a.classList.contains('rlink') || a.classList.contains('ylink')) return;
+    const b = a.closest('.q, .qblock');
+    if (!b || !blockOf[qidOf(b)]) return;
+    let id = a.getAttribute('href').slice(1);
+    try { id = decodeURIComponent(id); } catch (err) {}
+    const t = id ? document.getElementById(id) : null;
+    if (!t) return;
+    e.preventDefault();
+    unmark();
+    t.classList.add('qtarget');
+    land(t);
+    backTo = qidOf(b);
+    back.textContent = 'Back to Question ' + (order.indexOf(backTo) + 1);
+    back.hidden = false;
+  });
+  back.addEventListener('click', () => { if (backTo) goTo(backTo); });
+  if (rindex) rindex.addEventListener('click', (e) => {
+    const a = e.target.closest('a.rlink');
+    if (!a || !rblockOf[a.dataset.r]) return;
+    e.preventDefault();
+    const b = rblockOf[a.dataset.r];
+    land(b);
+    flash(b);
+    if (history.replaceState) history.replaceState(null, '', '#r-' + a.dataset.r);
+  });
+  const yindex = document.getElementById('yindex');
+  if (yindex) yindex.addEventListener('click', (e) => {
+    const a = e.target.closest('a.ylink');
+    if (!a) return;
+    const id = (a.getAttribute('href') || '').replace(/^#y-/, '');
+    if (!yblockOf[id]) return;
+    e.preventDefault();
+    land(yblockOf[id]);
+    flash(yblockOf[id]);
+    if (history.replaceState) history.replaceState(null, '', '#y-' + id);
+  });
+  if (nindex) nindex.addEventListener('click', (e) => {
+    const a = e.target.closest('a.nlink');
+    if (!a || !nblockOf[a.dataset.n]) return;
+    e.preventDefault();
+    const b = nblockOf[a.dataset.n];
+    land(b);
+    flash(b);
+    if (history.replaceState) history.replaceState(null, '', '#n-' + a.dataset.n);
+  });
+  if (iindex) iindex.addEventListener('click', (e) => {
+    const a = e.target.closest('a.ilink');
+    if (!a || !iblockOf[a.dataset.i]) return;
+    e.preventDefault();
+    const b = iblockOf[a.dataset.i];
+    land(b);
+    flash(b);
+    if (history.replaceState) history.replaceState(null, '', '#i-' + a.dataset.i);
+  });
+  if (oindex) oindex.addEventListener('click', (e) => {
+    const a = e.target.closest('a.olink');
+    if (!a || !oblockOf[a.dataset.o]) return;
+    e.preventDefault();
+    const b = oblockOf[a.dataset.o];
+    land(b);
+    flash(b);
+    if (history.replaceState) history.replaceState(null, '', '#o-' + a.dataset.o);
+  });
+
+  // an option that needs words ("Redo it") turns the write-your-own box into its prompt ("What should change?")
+  const PLAIN = 'None of these. Write your own answer, or ask something back.';
+  function asked(q, focusFrom) {
+    const b = blockOf[q];
+    if (!b) return;
+    const box = b.querySelector('.qfree');
+    const label = box && box.querySelector('label');
+    const ta = box && box.querySelector('.qreply');
+    if (!label || !ta) return;
+    const live = picks(q).find((o) => o.classList.contains('on') && o.dataset.more);
+    box.classList.toggle('asked', !!live);
+    label.textContent = live ? live.dataset.more + ' (write it here and press OK)' : PLAIN;
+    ta.placeholder = live ? live.dataset.more : '';
+    if (focusFrom) ta.focus({ preventScroll: true });
+  }
+
+  // ---------- picking, writing, OK
+  document.addEventListener('click', (e) => {
+    const ok = e.target.closest('button.qok');
+    if (ok) {
+      e.preventDefault();
+      const b = ok.closest('.q, .qblock');
+      if (!b || !blockOf[qidOf(b)]) return;
+      const q = qidOf(b);
+      clearTimeout(timers['d:' + q]);
+      delete timers['d:' + q];
+      const text = (b.querySelector('.qreply').value || '').trim();
+      if (text) replies[q] = text; else delete replies[q];
+      delete drafts[q];
+      changed();
+      send([{ op: 'reply', q: q, text: text }, { op: 'draft', q: q, text: null }]);
+      return;
+    }
+    const p = e.target.closest('button.pick');
+    if (!p || p.disabled) return;
+    e.preventDefault();
+    e.stopPropagation();
+    const q = p.dataset.q;
+    const k = q + '\t' + p.dataset.v;
+    const turningOn = !p.classList.contains('on');
+    if ((p.dataset.mode || 'single') === 'single') {
+      picks(q).forEach((o) => { o.classList.remove('on'); on.delete(q + '\t' + o.dataset.v); });
+    }
+    picks(q).filter((o) => o.dataset.v === p.dataset.v).forEach((o) => o.classList.toggle('on', turningOn));
+    if (turningOn) on.add(k); else on.delete(k);
+    asked(q, turningOn && p.dataset.more ? p : null);
+    changed();
+    send([{ op: 'picks', q: q, values: valuesOf(q) }]);
+  });
+  document.addEventListener('input', (e) => {
+    const t = e.target;
+    if (t.classList && t.classList.contains('qreply')) {
+      const b = t.closest('.q, .qblock');
+      if (b) {
+        const q = qidOf(b);
+        drafts[q] = t.value;
+        later('d:' + q, () => ({ op: 'draft', q: q, text: drafts[q] === undefined ? null : drafts[q] }));
+      }
+      grow(t);
+      changed();
+    } else if (t === noteEl) {
+      grow(t);
+      store(); render();
+      later('note', () => ({ op: 'note', text: noteEl.value }));
+    }
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' && (e.ctrlKey || e.metaKey) && e.target.classList && e.target.classList.contains('qreply')) {
+      e.preventDefault();
+      const ok = e.target.closest('.qfree').querySelector('button.qok');
+      if (ok) ok.click();
+    }
+  });
+  if (noteBtn) noteBtn.addEventListener('click', () => {
+    noteOpen(noteLabel.hidden);
+    if (!noteLabel.hidden) noteEl.focus();
+  });
+
+  // ---------- replying to a request (own class names: the question handlers above never see these)
+  document.addEventListener('click', (e) => {
+    const ok = e.target.closest('button.reqok');
+    const b = ok ? ok.closest('.req') : null;
+    if (!b || !rblockOf[ridOf(b)]) return;
+    e.preventDefault();
+    const r = ridOf(b);
+    const text = (b.querySelector('.reqreply').value || '').trim();
+    if (text) rreplies[r] = text; else delete rreplies[r];
+    delete rdrafts[r];
+    changed();
+    send([{ op: 'rreply', r: r, text: text, ask: askSig[r] }, { op: 'rdraft', r: r, text: null, ask: askSig[r] }]);
+  });
+  document.addEventListener('input', (e) => {
+    const t = e.target;
+    if (!t.classList || !t.classList.contains('reqreply')) return;
+    const b = t.closest('.req');
+    if (!b || !rblockOf[ridOf(b)]) return;
+    rdrafts[ridOf(b)] = t.value;
+    grow(t);
+    changed();
+    later('rd:' + ridOf(b), () => ({ op: 'rdraft', r: ridOf(b), text: rdrafts[ridOf(b)] === undefined ? null : rdrafts[ridOf(b)], ask: askSig[ridOf(b)] }));
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' && (e.ctrlKey || e.metaKey) && e.target.classList && e.target.classList.contains('reqreply')) {
+      e.preventDefault();
+      const ok = e.target.closest('.reqfree').querySelector('button.reqok');
+      if (ok) ok.click();
+    }
+  });
+  document.addEventListener('click', (e) => {
+    const ok = e.target.closest('button.nxok');
+    const b = ok ? ok.closest('.next') : null;
+    if (!b || !nblockOf[nidOf(b)]) return;
+    e.preventDefault();
+    const id = nidOf(b);
+    const text = (b.querySelector('.nxreply').value || '').trim();
+    if (text) nreplies[id] = text; else delete nreplies[id];
+    delete ndrafts[id];
+    changed();
+    send([{ op: 'nreply', n: id, text: text, ask: nAskSig[id] }, { op: 'ndraft', n: id, text: null, ask: nAskSig[id] }]);
+  });
+  document.addEventListener('input', (e) => {
+    const t = e.target;
+    if (!t.classList || !t.classList.contains('nxreply')) return;
+    const b = t.closest('.next');
+    if (!b || !nblockOf[nidOf(b)]) return;
+    ndrafts[nidOf(b)] = t.value;
+    grow(t);
+    changed();
+    later('nd:' + nidOf(b), () => ({ op: 'ndraft', n: nidOf(b), text: ndrafts[nidOf(b)] === undefined ? null : ndrafts[nidOf(b)], ask: nAskSig[nidOf(b)] }));
+  });
+  document.addEventListener('click', (e) => {
+    const ok = e.target.closest('button.iok');
+    const b = ok ? ok.closest('article.info') : null;
+    if (!b || !iblockOf[iidOf(b)]) return;
+    e.preventDefault();
+    const id = iidOf(b);
+    const text = (b.querySelector('.ireply').value || '').trim();
+    if (text) ireplies[id] = text; else delete ireplies[id];
+    delete idrafts[id];
+    changed();
+    send([{ op: 'ireply', i: id, text: text, ask: iAskSig[id] }, { op: 'idraft', i: id, text: null, ask: iAskSig[id] }]);
+  });
+  document.addEventListener('input', (e) => {
+    const t = e.target;
+    if (!t.classList || !t.classList.contains('ireply')) return;
+    const b = t.closest('article.info');
+    if (!b || !iblockOf[iidOf(b)]) return;
+    idrafts[iidOf(b)] = t.value;
+    grow(t);
+    changed();
+    later('id:' + iidOf(b), () => ({ op: 'idraft', i: iidOf(b), text: idrafts[iidOf(b)] === undefined ? null : idrafts[iidOf(b)], ask: iAskSig[iidOf(b)] }));
+  });
+
+  // ---------- Submit
+  let dbReady = null;
+  if (window.claude && typeof window.claude.use === 'function') {
+    try { dbReady = window.claude.use('db').catch(() => null); } catch (e) { dbReady = null; }
+  }
+  const within = (p, ms) => Promise.race([p, new Promise((r) => setTimeout(() => r(null), ms))]);
+  function asText(body) {
+    const lines = ['Answers from the ' + slug + ' page:'];
+    body.answers.forEach((a) => {
+      const b = blockOf[a.q];
+      const name = b ? (b.dataset.short || (b.querySelector('.ask') || {}).textContent || a.q).trim() : a.q;
+      const parts = a.values.map((v) => v.label);
+      if (a.reply) parts.push('"' + a.reply + '"');
+      if ((a.images || []).length) parts.push((a.images.length === 1 ? '1 picture' : a.images.length + ' pictures'));
+      lines.push('- ' + name + ': ' + parts.join(', ') + ' [' + a.q + ']');
+    });
+    (body.requests || []).forEach((x) => {
+      const b = rAnyOf[x.r];
+      const name = b ? (b.dataset.short || (b.querySelector('.reqask') || {}).textContent || x.r).trim() : x.r;
+      lines.push('- Request ' + name + ': "' + (x.reply || '') + '"'
+        + ((x.images || []).length ? ' (' + x.images.length + (x.images.length === 1 ? ' picture' : ' pictures') + ')' : '')
+        + ' [r:' + x.r + ']');
+    });
+    if (body.note) lines.push('Note: ' + body.note);
+    if ((body.note_images || []).length) lines.push('Note pictures: ' + body.note_images.length);
+    return lines.join('\n');
+  }
+  function offerCopy(body, why) {
+    let box = bar.querySelector('.dcopy');
+    if (!box) {
+      box = document.createElement('div'); box.className = 'dcopy';
+      box.innerHTML = '<pre></pre><div class="row"><button type="button" class="dcopybtn">Copy</button>'
+        + '<button type="button" class="dclose">Close</button></div>';
+      bar.appendChild(box);
+      box.querySelector('.dclose').addEventListener('click', () => { box.hidden = true; });
+      box.querySelector('.dcopybtn').addEventListener('click', async (ev) => {
+        const pre = box.querySelector('pre');
+        try { await navigator.clipboard.writeText(pre.textContent); ev.target.textContent = 'Copied'; }
+        catch (err) {
+          const r = document.createRange(); r.selectNodeContents(pre);
+          const s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+          ev.target.textContent = 'Selected: press Ctrl+C';
+        }
+      });
+    }
+    box.hidden = false;
+    box.querySelector('pre').textContent = asText(body);
+    setStatus(why || "This copy of the page can't save. Copy the answers and paste them in the chat.", 'warn');
+  }
+  if (submit) submit.addEventListener('click', async (e) => {
+    e.preventDefault();
+    if (sending) return;
+    // words typed on a question, a request, What's next, or info go with Submit. OK is not a second step.
+    let moved = false;
+    const held = [];
+    order.forEach((q) => {
+      if (drafts[q] === undefined) return;
+      clearTimeout(timers['d:' + q]);
+      delete timers['d:' + q];
+      const t = drafts[q].trim();
+      if (t) replies[q] = t; else delete replies[q];
+      delete drafts[q];
+      held.push({ op: 'reply', q: q, text: t }, { op: 'draft', q: q, text: null });
+      moved = true;
+    });
+    rorder.forEach((r) => {
+      if (rdrafts[r] === undefined) return;
+      clearTimeout(timers['rd:' + r]);
+      delete timers['rd:' + r];
+      const t = rdrafts[r].trim();
+      if (t) rreplies[r] = t; else delete rreplies[r];
+      delete rdrafts[r];
+      held.push({ op: 'rreply', r: r, text: t, ask: askSig[r] }, { op: 'rdraft', r: r, text: null, ask: askSig[r] });
+      moved = true;
+    });
+    if (moved) changed();
+    norder.forEach((id) => {
+      if (ndrafts[id] === undefined) return;
+      clearTimeout(timers['nd:' + id]);
+      delete timers['nd:' + id];
+      const t = ndrafts[id].trim();
+      if (t) nreplies[id] = t; else delete nreplies[id];
+      delete ndrafts[id];
+      held.push({ op: 'nreply', n: id, text: t, ask: nAskSig[id] }, { op: 'ndraft', n: id, text: null, ask: nAskSig[id] });
+      moved = true;
+    });
+    iorder.forEach((id) => {
+      if (idrafts[id] === undefined) return;
+      clearTimeout(timers['id:' + id]);
+      delete timers['id:' + id];
+      const t = idrafts[id].trim();
+      if (t) ireplies[id] = t; else delete ireplies[id];
+      delete idrafts[id];
+      held.push({ op: 'ireply', i: id, text: t, ask: iAskSig[id] }, { op: 'idraft', i: id, text: null, ask: iAskSig[id] });
+      moved = true;
+    });
+    if (moved) changed();
+    const body = payload();
+    const rn = (body.requests || []).length;
+    const nn = (body.next || []).length;
+    const ni = (body.info || []).length;
+    if (!body.answers.length && !body.note && !rn && !nn && !ni && !(body.note_images || []).length) {
+      setStatus(rorder.length ? 'Nothing to send yet: pick an option, write an answer, or write a reply to a request first.'
+        : 'Nothing to send yet: pick an option or write an answer first.', 'warn');
+      return;
+    }
+    body.at = new Date().toISOString();
+    body.kit = 3;
+    const sig = signature();
+    sending = true;
+    render();
+    let sentBy = null;
+    let why = null;
+    const db = dbReady ? await within(dbReady, 4000) : null;
+    if (db) {
+      try { await db.collection('decisions').add(body); sentBy = 'page'; }
+      catch (err) {
+        sentBy = null;
+        // the page store keeps one Submit as one document of at most 256 KiB; a longer one is refused this way
+        if (err && err.code === 'invalid_argument') {
+          why = 'Too long to save on this page: one Submit holds about 250 KB of text. Copy everything and paste it '
+            + 'in the chat.';
+        }
+      }
+    }
+    if (!sentBy) {
+      try {
+        const r = await fetch('/api/decide', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) });
+        if (r.ok && !rn) sentBy = 'inbox';
+        else if (r.ok) {
+          // the server says how many replies it saved; an older one drops them and still says OK
+          let got = null;
+          try { got = await r.json(); } catch (err) { got = null; }
+          if (got && got.requests === rn) sentBy = 'inbox';
+          else why = (body.answers.length ? 'Your answers were saved, but your replies to requests were not. '
+            : 'Your replies to requests could not be saved here. ') + 'Copy everything and paste it in the chat.';
+        }
+      } catch (err) {}
+    }
+    sending = false;
+    if (sentBy) {
+      submitted = { at: body.at, sig: sig, by: sentBy, turn: TURN };
+      if (rn) { submitted.rsent = {}; body.requests.forEach((x) => { submitted.rsent[x.r] = x.reply; }); }
+      const box = bar.querySelector('.dcopy');
+      if (box) box.hidden = true;
+      changed();
+      send(held.concat([{ op: 'submitted', value: submitted }]));
+    } else {
+      render();
+      offerCopy(body, why);
+    }
+  });
+
+  const STATE_URL = '/api/decide/state';
+  let live = null;
+  let queue = [];
+  let stateBusy = false;
+  let edits = 0;
+  const timers = {};
+  const pending = () => queue.length > 0 || stateBusy || Object.keys(timers).length > 0;
+  const SAVED = 'Saved on this PC. Any browser on this computer shows the same answers.';
+  function syncShow(text, kind) {
+    syncEl.textContent = text;
+    syncEl.className = 'dsync' + (kind ? ' ' + kind : '');
+  }
+  function send(ops) {
+    if (live === false) return;
+    edits += 1;
+    queue = queue.concat(ops);
+    flush();
+  }
+  function later(key, make) {
+    if (live === false) return;
+    edits += 1;
+    clearTimeout(timers[key]);
+    timers[key] = setTimeout(() => { delete timers[key]; send([make()]); }, 600);
+  }
+  async function flush() {
+    if (stateBusy || !queue.length || !live) return;
+    stateBusy = true;
+    const ops = queue;
+    queue = [];
+    let s = null;
+    let ok = false;
+    try {
+      const r = await fetch(STATE_URL, { method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ slug: slug, ops: ops }) });
+      if (r.ok) { s = await r.json(); ok = true; }
+      else if (r.status === 400) { ok = true; syncShow('This PC refused a change. It is kept in this browser.', 'warn'); }
+    } catch (e) {}
+    stateBusy = false;
+    if (!ok) {
+      queue = ops.concat(queue);
+      syncShow('Can\'t reach this PC\'s page server. Answers stay in this browser until it is back.', 'warn');
+      setTimeout(flush, 3000);
+      return;
+    }
+    if (s) seenState(s, true);
+    if (queue.length) flush();
+    else if (s && !pending()) syncShow(SAVED, 'ok');
+  }
+  function seenState(s, mine) {
+    if (pending()) return;
+    if (mine && s.rev === live.rev + 1) { live.rev = s.rev; return; }
+    if (s.rev !== live.rev) adopt(s);
+  }
+  function adopt(s) {
+    live.rev = s.rev;
+    const typing = document.activeElement;
+    const tq = typing && typing.classList && typing.classList.contains('qreply') ? typing.closest('.q, .qblock') : null;
+    const tr = typing && typing.classList && typing.classList.contains('reqreply') ? typing.closest('.req') : null;
+    const keepQ = tq ? qidOf(tq) : null;
+    const keepR = tr ? ridOf(tr) : null;
+    const keepDraft = keepQ !== null ? drafts[keepQ] : undefined;
+    const keepRDraft = keepR !== null ? rdrafts[keepR] : undefined;
+    on.clear();
+    Object.keys(s.picks || {}).forEach((q) => (s.picks[q] || []).forEach((v) => on.add(q + '\t' + v)));
+    Object.keys(replies).forEach((q) => { delete replies[q]; });
+    Object.assign(replies, s.replies || {});
+    Object.keys(drafts).forEach((q) => { delete drafts[q]; });
+    Object.assign(drafts, s.drafts || {});
+    if (keepQ !== null) { if (keepDraft === undefined) delete drafts[keepQ]; else drafts[keepQ] = keepDraft; }
+    Object.keys(rreplies).forEach((r) => { delete rreplies[r]; });
+    Object.keys(rdrafts).forEach((r) => { delete rdrafts[r]; });
+    Object.keys(s.requests || {}).forEach((r) => {
+      const x = s.requests[r];
+      if (rblockOf[r] && x && x.a === askSig[r] && typeof x.t === 'string') rreplies[r] = x.t;
+    });
+    Object.keys(s.rdrafts || {}).forEach((r) => {
+      const x = s.rdrafts[r];
+      if (rblockOf[r] && x && x.a === askSig[r] && typeof x.t === 'string') rdrafts[r] = x.t;
+    });
+    if (keepR !== null) { if (keepRDraft === undefined) delete rdrafts[keepR]; else rdrafts[keepR] = keepRDraft; }
+    const tn = typing && typing.classList && typing.classList.contains('nxreply') ? typing.closest('.next') : null;
+    const keepN = tn ? nidOf(tn) : null;
+    const keepNDraft = keepN !== null ? ndrafts[keepN] : undefined;
+    Object.keys(nreplies).forEach((id) => { delete nreplies[id]; });
+    Object.keys(ndrafts).forEach((id) => { delete ndrafts[id]; });
+    Object.keys(s.next || {}).forEach((id) => {
+      const x = s.next[id];
+      if (nblockOf[id] && x && x.a === nAskSig[id] && typeof x.t === 'string') nreplies[id] = x.t;
+    });
+    Object.keys(s.ndrafts || {}).forEach((id) => {
+      const x = s.ndrafts[id];
+      if (nblockOf[id] && x && x.a === nAskSig[id] && typeof x.t === 'string') ndrafts[id] = x.t;
+    });
+    if (keepN !== null) { if (keepNDraft === undefined) delete ndrafts[keepN]; else ndrafts[keepN] = keepNDraft; }
+    const ti = typing && typing.classList && typing.classList.contains('ireply') ? typing.closest('article.info') : null;
+    const keepI = ti ? iidOf(ti) : null;
+    const keepIDraft = keepI !== null ? idrafts[keepI] : undefined;
+    Object.keys(ireplies).forEach((id) => { delete ireplies[id]; });
+    Object.keys(idrafts).forEach((id) => { delete idrafts[id]; });
+    Object.keys(s.info || {}).forEach((id) => {
+      const x = s.info[id];
+      if (iblockOf[id] && x && x.a === iAskSig[id] && typeof x.t === 'string') ireplies[id] = x.t;
+    });
+    Object.keys(s.idrafts || {}).forEach((id) => {
+      const x = s.idrafts[id];
+      if (iblockOf[id] && x && x.a === iAskSig[id] && typeof x.t === 'string') idrafts[id] = x.t;
+    });
+    if (keepI !== null) { if (keepIDraft === undefined) delete idrafts[keepI]; else idrafts[keepI] = keepIDraft; }
+    Object.keys(pictures).forEach((k) => { delete pictures[k]; });
+    Object.keys(s.images || {}).forEach((k) => {
+      if (Array.isArray(s.images[k]) && s.images[k].length) pictures[k] = s.images[k];
+    });
+    submitted = s.submitted || null;
+    picks().forEach((p) => p.classList.toggle('on', on.has(p.dataset.q + '\t' + p.dataset.v)));
+    blocks.forEach((b) => {
+      const q = qidOf(b);
+      const ta = b.querySelector('.qreply');
+      if (ta && ta !== typing) { ta.value = drafts[q] !== undefined ? drafts[q] : (replies[q] || ''); grow(ta); }
+      renderPics('q:' + q);
+    });
+    rBlocks.forEach((b) => {
+      const r = ridOf(b);
+      const ta = b.querySelector('.reqreply');
+      if (ta && ta !== typing) { ta.value = rdrafts[r] !== undefined ? rdrafts[r] : (rreplies[r] || ''); grow(ta); }
+      renderPics('r:' + r);
+    });
+    nBlocks.forEach((b) => {
+      const id = nidOf(b);
+      const ta = b.querySelector('.nxreply');
+      if (ta && ta !== typing) { ta.value = ndrafts[id] !== undefined ? ndrafts[id] : (nreplies[id] || ''); grow(ta); }
+      renderPics('n:' + id);
+    });
+    iBlocks.forEach((b) => {
+      const id = iidOf(b);
+      const ta = b.querySelector('.ireply');
+      if (ta && ta !== typing) { ta.value = idrafts[id] !== undefined ? idrafts[id] : (ireplies[id] || ''); grow(ta); }
+      renderPics('i:' + id);
+    });
+    renderPics('note');
+    if (noteEl && noteEl !== typing) { noteEl.value = s.note || ''; grow(noteEl); }
+    order.forEach((q) => asked(q, null));
+    store();
+    render();
+  }
+  async function pull() {
+    if (!live || pending() || document.hidden) return;
+    const at = edits;
+    let s = null;
+    try { const r = await fetch(STATE_URL, { cache: 'no-store' }); if (r.ok) s = await r.json(); } catch (e) {}
+    if (!s || typeof s.rev !== 'number' || at !== edits || pending()) return;
+    if (s.rev !== live.rev) adopt(s);
+  }
+  (async () => {
+    let s = null;
+    try { const r = await fetch(STATE_URL, { cache: 'no-store' }); if (r.ok) s = await r.json(); } catch (e) {}
+    if (!s || typeof s.rev !== 'number' || !s.picks) {
+      live = false;
+      queue = [];
+      Object.keys(timers).forEach((k) => { clearTimeout(timers[k]); delete timers[k]; });
+      syncShow('Kept in this browser only.', '');
+      return;
+    }
+    const up = [];
+    if (synced !== s.created) {
+      const qs = new Set(Object.keys(replies).concat(Object.keys(drafts)));
+      on.forEach((k) => qs.add(k.split('\t')[0]));
+      qs.forEach((q) => {
+        const vals = valuesOf(q);
+        if (vals.length && !(s.picks[q] || []).length) up.push({ op: 'picks', q: q, values: vals });
+        if (replies[q] && !(s.replies || {})[q]) up.push({ op: 'reply', q: q, text: replies[q] });
+        if (drafts[q] !== undefined && (s.drafts || {})[q] === undefined) up.push({ op: 'draft', q: q, text: drafts[q] });
+      });
+      rorder.forEach((r) => {
+        if (rreplies[r] && !((s.requests || {})[r] && (s.requests || {})[r].t)) up.push({ op: 'rreply', r: r, text: rreplies[r], ask: askSig[r] });
+        if (rdrafts[r] !== undefined && (s.rdrafts || {})[r] === undefined) up.push({ op: 'rdraft', r: r, text: rdrafts[r], ask: askSig[r] });
+      });
+      norder.forEach((id) => {
+        if (nreplies[id] && !((s.next || {})[id] && (s.next || {})[id].t)) up.push({ op: 'nreply', n: id, text: nreplies[id], ask: nAskSig[id] });
+        if (ndrafts[id] !== undefined && (s.ndrafts || {})[id] === undefined) up.push({ op: 'ndraft', n: id, text: ndrafts[id], ask: nAskSig[id] });
+      });
+      iorder.forEach((id) => {
+        if (ireplies[id] && !((s.info || {})[id] && (s.info || {})[id].t)) up.push({ op: 'ireply', i: id, text: ireplies[id], ask: iAskSig[id] });
+        if (idrafts[id] !== undefined && (s.idrafts || {})[id] === undefined) up.push({ op: 'idraft', i: id, text: idrafts[id], ask: iAskSig[id] });
+      });
+      Object.keys(pictures).forEach((key) => {
+        if (!(s.images && s.images[key] && s.images[key].length) && picsOf(key).length) up.push({ op: 'images', key: key, items: pubPics(key, true) });
+      });
+      if (noteEl && noteEl.value.trim() && !(s.note || '').trim()) up.push({ op: 'note', text: noteEl.value });
+      if (submitted && !s.submitted) up.push({ op: 'submitted', value: submitted });
+      synced = s.created;
+      store();
+    }
+    if (up.length || queue.length) {
+      live = { rev: -1 };
+      queue = up.concat(queue);
+      flush();
+    } else {
+      live = { rev: -1 };
+      if (!pending()) adopt(s);
+      syncShow(SAVED, 'ok');
+    }
+    setInterval(pull, 4000);
+    window.addEventListener('focus', pull);
+    document.addEventListener('visibilitychange', pull);
+  })();
+
+  order.forEach((q) => asked(q, null));
+  render();
+  pinTop();
+})();
+</script>
+<script>(() => {
+  const lb = document.getElementById('lb'), stage = document.getElementById('lbstage');
+  const big = document.getElementById('lbimg'), cap = document.getElementById('lbcap');
+  let group = [], idx = 0;
+  function show() {
+    const im = group[idx];
+    big.src = im.currentSrc || im.src; big.alt = im.alt;
+    cap.textContent = (im.alt || '') + (group.length > 1 ? '  (' + (idx + 1) + ' of ' + group.length + ')' : '') +
+      '  ·  click the picture for full size';
+    lb.classList.remove('zoom'); lb.hidden = false; stage.scrollTo(0, 0);
+  }
+  function step(d) { if (!group.length) return; idx = (idx + d + group.length) % group.length; show(); }
+  function close() { lb.hidden = true; big.removeAttribute('src'); }
+  document.addEventListener('click', (e) => {
+    const im = e.target.closest('main img'); if (!im) return;
+    const box = im.closest('.grid, .ladder, table, .board, .beat, section') || document.body;
+    group = Array.from(box.querySelectorAll('img')); idx = Math.max(0, group.indexOf(im)); show();
+  });
+  big.addEventListener('click', (e) => { e.stopPropagation(); lb.classList.toggle('zoom'); });
+  lb.addEventListener('click', (e) => { if (e.target === lb || e.target === stage) close(); });
+  document.getElementById('lbclose').addEventListener('click', close);
+  document.getElementById('lbprev').addEventListener('click', (e) => { e.stopPropagation(); step(-1); });
+  document.getElementById('lbnext').addEventListener('click', (e) => { e.stopPropagation(); step(1); });
+  document.addEventListener('keydown', (e) => {
+    if (lb.hidden) return;
+    if (e.key === 'Escape') close(); else if (e.key === 'ArrowLeft') step(-1); else if (e.key === 'ArrowRight') step(1);
+  });
+})();
+document.addEventListener('click', async (e) => {
+  const b = e.target.closest('.cbtn'); if (!b) return;
+  const pre = document.getElementById(b.dataset.target); if (!pre) return;
+  const text = pre.textContent;
+  try { await navigator.clipboard.writeText(text); b.textContent = 'Copied'; }
+  catch (err) {
+    const r = document.createRange(); r.selectNodeContents(pre);
+    const s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+    b.textContent = 'Selected: press Ctrl+C';
+  }
+  b.classList.add('done');
+  setTimeout(() => { b.textContent = 'Copy'; b.classList.remove('done'); }, 2200);
+});
+
+(() => {
+  const vlb = document.getElementById('vlb'), panes = document.getElementById('vlbpanes'), cap = document.getElementById('vlbcap');
+  const vids = () => Array.from(panes.querySelectorAll('video'));
+  function playAll() { vids().forEach((v) => { v.currentTime = 0; v.play().catch(() => {}); }); }
+  const SPEEDS = [0.25, 0.5, 1, 1.5, 2];
+  function speedBar(video) {
+    const bar = document.createElement('div');
+    bar.className = 'vspeed';
+    const label = document.createElement('span');
+    label.className = 'vspeedlbl';
+    label.textContent = 'Speed';
+    bar.append(label);
+    const buttons = SPEEDS.map((rate) => {
+      const b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'vrate';
+      b.textContent = rate + '×';
+      b.setAttribute('aria-pressed', video.playbackRate === rate ? 'true' : 'false');
+      b.addEventListener('click', () => {
+        video.playbackRate = rate;
+        buttons.forEach((x) => x.setAttribute('aria-pressed', x === b ? 'true' : 'false'));
+      });
+      bar.append(b);
+      return b;
+    });
+    return bar;
+  }
+  function open(items, label) {
+    panes.replaceChildren(); panes.style.setProperty('--n', items.length);
+    items.forEach((it) => {
+      const fig = document.createElement('figure');
+      const el = document.createElement(it.kind === 'img' ? 'img' : 'video');
+      el.src = it.src;
+      if (it.kind === 'img') { el.alt = it.label; }
+      else { el.controls = true; el.loop = true; el.muted = true; el.playsInline = true; el.preload = 'auto'; el.playbackRate = it.rate || 1; }
+      const c = document.createElement('figcaption'); c.textContent = it.label;
+      fig.append(el, c);
+      if (it.kind !== 'img') fig.append(speedBar(el));
+      panes.append(fig);
+    });
+    cap.textContent = label || ''; vlb.hidden = false; document.body.style.overflow = 'hidden';
+    playAll();
+  }
+  function close() { vids().forEach((v) => v.pause()); panes.replaceChildren(); vlb.hidden = true; document.body.style.overflow = ''; }
+  document.getElementById('vlbplay').addEventListener('click', playAll);
+  document.getElementById('vlbpause').addEventListener('click', () => vids().forEach((v) => v.pause()));
+  document.getElementById('vlbclose').addEventListener('click', close);
+  vlb.addEventListener('click', (e) => { if (e.target === vlb || e.target === panes) close(); });
+  document.addEventListener('keydown', (e) => { if (!vlb.hidden && e.key === 'Escape') close(); });
+  document.querySelectorAll('main video').forEach((v) => {   // a "Watch big" button under every video
+    if (v.closest('#pop')) return;
+    const fig = v.closest('figure'), fc = fig ? fig.querySelector('figcaption') : null;
+    const label = fc ? fc.textContent : '';
+    const b = document.createElement('button');
+    b.type = 'button'; b.className = 'vbig'; b.textContent = 'Watch big';
+    b.addEventListener('click', () => open([{kind: 'video', src: v.dataset.big || v.getAttribute('src'), label, rate: v.playbackRate}], label));
+    const tools = document.createElement('div');
+    tools.className = 'vtools';
+    tools.append(speedBar(v), b);
+    v.insertAdjacentElement('afterend', tools);
+  });
+  document.addEventListener('click', (e) => {   // frame, guide and draft side by side
+    const t = e.target.closest('.vtrio'); if (!t) return;
+    open(JSON.parse(t.dataset.items), t.dataset.label);
+  });
+})();
+</script>
+<script>/* The reply layout's own small jobs (2026-10-16). decide.js still runs the picks, write boxes, pictures and Submit.
+   - Light / Dark button in the top bar, remembered in this browser.
+   - Video in a folded part (history, How we got here) loads only once that part is opened.
+   - A link to a round in the history (#h70) opens that round.
+   - A long note of Jake's in the history shows four lines until clicked.
+   - ?open=all opens every fold, for checking the page. */
+(() => {
+  const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
+
+  const theme = document.getElementById('theme');
+  const label = () => { if (theme) theme.textContent = document.documentElement.dataset.theme === 'light' ? 'Dark' : 'Light'; };
+  if (theme) {
+    label();
+    theme.addEventListener('click', () => {
+      const t = document.documentElement.dataset.theme === 'light' ? 'dark' : 'light';
+      document.documentElement.dataset.theme = t;
+      try { localStorage.setItem('report-theme', t); } catch (e) {}
+      label();
+    });
+  }
+
+  document.addEventListener('toggle', (e) => {
+    const d = e.target;
+    if (!(d instanceof HTMLDetailsElement) || !d.open) return;
+    $$('video[preload="none"]', d).forEach((v) => { v.preload = 'metadata'; v.load(); });
+  }, true);
+
+  // A link to something inside a fold (an info row under What I did, a round in the history) opens the folds
+  // around it first, or the jump lands on nothing (Toolbox round 29, 2026-10-16: "I click the links and they don't
+  // work"). decide.js still does the jump for links inside a question; this does it for the rest.
+  function unfold(id) {
+    let t = null;
+    try { t = id && document.getElementById(decodeURIComponent(id)); } catch (e) { t = null; }
+    if (!t) return null;
+    if (t.tagName === 'DETAILS') t.open = true;
+    for (let p = t.parentElement; p; p = p.parentElement) if (p.tagName === 'DETAILS') p.open = true;
+    return t;
+  }
+  document.addEventListener('click', (e) => {
+    const a = e.target.closest && e.target.closest('a[href^="#"]');
+    if (!a || a.getAttribute('href').length < 2) return;
+    const t = unfold(a.getAttribute('href').slice(1));
+    if (t && !a.closest('.q, .qblock')) { e.preventDefault(); t.scrollIntoView({ block: 'start' }); }
+  }, true);
+  if (location.hash) unfold(location.hash.slice(1));
+
+  $$('#history .you-words, .strip .you-words').forEach((w) => {
+    if (w.textContent.length < 360) return;
+    w.classList.add('clamp');
+    const b = document.createElement('button');
+    b.type = 'button';
+    b.className = 'you-more';
+    b.textContent = 'Show all';
+    b.addEventListener('click', () => { b.textContent = w.classList.toggle('clamp') ? 'Show all' : 'Show less'; });
+    w.insertAdjacentElement('afterend', b);
+  });
+
+  if (/[?&]open=all(&|$)/.test(location.search)) {
+    $$('.turn details, #history details.hround').slice(0, 60).forEach((d) => { d.open = true; });
+  }
+
+  // A picture or video whose file is not on this PC says so where it sits, instead of an empty box (Jake,
+  // 2026-10-23: "the AIs are referencing images ... and the images aren't in there"). The usual cause is a checkout
+  // that has not pulled the report's media from S3. The enlarged views are left alone.
+  const gone = (el) => {
+    const m = el.tagName === 'SOURCE' ? el.parentElement : el;
+    if (!m || m.dataset.gone || m.closest('#lb, #vlb')) return;
+    m.dataset.gone = '1';
+    m.classList.add('gone');
+    const note = document.createElement('p');
+    note.className = 'gone-note';
+    note.textContent = 'Not on this PC: ' + (el.getAttribute('src') || '') + '. Pull this report’s media from S3.';
+    m.insertAdjacentElement('afterend', note);
+  };
+  document.addEventListener('error', (e) => {
+    const t = e.target;
+    if (t && /^(IMG|VIDEO|AUDIO|SOURCE)$/.test(t.tagName) && t.getAttribute('src')) gone(t);
+  }, true);
+  $$('img[src]').forEach((i) => { if (i.complete && i.naturalWidth === 0) gone(i); });
+  $$('video[src], audio[src]').forEach((v) => { if (v.error || v.networkState === 3) gone(v); });
+
+  // A newer build of this page: reload. A tab brought forward used to keep showing the previous round (Jake,
+  // 2026-10-21). The stamp is the page's last line, so a page still being written has none and is left alone.
+  // Answers and notes not yet sent are kept in this browser, so a reload loses nothing; it waits while Jake types.
+  const meta = document.querySelector('meta[name="report-build"]');
+  if (meta) {
+    let busy = false;
+    const typing = () => {
+      const a = document.activeElement;
+      return document.hasFocus() && a && (a.tagName === 'TEXTAREA' || a.tagName === 'INPUT');
+    };
+    const check = async () => {
+      if (busy || document.hidden) return;
+      busy = true;
+      try {
+        const r = await fetch(location.pathname, { headers: { Range: 'bytes=-200' }, cache: 'no-store' });
+        if (r.status !== 206) { if (r.body) r.body.cancel(); return; }
+        const m = /report-build ([\w.-]+)/.exec(await r.text());
+        if (m && m[1] !== meta.content && !typing()) location.reload();
+      } catch (e) {
+      } finally {
+        busy = false;
+      }
+    };
+    document.addEventListener('visibilitychange', check);
+    window.addEventListener('focus', check);
+    setInterval(check, 5000);
+  }
+})();
+</script>
+</body></html>
+<!-- report-build 20261114T184156-052f54 -->

@@ -1,0 +1,47 @@
+{
+  "checked_utc": "2026-11-15T00:05:04.761888+00:00",
+  "provider": "openai",
+  "project": "aquila-code-dark",
+  "query": "framing",
+  "filters": {
+    "collection_ids": [
+      "cinematography"
+    ]
+  },
+  "outcome": "ok",
+  "coverage_complete": true,
+  "first_page_only": true,
+  "exact_read": {
+    "outcome": "ok",
+    "citation": {
+      "byte_end": 2203,
+      "byte_start": 0,
+      "content_sha256": "3547848ff1fa81fcc13783e0afc51a7eed1485382049ec8ef5e8a3091183f092",
+      "kind": "finding",
+      "passage_sha256": "3547848ff1fa81fcc13783e0afc51a7eed1485382049ec8ef5e8a3091183f092",
+      "record_id": "f_2abf5066be7f4367971b7b6b03feeb37",
+      "version_id": "r_fab1dc74bca743b4abcc298eef945ca7"
+    },
+    "hash_verified": true,
+    "byte_length": 2203,
+    "review_state": "reviewed",
+    "freshness": {
+      "checked_at": "2026-11-15T00:02:53.675877+00:00",
+      "current_version": "r_fab1dc74bca743b4abcc298eef945ca7",
+      "indexed_at": "2026-11-14T05:41:07.810761+00:00",
+      "state": "current"
+    },
+    "applicability": {
+      "notes": "Authored English interpretation of bilingual prompt glossaries. Technical optics, mood effects, and model behavior are unvalidated. Raw glossary claims are not technical authority.",
+      "project_ids": [],
+      "scope": "general",
+      "topics": [
+        "composition",
+        "spatial-layering"
+      ],
+      "version_constraints": []
+    }
+  },
+  "initial_unscoped_search": "budget_exhausted; focused search succeeded",
+  "proves": "Binding, permission and exact passage retrieval only; no game research or provider request"
+}

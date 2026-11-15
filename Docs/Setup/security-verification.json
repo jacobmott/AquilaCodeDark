@@ -1,0 +1,31 @@
+{
+  "legacy_secret_folder": [
+    {
+      "name": "README.md",
+      "matches_local": true,
+      "anonymous_status": 403
+    },
+    {
+      "name": "aws-deploy-secrets.env",
+      "matches_local": true,
+      "anonymous_status": 403
+    },
+    {
+      "name": "deploy.sh",
+      "matches_local": true,
+      "anonymous_status": 403
+    },
+    {
+      "name": "sync.sh",
+      "matches_local": true,
+      "anonymous_status": 403
+    }
+  ],
+  "credential_review": "All four remote files match local deployment metadata and scripts; no access keys, passwords, bearer tokens or private keys found. No credential rotation needed.",
+  "website": {
+    "status": 200,
+    "html_bytes": 637
+  },
+  "site_deployed": false,
+  "legacy_objects_deleted": false
+}
