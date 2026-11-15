@@ -2,12 +2,13 @@
 
 2026-11-15 UTC / local. Gameplay implementation paused at the owner's request.
 The owner explicitly requested session wrap, commit and push, then discussion of new information they will provide.
-Wrap saved; publication verification is pending. The final receipt will be `Docs/Testing/game-direction-publication.json`.
+Remake source commit `9b68aba` is pushed and verified on `origin/main`.
+Evidence: [publication receipt](../Testing/game-direction-publication.json). A follow-up closeout commit stores final wrap records; resolve HEAD/upstream for its identity.
 
 ## Authority and stop boundary
 
-- Commit and push only this continuing remake session's work. Preserve peers and the shared Git index.
-  This authority is consumed by the wrap publication; it does not resume gameplay work.
+- The requested wrap publishes only this continuing remake session's work. Peer work and the shared index are preserved.
+  Publication authority is consumed by this wrap; it does not resume gameplay work.
 - Wait for the owner's discussion topic. Do not select or implement another milestone during this pause.
 - Website deployment, asset transfers, paid generation and research submission require separate explicit authority.
   Assets, secrets, generated media and scratch stay outside Git. Historical approvals grant no new authority.
@@ -71,13 +72,14 @@ Knowledge Hub OpenAI query "autopilot" returned three unrelated video-course rec
 
 Session-owned scope: package changes, app wiring/styles, universe source, nine browser QA scripts, four model-test files,
 knowledge/docs/checkpoints/history/verification and this task's report. No peer staging was present at the wrap inspection.
-Publication must use a private index, explicit paths and the repository guard; reconcile only unchanged owned baseline entries.
+Source commit used a private index and 113 explicit owned paths. Guard and hook passed; only unchanged owned baseline entries were reconciled.
 Media and tooling remain ignored. No tests or transfers remain active.
 Preview 4200/PID 37488; task report 8953/PID 69596; setup report 8952/PID 69828 remains untouched.
-Report `reports/game-direction/` currently has round 29; wrap adds round 30. Earlier rounds and actual inbox are preserved.
-Last workspace-browser check returned `browser_no_host`; HTTP and gameplay checks do not prove a report browser snapshot.
+Report `reports/game-direction/`, round 30, records the wrap. Earlier rounds and actual inbox are preserved.
+Wrap report build and HTTP checks pass. Workspace browser reconnected; round 30 snapshot verified. No report response submitted.
 Last-read inbox: `reports/game-direction/inbox/20261115T015927Z.json`; no newer submission at wrap inspection.
 After "submitted" or "I replied", read the newest real inbox first. No submission was fabricated.
+Publication-stage checkpoint: [archive](../History/game-direction/20261115T223655Z.md), [hash manifest](../History/game-direction/20261115T223655Z.json).
 Exact pre-wrap checkpoint: [archive](../History/game-direction/20261115T223241Z.md), [hash manifest](../History/game-direction/20261115T223241Z.json).
 Copyable restart prompt: [saved prompt](PROMPT_2026-11-15_game-direction.txt).
 

@@ -1339,6 +1339,51 @@ def main(output):
         "The local command controls are ready. Broader tactics and upgrades remain future work; no decision is needed now.",
         short="Command the battleship", follows="aquila-direction-r28-next")
     rounds = page.entry(29, "Command the battleship", helm, when="2026-11-15 UTC") + rounds
+    wrapped = decide.recap(
+        "The remake is saved, committed and pushed. Gameplay work is paused. "
+        "The checkpoint preserves decisions, controls, test evidence and unfinished work. "
+        "The local game and report remain running. We can discuss the information you want to share.",
+        [
+            ("Saved", "Source, tests, design records and report history are committed."),
+            ("Pushed", "The source commit is verified on the remote main branch."),
+            ("Checks", "Existing build and gameplay evidence still matches; six safety tests passed again."),
+            ("Boundaries", "Shared staging was preserved. Media remain local; the website was not deployed."),
+            ("Pause", "Further game work waits for your discussion topic."),
+        ],
+        {
+            "did": "Wrapped the session, saved its checkpoint, committed owned work and verified the source push.",
+            "why": "You requested a pause and publication before discussing new information.",
+            "working": "The local prototype, saved evidence, source publication and restart records are ready.",
+            "not_working": "Physical devices, long play, other browser engines and the desktop runtime remain untested.",
+            "next": "Wait for your discussion topic. No further gameplay work starts during this pause.",
+        },
+    )
+    wrap_body = table(["Saved work", "Result"], [
+        ("Source commit", "<code>9b68aba422b7b2761ec29fbfaa52cd7745a681b1</code>"),
+        ("Remote", "Verified on <code>origin/main</code>; ordinary push, with no history rewrite."),
+        ("Scope", "Universe, glass interface, shuttles, battleship interiors, projectile combat, automatic helm, tests and session records."),
+        ("Shared work", "Private staging held 113 owned paths. Existing shared entries were preserved; no peer staging was present."),
+        ("Current evidence", "Production build, 35 model tests and 36 browser groups passed before wrap. Source hashes still match."),
+        ("Wrap checks", "Six safety tests passed again. Guard, hook, whitespace and startup links passed."),
+        ("Archive", "The preceding checkpoint was preserved byte for byte. Decisions and lessons remain in project records."),
+        ("Still running", "Game preview and both local reports remain running. No tests or transfers remain active."),
+    ])
+    wrap_body += '<p>Saved records: <a href="handoff.md">checkpoint</a>, <a href="restart.txt">restart prompt</a> and <a href="publication.json">publication evidence</a>.</p>'
+    wrap_body += "<p>Physical devices, other engines, long play, desktop runtime, fresh agent sessions and actual provider capture remain untested.</p>"
+    wrap_body += "<p>Assets, secrets and report media remain outside Git. No website deployment, asset transfer or paid generation occurred.</p>"
+    wrapped += decide.info_thread("aquila-direction-r30-info",
+        "The remake is committed and pushed; gameplay work is paused for your discussion.",
+        body_html=wrap_body, short="Session wrapped and source pushed")
+    wrapped += decide.whats_next("aquila-direction-r30-next",
+        "Wait for the information you want to discuss. No next gameplay milestone starts during this pause.",
+        short="Ready for the discussion", follows="aquila-direction-r29-next")
+    rounds = page.entry(30, "Wrapped for discussion", wrapped, when="2026-11-15 UTC") + rounds
+    for source, name in [
+        (ROOT / "Docs/Handoffs/HANDOFF_2026-11-15_game-direction.md", "handoff.md"),
+        (ROOT / "Docs/Handoffs/PROMPT_2026-11-15_game-direction.txt", "restart.txt"),
+        (ROOT / "Docs/Testing/game-direction-publication.json", "publication.json"),
+    ]:
+        (out / name).write_bytes(source.read_bytes())
     doc = page.document("Aquila game and website direction", "<main>" + rounds + "</main>", "aquila-game-direction", folder=HERE)
     decide.require_ok(doc, root=out)
     decide.save_questions(doc, folder=HERE)
