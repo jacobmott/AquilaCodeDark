@@ -1,0 +1,127 @@
+{
+  "verified_utc": "2026-11-15T03:23:57.196Z",
+  "scope": "Nearly invisible glass, readable text, richer procedural ship and planet surfaces, and canvas right-drag steering",
+  "prior_verification": "Docs/Testing/universe-verification.json",
+  "environment": {
+    "node": "25.8.1",
+    "npm": "11.11.0",
+    "browser": "157.0.8103.78",
+    "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5090 (0x00002B85) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "desktop_viewport": "1440x900",
+    "phone_viewport": "390x844",
+    "browser_profile": "isolated automation context"
+  },
+  "production_build": {
+    "command": "npm run build:prod",
+    "result": "passed",
+    "initial_raw_bundle": "2.81 MB",
+    "electron": "TypeScript compilation only; desktop runtime not tested",
+    "warning": "Installed odd-numbered Node version is not LTS"
+  },
+  "browser_checks": [
+    {
+      "name": "One persistent canvas; all three ship selections work"
+    },
+    {
+      "name": "Right-drag steers, release stops steering, browser menus remain available on UI"
+    },
+    {
+      "name": "Keyboard thrust, climb, descent, turn, pitch, strafe, and mouse steering"
+    },
+    {
+      "name": "Pause and controls overlay prevent flight; Escape closes controls"
+    },
+    {
+      "name": "Settings persist; form input does not fly the ship"
+    },
+    {
+      "name": "Orbit assist, shuttle excursion, surface controls, and carrier return"
+    },
+    {
+      "name": "Manual boosted flight crosses a sector boundary without an edge"
+    },
+    {
+      "name": "Travel crosses sectors, loaded worlds stay bounded, reload restores voyage and preferences",
+      "detail": {
+        "sector": "0:0:0",
+        "loaded": 27
+      }
+    },
+    {
+      "name": "Phone layouts fit; pointer flight control releases without sticking"
+    },
+    {
+      "name": "Graphics context loss shows recovery notice and restores safely while paused"
+    },
+    {
+      "name": "Unavailable graphics shows a readable fallback and disables flight"
+    }
+  ],
+  "browser_check_count": 11,
+  "unexpected_browser_errors": [],
+  "additional_assertions": [
+    "Right-drag changes yaw and pitch; movement after release does not steer",
+    "Context menu cancellation limited to Play canvas; HTML navigation and non-Play canvas preserve browser behavior",
+    "Right-drag does not steer while paused",
+    "Right-drag changes shuttle altitude on the surface"
+  ],
+  "visual_inspection": [
+    "1440x900 Home, Fleet, Settings, Help, Pause and Surface",
+    "390x844 Home, Fleet, Settings and Flight"
+  ],
+  "art_provenance": "Original procedural geometry and shaders, plus an original runtime reflection texture; no external models, raster downloads or provider generation",
+  "test_corrections": [
+    "Fallback route count now awaits visible ship options",
+    "Touch-release test awaits observed slowdown within six seconds instead of a fixed 900ms delay",
+    "Captures wait for entrance animation before reading the rendered UI"
+  ],
+  "prior_tests": "Four model tests and six repository safety tests passed in the first build; corresponding implementation files are unchanged by this refinement.",
+  "known_limits": [
+    "Responsive phone viewport only; physical phone performance not measured",
+    "No long-duration or exhaustive universe travel test",
+    "Surface uses a separate procedural sphere, not seamless orbital geography",
+    "No walking, ground landing, combat, missions, progression or multiplayer",
+    "No packaged desktop runtime or fresh agent-client startup test",
+    "Chrome only; Firefox Shift/right-click context-menu override is documented by MDN but not exercised",
+    "Native select option popup retains its solid background for legibility"
+  ],
+  "source_sha256": {
+    "package.json": "2c9d8e144bb5366af8e5b1225ac973a0008156668dace214e775d83164e895eb",
+    "package-lock.json": "48b682570d2dcec6bbef325fa01eb69639fa6f8a7064729635909915413c935d",
+    "src/app/app.component.ts": "3c293a56352545a2871408532584ea501e7e2b85c9cdab358996562339416231",
+    "src/app/app.config.ts": "3cebc083e46193be67292a43e7577abef41272169e6b73f5313aedb4ca88498d",
+    "src/app/app.routes.ts": "175c3819f8cde7c9d2a05aa6535020fcd214c52868a6af45ecaa6c83c3fefc73",
+    "src/index.html": "c8808f6cbe0488df95cbc2360c4bf291c7c397798419d496eb159cdd13efe6f6",
+    "src/styles.css": "12ef62cd4bed58a9c32637726c02788ffca6550149f8cc658b1962ba4b4f6d18",
+    "scripts/qa-universe.mjs": "2541f86637d45d3140dd77557d3d5ce7f33be1e0c8b04aaf0046c75dbc14131c",
+    "scripts/tests/universe-model.test.mjs": "c72aa6071b8454d08b7b9d27d4532ddcc0a99989ec66d4d53a37b362bda81a81",
+    "src/app/universe/universe-art.ts": "86dbadad078c68210f0a958f885e2908cd7c0d69856f929ae152747fe43e439a",
+    "src/app/universe/universe-model.ts": "dbc0fe88e8d4d92983bfb81646adc318aca649428185574e84d52c8cb747a31f",
+    "src/app/universe/universe-scene.ts": "3cfcbda87c79dfe7b9a04f628e74ceae2c848cd2169a68df372bb7a775172ece",
+    "src/app/universe/universe.component.css": "1eef9981faa203da67f323b89bde30148ec4eb12e26f050944290eed3027f497",
+    "src/app/universe/universe.component.html": "2a766b41a00853dd5612ae9bcb274639c88cc2689dcaa930b35f6b9bd31752b5",
+    "src/app/universe/universe.component.ts": "30e440dd64a8903eddc4ec8a476fbf0f21efeb06ffc19b68f56924276d3eee11"
+  },
+  "publication": {
+    "committed": false,
+    "pushed": false,
+    "deployed": false,
+    "paid_generation": false,
+    "asset_transfers": false
+  },
+  "local_evidence": ".runtime/universe-browser-qa.json",
+  "capture_prefix": "r6-",
+  "report_round": 6,
+  "report_browser": "Game workspace tab opened and snapshot verified, then browser host disconnected; report remains locally served",
+  "references": [
+    "https://threejs.org/docs/pages/MeshStandardMaterial.html",
+    "https://developer.mozilla.org/en-US/docs/Web/API/Element/contextmenu_event"
+  ],
+  "knowledge_hub": {
+    "provider": "openai",
+    "query": "three.js material",
+    "outcome": "unavailable",
+    "reason": "budget_exhausted",
+    "evidence_used": false
+  }
+}

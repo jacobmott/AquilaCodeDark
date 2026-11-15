@@ -1,0 +1,580 @@
+{
+  "verified_utc": "2026-11-15T05:10:49.682909+00:00",
+  "scope": "Approved local planetary scale, shared surface geography, bounded terrain and quality budgets",
+  "authority": "Yeah, let's go ahead and do that. Do do all your recommendations.",
+  "dimensions": {
+    "home_radius": 60000,
+    "home_diameter_to_starting_central_hull": 2000,
+    "generated_radius": [
+      30000,
+      70000
+    ],
+    "sector_size": 800000,
+    "home_orbit_floor": 3900,
+    "shuttle_entry_clearance": 350
+  },
+  "production_build": {
+    "command": "npm run build:prod",
+    "result": "passed",
+    "initial_raw_bundle": "2.83 MB",
+    "electron": "TypeScript compilation; runtime untested",
+    "warning": "Node 25.8.1 is odd-numbered and not LTS"
+  },
+  "pure_tests": {
+    "command": "node --test scripts/tests/universe-model.test.mjs",
+    "passed": 9
+  },
+  "safety_tests": {
+    "command": "./.venv-tools/Scripts/python.exe -B -m unittest discover -s scripts/tests -v",
+    "passed": 6,
+    "scope": "isolated fixtures; no real transfers"
+  },
+  "game_checks": [
+    {
+      "name": "One persistent canvas; all three ship selections work"
+    },
+    {
+      "name": "Right-drag steers, release stops steering, browser menus remain available on UI"
+    },
+    {
+      "name": "Keyboard thrust, climb, descent, turn, pitch, strafe, and mouse steering"
+    },
+    {
+      "name": "Pause and controls overlay prevent flight; Escape closes controls"
+    },
+    {
+      "name": "Settings persist; form input does not fly the ship"
+    },
+    {
+      "name": "Orbit assist, shuttle excursion, surface controls, and carrier return"
+    },
+    {
+      "name": "Manual boosted flight crosses a sector boundary without an edge"
+    },
+    {
+      "name": "Travel crosses sectors, loaded worlds stay bounded, reload restores voyage and preferences",
+      "detail": {
+        "sector": "0:0:0",
+        "loaded": 27
+      }
+    },
+    {
+      "name": "Phone layouts fit; pointer flight control releases without sticking"
+    },
+    {
+      "name": "Graphics context loss shows recovery notice and restores safely while paused"
+    },
+    {
+      "name": "Unavailable graphics shows a readable fallback and disables flight"
+    }
+  ],
+  "quality_checks": [
+    {
+      "name": "Pointer selection changes all three quality modes and rendering continues at high display density",
+      "detail": [
+        {
+          "value": "low",
+          "elapsedMs": 331,
+          "width": 1280,
+          "height": 800
+        },
+        {
+          "value": "balanced",
+          "elapsedMs": 112,
+          "width": 1792,
+          "height": 1120
+        },
+        {
+          "value": "high",
+          "elapsedMs": 124,
+          "width": 2560,
+          "height": 1600
+        },
+        {
+          "value": "balanced",
+          "elapsedMs": 95,
+          "width": 1792,
+          "height": 1120
+        }
+      ]
+    },
+    {
+      "name": "Repeated selection, motion and sensitivity changes do not reset the graphics buffer"
+    },
+    {
+      "name": "Arrow keys select quality without steering; saved choice survives reload and navigation remains responsive"
+    },
+    {
+      "name": "Touch selection works at phone size; equal physical resolutions cause no redundant buffer reset"
+    }
+  ],
+  "scale_checks": [
+    {
+      "name": "desktop-balanced: carrier stops at orbital boundary during boost",
+      "detail": {
+        "distance": 3900
+      }
+    },
+    {
+      "name": "desktop-balanced: moving terrain remains bounded and releases old patches",
+      "detail": {
+        "generated": 290,
+        "evicted": 172,
+        "resident": 118,
+        "limit": 118
+      }
+    },
+    {
+      "name": "desktop-balanced: quality limits both pixels and terrain",
+      "detail": [
+        {
+          "quality": "High",
+          "dimensions": {
+            "width": 1440,
+            "height": 900
+          },
+          "terrain": {
+            "planet": "0:0:0",
+            "resident": 182,
+            "visible": 138,
+            "queued": 0,
+            "limit": 182,
+            "geometryBytes": 1841112,
+            "generated": 354,
+            "evicted": 172,
+            "peakResident": 182,
+            "lastBuildMs": 0,
+            "peakBuildMs": 3.2000000178813934,
+            "ready": true
+          }
+        },
+        {
+          "quality": "Light",
+          "dimensions": {
+            "width": 1385,
+            "height": 866
+          },
+          "terrain": {
+            "planet": "0:0:0",
+            "resident": 70,
+            "visible": 54,
+            "queued": 0,
+            "limit": 70,
+            "geometryBytes": 708120,
+            "generated": 354,
+            "evicted": 284,
+            "peakResident": 182,
+            "lastBuildMs": 0,
+            "peakBuildMs": 3.2000000178813934,
+            "ready": true
+          }
+        },
+        {
+          "quality": "Balanced",
+          "dimensions": {
+            "width": 1440,
+            "height": 900
+          },
+          "terrain": {
+            "planet": "0:0:0",
+            "resident": 118,
+            "visible": 90,
+            "queued": 0,
+            "limit": 118,
+            "geometryBytes": 1193688,
+            "generated": 402,
+            "evicted": 284,
+            "peakResident": 182,
+            "lastBuildMs": 0,
+            "peakBuildMs": 3.2000000178813934,
+            "ready": true
+          }
+        },
+        {
+          "quality": "Balanced",
+          "dimensions": {
+            "width": 1440,
+            "height": 900
+          },
+          "terrain": {
+            "planet": "0:0:0",
+            "resident": 118,
+            "visible": 90,
+            "queued": 0,
+            "limit": 118,
+            "geometryBytes": 1193688,
+            "generated": 402,
+            "evicted": 284,
+            "peakResident": 182,
+            "lastBuildMs": 0,
+            "peakBuildMs": 3.2000000178813934,
+            "ready": true
+          }
+        }
+      ]
+    },
+    {
+      "name": "phone-viewport-cpu4-light: carrier stops at orbital boundary during boost",
+      "detail": {
+        "distance": 3900
+      }
+    },
+    {
+      "name": "phone-viewport-cpu4-light: moving terrain remains bounded and releases old patches",
+      "detail": {
+        "generated": 142,
+        "evicted": 72,
+        "resident": 70,
+        "limit": 70
+      }
+    },
+    {
+      "name": "phone-viewport-cpu4-light: quality limits both pixels and terrain",
+      "detail": [
+        {
+          "quality": "High",
+          "dimensions": {
+            "width": 780,
+            "height": 1688
+          },
+          "terrain": {
+            "planet": "0:0:0",
+            "resident": 182,
+            "visible": 138,
+            "queued": 0,
+            "limit": 182,
+            "geometryBytes": 1841112,
+            "generated": 254,
+            "evicted": 72,
+            "peakResident": 182,
+            "lastBuildMs": 0,
+            "peakBuildMs": 15.5,
+            "ready": true
+          }
+        },
+        {
+          "quality": "Light",
+          "dimensions": {
+            "width": 390,
+            "height": 844
+          },
+          "terrain": {
+            "planet": "0:0:0",
+            "resident": 70,
+            "visible": 54,
+            "queued": 0,
+            "limit": 70,
+            "geometryBytes": 708120,
+            "generated": 254,
+            "evicted": 184,
+            "peakResident": 182,
+            "lastBuildMs": 0,
+            "peakBuildMs": 15.5,
+            "ready": true
+          }
+        },
+        {
+          "quality": "Balanced",
+          "dimensions": {
+            "width": 546,
+            "height": 1181
+          },
+          "terrain": {
+            "planet": "0:0:0",
+            "resident": 118,
+            "visible": 90,
+            "queued": 0,
+            "limit": 118,
+            "geometryBytes": 1193688,
+            "generated": 302,
+            "evicted": 184,
+            "peakResident": 182,
+            "lastBuildMs": 0,
+            "peakBuildMs": 15.5,
+            "ready": true
+          }
+        },
+        {
+          "quality": "Light",
+          "dimensions": {
+            "width": 390,
+            "height": 844
+          },
+          "terrain": {
+            "planet": "0:0:0",
+            "resident": 70,
+            "visible": 54,
+            "queued": 0,
+            "limit": 70,
+            "geometryBytes": 708120,
+            "generated": 302,
+            "evicted": 232,
+            "peakResident": 182,
+            "lastBuildMs": 0.19999998807907104,
+            "peakBuildMs": 15.5,
+            "ready": true
+          }
+        }
+      ]
+    },
+    {
+      "name": "Logarithmic depth fallback renders approach and descent without shader errors"
+    }
+  ],
+  "browser": "157.0.8103.78",
+  "scenarios": [
+    {
+      "config": {
+        "name": "desktop-balanced",
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "deviceScaleFactor": 1,
+        "cpuRate": 1,
+        "quality": "Balanced",
+        "targetP95Ms": 16.7
+      },
+      "startupMs": 911,
+      "webgl": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5090 (0x00002B85) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "heap": {
+        "usedSize": 20561360,
+        "totalSize": 76001280,
+        "embedderHeapUsedSize": 2556416,
+        "backingStorageSize": 10599173
+      },
+      "meetsWarmP95Target": true,
+      "stages": [
+        {
+          "name": "first-approach",
+          "durationMs": 8001.200000011921,
+          "frames": 1882,
+          "medianMs": 4.199999999999818,
+          "p95Ms": 4.800000000000182,
+          "p99Ms": 8.200000000000273,
+          "maxMs": 12.700000000000728,
+          "over50ms": 0,
+          "max_resident_tiles": 102,
+          "max_tile_buffer_bytes": 1031832,
+          "peak_patch_build_ms": 3.199999988079071,
+          "max_worlds": 27,
+          "max_geometries": 211,
+          "max_textures": 4
+        },
+        {
+          "name": "descent",
+          "durationMs": 6501.100000005961,
+          "frames": 1542,
+          "medianMs": 4.199999999998909,
+          "p95Ms": 4.799999999999272,
+          "p99Ms": 7.600000000000364,
+          "maxMs": 12.800000000001091,
+          "over50ms": 0,
+          "max_resident_tiles": 118,
+          "max_tile_buffer_bytes": 1193688,
+          "peak_patch_build_ms": 3.199999988079071,
+          "max_worlds": 27,
+          "max_geometries": 267,
+          "max_textures": 4
+        },
+        {
+          "name": "surface-travel",
+          "durationMs": 30002.500000011918,
+          "frames": 7143,
+          "medianMs": 4.19999999999709,
+          "p95Ms": 4.900000000001455,
+          "p99Ms": 6.200000000004366,
+          "maxMs": 33.30000000000291,
+          "over50ms": 0,
+          "max_resident_tiles": 118,
+          "max_tile_buffer_bytes": 1193688,
+          "peak_patch_build_ms": 3.2000000178813934,
+          "max_worlds": 27,
+          "max_geometries": 285,
+          "max_textures": 4
+        },
+        {
+          "name": "warm-approach",
+          "durationMs": 8000.5999999940395,
+          "frames": 1885,
+          "medianMs": 4.19999999999709,
+          "p95Ms": 5,
+          "p99Ms": 8.200000000011642,
+          "maxMs": 12.5,
+          "over50ms": 0,
+          "max_resident_tiles": 102,
+          "max_tile_buffer_bytes": 1031832,
+          "peak_patch_build_ms": 2.4000000059604645,
+          "max_worlds": 27,
+          "max_geometries": 257,
+          "max_textures": 4
+        }
+      ]
+    },
+    {
+      "config": {
+        "name": "phone-viewport-cpu4-light",
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "deviceScaleFactor": 2,
+        "cpuRate": 4,
+        "quality": "Light",
+        "targetP95Ms": 33.4
+      },
+      "startupMs": 1949,
+      "webgl": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5090 (0x00002B85) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "heap": {
+        "usedSize": 34818380,
+        "totalSize": 56078336,
+        "embedderHeapUsedSize": 14347800,
+        "backingStorageSize": 16411408
+      },
+      "meetsWarmP95Target": true,
+      "stages": [
+        {
+          "name": "first-approach",
+          "durationMs": 8000.70000000596,
+          "frames": 604,
+          "medianMs": 12.399999999999636,
+          "p95Ms": 26,
+          "p99Ms": 45.80000000000109,
+          "maxMs": 158.5,
+          "over50ms": 6,
+          "max_resident_tiles": 70,
+          "max_tile_buffer_bytes": 708120,
+          "peak_patch_build_ms": 15.5,
+          "max_worlds": 27,
+          "max_geometries": 143,
+          "max_textures": 4
+        },
+        {
+          "name": "descent",
+          "durationMs": 6508.900000017882,
+          "frames": 712,
+          "medianMs": 8.300000000001091,
+          "p95Ms": 16.600000000000364,
+          "p99Ms": 29.099999999998545,
+          "maxMs": 45.69999999999891,
+          "over50ms": 0,
+          "max_resident_tiles": 70,
+          "max_tile_buffer_bytes": 708120,
+          "peak_patch_build_ms": 15.5,
+          "max_worlds": 27,
+          "max_geometries": 197,
+          "max_textures": 4
+        },
+        {
+          "name": "surface-travel",
+          "durationMs": 30003.800000005962,
+          "frames": 4104,
+          "medianMs": 8.19999999999709,
+          "p95Ms": 12.599999999998545,
+          "p99Ms": 21,
+          "maxMs": 76.10000000000218,
+          "over50ms": 7,
+          "max_resident_tiles": 70,
+          "max_tile_buffer_bytes": 708120,
+          "peak_patch_build_ms": 15.5,
+          "max_worlds": 27,
+          "max_geometries": 197,
+          "max_textures": 4
+        },
+        {
+          "name": "warm-approach",
+          "durationMs": 8003.200000005963,
+          "frames": 1030,
+          "medianMs": 8.30000000000291,
+          "p95Ms": 12.69999999999709,
+          "p99Ms": 16.70000000001164,
+          "maxMs": 20.89999999999418,
+          "over50ms": 0,
+          "max_resident_tiles": 70,
+          "max_tile_buffer_bytes": 708120,
+          "peak_patch_build_ms": 5.299999982118607,
+          "max_worlds": 27,
+          "max_geometries": 194,
+          "max_textures": 4
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "source_sha256": {
+    "package.json": "2c9d8e144bb5366af8e5b1225ac973a0008156668dace214e775d83164e895eb",
+    "package-lock.json": "48b682570d2dcec6bbef325fa01eb69639fa6f8a7064729635909915413c935d",
+    "src/app/app.component.ts": "3c293a56352545a2871408532584ea501e7e2b85c9cdab358996562339416231",
+    "src/app/app.config.ts": "3cebc083e46193be67292a43e7577abef41272169e6b73f5313aedb4ca88498d",
+    "src/app/app.routes.ts": "175c3819f8cde7c9d2a05aa6535020fcd214c52868a6af45ecaa6c83c3fefc73",
+    "src/index.html": "c8808f6cbe0488df95cbc2360c4bf291c7c397798419d496eb159cdd13efe6f6",
+    "src/styles.css": "12ef62cd4bed58a9c32637726c02788ffca6550149f8cc658b1962ba4b4f6d18",
+    "scripts/qa-planet-scale.mjs": "c68a5ab9e61cd0c85c5414892399a0da7fd5dfc98e3274e4aa00dcc74910fb6f",
+    "scripts/qa-universe.mjs": "e3b51952c5fbf26e42e3f0f517adcfa17a96ee38e7413623de2ae67213126167",
+    "scripts/qa-quality.mjs": "cd0cd21f7c2446464618e8825647fbdd8ed9ad8c1acf127f44033fe06439a628",
+    "scripts/tests/universe-model.test.mjs": "6192904237ddaa8cb2cc4df92d7291a3240b3b326634557e51c6331f5ae85943",
+    "src/app/universe/planet-fields.ts": "33dc893b59ff8bf603569105beade5d0822d84e0f7fc1a4fc66e320e34443165",
+    "src/app/universe/planet-terrain.ts": "6af07dac4da091655edeeefbe34204a91675731e6121fa724c906ed84748fce2",
+    "src/app/universe/planet-tiles.ts": "aa5e9596122362afdcbdabcd14253052109494b704d967e964b2118309ec5afd",
+    "src/app/universe/planet-visuals.ts": "345433644f9db404fb507e5937a33c41453d179d7adc77240e820a19c30555ab",
+    "src/app/universe/universe-art.ts": "c7ef048f84d0aedb39f05b2ef1537d62458247a79fa32f28a47852e66ad20be0",
+    "src/app/universe/universe-model.ts": "8ddc5de3fee1c086eaaf4bcaad20f24a166ee524563c27b20838b8c72caa5e84",
+    "src/app/universe/universe-scene.ts": "468bc9a659b32ce56771c9138914894f614a6b87c52e133f34546010b3801078",
+    "src/app/universe/universe.component.css": "7ad784b8d3bcaf1fec356b31722d47aa7088577c9fea3f9c8a95a7171b14e324",
+    "src/app/universe/universe.component.html": "030abaf375fd4a7eda8b7ce380762714757fdaac516d45b6707fc6039f659226",
+    "src/app/universe/universe.component.ts": "bd94ea9458e14eb150226c52d4f4d06e297175704da5c55c6c7cd1c22403f1dc"
+  },
+  "visual_review": [
+    "r10-home-desktop.png",
+    "r10-planet-horizon.png",
+    "r10-desktop-balanced-surface.png",
+    "r10-phone-viewport-cpu4-light-surface.png",
+    "r10-planet-log-depth.png"
+  ],
+  "intermediate_findings": [
+    "A first-descent frame took 637.4 ms because scene fog selected a new ship shader. Terrain already handles haze; removing scene fog reduced final desktop descent maximum to 12.8 ms.",
+    "A straight atlas departure hit its current planet. Exterior arc routing now passes unit coverage and actual travel to another world.",
+    "Pinned Three.js permits reversed and logarithmic flags together; explicit exclusive selection fixed depth occlusion. Custom shaders need common and logarithmic-depth chunks.",
+    "The first general travel assertion assumed atlas row two always belongs to another sector. Test now chooses and verifies the actual destination."
+  ],
+  "limits": [
+    "Headless Chrome development preview on RTX 5090. RAF intervals are observed browser cadence, not isolated GPU execution time.",
+    "CPU rate 4 and phone viewport are synthetic constraints, not physical phone/laptop GPU, power or thermal results.",
+    "Provisional warm p95 targets: desktop 16.7 ms and constrained viewport 33.4 ms. Both passed here; not universal FPS promises.",
+    "Constrained first approach peaked at 158.5 ms; surface travel peaked at 76.1 ms. Brief spikes remain.",
+    "Terrain buffer bytes exclude renderer/driver overhead. End-of-run heap is a snapshot, not leak proof.",
+    "Thirty seconds of travel per scenario is not a long-session soak test.",
+    "Distant hills and ring silhouettes remain coarse; art is procedural prototype detail.",
+    "Descent is a controlled craft/camera transition; no ground landing, walking or unrestricted seamless atmosphere flight.",
+    "Physical devices, other browser engines, Electron runtime and fresh agent sessions remain untested."
+  ],
+  "local_evidence": [
+    ".runtime/planet-scale-qa.json",
+    ".runtime/universe-browser-qa.json",
+    ".runtime/quality-browser-qa.json",
+    ".runtime/r10-build.log"
+  ],
+  "report_round": 10,
+  "publication": {
+    "committed": false,
+    "pushed": false,
+    "deployed": false,
+    "paid_generation": false,
+    "asset_transfers": false
+  },
+  "report_browser": {
+    "report_round": 10,
+    "report_snapshot": "Verified in Paseo at http://127.0.0.1:8953/",
+    "preview_snapshot": "Home ready in Paseo at http://127.0.0.1:4200/home"
+  },
+  "final_checks": {
+    "working_text_guard": {
+      "files": 48,
+      "failures": 0
+    },
+    "source_hash_mismatches": 0,
+    "git_diff_check": "passed",
+    "startup_context": "passed; local files and routes only",
+    "shared_index": "empty; no staging performed"
+  }
+}

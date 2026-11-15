@@ -1,0 +1,142 @@
+{
+  "verified_at": "2026-11-15T09:49:57.897524+00:00",
+  "provider": "openai",
+  "scope": "Automatic weapon acquisition, aim and fire; console modes Automatic/Hold fire; no manual lock or trigger controls.",
+  "owner_direction": [
+    "All weapons are automated; player does not aim or lock manually.",
+    "Console actions may change operating modes; weapons acquire and fire themselves."
+  ],
+  "implementation": [
+    "One target is acquired automatically within 60 km and clear planetary line of sight. Tracking is lost and reacquired without user input.",
+    "Start/reset defaults to Automatic, with a 0.85-second first-shot delay and ongoing cooldown. First outgoing shot engages the drone.",
+    "Hold fire retains sensors and blocks outgoing fire; incoming damage continues after engagement.",
+    "Mode survives view/station changes; automatic weapons continue while walking. Mode changes require a station or exterior control.",
+    "Removed T/X actions and manual lock/fire buttons. Unrestricted prototype turret aiming replaces manual bow alignment.",
+    "Pause, route and graphics recovery behavior remains; temporary training state ends on reload, travel or craft change."
+  ],
+  "build": {
+    "command": "npm run build:prod",
+    "passed": true,
+    "includes": [
+      "Angular production build",
+      "Electron TypeScript compilation"
+    ],
+    "raw_bundle_mb": 2.95,
+    "main_chunk": "main-LCMHMPQQ.js",
+    "warning": "Existing Node 25.8.1 non-LTS warning"
+  },
+  "model_tests": {
+    "passed": 23,
+    "failed": 0,
+    "combat": 6,
+    "interior": 6,
+    "universe": 11,
+    "command": "node --test scripts/tests/universe-model.test.mjs scripts/tests/interior-model.test.mjs scripts/tests/combat-model.test.mjs"
+  },
+  "browser": {
+    "time": "2026-11-15T09:46:57.600Z",
+    "base": "http://127.0.0.1:4200",
+    "browser": "157.0.8103.78",
+    "prefix": "r22-auto-",
+    "checks": [
+      {
+        "name": "Start practice automatically acquires and fires at Sentinel without aiming, locking or trigger input"
+      },
+      {
+        "name": "Hold fire keeps automatic tracking, stops outgoing shots and allows incoming damage; old shortcuts do nothing"
+      },
+      {
+        "name": "Pause and settings freeze combat; modes persist across views; automatic weapons continue while walking away from the console"
+      },
+      {
+        "name": "Automatic fire wins the encounter without trigger input and terminal state stops both weapons"
+      },
+      {
+        "name": "Hold fire does not protect from defeat; shield overflow, disabled flight and automatic-mode reset remain correct"
+      },
+      {
+        "name": "Repeated encounters reuse resources; narrow native controls switch automatic and hold modes",
+        "detail": {
+          "geometries": 60,
+          "textures": 7
+        }
+      },
+      {
+        "name": "Leaving range stops both guns; returning automatically reacquires and resumes fire"
+      },
+      {
+        "name": "Context restoration stays paused; reload and travel clear practice without changing the saved craft"
+      }
+    ],
+    "errors": []
+  },
+  "rendered_review": {
+    "method": "Direct inspection of native-browser captures",
+    "images": [
+      "reports/game-direction/media/r22-auto-bridge-auto.png",
+      "reports/game-direction/media/r22-auto-hold-fire.png",
+      "reports/game-direction/media/r22-auto-mobile.png"
+    ],
+    "findings": "Automatic/Hold fire states and accessible controls fit desktop and narrow layouts. Instrument updates remain throttled; captures can precede the next instrument refresh."
+  },
+  "source_sha256": {
+    "scripts/qa-combat.mjs": "16af5137cc40c2910215b0f1193cb8900091ffdcd4da433c9ba82c3a34b038cf",
+    "scripts/tests/combat-model.test.mjs": "e08bde0520f466ee5c59b4ced02baff2ec0c83f66ea38c58adaaf0264d1c3050",
+    "scripts/tests/interior-model.test.mjs": "7c4fed1161e213c73631f2531e8c767e8275a83bb1dda6d53cf68e823b191f49",
+    "scripts/tests/universe-model.test.mjs": "f43b4d5b5e8e50b4c935a407e9bce0dffbd672fecc39d66a104bf86fb26ec0b3",
+    "src/app/universe/battleship-art.ts": "536def0a2533c6f34342fcf28c92e13c7946a7007231c9f60b1cdaa614d882c6",
+    "src/app/universe/combat-art.ts": "af9608215bcbe15984ad7176f0f00973e3dc4e5c72c1712f22cb76fe26daf6d5",
+    "src/app/universe/combat-model.ts": "a562059edf609871e06d0a44779d2e876bb4d271fa0f3e145cd294bb7a357ac6",
+    "src/app/universe/interior-model.ts": "6ebbf6eb41fcd442b2f63a53498050ee14d7eab9fa011cd03a5631010bcb30e7",
+    "src/app/universe/planet-fields.ts": "33dc893b59ff8bf603569105beade5d0822d84e0f7fc1a4fc66e320e34443165",
+    "src/app/universe/planet-terrain.ts": "6af07dac4da091655edeeefbe34204a91675731e6121fa724c906ed84748fce2",
+    "src/app/universe/planet-tiles.ts": "aa5e9596122362afdcbdabcd14253052109494b704d967e964b2118309ec5afd",
+    "src/app/universe/planet-visuals.ts": "345433644f9db404fb507e5937a33c41453d179d7adc77240e820a19c30555ab",
+    "src/app/universe/ship-interior.ts": "bcbb6b484cde65085d43a2ff9eee14ce5e9fd3726a17fb17b6b7b3206d12c8fd",
+    "src/app/universe/universe-art.ts": "d88a66e3ad11e1d19b668f94207e05c65d52340d9449f21cb6ee1f6ff79c83ea",
+    "src/app/universe/universe-model.ts": "6be551edd23d89d297f62387c980ecc6222696c5af5d701ac4a6c174c43e4bbb",
+    "src/app/universe/universe-scene.ts": "28a9e8f7e76d638b5f6fd3efdbd2c7bc8802a0cf4fc5d02d0b98784276bcd8cc",
+    "src/app/universe/universe.component.css": "90de8f9030f2bd00f3dab419696b326293aad4100d89eec938a4b1c4d20fdb4b",
+    "src/app/universe/universe.component.html": "eb389165853e194c6c8565c698798971faff7d59b21a70ba2e958784890c612d",
+    "src/app/universe/universe.component.ts": "23d06e6bee13dfc4242c48e5b47a818fa9913bc4a32fd11879804f0a484ef14e"
+  },
+  "knowledge_lookup": {
+    "query": "target acquisition",
+    "provider": "openai",
+    "outcome": "empty",
+    "complete_for_scope": true,
+    "next_cursor": null,
+    "distinct_records": 0,
+    "limit": "Selected catalog only. No external implementation reused or research submitted."
+  },
+  "limits": [
+    "One stationary training target, instant pulse hits and temporary damage. General enemy tactics and physical destruction remain unbuilt.",
+    "Prototype turret can aim in any direction. Mount-specific arcs and own-hull occlusion are not modeled.",
+    "Eight focused combat groups rerun; previous broad gameplay and safety checks remain historical in combat-verification.json.",
+    "Installed isolated Chrome 157.0.8103.78 on RTX 5090. Physical phones/laptops, other engines, Electron runtime, long play and fresh agent sessions remain untested.",
+    "No commit, push, deployment, transfer, paid generation or research submission."
+  ],
+  "report": {
+    "round": 22,
+    "build_passed": true,
+    "url": "http://127.0.0.1:8953/",
+    "workspace_snapshot_verified": false,
+    "open_questions": [],
+    "http_verified": {
+      "status": 200,
+      "round22": true,
+      "two_media_references": true
+    },
+    "snapshot_blocker": "Paseo browser_list_tabs returned browser_no_host: No browser automation host is connected. No system browser opened."
+  },
+  "final_checks": {
+    "checked_at": "2026-11-15T09:50:31.831902+00:00",
+    "startup_context": "Passed: local files and routes only",
+    "git_diff_check": "Passed",
+    "shared_index": "Empty; unchanged",
+    "source_hashes": "Verified",
+    "checkpoint_archive_sha256": "7e9b3c3c85afc9fe54b2c8d0643ae581188f286af97dca71bde0efa3dc355c9c",
+    "checkpoint_words": 1185,
+    "checkpoint_bytes": 9306
+  }
+}

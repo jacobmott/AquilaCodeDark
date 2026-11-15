@@ -1,0 +1,225 @@
+{
+  "verified_at": "2026-11-15T06:32:17.934279+00:00",
+  "scope": "Right-button camera orbit and doubled battleship height; local browser execution and production compilation",
+  "runtime": {
+    "browser": "157.0.8103.78",
+    "graphics": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5090 (0x00002B85) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "node": "25.8.1",
+    "node_warning": "Odd-numbered release outside LTS; installed toolchain retained"
+  },
+  "build": {
+    "command": "npm run build:prod",
+    "angular_production": true,
+    "electron_typescript": true,
+    "raw_browser_bundle_mb": 2.86
+  },
+  "model_tests": {
+    "command": "node --test scripts/tests/universe-model.test.mjs",
+    "passed": 11
+  },
+  "browser_runs": {
+    "camera": {
+      "command": "node scripts/qa-orbit-camera.mjs",
+      "time": "2026-11-15T06:29:23.998Z",
+      "base": "http://127.0.0.1:4200",
+      "browser": "157.0.8103.78",
+      "prefix": "r15-orbit-",
+      "checks": [
+        {
+          "name": "Full horizontal orbit and above/below views leave the ship still; release returns around the hull",
+          "detail": {
+            "dimensions": [
+              4800,
+              1280.0000071525574,
+              13600
+            ],
+            "minimumCameraRadius": 20318.46449579237,
+            "maximumCameraRadius": 20318.46450891406
+          }
+        },
+        {
+          "name": "Left drag steers; right takes camera control during a chord and releases while left stays held"
+        },
+        {
+          "name": "Pause, focus loss and cancelled pointer input clear camera control"
+        },
+        {
+          "name": "Inspection shuttle can look around without moving the shuttle or parked battleship"
+        },
+        {
+          "name": "Camera orbit preserves arrival assist and surface heading and altitude"
+        },
+        {
+          "name": "Reduced motion returns directly to chase view"
+        }
+      ],
+      "errors": []
+    },
+    "game": {
+      "command": "node scripts/qa-universe.mjs",
+      "time": "2026-11-15T06:28:33.493Z",
+      "capture_prefix": "r15-game-",
+      "checks": [
+        {
+          "name": "One persistent canvas; the three existing shuttle selections work"
+        },
+        {
+          "name": "Right-drag moves the camera without steering; browser menus remain available on UI"
+        },
+        {
+          "name": "Keyboard thrust, climb, descent, turn, pitch, strafe, and mouse steering"
+        },
+        {
+          "name": "Pause and controls overlay prevent flight; Escape closes controls"
+        },
+        {
+          "name": "Settings persist; form input does not fly the ship"
+        },
+        {
+          "name": "Orbit assist, shuttle excursion, surface controls, and carrier return"
+        },
+        {
+          "name": "Manual boosted flight crosses a sector boundary without an edge"
+        },
+        {
+          "name": "Travel crosses sectors, loaded worlds stay bounded, reload restores voyage and preferences",
+          "detail": {
+            "sector": "0:0:0",
+            "loaded": 27
+          }
+        },
+        {
+          "name": "Phone layouts fit; pointer flight control releases without sticking"
+        },
+        {
+          "name": "Graphics context loss shows recovery notice and restores safely while paused"
+        },
+        {
+          "name": "Unavailable graphics shows a readable fallback and disables flight"
+        }
+      ],
+      "errors": []
+    },
+    "battleship": {
+      "command": "node scripts/qa-battleship.mjs",
+      "receipt_modified_utc": "2026-11-15T06:31:10.736647+00:00",
+      "capture_prefix": "r15-battleship-",
+      "checks": [
+        {
+          "name": "Original exterior matches declared relative scale; four fleet choices remain available",
+          "detail": {
+            "dimensions": [
+              4800,
+              1280.0000071525574,
+              13600
+            ],
+            "spec": {
+              "id": "resolute",
+              "name": "Resolute",
+              "role": "Research battleship",
+              "description": "An armored home for the long voyage. Twin hangar galleries, a raised command island and six main drives.",
+              "length": 13600,
+              "width": 4800,
+              "height": 1280,
+              "capital": true,
+              "speed": 1100,
+              "handling": 0.18,
+              "color": 9608095,
+              "accent": 14263660
+            }
+          }
+        },
+        {
+          "name": "Battleship responds to thrust and slower turning without replacing the renderer"
+        },
+        {
+          "name": "Shuttle enters the open gallery; swept hull checks stop boosted flight through its inner wall",
+          "detail": {
+            "local": [
+              979.8692060242674,
+              -180,
+              -1000.0000000000031
+            ]
+          }
+        },
+        {
+          "name": "Inspection, pause, route changes, command return and reload preserve the battleship position"
+        },
+        {
+          "name": "Full capital hull stays outside the planet even during boosted impact",
+          "detail": {
+            "distance": 11683,
+            "envelope": 7783.447492730366
+          }
+        },
+        {
+          "name": "Planet approach, turning at the boundary, surface survey and return retain capital state"
+        },
+        {
+          "name": "Repeated shuttle and capital selection releases replaced hull geometry",
+          "detail": {
+            "allocations": [
+              94,
+              94,
+              94
+            ]
+          }
+        },
+        {
+          "name": "Narrow viewport keeps fleet selection and inspection controls usable"
+        }
+      ],
+      "measurements": [
+        {
+          "name": "capital-flight",
+          "frames": 1187,
+          "p95Ms": 4.600000000000364,
+          "maxMs": 12.700000000000728
+        },
+        {
+          "name": "phone-viewport-capital",
+          "frames": 950,
+          "p95Ms": 4.30000000000291,
+          "maxMs": 37.70000000000073
+        }
+      ],
+      "errors": []
+    }
+  },
+  "source_sha256": {
+    "src/app/universe/battleship-art.ts": "536def0a2533c6f34342fcf28c92e13c7946a7007231c9f60b1cdaa614d882c6",
+    "src/app/universe/planet-fields.ts": "33dc893b59ff8bf603569105beade5d0822d84e0f7fc1a4fc66e320e34443165",
+    "src/app/universe/planet-terrain.ts": "6af07dac4da091655edeeefbe34204a91675731e6121fa724c906ed84748fce2",
+    "src/app/universe/planet-tiles.ts": "aa5e9596122362afdcbdabcd14253052109494b704d967e964b2118309ec5afd",
+    "src/app/universe/planet-visuals.ts": "345433644f9db404fb507e5937a33c41453d179d7adc77240e820a19c30555ab",
+    "src/app/universe/universe-art.ts": "d88a66e3ad11e1d19b668f94207e05c65d52340d9449f21cb6ee1f6ff79c83ea",
+    "src/app/universe/universe-model.ts": "6be551edd23d89d297f62387c980ecc6222696c5af5d701ac4a6c174c43e4bbb",
+    "src/app/universe/universe-scene.ts": "3721c8fe56e8b29938e06749ec18fa833d8e3ec7614c745fdd4e8a8da282f1d3",
+    "src/app/universe/universe.component.css": "78a7925442cfd165c69940101f836c7f663ddd511b194b23c3ff786570436a77",
+    "src/app/universe/universe.component.html": "991ba596ac5b31a8e0c0e83ebc0e1bdcb82a46246f9400db534360bf34ee1e61",
+    "src/app/universe/universe.component.ts": "71f2632b270c2d61956879426149099c0a3d4ad074386ccae0ff8142ef4488fc",
+    "scripts/qa-orbit-camera.mjs": "fb703993d206ed1187a807a14ec971d8662f766502fa5bfdefe02da711f5a12f",
+    "scripts/qa-universe.mjs": "32988b47a3d9c3d27fc734cd76fdf12bfef7fdbb19391da1bd78e55ff37b3d16",
+    "scripts/qa-battleship.mjs": "24e79be5d9d893deddf50280aaae02bc3d4065a8b2200d190aa407ef7dd7f81e",
+    "scripts/tests/universe-model.test.mjs": "f43b4d5b5e8e50b4c935a407e9bce0dffbd672fecc39d66a104bf86fb26ec0b3"
+  },
+  "rendered_review": [
+    "reports/game-direction/media/r15-orbit-side.png",
+    "reports/game-direction/media/r15-battleship-fleet.png",
+    "reports/game-direction/media/r15-orbit-surface.png",
+    "reports/game-direction/media/r15-game-help-desktop.png"
+  ],
+  "failures_resolved": [
+    "Chrome released capture when either button released during a chord. Preserve the remaining drag only for that known transition; other losses clear it.",
+    "QA used strict integer equality for floating-point hangar height. Replaced with a small tolerance.",
+    "QA used the standalone shuttle descent label for the capital ship. Corrected to the actual Launch survey shuttle button."
+  ],
+  "limits": [
+    "Native Chrome on this desktop; narrow viewport is not physical-phone validation.",
+    "Camera return-radius measurement is in unobstructed space; planet and terrain obstruction may shorten the offset.",
+    "Exterior art remains rough; hull contact uses sampled sweeps. Walking, docking, crew and combat remain unbuilt.",
+    "No long-session, other browser engine, physical phone/laptop, Electron runtime, fresh agent-session or provider-execution claim.",
+    "Quality-specific, safety and long planet-scale suites were not rerun; historical receipts remain available.",
+    "No commit, push, deployment, paid generation or asset transfer."
+  ]
+}

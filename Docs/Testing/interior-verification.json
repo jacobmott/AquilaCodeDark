@@ -1,0 +1,301 @@
+{
+  "verified_at": "2026-11-15T08:25:35.956686+00:00",
+  "scope": "First walkable bridge, working helm, connected passage and hangar, shuttle launch and guided return; local implementation only",
+  "runtime": {
+    "browser": "157.0.8103.78",
+    "graphics": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5090 (0x00002B85) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "node": "25.8.1",
+    "node_warning": "Odd-numbered installed Node release emits the existing LTS warning"
+  },
+  "build": {
+    "command": "npm run build:prod",
+    "angular_production": true,
+    "electron_typescript": true,
+    "raw_browser_bundle_mb": 2.9
+  },
+  "model_tests": {
+    "command": "node --test scripts/tests/universe-model.test.mjs scripts/tests/interior-model.test.mjs",
+    "passed": 14
+  },
+  "browser_runs": {
+    "interior": {
+      "time": "2026-11-15T08:20:34.642Z",
+      "checks": [
+        {
+          "name": "Enter a human-scale bridge with one canvas and a live forward world view",
+          "detail": {
+            "worldCamera": [
+              370,
+              591.75,
+              -2458
+            ],
+            "deckPosition": [
+              0,
+              1.75,
+              2
+            ]
+          }
+        },
+        {
+          "name": "Click-to-look turns only the walker; Escape releases the cursor and pauses walking"
+        },
+        {
+          "name": "Helm thrust and steering move the same ship; look and exterior view preserve command state"
+        },
+        {
+          "name": "Walk through the passage, launch Peregrine, fly away and return aboard the original parked battleship",
+          "detail": {
+            "parkedPosition": [
+              0,
+              0,
+              -660.1121508509076
+            ],
+            "launchPosition": [
+              3470.838083567124,
+              -180,
+              -1376.5498645846928
+            ],
+            "restoredPosition": [
+              0,
+              0,
+              -660.1121508509076
+            ]
+          }
+        },
+        {
+          "name": "Walk back to command; repeated interior visits reuse geometry, textures and the renderer",
+          "detail": {
+            "geometries": 153,
+            "textures": 12
+          }
+        },
+        {
+          "name": "Settings and quality choices preserve the visit; phone layouts expose walking and helm controls without overflow"
+        },
+        {
+          "name": "Context restoration pauses safely; reload resumes the same battleship from exterior flight"
+        }
+      ],
+      "errors": [],
+      "capture_prefix": "r17-interior-"
+    },
+    "orbit": {
+      "time": "2026-11-15T08:22:23.677Z",
+      "checks": [
+        {
+          "name": "Full horizontal orbit and above/below views leave the ship still; release returns around the hull",
+          "detail": {
+            "dimensions": [
+              4800,
+              1280.0000071525574,
+              13600
+            ],
+            "minimumCameraRadius": 20318.464495771437,
+            "maximumCameraRadius": 20318.464508914058
+          }
+        },
+        {
+          "name": "Left drag steers; right takes camera control during a chord and releases while left stays held"
+        },
+        {
+          "name": "Pause, focus loss and cancelled pointer input clear camera control"
+        },
+        {
+          "name": "Inspection shuttle can look around without moving the shuttle or parked battleship"
+        },
+        {
+          "name": "Camera orbit preserves arrival assist and surface heading and altitude"
+        },
+        {
+          "name": "Reduced motion returns directly to chase view"
+        }
+      ],
+      "errors": [],
+      "capture_prefix": "r17-orbit-"
+    },
+    "battleship": {
+      "time": "2026-11-15T08:23:13.850607+00:00",
+      "checks": [
+        {
+          "name": "Original exterior matches declared relative scale; four fleet choices remain available",
+          "detail": {
+            "dimensions": [
+              4800,
+              1280.0000071525574,
+              13600
+            ],
+            "spec": {
+              "id": "resolute",
+              "name": "Resolute",
+              "role": "Research battleship",
+              "description": "An armored home for the long voyage. Twin hangar galleries, a raised command island and six main drives.",
+              "length": 13600,
+              "width": 4800,
+              "height": 1280,
+              "capital": true,
+              "speed": 1100,
+              "handling": 0.18,
+              "color": 9608095,
+              "accent": 14263660
+            }
+          }
+        },
+        {
+          "name": "Battleship responds to thrust and slower turning without replacing the renderer"
+        },
+        {
+          "name": "Shuttle enters the open gallery; swept hull checks stop boosted flight through its inner wall",
+          "detail": {
+            "local": [
+              979.8817484181991,
+              -180,
+              -1000.0000000000002
+            ]
+          }
+        },
+        {
+          "name": "Inspection, pause, route changes, command return and reload preserve the battleship position"
+        },
+        {
+          "name": "Full capital hull stays outside the planet even during boosted impact",
+          "detail": {
+            "distance": 11683,
+            "envelope": 7783.447492730366
+          }
+        },
+        {
+          "name": "Planet approach, turning at the boundary, surface survey and return retain capital state"
+        },
+        {
+          "name": "Repeated shuttle and capital selection releases replaced hull geometry",
+          "detail": {
+            "allocations": [
+              94,
+              94,
+              94
+            ]
+          }
+        },
+        {
+          "name": "Narrow viewport keeps fleet selection and inspection controls usable"
+        }
+      ],
+      "errors": [],
+      "capture_prefix": "r17-battleship-",
+      "measurements": [
+        {
+          "name": "capital-flight",
+          "frames": 1200,
+          "p95Ms": 4.399999999999636,
+          "maxMs": 4.599999999998545
+        },
+        {
+          "name": "phone-viewport-capital",
+          "frames": 960,
+          "p95Ms": 4.30000000000291,
+          "maxMs": 4.400000000001455
+        }
+      ]
+    },
+    "game": {
+      "time": "2026-11-15T08:24:01.879Z",
+      "checks": [
+        {
+          "name": "One persistent canvas; the three existing shuttle selections work"
+        },
+        {
+          "name": "Right-drag moves the camera without steering; browser menus remain available on UI"
+        },
+        {
+          "name": "Keyboard thrust, climb, descent, turn, pitch, strafe, and mouse steering"
+        },
+        {
+          "name": "Pause and controls overlay prevent flight; Escape closes controls"
+        },
+        {
+          "name": "Settings persist; form input does not fly the ship"
+        },
+        {
+          "name": "Orbit assist, shuttle excursion, surface controls, and carrier return"
+        },
+        {
+          "name": "Manual boosted flight crosses a sector boundary without an edge"
+        },
+        {
+          "name": "Travel crosses sectors, loaded worlds stay bounded, reload restores voyage and preferences",
+          "detail": {
+            "sector": "0:0:0",
+            "loaded": 27
+          }
+        },
+        {
+          "name": "Phone layouts fit; pointer flight control releases without sticking"
+        },
+        {
+          "name": "Graphics context loss shows recovery notice and restores safely while paused"
+        },
+        {
+          "name": "Unavailable graphics shows a readable fallback and disables flight"
+        }
+      ],
+      "errors": [],
+      "capture_prefix": "r17-game-"
+    }
+  },
+  "source_sha256": {
+    "src/app/universe/battleship-art.ts": "536def0a2533c6f34342fcf28c92e13c7946a7007231c9f60b1cdaa614d882c6",
+    "src/app/universe/interior-model.ts": "4b98ce00197be6bc6dddfdff352e72485d61840551a3e9b27162a13391e6c24f",
+    "src/app/universe/planet-fields.ts": "33dc893b59ff8bf603569105beade5d0822d84e0f7fc1a4fc66e320e34443165",
+    "src/app/universe/planet-terrain.ts": "6af07dac4da091655edeeefbe34204a91675731e6121fa724c906ed84748fce2",
+    "src/app/universe/planet-tiles.ts": "aa5e9596122362afdcbdabcd14253052109494b704d967e964b2118309ec5afd",
+    "src/app/universe/planet-visuals.ts": "345433644f9db404fb507e5937a33c41453d179d7adc77240e820a19c30555ab",
+    "src/app/universe/ship-interior.ts": "fb0f24d896c8482bfa32b765131b4900f22dfd34951aa98c6630ae5b1acc6c47",
+    "src/app/universe/universe-art.ts": "d88a66e3ad11e1d19b668f94207e05c65d52340d9449f21cb6ee1f6ff79c83ea",
+    "src/app/universe/universe-model.ts": "6be551edd23d89d297f62387c980ecc6222696c5af5d701ac4a6c174c43e4bbb",
+    "src/app/universe/universe-scene.ts": "6eff18e5a953ddee1a9257063af5b1b9c6432c1844a5f0992830b36da089f545",
+    "src/app/universe/universe.component.css": "b0817e69215d3c2421df6e2c9a46816f122e1b5cacfdab27e18757441d869c03",
+    "src/app/universe/universe.component.html": "3bf44f042811b53717407cf467f1d25387ec654e5e18d376a997129c3d1b1316",
+    "src/app/universe/universe.component.ts": "c29b290a06fa0f400581a0664d233c8896f1b21b555605c1bed3d005030f9735",
+    "scripts/qa-interior.mjs": "9724dcbf012d7ab17cdfb6263854094e0938469eeb1b5b12989cbbe0f643362d",
+    "scripts/qa-orbit-camera.mjs": "fb703993d206ed1187a807a14ec971d8662f766502fa5bfdefe02da711f5a12f",
+    "scripts/qa-universe.mjs": "32988b47a3d9c3d27fc734cd76fdf12bfef7fdbb19391da1bd78e55ff37b3d16",
+    "scripts/qa-battleship.mjs": "24e79be5d9d893deddf50280aaae02bc3d4065a8b2200d190aa407ef7dd7f81e",
+    "scripts/tests/interior-model.test.mjs": "6749cc4e69a22760f952e6e76c4d89af70755a74008c5f42420f59e44cae3824",
+    "scripts/tests/universe-model.test.mjs": "f43b4d5b5e8e50b4c935a407e9bce0dffbd672fecc39d66a104bf86fb26ec0b3"
+  },
+  "rendered_review": [
+    "reports/game-direction/media/r17-interior-bridge.png",
+    "reports/game-direction/media/r17-interior-helm.png",
+    "reports/game-direction/media/r17-interior-returned.png",
+    "reports/game-direction/media/r17-interior-mobile.png"
+  ],
+  "failures_resolved": [
+    "Native Chrome immediately granted mouse lock, then rejected setPointerCapture. Capture now precedes lock; already-locked clicks skip capture.",
+    "QA compared signed zero with strict vector equality and matched a button without its key-hint accessible text. Assertions corrected without changing simulation state.",
+    "Visual review found oversized station signs and overlapping narrow-layout hints. Signs now sit on station faces; narrow hints and controls have separate space."
+  ],
+  "limits": [
+    "Native installed Chrome on this RTX 5090 desktop; narrow viewport controls are not physical-phone performance proof.",
+    "Three source-authored prototype rooms share one renderer. Repeated geometry/texture counts are bounded in this check, not proof of total GPU memory or long-session leaks.",
+    "Guided return is immediate; no manual docking, landing or disembark animation. The hangar sortie does not add atmospheric entry.",
+    "Voyage saves keep the capital orbital state. Reload resumes external flight; personal deck position and view mode last only for this visit.",
+    "Crew, combat, shields, damage, engineering and private quarters are not implemented.",
+    "Other browser engines, physical phones/laptops, Electron runtime, long play, fresh agent-session loading and real provider generation remain untested.",
+    "Quality-specific, safety and long terrain/depth-fallback suites were not rerun; historical receipts remain intact. Interior quality choices and context recovery were checked.",
+    "No commit, push, website deployment, asset transfer, paid generation or research submission."
+  ],
+  "report": {
+    "round": 17,
+    "url": "http://127.0.0.1:8953/",
+    "build_passed": true,
+    "workspace_snapshot_verified": true,
+    "browser_id": "beda9f93-9edd-413a-9d23-f282f8b0c6f5"
+  },
+  "final_checks": {
+    "startup_context": "passed: local files and routes only",
+    "git_diff_check": "passed",
+    "shared_index": "empty; unchanged",
+    "checkpoint_archive_sha256": "54e0bf8810a66b4b8b606275c469a02389c63854b30ffb4fedfc1db0fa76e465",
+    "checked_at": "2026-11-15T08:28:14.105261+00:00"
+  }
+}

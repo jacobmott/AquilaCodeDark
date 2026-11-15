@@ -1,31 +1,10 @@
-import { Component, AfterViewInit } from '@angular/core';
-import { RouterModule } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
-import { SidebarComponent } from './shared/feature/sidebar/sidebar.component';
-import { CommonModule } from '@angular/common';
-import { EventBus } from '../game/EventBus';
+import { Component } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
 
 @Component({
   standalone: true,
-  imports: [RouterModule, SidebarComponent, CommonModule],
+  imports: [RouterOutlet],
   selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.css',
+  template: '<router-outlet />',
 })
-export class AppComponent implements AfterViewInit {
-  isAuthenticated = false;
-  isPhaserSceneReady = false;
-
-  constructor(private http: HttpClient) {}
-
-  ngAfterViewInit() {
-    console.log('ngAfterViewInit AppComponent...');
-    EventBus.on('current-scene-ready', (scene: Phaser.Scene) => {
-      this.isPhaserSceneReady = true;
-    });
-  }
-
-  isLoggedInAndPlaying() {
-    return this.isAuthenticated && this.isPhaserSceneReady;
-  }
-}
+export class AppComponent {}

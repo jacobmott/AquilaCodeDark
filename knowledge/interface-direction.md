@@ -1,0 +1,93 @@
+# Interface direction: 3D world with glass overlays
+
+2026-11-15 UTC. Read-only reference review for the Aquila design discussion.
+
+Current controls supersede the historical refinement below: both battleship drags orbit; shuttles use left steering and right orbit.
+Walking supports mouse lock with drag/keyboard fallbacks. See [current architecture](architecture.md) for the active input rules.
+
+## Owner's reference
+
+The owner described the Robinhood project's newest direction: the main website is a Three.js application,
+with transparent glass-like interface elements layered over that application. They asked us to inspect that approach.
+The reference request itself supplied no implementation authority. The later "Yep, let's do that" authorizes the Aquila adaptation.
+The game direction retains free movement in three dimensions and a follow-behind default camera.
+
+## Observed reference source
+
+Read from `C:/RobinHoodTrading`, without edits, builds, launches, data calls or account actions:
+
+- `portal/capital-orbit/style.css:2`: root and scene host fill the viewport.
+- `portal/capital-orbit/style.css:16`: glass settings style uses a tinted gradient, border, shadow and backdrop blur.
+- `portal/capital-orbit/style.css:27`: the inspector is transparent text; its empty surface passes pointer events through.
+  Buttons and selectors receive pointer events separately. Glass panels and transparent hover text are distinct treatments.
+- `portal/capital-orbit/demo.js:16`: scene host, activity labels, toolbar, inspector and settings share the root.
+- `portal/capital-orbit/demo.js:46`: settings are an HTML overlay; this is not text rendered inside the 3D scene.
+- `portal/capital-orbit/scene.js:86`: the scene creates a WebGL renderer and perspective camera.
+- `Docs/Design/CAPITAL_ORBIT_FULLSCREEN_REVISION_2026-11-14.json`: earlier full-viewport design intent and historical fixture QA.
+- `reports/crypto-gap-scanner-2026-11-11/build_page.py`, round 85: the saved surrounding website is still a layout proposal.
+  It describes an orbit-led workspace, exact-information panels and quiet translucent surfaces, not a completed website shell.
+
+The user's current message supplies the newest desired glass-overlay direction; not every detail is present in saved source.
+Current source and proposal were inspected, not a freshly rendered runtime. Historical browser checks were not rerun.
+The prototype is concurrent, untracked peer work. Ownership stays in Robinhood; no code, assets or data copied into Aquila.
+Reference inspection did not resume any financial research, acquisition, trading or other project activity.
+
+## Aquila adaptation
+
+- A persistent full-viewport Three.js scene provides the main experience.
+- Normal HTML/CSS controls above the canvas provide navigation, readable text, forms, keyboard focus and glass styling.
+- Home can show the universe behind an introductory panel and entry controls.
+- The left navigation can become a compact glass strip that opens overlays while preserving the scene.
+- Ships can move into a hangar view, with ship choices and specifications in glass panels.
+- Play can switch to the selected chase camera and reduce panels to a small flight display.
+- Settings and other information can open in overlays and return to the same scene.
+- Owner now prefers nearly invisible panel fills, faint edges and light blur; brighter text and shadows provide readability.
+- Route panel input separately from flight controls; interacting with a panel must not steer or fire the ship.
+
+These proposals are now implemented in a first local playable slice: Home, Fleet, Atlas, Play and Settings share one renderer.
+The original code uses native procedural geometry and shaders; no Robinhood code, media, data or services were imported.
+Glass styling, camera framing and ship designs remain open to owner review. Browser checks cover the new Aquila implementation.
+This direction does not mean every menu must be a 3D mesh or that all regions stay loaded simultaneously.
+Angular remains the frontend. The authorized implementation adds pinned Three.js 0.186.0 and matching types.
+
+Current task: [game direction](game-direction.md) and [checkpoint](../Docs/Handoffs/HANDOFF_2026-11-15_game-direction.md).
+
+## Glass and surface refinement — 2026-11-15
+
+The owner requested much clearer backgrounds for all box-like controls, stronger text as needed, richer ship/planet textures,
+and right-mouse input on the game canvas. This authorizes the local refinement; publication authority is unchanged.
+
+Shared glass now uses roughly 1.2–2.4% tint and 3px blur. Mobile navigation and pause/help/error overlays use the same treatment.
+Action buttons, ship selections, settings fields and touch controls also have faint fills. Text and icons have brighter tones
+and local shadows rather than relying on dark rectangles. The later quality fix replaces the native select with direct choices.
+
+Original procedural hull textures add plate seams, finish variation and scuffs. Softer bevels, inspection hatches, fasteners,
+engine rims and reflective canopy material add detail. An original runtime light map supplies metal reflections.
+Planets now have warped continents, shallow coast water, fine terrain, relief shading, ocean highlights and a separate cloud shell.
+These are native meshes and shaders, not downloaded or provider-generated assets. Surface geography remains a prototype.
+
+Right-drag steers only during active flight. Left drag and touch drag still work. The canvas cancels browser context menus only
+on the Play route. HTML controls retain their normal menus. Pause, release, pointer cancellation, route changes and blur clear input.
+The flight hint and controls overlay explain right-drag. No pointer lock or global browser-menu suppression is used.
+
+Implementation references: [Three.js standard material](https://threejs.org/docs/pages/MeshStandardMaterial.html),
+installed Three.js shader chunks, and [MDN context menu events](https://developer.mozilla.org/en-US/docs/Web/API/Element/contextmenu_event).
+MDN documents Firefox's Shift/right-click bypass; this pass verifies Chrome, not Firefox.
+Knowledge Hub query `three.js material` using Aquila/OpenAI returned `budget_exhausted`; no unavailable source was bypassed or reused.
+
+## Quality control fix — 2026-11-15
+
+Owner reported a hang opening/changing the quality dropdown. The original popup responded during one Paseo check;
+the exact client lockup was not reproduced. The browser host later disconnected, so no specific browser-root-cause claim.
+The control now uses native grouped radios styled as three faint glass choices: Light, Balanced and High.
+All choices remain visible without an OS popup. Keyboard arrows and touch selection preserve native radio behavior.
+
+Source inspection found `setPixelRatio()` calls `setSize()` internally, followed by another explicit `setSize()` in Aquila.
+Every preference update called that path. The scene now copies incoming preferences, compares quality, caches viewport values,
+and calls `setDrawingBufferSize()` once only when logical size or effective pixel ratio changes.
+Motion, sensitivity and repeated selections do not reset the canvas. Display-density caps remain 1 / 1.4 / 2.
+
+Four focused browser groups cover actual clicks at density 2.4, touch at phone size, arrows, reload, buffer changes and continued frames.
+Eleven full game groups and production compilation also pass. Proof: [quality verification](../Docs/Testing/quality-control-verification.json).
+Earlier tests used direct select-value assignment and did not open the native popup; that gap is now explicit.
+Hub query `select popup` returned irrelevant course sources; none used. Evidence comes from installed code and runtime checks.

@@ -7,13 +7,15 @@
 body {
   margin: 0;
   padding: 0;
+  background: #060c13;
 }
 
 html,
 body {
   /* https://www.youtube.com/watch?v=veEqYQlfNx8 The problems with viewport units */
   /* width: 100vw; */
-  height: 100vh;
+  height: 100%;
+  overflow: hidden;
 }
 
 @layer base {

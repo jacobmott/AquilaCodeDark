@@ -1,0 +1,520 @@
+{
+  "verified_at": "2026-11-15T22:16:27.009932+00:00",
+  "provider": "openai",
+  "scope": "Automatic battleship command: retain but hide/gate manual capital controls, and execute destination/hold/range/withdrawal orders.",
+  "owner_authority": "keep all the controls there, but hide them",
+  "owner_playtest_of_preceding_encounter": "projectiles work well. And everything works well.",
+  "implementation": [
+    "Manual capital buttons/hints/reticle hidden; keyboard flight input gated. Both exterior drags orbit the camera and return behind on release.",
+    "Original manual implementation retained for shuttles and surface flight. Walking inputs do not steer the capital or cancel its order.",
+    "Approach orbit/Atlas use automatic planetary routes; Hold position cancels. Keep combat range targets 35 km; Withdraw targets 85 km and never approaches when already farther away.",
+    "Six-second eased paths, 1 km standoff tolerance and 0.45 rad/s bounded shortest-angle heading changes are provisional prototype choices.",
+    "Navigation continues while walking and switching room/exterior views. Pause/routes/focus loss/context recovery freeze orders; recovery remains paused.",
+    "Hangar launch parks the capital before moving control to its shuttle. Ship change/reset, explicit hold and terminal combat outcomes stop navigation.",
+    "Reload restores saved position/orientation with no stale order. Weapons and ammunition remain independent of navigation."
+  ],
+  "build": {
+    "passed": true,
+    "command": "npm run build:prod",
+    "raw_bundle_mb": 2.98,
+    "main_chunk": "main-JQU5JX3R.js",
+    "includes": [
+      "Angular production",
+      "Electron TypeScript compilation"
+    ],
+    "warning": "Existing Node 25.8.1 non-LTS warning"
+  },
+  "model_tests": {
+    "passed": 35,
+    "failed": 0,
+    "combat": 13,
+    "interior": 6,
+    "universe": 11,
+    "navigation": 5,
+    "command": "node --test scripts/tests/universe-model.test.mjs scripts/tests/interior-model.test.mjs scripts/tests/combat-model.test.mjs scripts/tests/navigation-model.test.mjs"
+  },
+  "browser_groups_passed": 36,
+  "browser_suites": [
+    {
+      "suite": "navigation-browser-qa",
+      "receipt_sha256": "4fb52f0795cad0ee6daf521e76c174ee470b8212ac4d3a1bab04d878c16201d6",
+      "receipt_modified_at": "2026-11-15T22:08:23.895570+00:00",
+      "time": "2026-11-15T22:08:23.886Z",
+      "browser": "157.0.8103.78",
+      "prefix": "r29-helm-",
+      "checks": [
+        {
+          "name": "Battleship hides manual flight controls; keys cannot move it; either drag looks and releases behind the ship"
+        },
+        {
+          "name": "Automatic course continues while walking; helm orders replace piloting; pause/settings retain orders and Hold position cancels them"
+        },
+        {
+          "name": "Graphics recovery preserves paused navigation; arrival respects planetary hull clearance; survey shuttle retains manual movement"
+        },
+        {
+          "name": "Exterior inspection keeps shuttle thrust and steering; returning restores a stationary battleship"
+        },
+        {
+          "name": "Keep range and withdrawal move the ship without piloting, work while walking and preserve independent weapon modes"
+        },
+        {
+          "name": "Narrow controls fit and operate; ending practice clears combat orders; reload restores position with no stale navigation"
+        }
+      ],
+      "errors": []
+    },
+    {
+      "suite": "combat-browser-qa",
+      "receipt_sha256": "a5210cd8666b13ceb006bf6fc7408a7c0b0d2c0952a1bc9012ddc24d69da36fe",
+      "receipt_modified_at": "2026-11-15T22:12:11.612136+00:00",
+      "time": "2026-11-15T22:12:11.606Z",
+      "browser": "157.0.8103.78",
+      "prefix": "r29-combat-",
+      "checks": [
+        {
+          "name": "Two automatic turrets launch visible separated rounds before any impact damage"
+        },
+        {
+          "name": "Hold fire preserves flying rounds; both sides take damage only after arrival; old aim/trigger shortcuts remain absent"
+        },
+        {
+          "name": "Standard rounds break the shield but cannot chip reinforced armor; fire control reports and stops ineffective new shots"
+        },
+        {
+          "name": "Ammunition modes carry between bridge, walking and exterior; piercing rounds penetrate; pause and quality changes preserve projectile state"
+        },
+        {
+          "name": "Piercing ammunition completes the automatic encounter; victory stops both guns and clears active rounds"
+        },
+        {
+          "name": "Incoming kinetics collapse the single shield and damage hull; defeat stops flight; reset restores health and standard ammunition"
+        },
+        {
+          "name": "Repeated practice reuses geometry and fixed pools; narrow controls fit and change ammunition and weapon mode",
+          "detail": {
+            "geometries": 59,
+            "textures": 7,
+            "pool": 160,
+            "impactPool": 32
+          }
+        },
+        {
+          "name": "Range still limits new launches; return reacquires and resumes automatic fire"
+        },
+        {
+          "name": "Graphics recovery preserves paused rounds; reload and travel clear temporary practice"
+        }
+      ],
+      "errors": []
+    },
+    {
+      "suite": "interior-browser-qa",
+      "receipt_sha256": "c2f9b21a592a9f753736b5ad91a3b4a7d5cfa3b1ee4ee8fa6018aee64d6b1e44",
+      "receipt_modified_at": "2026-11-15T22:12:44.411050+00:00",
+      "time": "2026-11-15T22:12:44.409Z",
+      "browser": "157.0.8103.78",
+      "webgl": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5090 (0x00002B85) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "prefix": "r29-interior-",
+      "checks": [
+        {
+          "name": "Enter a human-scale bridge with one canvas and a live forward world view",
+          "detail": {
+            "worldCamera": [
+              370,
+              591.75,
+              -2458
+            ],
+            "deckPosition": [
+              0,
+              1.75,
+              2
+            ]
+          }
+        },
+        {
+          "name": "Click-to-look turns only the walker; Escape releases the cursor and pauses walking"
+        },
+        {
+          "name": "Helm orders move the ship while manual input is ignored; look and exterior view preserve command state"
+        },
+        {
+          "name": "Walk through the passage; launching during an automatic course parks the capital, then guided return restores that launch position",
+          "detail": {
+            "parkedPosition": [
+              38.4303137150921,
+              9.882080669595112,
+              -98.82080669595112
+            ],
+            "launchPosition": [
+              3497.3462398634583,
+              -104.1222649021631,
+              -883.2337241239782
+            ],
+            "restoredPosition": [
+              38.4303137150921,
+              9.882080669595112,
+              -98.82080669595112
+            ]
+          }
+        },
+        {
+          "name": "Walk back to command; repeated interior visits reuse geometry, textures and the renderer",
+          "detail": {
+            "geometries": 156,
+            "textures": 13
+          }
+        },
+        {
+          "name": "Settings and quality choices preserve the visit; narrow layouts expose walking and command orders without overflow"
+        },
+        {
+          "name": "Context restoration pauses safely; reload resumes the same battleship from exterior flight"
+        }
+      ],
+      "errors": []
+    },
+    {
+      "suite": "orbit-camera-qa",
+      "receipt_sha256": "b8042240f7c32ca5dddb5a5df06e0e71eb48efee114384d4c49302d93d181330",
+      "receipt_modified_at": "2026-11-15T22:13:16.184038+00:00",
+      "time": "2026-11-15T22:13:16.182Z",
+      "browser": "157.0.8103.78",
+      "prefix": "r29-orbit-",
+      "checks": [
+        {
+          "name": "Full horizontal orbit and above/below views leave the ship still; release returns around the hull",
+          "detail": {
+            "dimensions": [
+              4800,
+              1280.0000071525574,
+              13600
+            ],
+            "minimumCameraRadius": 20318.464495771444,
+            "maximumCameraRadius": 20318.464508914058
+          }
+        },
+        {
+          "name": "Both battleship drags control the camera; mixed-button releases never steer the hull"
+        },
+        {
+          "name": "Pause, focus loss and cancelled pointer input clear camera control"
+        },
+        {
+          "name": "Inspection shuttle can look around without moving the shuttle or parked battleship"
+        },
+        {
+          "name": "Camera orbit preserves arrival assist and surface heading and altitude"
+        },
+        {
+          "name": "Reduced motion returns directly to chase view"
+        }
+      ],
+      "errors": []
+    },
+    {
+      "suite": "battleship-qa",
+      "receipt_sha256": "264ae496e5b9d116f32a99afcc1836caa6ea74d031d5dd961b0e08b42418b08a",
+      "receipt_modified_at": "2026-11-15T22:14:05.917240+00:00",
+      "browser": "157.0.8103.78",
+      "checks": [
+        {
+          "name": "Original exterior matches declared relative scale; four fleet choices remain available",
+          "detail": {
+            "dimensions": [
+              4800,
+              1280.0000071525574,
+              13600
+            ],
+            "spec": {
+              "id": "resolute",
+              "name": "Resolute",
+              "role": "Research battleship",
+              "description": "An armored home for the long voyage. Twin hangar galleries, a raised command island and six main drives.",
+              "length": 13600,
+              "width": 4800,
+              "height": 1280,
+              "capital": true,
+              "speed": 1100,
+              "handling": 0.18,
+              "color": 9608095,
+              "accent": 14263660
+            }
+          }
+        },
+        {
+          "name": "Battleship holds position despite manual flight input without replacing the renderer"
+        },
+        {
+          "name": "Shuttle enters the open gallery; swept hull checks stop boosted flight through its inner wall",
+          "detail": {
+            "local": [
+              980.1817167076899,
+              -180,
+              -1000
+            ]
+          }
+        },
+        {
+          "name": "Inspection, pause, route changes, command return and reload preserve the battleship position"
+        },
+        {
+          "name": "Automatic arrival leaves full capital clearance; manual boost cannot move the battleship",
+          "detail": {
+            "distance": 12983,
+            "envelope": 7783.447492730366
+          }
+        },
+        {
+          "name": "Planet approach, ignored manual turning, surface survey and return retain capital state"
+        },
+        {
+          "name": "Repeated shuttle and capital selection releases replaced hull geometry",
+          "detail": {
+            "allocations": [
+              93,
+              93,
+              93
+            ]
+          }
+        },
+        {
+          "name": "Narrow viewport keeps fleet selection and inspection controls usable"
+        }
+      ],
+      "errors": []
+    }
+  ],
+  "test_notes": [
+    "First navigation attempt looked for console-only controls while walking after a voyage reset. Corrected native view transition; all six groups passed.",
+    "First combat regression passed eight groups, then a source edit triggered a development reload and removed temporary combat. Full rerun after source stabilization passed nine groups.",
+    "Navigation suite ran before the final hangar-launch stop guard. Subsequent interior suite verified that exact active-course launch behavior. Remaining runtime source unchanged.",
+    "Model tests preceded the hangar-launch stop guard; the later production build and browser suites used final runtime source."
+  ],
+  "rendered_review": {
+    "method": "Direct inspection of native Chrome exterior approach, command-console and narrow combat-order images.",
+    "findings": "Orders use existing glass panels. Capital manual prompts are absent; command and combat controls remain readable and scroll within narrow bounds.",
+    "reviewed": [
+      "r29-helm-approach.png",
+      "r29-helm-command-console.png",
+      "r29-helm-mobile-orders.png"
+    ]
+  },
+  "source_sha256": {
+    "scripts/qa-battleship.mjs": "726c3911fd85c2ddb9c55a21c403fb5dae2f8c285fa6ff8d9cf5e8949c74457a",
+    "scripts/qa-combat.mjs": "065ec971abfffaf66b10943f41d533a2d154735f0d67026b5fa445e717194890",
+    "scripts/qa-interior.mjs": "9ed5c6e54ef6a1a872936b05260eb1e37ff60824840994a427854d705dfc9637",
+    "scripts/qa-navigation.mjs": "e41488d4215d862378e484421553b9a042e94f65d7fb1fc20534c46049456cbe",
+    "scripts/qa-orbit-camera.mjs": "15d123b61e9822821a7a75e84a8a068a3c34269d9b3b593641e31e362857a122",
+    "scripts/qa-planet-scale.mjs": "6858666ecc14ac65616c2c7e1e3083923c5acc2c61aade22cdf4fc63b3c8a711",
+    "scripts/tests/combat-model.test.mjs": "cd777eadd350a5817136cee49329c78e2145a109d2bc642993371aa3a143a576",
+    "scripts/tests/interior-model.test.mjs": "7c4fed1161e213c73631f2531e8c767e8275a83bb1dda6d53cf68e823b191f49",
+    "scripts/tests/navigation-model.test.mjs": "c6ddd29a614f2a7cc57ab90c3c6528a96dd5cbe96ff8bec58d9e8371b0495778",
+    "scripts/tests/universe-model.test.mjs": "f43b4d5b5e8e50b4c935a407e9bce0dffbd672fecc39d66a104bf86fb26ec0b3",
+    "src/app/universe/battleship-art.ts": "536def0a2533c6f34342fcf28c92e13c7946a7007231c9f60b1cdaa614d882c6",
+    "src/app/universe/combat-art.ts": "722e0b7ef88533472f7cae5848aa62a1d05b69baf485439d1fd2fd58971cccea",
+    "src/app/universe/combat-model.ts": "70e7251f6ed2f0df614859abf82fc5f466412595f983700422a38dfed368ae1c",
+    "src/app/universe/interior-model.ts": "6ebbf6eb41fcd442b2f63a53498050ee14d7eab9fa011cd03a5631010bcb30e7",
+    "src/app/universe/navigation-model.ts": "1859a48321c3d55857b024cc3c506a1d5700658fbb28cc7ecbeefaa457483e31",
+    "src/app/universe/planet-fields.ts": "33dc893b59ff8bf603569105beade5d0822d84e0f7fc1a4fc66e320e34443165",
+    "src/app/universe/planet-terrain.ts": "6af07dac4da091655edeeefbe34204a91675731e6121fa724c906ed84748fce2",
+    "src/app/universe/planet-tiles.ts": "aa5e9596122362afdcbdabcd14253052109494b704d967e964b2118309ec5afd",
+    "src/app/universe/planet-visuals.ts": "345433644f9db404fb507e5937a33c41453d179d7adc77240e820a19c30555ab",
+    "src/app/universe/ship-interior.ts": "bcbb6b484cde65085d43a2ff9eee14ce5e9fd3726a17fb17b6b7b3206d12c8fd",
+    "src/app/universe/universe-art.ts": "d88a66e3ad11e1d19b668f94207e05c65d52340d9449f21cb6ee1f6ff79c83ea",
+    "src/app/universe/universe-model.ts": "6be551edd23d89d297f62387c980ecc6222696c5af5d701ac4a6c174c43e4bbb",
+    "src/app/universe/universe-scene.ts": "c22748eb783c1613a152dfa51ff23b4f35afe5e6e698f908300606e02c8588cb",
+    "src/app/universe/universe.component.css": "9fc474d9f51456acafa2cc39b89b13127fd229b682ed879ffb15bf3f454b54ae",
+    "src/app/universe/universe.component.html": "92f0a304255bb6edbd299b039aed734846219f091345712c20a7aab9d6179757",
+    "src/app/universe/universe.component.ts": "56433952b47c64874d9641e7463ffac8b18d05d3fce8dbafca08116c889675b2"
+  },
+  "media": [
+    {
+      "path": "reports/game-direction/media/r29-battleship-fleet.png",
+      "bytes": 659189,
+      "sha256": "fd60a09c6fadab1e0f433a7ea542742d507e35cbd0c3c790c4a3a9811a98a97a"
+    },
+    {
+      "path": "reports/game-direction/media/r29-battleship-flight.png",
+      "bytes": 666057,
+      "sha256": "d5a63a720903e7e387f61148151debd04a52a2804d7a7dada7378e3a1022fe2b"
+    },
+    {
+      "path": "reports/game-direction/media/r29-battleship-hangar-approach.png",
+      "bytes": 394051,
+      "sha256": "97822eff8d161c14c69c1cb6b3732a59376499162b46655c7d8a60b5a3f61b13"
+    },
+    {
+      "path": "reports/game-direction/media/r29-battleship-hangar-gallery.png",
+      "bytes": 413166,
+      "sha256": "613c6ce390030ba8d56b32cc091b73b6c4998eb2ebf034774970c6c19ffc10d0"
+    },
+    {
+      "path": "reports/game-direction/media/r29-battleship-home.png",
+      "bytes": 942052,
+      "sha256": "2b0a431504dc20c3c057c081ea465c45750b1eb5c7a26d832adbe2392eae0ea6"
+    },
+    {
+      "path": "reports/game-direction/media/r29-battleship-phone-fleet.png",
+      "bytes": 268897,
+      "sha256": "87871ef9436c844ded21923d79d58c4bf483ea0f483392dae184fdc2d3f0627d"
+    },
+    {
+      "path": "reports/game-direction/media/r29-battleship-phone-inspection.png",
+      "bytes": 176848,
+      "sha256": "183eeb1107e403d9393ee352d5ff89d670ed1695ef20729e43a0404788572b45"
+    },
+    {
+      "path": "reports/game-direction/media/r29-battleship-planet.png",
+      "bytes": 1037946,
+      "sha256": "fe788514e4e1c581a6c6cb9c43236d8a04fd392146eae56ceb758cbd184a932e"
+    },
+    {
+      "path": "reports/game-direction/media/r29-combat-blocked.png",
+      "bytes": 628239,
+      "sha256": "c7fc211ed74c5aa397eec8723a0691bcb5ccb327fd91a4949bfb51104fe63da5"
+    },
+    {
+      "path": "reports/game-direction/media/r29-combat-bridge-stream.png",
+      "bytes": 628751,
+      "sha256": "0c588353cf8a0938e6b5338ec5f3499d96d53eb3367ac988562a537fd32acca4"
+    },
+    {
+      "path": "reports/game-direction/media/r29-combat-mobile.png",
+      "bytes": 286473,
+      "sha256": "ee4493a6d77c0b9b5a1694e5770d26752e95ffafe36fcc1c749615fbd6ef2800"
+    },
+    {
+      "path": "reports/game-direction/media/r29-combat-penetration.png",
+      "bytes": 770051,
+      "sha256": "4175ee106ffc9b74bd3b1541c0da53261f9054d1e4d40f25c6086f319ba32b8b"
+    },
+    {
+      "path": "reports/game-direction/media/r29-helm-approach.png",
+      "bytes": 753062,
+      "sha256": "bdb8fdd8809f2a43f0876ba24c5eb2727a4495f9dd9f569351f24a62b9275cf2"
+    },
+    {
+      "path": "reports/game-direction/media/r29-helm-combat-orders.png",
+      "bytes": 893440,
+      "sha256": "ed40a09dcb54dce80f1d947ef168ad62fde0fd70b329742d336b78ceb97061a0"
+    },
+    {
+      "path": "reports/game-direction/media/r29-helm-command-console.png",
+      "bytes": 622429,
+      "sha256": "56e04aee681ba00363b99737de044678888eee64ff983dc949f19b28a5910eb2"
+    },
+    {
+      "path": "reports/game-direction/media/r29-helm-mobile-orders.png",
+      "bytes": 308830,
+      "sha256": "e5ef63545e2afe29d24930d48767fd07917090830ed17fc1cbfaff07e6903c30"
+    },
+    {
+      "path": "reports/game-direction/media/r29-interior-bridge.png",
+      "bytes": 499989,
+      "sha256": "dcb4c5940371df4b2bdaf85f2627fa6d96dd2f3a10dffdbad215f09bd1f79aee"
+    },
+    {
+      "path": "reports/game-direction/media/r29-interior-hangar.png",
+      "bytes": 853627,
+      "sha256": "e0bea1436c6d75047e46722944e4e530ce66877e990ad894a816b4973bf43b5f"
+    },
+    {
+      "path": "reports/game-direction/media/r29-interior-helm.png",
+      "bytes": 578196,
+      "sha256": "ff8854c87e4209fd0a860c37a8c12c88be8542f222fd11fbcbf2a28cc949d72d"
+    },
+    {
+      "path": "reports/game-direction/media/r29-interior-mobile-helm.png",
+      "bytes": 241438,
+      "sha256": "5379b2863c8226bc10cfe746e72526782ea81931f6b47b6ccd31faed38acde5d"
+    },
+    {
+      "path": "reports/game-direction/media/r29-interior-mobile.png",
+      "bytes": 234582,
+      "sha256": "2df98e997333fa5244daea1e2885071fd0f8cf04c3bd9f8e87c78d4d7c9974ed"
+    },
+    {
+      "path": "reports/game-direction/media/r29-interior-passage.png",
+      "bytes": 394093,
+      "sha256": "f4929907741f1dcb6a1f425f1b96948af704d5faf7fdffb6fc21928cf62dbfc7"
+    },
+    {
+      "path": "reports/game-direction/media/r29-interior-returned.png",
+      "bytes": 873145,
+      "sha256": "e5c5736de1c4e41718b11005529f56a01847ff2dfc7b5b54d7ddc0088cbac494"
+    },
+    {
+      "path": "reports/game-direction/media/r29-interior-sortie.png",
+      "bytes": 417708,
+      "sha256": "98e9361cdfb87e67fa5aa4b0291f686ad5e683523ec2937c8f84197f69205749"
+    },
+    {
+      "path": "reports/game-direction/media/r29-orbit-chase.png",
+      "bytes": 666292,
+      "sha256": "12cc43a2f375f8dadced04da7a932b7dcfaff5317702d5657ae547cd23c3a83a"
+    },
+    {
+      "path": "reports/game-direction/media/r29-orbit-side.png",
+      "bytes": 309514,
+      "sha256": "b8ce7b7a8810cefa9b3a0d5700a93a08fe110a6294f1f452a88a0027f8118c27"
+    },
+    {
+      "path": "reports/game-direction/media/r29-orbit-surface.png",
+      "bytes": 680478,
+      "sha256": "c1d0c6f8f071a3b4ef9b721faedd8472c78d88acd74ee65e2e4a6c0cc25d7744"
+    }
+  ],
+  "knowledge_lookup": {
+    "provider": "openai",
+    "queries": [
+      "autopilot"
+    ],
+    "outcome": "ok",
+    "complete_for_query_scope": true,
+    "result": "Three unrelated video-course source records; no implementation reused. No navigation-coverage or catalog-wide absence claim.",
+    "query_receipt_sha256": "4cc60a95f123594fe2932ffce2861ffbbb9f311fd54f0076482ca5151834e5af"
+  },
+  "limits": [
+    "Kinematic prototype routes, coarse planetary clearance and one stationary practice target. Not a physical thrust model or general tactical path planner.",
+    "Range/withdrawal is positional navigation, not projectile-aware automatic evasion. No new weapon, progression, inventory, enemy AI or crew system.",
+    "The scale/performance script was adapted to the new capital input policy but not rerun. Older long terrain, quality and fallback-depth receipts remain historical.",
+    "Physical phones/laptops, other browser engines, Electron runtime, long play and fresh agent sessions remain untested. Narrow viewport checks do not establish phone performance.",
+    "Repository safety helper fixtures were not rerun; the prior six passing checks remain historical and no transfer helpers changed.",
+    "No commit, push, deployment, transfer, paid generation or research submission."
+  ],
+  "report": {
+    "round": 29,
+    "build_passed": true,
+    "url": "http://127.0.0.1:8953/",
+    "workspace_snapshot_verified": false,
+    "browser_error": "browser_no_host: No browser automation host is connected.",
+    "open_questions": [],
+    "http_status": 200
+  },
+  "final_checks": {
+    "verified_at": "2026-11-15T22:18:07.480118+00:00",
+    "source_hashes_match": 26,
+    "media_hashes_match": 27,
+    "archived_checkpoint_sha256_matches": true,
+    "checkpoint_bytes": 9530,
+    "checkpoint_words": 1189,
+    "startup": {
+      "sizes": {
+        "AGENTS.md": 5104,
+        "Docs/TaskRoutes.md": 1173,
+        "HANDOFF.md": 448,
+        "Docs/Handoffs/HANDOFF_2026-11-15_game-direction.md": 9530
+      },
+      "failures": [],
+      "proves": "local files and routes only"
+    },
+    "git_diff_check": "passed",
+    "staged_paths": [],
+    "capture_and_tooling_ignore_check": "passed",
+    "ignored_paths_checked": 33,
+    "latest_inbox": "reports/game-direction/inbox/20261115T015927Z.json",
+    "no_new_inbox": true,
+    "report_http": 200
+  }
+}

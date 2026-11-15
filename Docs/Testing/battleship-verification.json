@@ -1,0 +1,174 @@
+{
+  "verified_at": "2026-11-15T06:06:49.702942+00:00",
+  "scope": "First research battleship exterior and inspection flight; local development runtime, not provider execution or deployment",
+  "runtime": {
+    "browser": "157.0.8103.78",
+    "graphics": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5090 (0x00002B85) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "node": "25.8.1",
+    "npm": "11.11.0",
+    "node_warning": "Odd-numbered Node release is outside LTS; compilation passed"
+  },
+  "commands": {
+    "build": "npm run build:prod",
+    "models": "node --test scripts/tests/universe-model.test.mjs",
+    "safety": ".venv-tools/Scripts/python.exe -B -m unittest discover -s scripts/tests -v",
+    "game": "node scripts/qa-universe.mjs",
+    "quality": "node scripts/qa-quality.mjs",
+    "battleship": "node scripts/qa-battleship.mjs"
+  },
+  "build": {
+    "passed": true,
+    "angular_production": true,
+    "electron_typescript": true,
+    "raw_browser_bundle_mb": 2.86
+  },
+  "tests": {
+    "model": 11,
+    "isolated_safety": 6,
+    "game_groups": 11,
+    "quality_groups": 4,
+    "battleship_groups": 8
+  },
+  "checks": [
+    {
+      "name": "Original exterior matches declared relative scale; four fleet choices remain available",
+      "detail": {
+        "dimensions": [
+          4800,
+          640.0000035762787,
+          13600
+        ],
+        "spec": {
+          "id": "resolute",
+          "name": "Resolute",
+          "role": "Research battleship",
+          "description": "An armored home for the long voyage. Twin hangar galleries, a raised command island and six main drives.",
+          "length": 13600,
+          "width": 4800,
+          "height": 640,
+          "capital": true,
+          "speed": 1100,
+          "handling": 0.18,
+          "color": 9608095,
+          "accent": 14263660
+        }
+      }
+    },
+    {
+      "name": "Battleship responds to thrust and slower turning without replacing the renderer"
+    },
+    {
+      "name": "Shuttle enters the open gallery; swept hull checks stop boosted flight through its inner wall",
+      "detail": {
+        "local": [
+          979.8817484181991,
+          -90,
+          -1000.000000000003
+        ]
+      }
+    },
+    {
+      "name": "Inspection, pause, route changes, command return and reload preserve the battleship position"
+    },
+    {
+      "name": "Full capital hull stays outside the planet even during boosted impact",
+      "detail": {
+        "distance": 11662,
+        "envelope": 7762.199221412498
+      }
+    },
+    {
+      "name": "Planet approach, turning at the boundary, surface survey and return retain capital state"
+    },
+    {
+      "name": "Repeated shuttle and capital selection releases replaced hull geometry",
+      "detail": {
+        "allocations": [
+          94,
+          94,
+          94
+        ]
+      }
+    },
+    {
+      "name": "Narrow viewport keeps fleet selection and inspection controls usable"
+    }
+  ],
+  "measurements": [
+    {
+      "name": "capital-flight",
+      "frames": 1200,
+      "p95Ms": 4.300000000001091,
+      "maxMs": 4.5
+    },
+    {
+      "name": "phone-viewport-capital",
+      "frames": 960,
+      "p95Ms": 4.299999999999272,
+      "maxMs": 4.599999999998545
+    }
+  ],
+  "browser_errors": {
+    "battleship": [],
+    "universe": [],
+    "quality": []
+  },
+  "source_sha256": {
+    "src/app/universe/battleship-art.ts": "714bfd633374c36b6dd0b61654976508bd9f7058a8a30522f21c2faa9994439a",
+    "src/app/universe/planet-fields.ts": "33dc893b59ff8bf603569105beade5d0822d84e0f7fc1a4fc66e320e34443165",
+    "src/app/universe/planet-terrain.ts": "6af07dac4da091655edeeefbe34204a91675731e6121fa724c906ed84748fce2",
+    "src/app/universe/planet-tiles.ts": "aa5e9596122362afdcbdabcd14253052109494b704d967e964b2118309ec5afd",
+    "src/app/universe/planet-visuals.ts": "345433644f9db404fb507e5937a33c41453d179d7adc77240e820a19c30555ab",
+    "src/app/universe/universe-art.ts": "d88a66e3ad11e1d19b668f94207e05c65d52340d9449f21cb6ee1f6ff79c83ea",
+    "src/app/universe/universe-model.ts": "b7767664c18c5f6af80bbf9a43f0319ff463a2ed5cc5df5135f4d1d2df7e404e",
+    "src/app/universe/universe-scene.ts": "478388e15345b1992fc912d4e36489d3c7241c5d3580f6c9e9788b0059d813f0",
+    "src/app/universe/universe.component.css": "78a7925442cfd165c69940101f836c7f663ddd511b194b23c3ff786570436a77",
+    "src/app/universe/universe.component.html": "ffee7146071d127fa323395b5e268dab02d17ec928357c9687ce55ab03467e39",
+    "src/app/universe/universe.component.ts": "71f2632b270c2d61956879426149099c0a3d4ad074386ccae0ff8142ef4488fc"
+  },
+  "test_source_sha256": {
+    "scripts/qa-battleship.mjs": "7c73ebc768454a0a25cb07a0cb8284ec8c7d599c9066dcff516bfc70864acae2",
+    "scripts/qa-universe.mjs": "579769f73a2d5f8dfe99f2ee49bb9511c9af27b96ab1ab3226bc28cfbc265977",
+    "scripts/qa-quality.mjs": "cd0cd21f7c2446464618e8825647fbdd8ed9ad8c1acf127f44033fe06439a628",
+    "scripts/tests/universe-model.test.mjs": "9f284cbfc50f2941de90fffc675a8dd6b829521b64b37e4e31a20c62972c788c"
+  },
+  "captures": {
+    "r14-controls-atlas-desktop.png": "1aa6da519b50b2b3fe044b50fc8f2dead526c25444516b162a339cbfc0c5cf3a",
+    "r14-controls-atlas-mobile.png": "5ca23c2e0f9bb8aa1b0383c04910dab8bd9561084dd55f37bae6e31a9a652cbb",
+    "r14-controls-fleet-desktop.png": "644ecc694c569d6388cbacf9364a68876a8bf127b565feafacc6ce15040d28b4",
+    "r14-controls-fleet-mobile.png": "ca1bfc8234b7949afb3416d6e71f4950a1e7d01fa033de98d8eec2894c1aefb9",
+    "r14-controls-flight-desktop.png": "b3f6d0d717963d2ec3da318d5f10fcd047c380eb133b5c2308f178c22f91aac5",
+    "r14-controls-flight-mobile.png": "49bbee43e3201b1555e8b9ba70e1239bcfd0f3ea44ae0bf5d88bcff931d6433f",
+    "r14-controls-help-desktop.png": "073503fa2397f7d661d96a18d8968ad3d27792a486a460290876f67d4b35fa72",
+    "r14-controls-home-desktop.png": "b4267ffe2d87293ce35a364707f8128898f301f06cbeff2e02d6d3c9acabcd1d",
+    "r14-controls-home-mobile.png": "38cf88543cf398d9a5ad3669a592a8baf6f513ebd80b19bab95b3ae50c9c0866",
+    "r14-controls-pause-desktop.png": "320dc1626be9081bd03f50ba334b3e74e2f0c4f3d2c862d6b973df4ffe34d86d",
+    "r14-controls-settings-desktop.png": "d2f734ea00b1f7a0029a33b506070bbfc94669f4beee532179a570db0e7164b0",
+    "r14-controls-settings-mobile.png": "d7d919271594c561e0efccb3991a03173b58d8788ac9d89c24566ac19aa8fad0",
+    "r14-controls-surface-desktop.png": "7740ff41ca8056db81404b86dd010bbc5c4de736d8faeeb04190bbd2e85118ed",
+    "r14-fleet.png": "d497736143b609faeee124b476ace9fc593463e90a3a8ce512c950b07d450a0c",
+    "r14-flight.png": "341876ed723ed443259e5a0b45bb6aa0490c08fb5e956cb741e61ebce97bc2ed",
+    "r14-hangar-approach.png": "5ea6cc570286e81d5f7e8bcaf92e32edf0fa6e49112a3467ebf6379749d5d3d3",
+    "r14-hangar-gallery.png": "78651cd4515ad59da5128a8496b1a5e7f48d1d580220c21089d042438a69caaa",
+    "r14-home.png": "ddf81bfc8a176f5b8728b9ba59c4bff4e552865fb7e13b79eb46d77ce72b2324",
+    "r14-phone-fleet.png": "97240cc04f04bace3f44eef4b3583cdbcbbf138eec084349d3ae88cfd141a236",
+    "r14-phone-inspection.png": "3c4d5f01800a20a205c0c6044b5454562aac6f07e0bb8ad16a9a560cefb5b7b7",
+    "r14-planet.png": "f777684c6fc661a9de382058c7ac55d49d28148902e7efb54e7e8cee00c86599",
+    "r14-quality-quality-desktop.png": "905521f289f7fa658965ebc209901a5c359e3ab0f8afde3abc5b2ffeed7ff616",
+    "r14-quality-quality-mobile.png": "57cbdf8671c9837ceff411341ceed1de201e10109a1003524ee17dbe39d92255"
+  },
+  "resolved": [
+    "Initial TypeScript build identified an anchor tuple spread and a shadowed clearance variable; both fixed before successful build.",
+    "Browser test locators expected an exact button/link name without its visible arrow. Updated locators to match actual accessible names.",
+    "Legacy no-WebGL fallback test expected three fleet entries; updated to four after adding the capital ship."
+  ],
+  "limits": [
+    "Physical phones and laptops, other browser engines, Electron runtime and long-session stability remain untested.",
+    "Narrow viewport uses the same RTX 5090 desktop. Frame samples are five and four seconds; no mobile GPU, thermal or power claims.",
+    "Inspection hull collision is a coarse seven-ray sampled sweep, not rigid-body docking or combat physics.",
+    "Exterior name, dimensions and art are provisional. Planet sizes remain compressed game proportions.",
+    "No walkable rooms, crew, docking latch, weapons, shields or damage have been built.",
+    "The earlier long terrain/CPU-throttle benchmark and logarithmic-depth checks were not rerun this turn; their separate historical receipt remains.",
+    "No provider generations, asset transfers, commits, pushes or deployment occurred."
+  ]
+}

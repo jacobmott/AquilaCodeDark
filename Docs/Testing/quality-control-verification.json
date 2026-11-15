@@ -1,0 +1,160 @@
+{
+  "verified_utc": "2026-11-15T03:37:13.299Z",
+  "scope": "Quality dropdown hang mitigation and conditional single graphics-buffer resize",
+  "original_hang": "Reported by owner; original popup responded in one Paseo check, so exact client lockup cause not reproduced or confirmed",
+  "changes": [
+    "Native radio group styled as three visible glass choices; no popup",
+    "Only changed quality or viewport dimensions can resize the buffer",
+    "One setDrawingBufferSize call replaces setPixelRatio plus setSize",
+    "Scene copies preferences to avoid shared mutable comparison state"
+  ],
+  "production_build": {
+    "command": "npm run build:prod",
+    "result": "passed",
+    "initial_raw_bundle": "2.81 MB",
+    "electron": "TypeScript compilation only; desktop runtime not tested",
+    "warning": "Installed odd-numbered Node version is not LTS"
+  },
+  "environment": {
+    "node": "25.8.1",
+    "npm": "11.11.0",
+    "browser": "157.0.8103.78",
+    "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5090 (0x00002B85) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "desktop_viewport": "1440x900",
+    "phone_viewport": "390x844",
+    "browser_profile": "isolated automation context"
+  },
+  "quality_checks": [
+    {
+      "name": "Pointer selection changes all three quality modes and rendering continues at high display density",
+      "detail": [
+        {
+          "value": "low",
+          "elapsedMs": 225,
+          "width": 1280,
+          "height": 800
+        },
+        {
+          "value": "balanced",
+          "elapsedMs": 58,
+          "width": 1792,
+          "height": 1120
+        },
+        {
+          "value": "high",
+          "elapsedMs": 67,
+          "width": 2560,
+          "height": 1600
+        },
+        {
+          "value": "balanced",
+          "elapsedMs": 58,
+          "width": 1792,
+          "height": 1120
+        }
+      ]
+    },
+    {
+      "name": "Repeated selection, motion and sensitivity changes do not reset the graphics buffer"
+    },
+    {
+      "name": "Arrow keys select quality without steering; saved choice survives reload and navigation remains responsive"
+    },
+    {
+      "name": "Touch selection works at phone size; equal physical resolutions cause no redundant buffer reset"
+    }
+  ],
+  "quality_check_count": 4,
+  "game_checks": [
+    {
+      "name": "One persistent canvas; all three ship selections work"
+    },
+    {
+      "name": "Right-drag steers, release stops steering, browser menus remain available on UI"
+    },
+    {
+      "name": "Keyboard thrust, climb, descent, turn, pitch, strafe, and mouse steering"
+    },
+    {
+      "name": "Pause and controls overlay prevent flight; Escape closes controls"
+    },
+    {
+      "name": "Settings persist; form input does not fly the ship"
+    },
+    {
+      "name": "Orbit assist, shuttle excursion, surface controls, and carrier return"
+    },
+    {
+      "name": "Manual boosted flight crosses a sector boundary without an edge"
+    },
+    {
+      "name": "Travel crosses sectors, loaded worlds stay bounded, reload restores voyage and preferences",
+      "detail": {
+        "sector": "0:0:0",
+        "loaded": 27
+      }
+    },
+    {
+      "name": "Phone layouts fit; pointer flight control releases without sticking"
+    },
+    {
+      "name": "Graphics context loss shows recovery notice and restores safely while paused"
+    },
+    {
+      "name": "Unavailable graphics shows a readable fallback and disables flight"
+    }
+  ],
+  "game_check_count": 11,
+  "unexpected_browser_errors": [],
+  "source_sha256": {
+    "package.json": "2c9d8e144bb5366af8e5b1225ac973a0008156668dace214e775d83164e895eb",
+    "package-lock.json": "48b682570d2dcec6bbef325fa01eb69639fa6f8a7064729635909915413c935d",
+    "src/app/app.component.ts": "3c293a56352545a2871408532584ea501e7e2b85c9cdab358996562339416231",
+    "src/app/app.config.ts": "3cebc083e46193be67292a43e7577abef41272169e6b73f5313aedb4ca88498d",
+    "src/app/app.routes.ts": "175c3819f8cde7c9d2a05aa6535020fcd214c52868a6af45ecaa6c83c3fefc73",
+    "src/index.html": "c8808f6cbe0488df95cbc2360c4bf291c7c397798419d496eb159cdd13efe6f6",
+    "src/styles.css": "12ef62cd4bed58a9c32637726c02788ffca6550149f8cc658b1962ba4b4f6d18",
+    "scripts/qa-universe.mjs": "5e71e41763c2f1b4dafe3e309a74285f435c2b8a278f9ea1f8408c0c2f241fa0",
+    "scripts/tests/universe-model.test.mjs": "c72aa6071b8454d08b7b9d27d4532ddcc0a99989ec66d4d53a37b362bda81a81",
+    "src/app/universe/universe-art.ts": "86dbadad078c68210f0a958f885e2908cd7c0d69856f929ae152747fe43e439a",
+    "src/app/universe/universe-model.ts": "dbc0fe88e8d4d92983bfb81646adc318aca649428185574e84d52c8cb747a31f",
+    "src/app/universe/universe-scene.ts": "bd07ec4ba71aca733c850594d5065dc3fed6ff773a41795e954146ccaf2f8502",
+    "src/app/universe/universe.component.css": "7ad784b8d3bcaf1fec356b31722d47aa7088577c9fea3f9c8a95a7171b14e324",
+    "src/app/universe/universe.component.html": "a6adcab70d05ad5a69367d13ed0f4940e048e613eee64bb2583f914430017aae",
+    "src/app/universe/universe.component.ts": "53d66c4cbf4c95cf43dcbdd07517d973f477f625cbc30c9707ede1e1f2f4cb77",
+    "scripts/qa-quality.mjs": "cd0cd21f7c2446464618e8825647fbdd8ed9ad8c1acf127f44033fe06439a628"
+  },
+  "local_evidence": [
+    ".runtime/quality-browser-qa.json",
+    ".runtime/universe-browser-qa.json"
+  ],
+  "report_round": 7,
+  "publication": {
+    "committed": false,
+    "pushed": false,
+    "deployed": false,
+    "paid_generation": false,
+    "asset_transfers": false
+  },
+  "limits": [
+    "Chrome only; no physical-phone performance claim",
+    "Paseo native popup check worked before browser host disconnected; final UI verified in isolated Chrome",
+    "Initial isolated probe timed out during navigation at five seconds, before reaching the dropdown; not treated as reproduction"
+  ],
+  "prior_proof": [
+    "Docs/Testing/universe-verification.json",
+    "Docs/Testing/universe-refinement-verification.json"
+  ],
+  "quality_environment": {
+    "desktop_viewport": "1280x800",
+    "desktop_device_scale_factor": 2.4,
+    "touch_viewport": "390x844",
+    "touch_device_scale_factor": 1,
+    "context": "isolated Chrome; touch emulated"
+  },
+  "report_browser": {
+    "settings_snapshot": "Verified new radio choices in Paseo",
+    "report_snapshot": "Verified round 7 at http://127.0.0.1:8953/",
+    "availability": "Intermittent disconnects during work, reconnected before final"
+  }
+}

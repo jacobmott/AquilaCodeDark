@@ -1,0 +1,310 @@
+{
+  "verified_at": "2026-11-15T08:44:49.952128+00:00",
+  "provider": "openai",
+  "scope": "Walking-camera spike protection and cursor-capture transitions; local continuation of the Aquila remake.",
+  "reproduction_before_patch": {
+    "time": "2026-11-15T08:36:14.722Z",
+    "kind": "Injected mouse movement event under native pointer lock; not a captured user hardware event",
+    "input": {
+      "movementX": 4,
+      "movementY": 700
+    },
+    "before": {
+      "position": [
+        0,
+        1.75,
+        2
+      ],
+      "yaw": 0,
+      "pitch": 0,
+      "allocated": true
+    },
+    "after": {
+      "position": [
+        0,
+        1.75,
+        2
+      ],
+      "yaw": -0.01,
+      "pitch": -1.3,
+      "allocated": true
+    },
+    "verticalJumpDegrees": -74.48451336700703
+  },
+  "implementation": [
+    "Reject per-axis walking look samples exceeding 0.35 radians after sensitivity, and all nonfinite angles. Preserve the good axis; discard rather than defer or clamp suspicious movement.",
+    "Keep continuous turning range and normal sensitivity. Rebase drag origin on every event; clear drag state on cursor-capture transitions.",
+    "Request unadjusted mouse input. On NotSupportedError, retry ordinary pointer lock if still walking and active. Denial retains drag and arrow controls."
+  ],
+  "build": {
+    "command": "npm run build:prod",
+    "passed": true,
+    "includes": [
+      "Angular production build",
+      "Electron TypeScript compilation"
+    ],
+    "raw_bundle_mb": 2.9,
+    "warning": "Existing Node 25.8.1 non-LTS warning"
+  },
+  "model_tests": {
+    "command": "node --test scripts/tests/universe-model.test.mjs scripts/tests/interior-model.test.mjs",
+    "passed": 16,
+    "failed": 0,
+    "universe": 11,
+    "interior": 5
+  },
+  "browser": {
+    "walking_input": {
+      "time": "2026-11-15T08:37:49.035Z",
+      "base": "http://127.0.0.1:4200",
+      "browser": "157.0.8103.78",
+      "checks": [
+        {
+          "name": "Native capture requests raw input and normal mouse movement keeps its expected sensitivity"
+        },
+        {
+          "name": "Injected spikes in either direction are discarded without losing the good axis or moving the view later",
+          "detail": [
+            {
+              "injectedY": 700,
+              "pitchBefore": -0.05000000000000001,
+              "pitchAfter": -0.05000000000000001
+            },
+            {
+              "injectedY": -700,
+              "pitchBefore": -0.05000000000000001,
+              "pitchAfter": -0.05000000000000001
+            },
+            {
+              "injectedY": 400,
+              "pitchBefore": -0.05000000000000001,
+              "pitchAfter": -0.05000000000000001
+            },
+            {
+              "injectedY": -400,
+              "pitchBefore": -0.05000000000000001,
+              "pitchAfter": -0.05000000000000001
+            },
+            {
+              "injectedY": 12000,
+              "pitchBefore": -0.05000000000000001,
+              "pitchAfter": -0.05000000000000001
+            },
+            {
+              "injectedY": -12000,
+              "pitchBefore": -0.05000000000000001,
+              "pitchAfter": -0.05000000000000001
+            }
+          ]
+        },
+        {
+          "name": "Walking alone preserves pitch; Escape and recapture preserve look without a stale drag jump"
+        },
+        {
+          "name": "Native drag look remains smooth; a discontinuous drag sample rebases without a pitch snap"
+        },
+        {
+          "name": "Unsupported raw input falls back to native capture; denied capture retains drag controls"
+        }
+      ],
+      "errors": [],
+      "scope": "Native Chrome input plus explicitly injected movement faults and unsupported/denied API responses; user hardware spike not directly captured"
+    },
+    "interior_loop": {
+      "time": "2026-11-15T08:39:03.030Z",
+      "base": "http://127.0.0.1:4200",
+      "browser": "157.0.8103.78",
+      "webgl": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5090 (0x00002B85) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "prefix": "r18-interior-",
+      "checks": [
+        {
+          "name": "Enter a human-scale bridge with one canvas and a live forward world view",
+          "detail": {
+            "worldCamera": [
+              370,
+              591.75,
+              -2458
+            ],
+            "deckPosition": [
+              0,
+              1.75,
+              2
+            ]
+          }
+        },
+        {
+          "name": "Click-to-look turns only the walker; Escape releases the cursor and pauses walking"
+        },
+        {
+          "name": "Helm thrust and steering move the same ship; look and exterior view preserve command state"
+        },
+        {
+          "name": "Walk through the passage, launch Peregrine, fly away and return aboard the original parked battleship",
+          "detail": {
+            "parkedPosition": [
+              0,
+              0,
+              -659.0702433448844
+            ],
+            "launchPosition": [
+              3470.3213488166107,
+              -180,
+              -1378.0067745822807
+            ],
+            "restoredPosition": [
+              0,
+              0,
+              -659.0702433448844
+            ]
+          }
+        },
+        {
+          "name": "Walk back to command; repeated interior visits reuse geometry, textures and the renderer",
+          "detail": {
+            "geometries": 153,
+            "textures": 12
+          }
+        },
+        {
+          "name": "Settings and quality choices preserve the visit; phone layouts expose walking and helm controls without overflow"
+        },
+        {
+          "name": "Context restoration pauses safely; reload resumes the same battleship from exterior flight"
+        }
+      ],
+      "errors": []
+    },
+    "exterior_camera": {
+      "time": "2026-11-15T08:39:34.852Z",
+      "base": "http://127.0.0.1:4200",
+      "browser": "157.0.8103.78",
+      "prefix": "r18-orbit-",
+      "checks": [
+        {
+          "name": "Full horizontal orbit and above/below views leave the ship still; release returns around the hull",
+          "detail": {
+            "dimensions": [
+              4800,
+              1280.0000071525574,
+              13600
+            ],
+            "minimumCameraRadius": 20318.464495792447,
+            "maximumCameraRadius": 20318.464508914058
+          }
+        },
+        {
+          "name": "Left drag steers; right takes camera control during a chord and releases while left stays held"
+        },
+        {
+          "name": "Pause, focus loss and cancelled pointer input clear camera control"
+        },
+        {
+          "name": "Inspection shuttle can look around without moving the shuttle or parked battleship"
+        },
+        {
+          "name": "Camera orbit preserves arrival assist and surface heading and altitude"
+        },
+        {
+          "name": "Reduced motion returns directly to chase view"
+        }
+      ],
+      "errors": []
+    }
+  },
+  "source_sha256": {
+    "scripts/qa-interior.mjs": "9724dcbf012d7ab17cdfb6263854094e0938469eeb1b5b12989cbbe0f643362d",
+    "scripts/qa-orbit-camera.mjs": "fb703993d206ed1187a807a14ec971d8662f766502fa5bfdefe02da711f5a12f",
+    "scripts/qa-walk-camera.mjs": "58913bdf517a1a5670d4918b8844da88aaa2bef8de9cf2e0125728d14e0c5385",
+    "scripts/tests/interior-model.test.mjs": "3b593bd2e0eaa1c1ac1ead290852d3a1c204f55bb82299c1dcf40df8cb5a00dc",
+    "scripts/tests/universe-model.test.mjs": "f43b4d5b5e8e50b4c935a407e9bce0dffbd672fecc39d66a104bf86fb26ec0b3",
+    "src/app/universe/battleship-art.ts": "536def0a2533c6f34342fcf28c92e13c7946a7007231c9f60b1cdaa614d882c6",
+    "src/app/universe/interior-model.ts": "9a880662eecbc39327c2a86182c6b446ede2414f5b44d1deacdf74a83df0a9f8",
+    "src/app/universe/planet-fields.ts": "33dc893b59ff8bf603569105beade5d0822d84e0f7fc1a4fc66e320e34443165",
+    "src/app/universe/planet-terrain.ts": "6af07dac4da091655edeeefbe34204a91675731e6121fa724c906ed84748fce2",
+    "src/app/universe/planet-tiles.ts": "aa5e9596122362afdcbdabcd14253052109494b704d967e964b2118309ec5afd",
+    "src/app/universe/planet-visuals.ts": "345433644f9db404fb507e5937a33c41453d179d7adc77240e820a19c30555ab",
+    "src/app/universe/ship-interior.ts": "020b946273553a5b29f56e659ddeafa9b12a0ff0fc0c114b58370cfd8ab823c4",
+    "src/app/universe/universe-art.ts": "d88a66e3ad11e1d19b668f94207e05c65d52340d9449f21cb6ee1f6ff79c83ea",
+    "src/app/universe/universe-model.ts": "6be551edd23d89d297f62387c980ecc6222696c5af5d701ac4a6c174c43e4bbb",
+    "src/app/universe/universe-scene.ts": "c8cfd0bde5773fe82586d07d6cf4742eb0c724dbe0d24ab99e08769a859b3623",
+    "src/app/universe/universe.component.css": "b0817e69215d3c2421df6e2c9a46816f122e1b5cacfdab27e18757441d869c03",
+    "src/app/universe/universe.component.html": "3bf44f042811b53717407cf467f1d25387ec654e5e18d376a997129c3d1b1316",
+    "src/app/universe/universe.component.ts": "c29b290a06fa0f400581a0664d233c8896f1b21b555605c1bed3d005030f9735"
+  },
+  "references": [
+    {
+      "url": "https://developer.mozilla.org/en-US/docs/Web/API/Pointer_Lock_API",
+      "use": "Unadjusted movement option and unsupported-option fallback; reference only, not evidence of the owner hardware trigger."
+    },
+    {
+      "url": "https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/movementY",
+      "use": "Movement units can vary across browsers and operating systems; reference only."
+    },
+    {
+      "url": "https://github.com/mrdoob/three.js/issues/25280",
+      "use": "Historical 2023 report of intermittent pointer-lock flicker; not a current-browser diagnosis."
+    },
+    {
+      "url": "https://github.com/mrdoob/three.js/issues/12757",
+      "use": "Historical 2017 report of large movement deltas; not a current-browser diagnosis."
+    }
+  ],
+  "knowledge_lookup": {
+    "provider": "openai",
+    "query": "\"pointer lock\"",
+    "result": "No permitted selected-catalog result; complete_for_scope true and next_cursor null. Broad search returned unrelated results, not reused.",
+    "scope": "Configured catalog, not all possible files or evidence."
+  },
+  "limits": [
+    "The exact intermittent user hardware event was not captured. Before/after spike evidence uses deliberately injected events under native Chrome capture.",
+    "Native installed Chrome 157.0.8103.78 on this RTX 5090 desktop. Injected unsupported and denied API responses check fallbacks, not other browsers.",
+    "The per-sample threshold can discard very large intentional or coalesced mouse movement. Continuous normal samples preserve full turning range.",
+    "Physical phones/laptops, other browser engines, Electron runtime, long play, fresh agent-session loading and real provider generation remain untested.",
+    "Battleship/game, quality-specific, safety, long terrain and fallback-depth suites were not rerun this turn. Earlier receipts remain intact.",
+    "No commit, push, website deployment, asset transfer, paid generation or research submission."
+  ],
+  "report": {
+    "round": 18,
+    "url": "http://127.0.0.1:8953/",
+    "build_passed": true,
+    "workspace_snapshot_verified": false,
+    "snapshot_blocker": "Paseo browser_list_tabs returned browser_no_host: No browser automation host is connected. No system browser was opened.",
+    "request": "aquila-direction-r18-check",
+    "http_verified": {
+      "status": 200,
+      "round18": true,
+      "request_present": true
+    }
+  },
+  "user_retry": "Owner reports the camera seems fixed. Retry request closed; further control-mode clarification is not needed.",
+  "final_checks": {
+    "startup_context": "passed: local files and routes only",
+    "git_diff_check": "passed",
+    "shared_index": "empty; unchanged",
+    "source_hashes": "verified",
+    "checkpoint_archive_sha256": "8cf2477e90c724b7079b0e6370ffe32f9cef3f5d76c7dd10fbf407f066751984",
+    "checked_at": "2026-11-15T08:45:26.236538+00:00"
+  },
+  "confirmation": {
+    "recorded_at": "2026-11-15T08:55:40.747366+00:00",
+    "source": "Direct user chat, not a report inbox submission",
+    "quote": "Yeah, it seems like it's fixed now.",
+    "meaning": "Owner retry supports symptom resolution. Original hardware event remains unobserved.",
+    "game_code_changed": false,
+    "new_game_tests_run": false,
+    "report": {
+      "round": 19,
+      "build_passed": true,
+      "workspace_snapshot_verified": true,
+      "browser_id": "beda9f93-9edd-413a-9d23-f282f8b0c6f5",
+      "observed": "Camera retry confirmed; Nothing waits on you"
+    },
+    "record_checks": {
+      "startup_context": "passed: local files and routes only",
+      "git_diff_check": "passed",
+      "shared_index": "empty; unchanged",
+      "game_source_hashes": "unchanged from previous verification",
+      "checkpoint_archive_sha256": "bf45f3e328d00cb7d0a69b60e7a2000e422df4a6429189eadd154dcc27ca2e0d"
+    }
+  }
+}

@@ -1,0 +1,103 @@
+{
+  "verified_utc": "2026-11-15T02:50:52.478Z",
+  "scope": "First local playable Aquila universe and glass interface",
+  "environment": {
+    "node": "25.8.1",
+    "npm": "11.11.0",
+    "browser": "157.0.8103.78",
+    "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5090 (0x00002B85) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "desktop_viewport": "1440x900",
+    "phone_viewport": "390x844",
+    "browser_profile": "isolated automation context"
+  },
+  "production_build": {
+    "command": "npm run build:prod",
+    "result": "passed",
+    "initial_raw_bundle": "2.78 MB",
+    "electron": "TypeScript compilation only; desktop runtime not tested",
+    "warning": "Installed odd-numbered Node version is not LTS"
+  },
+  "model_tests": {
+    "command": "node --test scripts/tests/universe-model.test.mjs",
+    "passed": 4,
+    "failed": 0
+  },
+  "safety_tests": {
+    "command": ".venv-tools/Scripts/python.exe -B -m unittest discover -s scripts/tests -v",
+    "passed": 6,
+    "failed": 0,
+    "remote_transfers": "None; safety tests use isolated fixtures"
+  },
+  "browser_checks": [
+    {
+      "name": "One persistent canvas; all three ship selections work"
+    },
+    {
+      "name": "Keyboard thrust, climb, descent, turn, pitch, strafe, and mouse steering"
+    },
+    {
+      "name": "Pause and controls overlay prevent flight; Escape closes controls"
+    },
+    {
+      "name": "Settings persist; form input does not fly the ship"
+    },
+    {
+      "name": "Orbit assist, shuttle excursion, surface controls, and carrier return"
+    },
+    {
+      "name": "Manual boosted flight crosses a sector boundary without an edge"
+    },
+    {
+      "name": "Travel crosses sectors, loaded worlds stay bounded, reload restores voyage and preferences",
+      "detail": {
+        "sector": "0:0:0",
+        "loaded": 27
+      }
+    },
+    {
+      "name": "Phone layouts fit; pointer flight control releases without sticking"
+    },
+    {
+      "name": "Graphics context loss shows recovery notice and restores safely while paused"
+    },
+    {
+      "name": "Unavailable graphics shows a readable fallback and disables flight"
+    }
+  ],
+  "unexpected_browser_errors": [],
+  "browser_check_count": 10,
+  "known_limits": [
+    "Responsive phone viewport only; physical phone performance not measured",
+    "No long-duration or exhaustive universe travel test",
+    "Surface uses a separate procedural sphere, not seamless orbital geography",
+    "No walking, ground landing, combat, missions, progression or multiplayer",
+    "No packaged desktop runtime or fresh agent-client startup test"
+  ],
+  "source_sha256": {
+    "package.json": "2c9d8e144bb5366af8e5b1225ac973a0008156668dace214e775d83164e895eb",
+    "package-lock.json": "48b682570d2dcec6bbef325fa01eb69639fa6f8a7064729635909915413c935d",
+    "src/app/app.component.ts": "3c293a56352545a2871408532584ea501e7e2b85c9cdab358996562339416231",
+    "src/app/app.config.ts": "3cebc083e46193be67292a43e7577abef41272169e6b73f5313aedb4ca88498d",
+    "src/app/app.routes.ts": "175c3819f8cde7c9d2a05aa6535020fcd214c52868a6af45ecaa6c83c3fefc73",
+    "src/index.html": "c8808f6cbe0488df95cbc2360c4bf291c7c397798419d496eb159cdd13efe6f6",
+    "src/styles.css": "12ef62cd4bed58a9c32637726c02788ffca6550149f8cc658b1962ba4b4f6d18",
+    "scripts/qa-universe.mjs": "d835a5fff3f86153a291362e4cbc3e36ff67df4e4bcfa92752a039aac0d74ed3",
+    "scripts/tests/universe-model.test.mjs": "c72aa6071b8454d08b7b9d27d4532ddcc0a99989ec66d4d53a37b362bda81a81",
+    "src/app/universe/universe-art.ts": "461d92d2ac14b66a829e122e1cda68251c0e49859beea4a4fb84e53751d40cfd",
+    "src/app/universe/universe-model.ts": "dbc0fe88e8d4d92983bfb81646adc318aca649428185574e84d52c8cb747a31f",
+    "src/app/universe/universe-scene.ts": "ab6d2cfa7e28d6bfcaf11855c69fc86f77df1eaeea25cad789bbe3e1552888e4",
+    "src/app/universe/universe.component.css": "59a0b9a8f61ad9a21e8752b5f128207d1c18b9051ac34820ba80c46d2c2b510b",
+    "src/app/universe/universe.component.html": "acdca84e5f93bc063b3c0be9567e889e0d3fe2b76f0ef6585aee65d8fa64714e",
+    "src/app/universe/universe.component.ts": "30e440dd64a8903eddc4ec8a476fbf0f21efeb06ffc19b68f56924276d3eee11"
+  },
+  "publication": {
+    "committed": false,
+    "pushed": false,
+    "deployed": false,
+    "paid_generation": false,
+    "asset_transfers": false
+  },
+  "local_evidence": ".runtime/universe-browser-qa.json",
+  "report": "reports/game-direction/site/index.html",
+  "report_browser": "Paseo browser host disconnected; report build and HTTP checks are separate from a workspace browser snapshot"
+}

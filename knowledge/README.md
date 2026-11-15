@@ -5,7 +5,10 @@ Search by task and read matching notes. Current state belongs in handoffs; histo
 
 | Note | Purpose |
 | --- | --- |
-| [architecture.md](architecture.md) | Existing Angular, Phaser, Rapier and Electron structure |
+| [architecture.md](architecture.md) | Active universe, automatic battleship helm, walkable ship, projectile combat, renderer, streaming and saves |
+| [game-direction.md](game-direction.md) | Owner's choices, first playable slice and remaining game design |
+| [combat-design.md](combat-design.md) | Agreed combat vision, implemented projectile starter encounter and open progression choices |
+| [interface-direction.md](interface-direction.md) | Robinhood reference and implemented full-screen universe with glass overlays |
 | [development.md](development.md) | Installation, build, run, recovery and deployment boundary |
 | [storage.md](storage.md) | Private assets, Git policy, backups and isolated restore |
 | [context-startup.md](context-startup.md) | Three Claude accounts, Codex, skills and loading limits |

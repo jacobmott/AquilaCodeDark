@@ -17,7 +17,97 @@ Record the tested Node/npm versions in the setup receipt; a successful build doe
 
 Build output is `dist/aquila-code-dark/`; it is not source and stays ignored.
 Browser and desktop runtime checks are separate from TypeScript/Angular compilation. Packaging is not part of repository setup.
-The existing package has no npm test script. Setup safety tests run with:
+The current browser entry is the Three.js universe. The 2026-11-15 build also compiles Electron, but its desktop runtime remains untested.
+
+## Universe checks and preview
+
+The local development preview currently listens on `http://127.0.0.1:4200/`, started with:
+
+```powershell
+npm run serve:dev -- --host 127.0.0.1 --port 4200
+```
+
+Pure world and save checks use Node's TypeScript stripping, verified with Node 25.8.1:
+
+```powershell
+node --test scripts/tests/universe-model.test.mjs
+node --test scripts/tests/interior-model.test.mjs
+```
+
+The browser regression uses installed Chrome through isolated Playwright tooling. It does not use the user's browser profile:
+
+```powershell
+npm install --prefix .runtime/browser-qa --ignore-scripts --no-audit --no-fund playwright-core@1.58.2
+node scripts/qa-universe.mjs
+```
+
+The script requires the development preview for its read-only diagnostics. Set `AQUILA_QA_URL` for another local address.
+Set `AQUILA_QA_CAPTURE_PREFIX` to a new round prefix before publishing captures; the default is `latest-`.
+Never replace media already displayed in a historical report round. The glass/material refinement uses `r6-`.
+It checks persistent canvas lifetime, ship switching, left steering/right camera input, canvas-only menu cancellation, pause, saves, sector travel, shuttle return,
+responsive layouts, pointer release, graphics loss/recovery and unavailable graphics. Screenshots stay ignored in the task report's media folder.
+The detailed local receipt is `.runtime/universe-browser-qa.json`; the durable summary is [universe verification](../Docs/Testing/universe-verification.json).
+Refinement proof: [glass and materials verification](../Docs/Testing/universe-refinement-verification.json).
+Quality-control regression: `node scripts/qa-quality.mjs`; use a new `AQUILA_QA_CAPTURE_PREFIX` for report media.
+It checks real pointer/touch/keyboard choices, effective pixel density, buffer resets, frame progress and preference persistence.
+Quality fix proof: [quality verification](../Docs/Testing/quality-control-verification.json).
+Scale/performance check: `node scripts/qa-planet-scale.mjs`, against the development preview with a new capture prefix.
+Run it alone, without another browser benchmark or build competing for CPU/GPU resources.
+It measures first and warmed approaches, descent, 30 seconds of surface travel, bounded terrain allocation and quality budgets.
+It also checks carrier collision, return, travel to another world and the logarithmic depth fallback.
+Results: `.runtime/planet-scale-qa.json`; durable summary: [planet scale verification](../Docs/Testing/planet-scale-verification.json).
+CPU-throttled phone viewports do not establish physical-phone or laptop GPU, thermal or power performance.
+Thirty-second resource checks are not long-session leak tests. Fresh agent-session compliance remains untested.
+Battleship exterior checks use `node scripts/qa-battleship.mjs` with a fresh capture prefix.
+They cover actual mesh dimensions, slower capital handling, open-gallery entry, boosted wall contact, inspection saves/return,
+planet clearance, surface return, replacement-geometry cleanup and narrow layouts. Use the development preview for read-only diagnostics.
+Current exterior evidence: [battleship verification](../Docs/Testing/battleship-verification.json).
+The inspection action is a temporary exterior flight tool; it does not establish walkable rooms or docking.
+Camera checks use `node scripts/qa-orbit-camera.mjs` with a fresh capture prefix.
+They exercise native right-drag orbit, return radius, mixed buttons, pause/blur/cancel, inspection, arrival assist and surface flight.
+Reduced motion returns directly. Current height and hangar anchors are checked against rendered mesh bounds.
+Evidence: [camera and height verification](../Docs/Testing/orbit-camera-verification.json).
+Interior checks use `node scripts/qa-interior.mjs` with a new capture prefix.
+They enter the bridge, use native mouse lock and Escape, issue helm orders, switch views, walk through the passage,
+launch Peregrine, fly away, return aboard and walk back to command without simulation setters.
+They also check bounded repeated visits, preserved route state, quality changes, narrow controls, context recovery and orbital reloads.
+Use the same isolated browser tooling and development diagnostics described above. This is not a physical-phone performance benchmark.
+Current proof: [interior verification](../Docs/Testing/interior-verification.json).
+Walking camera regression: `node scripts/qa-walk-camera.mjs`. It checks native capture, drag, walking, Escape and recapture.
+Separate injected faults cover large movement samples, unsupported raw input and denied lock. They do not capture the user's hardware fault.
+Evidence: [walking camera verification](../Docs/Testing/walk-camera-verification.json).
+Combat model checks: `node --test scripts/tests/combat-model.test.mjs`.
+Practice browser regression: `node scripts/qa-combat.mjs` with a new `AQUILA_QA_CAPTURE_PREFIX`.
+It starts practice through native controls, observes automatic acquisition/fire, toggles Automatic/Hold fire, and checks continued fire while walking.
+It also covers shared views, pause/routes, victory/defeat, reset, lost/reacquired range, bounded resources, narrow controls, recovery, reload and travel.
+Diagnostics never set combat or position. Current evidence: [projectile combat](../Docs/Testing/projectile-combat-verification.json).
+The focused suite also checks delayed damage, blocked armor, ammunition changes, live-round preservation and fixed pool reuse.
+Use F at the starboard tactical console, then Start practice. Weapons acquire, aim and fire themselves; no T/X actions remain.
+Exterior Start practice also works. Two kinetic turrets fire automatically; damage follows projectile contact.
+Standard rounds drain Sentinel's shield but cannot penetrate its reinforced armor. Blocked hits cause no hull damage and stop new ineffective fire.
+Choose Piercing rounds under Practice ammunition to defeat armor. Fitting rounds changes future launches only.
+Hold fire stops new shots, not flying rounds or incoming damage. Automatic resumes when a target is valid and ammunition is suitable.
+Walking preserves mode and ammunition; change them at a station or outside. Reset selects Automatic/Standard; End practice returns to exploration.
+Practice damage is temporary; changing ship, taking a shuttle or traveling ends the encounter. Reload keeps only the voyage.
+Enter bridge appears during free capital flight. Return aboard restores the previous room after an exterior view.
+Walking controls: WASD, Shift to run, click or drag to look, arrows as an alternative, F to use a nearby station, C outside.
+Escape releases the cursor and pauses. At the command console, choose navigation orders; F leaves while the helm continues.
+Shuttle return is guided and immediate; reloading resumes the battleship outside. Interior personal position is visit-local.
+
+Automatic helm regression: `node scripts/qa-navigation.mjs`, with a fresh capture prefix and the development preview.
+It verifies hidden/gated capital inputs, both camera drags, automatic approach, walking during navigation, order cancellation,
+pause/settings/recovery, planetary clearance, retained shuttle flight, range/withdrawal orders, narrow controls and reload behavior.
+Pure destination/turn checks: `node --test scripts/tests/navigation-model.test.mjs`.
+Current evidence: [automatic helm verification](../Docs/Testing/automatic-helm-verification.json).
+Battleship commands are Hold position, Approach orbit/Atlas, Keep combat range and Withdraw; no manual flight input is required.
+The existing manual flight implementation and controls remain available for shuttle and surface play.
+Pause/settings retain an unfinished battleship course. Manual shuttle input still cancels its arrival assist.
+Launching from the hangar stops capital movement before the shuttle departs. Reload clears navigation orders.
+Camera, interior, battleship and scale scripts now reflect command navigation; earlier performance receipts remain historical.
+The installed odd-numbered Node version emits an LTS warning; a passing build does not establish upstream support for that version.
+
+## Repository safety checks
+The package has no npm test script. Setup safety tests run with:
 
 ```powershell
 .\.venv-tools\Scripts\python.exe -B -m unittest discover -s scripts/tests -v

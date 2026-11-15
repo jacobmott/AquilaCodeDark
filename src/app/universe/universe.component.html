@@ -1,0 +1,1160 @@
+<div
+  class="universe"
+  [class.flying]="view === 'play'"
+  [class.surface]="state.surface && view === 'play'"
+  [class.aboard]="state.interior && view === 'play'"
+  [class.combat-active]="state.combat && view === 'play'"
+  [class.commanding]="commanding && view === 'play'"
+>
+  <div #sceneHost class="scene-host"></div>
+  <div class="vignette" aria-hidden="true"></div>
+  <a class="skip-link" href="#main-panel">Skip to controls</a>
+
+  <header class="masthead">
+    <a class="brand" routerLink="/home" aria-label="Aquila home">
+      <svg viewBox="0 0 44 44" aria-hidden="true">
+        <path d="m22 3 5 15 15 5-14 3-6 15-6-15L2 23l15-5Z" />
+        <path d="m22 12 3 10-3 9-3-9Z" />
+      </svg>
+      <span
+        >AQUILA<span class="brand-sub">A universe to call your own</span></span
+      >
+    </a>
+    <div class="masthead-right">
+      <span class="connection"
+        ><i></i
+        >{{
+          error
+            ? "Graphics unavailable"
+            : ready
+            ? "All systems ready"
+            : "Opening the universe"
+        }}</span
+      >
+      <a
+        *ngIf="view !== 'play'"
+        routerLink="/play"
+        class="top-launch"
+        [class.disabled]="!ready"
+        >Enter universe <span>↗</span></a
+      >
+      <button
+        *ngIf="view === 'play'"
+        class="quiet-button"
+        (click)="togglePause()"
+      >
+        {{ state.paused ? "Resume" : "Pause" }} <kbd>esc</kbd>
+      </button>
+    </div>
+  </header>
+
+  <nav class="navigation glass" aria-label="Main navigation" data-ui>
+    <a
+      *ngFor="let item of nav"
+      [routerLink]="'/' + item.path"
+      [class.active]="view === item.path"
+      [attr.aria-current]="view === item.path ? 'page' : null"
+      [attr.aria-label]="item.label"
+      [title]="item.label"
+    >
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path [attr.d]="item.icon" />
+      </svg>
+      <span>{{ item.label }}</span>
+    </a>
+    <div class="nav-divider"></div>
+    <button
+      aria-label="Flight controls"
+      title="Flight controls"
+      (click)="showHelp()"
+      [attr.aria-expanded]="help"
+    >
+      <span class="help-symbol">?</span><span>Controls</span>
+    </button>
+  </nav>
+
+  <main id="main-panel" tabindex="-1">
+    <section
+      *ngIf="view === 'home'"
+      class="home-view view-enter"
+      aria-labelledby="home-title"
+    >
+      <div class="eyebrow"><span></span> Beyond the familiar</div>
+      <h1 id="home-title">Somewhere,<br /><em>beyond.</em></h1>
+      <p class="home-copy">
+        A thousand worlds. A ship of your own.<br />Where will your curiosity
+        take you?
+      </p>
+      <div class="home-actions" data-ui>
+        <button class="primary-button" (click)="launch()" [disabled]="!ready">
+          {{ hasSave ? "Continue your voyage" : "Begin your voyage" }}
+          <span>↗</span>
+        </button>
+        <button class="text-link" (click)="meetBattleship()">
+          Meet Resolute <span>→</span>
+        </button>
+      </div>
+      <div class="home-note">
+        <span class="orbit-icon">◎</span
+        ><span>No set path. Only the next horizon.</span>
+      </div>
+    </section>
+
+    <aside
+      *ngIf="view === 'home'"
+      class="world-label"
+      aria-label="Featured world"
+    >
+      <div class="label-line"><i></i><span>01 / The Vesper system</span></div>
+      <div class="world-name">A quieter kind<br />of unknown.</div>
+      <span class="world-detail">Ocean world · Outer reach</span>
+    </aside>
+
+    <section
+      *ngIf="view === 'ships'"
+      class="fleet-view view-enter"
+      aria-labelledby="fleet-title"
+      data-ui
+    >
+      <div class="section-heading">
+        <span class="eyebrow">The expedition fleet</span>
+        <h1 id="fleet-title">Find your<br /><em>way out.</em></h1>
+        <p>Different ships. The same pull toward the stars.</p>
+      </div>
+      <div class="ship-list" role="group" aria-label="Choose your ship">
+        <button
+          *ngFor="let vessel of fleet; let i = index"
+          class="ship-option glass"
+          [class.selected]="selected.id === vessel.id"
+          [attr.aria-pressed]="selected.id === vessel.id"
+          (click)="selectVessel(vessel)"
+        >
+          <span class="ship-index">0{{ i + 1 }}</span
+          ><span
+            ><strong>{{ vessel.name }}</strong
+            ><small>{{ vessel.role }}</small></span
+          ><span class="selection-dot"></span>
+        </button>
+      </div>
+    </section>
+    <aside
+      *ngIf="view === 'ships'"
+      class="ship-details glass view-enter"
+      data-ui
+      aria-live="polite"
+    >
+      <div class="eyebrow">Your next chapter</div>
+      <h2>{{ selected.name }}</h2>
+      <p>{{ selected.description }}</p>
+      <dl class="ship-specs">
+        <div>
+          <dt>Length</dt>
+          <dd>{{ range(selected.length) }}</dd>
+        </div>
+        <div>
+          <dt>Maneuvering</dt>
+          <dd>{{ selected.speed }}<small>m/s</small></dd>
+        </div>
+        <div>
+          <dt>{{ selected.capital ? "Hangars" : "Class" }}</dt>
+          <dd>
+            {{ selected.capital ? "02" : "Shuttle"
+            }}<small *ngIf="selected.capital">Galleries</small>
+          </dd>
+        </div>
+      </dl>
+      <p class="scale-note" *ngIf="selected.capital">
+        200× Peregrine's length · 75× width · 80× height.<br />Exterior study ·
+        dimensions provisional.
+      </p>
+      <button class="primary-button" (click)="launch()" [disabled]="!ready">
+        {{ selected.capital ? "Command" : "Fly" }} the {{ selected.name }}
+        <span>↗</span>
+      </button>
+    </aside>
+    <div *ngIf="view === 'ships'" class="ship-view-label">
+      <span class="crosshair-small">+</span> {{ selected.role }}
+      <span> / </span> Orbital view
+    </div>
+    <div
+      *ngIf="view === 'ships' && state.shuttleMarker as marker"
+      class="shuttle-scale-label"
+      [style.left.px]="marker.x"
+      [style.top.px]="marker.y"
+    >
+      <i></i
+      ><span>Peregrine · 68 m<br /><small>Shown at the same scale</small></span>
+    </div>
+
+    <section
+      *ngIf="view === 'atlas'"
+      class="atlas-view glass view-enter panel"
+      data-ui
+      aria-labelledby="atlas-title"
+    >
+      <div class="panel-heading">
+        <span class="eyebrow">Local star atlas</span
+        ><span class="tiny-code">{{ state.sector }}</span>
+      </div>
+      <h1 id="atlas-title">The next <em>horizon.</em></h1>
+      <p class="panel-intro">
+        A few worlds within reach. Beyond them, the map keeps unfolding.
+      </p>
+      <div class="destination-list">
+        <button
+          *ngFor="let planet of state.planets; let i = index"
+          class="destination"
+          (click)="travel(i)"
+          [disabled]="!ready"
+        >
+          <span
+            class="planet-symbol"
+            [class.warm]="planet.hue > 0.4 && planet.hue < 0.7"
+            [class.ice]="planet.hue >= 0.7"
+          ></span>
+          <span class="destination-name"
+            ><strong>{{ planet.name }}</strong
+            ><small
+              >{{ planet.kind }}{{ planet.rings ? " · Ringed" : "" }}</small
+            ></span
+          >
+          <span class="destination-distance"
+            >{{ planetDistance(i) }}<small>Travel to orbit ↗</small></span
+          >
+        </button>
+      </div>
+      <div class="panel-footnote">
+        <i class="status-dot"></i>
+        {{
+          commanding
+            ? "Choose a destination. The helm plots and follows the course."
+            : "Arrival assist active. Manual flight remains available."
+        }}
+      </div>
+    </section>
+
+    <section
+      *ngIf="view === 'settings'"
+      class="settings-view glass view-enter panel"
+      data-ui
+      aria-labelledby="settings-title"
+    >
+      <div class="eyebrow">Make yourself at home</div>
+      <h1 id="settings-title">Your <em>space.</em></h1>
+      <div class="setting-row quality-row">
+        <div class="setting-label">
+          <span id="quality-label">Visual quality</span>
+          <small id="quality-description"
+            >Terrain, clouds and resolution adjust together.</small
+          >
+        </div>
+        <div
+          class="quality-options"
+          role="radiogroup"
+          aria-labelledby="quality-label"
+          aria-describedby="quality-description"
+        >
+          <label class="quality-choice" *ngFor="let option of qualityOptions">
+            <input
+              type="radio"
+              name="quality"
+              [value]="option.value"
+              [checked]="preferences.quality === option.value"
+              (change)="quality(option.value)"
+            />
+            <span>{{ option.label }}</span>
+          </label>
+        </div>
+      </div>
+      <div class="setting-row">
+        <label for="motion"
+          >Reduced motion<small
+            >Still previews and direct camera changes.</small
+          ></label
+        ><input
+          id="motion"
+          type="checkbox"
+          [checked]="preferences.reducedMotion"
+          (change)="motion($event)"
+        />
+      </div>
+      <div class="setting-row range-row">
+        <label for="sensitivity"
+          >Look and steering sensitivity<small
+            >Camera look and shuttle steering.</small
+          ></label
+        >
+        <div>
+          <input
+            id="sensitivity"
+            type="range"
+            min="0.4"
+            max="1.8"
+            step="0.1"
+            [value]="preferences.sensitivity"
+            (input)="sensitivity($event)"
+          /><output for="sensitivity"
+            >{{ preferences.sensitivity | number: "1.1-1" }}×</output
+          >
+        </div>
+      </div>
+      <div class="save-note">
+        <span class="eyebrow">Your voyage stays with you</span>
+        <p>
+          Ship and orbital position save on this device. Surface trips resume
+          from orbit.
+        </p>
+        <span aria-live="polite">{{
+          storageNotice ||
+            (state.saved
+              ? "Local voyage saved."
+              : "Your first voyage saves when you fly.")
+        }}</span>
+      </div>
+      <div class="settings-actions">
+        <button class="primary-button" (click)="launch()" [disabled]="!ready">
+          Return to your ship <span>↗</span></button
+        ><button
+          class="text-link"
+          (click)="returnHomeWorld()"
+          [disabled]="!ready"
+        >
+          Return to Vesper
+        </button>
+      </div>
+    </section>
+
+    <ng-container *ngIf="view === 'play'">
+      <ng-container *ngIf="!state.interior">
+        <div class="flight-heading">
+          <span class="eyebrow">{{
+            state.inspecting
+              ? state.sortie
+                ? "Peregrine · Shuttle sortie"
+                : "Peregrine · Exterior inspection"
+              : state.surface
+              ? "Survey shuttle"
+              : selected.role
+          }}</span>
+          <h1>
+            {{
+              state.inspecting
+                ? "Alongside Resolute"
+                : state.surface
+                ? state.nearest.name
+                : selected.name
+            }}
+          </h1>
+          <span
+            >{{
+              state.surface
+                ? "Surface expedition"
+                : commanding
+                ? "Battleship command"
+                : "Free flight"
+            }}
+            <i></i>
+            {{
+              state.descending
+                ? "Descending through the atmosphere"
+                : commanding
+                ? state.paused
+                  ? "Navigation paused"
+                  : state.navigation?.status
+                : state.course
+                ? "Arrival assist · " + state.course
+                : state.paused
+                ? "Holding position"
+                : "You have the helm"
+            }}</span
+          >
+        </div>
+        <div
+          *ngIf="!commanding"
+          class="reticle"
+          aria-hidden="true"
+          [class.hidden]="state.paused || state.descending"
+        >
+          <span></span><i></i><span></span>
+        </div>
+        <div class="flight-telemetry glass" aria-label="Flight instruments">
+          <div>
+            <span>{{ state.surface ? "Ground speed" : "Velocity" }}</span
+            ><strong
+              >{{ state.speed | number: "1.0-0" }}<small>m/s</small></strong
+            >
+          </div>
+          <div>
+            <span>{{ state.surface ? "Altitude" : "Sector" }}</span
+            ><strong class="sector-value"
+              >{{ state.surface ? state.altitude : state.sector
+              }}<small *ngIf="state.surface">m</small></strong
+            >
+          </div>
+          <div class="thrust-meter" aria-hidden="true">
+            <i
+              [style.width.%]="
+                state.speed > selected.speed * 7
+                  ? 100
+                  : (state.speed / (selected.speed * 7)) * 100
+              "
+            ></i>
+          </div>
+        </div>
+        <aside class="destination-card glass" data-ui *ngIf="!state.combat">
+          <span class="eyebrow">{{
+            state.inspecting
+              ? "Battleship holding position"
+              : state.surface
+              ? "Ship standing by"
+              : "Nearest world"
+          }}</span>
+          <h2>
+            {{
+              state.inspecting
+                ? state.sortie
+                  ? "Hangar standing by"
+                  : "Exterior inspection"
+                : state.nearest.name
+            }}
+          </h2>
+          <p>
+            {{
+              state.inspecting
+                ? state.sortie
+                  ? "Explore around Resolute. Guided return brings you back aboard."
+                  : "Fly around the hull and into the open hangar galleries."
+                : state.surface
+                ? selected.capital
+                  ? "Your battleship is waiting in orbit."
+                  : "Your orbital position is saved."
+                : state.nearest.kind +
+                  " · " +
+                  range(state.distance) +
+                  " from surface"
+            }}
+          </p>
+          <button
+            *ngIf="state.surface"
+            class="small-action"
+            (click)="returnToOrbit()"
+          >
+            Return to {{ selected.capital ? "battleship" : "orbit" }}
+            <span>↗</span>
+          </button>
+          <button
+            *ngIf="state.inspecting && !state.sortie"
+            class="small-action"
+            (click)="resumeCommand()"
+          >
+            Resume command <span>↗</span>
+          </button>
+          <button
+            *ngIf="state.sortie"
+            class="small-action"
+            (click)="returnToHangar()"
+          >
+            Return to hangar <span>↗</span>
+          </button>
+          <button
+            *ngIf="selected.capital && !state.inspecting && !state.surface"
+            class="small-action"
+            (click)="enterBridge()"
+          >
+            {{ state.visitedInterior ? "Return aboard" : "Enter bridge" }}
+            <span>↗</span>
+          </button>
+          <button
+            *ngIf="
+              selected.capital &&
+              !state.inspecting &&
+              !state.surface &&
+              !state.course
+            "
+            class="small-action"
+            (click)="inspectHull()"
+          >
+            Inspect with shuttle <span>↗</span>
+          </button>
+          <button
+            *ngIf="!state.surface && state.canDescend"
+            class="small-action"
+            (click)="descend()"
+          >
+            {{
+              selected.capital ? "Launch survey shuttle" : "Descend to planet"
+            }}
+            <span>↓</span>
+          </button>
+          <button
+            *ngIf="
+              !commanding &&
+              !state.surface &&
+              !state.canDescend &&
+              !state.inspecting
+            "
+            class="small-action"
+            (click)="travel(0)"
+          >
+            Approach orbit <span>↗</span>
+          </button>
+          <button
+            *ngIf="
+              selected.capital &&
+              !state.surface &&
+              !state.inspecting &&
+              !state.course
+            "
+            class="small-action"
+            (click)="startPractice()"
+            [disabled]="state.paused"
+          >
+            Start practice <span aria-hidden="true">◎</span>
+          </button>
+          <p *ngIf="state.practiceNotice">{{ state.practiceNotice }}</p>
+          <ng-container *ngTemplateOutlet="helmOrders"></ng-container>
+        </aside>
+        <div class="flight-hints" *ngIf="!commanding">
+          <span><kbd>W</kbd><kbd>S</kbd> Thrust</span
+          ><span><kbd>↑</kbd><kbd>↓</kbd><kbd>←</kbd><kbd>→</kbd> Steer</span
+          ><span><kbd>Q</kbd><kbd>E</kbd> Height</span
+          ><span><kbd>shift</kbd> Boost</span><span>Left-drag to steer</span
+          ><span>Right-drag to look around</span>
+        </div>
+        <div
+          class="touch-controls"
+          data-ui
+          *ngIf="!commanding && !state.paused && !state.descending"
+          aria-label="Touch flight controls"
+        >
+          <div class="touch-pad">
+            <button
+              aria-label="Turn left"
+              (pointerdown)="touch($event, 'ArrowLeft', true)"
+              (pointerup)="touch($event, 'ArrowLeft', false)"
+              (pointercancel)="touch($event, 'ArrowLeft', false)"
+              (lostpointercapture)="touch($event, 'ArrowLeft', false)"
+            >
+              ←</button
+            ><button
+              aria-label="Turn right"
+              (pointerdown)="touch($event, 'ArrowRight', true)"
+              (pointerup)="touch($event, 'ArrowRight', false)"
+              (pointercancel)="touch($event, 'ArrowRight', false)"
+              (lostpointercapture)="touch($event, 'ArrowRight', false)"
+            >
+              →
+            </button>
+          </div>
+          <div class="touch-pad">
+            <button
+              aria-label="Descend"
+              (pointerdown)="touch($event, 'KeyQ', true)"
+              (pointerup)="touch($event, 'KeyQ', false)"
+              (pointercancel)="touch($event, 'KeyQ', false)"
+              (lostpointercapture)="touch($event, 'KeyQ', false)"
+            >
+              −</button
+            ><button
+              aria-label="Climb"
+              (pointerdown)="touch($event, 'KeyE', true)"
+              (pointerup)="touch($event, 'KeyE', false)"
+              (pointercancel)="touch($event, 'KeyE', false)"
+              (lostpointercapture)="touch($event, 'KeyE', false)"
+            >
+              +</button
+            ><button
+              class="touch-thrust"
+              aria-label="Forward thrust"
+              (pointerdown)="touch($event, 'KeyW', true)"
+              (pointerup)="touch($event, 'KeyW', false)"
+              (pointercancel)="touch($event, 'KeyW', false)"
+              (lostpointercapture)="touch($event, 'KeyW', false)"
+            >
+              Thrust ↑
+            </button>
+          </div>
+        </div>
+      </ng-container>
+      <ng-container *ngIf="state.interior as interior">
+        <div class="aboard-heading">
+          <span class="eyebrow">Resolute / Life aboard</span>
+          <h1>
+            {{
+              interior.mode === "helm"
+                ? "Command station."
+                : interior.mode === "tactical"
+                ? "Tactical station."
+                : interior.room
+            }}
+          </h1>
+          <p>
+            {{
+              interior.mode === "helm"
+                ? "Command deck · " + state.speed + " m/s"
+                : interior.room === "Bridge"
+                ? "Command deck / 01"
+                : interior.room === "Passage"
+                ? "Hangar ahead / Bridge astern"
+                : "Flight deck / 02"
+            }}
+          </p>
+        </div>
+        <div class="aboard-reticle" aria-hidden="true" *ngIf="!state.paused">
+          +
+        </div>
+        <div class="aboard-actions glass" data-ui *ngIf="!state.combat">
+          <span class="eyebrow">{{
+            interior.mode === "helm"
+              ? "Ship command"
+              : interior.mode === "tactical" ||
+                interior.interaction === "tactical"
+              ? "Tactical control"
+              : interior.interaction === "helm"
+              ? "Command station"
+              : interior.interaction === "shuttle"
+              ? "Peregrine ready"
+              : "Explore your ship"
+          }}</span>
+          <button
+            *ngIf="stationAction"
+            class="small-action"
+            [disabled]="state.paused"
+            (click)="interactAboard()"
+          >
+            {{ stationAction }}
+            <kbd>F</kbd>
+          </button>
+          <p *ngIf="interior.mode === 'walk' && !interior.interaction">
+            {{
+              interior.room === "Bridge"
+                ? "Helm ahead, tactical console to starboard. The aft passage leads to the hangar."
+                : interior.room === "Passage"
+                ? "Follow the amber floor lights between bridge and hangar."
+                : "Approach the boarding station in front of Peregrine."
+            }}
+          </p>
+          <ng-container *ngIf="interior.mode === 'tactical'">
+            <p>
+              Deploy Sentinel for a practice encounter. Weapons acquire, aim and
+              fire automatically. Set the firing mode from this console.
+            </p>
+            <button
+              class="small-action"
+              (click)="startPractice()"
+              [disabled]="state.paused"
+            >
+              Start practice <span aria-hidden="true">◎</span>
+            </button>
+            <p *ngIf="state.practiceNotice">{{ state.practiceNotice }}</p>
+          </ng-container>
+          <ng-container *ngTemplateOutlet="helmOrders"></ng-container>
+          <button
+            class="small-action"
+            [disabled]="state.paused"
+            (click)="exteriorView()"
+          >
+            Exterior view <kbd>C</kbd>
+          </button>
+        </div>
+        <div class="aboard-hints" [class.helm-hints]="interior.mode === 'helm'">
+          <ng-container *ngIf="interior.mode === 'walk'; else helmHints">
+            <span><kbd>W A S D</kbd> Walk</span
+            ><span><kbd>shift</kbd> Run</span>
+            <span>{{
+              interior.mouseLook
+                ? "Mouse to look · Esc releases"
+                : "Click to look · Drag or arrows also work"
+            }}</span>
+            <span><kbd>F</kbd> Interact</span>
+          </ng-container>
+          <ng-template #helmHints
+            ><ng-container *ngIf="interior.mode === 'helm'; else tacticalHints"
+              ><span>Choose orders · Helm handles movement</span
+              ><span>Drag to look around</span
+              ><span><kbd>F</kbd> Leave console</span></ng-container
+            ><ng-template #tacticalHints
+              ><span>Drag or arrows to look</span
+              ><span>Weapons track and fire automatically</span
+              ><span><kbd>F</kbd> Leave console</span></ng-template
+            ></ng-template
+          >
+        </div>
+        <div
+          class="touch-controls aboard-touch"
+          data-ui
+          *ngIf="
+            !state.paused &&
+            (interior.mode === 'walk' ||
+              (!commanding && interior.mode === 'helm'))
+          "
+          [attr.aria-label]="
+            interior.mode === 'walk'
+              ? 'Touch walking controls'
+              : 'Touch helm controls'
+          "
+        >
+          <div class="touch-pad">
+            <button
+              *ngFor="
+                let move of interior.mode === 'walk'
+                  ? [
+                      { label: 'Walk left', key: 'KeyA', icon: '←' },
+                      { label: 'Walk backward', key: 'KeyS', icon: '↓' },
+                      { label: 'Walk forward', key: 'KeyW', icon: '↑' },
+                      { label: 'Walk right', key: 'KeyD', icon: '→' }
+                    ]
+                  : [
+                      { label: 'Turn left', key: 'ArrowLeft', icon: '←' },
+                      { label: 'Turn right', key: 'ArrowRight', icon: '→' },
+                      { label: 'Pitch up', key: 'ArrowUp', icon: '↑' },
+                      { label: 'Pitch down', key: 'ArrowDown', icon: '↓' },
+                      { label: 'Forward thrust', key: 'KeyW', icon: 'W' },
+                      { label: 'Reverse thrust', key: 'KeyS', icon: 'S' }
+                    ]
+              "
+              [attr.aria-label]="move.label"
+              (pointerdown)="touch($event, move.key, true)"
+              (pointerup)="touch($event, move.key, false)"
+              (pointercancel)="touch($event, move.key, false)"
+              (lostpointercapture)="touch($event, move.key, false)"
+            >
+              {{ move.icon }}
+            </button>
+          </div>
+        </div>
+      </ng-container>
+      <ng-container *ngIf="state.combat as combat">
+        <div
+          *ngIf="combat.marker as marker"
+          class="target-marker"
+          aria-hidden="true"
+          [class.locked]="combat.locked"
+          [class.offscreen]="marker.offscreen"
+          [style.left.px]="marker.x"
+          [style.top.px]="marker.y"
+        >
+          <i></i
+          ><span
+            >{{
+              marker.offscreen
+                ? "Sentinel · outside view"
+                : combat.locked
+                ? "SENTINEL / AUTO TRACK"
+                : "SENTINEL"
+            }}<small>{{ range(combat.range) }}</small></span
+          >
+        </div>
+        <aside
+          class="combat-panel glass"
+          data-ui
+          aria-label="Practice combat controls"
+        >
+          <div class="combat-title">
+            <span class="eyebrow">Practice encounter</span
+            ><span
+              class="combat-status"
+              [class.live]="combat.status === 'engaged'"
+              >{{
+                combat.status === "ready"
+                  ? "Standby"
+                  : combat.status === "engaged"
+                  ? "Live"
+                  : "Complete"
+              }}</span
+            >
+          </div>
+          <h2>
+            {{
+              combat.status === "victory"
+                ? "Target disabled."
+                : combat.status === "defeat"
+                ? "Resolute disabled."
+                : "Sentinel"
+            }}
+          </h2>
+          <p class="combat-range">
+            {{ range(combat.range) }} · Twin autocannons /
+            {{ combat.mode === "hold" ? "Holding fire" : "Automatic" }}
+          </p>
+          <div class="combat-health">
+            <div>
+              <strong>Resolute</strong>
+              <label
+                >Shield <b>{{ combat.shield }}%</b></label
+              >
+              <div
+                class="health-track"
+                role="meter"
+                aria-label="Resolute shield"
+                aria-valuemin="0"
+                aria-valuemax="100"
+                [attr.aria-valuenow]="combat.shield"
+              >
+                <i [style.width.%]="combat.shield"></i>
+              </div>
+              <label
+                >Hull <b>{{ combat.hull }}%</b></label
+              >
+              <div
+                class="health-track hull"
+                role="meter"
+                aria-label="Resolute hull"
+                aria-valuemin="0"
+                aria-valuemax="100"
+                [attr.aria-valuenow]="combat.hull"
+              >
+                <i [style.width.%]="combat.hull"></i>
+              </div>
+            </div>
+            <div>
+              <strong>Sentinel</strong>
+              <label
+                >Shield <b>{{ combat.targetShield }}%</b></label
+              >
+              <div
+                class="health-track target"
+                role="meter"
+                aria-label="Sentinel shield"
+                aria-valuemin="0"
+                aria-valuemax="100"
+                [attr.aria-valuenow]="combat.targetShield"
+              >
+                <i [style.width.%]="combat.targetShield"></i>
+              </div>
+              <label
+                >Hull <b>{{ combat.targetHull }}%</b></label
+              >
+              <div
+                class="health-track hull"
+                role="meter"
+                aria-label="Sentinel hull"
+                aria-valuemin="0"
+                aria-valuemax="100"
+                [attr.aria-valuenow]="combat.targetHull"
+              >
+                <i [style.width.%]="combat.targetHull"></i>
+              </div>
+            </div>
+          </div>
+          <p class="combat-message" role="status">
+            {{ combat.reason }}
+          </p>
+          <p
+            class="combat-impact"
+            [class.blocked]="
+              combat.armorKnown && combat.ammunition === 'standard'
+            "
+          >
+            {{ combat.lastImpact }}
+          </p>
+          <div
+            class="combat-ammunition"
+            *ngIf="combat.status === 'ready' || combat.status === 'engaged'"
+          >
+            <span class="eyebrow">Practice ammunition</span>
+            <div
+              class="combat-buttons"
+              role="group"
+              aria-label="Practice ammunition"
+            >
+              <button
+                class="quiet-button"
+                [disabled]="!combat.canChangeMode"
+                [attr.aria-pressed]="combat.ammunition === 'standard'"
+                (click)="setAmmunition('standard')"
+              >
+                Standard rounds
+              </button>
+              <button
+                class="quiet-button"
+                [disabled]="!combat.canChangeMode"
+                [attr.aria-pressed]="combat.ammunition === 'piercing'"
+                (click)="setAmmunition('piercing')"
+              >
+                Piercing rounds
+              </button>
+            </div>
+            <p class="combat-hint">
+              Standard rounds drain shields. Piercing rounds defeat reinforced
+              armor.
+            </p>
+          </div>
+          <div
+            class="combat-buttons"
+            role="group"
+            aria-label="Weapon mode"
+            *ngIf="combat.status === 'ready' || combat.status === 'engaged'"
+          >
+            <button
+              class="quiet-button"
+              [disabled]="!combat.canChangeMode"
+              [attr.aria-pressed]="combat.mode === 'automatic'"
+              (click)="setWeaponMode('automatic')"
+            >
+              Automatic
+            </button>
+            <button
+              class="quiet-button"
+              [disabled]="!combat.canChangeMode"
+              [attr.aria-pressed]="combat.mode === 'hold'"
+              (click)="setWeaponMode('hold')"
+            >
+              Hold fire
+            </button>
+          </div>
+          <p class="combat-hint">
+            {{
+              state.interior?.mode === "walk"
+                ? "Weapons keep operating. Use the helm or tactical console to change mode."
+                : "Guns aim and fire automatically. Hold fire stops new shots; flying rounds continue."
+            }}
+          </p>
+          <div class="combat-secondary">
+            <button
+              class="text-link"
+              (click)="startPractice()"
+              [disabled]="state.paused || state.interior?.mode === 'walk'"
+            >
+              Reset practice
+            </button>
+            <button class="text-link" (click)="endPractice()">
+              End practice
+            </button>
+          </div>
+          <ng-container *ngTemplateOutlet="helmOrders"></ng-container>
+          <button
+            *ngIf="!state.interior"
+            class="small-action"
+            (click)="enterBridge()"
+            [disabled]="state.paused"
+          >
+            {{ state.visitedInterior ? "Return aboard" : "Enter bridge" }}
+            <span>↗</span>
+          </button>
+          <button
+            *ngIf="state.interior && stationAction"
+            class="small-action"
+            (click)="interactAboard()"
+            [disabled]="state.paused"
+          >
+            {{ stationAction }} <kbd>F</kbd>
+          </button>
+          <button
+            *ngIf="state.interior"
+            class="small-action"
+            (click)="exteriorView()"
+            [disabled]="state.paused"
+          >
+            Exterior view <kbd>C</kbd>
+          </button>
+          <p class="combat-exit-note">
+            Practice ends on travel, shuttle launch or ship change. Damage stays
+            within this exercise.
+          </p>
+        </aside>
+      </ng-container>
+      <section
+        *ngIf="state.paused && !help && !error"
+        class="pause-panel glass view-enter"
+        data-ui
+        aria-labelledby="pause-title"
+      >
+        <span class="eyebrow">Take a breath</span>
+        <h2 id="pause-title">The stars can wait.</h2>
+        <p>
+          {{
+            state.interior
+              ? "Your place aboard is saved for this visit."
+              : "Your ship is holding position."
+          }}
+        </p>
+        <button class="primary-button" (click)="togglePause()">
+          Resume flight <span>↗</span></button
+        ><a class="text-link" routerLink="/ships">Visit the fleet</a>
+      </section>
+    </ng-container>
+  </main>
+
+  <ng-template #helmOrders>
+    <div class="helm-orders" *ngIf="state.navigation as navigation">
+      <span class="eyebrow">Automatic helm</span>
+      <p class="helm-status" role="status">
+        {{ state.paused ? "Navigation paused · " : "" }}{{ navigation.status }}
+      </p>
+      <ng-container *ngIf="state.interior?.mode !== 'walk'; else walkingOrders">
+        <div class="combat-buttons" role="group" aria-label="Navigation orders">
+          <button
+            class="quiet-button"
+            [disabled]="!navigation.canOrder"
+            [attr.aria-pressed]="navigation.order === 'hold'"
+            (click)="setHelmOrder('hold')"
+          >
+            Hold position
+          </button>
+          <button
+            *ngIf="!state.combat"
+            class="quiet-button"
+            [disabled]="!navigation.canOrder"
+            [attr.aria-pressed]="navigation.order === 'approach'"
+            (click)="travel(0)"
+          >
+            Approach orbit
+          </button>
+          <ng-container
+            *ngIf="
+              state.combat &&
+              (state.combat.status === 'ready' ||
+                state.combat.status === 'engaged')
+            "
+          >
+            <button
+              class="quiet-button"
+              [disabled]="!navigation.canOrder"
+              [attr.aria-pressed]="navigation.order === 'range'"
+              (click)="setHelmOrder('range')"
+            >
+              Keep combat range
+            </button>
+            <button
+              class="quiet-button"
+              [disabled]="!navigation.canOrder"
+              [attr.aria-pressed]="navigation.order === 'withdraw'"
+              (click)="setHelmOrder('withdraw')"
+            >
+              Withdraw
+            </button>
+          </ng-container>
+        </div>
+        <a *ngIf="!state.combat" class="small-action" routerLink="/atlas"
+          >Choose destination <span>↗</span></a
+        >
+      </ng-container>
+      <ng-template #walkingOrders
+        ><p class="combat-hint">
+          The helm carries out your orders while you walk. Use a console to
+          change them.
+        </p></ng-template
+      >
+    </div>
+  </ng-template>
+
+  <section
+    *ngIf="help"
+    class="help-panel glass view-enter"
+    data-ui
+    aria-labelledby="help-title"
+  >
+    <button
+      class="close-button"
+      aria-label="Close flight controls"
+      (click)="showHelp()"
+    >
+      ×</button
+    ><span class="eyebrow">A little orientation</span>
+    <h2 id="help-title">
+      {{ commanding ? "You have command." : "You have the helm." }}
+    </h2>
+    <ng-container *ngIf="commanding">
+      <p>
+        Choose a destination or approach orbit. The helm handles the course,
+        steering and arrival.
+      </p>
+      <p>
+        Hold position stops movement. During practice, keep combat range or
+        withdraw. Weapons have their own firing mode.
+      </p>
+      <p>
+        Drag either mouse button to look around outside; release to return
+        behind the ship. Escape pauses.
+      </p>
+    </ng-container>
+    <dl class="controls-list" *ngIf="!commanding">
+      <div>
+        <dt><kbd>Left mouse</kbd></dt>
+        <dd>Hold and drag to steer</dd>
+      </div>
+      <div>
+        <dt><kbd>Right mouse</kbd></dt>
+        <dd>Hold and drag to look around; release to follow</dd>
+      </div>
+      <div>
+        <dt><kbd>W</kbd> <kbd>S</kbd></dt>
+        <dd>Forward / reverse</dd>
+      </div>
+      <div>
+        <dt><kbd>←</kbd> <kbd>→</kbd> <kbd>↑</kbd> <kbd>↓</kbd></dt>
+        <dd>Turn / pitch</dd>
+      </div>
+      <div>
+        <dt><kbd>A</kbd> <kbd>D</kbd></dt>
+        <dd>Strafe left / right</dd>
+      </div>
+      <div>
+        <dt><kbd>Q</kbd> <kbd>E</kbd></dt>
+        <dd>Descend / climb</dd>
+      </div>
+      <div>
+        <dt><kbd>shift</kbd></dt>
+        <dd>Boost</dd>
+      </div>
+      <div>
+        <dt><kbd>space</kbd></dt>
+        <dd>Brake</dd>
+      </div>
+      <div>
+        <dt><kbd>esc</kbd></dt>
+        <dd>Pause / resume</dd>
+      </div>
+    </dl>
+    <p *ngIf="!commanding">
+      Drag the open sky with the left mouse button, or one finger, to steer.
+      Right-drag orbits the camera. Release to return behind your ship. Release
+      thrust to slow down. Hold Shift for fast cruise in open space; speed
+      reduces near worlds.
+    </p>
+    <p>Take a shuttle down to a planet. Resolute remains in orbit.</p>
+    <p>
+      Aboard: WASD walks, mouse or arrows look, Shift runs, and F uses a nearby
+      station. C opens the exterior view. Escape releases the mouse and pauses.
+    </p>
+    <p>
+      Practice: use the tactical console beside the helm, or Start practice
+      outside. Weapons aim and fire automatically. Fit piercing rounds when
+      armor blocks standard rounds. Reset practice restores both ships. Settings
+      and pause freeze the encounter and preserve navigation orders.
+    </p>
+  </section>
+
+  <div *ngIf="error" class="error-panel glass" role="alert" data-ui>
+    <span class="eyebrow">A brief interruption</span>
+    <h2>The stars are still there.</h2>
+    <p>{{ error }}</p>
+    <button class="primary-button" (click)="reload()">
+      Try again <span>↗</span>
+    </button>
+  </div>
+  <footer class="status-bar">
+    <span
+      ><i class="status-dot"></i
+      >{{
+        view === "home" || view === "ships"
+          ? "Vesper system"
+          : state.surface
+          ? "Surface survey"
+          : "Sector " + state.sector
+      }}
+      <b>/</b>
+      <span class="footer-coordinates">{{
+        view === "home" || view === "ships" ? "The outer reach" : coordinates
+      }}</span></span
+    ><span class="footer-right"
+      >{{
+        view === "play"
+          ? "Exploration flight · Local save"
+          : "An open invitation to explore"
+      }}<span class="footer-star">✦</span></span
+    >
+  </footer>
+  <router-outlet />
+</div>

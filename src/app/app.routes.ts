@@ -1,31 +1,22 @@
-import { Route } from '@angular/router';
+import { Component } from '@angular/core';
+import { Routes } from '@angular/router';
+import { UniverseComponent } from './universe/universe.component';
 
-export const routes: Route[] = [
+// The parent owns the renderer. Child navigation changes the interface, not its lifetime.
+@Component({ standalone: true, template: '' })
+export class UniverseRouteComponent {}
+
+export const routes: Routes = [
   {
     path: '',
-    redirectTo: 'home',
-    pathMatch: 'full',
-  }, // Redirect to '/home' when the path is empty
-  {
-    path: 'play',
-    loadChildren: () =>
-      import('./play/feature/play-shell/play-shell-routes').then(
-        (routes) => routes.routes,
-      ),
-  },
-  {
-    path: 'home',
-    loadChildren: () =>
-      import('./home/feature/home-shell/home-shell-routes').then(
-        (routes) => routes.routes,
-      ),
-  },
-  // Add your another routes using this syntax.
-  {
-    path: 'ships',
-    loadChildren: () =>
-      import('./ships/feature/ship-shell/ship-shell-routes').then(
-        (routes) => routes.routes,
-      ),
+    component: UniverseComponent,
+    children: [
+      { path: '', redirectTo: 'home', pathMatch: 'full' },
+      ...['home', 'ships', 'atlas', 'play', 'settings'].map((path) => ({
+        path,
+        component: UniverseRouteComponent,
+      })),
+      { path: '**', redirectTo: 'home' },
+    ],
   },
 ];

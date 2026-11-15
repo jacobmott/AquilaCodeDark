@@ -1,0 +1,12 @@
+Repository: D:/OtherProjects/AquilaCodeDark. Task: Aquila website/game remake.
+Read AGENTS.md, Docs/TaskRoutes.md and Docs/Handoffs/HANDOFF_2026-11-15_game-direction.md in full.
+Session wrapped; commit and push requested. Check current Git HEAD/upstream and Docs/Testing/game-direction-publication.json for publication proof.
+Report: http://127.0.0.1:8953/?agentreport=1&paseoAgent=ba50e3be-cc60-4d52-880e-1c84a67af008.
+Last-read inbox: reports/game-direction/inbox/20261115T015927Z.json.
+Full-screen Three.js world, glass UI, shuttles, walkable battleship, projectile combat and automatic navigation are built locally.
+Build, 35 model tests and 36 browser groups passed; six repository safety tests passed again during wrap.
+Gameplay proof: Docs/Testing/automatic-helm-verification.json. Physical devices, long play, other engines, Electron runtime and fresh sessions remain untested.
+Preview 4200 and task report 8953 remain running; setup report 8952 is untouched. No tests or transfers remain active.
+Owner paused implementation and will supply a new discussion topic. Further gameplay work waits for direction.
+Preserve peer staging. Secrets and media stay outside Git. Website deployment, asset transfer and paid generation need separate authority.
+Do not start any of this. Read, say where things stand, then wait.

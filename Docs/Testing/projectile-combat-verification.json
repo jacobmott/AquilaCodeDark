@@ -1,0 +1,244 @@
+{
+  "verified_at": "2026-11-15T21:48:21.790253+00:00",
+  "provider": "openai",
+  "scope": "Approved first projectile encounter: two automatic kinetic turrets, one shield and clear blocked versus penetrating hits.",
+  "owner_authority": "Yes, that sounds good. Proceed",
+  "implementation": [
+    "Instant pulse hits removed from both sides of the practice encounter. Traveling rounds resolve damage only on swept contact.",
+    "Two staggered automatic four-round turrets; source-authored aiming mounts, recoil, muzzle flashes, separated bright tracers and impact effects.",
+    "Standard rounds drain shields but fail reinforced armor without hull chip damage. Confirmed ineffective launches stop; fitting piercing rounds resumes effective fire.",
+    "Practice ammunition is unlimited and temporary. Modes affect future launches only; existing rounds keep their ammunition and trajectory.",
+    "One shield per side, armor-gated overflow, hull damage and terminal outcomes. No shield regeneration, inventory, upgrade ownership or general progression.",
+    "Fixed 120 Hz simulation with bounded frame input; swept sphere/rotated-ellipsoid and planet contacts. Moving ships can leave an incoming trajectory.",
+    "Fixed 160 projectile and 32 impact slots; instanced tracer/impact pools. Every active round drawn at every quality; secondary spark count changes.",
+    "Bridge/exterior/walking share the battle. Existing pause, routes, focus, reset, temporary-save and context-recovery behavior retained."
+  ],
+  "build": {
+    "command": "npm run build:prod",
+    "passed": true,
+    "includes": [
+      "Angular production build",
+      "Electron TypeScript compilation"
+    ],
+    "raw_bundle_mb": 2.96,
+    "main_chunk": "main-FBKXBJG2.js",
+    "warning": "Existing Node 25.8.1 non-LTS warning"
+  },
+  "model_tests": {
+    "passed": 30,
+    "failed": 0,
+    "combat": 13,
+    "interior": 6,
+    "universe": 11,
+    "command": "node --test scripts/tests/universe-model.test.mjs scripts/tests/interior-model.test.mjs scripts/tests/combat-model.test.mjs",
+    "coverage": [
+      "shield/armor overflow",
+      "1000 blocked attacks cause no hull chip damage",
+      "swept/rotated/moving contacts",
+      "delayed damage and both mounts",
+      "hold fire and in-flight rounds",
+      "launch range and obstruction",
+      "planet interception",
+      "ammunition fixed at launch",
+      "blocked armor and compatible victory",
+      "movement-induced miss and expiry",
+      "equal stationary outcomes at 30/144 presentation Hz",
+      "large world offsets",
+      "terminal outcomes and bounded pools",
+      "invalid and long frame inputs"
+    ]
+  },
+  "safety_tests": {
+    "passed": 6,
+    "failed": 0,
+    "command": ".venv-tools/Scripts/python.exe -B -m unittest discover -s scripts/tests -v",
+    "scope": "Local fixtures only; no real asset transfer."
+  },
+  "browser": {
+    "time": "2026-11-15T21:41:37.407Z",
+    "base": "http://127.0.0.1:4200",
+    "browser": "157.0.8103.78",
+    "prefix": "r28-projectile-",
+    "checks": [
+      {
+        "name": "Two automatic turrets launch visible separated rounds before any impact damage"
+      },
+      {
+        "name": "Hold fire preserves flying rounds; both sides take damage only after arrival; old aim/trigger shortcuts remain absent"
+      },
+      {
+        "name": "Standard rounds break the shield but cannot chip reinforced armor; fire control reports and stops ineffective new shots"
+      },
+      {
+        "name": "Ammunition modes carry between bridge, walking and exterior; piercing rounds penetrate; pause and quality changes preserve projectile state"
+      },
+      {
+        "name": "Piercing ammunition completes the automatic encounter; victory stops both guns and clears active rounds"
+      },
+      {
+        "name": "Incoming kinetics collapse the single shield and damage hull; defeat stops flight; reset restores health and standard ammunition"
+      },
+      {
+        "name": "Repeated practice reuses geometry and fixed pools; narrow controls fit and change ammunition and weapon mode",
+        "detail": {
+          "geometries": 59,
+          "textures": 7,
+          "pool": 160,
+          "impactPool": 32
+        }
+      },
+      {
+        "name": "Range still limits new launches; return reacquires and resumes automatic fire"
+      },
+      {
+        "name": "Graphics recovery preserves paused rounds; reload and travel clear temporary practice"
+      }
+    ],
+    "errors": []
+  },
+  "resources": {
+    "geometries": 59,
+    "textures": 7,
+    "calls": 89,
+    "triangles": 22892
+  },
+  "pool_limits": {
+    "projectiles": 160,
+    "impacts": 32,
+    "observed_saturation": 0,
+    "limit": "Repeated encounter reset checks, not a long-session or total GPU-memory benchmark."
+  },
+  "rendered_review": {
+    "method": "Direct inspection of native-browser bridge, exterior, blocked, penetrating and narrow captures.",
+    "findings": "Both foredeck streams are visible; shield/hull outcomes and practice ammunition controls are readable. Narrow panel fits and scrolls within the viewport. Rooms and ship art remain prototypes.",
+    "video": {
+      "path": "reports/game-direction/media/r28-projectile-encounter.webm",
+      "duration_seconds": 17.88,
+      "width": 1440,
+      "height": 900,
+      "fps": 25,
+      "codec": "vp8",
+      "decoded_without_errors": true,
+      "capture_errors": [],
+      "outcome": "victory"
+    }
+  },
+  "source_sha256": {
+    "scripts/qa-combat.mjs": "00f7001e2b045aa53bf4267fb52274cad24bc7b99461c144c97652da6066c1f8",
+    "scripts/tests/combat-model.test.mjs": "cd777eadd350a5817136cee49329c78e2145a109d2bc642993371aa3a143a576",
+    "scripts/tests/interior-model.test.mjs": "7c4fed1161e213c73631f2531e8c767e8275a83bb1dda6d53cf68e823b191f49",
+    "scripts/tests/universe-model.test.mjs": "f43b4d5b5e8e50b4c935a407e9bce0dffbd672fecc39d66a104bf86fb26ec0b3",
+    "src/app/universe/battleship-art.ts": "536def0a2533c6f34342fcf28c92e13c7946a7007231c9f60b1cdaa614d882c6",
+    "src/app/universe/combat-art.ts": "722e0b7ef88533472f7cae5848aa62a1d05b69baf485439d1fd2fd58971cccea",
+    "src/app/universe/combat-model.ts": "70e7251f6ed2f0df614859abf82fc5f466412595f983700422a38dfed368ae1c",
+    "src/app/universe/interior-model.ts": "6ebbf6eb41fcd442b2f63a53498050ee14d7eab9fa011cd03a5631010bcb30e7",
+    "src/app/universe/planet-fields.ts": "33dc893b59ff8bf603569105beade5d0822d84e0f7fc1a4fc66e320e34443165",
+    "src/app/universe/planet-terrain.ts": "6af07dac4da091655edeeefbe34204a91675731e6121fa724c906ed84748fce2",
+    "src/app/universe/planet-tiles.ts": "aa5e9596122362afdcbdabcd14253052109494b704d967e964b2118309ec5afd",
+    "src/app/universe/planet-visuals.ts": "345433644f9db404fb507e5937a33c41453d179d7adc77240e820a19c30555ab",
+    "src/app/universe/ship-interior.ts": "bcbb6b484cde65085d43a2ff9eee14ce5e9fd3726a17fb17b6b7b3206d12c8fd",
+    "src/app/universe/universe-art.ts": "d88a66e3ad11e1d19b668f94207e05c65d52340d9449f21cb6ee1f6ff79c83ea",
+    "src/app/universe/universe-model.ts": "6be551edd23d89d297f62387c980ecc6222696c5af5d701ac4a6c174c43e4bbb",
+    "src/app/universe/universe-scene.ts": "ef94540192ce79403c398860b44e5c35ff96893c280e33734a9abb5127d14707",
+    "src/app/universe/universe.component.css": "c2275dc67f46548a4e95df1ebf8b7388a851abe25679140d0c2897f995f0c1a4",
+    "src/app/universe/universe.component.html": "91d0cfa6513fa24523a6cf6aa324a964352eecb3cb6c1278275b4c9fd0c7b1ff",
+    "src/app/universe/universe.component.ts": "96334c94eedcb0e6e0e64b30176d4d4ad9c8b96e57850773ea478e2bb7618ed7"
+  },
+  "media": [
+    {
+      "path": "reports/game-direction/media/r28-projectile-blocked.png",
+      "bytes": 626431,
+      "sha256": "30bf69abde3198ab626d993deb542a4d1b4689442b892261030bf4905ebb9340"
+    },
+    {
+      "path": "reports/game-direction/media/r28-projectile-bridge-stream.png",
+      "bytes": 627455,
+      "sha256": "6fc274820036ae88d577d35faa4d4c29726afd89a954ac3aecb8e17567ab3728"
+    },
+    {
+      "path": "reports/game-direction/media/r28-projectile-encounter.webm",
+      "bytes": 1688635,
+      "sha256": "4024a8089147370283a07369bc925d45d5b7a1b18d868f4a09f0f5e0615700d7"
+    },
+    {
+      "path": "reports/game-direction/media/r28-projectile-exterior-blocked.png",
+      "bytes": 768211,
+      "sha256": "cb853019e8f4c7aa4da493de3c5d52900041d4a5c25c9dcde28a7153e69d143a"
+    },
+    {
+      "path": "reports/game-direction/media/r28-projectile-exterior-piercing.png",
+      "bytes": 767429,
+      "sha256": "63aac05e25753c1c64558f4bd81dda0cd14632a1d7a0bdd29912633b9bad7991"
+    },
+    {
+      "path": "reports/game-direction/media/r28-projectile-exterior-stream.png",
+      "bytes": 764723,
+      "sha256": "677edae0f49fd65ecb3052797a6b4fdce9549dcd2ae74543c61aa421ae2f7d25"
+    },
+    {
+      "path": "reports/game-direction/media/r28-projectile-mobile.png",
+      "bytes": 290029,
+      "sha256": "04b40408ef5474e58559d761561f3ca70d45c81d5a670b0de8fa8ded4a4cf290"
+    },
+    {
+      "path": "reports/game-direction/media/r28-projectile-penetration.png",
+      "bytes": 771004,
+      "sha256": "f5dd369ea0c98719be8f94aca6c94a768f2517fd58421ad8bbde2269c276dc96"
+    }
+  ],
+  "tooling_notes": [
+    "First browser attempt used an exact accessible-name selector that omitted an arrow; fixed the test selector, then all nine groups passed.",
+    "Video capture initially lacked Playwright cached FFmpeg. Reused installed FFmpeg in ignored local tooling; no global installation or new runtime dependency."
+  ],
+  "knowledge_lookup": {
+    "provider": "openai",
+    "queries": [
+      "swept collision",
+      "three.js projectile"
+    ],
+    "outcome": "The broad search returned material from other engines/projects; the combined Three.js/projectile query was empty. No external implementation reused or research submitted. Search output was not fully reviewed; no catalog-wide absence claim."
+  },
+  "limits": [
+    "One stationary training target; coarse sphere/ellipsoid contacts. Own-hull occlusion, mount arcs and tracking-rate constraints remain unbuilt.",
+    "No missiles, countermeasures, automatic evasion, persistent damage, upgrade tree, sound or general tactical enemy AI.",
+    "Fixed-step equality checked for stationary encounters at two normal presentation cadences; severe frame gaps are clamped. Not a universal device-performance claim.",
+    "Isolated installed Chrome on this desktop. Physical phones/laptops, other browser engines, Electron runtime, long play and fresh agent sessions remain untested.",
+    "Earlier broad exploration/terrain/quality suites remain historical; this milestone ran model, safety and focused combat browser checks.",
+    "No commit, push, deployment, asset backup/restore, paid generation or research submission."
+  ],
+  "report": {
+    "round": 28,
+    "build_passed": true,
+    "url": "http://127.0.0.1:8953/",
+    "workspace_snapshot_verified": true,
+    "open_questions": [],
+    "browser_id": "eee0b72d-b4d9-497c-9b66-fc8eecf7f009",
+    "snapshot_observed": "Round 28, no pending question, projectile gameplay video and four supporting images.",
+    "http_status": 200
+  },
+  "final_checks": {
+    "verified_at": "2026-11-15T21:52:35.475885+00:00",
+    "source_hashes_match": 19,
+    "media_hashes_match": 8,
+    "archived_checkpoint_sha256_matches": true,
+    "checkpoint_bytes": 8719,
+    "checkpoint_words": 1070,
+    "startup": {
+      "sizes": {
+        "AGENTS.md": 5104,
+        "Docs/TaskRoutes.md": 1173,
+        "HANDOFF.md": 442,
+        "Docs/Handoffs/HANDOFF_2026-11-15_game-direction.md": 8719
+      },
+      "failures": [],
+      "proves": "local files and routes only"
+    },
+    "git_diff_check": "passed",
+    "staged_paths": [],
+    "capture_and_tooling_ignore_check": "passed",
+    "ignored_paths_checked": 15,
+    "latest_inbox": "reports/game-direction/inbox/20261115T015927Z.json",
+    "no_new_inbox": true,
+    "report_http": 200
+  }
+}

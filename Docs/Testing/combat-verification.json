@@ -1,0 +1,364 @@
+{
+  "verified_at": "2026-11-15T09:36:35.727680+00:00",
+  "provider": "openai",
+  "scope": "First local practice battle: tactical console, one drone, pulse lance, shields/hull, shared bridge/exterior state and reset.",
+  "authority": {
+    "source": "Direct user chat following report round 20",
+    "quote": "Yep, that all sounds great. Let's do it.",
+    "owner_playtest": "Not yet reported for combat"
+  },
+  "build": {
+    "command": "npm run build:prod",
+    "passed": true,
+    "includes": [
+      "Angular production build",
+      "Electron TypeScript compilation"
+    ],
+    "raw_bundle_mb": 2.95,
+    "main_chunk": "main-TSXHBGAR.js",
+    "warning": "Existing Node 25.8.1 non-LTS warning"
+  },
+  "model_tests": {
+    "command": "node --test scripts/tests/universe-model.test.mjs scripts/tests/interior-model.test.mjs scripts/tests/combat-model.test.mjs",
+    "passed": 22,
+    "failed": 0,
+    "universe": 11,
+    "interior": 6,
+    "combat": 5
+  },
+  "safety_tests": {
+    "command": ".venv-tools/Scripts/python.exe -B -m unittest discover -s scripts/tests -v",
+    "passed": 6,
+    "failed": 0,
+    "scope": "Temporary local fixtures and mock storage; no real transfers"
+  },
+  "browser_groups_passed": 37,
+  "browser": {
+    "combat": {
+      "time": "2026-11-15T09:32:15.674Z",
+      "base": "http://127.0.0.1:4200",
+      "browser": "157.0.8103.78",
+      "prefix": "r21-combat-",
+      "checks": [
+        {
+          "name": "Walk to the tactical console and deploy a passive training drone through native controls"
+        },
+        {
+          "name": "Target lock starts return fire; shield damage, pulse hits and effects come from the same encounter",
+          "detail": {
+            "player": 74,
+            "target": 78
+          }
+        },
+        {
+          "name": "Pause, settings and input focus freeze combat; bridge and exterior share damage and lock, and walking cannot fire"
+        },
+        {
+          "name": "Held fire completes a winning battle; terminal state stops both guns",
+          "detail": {
+            "fired": 10,
+            "returnShots": 4
+          }
+        },
+        {
+          "name": "Shields absorb before hull; defeat disables the ship; practice reset restores both sides without teleporting"
+        },
+        {
+          "name": "Repeated encounters reuse graphics resources; narrow layouts expose native lock and fire controls",
+          "detail": {
+            "geometries": 60,
+            "textures": 7
+          }
+        },
+        {
+          "name": "Leaving weapon range blocks both guns without losing encounter state"
+        },
+        {
+          "name": "Context recovery stays paused; reload clears practice while preserving voyage; assisted travel ends the encounter"
+        }
+      ],
+      "errors": []
+    },
+    "interior": {
+      "time": "2026-11-15T09:26:50.127Z",
+      "base": "http://127.0.0.1:4200",
+      "browser": "157.0.8103.78",
+      "webgl": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5090 (0x00002B85) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "prefix": "r21-interior-",
+      "checks": [
+        {
+          "name": "Enter a human-scale bridge with one canvas and a live forward world view",
+          "detail": {
+            "worldCamera": [
+              370,
+              591.75,
+              -2458
+            ],
+            "deckPosition": [
+              0,
+              1.75,
+              2
+            ]
+          }
+        },
+        {
+          "name": "Click-to-look turns only the walker; Escape releases the cursor and pauses walking"
+        },
+        {
+          "name": "Helm thrust and steering move the same ship; look and exterior view preserve command state"
+        },
+        {
+          "name": "Walk through the passage, launch Peregrine, fly away and return aboard the original parked battleship",
+          "detail": {
+            "parkedPosition": [
+              0,
+              0,
+              -663.5845722122641
+            ],
+            "launchPosition": [
+              3471.904567596205,
+              -180,
+              -1374.836056220985
+            ],
+            "restoredPosition": [
+              0,
+              0,
+              -663.5845722122641
+            ]
+          }
+        },
+        {
+          "name": "Walk back to command; repeated interior visits reuse geometry, textures and the renderer",
+          "detail": {
+            "geometries": 154,
+            "textures": 13
+          }
+        },
+        {
+          "name": "Settings and quality choices preserve the visit; phone layouts expose walking and helm controls without overflow"
+        },
+        {
+          "name": "Context restoration pauses safely; reload resumes the same battleship from exterior flight"
+        }
+      ],
+      "errors": []
+    },
+    "exterior_camera": {
+      "time": "2026-11-15T09:27:23.818Z",
+      "base": "http://127.0.0.1:4200",
+      "browser": "157.0.8103.78",
+      "prefix": "r21-orbit-",
+      "checks": [
+        {
+          "name": "Full horizontal orbit and above/below views leave the ship still; release returns around the hull",
+          "detail": {
+            "dimensions": [
+              4800,
+              1280.0000071525574,
+              13600
+            ],
+            "minimumCameraRadius": 20318.464495813285,
+            "maximumCameraRadius": 20318.464508914058
+          }
+        },
+        {
+          "name": "Left drag steers; right takes camera control during a chord and releases while left stays held"
+        },
+        {
+          "name": "Pause, focus loss and cancelled pointer input clear camera control"
+        },
+        {
+          "name": "Inspection shuttle can look around without moving the shuttle or parked battleship"
+        },
+        {
+          "name": "Camera orbit preserves arrival assist and surface heading and altitude"
+        },
+        {
+          "name": "Reduced motion returns directly to chase view"
+        }
+      ],
+      "errors": []
+    },
+    "walking_camera": {
+      "time": "2026-11-15T09:27:28.789Z",
+      "base": "http://127.0.0.1:4200",
+      "browser": "157.0.8103.78",
+      "checks": [
+        {
+          "name": "Native capture requests raw input and normal mouse movement keeps its expected sensitivity"
+        },
+        {
+          "name": "Injected spikes in either direction are discarded without losing the good axis or moving the view later",
+          "detail": [
+            {
+              "injectedY": 700,
+              "pitchBefore": -0.05000000000000001,
+              "pitchAfter": -0.05000000000000001
+            },
+            {
+              "injectedY": -700,
+              "pitchBefore": -0.05000000000000001,
+              "pitchAfter": -0.05000000000000001
+            },
+            {
+              "injectedY": 400,
+              "pitchBefore": -0.05000000000000001,
+              "pitchAfter": -0.05000000000000001
+            },
+            {
+              "injectedY": -400,
+              "pitchBefore": -0.05000000000000001,
+              "pitchAfter": -0.05000000000000001
+            },
+            {
+              "injectedY": 12000,
+              "pitchBefore": -0.05000000000000001,
+              "pitchAfter": -0.05000000000000001
+            },
+            {
+              "injectedY": -12000,
+              "pitchBefore": -0.05000000000000001,
+              "pitchAfter": -0.05000000000000001
+            }
+          ]
+        },
+        {
+          "name": "Walking alone preserves pitch; Escape and recapture preserve look without a stale drag jump"
+        },
+        {
+          "name": "Native drag look remains smooth; a discontinuous drag sample rebases without a pitch snap"
+        },
+        {
+          "name": "Unsupported raw input falls back to native capture; denied capture retains drag controls"
+        }
+      ],
+      "errors": [],
+      "scope": "Native Chrome input plus explicitly injected movement faults and unsupported/denied API responses; user hardware spike not directly captured"
+    },
+    "universe": {
+      "time": "2026-11-15T09:28:19.003Z",
+      "base": "http://127.0.0.1:4200",
+      "browser": "157.0.8103.78",
+      "webgl": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5090 (0x00002B85) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "capturePrefix": "r21-game-",
+      "checks": [
+        {
+          "name": "One persistent canvas; the three existing shuttle selections work"
+        },
+        {
+          "name": "Right-drag moves the camera without steering; browser menus remain available on UI"
+        },
+        {
+          "name": "Keyboard thrust, climb, descent, turn, pitch, strafe, and mouse steering"
+        },
+        {
+          "name": "Pause and controls overlay prevent flight; Escape closes controls"
+        },
+        {
+          "name": "Settings persist; form input does not fly the ship"
+        },
+        {
+          "name": "Orbit assist, shuttle excursion, surface controls, and carrier return"
+        },
+        {
+          "name": "Manual boosted flight crosses a sector boundary without an edge"
+        },
+        {
+          "name": "Travel crosses sectors, loaded worlds stay bounded, reload restores voyage and preferences",
+          "detail": {
+            "sector": "0:0:0",
+            "loaded": 27
+          }
+        },
+        {
+          "name": "Phone layouts fit; pointer flight control releases without sticking"
+        },
+        {
+          "name": "Graphics context loss shows recovery notice and restores safely while paused"
+        },
+        {
+          "name": "Unavailable graphics shows a readable fallback and disables flight"
+        }
+      ],
+      "errors": []
+    }
+  },
+  "rendered_review": {
+    "method": "Viewed final PNG captures after final combat rerun",
+    "images": [
+      "reports/game-direction/media/r21-combat-station.png",
+      "reports/game-direction/media/r21-combat-bridge-fire.png",
+      "reports/game-direction/media/r21-combat-exterior-fire.png",
+      "reports/game-direction/media/r21-combat-mobile.png"
+    ],
+    "findings": "Tactical controls, world-visible pulse and shield effects, shared damage and narrow control layout inspected. Prototype art remains."
+  },
+  "resolved_attempts": [
+    "Node strip-only loader rejected a constructor parameter property. Replaced it with an explicit field and cloned assignment; all model tests passed.",
+    "Initial browser attempt could not match the Start practice button because its icon entered the accessible name. Marked the decorative icon aria-hidden; full combat suite passed."
+  ],
+  "source_sha256": {
+    "scripts/qa-combat.mjs": "bfbea991c35bf957b4e0b9fc01119999c0fd8c1c8ccfaeb5de7fe131aa04b116",
+    "scripts/qa-interior.mjs": "9724dcbf012d7ab17cdfb6263854094e0938469eeb1b5b12989cbbe0f643362d",
+    "scripts/qa-orbit-camera.mjs": "fb703993d206ed1187a807a14ec971d8662f766502fa5bfdefe02da711f5a12f",
+    "scripts/qa-universe.mjs": "32988b47a3d9c3d27fc734cd76fdf12bfef7fdbb19391da1bd78e55ff37b3d16",
+    "scripts/qa-walk-camera.mjs": "58913bdf517a1a5670d4918b8844da88aaa2bef8de9cf2e0125728d14e0c5385",
+    "scripts/tests/combat-model.test.mjs": "fbf2089de1ff46930089c03c70a6a48e90887e780b5c1026db42041d5e953be6",
+    "scripts/tests/interior-model.test.mjs": "7c4fed1161e213c73631f2531e8c767e8275a83bb1dda6d53cf68e823b191f49",
+    "scripts/tests/universe-model.test.mjs": "f43b4d5b5e8e50b4c935a407e9bce0dffbd672fecc39d66a104bf86fb26ec0b3",
+    "src/app/universe/battleship-art.ts": "536def0a2533c6f34342fcf28c92e13c7946a7007231c9f60b1cdaa614d882c6",
+    "src/app/universe/combat-art.ts": "af9608215bcbe15984ad7176f0f00973e3dc4e5c72c1712f22cb76fe26daf6d5",
+    "src/app/universe/combat-model.ts": "72a7715afa72ae93afbad4b78686fa1f4245106190372fa362870acce2c8d000",
+    "src/app/universe/interior-model.ts": "6ebbf6eb41fcd442b2f63a53498050ee14d7eab9fa011cd03a5631010bcb30e7",
+    "src/app/universe/planet-fields.ts": "33dc893b59ff8bf603569105beade5d0822d84e0f7fc1a4fc66e320e34443165",
+    "src/app/universe/planet-terrain.ts": "6af07dac4da091655edeeefbe34204a91675731e6121fa724c906ed84748fce2",
+    "src/app/universe/planet-tiles.ts": "aa5e9596122362afdcbdabcd14253052109494b704d967e964b2118309ec5afd",
+    "src/app/universe/planet-visuals.ts": "345433644f9db404fb507e5937a33c41453d179d7adc77240e820a19c30555ab",
+    "src/app/universe/ship-interior.ts": "bcbb6b484cde65085d43a2ff9eee14ce5e9fd3726a17fb17b6b7b3206d12c8fd",
+    "src/app/universe/universe-art.ts": "d88a66e3ad11e1d19b668f94207e05c65d52340d9449f21cb6ee1f6ff79c83ea",
+    "src/app/universe/universe-model.ts": "6be551edd23d89d297f62387c980ecc6222696c5af5d701ac4a6c174c43e4bbb",
+    "src/app/universe/universe-scene.ts": "c2d4fbed046807d9ba4623b99f5d1d5a3ae8a267c557e10271e98790a463cd17",
+    "src/app/universe/universe.component.css": "8690731e6e599e667a58dbefc1db924357d7f56c9ae20fc4bd29fce0ba170608",
+    "src/app/universe/universe.component.html": "9d43fa1d2adc301fde5cfff59f03efe902568e8b7c7e1b9016c66870ade6cb37",
+    "src/app/universe/universe.component.ts": "575beffc9af62c621190a2896503a21d09320c3c5ba4f52f41ee4e7abc5b51ee"
+  },
+  "knowledge_lookup": {
+    "provider": "openai",
+    "projectile": "First page: ten passages from four distinct Unreal-oriented sources. No applicable implementation reused; further pages not read.",
+    "threejs_combat": "Quoted Three.js plus combat returned no selected-catalog result; complete_for_scope true, next_cursor null. This is not evidence that no external knowledge exists.",
+    "source_reuse": false,
+    "research_submitted": false
+  },
+  "limits": [
+    "Stationary drone; instantaneous pulse hits, not projectile ballistics or pursuit AI.",
+    "Temporary training damage; no persistent ship damage, physical destruction, crew combat, general enemy tactics or multiplayer.",
+    "Native installed Chrome 157.0.8103.78 on this RTX 5090 desktop. Narrow desktop views do not establish phone GPU, thermal or power performance.",
+    "Physical phones/laptops, other browser engines, Electron runtime, long play, fresh agent-session loading and real generation capture remain untested.",
+    "Dedicated battleship/quality, long terrain and fallback-depth suites were not rerun this turn; prior receipts remain historical.",
+    "No commit, push, website deployment, asset transfer, paid generation or research submission."
+  ],
+  "report": {
+    "round": 21,
+    "url": "http://127.0.0.1:8953/",
+    "build_passed": true,
+    "workspace_snapshot_verified": true,
+    "browser_id": "4ced7849-4f56-427f-b759-c76620004261",
+    "observed": "Resolute takes fire; Round 21; Nothing waits on you",
+    "open_questions": [],
+    "http_verified": {
+      "status": 200,
+      "round21": true,
+      "four_media_references": true
+    }
+  },
+  "final_checks": {
+    "checked_at": "2026-11-15T09:37:11.242390+00:00",
+    "startup_context": "Passed: local files and routes only",
+    "git_diff_check": "Passed",
+    "shared_index": "Empty; unchanged",
+    "source_hashes": "Verified",
+    "checkpoint_archive_sha256": "f87c21a1ebb90ce2de823d44511bb820d22ad4e2e635d3acc68a66a478361b8a",
+    "checkpoint_words": 1123,
+    "checkpoint_bytes": 8700
+  }
+}

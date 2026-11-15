@@ -1,0 +1,94 @@
+{
+ "about": "Every question this lane's page has asked, open and answered. Added and updated, never removed. Submitted answers are the files in inbox/.",
+ "page_folder": "game-direction",
+ "questions": [
+  {
+   "id": "aquila-direction-r1-flight",
+   "short": "Freedom of flight",
+   "ask": "Should ships fly mostly across a plane, or move freely in all three dimensions?",
+   "why": "This shapes camera behavior and controls. A preference here does not authorize implementation.",
+   "options": [
+    {
+     "v": "plane",
+     "label": "Mostly across a plane"
+    },
+    {
+     "v": "free",
+     "label": "Freely in every direction"
+    },
+    {
+     "v": "open",
+     "label": "Still exploring"
+    }
+   ],
+   "state": "open",
+   "answer": null,
+   "page": "Aquila game and website direction"
+  },
+  {
+   "id": "aquila-direction-r2-camera",
+   "short": "Default flight view",
+   "ask": "Should the main flight view trail your ship or stay at an elevated angle?",
+   "why": "Both support your flight choice. This chooses the normal view, not whether other views can exist.",
+   "options": [
+    {
+     "v": "chase",
+     "label": "Follow behind the ship"
+    },
+    {
+     "v": "elevated",
+     "label": "Stay at an elevated angle"
+    }
+   ],
+   "state": "open",
+   "answer": null,
+   "page": "Aquila game and website direction"
+  },
+  {
+   "id": "aquila-direction-r23-pace",
+   "short": "Choose the battle pace",
+   "ask": "What should large battles feel like?",
+   "why": "I recommend deliberate battles with fast fighters. This leaves room for ship decisions while keeping combat active.",
+   "options": [
+    {
+     "v": "mixed",
+     "label": "Deliberate battles, fast fighters"
+    },
+    {
+     "v": "fast",
+     "label": "Fast, constant action"
+    },
+    {
+     "v": "slow",
+     "label": "Slow, tactical engagements"
+    }
+   ],
+   "state": "open",
+   "answer": null,
+   "page": "Aquila game and website direction"
+  },
+  {
+   "id": "aquila-direction-r24-pace",
+   "short": "Clarify the battle feel",
+   "ask": "Does that match the kind of battles you have in mind? from round 23",
+   "why": "My recommendation leaves time for ship decisions while weapons, fighters and missiles keep the battle active.",
+   "options": [
+    {
+     "v": "mixed",
+     "label": "Yes, time for ship decisions"
+    },
+    {
+     "v": "fast",
+     "label": "Faster and more frantic"
+    },
+    {
+     "v": "slow",
+     "label": "Slower with deeper planning"
+    }
+   ],
+   "state": "open",
+   "answer": null,
+   "page": "Aquila game and website direction"
+  }
+ ]
+}
