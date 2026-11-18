@@ -3748,6 +3748,46 @@ def main(output):
         summary="Research review and game work wait for owner direction after the startup stop.",
         short="Finish publication and stop", follows="aquila-direction-r85-next")
     rounds = page.entry(86, "Session checkpoint saved", session_wrap, when="2026-11-17") + rounds
+    published_native = decide.recap(
+        "Session-owned native work and records are committed and pushed. Remote verification passed; shared staging was preserved. "
+        "The restart prompt is saved. Reliability research has returned but remains unread. "
+        "The next session reads the checkpoint, reports where things stand and waits.",
+        [
+            ("Published", "The content commit contains 213 session-owned paths and is present on the remote."),
+            ("Preserved", "The isolated index protected shared staging; no dirty source remained after the content push."),
+            ("Verified", "Git safety, repository tests and source-evidence checks pass; no fresh gameplay testing is claimed."),
+            ("Pending", "Reliability research awaits review; Windows expedition feedback and later device checks remain open."),
+            ("Handoff", "Restart instructions require reading, reporting status and waiting for your direction."),
+        ],
+        {
+            "did": "Committed and pushed the native work, research records and saved decisions.",
+            "why": "You invoked the complete new-session workflow.",
+            "working": "Remote verification passed, shared staging was preserved, and the restart prompt is saved.",
+            "not_working": "Research review, human expedition feedback, sustained device testing, cloud saves and Apple work remain unfinished.",
+            "next": "Start a fresh session with the saved prompt, then choose the next task.",
+        },
+    )
+    published_body = '<p>Native work, publishing decisions and research records are committed and pushed.</p>'
+    published_body += '<p>Verified content commit: <code>64a1b619989a0d7c8674fa5014972b9b0abd23f0</code>.</p>'
+    published_body += '<p>The remote branch matches that commit. The final records commit seals this receipt and handoff without embedding its own hash.</p>'
+    published_body += '<p>Private-index publication preserved shared staging. Assets, builds, credentials and raw research remain outside Git.</p>'
+    published_body += '<p>Six repository safety tests pass. Earlier native evidence remains applicable except one removed blank line in input configuration.</p>'
+    published_body += '<p>Research version 1 has returned; its body remains unread and unreviewed. No repeat research run is needed.</p>'
+    published_body += '<p><a href="native-restart.txt">Copy the restart prompt</a>; <a href="native-publication.json">publication evidence</a>; <a href="address-reliability-return.json">return metadata</a>.</p>'
+    published_body += '<p>Reports and Research Console remain running. No game, provider, transfer or deployment work starts during this wrap.</p>'
+    published_native += decide.info_thread("aquila-direction-r87-info",
+        "Session-owned work is committed, pushed and verified remotely.",
+        body_html=published_body, short="Publication verified", follows="aquila-direction-r86-info")
+    published_native += decide.request("aquila-direction-r87-playtest",
+        "After one Windows expedition, what felt confusing, slow, or unsatisfying, and did the upgrade survive reopening?",
+        summary="Carried forward for later; the fresh session must first read, report status and wait.",
+        short="Earlier Windows feedback request", follows="aquila-direction-r86-playtest",
+        reply="What needs fixing, and did your progress survive reopening?")
+    published_native += decide.whats_next("aquila-direction-r87-next",
+        "Use the saved restart prompt; the next session reads, reports status and waits.",
+        summary="Then choose research review or Windows expedition follow-up. No purchase, contact or deployment authority is added.",
+        short="Ready for a fresh session", follows="aquila-direction-r86-next")
+    rounds = page.entry(87, "Published and ready for restart", published_native, when="2026-11-17") + rounds
     (out / "native-restart.txt").write_bytes((ROOT / "Docs/Handoffs/PROMPT_2026-11-17_native-direction.txt").read_bytes())
     (out / "native-publication.json").write_bytes((ROOT / "Docs/Testing/native-direction-publication.json").read_bytes())
     (out / "address-reliability-return.json").write_bytes((ROOT / "Docs/Research/texas-business-address-reliability-return-v0001.json").read_bytes())

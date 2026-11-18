@@ -1,6 +1,6 @@
 # Business, publishing and address privacy
 
-Updated November 17, 2026, round 86. Start here when this discussion returns.
+Updated November 17, 2026, round 87. Start here when this discussion returns.
 This combines saved research, current owner decisions and targeted provider checks; no company setup has been executed.
 The [dated research history](native-release-direction.md) retains source detail, rejected assumptions and earlier recommendations.
 
@@ -80,7 +80,8 @@ Explicit newsession authorizes session-owned Git publication, not new business e
 The focused quality request now has returned version 1; metadata checked during wrap, body unread and unreviewed.
 [Return metadata](../Docs/Research/texas-business-address-reliability-return-v0001.json) pins its identity and hash.
 The owner's run/save action is complete. Review follows owner direction in the next session; no repeat run needed.
-No changed provider ranking, selection, purchase or contact. [Publication evidence](../Docs/Testing/native-direction-publication.json) records wrap progress.
+No changed provider ranking, selection, purchase or contact. [Publication evidence](../Docs/Testing/native-direction-publication.json) verifies commit `64a1b619989a0d7c8674fa5014972b9b0abd23f0` on the remote.
+Round 87 closes the wrap. Publication authority is consumed; research review remains next-session work after direction.
 
 ## Next step: focused quality comparison, round 85
 

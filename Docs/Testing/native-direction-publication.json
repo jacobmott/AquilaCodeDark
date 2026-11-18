@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "state": "prepared",
+  "state": "content_pushed_verified",
   "prepared_at_utc": "2026-11-18T02:48:17.344879+00:00",
   "authority": "Explicit $newsession invocation: wrap, commit and push continuing session-owned work.",
   "base_commit": "39c8bcdb8bc195f74c088f72663294260f5b0a30",
   "branch": "main",
   "upstream": "origin/main",
-  "content_commit": null,
-  "remote_verified": false,
+  "content_commit": "64a1b619989a0d7c8674fa5014972b9b0abd23f0",
+  "remote_verified": true,
   "scope": [
     "Native foundation and first expedition source, tests and wrapper",
     "Sanitized build/device/research receipts and authored plans",
@@ -21,8 +21,19 @@
     "native_runtime_rerun": false,
     "earlier_runtime_receipt": "Docs/Testing/native-expedition-verification.json",
     "private_candidate_scan_hits": 0,
-    "git_guard": "pending",
-    "report": "pending",
+    "git_guard": {
+      "indexed_files": 530,
+      "failures": 0,
+      "hook_path": ".githooks",
+      "commit_hook_bypass": false
+    },
+    "report": {
+      "built_round": 86,
+      "http_verified": true,
+      "paseo_snapshot_verified": true,
+      "final_round": 87,
+      "final_round_verification": "Build, served Paseo browser snapshot, exact restart copy and checkpoint validation pass."
+    },
     "formatting_only_changes": [
       {
         "path": "native/Aquila/Config/DefaultInput.ini",
@@ -31,7 +42,8 @@
         "change": "Remove redundant blank line at EOF only; all configuration entries and other bytes unchanged."
       }
     ],
-    "whitespace_note": "Recognize CRLF terminators for preserved historical evidence; trailing spaces and blank EOF lines remain checked."
+    "whitespace_note": "Recognize CRLF terminators for preserved historical evidence; trailing spaces and blank EOF lines remain checked.",
+    "whitespace": "Passed with CRLF terminators recognized; extra EOF blank line removed from input configuration only."
   },
   "pending_research": {
     "id": "0013c8c0a3bb4ac982a44417de36ddf3",
@@ -52,5 +64,15 @@
   "notes": [
     "Historical native verification receipts retain their original publication status. This receipt records the later wrap.",
     "A final records-only commit may seal verified publication evidence without embedding its own hash."
-  ]
+  ],
+  "verified_at_utc": "2026-11-18T02:55:35.764561+00:00",
+  "remote_head_at_verification": "64a1b619989a0d7c8674fa5014972b9b0abd23f0",
+  "published_paths": 213,
+  "shared_index_after_content_commit": {
+    "staged": [],
+    "held_paths": [],
+    "working_tree": []
+  },
+  "unpublished_session_source_after_content_commit": [],
+  "records_seal": "A following records-only commit seals this verified receipt and final handoff. Its hash is verified through Git, not embedded recursively."
 }

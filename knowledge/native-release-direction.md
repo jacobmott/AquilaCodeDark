@@ -11,6 +11,7 @@ Owner invokes newsession: wrap, commit and push continuing session-owned work. [
 Native files match the prior expedition receipt except one removed blank EOF line in input configuration.
 Six repository safety tests pass. Runtime tests were not repeated.
 Quality research version 1 has returned, but its body remains unread/unreviewed. Preserve that as next-session work.
+Round 87 verifies content commit `64a1b619989a0d7c8674fa5014972b9b0abd23f0` on the remote and seals the final handoff.
 Read the current checkpoint, report status and wait; no game, provider or business action starts during the wrap.
 
 ## Focused provider-quality follow-up prepared: round 85
