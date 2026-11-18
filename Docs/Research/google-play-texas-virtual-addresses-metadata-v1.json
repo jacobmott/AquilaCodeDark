@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "project": "aquila-code-dark",
+  "author_provider": "openai",
+  "requested_research_provider": "Perplexity",
+  "execution_workflow": "User manually runs the complete prompt in Perplexity and saves the returned report in Research Console.",
+  "source_record": "knowledge/native-release-direction.md#focused-google-virtual-address-research-round-56",
+  "authority": "User explicitly requested Perplexity research on Google's acceptance of the two previously supplied virtual-address providers.",
+  "scope": "United States personal Google Play account; Texas sole developer; Northwest Registered Agent and Texan Registered Agent; public home-address privacy.",
+  "prior_research": {
+    "job_id": "bd6cbf0bf4e64935a6b993aa171316df",
+    "external_key": "texas-game-publishing-privacy-employment-v1:run-1",
+    "reviewed_version": 1,
+    "result_sha256": "5d611d3c2a14e9f880cd19b244ead510d016e927ed5748398ebcc55c5fb2b77f"
+  },
+  "result_contract": {
+    "research_id": "AQUILA-GOOGLE-VIRTUAL-ADDRESS-001",
+    "required_fields": ["research_date"],
+    "required_headings": ["Verdict", "Provider comparison", "Evidence", "Practical next step", "Sources", "Limitations"]
+  }
+}

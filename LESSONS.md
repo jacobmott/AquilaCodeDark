@@ -1,5 +1,25 @@
 # Lessons
 
+## 2026-11-17 [J]: Provider quality precedes price
+
+Owner prefers robust, stable, proven service even at a higher cost. The earlier cost-led comparison did not establish a reliability leader.
+Keep observed public-address outcomes separate from mail/service reliability; retain both useful evidence and its limits.
+Compare support and address continuity before price, without treating higher expense as proof of quality.
+Evidence: [current publishing priorities](knowledge/publishing-business.md#quality-before-price-round-84).
+
+## 2026-11-17 [J]: Use collegial wording for outside inquiries
+
+Owner prefers friendly questions such as "Could you please..." over directives such as "Please provide..." in provider emails.
+Keep the needed details, use plain language, and show appreciation without sounding demanding.
+Scope: correspondence tone, not new authority to send messages or purchase services.
+
+## 2026-11-16 [J]: Reuse the saved publishing discussion
+
+Owner asks to save the business/privacy discussion so later sessions do not repeat it.
+Start with [the publishing reference](knowledge/publishing-business.md), then follow only relevant evidence links.
+Keep confirmed owner facts, tentative preferences, researched rules and unresolved checks distinct.
+Refresh changing requirements before action; do not restart broad research or ask settled questions merely because the session changed.
+
 ## 2026-11-14 [M]: Check real storage permissions
 The legacy shared-bucket policy allowed anonymous reads of the entire Aquila backup prefix, including its Secrets folder.
 Folder naming and a private Git remote do not establish S3 privacy. Verify bucket policy, public-access blocks and anonymous access.
@@ -92,3 +112,75 @@ Walking or changing room views must not cancel the battleship's order. Freeze ro
 Before a hangar launch, stop capital navigation before transferring the player's position to the shuttle.
 Native checks cover both continued navigation while walking and the moving-ship launch boundary.
 Evidence: `scripts/qa-navigation.mjs`, `scripts/qa-interior.mjs` and `Docs/Testing/automatic-helm-verification.json`.
+
+## 2026-11-15 [M]: Pin installed Unreal and regenerate authored content safely
+
+Launcher 5.8.4 requires build settings V7 for its shared editor products. V6 fails compatibility checks; do not force overrides.
+Check the launcher registration, installed-build marker and exact Build.version before building a separate native project.
+An existing generated material package must be fully loaded before resaving. Prepare initially failed until the commandlet did that.
+Instanced meshes require their material usage flag before cooking; a successful C++ compile alone did not catch missing visual materials.
+Evidence: native build/content commands and `Docs/Testing/native-foundation-verification.json`.
+
+## 2026-11-16 [M]: Native captures catch coordinate and startup-order errors
+
+Unreal's entry map offset the pawn at spawn. A world-space camera viewed pawn-local bridge geometry from below the floor.
+Keep the camera and scene in the same coordinate frame; inspect packaged interior output, not only editor compilation.
+Pawn startup can precede the game mode's persistence setup. Refuse early saves until the intended save directory exists in memory.
+The corrected packaged runs preserve the isolated directory, restore its revision and retain the earlier file.
+Evidence: `Docs/Testing/native-foundation-verification.json`.
+
+## 2026-11-16 [M]: SDK verification needs its report, not only its exit code
+
+Unreal Turnkey returned exit code 0 while reporting Android SDK status Invalid and missing Android Studio.
+After installing Aquila's separate command-line SDK, it recognized NDK r27c but retained its Studio-specific host prerequisite failure.
+Read the detailed status and verify the actual command-line build separately. Do not treat Turnkey's overall exit code as readiness.
+Android File Server's default editor module also writes an authentication token into project configuration; disable unused server support before publication.
+Keep SDK tools, caches, signing material and generated configuration private and outside Git.
+
+## 2026-11-16 [M]: Android archive success does not prove cooked content is inside the APK
+
+BuildCookRun with build, cook, stage, pak and archive succeeded but copied the earlier uncooked APK when package was omitted.
+Inspect the final APK for its embedded content and verify its signature; compilation, archive exit status and an APK filename are insufficient.
+The wrapper now requests the package phase explicitly. Device installation and launch remain separate evidence.
+
+## 2026-11-16 [M]: Earlier projectiles cannot invalidate newly selected ammunition
+
+Physical Galaxy testing switched to piercing rounds while standard rounds remained in flight.
+An old standard impact set a global armor-block flag, stopping the new loadout and showing the wrong refit instruction.
+Keep the old projectile's blocked impact and zero armor damage, but base firing eligibility on the currently fitted ammunition.
+Handle stale flags in prior saves without erasing progress. A new native regression covers late impacts and restored piercing loadouts.
+Six automation groups pass; physical input injection remains separate from human touch usability and sustained performance.
+
+## 2026-11-16 [J]: Successful touch injection does not establish handset readability
+
+Owner's first phone playtest found menu text small and hard to see despite successful command injection.
+Use a separate phone layout with larger type and touch areas, fewer simultaneous controls and clear text over glass.
+Verify the rendered device output and ask the owner about reading comfort; desktop previews cannot settle handset readability.
+
+## 2026-11-16 [M]: Camera exclusion checks need an active-camera control
+
+Paused gameplay disables camera rotation, so a steady paused view cannot prove that UI bounds exclude camera input.
+Resume gameplay, compare a swipe over the visible menu with the same area after hiding it, and inspect scene movement.
+Small temporal pixel differences are not camera movement. Avoid simultaneous owner interaction during injected input checks.
+
+## 2026-11-16 [J]: Publishing research must include practical developer experience
+
+Owner asked for guides from solo developers after repeated policy summaries left address privacy unresolved.
+Find first-hand accounts with concrete setup steps and reported outcomes, then check their dates, jurisdiction and current platform rules.
+Separate personal accounts, sole proprietorships and incorporated organizations; do not turn one country's success into a universal guarantee.
+Do not stop at generic uncertainty when documented working routes can guide a practical plan.
+Sources and applicability limits: [publishing guides](knowledge/native-release-direction.md#practical-developer-publishing-guides-round-49).
+
+## 2026-11-17 [J]: Windows is Aquila's daily development target
+
+Owner explicitly confirmed this workflow in round 75 and asked to save it. Use Windows for coding, debugging and normal gameplay checks.
+Batch phone checks at playable milestones, after relevant mobile changes or for phone-specific defects.
+Android compilation and desktop touch previews need no phone; retain separate physical-device and sustained-performance evidence gaps.
+
+## 2026-11-17 [M]: Persist projectile damage at launch and rewards with their claim state
+
+The expedition upgrade changes one turret's impacts without changing rounds already flying.
+Store each projectile's launch damage scale alongside its clocks and trajectory; old saves default to their original damage.
+Save reward plus completion, and upgrade plus debit, in the same revision. Reload tests must check balances and repeated attempts.
+The expedition tests cover all mission phases, 30/60 Hz parity, practice isolation and duplicate rewards/refits.
+Evidence: [expedition verification](Docs/Testing/native-expedition-verification.json).

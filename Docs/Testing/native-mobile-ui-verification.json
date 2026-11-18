@@ -1,0 +1,402 @@
+{
+  "schema_version": 1,
+  "round": 39,
+  "observed_at_utc": "2026-11-16T02:46:39.879099+00:00",
+  "owner_feedback": "The phone game looks okay; some menu text is small and hard to see.",
+  "changes": [
+    "Phone-specific 960x480 reference layout, separate from the desktop strip.",
+    "Bold bright 20-point command labels, 17/18-point status text and dark text shadows.",
+    "Minimum 54-unit command/movement buttons and 46-unit tabs before viewport scaling.",
+    "Navigation, Weapons and Voyage tabs show one command group at a time.",
+    "Bridge, Pause/Resume and Hide menu/Menu remain available at the top.",
+    "Safe-zone wrapper and inset margins keep controls away from screen edges.",
+    "Camera touch excludes the actual visible menu and movement-panel bounds.",
+    "Physical phone inspection caught clipping: movement-button width increased from 110 to 140 units.",
+    "Hidden-menu button shortened from Commands to Menu; final phone labels inspected without clipping."
+  ],
+  "builds": {
+    "editor": {
+      "passed": true,
+      "seconds": 1.45
+    },
+    "android": {
+      "passed": true,
+      "seconds": 62.14,
+      "apk_sha256": "0be5f6999c21390ef6179b657d2d5cd8917a5f8dfae7a6a6b70facdfce62c32b",
+      "apk_bytes": 167574191,
+      "zip_crc_passed": true,
+      "embedded_cooked_bytes": 44772037,
+      "signature_passed": true
+    },
+    "windows": {
+      "passed": true,
+      "seconds": 54.79
+    }
+  },
+  "render_checks": {
+    "packaged_touch_preview": {
+      "inspected": true,
+      "exit_requested_status": 0,
+      "scene": "exterior",
+      "capture": {
+        "path": "reports/game-direction/media/r38-packaged-touch.png",
+        "bytes": 719197,
+        "sha256": "a4bd351fb473afcfc6fc05d2156eb760e0edbf200fa4c41608cfbd8cbde5c961",
+        "pixels": [
+          1600,
+          900
+        ]
+      }
+    },
+    "packaged_desktop": {
+      "inspected": true,
+      "exit_requested_status": 0,
+      "scene": "exterior",
+      "capture": {
+        "path": "reports/game-direction/media/r38-packaged-desktop.png",
+        "bytes": 780283,
+        "sha256": "994abd0a0673eb83e9ab2263b1f2745557d41f263ac9fb779f0365f8b5c2c89f",
+        "pixels": [
+          1600,
+          900
+        ]
+      }
+    },
+    "editor_preview": {
+      "inspected": true,
+      "capture": {
+        "path": "reports/game-direction/media/r38-touch-preview.png",
+        "bytes": 258386,
+        "sha256": "0d345975b0948967728957a049eced46182249de2da0fb4b6accb7b56c316271",
+        "pixels": [
+          888,
+          500
+        ]
+      },
+      "note": "Initial preview was only 888x500; final packaged captures used ForceRes and verified 1600x900 output."
+    }
+  },
+  "phone": {
+    "status": "Final larger-menu update installed and verified. Owner confirms reading and tapping comfort.",
+    "update_installed": true,
+    "new_layout_tested_on_phone": true,
+    "application_id": "io.aquilacode.foundation",
+    "serial_retained": false,
+    "model": "SM-S948U",
+    "android_api": 37,
+    "connection_recovery": {
+      "initial_after_wake": "ADB empty; Samsung composite USB exposes file-transfer and modem interfaces, no debugging interface.",
+      "recovery": "Owner toggled USB debugging and reconnected; authorized device appeared.",
+      "shared_driver_or_server_settings_changed": false,
+      "device_serial_recorded": false
+    },
+    "installation": {
+      "installed_hash_matches": true,
+      "all_previous_revisions_preserved": true,
+      "previous_revision_count": 58,
+      "installed_apk_sha256": "0be5f6999c21390ef6179b657d2d5cd8917a5f8dfae7a6a6b70facdfce62c32b"
+    },
+    "restoration": {
+      "restored_campaign_equal": true,
+      "changed_fields": [],
+      "previous_revisions_unchanged": true,
+      "previous_revision_count": 58
+    },
+    "final_journal": {
+      "all_pre_update_revisions_preserved": true,
+      "earlier_revision_count": 58,
+      "final_revision_count": 65,
+      "left_paused": true,
+      "left_view": "exterior, Navigation tab",
+      "final_capture": "reports/game-direction/media/r39-final-ready.png"
+    },
+    "controls": {
+      "method": "ADB-injected physical-device taps and swipes, followed by owner comfort confirmation.",
+      "passed": [
+        "Navigation/Weapons/Voyage tabs",
+        "Save voyage",
+        "Hide menu/Menu",
+        "Bridge/exterior",
+        "Pause/resume",
+        "Bridge forward movement",
+        "Visible menu excludes camera drag",
+        "Hidden menu area allows camera drag"
+      ],
+      "camera_evidence": {
+        "scene_crop": [
+          750,
+          190,
+          2180,
+          760
+        ],
+        "simulation_resumed_for_test": true,
+        "visible_menu_swipe_difference": {
+          "mean_absolute_rgb": [
+            0.3163648632069685,
+            0.3534633787265366,
+            0.3564004416635996
+          ],
+          "extrema": [
+            [
+              0,
+              10
+            ],
+            [
+              0,
+              16
+            ],
+            [
+              0,
+              14
+            ]
+          ]
+        },
+        "hidden_menu_area_swipe_difference": {
+          "mean_absolute_rgb": [
+            61.21709851551957,
+            83.87801496748865,
+            99.82448533922218
+          ],
+          "extrema": [
+            [
+              0,
+              191
+            ],
+            [
+              0,
+              245
+            ],
+            [
+              0,
+              247
+            ]
+          ]
+        },
+        "owner_confirmed_untouched": true,
+        "earlier_checks": "Concurrent-play attempt and paused-camera pixel comparisons are inconclusive, not camera proof."
+      },
+      "visual_inspection_passed": true
+    },
+    "captures": [
+      {
+        "path": "reports/game-direction/media/r39-final-ready.png",
+        "bytes": 1595744,
+        "sha256": "b3fc2f8a846646b04c03a5f36e8d26a879bcfd670f6be7692308a3efcd340384",
+        "pixels": [
+          2340,
+          1080
+        ]
+      },
+      {
+        "path": "reports/game-direction/media/r39-final-bridge.png",
+        "bytes": 1555996,
+        "sha256": "e4b4a2fcdf4f4388704c13400f7325d11e7aa2c51bdf08db3ce04de80b99ddfe",
+        "pixels": [
+          2340,
+          1080
+        ]
+      },
+      {
+        "path": "reports/game-direction/media/r39-final-weapons.png",
+        "bytes": 1594783,
+        "sha256": "bacc52346e986fb7c7500b4c88e187713934ed692b1f88fb7ba0ec5ab7277365",
+        "pixels": [
+          2340,
+          1080
+        ]
+      },
+      {
+        "path": "reports/game-direction/media/r39-final-voyage.png",
+        "bytes": 1616114,
+        "sha256": "7e7c4a538106734e0602373d0264e8d3a6b59413e884fe6fa0a93306200247ea",
+        "pixels": [
+          2340,
+          1080
+        ]
+      },
+      {
+        "path": "reports/game-direction/media/r39-active-bridge-base.png",
+        "bytes": 1590410,
+        "sha256": "3a89460c4a67b47db51eb9e2a6acd187d30b71d519e6265b2d1104c8ecd90ec4",
+        "pixels": [
+          2340,
+          1080
+        ]
+      },
+      {
+        "path": "reports/game-direction/media/r39-active-menu-swipe.png",
+        "bytes": 1589705,
+        "sha256": "ca531f06b100ec887193492b914aa78d4fb62d45b25fb3b50baa1e5b42fa9813",
+        "pixels": [
+          2340,
+          1080
+        ]
+      },
+      {
+        "path": "reports/game-direction/media/r39-active-hidden-swipe.png",
+        "bytes": 1207699,
+        "sha256": "519fd0da59066323a2c97f2ba55bf501261c5743565e8ff89ba8a4750c4e6d7c",
+        "pixels": [
+          2340,
+          1080
+        ]
+      },
+      {
+        "path": "reports/game-direction/media/r39-active-walk.png",
+        "bytes": 1192499,
+        "sha256": "e0a8ff2b1c644808fee082e57d6f093d5e44e52c1b520e4af0b4d544c72339be",
+        "pixels": [
+          2340,
+          1080
+        ]
+      }
+    ]
+  },
+  "prior_simulation_tests": {
+    "passed": 6,
+    "round": 37,
+    "rerun": false,
+    "note": "No simulation or save-format changes in this UI update. Prior model checks remain historical evidence."
+  },
+  "source_files": [
+    {
+      "path": "native/Aquila/Source/Aquila/AquilaFlightPawn.cpp",
+      "bytes": 28330,
+      "sha256": "2dbaa0a6525fd3de98b59b6d1cb378558450773230b429e8462fa296e1bc31e7"
+    },
+    {
+      "path": "native/Aquila/Source/Aquila/AquilaFlightPawn.h",
+      "bytes": 2111,
+      "sha256": "290e53cd2fb160aa6fcf5677af7242facb82a280de6751b77586ff0a5437f4fe"
+    },
+    {
+      "path": "native/Aquila/README.md",
+      "bytes": 8983,
+      "sha256": "6afb6567591f15dbac5949172b24dd323590a24d7241ca94c85256752794ebe5"
+    }
+  ],
+  "artifacts": [
+    {
+      "path": ".runtime/native-package/Android/Aquila-arm64.apk",
+      "bytes": 167574191,
+      "sha256": "0be5f6999c21390ef6179b657d2d5cd8917a5f8dfae7a6a6b70facdfce62c32b"
+    },
+    {
+      "path": ".runtime/native-package/Win64/Aquila/Binaries/Win64/Aquila.exe",
+      "bytes": 332016128,
+      "sha256": "89579e7a160d4bb706e0403aa3d74a4c8b916ab926570c788f1faaf917ddebf6"
+    }
+  ],
+  "logs": [
+    {
+      "path": ".runtime/native-r38-editor-build.log",
+      "bytes": 2038,
+      "sha256": "e97c7a8723586a069f0943111c8d344ba27fad133fc4dd605da9215c3b57b529"
+    },
+    {
+      "path": ".runtime/native-r38-android-package.log",
+      "bytes": 95761,
+      "sha256": "beb98f8c71ff66121b4c982268e7f1ab41dd9a6e8717026fce4e83d4bdafdde4"
+    },
+    {
+      "path": ".runtime/native-r38-windows-package.log",
+      "bytes": 69206,
+      "sha256": "8a986523f27cd6f260f9528038459ff72c7bead80df495a95843e5ed90fb0187"
+    },
+    {
+      "path": ".runtime/native-r38-packaged-touch.log",
+      "bytes": 83281,
+      "sha256": "1b04f168f327986a8829d6c2f14a51ae45c20572d4de9bb7c4c15e54d1b2b21c"
+    },
+    {
+      "path": ".runtime/native-r38-packaged-desktop.log",
+      "bytes": 81723,
+      "sha256": "2bbe9d9d72ffe754eb6d4b49eb78f8e9d734710c2ef53a126106d6c2c2ba4db1"
+    },
+    {
+      "path": ".runtime/native-r39-editor-build.log",
+      "bytes": 1032,
+      "sha256": "8fdfaf36f77e6b4be4d7c0c2ce3ab78a968193815bd21bfac1f31af14c9409c4"
+    },
+    {
+      "path": ".runtime/native-r39-android-final-package.log",
+      "bytes": 95649,
+      "sha256": "f208c91c547632474305274d788ae4fb9b38b1f873fd0b49488ad12c4ee7cc63"
+    },
+    {
+      "path": ".runtime/native-r39-windows-package.log",
+      "bytes": 67954,
+      "sha256": "d84e9f9028f40ef48ad2ec39d16ba8e521f6fc07a0c22fd99f9494d4d64e5246"
+    }
+  ],
+  "knowledge_hub": {
+    "provider": "openai",
+    "queries": [
+      "DPI scaling",
+      "safe zone"
+    ],
+    "read": {
+      "byte_end": 34901,
+      "byte_start": 32903,
+      "content_sha256": "4fd7c9fcd6e7f4466e35e6a1300f6a1ed76eff814ad8b3918943d5c10f4d835f",
+      "kind": "source",
+      "passage_sha256": "c8f890a9e8ea256b4318b11656e4d644713a7094709751a12f36d1702a452659",
+      "record_id": "s_c310e7d3ea6e8c17cc121595d58bd3da161ab56f13b793df0653335950fd2e7c",
+      "version_id": "sha256:4fd7c9fcd6e7f4466e35e6a1300f6a1ed76eff814ad8b3918943d5c10f4d835f"
+    },
+    "scope": "Authored UE5.7 discovery metadata only; not current-engine behavior or physical-phone sizing proof.",
+    "code_or_media_reused": false
+  },
+  "checks": {
+    "source_guard_modified_files": 3,
+    "source_guard_failures": 0,
+    "shared_index_files_checked": 330,
+    "shared_index_guard_failures": 0,
+    "git_diff_check": true,
+    "shared_index_empty": true,
+    "startup_check": true
+  },
+  "limitations": [
+    "Broader control ergonomics, multitouch, sustained performance, heat/battery/memory and physical desktop input remain unverified.",
+    "Cloud accounts/synchronization and Apple proof remain unbuilt or unavailable.",
+    "Historical Windows previews predate the two final phone-label fixes; final layout was inspected on the Galaxy."
+  ],
+  "publication": {
+    "committed": false,
+    "pushed": false,
+    "deployed": false,
+    "store_submission": false
+  },
+  "report": {
+    "round": 39,
+    "built": true,
+    "browser_verified": true,
+    "http_receipts_and_current_media_verified": true,
+    "prior_wrap_artifacts_preserved": true,
+    "workspace_browser": "Paseo snapshot verified Round 39: Larger phone menus verified; no pending request.",
+    "verified_at_utc": "2026-11-16T02:47:52.142367+00:00"
+  },
+  "previous_foundation_receipt": {
+    "archive": "Docs/History/game-direction/20261116T020940Z-native-verification.json",
+    "sha256": "cee7c58810ef361703fc206109e6c052f34b06438cc3fca1fb42e6af9466586a",
+    "bytes": 23765
+  },
+  "render_check_scope": "Existing Windows render_checks are historical round 38; final two phone-label fixes verified on the Galaxy.",
+  "owner_acceptance": {
+    "source": "Owner chat reply to reading/tapping comfort question",
+    "quote": "Yes, they feel good",
+    "confirmed": true,
+    "recorded_at_utc": "2026-11-16T02:46:39.879099+00:00"
+  },
+  "verification_notes": [
+    "Initial capture guard queried a window-dump subsection lacking focus metadata; full window metadata fixed the local helper.",
+    "Two label clips were found on the first installed larger UI and fixed before final installation.",
+    "Concurrent-play and paused-camera comparisons were inconclusive; accepted camera evidence uses active gameplay after owner coordination."
+  ],
+  "previous_ui_receipt": {
+    "source": "Docs/Testing/native-mobile-ui-verification.json",
+    "archive": "Docs/History/game-direction/20261116T023021Z-mobile-ui-verification.json",
+    "sha256": "1e45c96f3a59e88d37e322b894812426ad7388a206d262ac6f3ee86558b7433d",
+    "bytes": 6916
+  }
+}

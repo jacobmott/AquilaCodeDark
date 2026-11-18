@@ -1,0 +1,788 @@
+{
+  "schema_version": 1,
+  "observed_at_utc": "2026-11-16T02:21:01.514902+00:00",
+  "scope": "Native foundation with enlarged phone UI; new Windows/Android packages pass, latest phone installation awaits debugging access.",
+  "publication": {
+    "committed": false,
+    "pushed": false,
+    "deployed": false,
+    "store_submission": false,
+    "browser_checkpoint": "39c8bcdb8bc195f74c088f72663294260f5b0a30"
+  },
+  "engine": {
+    "distribution": "Epic Launcher installed build",
+    "version": "5.8.4",
+    "changelist": 58902052,
+    "path": "C:/Program Files/Epic Games/UE_5.8",
+    "launcher_registration_verified": true,
+    "installed_build_marker_verified": true,
+    "duskforge_settings_changed": false
+  },
+  "host": {
+    "os": "Windows 11",
+    "cpu": "Intel Core i9-13900KS",
+    "gpu": "NVIDIA GeForce RTX 5090",
+    "memory_gb": 64,
+    "msvc": "14.50.35737",
+    "windows_sdk": "10.0.22621.0"
+  },
+  "windows": {
+    "editor_build": "passed",
+    "development_package": "passed",
+    "package_seconds": 120.31,
+    "entry": ".runtime/native-package/Win64/Aquila.exe",
+    "render_resolution": [
+      1600,
+      900
+    ],
+    "runtime_runs": [
+      {
+        "scene": "exterior",
+        "exit_code": 0,
+        "rendered_output_inspected": true
+      },
+      {
+        "scene": "bridge",
+        "exit_code": 0,
+        "rendered_output_inspected": true
+      },
+      {
+        "scene": "combat",
+        "exit_code": 0,
+        "rendered_output_inspected": true
+      },
+      {
+        "scene": "resumed",
+        "exit_code": 0,
+        "rendered_output_inspected": true
+      }
+    ],
+    "runtime_warnings_errors_in_final_logs": 0,
+    "input_method": "Development arguments select scenes; no native mouse/touch automation was available.",
+    "performance_measured": false,
+    "round37_recheck": {
+      "package": "passed",
+      "package_seconds": 107.03,
+      "packaged_runtime_exit_code": 0,
+      "capture": {
+        "path": "reports/game-direction/media/r37-windows-combat.png",
+        "bytes": 269841,
+        "sha256": "a82c37a17db1039cd6ddb776356109724685319c295723809dad128083aa88e1"
+      },
+      "input_method": "Development scene arguments and offscreen rendering"
+    },
+    "initial_runtime_evidence_note": "Four round-34 captures and initial Windows save proof refer to the archived earlier source receipt; the round-37 package was separately rerun.",
+    "round38_ui_recheck": {
+      "packaged_touch_preview": {
+        "inspected": true,
+        "exit_requested_status": 0,
+        "scene": "exterior",
+        "capture": {
+          "path": "reports/game-direction/media/r38-packaged-touch.png",
+          "bytes": 719197,
+          "sha256": "a4bd351fb473afcfc6fc05d2156eb760e0edbf200fa4c41608cfbd8cbde5c961",
+          "pixels": [
+            1600,
+            900
+          ]
+        }
+      },
+      "packaged_desktop": {
+        "inspected": true,
+        "exit_requested_status": 0,
+        "scene": "exterior",
+        "capture": {
+          "path": "reports/game-direction/media/r38-packaged-desktop.png",
+          "bytes": 780283,
+          "sha256": "994abd0a0673eb83e9ab2263b1f2745557d41f263ac9fb779f0365f8b5c2c89f",
+          "pixels": [
+            1600,
+            900
+          ]
+        }
+      },
+      "editor_preview": {
+        "inspected": true,
+        "capture": {
+          "path": "reports/game-direction/media/r38-touch-preview.png",
+          "bytes": 258386,
+          "sha256": "0d345975b0948967728957a049eced46182249de2da0fb4b6accb7b56c316271",
+          "pixels": [
+            888,
+            500
+          ]
+        },
+        "note": "Initial preview was only 888x500; final packaged captures used ForceRes and verified 1600x900 output."
+      }
+    },
+    "round38_package": "passed"
+  },
+  "automation": {
+    "reported_at": "2026.11.16-01.45.06",
+    "passed": 6,
+    "failed": 0,
+    "not_run": 0,
+    "mode": "Unreal editor automation with NullRHI",
+    "tests": [
+      {
+        "name": "Aquila.Combat.FrameRateAndHold",
+        "state": "Success"
+      },
+      {
+        "name": "Aquila.Combat.SwitchWithRoundsInFlight",
+        "state": "Success"
+      },
+      {
+        "name": "Aquila.Combat.TravelAndArmor",
+        "state": "Success"
+      },
+      {
+        "name": "Aquila.Navigation.ClearanceAndArrival",
+        "state": "Success"
+      },
+      {
+        "name": "Aquila.Save.InterruptionAndConflict",
+        "state": "Success"
+      },
+      {
+        "name": "Aquila.Save.RoundTripMigrationAndRejection",
+        "state": "Success"
+      }
+    ],
+    "evidence_note": "Six groups passed in round 37. UI-only round 38 did not change simulation/save code or rerun these groups."
+  },
+  "packaged_save_relaunch": {
+    "checks": {
+      "startup_reported_restored_revision": true,
+      "campaign_preserved": true,
+      "seed_preserved": true,
+      "parent_is_saved_revision": true,
+      "sequence_incremented": true,
+      "prior_revision_unchanged": true,
+      "continued_battle_time": true,
+      "no_health_reset": true
+    },
+    "before": {
+      "sequence": 1,
+      "worldSeed": 7142,
+      "shield": 20,
+      "hull": 100,
+      "enemyShield": 0,
+      "enemyHull": 100,
+      "battleTime": 14.999999999999789
+    },
+    "after": {
+      "sequence": 2,
+      "worldSeed": 7142,
+      "shield": 0,
+      "hull": 0,
+      "enemyShield": 0,
+      "enemyHull": 100,
+      "battleTime": 29.849999999998946
+    },
+    "saved_files": 2
+  },
+  "android": {
+    "owner_device": "Owner described Galaxy S26 Plus; hardware reports SM-S948U, Android 17/API 37, arm64-v8a.",
+    "target_files_present": true,
+    "native_build": "passed",
+    "native_build_seconds": 215.52,
+    "gradle_apk_assembly": "passed, before content cooking",
+    "cooked_astc_package": "passed",
+    "physical_device_connected": false,
+    "physical_device_runtime": "Round 37 passed initial device checks. Latest round-38 UI package is not installed; ADB is empty after owner-reported reconnection.",
+    "studio_installed": false,
+    "turnkey_status": "Invalid: Studio-specific host prerequisite; InstalledSdk_ValidVersionExists and r27c recognized",
+    "turnkey_exit_code": 0,
+    "sdk_path": ".runtime/android-sdk",
+    "sdk_platform": 36,
+    "build_tools": "36.0.0",
+    "ndk": "27.2.12479018 (r27c)",
+    "cmake": "3.22.1",
+    "command_line_tools": {
+      "build": 15859902,
+      "reported_version": "22.0",
+      "sha256": "90ae805d20434428bffcb699c290860f19bb5f66a67e6b330067e3de801fb04a",
+      "source": "https://dl.google.com/android/repository/commandlinetools-win-15859902_latest.zip"
+    },
+    "jdk": "Existing OpenJDK 21.0.8",
+    "gradle": "8.13",
+    "environment_scope": "Aquila wrapper process and children only; SDK, Android user state and Gradle caches under ignored .runtime",
+    "google_sdk_license": "Accepted during local SDK installation; no account registration or purchase.",
+    "android_file_server_enabled": false,
+    "package_seconds": 242.31,
+    "first_mobile_shader_cook_seconds": 497.82,
+    "package_path": ".runtime/native-package/Android/Aquila-arm64.apk",
+    "package_validation": {
+      "apk_bytes": 167577071,
+      "apk_sha256": "fdba1ee91536638d724449761c704478d8b3d4eb2d7c3550e201e3f14dd6bc5d",
+      "signature_verified": true,
+      "zip_crc_check": "passed",
+      "embedded_cooked_bytes": 44772037,
+      "cooked_container_entries": [
+        "Aquila/Content/Paks/Aquila-Android_ASTC.pak",
+        "Aquila/Content/Paks/Aquila-Android_ASTC.ucas",
+        "Aquila/Content/Paks/Aquila-Android_ASTC.utoc",
+        "Aquila/Content/Paks/global.ucas",
+        "Aquila/Content/Paks/global.utoc"
+      ],
+      "installed_apk_hash_matches": false,
+      "zip_crc_passed": true,
+      "signature_passed": true,
+      "installed_hash_check_status": "Not checked for the new round-38 package."
+    },
+    "application_id": "io.aquilacode.foundation",
+    "min_sdk": 28,
+    "target_sdk": 36,
+    "abi": "arm64-v8a",
+    "launch_activity": "com.epicgames.unreal.SplashActivity",
+    "last_adb_result": "No devices listed; Windows sees Samsung USB. Awaiting owner debugging access.",
+    "device_receipt": "Docs/Testing/native-android-device-verification.json",
+    "mobile_ui_receipt": "Docs/Testing/native-mobile-ui-verification.json",
+    "phone_installation_round": 37
+  },
+  "ios": {
+    "owner_has_mac": false,
+    "owner_has_iphone": false,
+    "build": "not_attempted",
+    "runtime": "not_tested"
+  },
+  "save_contract": {
+    "schema": 2,
+    "generation_version": 1,
+    "transport": "local UTF-8 JSON only",
+    "revision_strategy": "immutable files with parent identifiers; pending write then rename",
+    "cloud_connected": false,
+    "conflict_selection_ui": false,
+    "power_loss_proven": false
+  },
+  "commands": [
+    "pwsh -NoProfile -File scripts/native.ps1 -Action Build",
+    "pwsh -NoProfile -File scripts/native.ps1 -Action Prepare",
+    "pwsh -NoProfile -File scripts/native.ps1 -Action Test",
+    "pwsh -NoProfile -File scripts/native.ps1 -Action Package",
+    "pwsh -NoProfile -File scripts/native.ps1 -Action Build -Platform Android",
+    "pwsh -NoProfile -File scripts/native.ps1 -Action Package -Platform Android"
+  ],
+  "fixed_during_verification": [
+    "Installed editor required BuildSettingsVersion.V7.",
+    "Generated material packages require full loading before regeneration and instancing usage before cooking.",
+    "Shield overflow now checks armor before applying remaining damage.",
+    "Camera and room now share pawn-local coordinates despite the entry map spawn offset.",
+    "Early saves are refused until the intended directory is initialized.",
+    "Package command quotes platform substitution and uses a typed argument array for Android cook flavor.",
+    "Initial Android archive copied an uncooked APK without embedded data. Explicit package phase added; final embedded cooked data and signature checked.",
+    "Late standard rounds set the armor-block flag after piercing was fitted, stopping compatible new fire. Old rounds still bounce; the current piercing loadout continues firing. Stale saved flags do not block it."
+  ],
+  "warnings": [
+    "Material generator uses a deprecated but supported 5.8 material-usage overload.",
+    "Android Gradle emitted SDK XML/deprecated-API and future Gradle 9 compatibility warnings.",
+    "Turnkey reports host prerequisites invalid without Android Studio; actual manual SDK build is recorded separately."
+  ],
+  "limitations": [
+    "Owner found initial phone menu text too small. Larger UI is packaged; phone update/readability verification pending.",
+    "Blockout geometry and simple effects; no finished ship/planet art or cinematic effect parity with browser.",
+    "No account/cloud provider chosen or connected; no cross-device save round trip.",
+    "No Apple toolchain or physical Apple device.",
+    "No complete exploration, shuttles, surface travel, crew, progression or commercial economy.",
+    "No power-loss or damaged-storage proof.",
+    "No fresh agent-client or actual generation-provider capture proof.",
+    "Human touch comfort, multitouch and desktop physical input remain unverified.",
+    "No sustained frame-time, heat, battery or memory measurement; short rendering tests are not performance proof."
+  ],
+  "source_files": [
+    {
+      "path": "native/Aquila/.gitignore",
+      "bytes": 123,
+      "sha256": "455b71c59c90ff6ecac910a4f8bd202845cd0de36594a88c014563ae367f929e"
+    },
+    {
+      "path": "native/Aquila/.vsconfig",
+      "bytes": 671,
+      "sha256": "995980d402db4af14a1b9503b9d2bc42eac16b447e4852e2c0607e4fc74d0775"
+    },
+    {
+      "path": "native/Aquila/Aquila.uproject",
+      "bytes": 504,
+      "sha256": "291e5e25715d6dd4ddebb8357d633edd6a5e46d754eff16ee8fc5569f239f4d4"
+    },
+    {
+      "path": "native/Aquila/Config/DefaultEngine.ini",
+      "bytes": 1046,
+      "sha256": "1f3f8283dba28a2cc72180143ce2aa4041dbadde3f6fe8fe8ade39691fa2e029"
+    },
+    {
+      "path": "native/Aquila/Config/DefaultGame.ini",
+      "bytes": 634,
+      "sha256": "9683e5657ea1f752b32a026cf9adf00275f1fc6651e676a58a516944a31edb4e"
+    },
+    {
+      "path": "native/Aquila/Config/DefaultInput.ini",
+      "bytes": 9466,
+      "sha256": "fcf01bc34d31f5956150a1f607bded3f2958742f924d5139063083ca51a8e569"
+    },
+    {
+      "path": "native/Aquila/README.md",
+      "bytes": 8737,
+      "sha256": "97833f1dae9715226cb77d380302807342b1e2d698b14f9791d22e7a0a5c0e1f"
+    },
+    {
+      "path": "native/Aquila/Source/Aquila.Target.cs",
+      "bytes": 367,
+      "sha256": "bd65582c545e86aad144974fd67d9ad607123d741376ef116ed96dd8980657cb"
+    },
+    {
+      "path": "native/Aquila/Source/Aquila/Aquila.Build.cs",
+      "bytes": 351,
+      "sha256": "c04e01f30f0e71612ea3b29d4166a0e02ab7ec51953f0492ca01d39148f072ca"
+    },
+    {
+      "path": "native/Aquila/Source/Aquila/Aquila.cpp",
+      "bytes": 109,
+      "sha256": "eadc13117b3e0f955f4f6349aa4e1ae4302d3e6ed6506c7ca9fd0e54a2eee03b"
+    },
+    {
+      "path": "native/Aquila/Source/Aquila/AquilaFlightPawn.cpp",
+      "bytes": 28334,
+      "sha256": "ecc16209153888e74216f2d9f1786328cdf042c9f19126590100ae9365e68712"
+    },
+    {
+      "path": "native/Aquila/Source/Aquila/AquilaFlightPawn.h",
+      "bytes": 2111,
+      "sha256": "290e53cd2fb160aa6fcf5677af7242facb82a280de6751b77586ff0a5437f4fe"
+    },
+    {
+      "path": "native/Aquila/Source/Aquila/AquilaGameMode.cpp",
+      "bytes": 2793,
+      "sha256": "5c496f57b9c2a295136677317e4ba995e5e9ba3992341c8ed2a87607a055f98e"
+    },
+    {
+      "path": "native/Aquila/Source/Aquila/AquilaGameMode.h",
+      "bytes": 735,
+      "sha256": "b8a61114d00fafd27d632d1e8b05095fcd9aa6464e25067bd982766ddcce6975"
+    },
+    {
+      "path": "native/Aquila/Source/Aquila/AquilaSave.cpp",
+      "bytes": 9943,
+      "sha256": "b98c5b330171304ae913b080954493270f5d8decf295d315bded0302fdd5f3ae"
+    },
+    {
+      "path": "native/Aquila/Source/Aquila/AquilaSave.h",
+      "bytes": 516,
+      "sha256": "bdc58bc04c86ed762e75c732e682d30f8936caeee7cf5689fd552a0a20486d35"
+    },
+    {
+      "path": "native/Aquila/Source/Aquila/AquilaSimulation.cpp",
+      "bytes": 7716,
+      "sha256": "3984cc6881f4b9c832da2d2ad9384ab2d9ff320dcf068729ff8d8627e466e76a"
+    },
+    {
+      "path": "native/Aquila/Source/Aquila/AquilaSimulation.h",
+      "bytes": 1892,
+      "sha256": "4336563f67365ffaa8df4f7ea0a700dc2e7bbdc31fd7a685786c5f54f4d4f55e"
+    },
+    {
+      "path": "native/Aquila/Source/Aquila/AquilaTests.cpp",
+      "bytes": 8908,
+      "sha256": "986fb877035096a72db00371ef1d2ed3528e987eb86932e388bbd664459f8858"
+    },
+    {
+      "path": "native/Aquila/Source/AquilaEditor.Target.cs",
+      "bytes": 426,
+      "sha256": "f54c341f5bf0e9982854586de5b4b43616c4092e2e3b56df19f273cd4ce78ad1"
+    },
+    {
+      "path": "native/Aquila/Source/AquilaTools/AquilaContentCommandlet.cpp",
+      "bytes": 5058,
+      "sha256": "803840d70a33389a2a2dd7603037d3ebe64e717332eee8614cb22f54c3f08beb"
+    },
+    {
+      "path": "native/Aquila/Source/AquilaTools/AquilaContentCommandlet.h",
+      "bytes": 248,
+      "sha256": "fa1b36a4be2ec0c39ba6c57b25b7c3eb677694548f282b88f6f671cf0db4601b"
+    },
+    {
+      "path": "native/Aquila/Source/AquilaTools/AquilaTools.Build.cs",
+      "bytes": 310,
+      "sha256": "7ecb2dcf36edab8a273a82893b9d67243417d86714b0f0388d6ce834b8c59525"
+    },
+    {
+      "path": "native/Aquila/Source/AquilaTools/AquilaTools.cpp",
+      "bytes": 86,
+      "sha256": "15cf015dc014bd6bf6ce66692116c74aed2a96354ac2eb8b6891b3553d7e2104"
+    },
+    {
+      "path": "scripts/native.ps1",
+      "bytes": 5566,
+      "sha256": "e46deb66f0cb02836fe222234128781c7033d577e8f8503eee97f5f6674c444b"
+    }
+  ],
+  "media": [
+    {
+      "path": "reports/game-direction/media/r34-native-exterior-final.png",
+      "bytes": 781286,
+      "sha256": "3f6e5093d7376f02c8f63a4858f70608f52a92b61b3a9d6056e4459a2bd5ac27"
+    },
+    {
+      "path": "reports/game-direction/media/r34-native-bridge-final.png",
+      "bytes": 990726,
+      "sha256": "ec879f8cf02a0c1a679ea21e171fb8d8678fb7da8083a94aa1060e4a679e0953"
+    },
+    {
+      "path": "reports/game-direction/media/r34-native-combat-final.png",
+      "bytes": 792706,
+      "sha256": "ed421910af92d2ff1a3ddfe27bf963ec900e7ef8700184e5cc6d6f4f7cbc19dc"
+    },
+    {
+      "path": "reports/game-direction/media/r34-native-resumed.png",
+      "bytes": 792872,
+      "sha256": "b68be065b827d1ec26b343f3f8e6b410a40eac5b381ab25500c358bcd4c3222d"
+    },
+    {
+      "path": "reports/game-direction/media/r37-android-approach.png",
+      "bytes": 1309782,
+      "sha256": "9f592ac11e68af6ac029957888f195fef928fce56c31c1fa15491dea2d1aab57",
+      "pixels": [
+        2340,
+        1080
+      ],
+      "inspected": true
+    },
+    {
+      "path": "reports/game-direction/media/r37-android-background-return.png",
+      "bytes": 1614238,
+      "sha256": "9d43089843dc84d9f2399241d1ea4bcb9739531a671fbd984f7eb8dd22f08efc",
+      "pixels": [
+        2340,
+        1080
+      ],
+      "inspected": true
+    },
+    {
+      "path": "reports/game-direction/media/r37-android-battle-paused.png",
+      "bytes": 1613589,
+      "sha256": "a7e0eb4ca55a4ded1a672fbc602897ff8247a238adc1258045cdfeaff0457c30",
+      "pixels": [
+        2340,
+        1080
+      ],
+      "inspected": true
+    },
+    {
+      "path": "reports/game-direction/media/r37-android-bridge-moved.png",
+      "bytes": 1622644,
+      "sha256": "0bfddd880572c63b27b745b91d9868a11460c9a794bdaac4b4ec7cd30bbd30bb",
+      "pixels": [
+        2340,
+        1080
+      ],
+      "inspected": true
+    },
+    {
+      "path": "reports/game-direction/media/r37-android-bridge.png",
+      "bytes": 1582627,
+      "sha256": "c89ff8b0cfc9355019f1f1f90f5ae9195d5f39b44c2cf719ec626316382d4b26",
+      "pixels": [
+        2340,
+        1080
+      ],
+      "inspected": true
+    },
+    {
+      "path": "reports/game-direction/media/r37-android-combat.png",
+      "bytes": 1615401,
+      "sha256": "2b8b44811adb23327ec6f98f9b1d902cc0104535b610ebd7cdb43e2fea694157",
+      "pixels": [
+        2340,
+        1080
+      ],
+      "inspected": true
+    },
+    {
+      "path": "reports/game-direction/media/r37-android-final-bridge.png",
+      "bytes": 1594936,
+      "sha256": "907befb4876a225d8c6f2b2ad1fc5d2e54fefe578174f335c4d8688c93a9a718",
+      "pixels": [
+        2340,
+        1080
+      ],
+      "inspected": true
+    },
+    {
+      "path": "reports/game-direction/media/r37-android-first-launch.png",
+      "bytes": 1272133,
+      "sha256": "fa31b5c0ccc1fde1156338af7e5a0c4a29072f51c2e4b92af43500e27ceaa9a5",
+      "pixels": [
+        2340,
+        1080
+      ],
+      "inspected": true
+    },
+    {
+      "path": "reports/game-direction/media/r37-android-fixed-combat.png",
+      "bytes": 1605961,
+      "sha256": "9f3c043263dbbc97e43c0f5908fd808c2bbda72b7d3203644697f62d1974533e",
+      "pixels": [
+        2340,
+        1080
+      ],
+      "inspected": true
+    },
+    {
+      "path": "reports/game-direction/media/r37-android-fixed-restored.png",
+      "bytes": 1611881,
+      "sha256": "33432575e60a3d61b8d6d9f9796ad76bf6da2dcd30af08192ff2f5ad45792e4c",
+      "pixels": [
+        2340,
+        1080
+      ],
+      "inspected": true
+    },
+    {
+      "path": "reports/game-direction/media/r37-android-fixed-victory.png",
+      "bytes": 1604225,
+      "sha256": "d1f7e077270f1270eefbb73d47bd88ecad2292ef04f6ee1dfadc304ee5544034",
+      "pixels": [
+        2340,
+        1080
+      ],
+      "inspected": true
+    },
+    {
+      "path": "reports/game-direction/media/r37-android-ready.png",
+      "bytes": 1612862,
+      "sha256": "8fbdc772387348a2838ca9f1286d364474a3b14363b52baad8ec41fc0e84d1f8",
+      "pixels": [
+        2340,
+        1080
+      ],
+      "inspected": true
+    },
+    {
+      "path": "reports/game-direction/media/r37-android-restored.png",
+      "bytes": 1614978,
+      "sha256": "87c71dd7d9649e869192bfe781518dff4189bc3a249e9d9f8a7b792f1caff168",
+      "pixels": [
+        2340,
+        1080
+      ],
+      "inspected": true
+    },
+    {
+      "path": "reports/game-direction/media/r37-windows-combat.png",
+      "bytes": 269841,
+      "sha256": "a82c37a17db1039cd6ddb776356109724685319c295723809dad128083aa88e1"
+    },
+    {
+      "path": "reports/game-direction/media/r38-packaged-touch.png",
+      "bytes": 719197,
+      "sha256": "a4bd351fb473afcfc6fc05d2156eb760e0edbf200fa4c41608cfbd8cbde5c961",
+      "pixels": [
+        1600,
+        900
+      ]
+    },
+    {
+      "path": "reports/game-direction/media/r38-packaged-desktop.png",
+      "bytes": 780283,
+      "sha256": "994abd0a0673eb83e9ab2263b1f2745557d41f263ac9fb779f0365f8b5c2c89f",
+      "pixels": [
+        1600,
+        900
+      ]
+    },
+    {
+      "path": "reports/game-direction/media/r38-touch-preview.png",
+      "bytes": 258386,
+      "sha256": "0d345975b0948967728957a049eced46182249de2da0fb4b6accb7b56c316271",
+      "pixels": [
+        888,
+        500
+      ]
+    }
+  ],
+  "local_logs": [
+    {
+      "path": ".runtime/native-build.log",
+      "bytes": 2971,
+      "sha256": "9fafd7e4dc6515cdae31b4dd9e6b0ef1547806f71c14e2db856fa6ffa524b780"
+    },
+    {
+      "path": ".runtime/native-package.log",
+      "bytes": 73464,
+      "sha256": "12f21cbac1acc86051c131cadc29f786efe476b36ac68f5222e42c05969b9e6e"
+    },
+    {
+      "path": ".runtime/native-tests.log",
+      "bytes": 277658,
+      "sha256": "5b3d5d2c3a608f82526a002e235398c6db54caf148db9f20c545b7b3798da1da"
+    },
+    {
+      "path": ".runtime/native-android-build.log",
+      "bytes": 20248,
+      "sha256": "049cc56a8025a5397d5fcb6c1538e7cc6b5ceb387c75dc70ff9ebc9466b40300"
+    },
+    {
+      "path": ".runtime/native-android-ready.log",
+      "bytes": 969,
+      "sha256": "950895f73515d66936139266d55b3e1524762478e600f0d6a7576b9471b2c088"
+    },
+    {
+      "path": ".runtime/native-final-exterior.log",
+      "bytes": 81691,
+      "sha256": "de186c12dd0effc0ce34e9ff0a8dcb17f3089ecbbf66d7389118fcc77dea6bea"
+    },
+    {
+      "path": ".runtime/native-final-bridge.log",
+      "bytes": 81837,
+      "sha256": "d5ab10265844369e86d91149bbb744972511e054148b0d2ab91d12eb6c2cdf60"
+    },
+    {
+      "path": ".runtime/native-final-combat.log",
+      "bytes": 81717,
+      "sha256": "539c8698d641089f935a7f6f940a5b5aca294d8bed12859c1e047d32002010db"
+    },
+    {
+      "path": ".runtime/native-final-resumed.log",
+      "bytes": 81676,
+      "sha256": "fb80560d7b6e61b1074e3707e73e1c6a7edd2d0ca09330c83671fd6972d8d616"
+    },
+    {
+      "path": ".runtime/native-android-package.log",
+      "bytes": 96512,
+      "sha256": "b29554fa9759cac7b81720fb2476c52cac4ee8a294814965ec599500a8138ae0"
+    },
+    {
+      "path": ".runtime/native-android-install-r37.log",
+      "bytes": 38,
+      "sha256": "c4aa470acafcf8576c15b0f0b5ae7e852d1ec5413372d0e6a9272e788e1306d3"
+    },
+    {
+      "path": ".runtime/native-android-launch-r37.log",
+      "bytes": 229,
+      "sha256": "69f87efb4183431b6bfdcb81bd306fb64ab390f038f13b4c677d7202ef75f10e"
+    },
+    {
+      "path": ".runtime/native-r37-editor-build.log",
+      "bytes": 1876,
+      "sha256": "11a96bc1e46e3a1426edab8dd6d112cef38f83f394cbb5978fe20bac7b20276e"
+    },
+    {
+      "path": ".runtime/native-r37-tests.log",
+      "bytes": 279591,
+      "sha256": "c6287bd2840be59285bebbb008acabeee9afc2194ba8d368cac4d00bffd2135b"
+    },
+    {
+      "path": ".runtime/native-r37-android-package.log",
+      "bytes": 98527,
+      "sha256": "7cb3d5477ebb757f2777e19b2a5a014c705dae6459c2954b065d336ee8227711"
+    },
+    {
+      "path": ".runtime/native-r37-windows-package.log",
+      "bytes": 68195,
+      "sha256": "74a4eab44d0bbded87dda8201765080e7cf021e68a5b12bf8042d75c673a90f4"
+    },
+    {
+      "path": ".runtime/native-r37-windows-runtime.log",
+      "bytes": 88354,
+      "sha256": "e90bfcd186321d17a8c0c0dd7c32051f87e10cad7881ca383deb29e3fbdcf3d8"
+    },
+    {
+      "path": ".runtime/native-r38-editor-build.log",
+      "bytes": 2038,
+      "sha256": "e97c7a8723586a069f0943111c8d344ba27fad133fc4dd605da9215c3b57b529"
+    },
+    {
+      "path": ".runtime/native-r38-android-package.log",
+      "bytes": 95761,
+      "sha256": "beb98f8c71ff66121b4c982268e7f1ab41dd9a6e8717026fce4e83d4bdafdde4"
+    },
+    {
+      "path": ".runtime/native-r38-windows-package.log",
+      "bytes": 69206,
+      "sha256": "8a986523f27cd6f260f9528038459ff72c7bead80df495a95843e5ed90fb0187"
+    },
+    {
+      "path": ".runtime/native-r38-packaged-touch.log",
+      "bytes": 83281,
+      "sha256": "1b04f168f327986a8829d6c2f14a51ae45c20572d4de9bb7c4c15e54d1b2b21c"
+    },
+    {
+      "path": ".runtime/native-r38-packaged-desktop.log",
+      "bytes": 81723,
+      "sha256": "2bbe9d9d72ffe754eb6d4b49eb78f8e9d734710c2ef53a126106d6c2c2ba4db1"
+    }
+  ],
+  "official_sources": [
+    "https://developer.android.com/studio",
+    "https://developer.android.com/tools/sdkmanager",
+    "https://dev.epicgames.com/documentation/unreal-engine/android-quick-start"
+  ],
+  "knowledge_hub": {
+    "provider": "openai",
+    "reused_code_or_content": false,
+    "note": "Inspected a permitted UE5.7 discovery-index passage; not engine-version evidence.",
+    "record": "s_6dca5980af03e0e617c04068ec335b667e9d283e3a4764da02f2fbd5ca9c0091",
+    "version": "sha256:54d98d2c54f7bcee151cb279d65eda299f9ed60112b47094bdc308349314d7f2",
+    "range": [
+      0,
+      1991
+    ],
+    "passage_sha256": "f5037cf7fad06f22b2145f883347e239cbccd6a62624c1aaa1a96c126cb93811"
+  },
+  "report": {
+    "round": 38,
+    "built": true,
+    "workspace_browser": "Paseo snapshot verified Round 38: Larger phone menus.",
+    "prior_wrap_artifacts_preserved": true,
+    "browser_verified": true,
+    "http_receipts_and_current_media_verified": true,
+    "verified_at_utc": "2026-11-16T02:24:31.954672+00:00"
+  },
+  "repository_checks": {
+    "safety_tests_passed": 6,
+    "source_guard_files_checked": 51,
+    "source_guard_failures": 0,
+    "startup_check_passed": true,
+    "startup_proves": "Local files and routes only.",
+    "git_diff_check_passed": true,
+    "shared_index_unchanged": true,
+    "index_comparison": "Staged content remains identical to HEAD and initial empty cached diff. Git status refreshed index metadata.",
+    "round37_source_hashes_verified": 25,
+    "round37_artifact_hashes_verified": 2,
+    "earlier_check_scope": "Six repository safety tests and the 51-file source guard were recorded before device testing; not rerun for this final documentation update.",
+    "source_guard_modified_files": 3,
+    "shared_index_files_checked": 330,
+    "shared_index_guard_failures": 0,
+    "git_diff_check": true,
+    "shared_index_empty": true
+  },
+  "artifacts": [
+    {
+      "path": ".runtime/native-package/Win64/Aquila/Binaries/Win64/Aquila.exe",
+      "bytes": 332016128,
+      "sha256": "447299a3b9529c1882c64a78ea2927a8898b3ed0c13e4df43fe3a2b2da46b192"
+    },
+    {
+      "path": ".runtime/native-package/Android/Aquila-arm64.apk",
+      "bytes": 167577071,
+      "sha256": "fdba1ee91536638d724449761c704478d8b3d4eb2d7c3550e201e3f14dd6bc5d"
+    }
+  ],
+  "active_work": {
+    "builds": false,
+    "tests": false,
+    "transfers": false,
+    "paid_provider_jobs": false,
+    "epic_launcher_open": true,
+    "android_debug_bridge_local": true,
+    "phone_app_installed": true,
+    "phone_app_left_paused": false,
+    "phone_state_note": "Earlier phone build remains installed; owner has played it. Current device screen unverified while debugging is unavailable."
+  },
+  "previous_receipt": {
+    "archive": "Docs/History/game-direction/20261116T020940Z-native-verification.json",
+    "sha256": "cee7c58810ef361703fc206109e6c052f34b06438cc3fca1fb42e6af9466586a",
+    "bytes": 23765
+  }
+}

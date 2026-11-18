@@ -1,0 +1,15 @@
+{
+  "FileVersion": 3,
+  "EngineAssociation": "5.8",
+  "Category": "Games",
+  "Description": "Aquila native single-player foundation. Launcher Unreal 5.8.4 only.",
+  "Modules": [
+    {"Name": "Aquila", "Type": "Runtime", "LoadingPhase": "Default"},
+    {"Name": "AquilaTools", "Type": "Editor", "LoadingPhase": "Default"}
+  ],
+  "Plugins": [
+    {"Name": "LiveCoding", "Enabled": false},
+    {"Name": "AndroidFileServer", "Enabled": false},
+    {"Name": "ModelingToolsEditorMode", "Enabled": false}
+  ]
+}

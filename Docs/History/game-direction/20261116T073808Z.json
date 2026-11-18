@@ -1,0 +1,8 @@
+{
+  "source": "Docs/Handoffs/HANDOFF_2026-11-15_game-direction.md",
+  "archive": "Docs/History/game-direction/20261116T073808Z.md",
+  "archived_at": "2026-11-16T07:38:08.588403+00:00",
+  "sha256": "7d26390adfdb80ebc1d634064123cf6b624230b68dd0e68c7229bd5320b7464a",
+  "bytes": 9848,
+  "reason": "Preserve round 55 before recording the focused Perplexity request and manual run/save action."
+}

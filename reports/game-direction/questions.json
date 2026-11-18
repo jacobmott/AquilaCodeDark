@@ -89,6 +89,39 @@
    "state": "open",
    "answer": null,
    "page": "Aquila game and website direction"
+  },
+  {
+   "id": "aquila-direction-r31-release",
+   "short": "Release priority",
+   "ask": "Which platform should lead the first release?",
+   "why": "Steam first is my recommendation: fewer simultaneous releases. This preference does not authorize implementation.",
+   "options": [
+    {
+     "v": "steam_first",
+     "label": "Steam first"
+    },
+    {
+     "v": "together",
+     "label": "All three together"
+    },
+    {
+     "v": "mobile_first",
+     "label": "Mobile first"
+    }
+   ],
+   "state": "open",
+   "answer": null,
+   "page": "Aquila game and website direction"
+  },
+  {
+   "id": "aquila-direction-r41-business",
+   "short": "Existing business and location",
+   "ask": "Do you already have a registered business, and which country and state would the game business operate from?",
+   "why": "These facts determine the next setup steps. Entity-specific advice needs your jurisdiction.",
+   "options": [],
+   "state": "open",
+   "answer": null,
+   "page": "Aquila game and website direction"
   }
  ]
 }

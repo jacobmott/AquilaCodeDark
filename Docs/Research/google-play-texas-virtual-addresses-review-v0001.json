@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "review_provider": "openai",
+  "reviewed_at": "2026-11-16T08:00:07.862580+00:00",
+  "project": "aquila-code-dark",
+  "job_id": "cf71e97b7df84637b5180b6ea8662f0d",
+  "external_key": "google-play-texas-virtual-addresses-v1:run-1",
+  "version": 1,
+  "result_imported_at": "2026-11-16T07:52:16.775127+00:00",
+  "original_sha256": "e8853fad7aa72492d035d15e44d5e8a4d4b30f5238e52aa3bca3bd74c39ebbc7",
+  "original_bytes": 56684,
+  "original_path": "Assets/Research/google-play-texas-virtual-addresses/result-v0001.md",
+  "url": "http://127.0.0.1:8776/?project=aquila-code-dark#cf71e97b7df84637b5180b6ea8662f0d",
+  "read_scope": "Complete original; selected decision-critical primary sources checked. Not an exhaustive citation, price, provider or legal audit.",
+  "disposition": "Partial evidence accepted: Texan explicitly serves individuals without companies; conditional volunteer guidance supports documented virtual mailboxes. Neither exact provider has established U.S. personal monetized Google Play approval. No blanket ban or LLC necessity inferred.",
+  "synthesis": "knowledge/native-release-direction.md#google-virtual-address-research-reviewed-round-57",
+  "confirmed_source_groups": [
+    "Texan individual eligibility, virtual-office terms, CMRA status and Form 1583",
+    "Google merchant physical-address and no-PO-box requirement",
+    "Google separate identity and merchant payments profiles",
+    "Google editable public merchant address",
+    "Dated conditional virtual-mailbox reply by volunteer BenMcc, retrieved through targeted web search after shell-only direct opening"
+  ],
+  "prior_checked_source_groups": [
+    "Round 55 Northwest standalone Texas virtual-office annual plans",
+    "Round 55 Google U.S. individual address-proof list, matching name/address and 90-day requirement"
+  ],
+  "unverified": [
+    "End-to-end Google approval for either provider for a U.S. personal monetized account",
+    "Personal-name lease and document fulfillment for either exact plan",
+    "Every public field under a private-home and public-mailbox profile arrangement",
+    "Every community anecdote, claimed approval/rejection and regional applicability",
+    "Provider checkout, service delivery and future reverification outcome"
+  ],
+  "hub_discovery": {
+    "provider": "openai",
+    "query": "\"virtual address\"",
+    "outcome": "empty",
+    "complete_for_scope": true,
+    "permission_omission": false,
+    "adopted_records": 0
+  },
+  "console_acknowledgment": {
+    "state": "reviewed",
+    "reviewed_version": 1,
+    "created": "2026-11-16T08:00:07.862580+00:00",
+    "meaning": "Complete intake and triage recorded; not blanket factual approval."
+  }
+}

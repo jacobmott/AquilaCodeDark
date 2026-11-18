@@ -1378,8 +1378,2396 @@ def main(output):
         "Wait for the information you want to discuss. No next gameplay milestone starts during this pause.",
         short="Ready for the discussion", follows="aquila-direction-r29-next")
     rounds = page.entry(30, "Wrapped for discussion", wrapped, when="2026-11-15 UTC") + rounds
+    native = decide.recap(
+        "Yes. Unreal can support a downloadable game, with the website explaining it and linking to stores. "
+        "My recommendation: Steam first, but test phones early. Keep the browser prototype as our design reference. "
+        "This needs a rebuild and a smaller first release. No migration has started.",
+        [
+            ("Game", "Unreal supports Windows, Apple mobile devices and Android through separate platform builds."),
+            ("Website", "A marketing website can retain Aquila's identity, ship catalog and optional lightweight 3D showcase."),
+            ("Port", "Keep proven gameplay decisions; rebuild the runtime and interface in Unreal."),
+            ("Release", "I recommend Steam first, with representative phones tested from the first native slice."),
+            ("Scope", "The full vision remains substantial work. Engine choice does not make every planned system quick to build."),
+        ],
+        {
+            "did": "Read your supplied discussion and checked current official platform, branding and AI-disclosure guidance.",
+            "why": "You want to discuss downloadable games and a marketing website instead of a full browser game.",
+            "working": "Supported platform builds and the existing prototype provide a credible starting point for planning.",
+            "not_working": "No Unreal version exists. Device performance, touch controls, release scope and launch order remain unproven or undecided.",
+            "next": "Choose a lead release platform, then discuss target devices and the smallest useful native test.",
+        },
+    )
+    native_body = "<p>Your proposal makes sense: a downloadable Unreal game, supported by a website for information and store links.</p>"
+    native_body += '<p>Epic documents separate Windows, iOS and Android builds. This supports the plan, not guaranteed performance or store acceptance.</p>'
+    native_body += '<p>Source: <a href="https://dev.epicgames.com/documentation/en-us/unreal-engine/packaging-your-project">Epic packaging guide</a>.</p>'
+    native_body += table(["Part", "Proposed treatment"], [
+        ("Browser prototype", "Keep it as the playable reference for camera feel, scale, automatic combat, navigation and interiors."),
+        ("Native game", "Rebuild gameplay and interface in Unreal. Existing web code is not a direct export into the engine."),
+        ("Website", "Explain the game, show its ships and link to real store listings when available. Keep an optional lightweight 3D showcase."),
+        ("First test", "One flagship, one planet backdrop, one interior and one automatic projectile encounter. Measure real devices before adding content."),
+    ])
+    native_body += "<p>I recommend Steam first, with real iPhone and Android tests from the first playable native slice.</p>"
+    native_body += "<p>That avoids coordinating three launches while keeping phone limits visible early. Touch controls, heat, memory and readable effects need testing.</p>"
+    native_body += "<p>Automatic helm and weapons seem promising for touch commands. That is my design inference; walking and shuttle controls still need adaptation.</p>"
+    native_body += '<p>Phone graphics need their own budget. Standard mobile rendering omits desktop features including Nanite and Lumen.</p>'
+    native_body += '<p>Source: <a href="https://dev.epicgames.com/documentation/unreal-engine/rendering-features-reference">Epic mobile rendering matrix</a>.</p>'
+    native_body += '<p>Signed iOS builds require a Mac and Apple Developer account. Windows development can use a remote Mac with Xcode.</p>'
+    native_body += '<p>Source: <a href="https://dev.epicgames.com/documentation/en-us/unreal-engine/creating-remote-builds-of-unreal-engine-projects-for-ios">Epic remote build guide</a>.</p>'
+    native_body += "<p>The complete exploration, crew, progression and planet-activity vision remains substantial work. A smaller first commercial scope needs agreement.</p>"
+    native_body += "<p>The AI conversation needs one correction: Valve focuses disclosure on shipped content players consume, not all development-tool efficiency gains.</p>"
+    native_body += '<p>Source: <a href="https://partner.steamgames.com/doc/gettingstarted/contentsurvey">Valve content survey</a>. This does not exempt every generated asset or procedural output.</p>'
+    native_body += "<p>Automatic navigation and seeded worlds do not inherently require live generative AI. Changing engines does not settle disclosure or content rights.</p>"
+    native_body += '<p>Google has separate <a href="https://support.google.com/googleplay/android-developer/answer/17262077?hl=en">promotional-asset declaration guidance</a>. Its treatment of gameplay captures containing AI-created assets remains unresolved here.</p>'
+    native_body += '<p>Public studio branding can wait. Valve supports names linking to the same or different controlled <a href="https://partner.steamgames.com/doc/store/creator_homepage">creator homepages</a>.</p>'
+    native_body += "<p>Only discussion records and this report changed. No game migration, native build, phone test, store submission or new publication occurred.</p>"
+    native += decide.info_thread("aquila-direction-r31-info",
+        "Unreal and a separate game website fit the proposed direction; release order and scope remain open.",
+        body_html=native_body, short="Native release proposal")
+    native_qid = "aquila-direction-r31-release"
+    native_choices = table(["Release order", "Tradeoff", "Choose"], [
+        ("Steam first", "My recommendation. Test phones early, then ship mobile versions after the first commercial release.",
+         decide.pick(native_qid, "steam_first", "Steam first", mode="single", mine=True)),
+        ("All three together", "Coordinated launch requires every platform's build, device tests and store review to be ready.",
+         decide.pick(native_qid, "together", "All three together", mode="single")),
+        ("Mobile first", "Phone interaction and device limits lead the first release; Steam follows.",
+         decide.pick(native_qid, "mobile_first", "Mobile first", mode="single")),
+    ])
+    native += decide.question(native_qid,
+        "Which platform should lead the first release?",
+        [], short="Release priority", anchors_html=native_choices,
+        why="Steam first is my recommendation: fewer simultaneous releases. This preference does not authorize implementation.")
+    native += decide.whats_next("aquila-direction-r31-next",
+        "Discuss release priority, target devices and first-release scope. Migration remains paused until you request concrete implementation.",
+        short="Set the release direction", follows="aquila-direction-r30-next")
+    rounds = page.entry(31, "Unreal and native releases", native, when="2026-11-15 UTC") + rounds
+    shared = decide.recap(
+        "Steam and mobile together becomes the working target. One account carries your single-player progress between devices. "
+        "Cloud saves need internet; battles do not need multiplayer servers. "
+        "The website keeps its style, with news, development logs and store links instead of a playable game. Implementation remains paused.",
+        [
+            ("Release", "Aim for a coordinated Steam and mobile launch, with all three platforms developed and tested early."),
+            ("Progress", "Link devices to the same game profile and resume the same synchronized save."),
+            ("Gameplay", "Single-player only. Online account and save services are separate from multiplayer networking."),
+            ("Website", "Keep the space and glass style, subtle 3D, news, development logs and store links. No playable website game."),
+            ("Status", "Direction recorded from chat. No native game, account service or website redesign has been built."),
+        ],
+        {
+            "did": "Recorded your coordinated-launch preference, shared-save requirement, single-player scope and website direction.",
+            "why": "Progress should follow the player between desktop and phones while the website promotes the game.",
+            "working": "The requirements are recorded. Existing services demonstrate shared player storage across platforms and storefronts.",
+            "not_working": "Account linking, native saves, cloud sync and mobile performance remain unbuilt or untested.",
+            "next": "Discuss the first commercial scope, then plan a small native test that includes shared saves.",
+        },
+    )
+    shared += decide.reply(
+        "aquila-direction-r32-release-answer", "aquila-direction-r31-release", "Release priority",
+        "it's probably smart to release it on Steam and mobile together, right?",
+        "<p>A coordinated launch becomes the working target. All platforms need early development and testing; readiness still determines release dates.</p>"
+        "<p>Recorded from your direct chat. No report submission was created.</p>",
+        short="Coordinated launch preference",
+    )
+    shared_body = "<p>Yes. The same single-player campaign can follow you between Steam, iPhone and Android.</p>"
+    shared_body += "<p>Multiplayer is excluded from the game scope. Account login and cloud saves still require an online service.</p>"
+    shared_body += table(["Proposed player experience", "Behavior"], [
+        ("Start on a phone", "Save ship configuration, progress and world state under one game profile."),
+        ("Continue on desktop", "Sign in or link Steam to that profile. Download the synchronized save and resume."),
+        ("Play offline", "My recommendation: save locally and synchronize when connected. Upload must finish before another device can receive that progress."),
+        ("Conflicting progress", "Preserve both versions and explain the choice. Never silently overwrite a different offline campaign."),
+        ("Game updates", "Keep compatible save formats across releases. Device graphics and controls stay separate from campaign progress."),
+    ])
+    shared_body += "<p>Account provider and login methods remain open. A shared profile does not require choosing a separate password flow now.</p>"
+    shared_body += '<p>Shared player storage is an existing service category. <a href="https://onlineservices.epicgames.com/player-game-data?lang=en-US">Epic documents storage across platforms and storefronts</a>.</p>'
+    shared_body += "<p>That supports feasibility, not a provider selection or tested integration. Storage alone does not implement conflict handling or account linking.</p>"
+    shared_body += '<p><a href="https://partner.steamgames.com/doc/features/cloud">Steam Cloud</a> documents Steam-managed synchronization. It does not establish automatic shared saves with App Store and Google Play editions.</p>'
+    shared_body += "<p>Shared progress and purchase ownership remain separate decisions. No purchase model has been chosen.</p>"
+    shared_body += "<p>The public website will contain no playable game. Keep its current space and glass identity with <code>Three.js</code> presentation.</p>"
+    shared_body += "<p>Include game information, news, development notes and links to Steam, the App Store and Google Play.</p>"
+    shared_body += "<p>Background gameplay videos are a future website feature; no new footage exists yet.</p>"
+    shared_body += "<p>The browser prototype remains a development reference. Coordinated release adds preparation work; it is a target, not a promised date.</p>"
+    shared_body += "<p>A future first native test should move one save between desktop and phones, alongside its small battle and interior.</p>"
+    shared_body += "<p>Only project records and this report changed. No migration, service setup, website redesign, gameplay testing or new publication occurred.</p>"
+    shared += decide.info_thread("aquila-direction-r32-info",
+        "Shared saves fit a single-player game, with online synchronization separate from the battles.",
+        body_html=shared_body, short="One campaign across devices", follows="aquila-direction-r31-info")
+    shared += decide.whats_next("aquila-direction-r32-next",
+        "Discuss first-release scope and a native test including shared saves. Implementation remains paused; nothing needs a decision now.",
+        short="Define the first release", follows="aquila-direction-r31-next")
+    rounds = page.entry(32, "One campaign across devices", shared, when="2026-11-15 UTC") + rounds
+    saved = decide.recap(
+        "Yes. The discussion was already saved, and your agreement is now recorded. "
+        "Project notes, decisions, a restart checkpoint and a native milestone brief preserve it. "
+        "Next: check build readiness, then prove a small native battle and shared saves on desktop and phones. "
+        "These new records are local and uncommitted.",
+        [
+            ("Agreement", "Offline local saves, later synchronization and protection of conflicting versions are now accepted requirements."),
+            ("Records", "Knowledge, decisions, backlog, checkpoint and report preserve the direction and remaining choices."),
+            ("Next milestone", "A small native battle and interior should prove gameplay and save continuity across desktop and phones."),
+            ("First step", "Check available build tools, Mac access and actual test devices before creating the native project."),
+            ("Publication", "Earlier browser work is pushed. The newer discussion records remain saved locally and uncommitted."),
+        ],
+        {
+            "did": "Saved your agreement, a concrete native milestone brief and an updated restart checkpoint.",
+            "why": "The decisions must survive a new session without relying on chat history.",
+            "working": "Durable project records separate accepted requirements, proposed implementation and existing browser evidence.",
+            "not_working": "No native build or cloud integration exists. Target devices, provider, pricing and commercial scope remain open.",
+            "next": "The proposed next step is a native build-readiness review. Implementation remains paused.",
+        },
+    )
+    saved_body = "<p>Your agreement confirms the discussed direction, including offline saves and preservation of conflicting progress.</p>"
+    saved_body += "<p>The discussion was already in project files. Your confirmation and the next milestone are now recorded there too.</p>"
+    saved_body += table(["Saved record", "Purpose"], [
+        ("<code>knowledge/native-release-direction.md</code>", "Accepted direction, earlier alternatives, source evidence and remaining technical choices."),
+        ("<code>Docs/DECISIONS.md</code>", "Dated owner decisions and their scope. No silent conversion of suggestions into approvals."),
+        ("<code>Docs/Plans/NATIVE_FOUNDATION.md</code>", "Proposed implementation sequence and evidence needed to finish the first native milestone."),
+        ("<code>Docs/Handoffs/HANDOFF_2026-11-15_game-direction.md</code>", "Current state, published browser checkpoint, uncommitted discussion work, limits and stop boundary."),
+        ("<code>Docs/Handoffs/PROMPT_2026-11-15_native-direction.txt</code>", "Copyable startup prompt for a fresh session. It preserves the pause and points to current records."),
+    ])
+    saved_body += "<p>The preceding checkpoint is archived byte for byte with its hash. Earlier report rounds and the prior wrap artifacts remain intact.</p>"
+    saved_body += table(["Proposed next sequence", "What it establishes"], [
+        ("Build readiness", "Check Unreal tooling, Mac access and real test devices. Set device targets and performance budgets."),
+        ("Native foundation", "One flagship, planet backdrop, bridge room, enemy and two automatic projectile turrets, with desktop and touch controls."),
+        ("Portable local saves", "Restore campaign state after closing the app. Keep device settings separate and handle save versions deliberately."),
+        ("Shared save proof", "Select an account/storage service, then prove desktop-to-phone and phone-to-desktop continuity, interrupted uploads and recoverable offline conflicts."),
+    ])
+    saved_body += "<p>This is a feasibility milestone, not the complete first commercial game. The full release feature list remains open.</p>"
+    saved_body += "<p>The website conversion follows stable game identity and usable native gameplay material. No website deployment is authorized.</p>"
+    saved_body += "<p>No provider, purchase model or minimum device has been chosen. The browser prototype remains unchanged.</p>"
+    saved_body += "<p>New discussion records are saved locally, not committed or pushed. The earlier browser source and wrap remain published.</p>"
+    saved += decide.info_thread("aquila-direction-r33-info",
+        "Your decisions are saved in project files, and the next native milestone is written down.",
+        body_html=saved_body, short="Direction saved and next milestone defined", follows="aquila-direction-r32-info")
+    saved += decide.whats_next("aquila-direction-r33-next",
+        "Next proposed step: inspect native build readiness. Implementation stays paused; no decision is needed to finish saving these records.",
+        short="Native foundation comes next", follows="aquila-direction-r32-next")
+    rounds = page.entry(33, "Direction agreed and saved", saved, when="2026-11-15 UTC") + rounds
+    foundation = decide.recap(
+        "The native Windows game builds and runs. One ship, bridge and automatic battle have local saves. "
+        "Five checks pass, including save conflicts. The Android package is built; phone testing comes next. "
+        "Art remains a rough blockout. Cloud saves and Apple builds are still ahead.",
+        [
+            ("Engine", "Aquila uses verified launcher Unreal 5.8.4, separate from DuskForge's source engine."),
+            ("Playable", "One ship, planet backdrop, bridge and automatic battle now run in a Windows package."),
+            ("Checks", "Five automation groups pass. Packaged relaunch restores the saved battle and retains its earlier revision."),
+            ("Android", "Cooked Android package passes content and signature checks. Physical-device installation and gameplay remain pending."),
+            ("Limits", "This is a blockout. Full exploration, finished effects, cloud accounts and Apple device proof remain later work."),
+        ],
+        {
+            "did": "Created the native foundation, verified Windows runtime and saves, and built the Android package.",
+            "why": "Your approved next step needs native build and save evidence before expanding the game.",
+            "working": "Windows packaging, rendered views, automatic combat, save restoration and five automation groups pass.",
+            "not_working": "Cloud saves are unbuilt; phone gameplay, native input, iOS and sustained performance remain unverified.",
+            "next": "Connect the Galaxy and check installation, controls, suspension and saved progress.",
+        },
+    )
+    foundation_body = "<p>Your approval started local native work. The browser prototype remains the reference; the marketing website conversion comes later.</p>"
+    foundation_body += "<p>Verified launcher engine: <code>5.8.4</code>, changelist <code>58902052</code>. DuskForge's source engine and project remain separate.</p>"
+    foundation_body += table(["Part", "Current result"], [
+        ("Native project", "<code>native/Aquila/</code>. The wrapper checks engine identity before building."),
+        ("Command play", "Approach, hold, combat range and withdrawal orders. Weapons acquire and fire automatically."),
+        ("Battle", "Two burst turrets and traveling enemy rounds. Standard ammunition drains shields; piercing ammunition defeats reinforced armor."),
+        ("Local saves", "Versioned campaign revisions retain position, ship state, world identity, navigation and flying rounds."),
+        ("Save conflicts", "Divergent or invalid revisions pause writes and retain files. Conflict-selection controls and cloud transport remain unbuilt."),
+        ("Device baseline", "Shared rendering disables Nanite, Lumen, virtual shadow maps and ray tracing. No phone performance claim yet."),
+    ])
+    foundation_body += page.figure(page.copy_media(HERE / "media/r34-native-exterior-final.png", out), "34.1 Native exterior",
+                                  " Windows package, original blockout geometry and glass command strip. Final ship art remains future work.", look=True)
+    foundation_body += page.figure(page.copy_media(HERE / "media/r34-native-bridge-final.png", out), "34.2 Separate bridge",
+                                  " Human-scale bridge with a live planet backdrop. Capture caught and helped fix a camera coordinate error.")
+    foundation_body += page.figure(page.copy_media(HERE / "media/r34-native-combat-final.png", out), "34.3 Automatic battle",
+                                  " Standard rounds drain Sentinel's shield but leave its armored hull intact. Effects remain provisional.")
+    foundation_body += page.figure(page.copy_media(HERE / "media/r34-native-resumed.png", out), "34.4 Restored battle",
+                                  " Relaunch resumes the saved encounter. Continued enemy fire reduces health; the earlier save remains preserved.")
+    foundation_body += table(["Evidence", "What it proves"], [
+        ("Five automation groups", "Projectile timing, defense compatibility, navigation, migration, interrupted writes and divergent revisions pass model checks."),
+        ("Windows package", "Compiled, cooked and archived successfully. Exterior, bridge, battle and restored battle ran and exited cleanly."),
+        ("Rendered checks", "The views above were inspected. Scene switches came from development arguments, not mouse or touch input."),
+        ("Restoration", "Same campaign, seed and parent revision after relaunch. Battle continues without resetting health; both revisions remain."),
+        ("Input limits", "Native window-control service was unavailable. Actual mouse, keyboard and touch interactions remain unchecked."),
+        ("Android package", "Native compilation, cooked packaging, embedded content, signature and archive integrity pass. No connected phone was detected."),
+        ("Open work", "Galaxy installation, sustained performance, app suspension, cloud linking and Apple builds need further proof."),
+    ])
+    foundation_body += '<p>Local Android tools follow <a href="https://developer.android.com/tools/sdkmanager">Google\'s command-line setup</a>. Aquila selects them through process-scoped settings.</p>'
+    foundation_body += "<p>Turnkey still flags missing Android Studio. The explicit local toolchain builds successfully; no global SDK change was needed.</p>"
+    foundation_body += "<p>The first Android archive lacked cooked content. An explicit packaging step fixed it; final content and signature checks pass.</p>"
+    foundation_body += "<p>No DuskForge settings or global SDK paths changed. Epic Launcher remains open after your request.</p>"
+    foundation_body += '<p>Repeatable commands and limits: <code>native/Aquila/README.md</code>. Detailed evidence: <a href="native-verification.json">native verification receipt</a>.</p>'
+    foundation_body += "<p>Source and records remain local and uncommitted. No store submission, website deployment, asset transfer or paid generation occurred.</p>"
+    foundation_body += "<p>Report build and HTTP checks pass. The workspace browser host is disconnected, so no visible-tab check was possible.</p>"
+    foundation += decide.info_thread("aquila-direction-r34-info",
+        "Windows native game runs, with automatic combat and local save restoration.",
+        body_html=foundation_body, short="Native foundation and Windows proof", follows="aquila-direction-r33-info")
+    foundation += decide.request("aquila-direction-r34-device",
+        "Connect your Galaxy by USB, enable USB debugging and accept the computer authorization prompt.",
+        "The phone must be connected for installation and device checks. Report when the computer is authorized.",
+        short="Connect the Android test device")
+    foundation += decide.whats_next("aquila-direction-r34-next",
+        "Install and test on the connected Galaxy. Cloud provider choice follows local device proof; iOS waits for Apple access.",
+        short="Prove the phone build", follows="aquila-direction-r33-next")
+    rounds = page.entry(34, "Native foundation and device preparation", foundation, when="2026-11-16 UTC") + rounds
+    phone = decide.recap(
+        "Windows sees your Samsung USB connection. Debugging access is still missing. Enable Developer options, turn on USB debugging, "
+        "then approve this computer on your unlocked phone. The Android test package is ready.",
+        [
+            ("Connected", "Windows detects a Samsung USB device without a reported device error."),
+            ("Pending", "The Android debugging tool still lists no devices."),
+            ("Phone setup", "Enable Developer options through the phone's software information, then turn on USB debugging."),
+            ("Authorization", "Accept the computer authorization prompt while the phone is unlocked."),
+            ("Next", "Installation and phone checks follow debugging access."),
+        ],
+        {
+            "did": "Checked Windows USB detection and Android debugging access.",
+            "why": "Your phone is plugged in and needs development access for the local game build.",
+            "working": "Windows sees the Samsung USB connection. The Android package is ready.",
+            "not_working": "No phone is available through the debugging tool yet.",
+            "next": "Complete the phone settings and computer authorization below.",
+        },
+    )
+    phone += decide.info_thread("aquila-direction-r35-info",
+        "Windows sees the Samsung USB connection; debugging access remains pending.",
+        body_html="<p>Your chat confirms the cable is connected. Windows reports a Samsung USB device with status OK.</p>"
+                  "<p>The Android debugging tool lists no devices. This does not yet distinguish phone settings from a driver issue.</p>"
+                  "<p>No game installation or phone gameplay has occurred.</p>",
+        short="Phone connection checked", follows="aquila-direction-r34-info")
+    phone_steps = table(["Step", "On your Galaxy"], [
+        ("1", "Unlock the phone. Open Settings, About phone, then Software information."),
+        ("2", "Tap Build number seven times. Enter your phone PIN if asked."),
+        ("3", "Return to the main Settings screen. Open Developer options near the bottom."),
+        ("4", "Turn on USB debugging and confirm its prompt."),
+        ("5", "Accept Allow USB debugging for this computer. If no prompt appears, reconnect the cable while the phone stays unlocked."),
+    ])
+    phone_steps += '<p>Steps verified against <a href="https://www.samsung.com/us/support/answer/ANS10003430/">Samsung support</a> and '
+    phone_steps += '<a href="https://developer.android.com/studio/run/device">Android device setup</a>.</p>'
+    phone_steps += "<p>Report when authorization is accepted, or describe any missing or disabled setting.</p>"
+    phone += decide.request("aquila-direction-r35-device",
+        "Enable USB debugging and authorize this computer on your Galaxy.",
+        phone_steps, short="Enable phone debugging", follows="aquila-direction-r34-device")
+    phone += decide.whats_next("aquila-direction-r35-next",
+        "Check debugging access, then install the prepared game and test on the Galaxy. Waiting for phone authorization.",
+        short="Authorize the phone before installation", follows="aquila-direction-r34-next")
+    rounds = page.entry(35, "Galaxy USB setup", phone, when="2026-11-16 UTC") + rounds
+    blocker = decide.recap(
+        "Auto Blocker is preventing USB debugging. Temporarily turn it off under Security and privacy, then enable debugging "
+        "and authorize this computer. This reduces some phone protections. Restore Auto Blocker and turn debugging off after testing.",
+        [
+            ("Cause", "Your phone reports that Auto Blocker prevents USB debugging."),
+            ("Setting", "Open Settings, Security and privacy, then Auto Blocker."),
+            ("Temporary change", "Turn Auto Blocker off for this development test."),
+            ("Debugging", "Enable USB debugging, then accept this computer's authorization prompt."),
+            ("After testing", "Turn USB debugging off and restore Auto Blocker."),
+        ],
+        {
+            "did": "Checked Samsung's guidance against the blockage you reported.",
+            "why": "The phone's security setting prevents the development connection.",
+            "working": "Developer options are available and the Android package is ready.",
+            "not_working": "USB debugging remains blocked. No phone installation or gameplay has occurred.",
+            "next": "Temporarily change Auto Blocker, enable debugging and authorize this computer.",
+        },
+    )
+    blocker += decide.info_thread("aquila-direction-r36-info",
+        "Auto Blocker explains the disabled debugging toggle.",
+        body_html="<p>Your chat identifies the phone's displayed restriction. This is owner-reported evidence, not a device capture.</p>"
+                  '<p><a href="https://www.samsung.com/us/support/answer/ANS10003636/">Samsung documents</a> that Auto Blocker restricts USB commands and unofficial app installation.</p>'
+                  "<p>Turning it off temporarily removes some protections against untrusted apps and USB commands.</p>",
+        short="Phone security setting identified", follows="aquila-direction-r35-info")
+    blocker_steps = table(["Step", "Action"], [
+        ("1", "Open Settings, Security and privacy, then Auto Blocker."),
+        ("2", "Turn Auto Blocker off temporarily. Confirm with your phone PIN if asked."),
+        ("3", "Return to Settings, Developer options. Turn on USB debugging."),
+        ("4", "Accept Allow USB debugging for this computer. Reconnect the cable while unlocked if the prompt does not appear."),
+        ("After testing", "Turn USB debugging off and restore Auto Blocker."),
+    ])
+    blocker_steps += "<p>Use this trusted computer during testing. Report when authorization is accepted, or describe any remaining block.</p>"
+    blocker += decide.request("aquila-direction-r36-device",
+        "Temporarily turn off Auto Blocker, then enable USB debugging and authorize this computer.",
+        blocker_steps, short="Allow the development connection", follows="aquila-direction-r35-device")
+    blocker += decide.whats_next("aquila-direction-r36-next",
+        "Confirm debugging access before installing the prepared game. Restore the phone's protections when device testing ends.",
+        short="Authorize, test, then restore protection", follows="aquila-direction-r35-next")
+    rounds = page.entry(36, "Auto Blocker and USB debugging", blocker, when="2026-11-16 UTC") + rounds
+    galaxy = decide.recap(
+        "Aquila runs on your Galaxy. Controls, combat and saved progress pass initial device checks. "
+        "Phone testing caught an ammunition bug; the installed update fixes it. Six automated checks pass. "
+        "Fresh practice is paused for you. Art remains rough, and long-session performance still needs testing.",
+        [
+            ("Installed", "The updated game is installed and its package hash matches the verified local build."),
+            ("Controls", "Computer-sent touches exercised navigation, bridge movement, camera look, combat modes and pause on the phone."),
+            ("Saves", "Backgrounding, relaunch and the app update preserved campaign state and earlier save revisions."),
+            ("Combat fix", "Old standard bullets no longer stop newly selected piercing weapons. Six automation groups and phone battle checks pass."),
+            ("Your turn", "Resume fresh practice and check touch comfort. Finished art, sustained performance and shared cloud saves remain ahead."),
+        ],
+        {
+            "did": "Installed the game, checked phone controls and saves, fixed ammunition switching, then verified the update.",
+            "why": "A real phone exposes issues that desktop builds and model checks miss.",
+            "working": "Initial phone rendering, injected touches, combat, local restoration, update preservation and six automated checks pass.",
+            "not_working": "Human touch comfort, sustained performance, cloud accounts and Apple device proof remain unverified or unbuilt.",
+            "next": "Try the paused practice battle and bridge. Restore phone protection when USB testing ends.",
+        },
+    )
+    galaxy_body = "<p>Your debugging connection is authorized. The phone locked during rebuilding; your unlock allowed the final checks to finish.</p>"
+    galaxy_body += table(["Check", "Observed result"], [
+        ("Phone", "Samsung model <code>SM-S948U</code>, Android 17, API 37, arm64. No retail-model assumption."),
+        ("Installation", "Initial installation and update pass. Installed package hash matches the local verified package."),
+        ("Controls", "Injected taps and gestures moved the ship, entered the bridge, walked, looked around, changed ammunition and paused."),
+        ("Background and relaunch", "Campaign state remained exact, including ship position, health, ammunition and 16 flying rounds. Earlier revisions remained unchanged."),
+        ("Update", "All 15 pre-update save revisions survived. The updated app restored the same campaign state."),
+        ("Ammunition fix", "Late standard impacts stopped compatible piercing fire. Current ammunition now governs firing; old rounds still bounce off armor."),
+        ("Regression proof", "Six model groups pass. Both the restored stuck battle and a fresh mid-battle ammunition switch defeat the target."),
+        ("Windows", "Updated package builds and its automatic-battle runtime exits cleanly. Physical desktop input remains unchecked."),
+        ("Limits", "These are short device checks. Human touch comfort, multitouch, sustained frame times, heat and battery remain unverified."),
+    ])
+    galaxy_body += page.figure(page.copy_media(HERE / "media/r37-android-ready.png", out), "37.1 Galaxy ready to play",
+                               " Updated phone build. Fresh practice is paused; ship and enemy health reset. Art remains a rough blockout.", look=True)
+    galaxy_body += page.figure(page.copy_media(HERE / "media/r37-android-final-bridge.png", out), "37.2 Bridge on the phone",
+                               " Bridge view and movement controls render on the Galaxy. Computer-sent touches tested walking and looking around.")
+    galaxy_body += page.figure(page.copy_media(HERE / "media/r37-android-fixed-victory.png", out), "37.3 Ammunition switch verified",
+                               " Piercing fire defeats the target after switching while older rounds remain in flight.")
+    galaxy_body += '<p>Exact device evidence: <a href="android-device-verification.json">Android verification receipt</a>. Overall evidence: <a href="native-verification.json">native foundation receipt</a>.</p>'
+    galaxy_body += "<p>Phone media remain local and ignored. Source and records remain uncommitted; no store submission or website deployment occurred.</p>"
+    galaxy += decide.info_thread("aquila-direction-r37-info",
+        "Aquila is installed and tested on your Galaxy, with the ammunition fix included.",
+        body_html=galaxy_body, short="Galaxy installation and initial checks pass", follows="aquila-direction-r36-info")
+    galaxy_steps = table(["Try", "Action"], [
+        ("Resume", "Tap Pause / resume to start the fresh practice battle."),
+        ("Weapons", "Tap Standard / piercing rounds when armor blocks standard fire. Aiming and firing remain automatic."),
+        ("Bridge", "Tap Bridge / exterior. Hold a movement button and drag open space to look around."),
+        ("Feedback", "Report tiny text, awkward buttons, stutters or unexpected camera movement."),
+        ("Phone protection", "When USB testing is finished, turn USB debugging off and restore Auto Blocker."),
+    ])
+    galaxy += decide.request("aquila-direction-r37-play",
+        "Try the practice battle and bridge on your phone, then report how the controls feel.",
+        galaxy_steps, short="Try the phone build")
+    galaxy += decide.whats_next("aquila-direction-r37-next",
+        "Review your touch feedback, then measure sustained phone performance. Cloud provider choice and Apple access remain open.",
+        short="Phone usability and sustained performance", follows="aquila-direction-r36-next")
+    rounds = page.entry(37, "Aquila running on your Galaxy", galaxy, when="2026-11-16 UTC") + rounds
+    phone_ui = decide.recap(
+        "Phone controls now have larger bold text and bigger buttons. Navigation, Weapons and Voyage tabs reduce clutter. "
+        "Both packages build, and desktop previews pass. The new version is not on your phone yet: "
+        "Windows sees the cable, but USB debugging remains unavailable.",
+        [
+            ("Text", "Phone labels are larger, bold and brighter, with dark shadows for contrast."),
+            ("Menus", "Navigation, Weapons and Voyage tabs show one command group at a time."),
+            ("View", "Hide menu clears the scene. Bridge and Pause stay available at the top."),
+            ("Checks", "Windows and Android packages pass. Both desktop and phone layouts render correctly in desktop previews."),
+            ("Pending", "The phone update waits for USB debugging access; actual phone readability still needs your check."),
+        ],
+        {
+            "did": "Enlarged phone controls and grouped commands into three tabs.",
+            "why": "Your first playtest found some phone menus small and hard to see.",
+            "working": "Both packages build. Larger phone controls fit in the desktop preview.",
+            "not_working": "USB debugging lists no phone. The new menu has not been installed or tested there.",
+            "next": "Restore debugging access, install the update, then check reading and tapping comfort.",
+        },
+    )
+    phone_ui_body = "<p>Your feedback identifies a readability problem despite successful earlier touch checks.</p>"
+    phone_ui_body += table(["Change", "Result"], [
+        ("Readability", "Larger bold labels, brighter text and dark shadows over the glass controls."),
+        ("Touch targets", "Bigger buttons; one command group visible at a time. Top controls remain available when the menu hides."),
+        ("Camera", "Touch camera input excludes visible control panels, including the larger movement buttons."),
+        ("Builds", "Updated editor, Windows package and Android package pass. Android content, signature and archive integrity checks pass."),
+        ("Rendered checks", "Desktop and phone layouts render at 1600 by 900 pixels in packaged Windows runs. Both exit cleanly."),
+        ("Device access", "Your chat confirms reconnection. Windows sees Samsung USB, but debugging still lists no phone."),
+        ("Limits", "This update is not installed on the Galaxy. Actual phone layout, touch input and reading comfort remain unchecked."),
+    ])
+    phone_ui_body += page.figure(page.copy_media(HERE / "media/r38-packaged-touch.png", out), "38.1 Larger phone layout",
+                                 " Windows-rendered preview of the phone layout. Galaxy installation waits for debugging access.", look=True)
+    phone_ui_body += '<p>Exact checks and remaining gaps: <a href="mobile-ui-verification.json">phone menu verification receipt</a>.</p>'
+    phone_ui_body += "<p>The earlier phone build and saves remain in place. Source and records remain local and uncommitted.</p>"
+    phone_ui += decide.info_thread("aquila-direction-r38-info",
+        "Larger phone menus are packaged; installation waits for debugging access.",
+        body_html=phone_ui_body, short="Larger phone controls built", follows="aquila-direction-r37-info")
+    phone_ui += decide.request("aquila-direction-r38-device",
+        "Check USB debugging is on, accept any authorization prompt, then leave Aquila unlocked.",
+        "Windows sees the cable, but debugging lists no phone. Report whether debugging is on or a prompt appears.",
+        short="Restore phone debugging access", follows="aquila-direction-r37-play")
+    phone_ui += decide.whats_next("aquila-direction-r38-next",
+        "Install with saved progress preserved once debugging returns. Then inspect the phone menu and check your reading comfort.",
+        short="Install and check the larger menu", follows="aquila-direction-r37-next")
+    rounds = page.entry(38, "Larger phone menus", phone_ui, when="2026-11-16 UTC") + rounds
+    wake_check = decide.recap(
+        "The larger menus are installed on your phone, and you confirmed they feel good. "
+        "Two clipped labels are fixed. All 58 earlier save revisions survived the final update. "
+        "Menu tabs, bridge controls, saving and camera checks pass.",
+        [
+            ("Installed", "Refreshing USB debugging restored access. The final phone package is installed and its hash matches."),
+            ("Readable", "Larger text and buttons fit. Wider movement buttons and a shorter Menu label fix clipping."),
+            ("Saves", "All 58 earlier revisions survived the final update; restored campaign state matched exactly."),
+            ("Controls", "Tabs, menu hiding, bridge entry, walking, saving and camera checks pass on the phone."),
+            ("Your check", "You confirmed the larger labels and buttons feel good. Sustained performance and multitouch remain unverified."),
+        ],
+        {
+            "did": "Installed the larger menus, fixed clipped labels and checked the final version on your Galaxy.",
+            "why": "Your first playtest found menu text too small.",
+            "working": "The phone update, saved progress, command tabs and camera checks pass. You confirmed reading and tapping comfort.",
+            "not_working": "Multitouch and sustained performance remain unverified. Shared cloud saves and Apple proof remain unfinished.",
+            "next": "Readability work is complete. Sustained phone testing remains the next verification step.",
+        },
+    )
+    wake_body = "<p>Your debugging toggle and reconnection restored access. The final update is installed.</p>"
+    wake_body += table(["Check", "Observed result"], [
+        ("Labels", "Widened movement buttons to show Forward fully. Changed the hidden-menu button to Menu, avoiding clipping."),
+        ("Builds", "Updated editor, Windows package and Android package pass. Android signature and archive checks pass."),
+        ("Saved progress", "All 58 pre-update revisions remained byte-identical. The same campaign restored before further input checks."),
+        ("Phone input", "Injected taps exercised all three tabs, saving, hiding/showing menus, bridge entry, walking and pause/resume."),
+        ("Camera", "A swipe over the visible menu left the view steady. The same area rotated the camera after hiding menus."),
+        ("Verification limits", "Camera checks used active gameplay. Earlier paused checks were inconclusive. Multitouch, prolonged performance and heat remain unverified."),
+    ])
+    wake_body += page.figure(page.copy_media(HERE / "media/r39-final-ready.png", out), "39.1 Larger menus on your Galaxy",
+                             " Final installed version at 2340 by 1080 pixels. Navigation controls fit; game left paused after checks.", look=True)
+    wake_body += page.figure(page.copy_media(HERE / "media/r39-final-bridge.png", out), "39.2 Bridge movement controls",
+                             " Forward now fits fully. Movement controls remain separate from the command tabs.")
+    wake_body += page.figure(page.copy_media(HERE / "media/r39-final-weapons.png", out), "39.3 Weapons tab",
+                             " Larger weapon controls and battle status on the actual phone.")
+    wake_body += page.figure(page.copy_media(HERE / "media/r39-final-voyage.png", out), "39.4 Voyage tab",
+                             " Saving works locally. Cloud saves remain unbuilt.")
+    wake_body += "<p>You confirmed reading and tapping comfort in chat:</p><blockquote>Yes, they feel good</blockquote>"
+    wake_body += '<p>Exact checks and remaining gaps: <a href="mobile-ui-verification.json">phone menu verification receipt</a>.</p>'
+    wake_check += decide.info_thread("aquila-direction-r39-info",
+        "Larger phone menus are installed, tested and confirmed comfortable by you.",
+        body_html=wake_body, short="Phone readability update complete", follows="aquila-direction-r38-info")
+    wake_check += decide.whats_next("aquila-direction-r39-next",
+        "Readability update complete. Next verification work: multitouch and sustained phone performance; cloud sync and Apple proof remain later.",
+        short="Phone readability verified", follows="aquila-direction-r38-next")
+    rounds = page.entry(39, "Larger phone menus verified", wake_check, when="2026-11-16 UTC") + rounds
+    shared_saves = decide.recap(
+        "Next recommendation: one campaign shared between Windows and Android. Local saves work; account login and cloud sync are missing. "
+        "Choose the service, add safe syncing, then prove you can continue on either device. Your phone can stay unplugged during planning.",
+        [
+            ("Next", "Finish the shared-save foundation before expanding the combat scene."),
+            ("Account", "Choose a service that fits one account across Steam and mobile."),
+            ("Offline", "Keep local play and saving available without a connection."),
+            ("Protection", "Retain both versions when devices make different offline progress; provide a clear recovery choice."),
+            ("Proof", "Continue the same campaign on Windows, then Android, then Windows again."),
+        ],
+        {
+            "did": "Reviewed the accepted milestone and its remaining work to recommend the next step.",
+            "why": "Shared progress is an accepted requirement that local saving alone does not fulfill.",
+            "working": "Native Windows and Android builds, local saves, initial phone controls and accepted menu readability.",
+            "not_working": "Account login and cloud sync are unbuilt. Sustained performance, multitouch and Apple device proof remain open.",
+            "next": "Compare account and save services, then develop the chosen integration and verify a device round trip.",
+        },
+    )
+    shared_body = table(["Order", "Proposed work", "Done when"], [
+        ("1", "Choose the account and save service.", "Steam/mobile linking, ownership, offline behavior, conflict recovery and cost have a concrete plan."),
+        ("2", "Connect the existing local save journal to login and sync.", "Progress saves offline and syncs after reconnection, with visible status."),
+        ("3", "Add recovery choices for conflicting progress.", "Both versions survive; neither silently overwrites the other."),
+        ("4", "Prove a Windows, Android, Windows round trip.", "The same campaign continues correctly, including interrupted connections and offline divergence."),
+    ])
+    shared_body += "<p>This follows the accepted foundation plan. Service selection remains open; this reply proposes the next work.</p>"
+    shared_body += "<p>Your phone can stay unplugged during planning and initial development. Physical-device sync testing comes afterward.</p>"
+    shared_body += "<p>Multitouch and sustained phone performance remain separate checks. Apple testing still needs Mac and iPhone access.</p>"
+    shared_saves += decide.info_thread("aquila-direction-r40-info",
+        "Next recommendation: finish shared progress between Windows and Android.",
+        body_html=shared_body, short="Shared saves proposed next", follows="aquila-direction-r39-info")
+    shared_saves += decide.whats_next("aquila-direction-r40-next",
+        "First, compare account and save services against the agreed requirements. Choose the service before integration or provisioning.",
+        short="Choose the account and save service", follows="aquila-direction-r39-next")
+    rounds = page.entry(40, "Next: shared saves", shared_saves, when="2026-11-16 UTC") + rounds
+    business = decide.recap(
+        "My recommendation: one business and one studio for both games initially. Each game keeps its own identity. "
+        "Steam allows separate public studio labels if you later want them. Settle the legal owner before signup. "
+        "Player login and shared saves remain separate work.",
+        [
+            ("Business", "One legal owner and Steamworks partner account can cover both games."),
+            ("Studio", "Start with one public studio brand. Different game sizes and genres alone do not require two."),
+            ("Options", "Separate labels remain useful if you want distinct audiences and public identities."),
+            ("Order", "If forming a company, do that before Steamworks onboarding so legal, bank and tax details match."),
+            ("Saves", "A business account does not build player login or shared saves. That foundation remains separate work."),
+        ],
+        {
+            "did": "Checked Valve guidance and separated legal ownership, studio branding and player accounts.",
+            "why": "You raised business setup and one versus two studios before choosing the shared-save service.",
+            "working": "Valve supports several games per partner account and flexible public developer names and pages.",
+            "not_working": "Existing business, location, legal form and studio names remain unknown or undecided. No accounts opened.",
+            "next": "Confirm existing business and location, then plan the ownership and signup sequence.",
+        },
+    )
+    business_body = table(["Decision", "Recommendation", "Basis"], [
+        ("Legal owner", "One business owner for both games, subject to your circumstances.",
+         '<a href="https://partner.steamgames.com/doc/gettingstarted/managing_apps">Valve supports multiple applications per partner account.</a>'),
+        ("Public studio", "One brand initially, with distinct identities for Aquila and DuskForge.",
+         "Branding judgment: a smaller polished game can build trust. Audience separation may justify a second label."),
+        ("Brand flexibility", "Two public names remain possible without choosing two companies now.",
+         '<a href="https://partner.steamgames.com/doc/store/creator_homepage">Valve allows multiple names and controlled creator pages.</a>'),
+        ("Onboarding", "Choose the legal owner first. Form the company before signup if that is your chosen structure.",
+         '<a href="https://partner.steamgames.com/doc/gettingstarted/faq">Valve requires legal identity matching banking and tax documents.</a>'),
+        ("Player accounts", "Continue planning shared saves separately from business registration.",
+         "Business onboarding does not supply the game integration. Cloud provider and login method remain open."),
+    ])
+    business_body += "<p>This is a recommendation, not an accepted business structure or a prediction about sales or Steam rankings.</p>"
+    business_body += "<p>Official guidance checked today. No company registered, accounts opened, agreements accepted or fees paid.</p>"
+    business += decide.info_thread("aquila-direction-r41-info",
+        "One business and one studio initially is my recommendation for Aquila and DuskForge.",
+        body_html=business_body, short="Business and studio recommendation", follows="aquila-direction-r40-info")
+    business += decide.question("aquila-direction-r41-business",
+        "Do you already have a registered business, and which country and state would the game business operate from?", [],
+        short="Existing business and location",
+        why="These facts determine the next setup steps. Entity-specific advice needs your jurisdiction.")
+    business += decide.whats_next("aquila-direction-r41-next",
+        "Use your business and location details to plan ownership and signup. Studio count remains your branding decision.",
+        short="Plan ownership before signup", follows="aquila-direction-r40-next")
+    rounds = page.entry(41, "Business and studio identity", business, when="2026-11-16 UTC") + rounds
+    texas = decide.recap(
+        "You have no business yet, live in Texas and will be the only owner. "
+        "My recommendation for review: one Texas single-member LLC for both games. "
+        "Choose a name, form the company, obtain its tax ID and bank account, then join Steamworks. "
+        "Nothing filed; the structure remains a proposal.",
+        [
+            ("Confirmed", "Texas, no existing business, and you as sole owner."),
+            ("Structure", "Review one Texas single-member LLC for both games with a Texas attorney and CPA."),
+            ("Formation", "Standard state filing fee is $300. Agent, professional and payment fees may add costs."),
+            ("Sequence", "Company first, then free IRS tax ID, business bank account and Steamworks onboarding."),
+            ("Upkeep", "Texas LLCs generally owe an annual Public Information Report even without franchise tax due."),
+        ],
+        {
+            "did": "Saved your location and sole ownership, then checked Texas, IRS and Valve guidance.",
+            "why": "Those facts make the business setup discussion concrete.",
+            "working": "A Texas LLC is available; the standard filing fee and setup order have official support.",
+            "not_working": "Legal structure and studio name remain unchosen. No company formed or platform account opened.",
+            "next": "Discuss a company and studio name broad enough for both games, then check availability.",
+        },
+    )
+    texas_body = "<p>You confirmed Texas, no existing business and sole ownership in chat.</p>"
+    texas_body += "<p>My proposed structure: one Texas single-member LLC for both games, with one public studio initially.</p>"
+    texas_body += "<p>Have a Texas attorney and CPA confirm legal and tax fit before filing.</p>"
+    texas_body += table(["Order", "Proposed step", "Basis"], [
+        ("1", "Choose a broad company/studio name; check availability and conflicting marks.",
+         "One company can support distinct game identities. Studio count remains a branding choice."),
+        ("2", "Choose the registered agent and address, review company documents, then file formation.",
+         '<a href="https://www.sos.state.tx.us/corp/instructions/205.shtml">Texas standard formation fee: $300; other costs may apply.</a>'),
+        ("3", "Obtain the company tax ID directly from the IRS after state formation.",
+         '<a href="https://www.irs.gov/businesses/small-businesses-self-employed/get-an-employer-identification-number">IRS tax IDs are free; company formation comes first.</a>'),
+        ("4", "Establish the business bank account and document game ownership or publishing rights, then complete Steamworks onboarding.",
+         '<a href="https://partner.steamgames.com/doc/gettingstarted/faq">Valve requires the legal publisher identity to match banking and tax records.</a>'),
+    ])
+    texas_body += '<p><a href="https://comptroller.texas.gov/taxes/franchise/pir-oir-filing-req.php">Texas LLCs generally file an annual Public Information Report, even without franchise tax due.</a></p>'
+    texas_body += "<p>Steam does not require an LLC. This recommendation considers your longer-term studio plan; it does not guarantee liability protection.</p>"
+    texas_body += "<p>Texas formation claims use official search passages; direct state page opens failed. IRS, Comptroller and Valve pages were readable.</p>"
+    texas_body += "<p>Nothing filed, paid or signed. The structure remains a proposal; no name or service has been chosen.</p>"
+    texas += decide.info_thread("aquila-direction-r42-info",
+        "Texas and sole ownership confirmed; one single-member LLC is my proposed starting structure.",
+        body_html=texas_body, short="Texas sole-owner setup plan", follows="aquila-direction-r41-info")
+    texas += decide.whats_next("aquila-direction-r42-next",
+        "Discuss a company/studio name broad enough for both games. Formation preparation follows ownership, name and structure choices.",
+        short="Choose a broad studio name", follows="aquila-direction-r41-next")
+    rounds = page.entry(42, "Texas studio setup plan", texas, when="2026-11-16 UTC") + rounds
+    individual = decide.recap(
+        "No LLC or corporation required. Steam supports individual publishers, and Google Play personal accounts can publish and earn money. "
+        "Developer signup and verification still apply. Google directs business publishers to organization accounts. "
+        "My LLC suggestion was optional; company formation need not block development.",
+        [
+            ("Answer", "An LLC or corporation is not required for individual game publishing."),
+            ("Steam", "Register as an individual or sole proprietor, using your legal name and matching bank and tax details."),
+            ("Google Play", "Personal developer accounts can publish games and earn money."),
+            ("Account fit", "Google directs business and organization publishers to organization accounts. Choose the category that matches the actual publisher."),
+            ("Earlier advice", "The Texas LLC was an optional structure to evaluate, not a mandatory development step."),
+        ],
+        {
+            "did": "Checked the stores' individual publishing rules and clarified the earlier LLC recommendation.",
+            "why": "You asked whether business formation is required before making and publishing the game.",
+            "working": "Official Steam and Google guidance supports individual publishing without an LLC or corporation.",
+            "not_working": "Publishing identity and account type remain undecided. No signup or formation has started.",
+            "next": "Company formation need not block development. Choose the actual publishing identity before store signup.",
+        },
+    )
+    individual_body = table(["Store", "Individual route", "Official guidance"], [
+        ("Steam", "An individual content owner can select Sole Proprietorship and supply their legal name, bank and tax details.",
+         '<a href="https://partner.steamgames.com/doc/gettingstarted/onboarding">Steam onboarding</a>'),
+        ("Google Play", "Personal developer accounts can publish and monetize. Google directs accounts representing businesses to the organization category.",
+         '<a href="https://support.google.com/googleplay/android-developer/answer/13634885?hl=en">Google developer account types</a>'),
+    ])
+    individual_body += "<p>You still need developer registration, identity verification and applicable payment and tax details.</p>"
+    individual_body += "<p>Individual publishing does not remove applicable legal or tax duties. My LLC suggestion was optional planning advice.</p>"
+    individual_body += "<p>Official guidance checked today. No business formed or accounts opened; current local development need not wait for formation.</p>"
+    individual += decide.info_thread("aquila-direction-r43-info",
+        "No. An LLC or corporation is not required for the stores' individual publishing routes.",
+        body_html=individual_body, short="Company formation is optional", follows="aquila-direction-r42-info")
+    individual += decide.whats_next("aquila-direction-r43-next",
+        "Company formation remains optional. Publishing identity and the correct account category remain open before signup.",
+        short="Choose publishing identity before signup", follows="aquila-direction-r42-next")
+    rounds = page.entry(43, "Company formation is optional", individual, when="2026-11-16 UTC") + rounds
+    studio_name = decide.recap(
+        "Yes. Steam's public Developer and Publisher labels can show your studio name. "
+        "Valve still needs your legal identity for onboarding. Google Play also permits a studio display name, "
+        "but personal accounts publicly show your legal name. Monetizing adds your full address. "
+        "No name or account type chosen.",
+        [
+            ("Steam label", "Your public Developer and Publisher labels can use a studio name."),
+            ("Legal owner", "Individual Steam onboarding still needs your real name and matching bank and tax details."),
+            ("Google label", "Google Play also allows a developer display name different from your legal name."),
+            ("Public identity", "Google personal accounts disclose legal name, country and developer email. Monetizing also discloses the full legal address."),
+            ("Choice", "No studio name, business structure or publishing account selected."),
+        ],
+        {
+            "did": "Checked public studio labels and the stores' legal identity rules.",
+            "why": "You asked whether players must see your personal name instead of a studio name.",
+            "working": "Both stores permit studio display names. Steam sets these separately from legal onboarding details.",
+            "not_working": "A studio label alone does not hide personal-account identity on Google Play.",
+            "next": "Include public identity requirements when choosing the publishing account. No registration started.",
+        },
+    )
+    studio_body = table(["Store", "Public name", "Legal identity"], [
+        ("Steam", '<a href="https://partner.steamgames.com/doc/store/creator_homepage">Developer and Publisher fields can show your studio brand.</a>',
+         '<a href="https://partner.steamgames.com/doc/gettingstarted/onboarding">Individual onboarding requires your real legal name and matching bank and tax details.</a>'),
+        ("Google Play", "A studio display name can differ from your legal name.",
+         '<a href="https://support.google.com/googleplay/android-developer/answer/13628312?hl=en">Personal accounts publicly show legal name, country and developer email.</a>'),
+    ])
+    studio_body += "<p>Google also displays the full legal address when monetizing. Additional regional disclosures can apply.</p>"
+    studio_body += "<p>These are display-name rules, not a promise of anonymity. Official store guidance checked today.</p>"
+    studio_body += "<p>No name selected or checked for conflicts. No business formed, account opened or fee paid.</p>"
+    studio_name += decide.info_thread("aquila-direction-r44-info",
+        "Yes. Steam can show a studio name in its public Developer and Publisher labels.",
+        body_html=studio_body, short="Studio name and legal identity", follows="aquila-direction-r43-info")
+    studio_name += decide.whats_next("aquila-direction-r44-next",
+        "Studio name and publishing identity remain open. Account choice must account for public identity disclosures.",
+        short="Choose branding and publishing identity", follows="aquila-direction-r43-next")
+    rounds = page.entry(44, "Public studio name", studio_name, when="2026-11-16 UTC") + rounds
+    sole_owner = decide.recap(
+        "Your friends' experience fits the rules. You can sell games without forming an LLC. "
+        "A sole proprietor runs a business as themselves. Steam accepts individuals; Google personal accounts can earn money. "
+        "I pushed company setup too early. No reliable developer-wide count checked, and no publishing route chosen.",
+        [
+            ("Meaning", "A sole proprietor runs the business personally, without forming a separate company."),
+            ("Steam", "Individual publishers are allowed."),
+            ("Google Play", "Personal developer accounts can earn money. Account category must match the actual publisher."),
+            ("Research", "Official rules settle eligibility. They do not show which structure most game developers choose."),
+            ("Correction", "The earlier LLC recommendation was premature. No company formation or account route selected."),
+        ],
+        {
+            "did": "Checked official platform rules and the meaning of sole proprietorship.",
+            "why": "You know developers who sell without forming companies and questioned the LLC recommendation.",
+            "working": "Steam accepts individuals. Google personal accounts can monetize. Company formation is not a universal requirement.",
+            "not_working": "No representative data shows what most game developers choose. Your publishing account remains undecided.",
+            "next": "Keep company formation optional. Discuss publishing identity before signup; local development need not wait.",
+        },
+    )
+    sole_body = "<p>I gave the LLC option too much weight. Your friends' experience fits the published rules.</p>"
+    sole_body += '<p><a href="https://www.sba.gov/counseling/launch-your-business/">A sole proprietor can operate personally without forming a separate business entity.</a></p>'
+    sole_body += table(["Store", "Official individual route"], [
+        ("Steam", '<a href="https://partner.steamgames.com/doc/gettingstarted/onboarding">Individual content owners can onboard as sole proprietors.</a>'),
+        ("Google Play", '<a href="https://support.google.com/googleplay/android-developer/answer/13634885?hl=en">Personal accounts can earn money. Google directs business and organization publishers to organization accounts.</a>'),
+    ])
+    sole_body += "<p>A focused official-policy check answers the LLC requirement question. A broad research project is not needed for that.</p>"
+    sole_body += "<p>I do not have reliable statistics showing which structure most game developers choose.</p>"
+    sole_body += '<p><a href="https://www.sos.state.tx.us/corp/businessstructure.shtml">Texas sole proprietors using an assumed business name generally need a county assumed-name filing.</a></p>'
+    sole_body += "<p>Texas evidence came from its official search passage; direct page access failed. SBA and Google pages were readable.</p>"
+    sole_body += "<p>Applicable taxes, verification and public identity rules still apply. Nothing filed, paid or signed.</p>"
+    sole_owner += decide.info_thread("aquila-direction-r45-info",
+        "You can sell games without forming an LLC. Operating as an individual is a supported route.",
+        body_html=sole_body, short="Selling without company formation", follows="aquila-direction-r44-info")
+    sole_owner += decide.whats_next("aquila-direction-r45-next",
+        "Publishing identity remains open before signup. Company formation is not a prerequisite for further local game development.",
+        short="Keep company formation optional", follows="aquila-direction-r44-next")
+    rounds = page.entry(45, "Selling as an individual", sole_owner, when="2026-11-16 UTC") + rounds
+    address_privacy = decide.recap(
+        "Your home address must stay off public store listings. Google publishes legal addresses for paid apps and in-app purchases. "
+        "An LLC alone does not hide an address. A separate business address needs verification; no mailbox service is confirmed. "
+        "Google Play signup waits for a solution that meets your privacy requirement.",
+        [
+            ("Requirement", "Keep your home address off public store listings."),
+            ("Google rule", "Paid apps and in-app purchases require a public legal address from the linked payments profile."),
+            ("Company", "Organization accounts also display their legal address. An LLC alone does not solve this."),
+            ("Possible route", "Investigate a legitimate separate business address. No virtual mailbox or PO box has been verified as acceptable."),
+            ("Current state", "No account opened or address service bought. Google Play publishing depends on resolving privacy."),
+        ],
+        {
+            "did": "Saved your home-address privacy requirement and checked Google's address verification rules.",
+            "why": "You said public disclosure of your address is unacceptable.",
+            "working": "The privacy requirement is recorded. Local Android development does not require a public store listing.",
+            "not_working": "No separate address or provider has been verified as acceptable for your publishing setup.",
+            "next": "Resolve the public address before Google Play signup. No company formation or address purchase authorized.",
+        },
+    )
+    address_body = "<p>Your home address must stay off public store listings. This is now a publishing requirement.</p>"
+    address_body += '<p><a href="https://support.google.com/googleplay/android-developer/answer/13634081?hl=en">Google requires merchants to display the full legal address from their linked payments profile.</a></p>'
+    address_body += '<p><a href="https://support.google.com/googleplay/android-developer/answer/13628312?hl=en">Organization accounts also display their legal address.</a> Forming an LLC using your home address would not solve that.</p>'
+    address_body += '<p><a href="https://support.google.com/googleplay/android-developer/answer/15633622?hl=en">Verification documents must match the name and address in the payments profile.</a></p>'
+    address_body += "<p>A legitimate separate business address is a route to investigate. No PO box or virtual office is confirmed acceptable.</p>"
+    address_body += "<p>Community suggestions are not a Google acceptance guarantee. No address provider selected or paid.</p>"
+    address_body += "<p>Merchant and US verification pages were checked today. Organization disclosure uses the earlier direct read; today's retries timed out.</p>"
+    address_body += "<p>Google Play remains a target with an unresolved privacy dependency. No platform canceled or account opened.</p>"
+    address_privacy += decide.info_thread("aquila-direction-r46-info",
+        "We will not publish your home address. Google Play signup waits for an acceptable privacy solution.",
+        body_html=address_body, short="Home address must stay private", follows="aquila-direction-r45-info")
+    address_privacy += decide.whats_next("aquila-direction-r46-next",
+        "Verify a legitimate separate address before signup or purchase. If none meets your requirement, revisit Google Play distribution.",
+        short="Resolve public address before signup", follows="aquila-direction-r45-next")
+    rounds = page.entry(46, "Home-address privacy requirement", address_privacy, when="2026-11-16 UTC") + rounds
+    virtual_mail = decide.recap(
+        "Yes, legitimate services exist. Your mail goes to a real mail center. Staff show envelope scans online. "
+        "You choose opening and scanning, forwarding, storage or shredding. Signup requires identity checks. "
+        "That makes it usable for mail, but Google Play acceptance remains unverified. Nothing rented.",
+        [
+            ("What it is", "A real mailbox at a mail center, managed through an app or website."),
+            ("Where mail goes", "Letters arrive at the provider's physical facility."),
+            ("Your choices", "View envelopes, request content scans, forward originals, store or shred. Services and charges vary."),
+            ("Legitimate use", "USPS recognizes commercial mail receivers. Customers provide identity documents and postal authorization."),
+            ("Game publishing", "A usable mailing address is not automatically accepted for Google Play verification."),
+        ],
+        {
+            "did": "Checked postal guidance and providers' explanations of virtual mailbox services.",
+            "why": "You asked whether these services are legitimate, usable and where the mail goes.",
+            "working": "Physical mail arrives at a real facility. Online controls let customers request handling services.",
+            "not_working": "No provider selected or Google acceptance verified. A mailbox does not establish residence or universal legal-address eligibility.",
+            "next": "Check a specific address against the intended account requirements before any purchase.",
+        },
+    )
+    virtual_body = "<p>A virtual mailbox combines a real mailing address with an online inbox for managing physical mail.</p>"
+    virtual_body += table(["Stage", "What happens"], [
+        ("Delivery", "The postal carrier delivers letters to the provider's physical mail facility."),
+        ("Preview", "Staff scan the envelope so you can view it online."),
+        ("Instructions", "You can request opening and content scans, forwarding, storage or shredding, depending on the service."),
+        ("Originals", "Forwarding sends the physical mail to your chosen address. Postage and service fees may apply."),
+    ])
+    virtual_body += '<p><a href="https://travelingmailbox.com/faqs">Traveling Mailbox explains envelope scans, opening on request and forwarding.</a></p>'
+    virtual_body += '<p><a href="https://www.anytimemailbox.com/faqs">Anytime Mailbox describes physical facilities, storage and pickup options.</a></p>'
+    virtual_body += '<p><a href="https://faq.usps.com/s/article/Commercial-Mail-Receiving-Agency-CMRA">USPS recognizes commercial mail receivers and requires customer identification and postal authorization.</a></p>'
+    virtual_body += "<p>Legitimate services exist for personal and business mail. The provider knows your identity; this is not anonymous mail.</p>"
+    virtual_body += '<p><a href="https://support.google.com/googleplay/android-developer/answer/15633622?hl=en">Google separately verifies identity and address documents.</a> Its acceptance of a specific mailbox remains unconfirmed.</p>'
+    virtual_body += "<p>USPS evidence came from its official search passage; direct page loading failed. Provider descriptions are not location audits.</p>"
+    virtual_body += "<p>No provider selected or rented. Your home-address privacy requirement stays in force.</p>"
+    virtual_mail += decide.info_thread("aquila-direction-r47-info",
+        "Yes, legitimate virtual mailbox services exist. Physical mail goes to their mail center, and you manage it online.",
+        body_html=virtual_body, short="How virtual mailboxes work", follows="aquila-direction-r46-info")
+    virtual_mail += decide.whats_next("aquila-direction-r47-next",
+        "Confirm a specific address meets Google's verification requirements before renting it. No provider or publishing account selected.",
+        short="Verify address eligibility before purchase", follows="aquila-direction-r46-next")
+    rounds = page.entry(47, "Virtual mailboxes explained", virtual_mail, when="2026-11-16 UTC") + rounds
+    store_addresses = decide.recap(
+        "Google and Apple have public-address rules. Steam collects an address during onboarding; no equivalent public-listing requirement was found. "
+        "Apple permits verified PO boxes for individual EU trader details. Google mailbox acceptance remains unresolved. "
+        "Google expands trader contact display worldwide on March 1, 2027.",
+        [
+            ("Google now", "Paid apps and in-app purchases require public legal addresses. Organization accounts also expose their legal address."),
+            ("Google update", "Individual traders' address and phone become visible worldwide on March 1, 2027."),
+            ("Apple", "EU trader listings show contact details. Individuals can provide a verified PO box for that display."),
+            ("Steam", "Partner onboarding collects an address. No equivalent mandatory public developer-address listing found in reviewed documentation."),
+            ("Mailbox", "Google requires matching address proof. No blanket acceptance of virtual mailboxes established."),
+        ],
+        {
+            "did": "Compared official Google, Apple and Steam address rules, including Google's announced trader changes.",
+            "why": "You asked which stores require an address and whether Steam differs.",
+            "working": "Apple explicitly permits a verified PO box for individual EU trader display, separate from enrollment.",
+            "not_working": "Google mailbox acceptance remains unresolved. Steam's reviewed documents do not establish a universal privacy guarantee.",
+            "next": "Resolve Google's acceptable separate address before account setup. No purchase, signup or support message authorized.",
+        },
+    )
+    store_address_body = table(["Store", "Public display", "Verification"], [
+        ("Google Play", '<a href="https://support.google.com/googleplay/android-developer/answer/13634081?hl=en">Paid apps and in-app purchases require full legal-address display.</a> '
+         '<a href="https://support.google.com/googleplay/android-developer/answer/13628312?hl=en">Organizations also show their legal address.</a>',
+         '<a href="https://support.google.com/googleplay/android-developer/answer/15633622?hl=en">The linked payments profile and accepted proof must match.</a> No blanket mailbox approval found.'),
+        ("Apple", '<a href="https://developer.apple.com/help/app-store-connect/manage-compliance-information/manage-european-union-digital-services-act-trader-requirements/">EU trader listings show address, phone and email. Individuals may use a documented PO box.</a>',
+         '<a href="https://developer.apple.com/programs/enroll/">Individual enrollment separately requires an address and rejects PO boxes.</a> Public trader contact details are separate.'),
+        ("Steam", "No equivalent mandatory public developer-address listing found in the reviewed official documentation.",
+         '<a href="https://partner.steamgames.com/doc/gettingstarted/faq">Valve still collects address, legal identity and tax information during partner onboarding.</a>'),
+    ])
+    store_address_body += '<p><a href="https://support.google.com/googleplay/android-developer/answer/17594752?hl=en">Google announces worldwide contact display for traders starting March 1, 2027, including individual address and phone.</a></p>'
+    store_address_body += "<p>New Google accounts declare trader status immediately. Existing accounts must declare by February 1, 2027.</p>"
+    store_address_body += "<p>Trader status can cover ad-funded or other commercial apps, not only paid downloads. Free pricing alone does not settle status.</p>"
+    store_address_body += "<p>These checks distinguish public display from private verification. Steam's documentation silence is not a universal privacy guarantee.</p>"
+    store_address_body += "<p>Google's account-details search passage was readable; direct loading timed out. Other cited policy pages were directly readable.</p>"
+    store_addresses += decide.info_thread("aquila-direction-r48-info",
+        "Google and Apple have explicit public-address rules. Steam still collects an address for its partner account.",
+        body_html=store_address_body, short="Public addresses across three stores", follows="aquila-direction-r47-info")
+    store_addresses += decide.whats_next("aquila-direction-r48-next",
+        "Google's separate-address eligibility remains open before signup. Your home address must stay off public listings; no service selected.",
+        short="Keep home address private", follows="aquila-direction-r47-next")
+    rounds = page.entry(48, "Store address requirements checked", store_addresses, when="2026-11-16 UTC") + rounds
+    developer_guides = decide.recap(
+        "Yes. Developers have documented this. Jake Lee describes successful Google verification using a company and forwarding address. "
+        "A newer Japanese guide reports success as a sole proprietor using a virtual office. "
+        "We have practical examples to adapt to Texas. No business structure or address service selected.",
+        [
+            ("Best starting guide", "Jake Lee documents failed personal verification, then successful company verification with a forwarding address."),
+            ("Recent example", "A Japanese sole proprietor reports verified business accounts using a virtual office and supporting records."),
+            ("US reference", "Formation Lane explains LLC setup for Apple and Google. It contains affiliate links."),
+            ("Practical pattern", "Use a legitimate business address with matching business records and the appropriate account type."),
+            ("Your decision", "An LLC remains optional. These examples do not approve a particular Texas address or provider."),
+        ],
+        {
+            "did": "Read practical developer walkthroughs, including successful verification stories and the failures preceding them.",
+            "why": "You asked for guides from people who had already navigated this process.",
+            "working": "Published first-hand accounts describe keeping home addresses off listings through verified business addresses.",
+            "not_working": "UK and Japanese paperwork cannot be copied directly into a Texas application. No provider tested for your account.",
+            "next": "Use these guides to shape a Texas-specific publishing setup. No company formation or address purchase chosen.",
+        },
+    )
+    guide_body = '<p><a href="https://blog.jakelee.co.uk/publishing-on-google-play-without-exposing-info/">Jake Lee: publishing on Google Play without exposing personal details</a> is the strongest starting point.</p>'
+    guide_body += "<p>He develops Android games and describes the process he completed, including failed verification attempts.</p>"
+    guide_body += table(["Guide", "Documented experience", "Scope"], [
+        ('<a href="https://blog.jakelee.co.uk/publishing-on-google-play-without-exposing-info/">Jake Lee, January 2025</a>',
+         "Company, forwarding address, business identity number and Google organization account. He reports successful verification and game transfers.",
+         "United Kingdom. His older account-transfer procedure is not the only route today."),
+        ('<a href="https://zenn.dev/pokecloudlab/articles/google-play-console-personal-to-organization?locale=en">Sole-proprietor walkthrough, August 2026</a>',
+         "Virtual office, business records and contract evidence. He reports successful verification after adding missing documents.",
+         "Japan. English translation and original reviewed. Account verified; app still unpublished in this article."),
+        ('<a href="https://formationlane.com/guides/put-your-app-under-your-llc/">US LLC publishing guide, October 2026</a>',
+         "Explains business identity, contact details and Apple/Google organization enrollment.",
+         "Commercial guide with affiliate links, not an independent success report or a reason to require an LLC."),
+    ])
+    guide_body += "<p>My earlier answers stopped too soon at policy uncertainty. These examples provide a practical route to investigate.</p>"
+    guide_body += "<p>The pattern: establish a legitimate business address, document it consistently, and verify the corresponding business account.</p>"
+    guide_body += '<p><a href="https://support.google.com/googleplay/android-developer/answer/16260648?hl=en">Google now supports converting eligible personal accounts to organization accounts.</a> Do not copy outdated migration steps automatically.</p>'
+    guide_body += "<p>These are reported outcomes, not verification of your future application. An LLC remains a choice, not a universal publishing requirement.</p>"
+    developer_guides += decide.info_thread("aquila-direction-r49-info",
+        "Yes. I found detailed developer guides showing how they completed verification while keeping home addresses off store listings.",
+        body_html=guide_body, short="Practical developer guides found", follows="aquila-direction-r48-info")
+    developer_guides += decide.whats_next("aquila-direction-r49-next",
+        "Adapt the documented business-address route to Texas before choosing a service or account. Home-address privacy remains required.",
+        short="Use guides for a Texas plan", follows="aquila-direction-r48-next")
+    rounds = page.entry(49, "Developer address guides found", developer_guides, when="2026-11-16 UTC") + rounds
+    texas_research = decide.recap(
+        "Your Texas research prompt is saved and ready for Perplexity. It covers private home addresses without forming a company, "
+        "all three stores, and running a profitable side business while employed. "
+        "The console stores prompts and results; it does not run Perplexity. No research result has returned.",
+        [
+            ("Individual route first", "Compare Google Play, Apple and Steam without assuming an LLC is needed."),
+            ("Home privacy", "Separate public store details from private verification and public business records."),
+            ("Employment", "Check side-business profits, employer restrictions and ownership of your game."),
+            ("Practical evidence", "Request Texas rules, firsthand guides, address options, costs and verification documents."),
+            ("Research status", "Prompt saved in Research Console. Perplexity must still be run manually."),
+        ],
+        {
+            "did": "Saved one complete research prompt with all three additions and a tracked request.",
+            "why": "You want a workable Texas publishing route without exposing your home address.",
+            "working": "Research Console accepted the prompt under Aquila. Its receipt records the exact content hash.",
+            "not_working": "No Perplexity result exists yet. No company, address service or publishing account selected.",
+            "next": "Run the prompt in Perplexity and save its complete answer in the matching request.",
+        },
+    )
+    research_url = "http://127.0.0.1:8776/?project=aquila-code-dark#bd6cbf0bf4e64935a6b993aa171316df"
+    research_body = table(["Research section", "Required answer"], [
+        ("Individual accounts", "Can a Texas resident publish privately on each store without forming a company?"),
+        ("Address evidence", "Which addresses and documents work for public contact, private verification and business records?"),
+        ("Texas alternatives", "Compare personal publishing, assumed names and optional LLC formation, including costs and public records."),
+        ("Employment", "Can an employee own and profit from an LLC? Check contract restrictions, conflicts and game ownership."),
+        ("Developer experience", "Prioritize firsthand Texas or US guides. Label overseas examples, vendor claims and unproven assumptions."),
+    ])
+    research_body += '<p>The prompt includes current and announced rules, public names, mailbox options, tax basics and specific unresolved questions.</p>'
+    research_body += '<p>Shared knowledge searches found no usable Texas publishing or moonlighting guidance in the inspected results.</p>'
+    research_body += '<p>The local console accepted the request. This proves prompt storage, not completed research or platform acceptance.</p>'
+    texas_research += decide.info_thread("aquila-direction-r50-info",
+        "Added individual publishing privacy and employment to the Texas research request. All three stores are included.",
+        body_html=research_body, short="Texas research prompt ready", follows="aquila-direction-r49-info")
+    run_steps = f'<p><a href="{research_url}">Open the Aquila Texas research request</a>.</p>'
+    run_steps += table(["Step", "Action"], [
+        ("1", "Copy the complete prompt into Perplexity and run its research mode."),
+        ("2", "Paste or import the complete result into this same request."),
+        ("3", "Press Save result, then tell me the result is ready."),
+    ])
+    texas_research += decide.request("aquila-direction-r50-run",
+        "Please run the saved prompt in Perplexity and save its complete result in Research Console.",
+        summary="This console tracks research but cannot run Perplexity itself.",
+        info=run_steps, short="Run and save Texas research", reply="Has the complete result been saved?")
+    texas_research += decide.whats_next("aquila-direction-r50-next",
+        "Review the saved research and compare practical routes before choosing an address service or business structure.",
+        summary="Waiting for the Perplexity result. Home-address privacy remains required.",
+        short="Review research before choosing", follows="aquila-direction-r49-next")
+    rounds = page.entry(50, "Texas research ready for Perplexity", texas_research, when="2026-11-16 UTC") + rounds
+    research_review = decide.recap(
+        "Read the full research and checked its key sources. You do not need an LLC solely to publish. "
+        "Apple permits a documented public PO box; Steam accepts individuals. Google's mailbox route remains unproven. "
+        "Employment terms and Texas public records still matter. No setup choice made.",
+        [
+            ("Company", "An LLC is optional. It does not automatically solve address privacy."),
+            ("Steam", "Individual publishing is explicit. No equivalent public street-address requirement found in the reviewed documentation."),
+            ("Apple", "Individuals may use a documented PO box for public EU trader contact details."),
+            ("Google", "Paid apps and purchases expose the payments address. A reliable Texas mailbox route remains unresolved."),
+            ("Employment", "A side business is generally possible. Employer restrictions and ownership of the game depend on actual terms."),
+        ],
+        {
+            "did": "Read the complete returned research, preserved its original and checked the main platform and Texas sources.",
+            "why": "You asked to review the saved research before choosing a publishing setup.",
+            "working": "Official sources support individual publishing and Apple's separate public PO-box option.",
+            "not_working": "Google mailbox eligibility, specific providers and your employment terms remain unverified.",
+            "next": "Resolve a specific Google address arrangement before buying a service or opening publishing accounts.",
+        },
+    )
+    review_body = table(["Store", "Supported route", "Limit"], [
+        ("Steam", '<a href="https://partner.steamgames.com/doc/gettingstarted/onboarding">Publish as an individual sole proprietor.</a> '
+         '<a href="https://partner.steamgames.com/doc/store/creator_homepage">Public developer and publisher labels are separate.</a>',
+         "No equivalent public street-address requirement found in reviewed pages. This is not a worldwide secrecy guarantee."),
+        ("Apple", '<a href="https://developer.apple.com/help/app-store-connect/manage-compliance-information/manage-european-union-digital-services-act-trader-requirements/">A documented PO box can replace your home address in individual EU trader contact details.</a>',
+         '<a href="https://developer.apple.com/programs/enroll/">Enrollment needs separate address verification. Your personal seller name remains public.</a>'),
+        ("Google Play", '<a href="https://support.google.com/googleplay/android-developer/answer/13634885?hl=en">Personal accounts can earn money.</a> '
+         '<a href="https://support.google.com/googleplay/android-developer/answer/13634081?hl=en">Paid apps and in-app purchases require public address display.</a>',
+         '<a href="https://support.google.com/googleplay/android-developer/answer/15633622?hl=en&amp;co=GENIE.CountryCode=US">Accepted proof documents do not establish blanket mailbox eligibility.</a> No proven Texas personal-account route found.'),
+    ])
+    review_body += '<p><a href="https://efte.twc.texas.gov/conflict_of_interest.html">Texas guidance recognizes outside jobs and business interests, alongside employer conflict restrictions.</a></p>'
+    review_body += '<p>LLC ownership and profits are generally compatible with employment. Permission requirements depend on actual contracts and policies.</p>'
+    review_body += '<p><a href="https://www.copyright.gov/circs/circ30.pdf">Employee work within employment scope can belong to the employer.</a> Personal time alone does not settle every ownership claim.</p>'
+    review_body += '<p><a href="https://tcss.legis.texas.gov/resources/BC/htm/BC.71.htm">Texas individual DBA paperwork requires your residence address.</a> It is not a home-address privacy shortcut.</p>'
+    review_body += '<p><a href="https://comptroller.texas.gov/taxes/sales/marketplace-providers-sellers.php">Texas marketplace sellers can still have permit and return duties.</a> Your exact store agreements and revenue model need classification.</p>'
+    review_body += '<p>My recommendation: do not form an LLC solely because you think publishing requires it or automatically protects your address.</p>'
+    review_body += '<p>The original compares address vendors, but none has proven acceptance for your account. No provider selected.</p>'
+    review_body += f'<p><a href="{research_url}">Complete research and saved version</a>. Version 1 was preserved unchanged; core claims were checked, not every citation or price.</p>'
+    review_body += '<p>The research request is complete. Existing release targets remain; no company, account, purchase or support contact started.</p>'
+    research_review += decide.info_thread("aquila-direction-r51-info",
+        "Research reviewed. An LLC is optional; Google's acceptable non-home address remains the main publishing privacy gap.",
+        body_html=review_body, short="Research reviewed and checked", follows="aquila-direction-r50-info")
+    research_review += decide.whats_next("aquila-direction-r51-next",
+        "Check a concrete Google address arrangement and its proof before selecting a business structure or buying an address service.",
+        summary="No decision or action needed from you for this review. Account setup remains undecided.",
+        short="Resolve the specific address route", follows="aquila-direction-r50-next")
+    rounds = page.entry(51, "Texas research reviewed", research_review, when="2026-11-16 UTC") + rounds
+    google_focus = decide.recap(
+        "Yes, your concern is clear. You want a personal Google Play account without publishing your home address. "
+        "Google allows personal accounts to earn money. Paid apps and purchases require a public address. "
+        "We still need an accepted non-home address. Apple also has public EU address rules, but allows a PO box.",
+        [
+            ("Your requirement", "Your home address must not appear publicly on the game listing."),
+            ("Account", "A personal Google Play account can earn money."),
+            ("Public address", "Paid apps and in-app purchases require the linked payments address to be public."),
+            ("Open point", "Which legitimate non-home address will Google accept for that personal account?"),
+            ("Small correction", "Apple also requires public EU trader contact details, but explicitly allows individuals to use a PO box."),
+        ],
+        {
+            "did": "Narrowed the discussion to your personal Google account and public home-address concern.",
+            "why": "You want the address issue answered without expanding into company formation or unrelated setup.",
+            "working": "Google's rules explicitly allow personal accounts to monetize.",
+            "not_working": "No acceptable non-home address has been verified for your personal Google account.",
+            "next": "Keep the next investigation focused on that address and its required proof.",
+        },
+    )
+    focus_body = '<p><a href="https://support.google.com/googleplay/android-developer/answer/13634885?hl=en">Google permits personal accounts to earn money.</a> That part is established.</p>'
+    focus_body += '<p><a href="https://support.google.com/googleplay/android-developer/answer/13634081?hl=en">Paid apps and in-app purchases require public display of the linked payments-profile address.</a></p>'
+    focus_body += '<p>The remaining issue is which legitimate alternative to your home address Google will accept for that personal account.</p>'
+    focus_body += '<p><a href="https://developer.apple.com/help/app-store-connect/manage-compliance-information/manage-european-union-digital-services-act-trader-requirements/">Apple also requires a public EU trader address, but explicitly permits individuals to use a documented PO box.</a></p>'
+    google_focus += decide.info_thread("aquila-direction-r52-info",
+        "Yes. You want a personal Google Play account without making your home address public.",
+        body_html=focus_body, short="Focus on Google home-address privacy", follows="aquila-direction-r51-info")
+    google_focus += decide.whats_next("aquila-direction-r52-next",
+        "Resolve which non-home address Google accepts for a personal account, and what proof it requires.",
+        summary="Requirement understood. No action needed from you for this clarification.",
+        short="Resolve the Google address", follows="aquila-direction-r51-next")
+    rounds = page.entry(52, "Google address concern clarified", google_focus, when="2026-11-16 UTC") + rounds
+    apple_region = decide.recap(
+        "Yes, EU means European Union. You live in Texas. Apple's rule depends on where you distribute your game. "
+        "If you offer it only in the United States, that EU public-address rule does not apply. "
+        "If you offer it in the EU, it can apply despite living in Texas. I should have stated that condition.",
+        [
+            ("Your location", "You are in Texas, United States."),
+            ("Rule trigger", "Apple's EU trader disclosure concerns games offered on EU storefronts."),
+            ("United States only", "That EU public-address rule does not apply to a game offered only in the United States."),
+            ("EU availability", "A Texas developer offering a commercial game in the EU falls under that distribution rule."),
+            ("Correction", "I should have made the condition clear. Your release countries have not been selected."),
+        ],
+        {
+            "did": "Clarified that Apple's EU disclosure depends on distribution territory, not your residence.",
+            "why": "My earlier wording made the rule sound unconditional for you in Texas.",
+            "working": "Apple explicitly ties public contact display to apps distributed in EU territories.",
+            "not_working": "No release-country selection exists yet. This does not settle Google's separate address rules.",
+            "next": "Keep Google's public-address issue as the focus. Treat Apple's EU condition only when relevant to chosen markets.",
+        },
+    )
+    region_body = '<p>EU means European Union. This concerns where customers can get your game, not where you live.</p>'
+    region_body += '<p><a href="https://developer.apple.com/help/app-store-connect/manage-compliance-information/manage-european-union-digital-services-act-trader-requirements/">Apple ties this public contact display to distribution in EU territories.</a></p>'
+    region_body += '<p>A United States-only release avoids that specific EU display requirement. Private account verification remains separate.</p>'
+    region_body += '<p>No launch-country decision has been made. I should not have presented the EU condition as automatic.</p>'
+    apple_region += decide.info_thread("aquila-direction-r53-info",
+        "You are in Texas. Apple's EU rule depends on distributing your game there; I should have stated that condition.",
+        body_html=region_body, short="EU distribution, not residence", follows="aquila-direction-r52-info")
+    apple_region += decide.whats_next("aquila-direction-r53-next",
+        "Keep the discussion focused on Google's public-address requirement. Choose release countries separately when needed.",
+        summary="No action or decision needed from you for this clarification.",
+        short="Keep the Google privacy focus", follows="aquila-direction-r52-next")
+    rounds = page.entry(53, "Apple's EU condition explained", apple_region, when="2026-11-16 UTC") + rounds
+    us_scope = decide.recap(
+        "Yes. We can plan for United States sales only. Apple lets you choose countries. "
+        "EU sales need verified trader details, not an address in Europe. "
+        "That EU public-address rule stays outside our current plan. Google's paid-app address requirement still needs resolving.",
+        [
+            ("Current scope", "Use United States sales only as our planning assumption for now."),
+            ("Country selection", "Apple lets you select specific countries before submitting your game."),
+            ("EU address", "The contact address for EU distribution does not have to be in Europe."),
+            ("EU availability", "A commercial release there requires completed trader verification."),
+            ("Google remains", "United States-only sales do not remove Google's public-address requirement for paid apps."),
+        ],
+        {
+            "did": "Saved United States-only sales as the current planning assumption and checked Apple's country selection.",
+            "why": "You want to keep this discussion focused on selling in the United States.",
+            "working": "Apple supports selecting specific countries. The EU public-contact rule applies to EU distribution.",
+            "not_working": "Google's acceptance of a non-home address for your personal account remains unresolved.",
+            "next": "Keep the address discussion within United States sales. No decision or action needed from you now.",
+        },
+    )
+    us_body = '<p><a href="https://developer.apple.com/help/app-store-connect/manage-your-apps-availability/manage-availability-for-your-app-on-the-app-store/">Apple lets you choose specific countries before submission.</a> We can select the United States only.</p>'
+    us_body += '<p><a href="https://developer.apple.com/help/app-store-connect/manage-compliance-information/manage-european-union-digital-services-act-trader-requirements/">EU distribution requires verified trader contact details.</a> The address does not have to be in Europe.</p>'
+    us_body += '<p><a href="https://developer.apple.com/news/upcoming-requirements/?id=02172025a">Apple withholds EU availability until required trader verification is complete.</a></p>'
+    us_body += '<p>United States-only sales avoid that specific Apple EU public-contact requirement.</p>'
+    us_body += '<p><a href="https://support.google.com/googleplay/android-developer/answer/13634081?hl=en">Google still requires a public address for paid apps.</a> An accepted non-home address remains unresolved.</p>'
+    us_scope += decide.info_thread("aquila-direction-r54-info",
+        "United States only is our planning assumption for now. No store settings changed.",
+        body_html=us_body, short="Plan for United States sales", follows="aquila-direction-r53-info")
+    us_scope += decide.whats_next("aquila-direction-r54-next",
+        "Keep the discussion focused on Google's address requirement for United States sales.",
+        summary="No action needed from you now. Broader markets can be considered later.",
+        short="Keep the current scope", follows="aquila-direction-r53-next")
+    rounds = page.entry(54, "United States sales for now", us_scope, when="2026-11-16 UTC") + rounds
+    address_options = decide.recap(
+        "Both have address services worth comparing. Northwest lists $99/year with a lease and 20 mail scans. "
+        "Texan lists $19/month with a lease and unlimited scans. "
+        "Neither establishes Google acceptance for your personal account. An LLC remains optional.",
+        [
+            ("Relevant service", "Compare their virtual-office plans for your public-address goal."),
+            ("Northwest", "$99/year includes a Texas address, suite number, lease and 20 mail scans."),
+            ("Texan", "$19/month includes an Austin address, suite number, lease, phone and unlimited scans."),
+            ("Google proof", "An office lease alone is not listed among accepted address documents for United States personal accounts."),
+            ("Recommendation", "Confirm Google's acceptance of the address and proof before paying for either plan."),
+        ],
+        {
+            "did": "Compared both providers' published address services and Google's United States verification requirements.",
+            "why": "You supplied two possible services for keeping your home address private.",
+            "working": "Both offer commercial addresses and mail handling. Northwest explicitly offers its virtual office separately.",
+            "not_working": "Neither provider's reviewed pages establish Google acceptance for your personal account.",
+            "next": "Resolve Google address eligibility before purchase. No provider selected or contacted.",
+        },
+    )
+    address_body = '<p>Your links promote registered-agent and LLC services. Their virtual-office plans better match the address question.</p>'
+    address_body += table(["Provider", "Published plan", "Mail and documents"], [
+        ('<a href="https://www.northwestregisteredagent.com/business-address/virtual-office/texas">Northwest, Texas virtual office</a>', '$49/year', 'Texas street address, unique suite number and 15 scans. No office lease included.'),
+        ('<a href="https://www.northwestregisteredagent.com/business-address/virtual-office/texas">Northwest, lease option</a>', '$99/year', 'Texas street address, unique suite number, 20 scans and office lease.'),
+        ('<a href="https://www.texasregisteredagent.net/texas-business-address/texas-virtual-office/">Texan Registered Agent, virtual office</a>', '$19/month; $228 over 12 months', 'Austin address, unique suite number, unlimited scans, month-to-month lease and phone line.'),
+    ])
+    address_body += '<p>These are advertised service prices. Northwest explicitly offers its virtual office separately from LLC formation and registered-agent service.</p>'
+    address_body += '<p><a href="https://support.google.com/googleplay/android-developer/answer/15633622?hl=en&amp;co=GENIE.CountryCode%3DUS">Google requires matching personal-account address proof.</a> An office lease is not on its United States list.</p>'
+    address_body += '<p>Bank statements are listed, but that alone does not establish acceptance of a virtual address.</p>'
+    address_body += '<p>I would compare these address services before choosing an LLC package. Neither option is verified for your Google account.</p>'
+    address_body += '<p>The Texas advertising page did not load through the research tool. Its main address-service pages supplied the comparison.</p>'
+    address_options += decide.info_thread("aquila-direction-r55-info",
+        "Both offer relevant address services. Google acceptance remains unverified.",
+        body_html=address_body, short="Compare the address services", follows="aquila-direction-r54-info")
+    address_options += decide.whats_next("aquila-direction-r55-next",
+        "Before purchase, establish whether Google accepts the chosen address and available documents for your personal account.",
+        summary="United States-only planning continues. No decision or action needed from you now.",
+        short="Resolve acceptance before purchase", follows="aquila-direction-r54-next")
+    rounds = page.entry(55, "Two address services compared", address_options, when="2026-11-16 UTC") + rounds
+    focused_research = decide.recap(
+        "Focused Perplexity prompt is ready for Northwest and Texan. "
+        "It asks whether a United States personal Google Play account can use their addresses, and which proof works. "
+        "It also seeks documented approvals and rejections. Run the prompt in Perplexity, then save the full answer in Research Console.",
+        [
+            ("Two providers", "Northwest and Texan Registered Agent are the exact candidates."),
+            ("Your account", "Research prioritizes a personal account, without assuming an LLC."),
+            ("Address proof", "Check allowed address types, accepted documents and public versus private fields."),
+            ("Real outcomes", "Find dated approvals and rejections, identifying country, account type, provider and documents."),
+            ("Ready to run", "The prompt is stored. Research Console cannot run Perplexity itself."),
+        ],
+        {
+            "did": "Prepared and stored the focused research prompt, with an exact readback check.",
+            "why": "You want evidence that Google accepts these addresses before choosing a service.",
+            "working": "The saved request covers both providers and the personal-account scenario.",
+            "not_working": "Perplexity has not run through this workflow. No new results or Google approval exist.",
+            "next": "Run the prompt and save the full report. I will review the returned evidence.",
+        },
+    )
+    focused_url = "http://127.0.0.1:8776/?project=aquila-code-dark#cf71e97b7df84637b5180b6ea8662f0d"
+    focused_body = table(["Research question", "Evidence requested"], [
+        ("Personal eligibility", "Can an individual use either exact address service without forming a company?"),
+        ("Google address fields", "Separate private identity checks, linked payments address and public store display."),
+        ("Supported documents", "Check address eligibility separately from whether a lease or bank statement is an accepted document."),
+        ("Successful and failed cases", "Require dates, countries, account types, providers, documents and outcomes."),
+        ("Clear verdict", "Supported with conditions, explicitly disallowed, or not established for each provider."),
+    ])
+    focused_body += f'<p><a href="{focused_url}">Open the complete focused research prompt</a>.</p>'
+    focused_body += '<p>United States sales remain the scope. Organization accounts appear only as a brief fallback comparison.</p>'
+    focused_body += '<p>The earlier broad Texas report remains preserved. This request targets its unresolved address question.</p>'
+    focused_body += '<p>Prompt storage and exact readback passed. No research result has returned.</p>'
+    focused_research += decide.info_thread("aquila-direction-r56-info",
+        "Focused Perplexity research is ready for both address providers.",
+        body_html=focused_body, short="Focused address research ready", follows="aquila-direction-r55-info")
+    focused_steps = f'<p><a href="{focused_url}">Open this research request</a>.</p>'
+    focused_steps += table(["Step", "Action"], [
+        ("1", "Copy the complete prompt into Perplexity and run its research mode."),
+        ("2", "Paste or import the complete report into this same request."),
+        ("3", "Press Save result, then tell me the report is ready."),
+    ])
+    focused_research += decide.request("aquila-direction-r56-run",
+        "Please run this focused prompt in Perplexity, then save the complete result in its Research Console request.",
+        summary="Research Console stores prompts and results. It cannot execute Perplexity.",
+        info=focused_steps, short="Run the focused research", reply="Have you saved the complete report in this request?")
+    focused_research += decide.whats_next("aquila-direction-r56-next",
+        "Review the returned evidence and determine whether either provider supports your personal-account privacy goal.",
+        summary="Waiting for the Perplexity report. No address purchase or account setup started.",
+        short="Review the returned evidence", follows="aquila-direction-r55-next")
+    rounds = page.entry(56, "Focused Google address research", focused_research, when="2026-11-16 UTC") + rounds
+    address_review = decide.recap(
+        "A virtual address remains a plausible route without forming an LLC. Texan explicitly accepts individuals. "
+        "A Google community expert supports virtual mailboxes with matching proof, but that is not official approval. "
+        "Neither provider has a confirmed approval for your account type. Ask Google about the exact service before buying.",
+        [
+            ("Research read", "The complete report is preserved and its exact version marked reviewed."),
+            ("Texan", "Its published mail-service terms explicitly accept individuals without a company."),
+            ("Google community", "A volunteer Product Expert supports virtual mailboxes with matching supporting documents."),
+            ("Remaining gap", "Neither candidate has a verified approval for this United States personal-account case."),
+            ("Next step", "Get Google's answer about the exact service, proof and public address before paying."),
+        ],
+        {
+            "did": "Read the returned research, checked key sources, preserved the original and recorded review.",
+            "why": "You want to sell through a personal Google account without exposing your home address.",
+            "working": "Texan serves individuals. Conditional community guidance supports documented virtual mailboxes.",
+            "not_working": "No confirmed Google approval exists for either provider in your exact account scenario.",
+            "next": "Clarify the specific address and proof with Google before purchase. No message has been sent.",
+        },
+    )
+    review_body = table(["Finding", "Evidence", "Limit"], [
+        ("Texan accepts individuals",
+         '<a href="https://www.texasregisteredagent.net/texas-mail-forwarding/">Its mail-service page allows customers without a business.</a> Virtual office costs $19/month.',
+         "Provider eligibility does not establish Google acceptance."),
+        ("Northwest offers standalone service",
+         '<a href="https://www.northwestregisteredagent.com/business-address/virtual-office/texas">Texas plans include an address and suite.</a> A lease and 20 scans cost $99/year.',
+         "No completed approval found for this provider and personal-account scenario."),
+        ("Google community gives conditional support",
+         '<a href="https://support.google.com/googleplay/android-developer/thread/372736662/is-a-virtual-private-mailbox-an-acceptable-address-for-personal-or-organization-accounts?hl=en">BenMcc supports virtual mailboxes with matching documents, such as bank statements.</a>',
+         "Volunteer Product Expert, not a Google employee. Different providers; no completed verification shown."),
+        ("Official requirements still apply",
+         '<a href="https://support.google.com/googleplay/android-developer/answer/7161426?hl=en">Google requires a valid physical address matching official documents and excludes PO boxes.</a>',
+         "Reviewed rules neither approve these providers nor establish a blanket prohibition on every virtual office."),
+    ])
+    review_body += '<p><a href="https://support.google.com/googleplay/android-developer/answer/15633622?hl=en&amp;co=GENIE.CountryCode%3DUS">Matching bank statements are listed United States address proofs.</a> An office lease is not listed there.</p>'
+    review_body += '<p>An accepted document type does not guarantee acceptance of every address printed on it.</p>'
+    review_body += '<p><a href="https://support.google.com/googleplay/android-developer/answer/16260648?hl=en">Identity and merchant profiles can differ.</a> <a href="https://support.google.com/googleplay/android-developer/answer/7162811?hl=en">The public merchant address is editable.</a></p>'
+    review_body += '<p>Those options do not establish that your home stays hidden across every public developer and merchant field.</p>'
+    review_body += '<p>Texan has clearer published individual eligibility. That makes it worth investigating, without assuming an LLC is needed.</p>'
+    review_body += f'<p><a href="{focused_url}">Full returned research and recorded review</a>. Original preserved unchanged; key sources checked, not every anecdote.</p>'
+    review_body += '<p>The run/save request is complete. No provider selected, purchase made or support message sent.</p>'
+    address_review += decide.info_thread("aquila-direction-r57-info",
+        "Virtual addresses remain plausible. Neither provider has confirmed Google approval for your personal account.",
+        body_html=review_body, short="Evidence and remaining uncertainty", follows="aquila-direction-r56-info")
+    address_review += decide.whats_next("aquila-direction-r57-next",
+        "Seek Google's written answer about the exact address, supporting documents and public fields before paying.",
+        summary="No action needed from you for this review. An unsent support draft is saved; Google may not preapprove hypothetical addresses.",
+        short="Clarify the exact address", follows="aquila-direction-r56-next")
+    rounds = page.entry(57, "Google address research reviewed", address_review, when="2026-11-16 UTC") + rounds
+    google_contact = decide.recap(
+        "Google has a contact form for problems creating or accessing an account. People have asked about virtual addresses. "
+        "One developer posted support replies refusing them for personal accounts. Those conflict with volunteer guidance. "
+        "We need clarification for your United States account, not another broad research report.",
+        [
+            ("Contact route", "Google's fallback form includes account creation and Individual options."),
+            ("Before enrollment", "Explain that address eligibility remains unresolved, preventing you from proceeding with account creation."),
+            ("Others asked", "A developer posted replies attributed to Google support refusing personal-account virtual offices."),
+            ("Evidence limit", "Those copied emails are not independently authenticated or established as applicable to your Texas account."),
+            ("Revised assessment", "The conflicting replies reduce confidence in the personal-account workaround. No message has been sent."),
+        ],
+        {
+            "did": "Found Google's account-creation contact form and posted replies attributed to its support team.",
+            "why": "You asked how to contact Google and whether earlier developers already published answers.",
+            "working": "A public form exists. Previous questions and conflicting answers are documented.",
+            "not_working": "The personal-account virtual-address route still lacks a reliable answer for your United States case.",
+            "next": "Use the prepared wording for focused support clarification if you choose to contact Google.",
+        },
+    )
+    contact_body = '<p><a href="https://support.google.com/googleplay/android-developer/contact/general_contact">Google Play developer contact form</a> covers people unable to create or access Play Console.</p>'
+    contact_body += table(["Step", "Action"], [
+        ("1", 'Choose "Creating a developer account" and "Individual".'),
+        ("2", "Provide your contact email and United States location."),
+        ("3", "Explain that you need address eligibility clarified before proceeding with enrollment."),
+    ])
+    contact_body += '<p>The public form does not mark developer ID as required. Actual submission and support response remain untested.</p>'
+    contact_body += '<p>For existing accounts, <a href="https://support.google.com/googleplay/android-developer/gethelp">Google routes support through Play Console Help</a>.</p>'
+    contact_body += table(["Posted answer", "What it establishes"], [
+        ('<a href="https://www.reddit.com/r/googleplayconsole/comments/1vuapmd/hur_har_ni_l%C3%B6st_detta_legal_address_requirements/">August 2026 support exchange</a>',
+         "A Swedish-language thread contains copied replies requiring residential addresses for personal accounts and refusing virtual offices. Attribution remains unverified."),
+        ('<a href="https://support.google.com/googleplay/android-developer/thread/372736662/is-a-virtual-private-mailbox-an-acceptable-address-for-personal-or-organization-accounts?hl=en">September 2025 community answer</a>',
+         "A volunteer Product Expert says virtual mailboxes can work with matching documents. This conflicts with the posted support replies."),
+    ])
+    contact_body += '<p>The missing piece is a reliable answer for your case. It is not an absence of previous questions.</p>'
+    contact_body += '<p>This new evidence makes me less confident in the personal-account workaround. It does not establish a Texas-specific prohibition.</p>'
+    contact_body += '<p>Prepared wording, not sent:</p>'
+    contact_body += '<p>I live in Texas and plan a personal developer account for a paid game sold only in the United States.</p>'
+    contact_body += '<p>Before enrolling, I need to confirm which address I may provide.</p>'
+    contact_body += '<p>May I use a commercial virtual-office address from Northwest Registered Agent or Texan Registered Agent?</p>'
+    contact_body += '<p>What documents must show my personal legal name and that address?</p>'
+    contact_body += '<p>If residential verification is required, can that address stay private while a separate address appears publicly?</p>'
+    contact_body += '<p>Please distinguish developer-profile and merchant fields and link the applicable United States policy.</p>'
+    google_contact += decide.info_thread("aquila-direction-r58-info",
+        "Google has a contact form. Other developers have posted answers, including support replies conflicting with the volunteer guidance.",
+        body_html=contact_body, short="Contact route and posted answers", follows="aquila-direction-r57-info")
+    google_contact += decide.whats_next("aquila-direction-r58-next",
+        "Ask Google's account creation support which address and proof a United States personal account can use.",
+        summary="Form and draft are ready. No message, account signup, purchase or company decision made.",
+        short="Clarify the conflicting answers", follows="aquila-direction-r57-next")
+    rounds = page.entry(58, "Google contact and posted replies", google_contact, when="2026-11-16 UTC") + rounds
+    company_address = decide.recap(
+        "Yes. A company account verifies the company's legal identity and address. Personal verification concerns yours. "
+        "Zensoul LLC names Northwest and displays the same business address on Google Play. This is a real company example. "
+        "Its Wyoming setup does not guarantee approval of every Texas address.",
+        [
+            ("Personal account", "Google verifies your individual legal identity and address."),
+            ("Organization account", "Google verifies the company's name and address against its Dun & Bradstreet record."),
+            ("Northwest example", "Zensoul LLC names Northwest, and its Google Play listing shows the matching Wyoming address."),
+            ("Paid app evidence", "That listing describes an annual membership renewing through Google Play."),
+            ("Remaining check", "Confirm the exact Texas business-address service and company documentation. No company or account type selected."),
+        ],
+        {
+            "did": "Compared account requirements and matched a Northwest-linked company's website address to its Google Play listing.",
+            "why": "You asked whether an LLC changes the virtual-address situation compared with a personal account.",
+            "working": "A monetized LLC listing uses the same address its website attributes to Northwest.",
+            "not_working": "Its service contract and verification documents are private. Your Texas setup has not been tested.",
+            "next": "Evaluate the exact company-address plan if you choose the organization route. No purchase or filing started.",
+        },
+    )
+    company_body = '<p><a href="https://support.google.com/googleplay/android-developer/answer/13628312?hl=en">Google documents separate personal and organization verification requirements.</a></p>'
+    company_body += table(["Account", "Identity checked", "Address consequence"], [
+        ("Personal", "Your individual legal name and address.", "Virtual-office substitution has conflicting guidance and reported refusals."),
+        ("Organization", "The company's legal name and address, matching Dun & Bradstreet and Google payments records.", "A documented business address can be used for company identity; the public example below demonstrates this route."),
+    ])
+    company_body += '<p>Owning an LLC while keeping a personal account does not change which identity Google verifies.</p>'
+    company_body += table(["Northwest-linked example", "Observed evidence"], [
+        ('<a href="https://zensoul.app/">Zensoul company website</a>', "Names Zensoul LLC and Northwest Registered Agent Service Inc., with a Sheridan, Wyoming business address."),
+        ('<a href="https://play.google.com/store/apps/details?gl=US&amp;hl=en-US&amp;id=app.zensoul.app">Zensoul on Google Play</a>', "Shows Zensoul LLC at the matching street, suite, city and state. Describes a paid annual membership through Google Play."),
+    ])
+    company_body += '<p>Both pages identify <code>30 N Gould St Ste N, Sheridan, WY 82801</code>. Google adds the ZIP extension <code>6317</code>.</p>'
+    company_body += '<p>This establishes a public company example. Its private contract, verification documents and exact Northwest plan were not inspected.</p>'
+    company_body += '<p><a href="https://www.northwestregisteredagent.com/business-address/virtual-office/texas">Northwest offers a Texas business address, unique suite and optional lease.</a> Virtual office can accompany LLC formation or stand alone.</p>'
+    company_body += '<p>Registered-agent service and business-address service are not automatically the same purchased plan. Check permitted use and supporting company documents.</p>'
+    company_body += '<p>The Wyoming example does not approve your Texas address. No formation, purchase, support message or account signup started.</p>'
+    company_address += decide.info_thread("aquila-direction-r59-info",
+        "Yes. Company verification uses company identity; personal verification uses yours. A Northwest-linked LLC example exists on Google Play.",
+        body_html=company_body, short="Company route and Northwest example", follows="aquila-direction-r58-info")
+    company_address += decide.whats_next("aquila-direction-r59-next",
+        "If you pursue the company route, verify the Texas address plan and matching company records before enrollment.",
+        summary="No entity or account type selected. Nothing needed from you for this comparison.",
+        short="Check the company address plan", follows="aquila-direction-r58-next")
+    rounds = page.entry(59, "Company addresses and Northwest", company_address, when="2026-11-16 UTC") + rounds
+    business_timing = decide.recap(
+        "Business setup can wait while we prove the game. Current PC and phone tests need no LLC or Play Console. "
+        "Northwest offers a free domain and email. You can generally own an LLC while employed, "
+        "but your contract and game ownership terms need checking first.",
+        [
+            ("Testing now", "Local Windows and USB phone tests already work without a company or publisher account."),
+            ("Setup later", "Complete company records and enrollment before store testing; obtaining a D-U-N-S number can take 30 days."),
+            ("Business email", "Northwest currently offers a free basic domain and email without requiring LLC formation."),
+            ("Ownership", "You would be the sole LLC member. Northwest's service does not make it a co-owner."),
+            ("Existing job", "Check outside-work rules, conflicts and intellectual property terms before relying on independent game ownership."),
+        ],
+        {
+            "did": "Checked current email terms, enrollment timing, LLC ownership and Texas employment guidance.",
+            "why": "You want to prove the game before paying for business setup, while keeping your address private.",
+            "working": "Local testing needs no publisher account. Business email and sole ownership fit the proposed path.",
+            "not_working": "Your employment terms and exact Texas address acceptance remain unverified.",
+            "next": "Review employment terms now; plan business enrollment after playable proof and before store-specific testing.",
+        },
+    )
+    timing_body = table(["Stage", "What is needed"], [
+        ("Current development", "No LLC or Play Console account needed for our Windows and USB Android tests. Those tests already passed."),
+        ("Google login", "An ordinary Google login can precede LLC formation. A Play Console organization account needs the company's legal identity."),
+        ("Store tests", "Play-hosted beta tests and end-to-end Play billing tests need publisher setup. Local installation does not prove store approval."),
+        ("Recommended timing", "Review employment terms now. Prove a convincing playable slice, then complete company and publisher setup before store testing."),
+    ])
+    timing_body += '<p><a href="https://developer.android.com/studio/run/device">Android documents direct device testing</a>. No store account was used for Aquila\'s phone checks.</p>'
+    timing_body += '<p><a href="https://support.google.com/googleplay/android-developer/answer/13628312?hl=en">Google requires company details and a D-U-N-S record</a>. Obtaining that number can take up to 30 days.</p>'
+    timing_body += '<p>Allow formation and verification time before store tests. A launch-week signup would leave avoidable uncertainty.</p>'
+    timing_body += table(["Question", "Answer"], [
+        ("Does Northwest supply email?", '<a href="https://www.northwestregisteredagent.com/free-identity-services">Yes, its current basic offer includes a free domain and email without an LLC purchase.</a> Usage limits apply.'),
+        ("Can it use our studio domain?", '<a href="https://www.northwestregisteredagent.com/email">Yes, custom domain email is supported.</a> You can keep public business contact separate from personal email.'),
+        ("Does signup expose my home?", "Giving an email provider your identity does not automatically publish your home address to email recipients."),
+        ("What protects domain records?", '<a href="https://www.northwestregisteredagent.com/domains">Northwest includes domain privacy.</a> Email separation does not guarantee anonymity or resolve Google\'s legal-address requirement.'),
+        ("Who owns the LLC?", '<a href="https://www.sos.texas.gov/corp/formationfaqs.shtml">You would be its sole member, meaning owner.</a> Northwest provides services, not ownership participation.'),
+        ("Can I keep my job?", "Generally, yes. Employment alone does not prevent LLC ownership or profits; employer restrictions can still apply."),
+    ])
+    timing_body += '<p><a href="https://efte.twc.texas.gov/conflict_of_interest.html">Texas guidance discusses employer restrictions on outside work and business interests</a>. It does not impose universal employer approval.</p>'
+    timing_body += '<p>Check outside-work approval, disclosure, competition, confidentiality and intellectual property assignment terms.</p>'
+    timing_body += '<p>Use personal time and equipment. Those precautions do not override your contract.</p>'
+    timing_body += '<p><a href="https://www.copyright.gov/register/se-hire.html">Work within employment duties can belong to the employer</a>. Have unclear ownership clauses reviewed by a Texas employment lawyer.</p>'
+    timing_body += '<p><a href="https://www.irs.gov/businesses/small-businesses-self-employed/single-member-limited-liability-companies">A single-member LLC normally reports activity on its owner\'s federal return</a>. Corporate elections can change that treatment.</p>'
+    timing_body += '<p>Your Northwest preference is saved as tentative. No company formed, service purchased, account created or employer contacted.</p>'
+    timing_body += '<p>Exact Texas address acceptance and your employment terms remain unverified. Native implementation remains paused for this discussion.</p>'
+    business_timing += decide.info_thread("aquila-direction-r60-info",
+        "Yes, you can defer setup. Local testing works now, and an LLC can generally coexist with employment.",
+        body_html=timing_body, short="Business timing, email and employment", follows="aquila-direction-r59-info")
+    business_timing += decide.whats_next("aquila-direction-r60-next",
+        "Check employment and ownership terms before commercial plans advance; defer enrollment until the game has convincing playable proof.",
+        summary="This is the recommended sequence. No purchase or development resumption started, and nothing is needed for today's explanation.",
+        short="Prove the game before enrollment", follows="aquila-direction-r59-next")
+    rounds = page.entry(60, "LLC timing and your existing job", business_timing, when="2026-11-16 UTC") + rounds
+    business_saved = decide.recap(
+        "Saved one reference covering the business discussion, sources, your choices and open questions. "
+        "Future sessions are directed to read it first. Both original research reports remain preserved. "
+        "Your Northwest preference stays tentative; no setup started.",
+        [
+            ("Reference", "Saved the LLC, email, employment, studio branding and store privacy findings together."),
+            ("Your choices", "Recorded Texas, sole ownership, United States planning, home-address privacy and your tentative Northwest preference."),
+            ("Evidence", "Linked sources and both preserved research reports without changing their originals."),
+            ("Future sessions", "Updated task routes, knowledge index and restart records to use the reference first."),
+            ("Open issues", "Kept employer terms, exact address approval and final branding unresolved."),
+        ],
+        {
+            "did": "Consolidated and indexed the business discussion for later reuse.",
+            "why": "You asked to avoid repeating the same research and decisions next time.",
+            "working": "The saved reference links conclusions, source history and original research receipts.",
+            "not_working": "Employment terms and the exact Texas address approval remain unresolved.",
+            "next": "Read the reference when this topic returns; check changed rules and remaining gaps before action.",
+        },
+    )
+    saved_body = '<p><a href="publishing-reference.md">Read or download the saved business and publishing reference</a>.</p>'
+    saved_body += table(["Saved material", "Contents"], [
+        ("Company and timing", "LLC ownership, existing employment, business email and when company/store enrollment becomes necessary."),
+        ("Store privacy", "Steam, Google and Apple distinctions, United States scope, Northwest evidence and conflicting personal-account guidance."),
+        ("Decisions and limits", "Owner facts, tentative preferences, recommendations, unresolved checks and permitted scope stay distinct."),
+        ("Research provenance", "Both original reports, review receipts and detailed source history remain linked and preserved."),
+        ("Future retrieval", "Task routing, knowledge index, lessons and restart records point to this reference."),
+    ])
+    saved_body += '<p>This save uses existing findings. It does not claim a fresh policy audit or approval of the proposed address.</p>'
+    saved_body += '<p>No company filing, account registration, purchase, message, commit or push started.</p>'
+    business_saved += decide.info_thread("aquila-direction-r61-info",
+        "Saved a reusable business reference and linked it into future-session startup.",
+        body_html=saved_body, short="Business discussion preserved", follows="aquila-direction-r60-info")
+    business_saved += decide.whats_next("aquila-direction-r61-next",
+        "Use the saved reference when this topic returns, then check only unresolved facts and changed requirements.",
+        summary="Nothing needed from you. Native work and business setup remain paused.",
+        short="Resume from the saved findings", follows="aquila-direction-r60-next")
+    rounds = page.entry(61, "Business discussion saved", business_saved, when="2026-11-16 UTC") + rounds
+    expedition_next = decide.recap(
+        "Next, I recommend one complete expedition: investigate a signal, fight, collect salvage and improve a turret. "
+        "Keep those gains when you return. Then test repeated play on Windows and your Galaxy. "
+        "Shared saves remain planned; this gameplay step is proposed, not started.",
+        [
+            ("Explore", "Choose a nearby signal and let the battleship travel and survey under your orders."),
+            ("Fight", "Resolve one encounter through automatic weapons, ammunition choices and positioning orders."),
+            ("Improve", "Recover salvage and buy one useful upgrade for a starting turret."),
+            ("Keep progress", "Restore the mission and upgrade after closing the game, without duplicate rewards."),
+            ("Prove it", "Complete the loop on Windows and Galaxy, then measure sustained device performance."),
+        ],
+        {
+            "did": "Compared the working native prototype with the saved milestone and proposed a complete expedition.",
+            "why": "The current prototype needs rewards and lasting ship improvement to make repeated play meaningful.",
+            "working": "Navigation, bridge movement, automatic combat, local saves and readable phone controls already exist.",
+            "not_working": "Mission rewards, ship progression, hosted saves and sustained performance proof remain missing.",
+            "next": "Build the expedition after direction to resume. This proposal starts no implementation or account setup.",
+        },
+    )
+    expedition_body = '<p>Target roughly 10–15 minutes of play. This is a gameplay target, not a development-time estimate.</p>'
+    expedition_body += table(["Step", "Player experience"], [
+        ("1. Investigate", "Choose a nearby signal, order automatic travel and survey it on arrival."),
+        ("2. Fight", "Use navigation and weapon modes during one automatic battle. Traveling rounds, shield hits and armor outcomes stay readable."),
+        ("3. Improve", "Recover salvage and spend it on one useful starting-turret upgrade with a clear stat change."),
+        ("4. Return", "Close and reopen the game. Keep mission progress and upgrades, then see the improvement in another encounter."),
+    ])
+    expedition_body += '<p>This connects existing features into a reason to keep playing.</p>'
+    expedition_body += '<p>Check mission completion, reward duplication, upgrade effects and save recovery on Windows and your Galaxy.</p>'
+    expedition_body += '<p>Then run the planned 20-minute device session for frame pacing, heat and memory. Sustained performance remains unmeasured.</p>'
+    expedition_body += '<p>The earlier sequence put shared saves next. I recommend this gameplay proof before choosing a hosted account service.</p>'
+    expedition_body += '<p>Shared progress remains required. Company formation is not a technical prerequisite for account or sync design.</p>'
+    expedition_body += '<p>The original foundation milestone remains unfinished until shared saves, device proof and its other checks pass.</p>'
+    expedition_body += '<p>Business research stays saved. No game changes, purchases, account setup or publication started.</p>'
+    expedition_next += decide.info_thread("aquila-direction-r62-info",
+        "Next, I recommend a complete expedition that earns a lasting ship upgrade.",
+        body_html=expedition_body, short="First complete expedition proposed", follows="aquila-direction-r61-info")
+    expedition_next += decide.whats_next("aquila-direction-r62-next",
+        "Build the first expedition when development resumes, then verify the complete loop and sustained phone performance.",
+        summary="This is a proposed next milestone. Nothing is needed for today's recommendation; implementation remains paused.",
+        short="Connect exploration, combat and progress", follows="aquila-direction-r61-next")
+    rounds = page.entry(62, "First complete expedition", expedition_next, when="2026-11-16 UTC") + rounds
+    address_choice = decide.recap(
+        "Saved your employment and outside-work ownership checks as resolved. "
+        "The LLC and business address route is chosen. "
+        "Prepared focused research comparing Northwest, Texan and iPostal1 for company verification, documents and costs. "
+        "No provider selected yet; the prompt is ready for Perplexity.",
+        [
+            ("Employment", "Recorded your confirmation that creating an LLC poses no conflict with your current employment."),
+            ("Ownership", "Recorded your confirmation that work outside employment has no employer ownership issue."),
+            ("Company", "Changed the LLC and separate business address from a tentative preference to your chosen direction."),
+            ("Providers", "Compare exact Northwest, Texan and iPostal1 plans, including documents, permitted use, reliability and full costs."),
+            ("Research", "Saved the complete Perplexity prompt in Research Console and verified its exact readback."),
+        ],
+        {
+            "did": "Saved your resolved checks and chosen company direction, then prepared the focused provider comparison.",
+            "why": "You want the strongest address option for the LLC while keeping your home address private.",
+            "working": "The research request covers company accounts and carries forward the facts already settled.",
+            "not_working": "No exact provider has established acceptance for our proposed Texas company account yet.",
+            "next": "Run the prompt in Perplexity and save its complete report for review.",
+        },
+    )
+    address_body = '<p><a href="publishing-reference.md">Updated saved business reference</a> includes your confirmations and the chosen LLC direction.</p>'
+    address_body += '<p>Employment and ownership are resolved by your confirmation. No independent contract review is claimed.</p>'
+    address_body += '<p>Yes, these services can supply real street addresses while you handle mail remotely.</p>'
+    address_body += '<p>The comparison now checks company use and verification documents for the exact plan.</p>'
+    address_body += '<p><a href="https://support.google.com/googleplay/android-developer/answer/13628312?hl=en">Google requires the organization’s payments name and address to match Dun &amp; Bradstreet exactly.</a></p>'
+    address_body += table(["Candidate", "Current advertised terms", "Research focus"], [
+        ("Northwest", '<a href="https://www.northwestregisteredagent.com/business-address/virtual-office/texas">Texas address: $49/year for 15 scans; $99/year for 20 scans and an office lease.</a>', "Exact company documents, permitted uses, service bundle and renewal costs."),
+        ("Texan", '<a href="https://www.texasregisteredagent.net/texas-business-address/texas-virtual-office/">Austin office: $19/month, suite, unlimited scans, lease and phone.</a>', "Company proof and total costs, including separate formation and registered-agent service."),
+        ("iPostal1", '<a href="https://ipostal1.com/virtual-business-address-plans-pricing.php">Business plans start at $14.99/month or $149/year. Location prices vary; content scans cost extra.</a>', "Specific Texas facility, applicable terms, documents, mail handling and registered-agent options."),
+    ])
+    address_body += '<p>Published offers are preliminary checks. No checkout, lease review or Google approval completed.</p>'
+    address_body += '<p>The research asks whether any provider is clearly best, then ranks the strongest supported fit if evidence remains incomplete.</p>'
+    address_body += '<p>No company filing, purchase, signup or outside contact started. Game implementation remains paused.</p>'
+    address_choice += decide.info_thread("aquila-direction-r63-info",
+        "Saved your employment checks as resolved and changed the business direction to an LLC with a separate address.",
+        body_html=address_body, short="Resolved checks and chosen LLC path", follows="aquila-direction-r62-info")
+    address_request = '<p><a href="http://127.0.0.1:8776/?project=aquila-code-dark#31c10ef813054b3fb48a080b0fc3a5ac">Open the provider comparison request</a>.</p>'
+    address_request += table(["Step", "Action"], [
+        ("1", "Copy the complete prompt into Perplexity and run the research."),
+        ("2", "Return the complete Markdown report to this Console request and choose Save result."),
+        ("3", "Tell me the research is ready so I can read and compare its evidence."),
+    ])
+    address_request += '<p>The saved prompt matched the retrieved bytes. No result has arrived yet.</p>'
+    address_choice += decide.request("aquila-direction-r63-run",
+        "Please run this company-address comparison in Perplexity, then save the complete result in its Research Console request.",
+        summary="Research Console stores prompts and results. It cannot execute Perplexity.",
+        info=address_request, short="Run the provider comparison",
+        reply="Have you saved the complete report in this request?")
+    address_choice += decide.whats_next("aquila-direction-r63-next",
+        "Review the returned evidence, recommend the best supported plan and resolve any remaining document questions before purchase.",
+        summary="Awaiting the research result. Employment and outside-work ownership checks stay closed unless facts change.",
+        short="Choose the company address package", follows="aquila-direction-r62-next")
+    rounds = page.entry(63, "LLC path and address providers", address_choice, when="2026-11-16 UTC") + rounds
+    research_received = decide.recap(
+        "I had not retrieved this new comparison before your message. It is saved now, and I downloaded an exact copy. "
+        "Console records show one version and no removals. I cannot tell why the earlier upload appeared unsaved. "
+        "Full review remains pending.",
+        [
+            ("Earlier reports", "The previous broad and personal-account research had already been reviewed; this new comparison had not been retrieved."),
+            ("Saved now", "The current request contains version 1, saved November 16 at 11:30 PM Central."),
+            ("Preserved", "Downloaded all 94,421 bytes and verified the copy matches the saved report."),
+            ("History", "This request lists one saved version and no removed versions; the earlier upload issue remains unexplained."),
+            ("Review", "Only the opening has been inspected. Full reading and source checks remain pending."),
+        ],
+        {
+            "did": "Checked the saved-version history and retrieved the exact report into project storage.",
+            "why": "You wanted to know whether I already had the research after an upload appeared unsaved.",
+            "working": "The current report is saved and its retrieved copy matches.",
+            "not_working": "The earlier save issue is undiagnosed; the report has not received a full review.",
+            "next": "Read the full comparison and check its sources. No further upload is needed.",
+        },
+    )
+    received_body = '<p><a href="http://127.0.0.1:8776/?project=aquila-code-dark#31c10ef813054b3fb48a080b0fc3a5ac">The provider comparison is saved in Research Console</a>.</p>'
+    received_body += table(["Check", "Observed result"], [
+        ("Saved version", "Version 1, November 16 at 11:30 PM Central."),
+        ("Local preservation", "94,421 bytes retrieved; the recorded and local hashes match."),
+        ("Earlier versions", "No earlier saved or removed version appears under this request."),
+        ("Review state", "Not reviewed. Only the opening was inspected during this receipt check."),
+    ])
+    received_body += '<p>I cannot establish why the earlier upload appeared unsaved. The current history does not prove deletion or an application bug.</p>'
+    research_received += decide.info_thread("aquila-direction-r64-info",
+        "I had not retrieved this new comparison before your message. I have it now.",
+        body_html=received_body, short="Research receipt confirmed", follows="aquila-direction-r63-info")
+    research_received += decide.whats_next("aquila-direction-r64-next",
+        "Read the full comparison and check its key sources before recommending a provider.",
+        summary="No further upload needed. Retrieval is complete; substantive review remains pending.",
+        short="Review the received comparison", follows="aquila-direction-r63-next")
+    rounds = page.entry(64, "Research received", research_received, when="2026-11-17 UTC") + rounds
+    provider_results = decide.recap(
+        "Northwest looks like the best practical fit. Its suggested package totals $438 initially and $224 yearly, before extras. "
+        "Texan is the backup; iPostal1 depends more on the local mail center. "
+        "No exact Texas plan has proven Google acceptance. Address documents and Texas public-record privacy still need checking.",
+        [
+            ("First choice", "Northwest ranks first for combined formation, agent service and low-volume mail costs."),
+            ("Base budget", "$438 first year and $224 yearly for the suggested services, excluding processing charges and other extras."),
+            ("Alternatives", "Texan is the fallback. iPostal1 has more location-specific services and document questions."),
+            ("Google", "Company documents must match the verified identity; an office lease alone does not establish address eligibility."),
+            ("Privacy", "Texas public reports separately ask where records and daily operations are located."),
+        ],
+        {
+            "did": "Read the complete report, checked its core sources and saved the accepted findings and remaining gaps.",
+            "why": "You asked which provider the research favors and what the results mean for your LLC.",
+            "working": "Northwest has the strongest practical fit among the compared routes, with a clear base budget.",
+            "not_working": "The exact Texas address has no established Google acceptance, and public-record privacy still needs an actual filing check.",
+            "next": "Obtain the exact address, agreement and quote, then clarify its company-verification use before purchase.",
+        },
+    )
+    results_body = table(["Rank", "Provider", "Finding"], [
+        ("1", "Northwest", '<a href="https://www.northwestregisteredagent.com/business-address/virtual-office/texas">Best provisional fit: low-volume mail, an advertised lease option and consolidated services.</a> Acceptance remains unproven.'),
+        ("2", "Texan", '<a href="https://www.texasregisteredagent.net/texas-business-address/texas-virtual-office/">Backup: $19/month office with unlimited scans, lease and phone, plus $35/year agent.</a> Formation costs are separate.'),
+        ("3", "iPostal1", '<a href="https://ipostal1.com/virtual-business-address-plans-pricing.php">Business mailbox starts at $149/year; agent and content scans cost extra.</a> Documents depend on the selected location.'),
+    ])
+    results_body += '<p>This ranking concerns practical fit and cost. The research did not establish comparative Google approval rates.</p>'
+    results_body += table(["Northwest base budget", "Included components"], [
+        ("First year: $438", "$300 statutory formation fee, $39 formation service and $99 address/lease plan. First registered-agent year included."),
+        ("Following years: $224", "$125 agent plus $99 address/lease at current advertised rates."),
+    ])
+    results_body += '<p>Sources: <a href="https://www.sos.texas.gov/corp/instructions/205.shtml">Texas fee</a>, <a href="https://www.northwestregisteredagent.com/llc/texas">formation offer</a>, <a href="https://www.northwestregisteredagent.com/registered-agent/texas">agent price</a> and <a href="https://www.northwestregisteredagent.com/business-address/virtual-office/texas">address plan</a>.</p>'
+    results_body += '<p>These are calculated base costs, excluding processing, forwarding, extra documents and other business costs. Obtain an itemized checkout quote.</p>'
+    results_body += '<p>The cheaper address tier could reduce those totals to $388 and $174 if its documents suffice.</p>'
+    results_body += '<p><a href="https://support.google.com/googleplay/android-developer/answer/15633622?hl=en&amp;co=GENIE.CountryCode=US">Google accepts listed IRS/state evidence and representative ID for initial organization verification.</a> An office lease is not required on that list.</p>'
+    results_body += '<p><a href="https://support.google.com/googleplay/android-developer/answer/13628312?hl=en">Google requires company name and address to match Dun &amp; Bradstreet.</a></p>'
+    results_body += '<p>The unresolved question is whether the exact provider address qualifies for your home-operated company’s matching records.</p>'
+    results_body += '<p>A physical street address or lease does not answer that question alone.</p>'
+    results_body += '<p><a href="https://comptroller.texas.gov/help/franchise/public-info-report.php?category=taxes">Texas public reports ask where records and daily operations are located.</a> Those fields need a separate home-address privacy check.</p>'
+    results_body += '<p>The report found a Northwest-linked Wyoming company example on Google Play. Its exact plan and verification documents remain unknown.</p>'
+    results_body += '<p><a href="https://zensoul.app/">Company disclosure</a> and <a href="https://play.google.com/store/apps/details?gl=US&amp;hl=en-US&amp;id=app.zensoul.app">matching Play listing</a>. This does not establish the proposed Texas outcome.</p>'
+    results_body += '<p>Read all 296 lines and checked core primary sources. Some state pages blocked direct retrieval; official indexed results supported their fees.</p>'
+    results_body += '<p><a href="publishing-reference.md">Saved findings and source limits</a>. Original report remains unchanged; no filing, purchase or outside contact started.</p>'
+    provider_results += decide.info_thread("aquila-direction-r65-info",
+        "Northwest is the best practical fit found; exact Google acceptance remains unproven.",
+        body_html=results_body, short="Provider comparison reviewed", follows="aquila-direction-r64-info")
+    provider_results += decide.whats_next("aquila-direction-r65-next",
+        "Get Northwest’s exact Texas address, agreement specimen and itemized quote, then clarify D&B and Google eligibility before purchase.",
+        summary="Written inquiry drafts are saved. Nothing needed for this results explanation; no contact or purchase started.",
+        short="Confirm the exact company-address package", follows="aquila-direction-r64-next")
+    rounds = page.entry(65, "Address research results", provider_results, when="2026-11-17 UTC") + rounds
+    package_check = decide.recap(
+        "I checked Northwest's live order form. The Texas lease, suite and 20-scan plan shows $99/year. "
+        "Suites are assigned after signup, so the exact location and documents need a written reply. "
+        "The inquiry is ready. Sending waits on your contact name, reply email and permission.",
+        [
+            ("Checked", "The Texas business-address plan shows $99 at the service-selection stage."),
+            ("Address", "Northwest says suites are assigned after signup; the inspected screen showed no assigned Texas address."),
+            ("Prepared", "The inquiry requests the address, sample agreement, permitted uses, full costs and service terms."),
+            ("Needed", "Sending requires your chosen contact name, reply email and permission; no home address is requested."),
+            ("Limit", "Northwest can confirm its services; Google and D&B decide their own acceptance."),
+        ],
+        {
+            "did": "Inspected the live service form and contact route, then prepared the exact pre-purchase inquiry.",
+            "why": "You asked whether we can confirm the actual address package before paying.",
+            "working": "The advertised plan appears in checkout, and a public inquiry form is available without an account.",
+            "not_working": "The assigned address, sample agreement and complete bundle quote remain unconfirmed.",
+            "next": "Send the prepared inquiry after you provide contact details and explicit permission.",
+        },
+    )
+    package_body = table(["Check", "Observed result"], [
+        ("Texas plan", '<a href="https://www.northwestregisteredagent.com/business-address/virtual-office/texas">$99/year includes an office lease, unique suite and 20 mail scans.</a>'),
+        ("Live form", '<a href="https://www.northwestregisteredagent.com/business-address/virtual-office/signup?mfvo=vo&amp;st=TX">Selected Business and Texas; service-stage order summary showed $99.</a> No identity or payment details entered.'),
+        ("Assignment", '<a href="https://www.northwestregisteredagent.com/business-address/virtual-office">Northwest says suites arrive within two business days after signup.</a> The inspected screen showed no assigned address.'),
+        ("Written details", "Prepared questions covering the office location, suffix format, specimen agreement, company evidence and permitted uses."),
+        ("Full quote", "Requested formation, agent, address, renewal and extra charges, plus refunds and location-change support."),
+    ])
+    package_body += '<p>The $99 screen is a standalone service estimate. It does not confirm the complete formation bundle or every fee.</p>'
+    package_body += '<p>A final suite might only exist after signup. The inquiry requests the office location and sample format before payment.</p>'
+    package_body += '<p>No provider reply or sample agreement obtained. Northwest cannot decide Google or D&B acceptance.</p>'
+    package_body += '<p><a href="northwest-inquiry.txt">Read the prepared inquiry</a>. <a href="northwest-package-check.json">Inspection record</a>. <a href="publishing-reference.md">Saved business reference</a>.</p>'
+    package_check += decide.info_thread("aquila-direction-r66-info",
+        "Checked the live $99 Texas plan and prepared the written inquiry needed to confirm its exact details.",
+        body_html=package_body, short="Exact package checked; inquiry prepared", follows="aquila-direction-r65-info")
+    inquiry_info = '<p><a href="northwest-inquiry.txt">Review the complete message</a> for <a href="https://www.northwestregisteredagent.com/contact-us">Northwest’s inquiry form</a>.</p>'
+    inquiry_info += '<p>The form needs first name, last name, email and message. No home address is requested.</p>'
+    inquiry_info += '<p>The message contains no employer details, home address or invented company name. It explicitly says this is not an order.</p>'
+    package_check += decide.request("aquila-direction-r66-contact",
+        "May I send this inquiry to Northwest, and which contact name and reply email should I use?",
+        summary="My developer instructions require explicit permission before sending outside messages. The complete message is ready for review.",
+        info=inquiry_info, short="Contact details and send permission",
+        reply="May I send the prepared inquiry, and what contact name and reply email should I use?")
+    package_check += decide.whats_next("aquila-direction-r66-next",
+        "Send the inquiry when contact details and permission arrive, then review Northwest’s written response and documents.",
+        summary="Nothing purchased, filed or sent. Exact address verification remains incomplete; game work stays paused.",
+        short="Obtain the written package confirmation", follows="aquila-direction-r65-next")
+    rounds = page.entry(66, "Confirming the exact address package", package_check, when="2026-11-17 UTC") + rounds
+    softer_inquiry = decide.recap(
+        "Rewrote the email with a warmer, more collegial tone. "
+        "It now asks for help with polite questions and closes with thanks. "
+        "All five topics remain covered. The revised draft is saved; nothing has been sent.",
+        [
+            ("Opening", "Added a friendly introduction explaining the business and interest in their services."),
+            ("Questions", "Changed directives into polite requests using could you please and would you be able to."),
+            ("Language", "Replaced formal specimen wording with sample documents and clearer questions."),
+            ("Details", "Kept the address, documents, permitted uses, costs and service terms covered."),
+            ("Status", "Saved the revised draft and preserved the original; nothing sent."),
+        ],
+        {
+            "did": "Rewrote the provider inquiry in a warmer, more collegial tone.",
+            "why": "You want the email to invite helpful answers without sounding demanding.",
+            "working": "Polite questions and appreciation now carry the same information requests.",
+            "not_working": "No provider reply exists; contact details and permission to send remain pending.",
+            "next": "The revised draft is ready to read. Sending remains a separate pending step.",
+        },
+    )
+    softer_body = '<p><a href="northwest-inquiry-v2.txt">Read the revised email</a>.</p>'
+    softer_body += '<p>The opening asks for help confirming details. Each numbered point uses a polite question.</p>'
+    softer_body += '<p>Sample documents replaces formal specimen wording. The closing thanks the recipient for their time and help.</p>'
+    softer_body += '<p>All five topics remain covered. The original draft is preserved; no message sent.</p>'
+    softer_inquiry += decide.info_thread("aquila-direction-r67-info",
+        "Rewrote the inquiry with polite questions, a warmer opening and a thank-you.",
+        body_html=softer_body, short="Collegial inquiry saved", follows="aquila-direction-r66-info")
+    softer_inquiry += decide.request("aquila-direction-r67-contact",
+        "When you are ready, may I send the revised inquiry using your chosen contact name and reply email?",
+        summary="This remains pending from the previous round. My developer instructions require explicit permission before sending outside messages.",
+        info='<p><a href="northwest-inquiry-v2.txt">The revised message</a> is ready. No contact details are needed to finish this wording change.</p>',
+        short="Pending contact details and send permission",
+        reply="What contact name and reply email should I use if you want the revised inquiry sent?",
+        follows="aquila-direction-r66-contact")
+    softer_inquiry += decide.whats_next("aquila-direction-r67-next",
+        "The wording change is complete. Sending waits on your chosen contact details and instruction to send.",
+        summary="No additional research, purchase or company setup started.",
+        short="Revised draft ready", follows="aquila-direction-r66-next")
+    rounds = page.entry(67, "A more collegial inquiry", softer_inquiry, when="2026-11-17 UTC") + rounds
+    inquiry_timing = decide.recap(
+        "Added six to twelve months as a tentative timeframe. "
+        "The opening now says you are gathering information and are not ready to sign up. "
+        "This sets expectations without committing to a date. The email remains unsent.",
+        [
+            ("Timing", "The opening gives six to twelve months as a tentative timeframe."),
+            ("Intent", "It explicitly says you are gathering information and are not ready to sign up."),
+            ("Tone", "The friendly wording and polite questions remain."),
+            ("Scope", "This is correspondence wording, not a committed company formation or game release date."),
+            ("Status", "Saved the new draft and preserved earlier versions; nothing sent."),
+        ],
+        {
+            "did": "Added tentative timing and a clear statement that you are not ready to sign up.",
+            "why": "You want Northwest to understand this is advance planning rather than an immediate purchase inquiry.",
+            "working": "The opening now sets that expectation directly and politely.",
+            "not_working": "The wording cannot guarantee that sales follow-ups will stop.",
+            "next": "The draft is updated. Sending still waits on your contact details and instruction.",
+        },
+    )
+    timing_body = '<p><a href="northwest-inquiry-v3.txt">Read the updated email</a>.</p>'
+    timing_body += '<p>My tentative timeframe is six to twelve months.</p>'
+    timing_body += '<p>I’m gathering information for now and am not ready to sign up.</p>'
+    timing_body += '<p>Use this range if it reflects your likely timing. It remains an estimate, not a commitment.</p>'
+    inquiry_timing += decide.info_thread("aquila-direction-r68-info",
+        "Added a tentative timeframe and made the information-gathering stage explicit.",
+        body_html=timing_body, short="Planning timeframe added", follows="aquila-direction-r67-info")
+    inquiry_timing += decide.request("aquila-direction-r68-contact",
+        "When you are ready, may I send the revised inquiry using your chosen contact name and reply email?",
+        summary="This earlier request remains pending. My developer instructions require explicit permission before sending outside messages.",
+        info='<p><a href="northwest-inquiry-v3.txt">Current draft</a>. Nothing further is needed for this wording change.</p>',
+        short="Pending contact details and send permission",
+        reply="What contact name and reply email should I use if you want the revised inquiry sent?",
+        follows="aquila-direction-r67-contact")
+    inquiry_timing += decide.whats_next("aquila-direction-r68-next",
+        "The timing wording is saved. Sending waits on contact details and your instruction.",
+        summary="No signup or purchase started. The timeframe is tentative.",
+        short="Updated draft ready", follows="aquila-direction-r67-next")
+    rounds = page.entry(68, "Setting expectations about timing", inquiry_timing, when="2026-11-17 UTC") + rounds
+    shorter_timing = decide.recap(
+        "Changed the tentative timeframe to three to six months. The rest of the email stays the same. Nothing sent.",
+        [
+            ("Timeframe", "Changed the estimate to three to six months."),
+            ("Tentative", "The wording still makes clear that timing is an estimate."),
+            ("Intent", "The opening still says you are gathering information and are not ready to sign up."),
+            ("Draft", "Saved the current version and preserved earlier drafts."),
+            ("Sending", "Contact details and your instruction to send remain pending."),
+        ],
+        {
+            "did": "Changed the tentative timeframe to three to six months.",
+            "why": "You prefer the shorter planning window.",
+            "working": "The revised draft keeps the same polite questions and information-gathering intent.",
+            "not_working": "No provider response exists; the email remains unsent.",
+            "next": "The edit is complete. Sending remains pending.",
+        },
+    )
+    shorter_timing += decide.info_thread("aquila-direction-r69-info",
+        "Changed the tentative timeframe to three to six months.",
+        body_html='<p>My tentative timeframe is three to six months.</p><p><a href="northwest-inquiry-v4.txt">Read the current email</a>.</p>',
+        short="Timeframe updated", follows="aquila-direction-r68-info")
+    shorter_timing += decide.request("aquila-direction-r69-contact",
+        "When you are ready, may I send the revised inquiry using your chosen contact name and reply email?",
+        summary="This earlier request remains pending. My developer instructions require explicit permission before sending outside messages.",
+        info='<p><a href="northwest-inquiry-v4.txt">Current draft</a>. Nothing further is needed for this edit.</p>',
+        short="Pending contact details and send permission",
+        reply="What contact name and reply email should I use if you want the revised inquiry sent?",
+        follows="aquila-direction-r68-contact")
+    shorter_timing += decide.whats_next("aquila-direction-r69-next",
+        "The timeframe is updated. Sending waits on contact details and your instruction.",
+        summary="No signup or purchase started.", short="Current draft ready", follows="aquila-direction-r68-next")
+    rounds = page.entry(69, "Three to six months", shorter_timing, when="2026-11-17 UTC") + rounds
+    sending_route = decide.recap(
+        "Use Northwest's contact form. Enter your first and last name, reply email and the saved message, then choose Send Inquiry. "
+        "Company name and phone can stay blank. I opened the form; nothing has been sent.",
+        [
+            ("Route", "Northwest has a public contact form for the inquiry."),
+            ("Details", "It needs first name, last name, email and message."),
+            ("Draft", "Paste the current three-to-six-month version into Message, including its subject line."),
+            ("Submit", "Choose Send Inquiry after reviewing the completed form."),
+            ("Status", "The form is open and blank; no submission made."),
+        ],
+        {
+            "did": "Opened Northwest's contact form and checked its fields.",
+            "why": "You asked how to send the prepared email.",
+            "working": "The form is available without creating an account or purchasing a service.",
+            "not_working": "Nothing has been sent, and actual delivery remains untested.",
+            "next": "Enter contact details and submit the draft, or provide those details and instruct me to send it.",
+        },
+    )
+    route_body = table(["Step", "Action"], [
+        ("1", '<a href="https://www.northwestregisteredagent.com/contact-us">Open Northwest’s contact form</a> and enter your first name, last name and reply email.'),
+        ("2", '<a href="northwest-inquiry-v4.txt">Copy the current draft</a> into Message. Include the subject line there; the form has no separate subject field.'),
+        ("3", "Review the form and choose Send Inquiry."),
+    ])
+    route_body += '<p>Company name and phone have no required marker and can stay blank. No home-address field appears.</p>'
+    route_body += '<p>I opened and checked the form. All fields remain blank; no inquiry submitted.</p>'
+    sending_route += decide.info_thread("aquila-direction-r70-info",
+        "Send the message through Northwest’s public contact form.",
+        body_html=route_body, short="Contact form ready", follows="aquila-direction-r69-info")
+    sending_route += decide.request("aquila-direction-r70-contact",
+        "May I submit the saved message using your preferred first name, last name and reply email?",
+        summary="For me to submit it, provide those details and say send it. You can also use the form yourself.",
+        info='<p>My developer instructions require explicit permission before sending outside messages.</p><p><a href="northwest-inquiry-v4.txt">Review the exact message</a>.</p>',
+        short="Details for agent submission",
+        reply="What first name, last name and reply email should I use, and may I submit the inquiry?",
+        follows="aquila-direction-r69-contact")
+    sending_route += decide.whats_next("aquila-direction-r70-next",
+        "Submit the inquiry when contact details and sending instructions are supplied, then inspect the confirmation.",
+        summary="No company signup or purchase involved in this inquiry.",
+        short="Send the prepared inquiry", follows="aquila-direction-r69-next")
+    rounds = page.entry(70, "How to send the inquiry", sending_route, when="2026-11-17 UTC") + rounds
+    filled_inquiry = decide.recap(
+        "Filled your name, email and saved message. Phone and company stay blank. Nothing submitted.",
+        [
+            ("Name", "Entered Jacob Mott."),
+            ("Email", "Entered the reply email you supplied."),
+            ("Message", "The full message matches the saved version with tentative three-to-six-month timing."),
+            ("Optional fields", "Phone and company remain blank as requested."),
+            ("Status", "The completed form remains open and unsent."),
+        ],
+        {
+            "did": "Filled the requested contact details and message.",
+            "why": "You supplied your email and asked me to fill the form.",
+            "working": "Readback confirms every entered value and both blank optional fields.",
+            "not_working": "No inquiry submitted; actual delivery remains untested.",
+            "next": "Filling is complete. Sending waits on your instruction.",
+        },
+    )
+    filled_body = table(["Check", "Result"], [
+        ("Contact details", "Name and email match the intended values."),
+        ("Message", '<a href="northwest-inquiry-v4.txt">Saved message</a> matches all 2,710 characters, including the subject line.'),
+        ("Phone and company", "Both blank."),
+        ("Submission", "Send Inquiry remains available; it was not clicked."),
+    ])
+    filled_body += '<p>No confirmation or email delivery claimed.</p>'
+    filled_inquiry += decide.info_thread("aquila-direction-r71-info",
+        "The contact form is filled and verified.",
+        body_html=filled_body, short="Form filled, unsent", follows="aquila-direction-r70-info")
+    filled_inquiry += decide.request("aquila-direction-r71-contact",
+        "May I submit the completed inquiry to Northwest?",
+        summary="Contact details are supplied. My developer instructions require explicit permission before sending outside messages.",
+        info='<p>Your request authorized filling. <a href="northwest-inquiry-v4.txt">Review the exact message</a> before sending.</p>',
+        short="Send instruction pending",
+        reply="May I click Send Inquiry?",
+        follows="aquila-direction-r70-contact")
+    filled_inquiry += decide.whats_next("aquila-direction-r71-next",
+        "Filling is complete. Submission waits on your instruction, followed by a confirmation check.",
+        summary="Phone and company remain blank for sending.",
+        short="Ready for submission", follows="aquila-direction-r70-next")
+    rounds = page.entry(71, "Inquiry filled, not sent", filled_inquiry, when="2026-11-17 UTC") + rounds
+    inquiry_confirmed = decide.recap(
+        "Northwest confirmed the submission. I checked the same success page and saved the status. We’re waiting for their reply.",
+        [
+            ("Confirmation", "Your pasted message matches Northwest’s success page."),
+            ("Verified", "The existing browser tab shows the same confirmation."),
+            ("Saved", "Project records now mark the inquiry submitted."),
+            ("Request closed", "No sending permission remains pending, and no duplicate was sent."),
+            ("Next", "Await their reply about the address, documents and pricing."),
+        ],
+        {
+            "did": "Verified and recorded the submission confirmation.",
+            "why": "You shared Northwest’s success message after submitting the form.",
+            "working": "Their confirmation page says a Corporate Guide will be in touch.",
+            "not_working": "Their answers and supporting documents are still pending.",
+            "next": "Wait for the reply before reviewing the exact package.",
+        },
+    )
+    inquiry_confirmed += decide.info_thread("aquila-direction-r72-info",
+        "Northwest’s submission confirmation is verified and saved.",
+        body_html='<p>Your pasted confirmation matches the page shown in the existing browser tab.</p>'
+            '<p><a href="northwest-inquiry-confirmation.json">Confirmation record</a>. The earlier send request is closed; I did not send a duplicate.</p>'
+            '<p>This confirms submission, not their answers about address use or pricing.</p>',
+        short="Submission confirmed", follows="aquila-direction-r71-info")
+    inquiry_confirmed += decide.whats_next("aquila-direction-r72-next",
+        "Await Northwest’s reply, then review the address, agreement and full quote.",
+        summary="Nothing needed from you now.",
+        short="Waiting for their reply", follows="aquila-direction-r71-next")
+    rounds = page.entry(72, "Northwest inquiry submitted", inquiry_confirmed, when="2026-11-17 UTC") + rounds
+    return_to_game = decide.recap(
+        "Next, build one complete expedition: investigate a signal, fight, collect salvage and upgrade a turret. "
+        "Keep your gains after reopening the game. Then test repeated play on Windows and your Galaxy. "
+        "Northwest’s reply can wait alongside this work; game development remains paused until you choose to resume.",
+        [
+            ("Investigate", "Choose a nearby signal and order automatic travel and a survey."),
+            ("Fight", "Command positioning and weapon modes while the ship aims and fires automatically."),
+            ("Improve", "Recover salvage and spend it on one useful turret upgrade."),
+            ("Keep progress", "Save mission progress, rewards and upgrades, then continue after reopening."),
+            ("Test", "Complete the loop on Windows and Galaxy, then measure a 20-minute phone session."),
+        ],
+        {
+            "did": "Checked the saved expedition proposal against the current native foundation.",
+            "why": "A complete loop connects exploration, tactical decisions and lasting ship improvement.",
+            "working": "Automatic navigation, combat, local saves and readable phone controls already exist.",
+            "not_working": "Missions, salvage, upgrades and sustained performance proof are still missing.",
+            "next": "Resume with the first expedition if you accept this scope and order.",
+        },
+    )
+    return_body = '<p>Build one expedition lasting roughly 10–15 minutes of play.</p>'
+    return_body += table(["Step", "Player experience"], [
+        ("Investigate", "Choose a nearby signal; your battleship travels and surveys under your orders."),
+        ("Fight", "Choose positioning, ammunition and weapon modes during one automatic battle."),
+        ("Upgrade", "Collect salvage and improve one starting turret, with a visible stat change."),
+        ("Continue", "Close and reopen the game; keep progress and see the upgrade affect the next encounter."),
+    ])
+    return_body += '<p>Check completion, reward duplication, upgrade effects and save recovery on Windows and Galaxy.</p>'
+    return_body += '<p>Then measure frame pacing, heat and memory during the planned 20-minute phone session.</p>'
+    return_body += '<p>Shared accounts, synchronized saves and Apple proof remain required later. The original foundation milestone is still incomplete.</p>'
+    return_body += '<p>Northwest’s pending reply does not block this local work. This is a recommendation; no game changes started.</p>'
+    return_to_game += decide.info_thread("aquila-direction-r73-info",
+        "I recommend returning to the game with its first complete expedition.",
+        body_html=return_body, short="First expedition next", follows="aquila-direction-r72-info")
+    return_to_game += decide.request("aquila-direction-r73-resume",
+        "Shall we resume game development with this first expedition?",
+        summary="Game work is paused from our business discussion. This asks to resume the scope above.",
+        info='<p>I recommend this gameplay step before shared account setup, followed by sustained device checks.</p>',
+        short="Resume the proposed expedition",
+        reply="Should I build this expedition next?")
+    return_to_game += decide.whats_next("aquila-direction-r73-next",
+        "After your direction to resume, connect the expedition, rewards, upgrade and saved progress, then test the loop.",
+        summary="The business inquiry remains submitted; await Northwest’s reply separately.",
+        short="Resume a complete play loop", follows="aquila-direction-r72-next")
+    rounds = page.entry(73, "Back to the first expedition", return_to_game, when="2026-11-17 UTC") + rounds
+    expedition = decide.recap(
+        "Windows is our main development environment. Keep the phone disconnected during routine work. "
+        "We’ll batch phone checks at milestones or for phone-specific fixes. "
+        "The expedition, salvage, turret refit and saves are built. Windows and Android packages pass; new physical input checks remain.",
+        [
+            ("Main environment", "Use Windows for coding, debugging and ordinary playtests."),
+            ("Phone", "Connect for milestone checks, relevant mobile changes or phone-specific bugs."),
+            ("Expedition", "Investigate a signal, survey, fight automatically, recover salvage and improve one turret."),
+            ("Verified", "Eleven simulation/save groups, both packages and isolated Windows rendering pass."),
+            ("Still open", "New physical input, human pacing, sustained performance, shared saves and Apple proof remain."),
+        ],
+        {
+            "did": "Built the first expedition and saved the Windows-first workflow.",
+            "why": "You approved resuming and questioned keeping the phone connected during development.",
+            "working": "Mission progress, salvage and refit survive saves; the refit changes projectile damage.",
+            "not_working": "Native window controls are unavailable; new mouse/touch input and physical-phone performance remain untested.",
+            "next": "Playtest commands and pacing on Windows, then batch phone checks at a suitable milestone.",
+        },
+    )
+    expedition_body = '<p>Windows is the primary development environment. The Galaxy can stay disconnected during routine work.</p>'
+    expedition_body += '<p>Connect for playable milestones, relevant mobile changes or phone-specific bugs. Android compilation and touch previews need no phone.</p>'
+    expedition_body += table(["Built", "Behavior"], [
+        ("Signal and survey", "Automatic travel to a seeded signal, followed by a 90-second survey."),
+        ("Combat", "Automatic acquisition and projectile fire; player chooses positioning and ammunition."),
+        ("Recovery", "Approach the wreck; 45-second recovery grants 120 salvage once."),
+        ("Refit", "Spend 100 salvage for +50% port-turret impact damage; starboard stays unchanged."),
+        ("Progress", "Mission, rewards and refit persist. Practice cannot reset an active expedition."),
+    ])
+    expedition_body += table(["Evidence", "Result and limit"], [
+        ("Native tests", "All 11 simulation/save groups pass, including duplicate rewards, refit impact, legacy saves and frame-rate parity."),
+        ("Packages", "Editor, Windows and Android builds pass. Android signature, embedded content and archive integrity pass."),
+        ("Windows runtime", "Seven rendered views inspected. Packaged relaunch retains one completion, 20 salvage and the upgraded turret."),
+        ("Pacing", "Baseline simulation takes 547.35 seconds. The 10–15-minute player-time target still needs human playtesting."),
+        ("Input", "Native control helper is unavailable. Scene captures do not prove mouse or touch input."),
+        ("Phone", "This expedition build was not installed or played on the Galaxy. Sustained performance remains unmeasured."),
+    ])
+    expedition_body += '<p><a href="expedition-verification.json">Current verification record</a>. Earlier phone evidence remains historical.</p>'
+    expedition_body += page.figure(page.copy_media(HERE / "media/r74-desktop-available-1600.png", out),
+        "74.1 Desktop commands.", "Packaged Windows rendering; isolated save. The expedition starts from the upper-right panel.")
+    expedition_body += page.figure(page.copy_media(HERE / "media/r74-desktop-battle.png", out),
+        "74.2 Automatic battle.", "Prepared battle fixture; real projectile simulation and rendering. No input injection.")
+    expedition_body += page.figure(page.copy_media(HERE / "media/r74-desktop-upgraded-reload.png", out),
+        "74.3 Refit survives relaunch.", "Completed simulation journal, reopened twice in the packaged game. Balance and upgraded mount remain.")
+    expedition_body += page.figure(page.copy_media(HERE / "media/r74-touch-salvage.png", out),
+        "74.4 Touch layout preview.", "Windows rendering at phone dimensions, using a prepared recovery fixture. Actual Galaxy testing remains pending.")
+    expedition_body += page.figure(page.copy_media(HERE / "media/r74-touch-bridge.png", out),
+        "74.5 Bridge layout preview.", "Movement controls and expedition menu fit together. Windows preview only; physical touch remains untested.")
+    expedition_body += '<p>Changes remain local and uncommitted. Northwest’s reply is still pending; it does not block development.</p>'
+    expedition += decide.info_thread("aquila-direction-r74-info",
+        "Windows leads development; the first expedition is built.",
+        body_html=expedition_body, short="Windows-first expedition", follows="aquila-direction-r73-info")
+    expedition += decide.whats_next("aquila-direction-r74-next",
+        "Playtest expedition commands and pacing on Windows, then batch Galaxy checks when convenient.",
+        summary="No phone connection needed now. Shared accounts, cloud saves and Apple proof remain later requirements.",
+        short="Windows playtest next", follows="aquila-direction-r73-next")
+    rounds = page.entry(74, "Windows first; expedition built", expedition, when="2026-11-17 UTC") + rounds
+    workflow = decide.recap(
+        "Saved your agreement. Windows handles daily development and playtesting. "
+        "We’ll install and test phone builds occasionally, at milestones or for mobile-specific changes. "
+        "No continuous phone connection needed.",
+        [
+            ("Daily work", "Windows remains the main development and playtest environment."),
+            ("Phone checks", "Install and test Galaxy builds occasionally."),
+            ("Timing", "Batch checks at milestones or for mobile-specific changes and bugs."),
+            ("Saved", "Project decisions, knowledge, plan and restart notes record your explicit agreement."),
+            ("Next", "Continue the existing Windows expedition validation."),
+        ],
+        {
+            "did": "Saved your confirmed development workflow in the project records.",
+            "why": "You agreed to occasional phone testing and asked to preserve that choice.",
+            "working": "Future sessions can recover this decision from the checkpoint and shared knowledge.",
+            "not_working": "New expedition physical input and sustained performance remain untested.",
+            "next": "Continue Windows command and pacing checks; batch phone tests when needed.",
+        },
+    )
+    workflow += decide.info_thread("aquila-direction-r75-info",
+        "Saved: Windows-first development, with occasional phone testing.",
+        body_html='<p>Your agreement is recorded in project decisions, shared knowledge, the development plan and restart notes.</p>'
+            '<p>Daily work stays on Windows. Phone builds are installed and tested at milestones or for relevant mobile changes.</p>'
+            '<p>The previous checkpoint is archived. This documentation update adds no runtime test evidence.</p>',
+        short="Workflow confirmed and saved", follows="aquila-direction-r74-info")
+    workflow += decide.whats_next("aquila-direction-r75-next",
+        "Continue Windows expedition command and pacing checks, with phone testing in occasional batches.",
+        summary="No phone connection needed now.",
+        short="Continue on Windows", follows="aquila-direction-r74-next")
+    rounds = page.entry(75, "Development workflow confirmed", workflow, when="2026-11-17 UTC") + rounds
+    playtest = decide.recap(
+        "Next, play one complete expedition on Windows. Investigate, fight, recover salvage and refit the port turret. "
+        "Close and reopen to check your progress. Tell me what feels confusing, slow or unsatisfying. "
+        "Then fix those findings before longer performance testing. Phone can stay disconnected.",
+        [
+            ("Start", "Open the Windows build and choose Investigate signal."),
+            ("Fight", "Watch automatic combat; fit piercing rounds when armor blocks standard shots."),
+            ("Improve", "Recover salvage, then buy the port-turret refit."),
+            ("Return", "Save, close and reopen; confirm port Mk II and 20 salvage remain after the first refit."),
+            ("Review", "Report unclear controls, slow pacing or weak combat feedback; fix those before longer testing."),
+        ],
+        {
+            "did": "Checked the existing Windows build and made the next playtest concrete.",
+            "why": "Automated checks cannot tell us whether the expedition feels clear and enjoyable.",
+            "working": "The packaged build exists; prior simulation and save checks pass.",
+            "not_working": "Human pacing and new physical input remain unverified.",
+            "next": "Play one expedition on Windows, report findings, then fix the problems it reveals.",
+        },
+    )
+    playtest_body = '<p>Use the existing Windows build for one complete playthrough, targeting roughly 10–15 minutes.</p>'
+    playtest_body += '<p>Open <code>D:/OtherProjects/AquilaCodeDark/.runtime/native-package/Win64/Aquila.exe</code>.</p>'
+    playtest_body += table(["Step", "Check"], [
+        ("1. Investigate", "Choose Investigate signal. The ship travels and surveys automatically."),
+        ("2. Fight", "Watch weapon fire and shield hits. Fit piercing rounds when armor blocks standard shots."),
+        ("3. Refit", "Choose Recover salvage after victory. Spend 100 of the 120 salvage on the port turret."),
+        ("4. Reopen", "Save, close and reopen. First-expedition completion, port Mk II and 20 salvage should remain."),
+    ])
+    playtest_body += '<p>We need feedback on clarity, pacing and how combat feels. Phone testing can wait.</p>'
+    playtest_body += '<p>The executable exists; no new game session or runtime test started for this recommendation.</p>'
+    playtest += decide.info_thread("aquila-direction-r76-info",
+        "Next: one complete Windows expedition playtest.",
+        body_html=playtest_body, short="Test the full expedition", follows="aquila-direction-r75-info")
+    playtest += decide.request("aquila-direction-r76-playtest",
+        "After one Windows expedition, what felt confusing, slow, or unsatisfying, and did the upgrade survive reopening?",
+        summary="Your feedback checks the experience beyond automated simulation and save tests.",
+        short="Windows playthrough feedback",
+        reply="What needs fixing, and did your progress survive reopening?")
+    playtest += decide.whats_next("aquila-direction-r76-next",
+        "Fix issues from the playthrough, then run a longer Windows session before the next phone milestone.",
+        summary="This waits on playthrough findings. No phone connection needed now.",
+        short="Tune the first expedition", follows="aquila-direction-r75-next")
+    rounds = page.entry(76, "Play the Windows expedition", playtest, when="2026-11-17 UTC") + rounds
+    northwest_reply = decide.recap(
+        "Northwest quotes $438 initially and $224 yearly for the listed services. "
+        "Its address handles mail and formation. It warns about D-U-N-S acceptance. "
+        "Google publishes the verified company address. The reply is saved; this package is not a confirmed privacy solution.",
+        [
+            ("Quote", "$438 first year; $224 annual renewal for the named services, at quoted rates."),
+            ("Package", "Unique mailing suite, 20 annual mail scans and a one-year lease issued after purchase."),
+            ("Warning", "Northwest says D&B does not accept registered-agent or virtual-office addresses."),
+            ("Evidence", "Google requires matching company records; older D&B guidance supports caution but does not resolve this exact package."),
+            ("Recommendation", "Confirm address eligibility before purchasing for Google Play privacy."),
+        ],
+        {
+            "did": "Saved your pasted reply and checked the relevant official address guidance.",
+            "why": "Northwest answered pricing and package questions but warned about the key privacy requirement.",
+            "working": "The service quote and mailing terms are documented.",
+            "not_working": "This address has no confirmed D&B or Google approval for your planned company.",
+            "next": "Clarify this exact setup with D&B and Google before relying on it.",
+        },
+    )
+    northwest_body = '<p>Northwest remains a formation and mail candidate. I would not purchase based on presumed Google Play privacy compatibility.</p>'
+    northwest_body += table(["Answered", "Provider reply"], [
+        ("First year", "$39 formation + $300 state fee + included agent year + $99 office plan = $438."),
+        ("Renewal", "$125 registered agent + $99 office plan = $224 annually. Additional chosen services excluded."),
+        ("Mail and documents", "20 opened-and-scanned pieces yearly; unique suite; one-year lease after purchase, with replacement and correction requests allowed."),
+        ("Address use", "Texas formation and correspondence, including IRS mail. Mailing address does not replace a required operating location."),
+        ("Format and identity", "Use # plus assigned number. Mail handling requires USPS Form 1583, photo ID and separate residential-address proof."),
+        ("Unavailable", "No utility bills, in-person verification or verification videos."),
+    ])
+    northwest_body += '<p>Northwest says D&B rejects registered-agent and virtual-office addresses. That statement comes from Northwest, not a direct D&B response.</p>'
+    northwest_body += '<p><a href="https://support.google.com/googleplay/android-developer/answer/13628312?hl=en">Google requires matching D&B and payments details</a> and publishes the organization’s legal address.</p>'
+    northwest_body += '<p>A <a href="https://www.ams.usda.gov/sites/default/files/media/DNB_DUNSLookup_USDA.pdf">D&B-authored 2021 USDA guide</a> excludes virtual offices as physical locations.</p>'
+    northwest_body += '<p>Its grant-program context and age limit its use here. It supports caution, not a current ruling on every address service.</p>'
+    northwest_body += '<p><a href="https://www.dnb.com/en-us/smb/duns/get-a-duns.html">Current D&B enrollment guidance</a> did not settle this exact Texas package.</p>'
+    northwest_body += '<p>Exact street, sample agreement, extra fees, mail retention, refund terms and relocation support remain open.</p>'
+    northwest_body += '<p><a href="northwest-package-reply.json">Saved reply review</a>; <a href="publishing-reference.md">updated business reference</a>.</p>'
+    northwest_body += '<p>Evidence came from your pasted message. Email headers and transport were not independently checked.</p>'
+    northwest_body += '<p>No follow-up sent or purchase made. Employment and outside-work ownership remain resolved; Windows playtest feedback remains pending.</p>'
+    northwest_reply += decide.info_thread("aquila-direction-r77-info",
+        "Northwest’s package is clearer; Google Play address privacy remains unproven.",
+        body_html=northwest_body, short="Northwest reply reviewed", follows="aquila-direction-r76-info")
+    northwest_reply += decide.request("aquila-direction-r77-playtest",
+        "After one Windows expedition, what felt confusing, slow, or unsatisfying, and did the upgrade survive reopening?",
+        summary="Carried from the game discussion; answer when you return to playtesting. No phone connection needed.",
+        short="Windows feedback still pending", follows="aquila-direction-r76-playtest",
+        reply="What needs fixing, and did your progress survive reopening?")
+    northwest_reply += decide.whats_next("aquila-direction-r77-next",
+        "Clarify D&B’s current treatment of this exact company setup, then confirm which verified address Google would publish.",
+        summary="Recommend resolving this before purchasing for privacy. Local game work remains independent.",
+        short="Resolve address eligibility", follows="aquila-direction-r76-next")
+    rounds = page.entry(77, "Northwest replied; privacy unresolved", northwest_reply, when="2026-11-17 UTC") + rounds
+    clarification = decide.recap(
+        "Northwest did not say Google Play rejects the address. Google makes its own decisions; a lease does not guarantee acceptance. "
+        "The firm rejection claim concerned D&B. Linking that to a possible Google problem was my inference, not their confirmed finding.",
+        [
+            ("Google Play", "They did not say Google Play would reject the address."),
+            ("Their wording", "They asked you to check Google’s requirements and said a lease does not guarantee acceptance."),
+            ("D&B", "Their categorical exclusion concerns registered-agent and virtual-office addresses for D-U-N-S."),
+            ("My inference", "I connected that D&B warning to a possible Google verification problem."),
+            ("Correction", "That possibility is not a confirmed Google restriction or rejection."),
+        ],
+        {
+            "did": "Separated Northwest’s exact statements from my interpretation.",
+            "why": "My earlier emphasis made a possible Google issue sound more definite than the email supports.",
+            "working": "Their Google wording and D&B claim are now distinguished in the saved notes.",
+            "not_working": "The email establishes neither Google approval nor Google rejection.",
+            "next": "Continue discussing the reply without treating an inference as a confirmed platform decision.",
+        },
+    )
+    clarification_body = '<p>The Google passage says:</p>'
+    clarification_body += '<blockquote>Google payments and Google Play make their own address-verification decisions, so please check their requirements for both the public contact address and the actual operating location before purchasing. An office lease does not guarantee acceptance.</blockquote>'
+    clarification_body += '<p>The categorical claim concerns D&B:</p>'
+    clarification_body += '<blockquote>Dun &amp; Bradstreet does not accept registered-agent or virtual-office addresses.</blockquote>'
+    clarification_body += '<p>I inferred a possible Google verification obstacle from that D&B claim. Northwest did not confirm that outcome.</p>'
+    clarification_body += '<p>My purchase caution was a recommendation, not evidence that Google rejects the address. I should have kept that distinction clearer.</p>'
+    clarification += decide.info_thread("aquila-direction-r78-info",
+        "Northwest did not say Google Play would reject this address.",
+        body_html=clarification_body, short="Exact wording clarified", follows="aquila-direction-r77-info")
+    clarification += decide.request("aquila-direction-r78-playtest",
+        "After one Windows expedition, what felt confusing, slow, or unsatisfying, and did the upgrade survive reopening?",
+        summary="Earlier game request remains pending for when you return to playtesting.",
+        short="Earlier Windows feedback request", follows="aquila-direction-r77-playtest",
+        reply="What needs fixing, and did your progress survive reopening?")
+    clarification += decide.whats_next("aquila-direction-r78-next",
+        "Keep Google acceptance unresolved while discussing the reply.",
+        summary="This clarification starts no new research, contact or purchase.",
+        short="Keep the distinction clear", follows="aquila-direction-r77-next")
+    rounds = page.entry(78, "What Northwest said about Google", clarification, when="2026-11-17 UTC") + rounds
+    example = decide.recap(
+        "Yes. Zensoul LLC was our Google Play example. Its website names Northwest; its Play listing shows the matching Wyoming address. "
+        "Both pages still match. That evidence remains relevant. The exact address package and private verification documents remain unknown.",
+        [
+            ("Example", "Zensoul LLC has a live Google Play listing with in-app purchases."),
+            ("Northwest link", "Its own website names Northwest Registered Agent Service Inc."),
+            ("Address", "The developer website and Play listing show the same Sheridan street and suite."),
+            ("Rechecked", "Both primary pages still show those details."),
+            ("Limit", "We did not inspect its exact package or private verification documents."),
+        ],
+        {
+            "did": "Rechecked the Northwest-linked app example you remembered.",
+            "why": "That positive evidence must remain part of our interpretation of the provider’s reply.",
+            "working": "The developer website and Google Play listing still show the matching business address.",
+            "not_working": "The example does not reveal its exact service package or verification history.",
+            "next": "Keep this example alongside the provider’s warning without claiming a blanket Google prohibition.",
+        },
+    )
+    example_body = '<p>Your recollection is correct. I should have kept this example prominent when discussing the reply.</p>'
+    example_body += table(["Evidence", "Observed"], [
+        ('<a href="https://zensoul.app/">Zensoul website</a>', 'Names Zensoul LLC, care of Northwest Registered Agent Service Inc, at its Sheridan address.'),
+        ('<a href="https://play.google.com/store/apps/details?gl=US&amp;hl=en-US&amp;id=app.zensoul.app">Google Play listing</a>', 'Lists the same company and street/suite address; offers in-app purchases and describes an annual membership.'),
+    ])
+    example_body += '<p>Matching street address:</p><blockquote>30 N Gould St Ste N, Sheridan, WY</blockquote>'
+    example_body += '<p>This is concrete public evidence, not only a developer anecdote. Northwest’s email does not erase it.</p>'
+    example_body += '<p>It concerns Wyoming. The exact package and private approval documents remain unknown; no Texas outcome is established.</p>'
+    example += decide.info_thread("aquila-direction-r79-info",
+        "Yes. Zensoul LLC is the Northwest-linked Google Play example we found.",
+        body_html=example_body, short="Example rechecked", follows="aquila-direction-r78-info")
+    example += decide.request("aquila-direction-r79-playtest",
+        "After one Windows expedition, what felt confusing, slow, or unsatisfying, and did the upgrade survive reopening?",
+        summary="Earlier game request remains pending for when you return to playtesting.",
+        short="Earlier Windows feedback request", follows="aquila-direction-r78-playtest",
+        reply="What needs fixing, and did your progress survive reopening?")
+    example += decide.whats_next("aquila-direction-r79-next",
+        "Keep the confirmed public example in view when interpreting Northwest’s reply.",
+        summary="The specific Texas package remains unverified; no Google rejection was stated.",
+        short="Preserve both pieces of evidence", follows="aquila-direction-r78-next")
+    rounds = page.entry(79, "The Northwest-linked app example", example, when="2026-11-17 UTC") + rounds
+    evidence_weight = decide.recap(
+        "Yes. The listing demonstrates a Northwest-linked business address being used on Google Play. "
+        "I gave the missing private paperwork too much weight. Our specific Texas package remains unverified, but the observed example counts.",
+        [
+            ("Answer", "Yes, the public-address outcome is demonstrated for that developer."),
+            ("Proof", "A live Google Play listing uses the business address linked to Northwest on its developer’s website."),
+            ("Weight", "Missing private paperwork does not erase the observed result."),
+            ("Remaining question", "We have not tested our specific Texas package."),
+            ("Correction", "I understated what the existing example establishes."),
+        ],
+        {
+            "did": "Corrected how I described the weight of the app example.",
+            "why": "You asked whether an observed working example counts as proof.",
+            "working": "The public-address outcome is demonstrated for that developer.",
+            "not_working": "Our specific Texas package has not been tested.",
+            "next": "Use the observed case as positive evidence when discussing our own setup.",
+        },
+    )
+    evidence_body = '<p>The observed result is an app listed on Google Play using a Northwest-linked business address.</p>'
+    evidence_body += '<p><a href="https://zensoul.app/">The developer’s website</a> and <a href="https://play.google.com/store/apps/details?gl=US&amp;hl=en-US&amp;id=app.zensoul.app">its Play listing</a> establish that result.</p>'
+    evidence_body += '<p>I gave the missing private paperwork too much weight. It does not undo what those pages show.</p>'
+    evidence_body += '<p>The remaining question concerns reproducing that result with our specific Texas package.</p>'
+    evidence_weight += decide.info_thread("aquila-direction-r80-info",
+        "Yes. It demonstrates the public-address outcome working for that developer.",
+        body_html=evidence_body, short="The example counts", follows="aquila-direction-r79-info")
+    evidence_weight += decide.request("aquila-direction-r80-playtest",
+        "After one Windows expedition, what felt confusing, slow, or unsatisfying, and did the upgrade survive reopening?",
+        summary="Earlier game request remains pending for when you return to playtesting.",
+        short="Earlier Windows feedback request", follows="aquila-direction-r79-playtest",
+        reply="What needs fixing, and did your progress survive reopening?")
+    evidence_weight += decide.whats_next("aquila-direction-r80-next",
+        "Treat the example as demonstrated positive evidence when discussing the Texas setup.",
+        summary="This clarification adds no purchase, contact or research action.",
+        short="Give the example proper weight", follows="aquila-direction-r79-next")
+    rounds = page.entry(80, "Yes, the example demonstrates it", evidence_weight, when="2026-11-17 UTC") + rounds
+    candidate = decide.recap(
+        "Yes. Northwest remains my first choice among the three providers. Its services, cost and the Play example support that recommendation. "
+        "The exact Texas verification outcome remains unconfirmed.",
+        [
+            ("Recommendation", "Northwest remains my first choice among the three providers we compared."),
+            ("Fit", "It combines formation, registered-agent service and the address plan at a suitable low-volume cost."),
+            ("Evidence", "The written quote and demonstrated Google Play example strengthen that recommendation."),
+            ("Confidence", "This ranks overall fit; it does not establish comparative Google approval rates."),
+            ("Status", "No purchase or signup occurred."),
+        ],
+        {
+            "did": "Rechecked the provider plan pages and clarified the saved recommendation.",
+            "why": "You asked whether Northwest remains the strongest candidate.",
+            "working": "The combined services, cost and observed app example still support the ranking.",
+            "not_working": "The exact Texas package has no confirmed Google verification outcome.",
+            "next": "Keep Northwest as the first-choice candidate while discussing your setup.",
+        },
+    )
+    candidate_body = '<p>Northwest stays ahead of Texan Registered Agent and iPostal1 for your planned low-volume setup.</p>'
+    candidate_body += '<p>The <a href="https://www.northwestregisteredagent.com/business-address/virtual-office/texas">Northwest plan</a> combines a lease and 20 annual mail scans for $99 yearly.</p>'
+    candidate_body += '<p><a href="https://www.texasregisteredagent.net/texas-business-address/texas-virtual-office/">Texan</a> offers more mail capacity at $19 monthly; <a href="https://ipostal1.com/virtual-business-address-plans-pricing.php">iPostal1</a> business plans start at $149 yearly.</p>'
+    candidate_body += '<p>These are different plans, not equivalent service bundles. The quoted Northwest formation and agent terms remain saved.</p>'
+    candidate_body += '<p><a href="https://zensoul.app/">Zensoul’s website</a> and <a href="https://play.google.com/store/apps/details?gl=US&amp;hl=en-US&amp;id=app.zensoul.app">Google Play listing</a> demonstrate a Northwest-linked public address in use.</p>'
+    candidate_body += '<p>My verification caution did not establish that either alternative was better. Exact Texas acceptance remains unconfirmed.</p>'
+    candidate_body += '<p><a href="publishing-reference.md">Saved recommendation</a>; <a href="northwest-package-reply.json">provider reply</a>. No purchase or signup occurred.</p>'
+    candidate += decide.info_thread("aquila-direction-r81-info",
+        "Yes. Northwest remains my first choice among the three providers we compared.",
+        body_html=candidate_body, short="Northwest remains first choice", follows="aquila-direction-r80-info")
+    candidate += decide.request("aquila-direction-r81-playtest",
+        "After one Windows expedition, what felt confusing, slow, or unsatisfying, and did the upgrade survive reopening?",
+        summary="Earlier game request remains pending for when you return to playtesting.",
+        short="Earlier Windows feedback request", follows="aquila-direction-r80-playtest",
+        reply="What needs fixing, and did your progress survive reopening?")
+    candidate += decide.whats_next("aquila-direction-r81-next",
+        "Keep Northwest as the first-choice candidate while discussing the setup.",
+        summary="No immediate action needed. This recommendation starts no purchase or signup.",
+        short="Recommendation stands", follows="aquila-direction-r80-next")
+    rounds = page.entry(81, "Northwest remains my first choice", candidate, when="2026-11-17") + rounds
+    alternatives = decide.recap(
+        "Yes. A broader comparison can test whether another provider fits better. The full prompt is ready in Research Console. "
+        "It includes our three candidates, Northwest’s reply and the working app example. You run it in Perplexity and save the answer.",
+        [
+            ("Search", "Look beyond Northwest, Texan Registered Agent and iPostal1."),
+            ("Compare", "Check Google Play evidence, exact Texas packages, total costs, documents and mail service."),
+            ("Context", "Keep the provider’s reply and demonstrated app example in view."),
+            ("Status", "The prompt is queued locally; Perplexity has not run through this workflow."),
+            ("Next", "Run the prompt and save the complete answer for review."),
+        ],
+        {
+            "did": "Prepared and saved a broader provider comparison request.",
+            "why": "You asked whether options beyond the three known providers might be better.",
+            "working": "The complete prompt and its matching submission receipt are saved.",
+            "not_working": "No new research result or broader winner yet.",
+            "next": "You run the prompt in Perplexity; I review the saved answer.",
+        },
+    )
+    alternatives_body = '<p>The request searches for up to six additional Texas options, including separate formation and address providers.</p>'
+    alternatives_body += '<p>It compares evidence, exact services and costs without assuming Northwest must win.</p>'
+    alternatives_body += '<p>Northwest’s reply and the demonstrated app example are included. US-only planning and settled employment questions remain unchanged.</p>'
+    alternatives_body += '<p><a href="http://127.0.0.1:8776/?project=aquila-code-dark#1caac6482b7b4aa4803ae28d63b1c53d">Open the complete research request</a>; <a href="address-alternatives-receipt.json">submission receipt</a>.</p>'
+    alternatives_body += '<p>Local readback matches the prompt’s byte hash. Research Console stores the request; it does not execute Perplexity.</p>'
+    alternatives_body += '<p>No new result, purchase, signup or provider contact occurred.</p>'
+    alternatives += decide.info_thread("aquila-direction-r82-info",
+        "The broader provider comparison is ready for you to run in Perplexity.",
+        body_html=alternatives_body, short="Broader comparison prepared", follows="aquila-direction-r81-info")
+    alternatives += decide.request("aquila-direction-r82-research",
+        "Run this comparison in Perplexity, then save its full answer in Research Console.",
+        summary="The broader evidence will test whether another provider fits your needs better.",
+        info='<p>Open <a href="http://127.0.0.1:8776/?project=aquila-code-dark#1caac6482b7b4aa4803ae28d63b1c53d">the research request</a>, copy its prompt, run it, then import or paste the answer. Press Save result.</p>',
+        short="Run the broader comparison",
+        reply="Tell me when the complete result is saved.")
+    alternatives += decide.request("aquila-direction-r82-playtest",
+        "After one Windows expedition, what felt confusing, slow, or unsatisfying, and did the upgrade survive reopening?",
+        summary="Earlier game request remains pending for when you return to playtesting.",
+        short="Earlier Windows feedback request", follows="aquila-direction-r81-playtest",
+        reply="What needs fixing, and did your progress survive reopening?")
+    alternatives += decide.whats_next("aquila-direction-r82-next",
+        "Review the saved result and keep or change the provider ranking based on its evidence.",
+        summary="Waiting on the Perplexity answer. Current preference remains Northwest among the three already compared.",
+        short="Compare the returned evidence", follows="aquila-direction-r81-next")
+    rounds = page.entry(82, "Look beyond the three providers", alternatives, when="2026-11-17") + rounds
+    reviewed_alternatives = decide.recap(
+        "Northwest still looks best for your low-volume start. Texas Virtual Office is a credible alternative with cheaper renewals and unlimited scans. "
+        "A paid Texas game uses Northwest’s published address. I corrected several overstatements in the research.",
+        [
+            ("Recommendation", "Northwest remains preferred for the planned low-volume startup."),
+            ("New evidence", "Afterplace’s paid Google Play listing matches Northwest’s published Texas street and suite."),
+            ("Alternative", "Texas Virtual Office advertises a lease and unlimited scans; the report missed these inclusions."),
+            ("Costs", "Northwest quotes $438 first year and $224 renewal; the alternative totals $615 and $205 before extras."),
+            ("Review", "The full original is preserved, source corrections saved, and the returned version marked reviewed."),
+        ],
+        {
+            "did": "Read the complete report and checked the findings most likely to change our choice.",
+            "why": "The wider search needed an evidence review before treating its ranking as settled.",
+            "working": "We have a Texas paid-game example and a clearer alternative provider comparison.",
+            "not_working": "No exact package has guaranteed Google approval; some research claims needed correction.",
+            "next": "Use the corrected shortlist when you decide to form the LLC.",
+        },
+    )
+    reviewed_body = '<p>The wider review found no demonstrated reason to replace Northwest for your planned low-volume start.</p>'
+    reviewed_body += '<p><a href="https://play.google.com/store/apps/details?id=com.kice.afterplace">Afterplace</a> is a paid game by Evan Kice LLC, listed at the same street/suite as <a href="https://www.fmcsa.dot.gov/registration/process-agents/northwest-registered-agent-llc-55">Northwest’s Texas entry</a>.</p>'
+    reviewed_body += '<p>That demonstrates the public Texas address outcome. The developer’s actual provider, package and private verification history remain unknown.</p>'
+    reviewed_body += table(["Provider", "First year", "Annual renewal", "Mail and lease"], [
+        ("Northwest, quoted bundle", "$438", "$224", "20 annual opened-and-scanned pieces; lease."),
+        ('<a href="https://www.texasvirtualoffice.com/">Texas Virtual Office</a>, advertised bundle', "$615", "$205", "Unlimited scans; month-to-month lease."),
+    ])
+    reviewed_body += '<p>Both totals include formation, state filing, registered agent and address service. Unquoted extras and taxes remain excluded.</p>'
+    reviewed_body += '<p>The alternative costs $177 more initially and $19 less each renewal year. Higher mail volume could favor it.</p>'
+    reviewed_body += '<p>Its page also includes the first agent year. The report’s uncertainty about these advertised inclusions was incorrect.</p>'
+    reviewed_body += '<p><a href="https://www.thefarmsoho.com/product/virtual-office/texas/">The Farm</a> offers workspace and document tiers at $218 or $350 monthly. No stronger approval outcome was demonstrated.</p>'
+    reviewed_body += '<p>Two other corrections matter: shared software does not prove common ownership; <a href="https://www.northwestregisteredagent.com/terms-policy">Northwest’s terms</a> do not guarantee refunds before 90 days.</p>'
+    reviewed_body += '<p>State fees are nonrefundable. The report’s proposed purchase test is not a risk-free trial.</p>'
+    reviewed_body += '<p><a href="http://127.0.0.1:8776/?project=aquila-code-dark#1caac6482b7b4aa4803ae28d63b1c53d">Original research</a>; <a href="address-alternatives-checks.json">source checks and corrections</a>; <a href="publishing-reference.md">saved comparison</a>.</p>'
+    reviewed_body += '<p>Read all 113 lines and preserved the original bytes. No purchase, signup or provider contact occurred.</p>'
+    reviewed_alternatives += decide.info_thread("aquila-direction-r83-info",
+        "Broader research supports Northwest, with a useful new alternative.",
+        body_html=reviewed_body, short="Broader research reviewed", follows="aquila-direction-r82-info")
+    reviewed_alternatives += decide.request("aquila-direction-r83-playtest",
+        "After one Windows expedition, what felt confusing, slow, or unsatisfying, and did the upgrade survive reopening?",
+        summary="Earlier game request remains pending for when you return to playtesting.",
+        short="Earlier Windows feedback request", follows="aquila-direction-r82-playtest",
+        reply="What needs fixing, and did your progress survive reopening?")
+    reviewed_alternatives += decide.whats_next("aquila-direction-r83-next",
+        "Use the corrected comparison when you decide to form the LLC.",
+        summary="The research-run request is complete. No business action is required now.",
+        short="Keep the corrected shortlist", follows="aquila-direction-r82-next")
+    rounds = page.entry(83, "Research reviewed; Northwest still leads", reviewed_alternatives, when="2026-11-17") + rounds
+    quality_priority = decide.recap(
+        "Price and convenience influenced my Northwest recommendation too much. Its quote and app examples remain useful evidence. "
+        "They do not prove superior reliability. Your priority is saved: robust, stable, proven service first; price second. "
+        "Northwest remains a candidate; no quality winner established.",
+        [
+            ("Reason", "Price, combined services, the written quote and public app examples supported the earlier recommendation."),
+            ("Correction", "I have not established that Northwest has the strongest service or track record."),
+            ("Your priority", "Robustness, stability and proven service come before lower prices."),
+            ("Evidence needed", "Compare address continuity, mail reliability, responsive support and sustained developer outcomes."),
+            ("Status", "Preference saved; no provider chosen or purchase made."),
+        ],
+        {
+            "did": "Saved your quality priority and corrected the current recommendation.",
+            "why": "The earlier ranking gave startup cost and convenience too much weight for your needs.",
+            "working": "The written quote and public app-address examples remain positive evidence.",
+            "not_working": "Existing evidence does not establish a comparative reliability leader.",
+            "next": "Use service quality and stability as the main criteria when comparing providers.",
+        },
+    )
+    quality_body = '<p>Price was a significant factor, alongside combined services, the written quote and observed app-address examples.</p>'
+    quality_body += '<p>I have not established that Northwest has the strongest track record or most dependable service.</p>'
+    quality_body += table(["Earlier evidence", "What it supports"], [
+        ('<a href="https://www.northwestregisteredagent.com/business-address/virtual-office/texas">Combined services</a> and <a href="northwest-package-reply.json">written quote</a>', 'Convenience, scope and quoted cost; no measured reliability advantage.'),
+        ('<a href="https://zensoul.app/">Zensoul</a> and <a href="https://play.google.com/store/apps/details?id=com.kice.afterplace">Afterplace</a>', 'Observed public-address outcomes; retain the provider/package qualifications in the saved comparison.'),
+    ])
+    quality_body += '<p>Your willingness to pay more is saved. No numeric budget inferred.</p>'
+    quality_body += '<p>Future comparison should emphasize stable premises, reliable mail handling, responsive support and a demonstrated service record.</p>'
+    quality_body += '<p>A higher price or longer feature list does not itself establish those qualities.</p>'
+    quality_body += '<p>Northwest remains a candidate. The existing research does not establish a winner under these priorities.</p>'
+    quality_body += '<p><a href="publishing-reference.md#quality-before-price-round-84">Saved priority and evidence gaps</a>. No new research job, provider contact or purchase occurred.</p>'
+    quality_priority += decide.info_thread("aquila-direction-r84-info",
+        "Yes, price influenced my recommendation; I weighted it too heavily.",
+        body_html=quality_body, short="Quality before price", follows="aquila-direction-r83-info")
+    quality_priority += decide.request("aquila-direction-r84-playtest",
+        "After one Windows expedition, what felt confusing, slow, or unsatisfying, and did the upgrade survive reopening?",
+        summary="Earlier game request remains pending for when you return to playtesting.",
+        short="Earlier Windows feedback request", follows="aquila-direction-r83-playtest",
+        reply="What needs fixing, and did your progress survive reopening?")
+    quality_priority += decide.whats_next("aquila-direction-r84-next",
+        "Use your quality priorities when the provider comparison resumes.",
+        summary="No decision needed now. Comparative reliability evidence remains incomplete.",
+        short="Compare dependable service", follows="aquila-direction-r83-next")
+    rounds = page.entry(84, "Reliable service before lower prices", quality_priority, when="2026-11-17") + rounds
+    quality_next = decide.recap(
+        "Next, fill the reliability gap before choosing a provider. The focused research request is ready. "
+        "It keeps our earlier evidence and compares stable addresses, mail handling, support and proven results. "
+        "Run it in Perplexity, then save the full answer. We will use it to narrow the choice.",
+        [
+            ("Focus", "Compare dependable service and address stability before price."),
+            ("Reuse", "Keep the existing provider reply, app examples and corrected research."),
+            ("Shortlist", "Examine at most four finalists, including Northwest, without assuming a winner."),
+            ("Decision", "Request a primary option, fallback and decisive questions for the strongest two providers."),
+            ("Next action", "Run the prepared prompt in Perplexity and save its complete answer."),
+        ],
+        {
+            "did": "Prepared a focused comparison of provider reliability and proven service.",
+            "why": "The previous comparison did not establish who provides the most dependable service.",
+            "working": "The saved prompt includes our existing evidence and matches the Console readback.",
+            "not_working": "No research return or comparative quality winner yet.",
+            "next": "You run the prompt; I review the evidence and narrow the choice.",
+        },
+    )
+    quality_next_body = '<p>The next step targets missing service evidence. Existing findings remain useful.</p>'
+    quality_next_body += table(["Step", "Purpose"], [
+        ('Focused comparison', 'Check address continuity, reliable mail, responsive support and documented customer outcomes.'),
+        ('Narrow the finalists', 'Separate formation and address services where that improves quality. Compare cost after fit and service.'),
+        ('Resolve decisive gaps', 'Prepare precise questions for the strongest two providers before choosing an exact package.'),
+    ])
+    quality_next_body += '<p>The prompt asks what would justify choosing, so this does not become endless broad research.</p>'
+    quality_next_body += '<p>It preserves Northwest’s reply, the positive app examples and corrections to the earlier report.</p>'
+    quality_next_body += '<p><a href="http://127.0.0.1:8776/?project=aquila-code-dark#0013c8c0a3bb4ac982a44417de36ddf3">Complete research request</a>; <a href="address-reliability-receipt.json">submission receipt</a>; <a href="publishing-reference.md">saved next steps</a>.</p>'
+    quality_next_body += '<p>Submitted prompt readback matches local bytes. Research Console stores the request; it does not execute Perplexity.</p>'
+    quality_next_body += '<p>No provider contact, purchase or signup occurred.</p>'
+    quality_next += decide.info_thread("aquila-direction-r85-info",
+        "A focused reliability comparison is ready as the next step.",
+        body_html=quality_next_body, short="Fill the service evidence gap", follows="aquila-direction-r84-info")
+    quality_next += decide.request("aquila-direction-r85-research",
+        "Run the focused comparison in Perplexity, then save its full answer in Research Console.",
+        summary="This tests our shortlist against your quality priorities.",
+        info='<p>Open <a href="http://127.0.0.1:8776/?project=aquila-code-dark#0013c8c0a3bb4ac982a44417de36ddf3">the prepared request</a>, copy its prompt, and run it. Import or paste the answer, then press Save result.</p>',
+        short="Run the focused comparison",
+        reply="Tell me when the complete result is saved.")
+    quality_next += decide.request("aquila-direction-r85-playtest",
+        "After one Windows expedition, what felt confusing, slow, or unsatisfying, and did the upgrade survive reopening?",
+        summary="Earlier game request remains pending for when you return to playtesting.",
+        short="Earlier Windows feedback request", follows="aquila-direction-r84-playtest",
+        reply="What needs fixing, and did your progress survive reopening?")
+    quality_next += decide.whats_next("aquila-direction-r85-next",
+        "Review the returned evidence, then identify the best-supported route and remaining decisive questions.",
+        summary="Waiting on the focused research answer. No provider selected.",
+        short="Narrow the choice with evidence", follows="aquila-direction-r84-next")
+    rounds = page.entry(85, "Next: compare dependable service", quality_next, when="2026-11-17") + rounds
+    session_wrap = decide.recap(
+        "Checkpoint and restart prompt saved. Native sources match the earlier tested versions; repository safety checks pass. "
+        "The reliability research has returned but remains unread. Session-owned commit and push are in progress. "
+        "The next session reads the checkpoint, reports status and waits.",
+        [
+            ("Saved", "Current decisions, limits and restart instructions are recorded."),
+            ("Native", "Twenty-four hashes match prior evidence; input configuration differs only by one removed blank line."),
+            ("Checks", "Six repository safety tests and the installed-engine check pass."),
+            ("Research", "The focused result has arrived; its body remains unread and unreviewed."),
+            ("Publication", "Preparing the authorized session-owned commit through an isolated index."),
+        ],
+        {
+            "did": "Saved the wrap checkpoint and exact restart prompt.",
+            "why": "You invoked the new-session workflow, including commit and push.",
+            "working": "Source hashes and repository safety checks pass; the research return is identified.",
+            "not_working": "Publication is not complete; research review and Windows gameplay feedback remain pending.",
+            "next": "Commit and verify the push, then finish the restart handoff.",
+        },
+    )
+    wrap_body = '<p>The wrap preserves native work, business decisions, research provenance and earlier report history.</p>'
+    wrap_body += '<p>Native file contents match prior evidence except one removed blank line. No fresh runtime or phone testing is claimed.</p>'
+    wrap_body += '<p>The focused research has returned as version 1. Only its metadata was inspected; the run request is complete.</p>'
+    wrap_body += '<p>Reports and Research Console remain running. No session build, game or transfer remains active.</p>'
+    wrap_body += '<p><a href="native-restart.txt">Restart prompt</a>; <a href="native-publication.json">publication evidence</a>; <a href="address-reliability-return.json">unreviewed return metadata</a>.</p>'
+    wrap_body += '<p>Publication is in progress. The next session must read, report status and wait.</p>'
+    session_wrap += decide.info_thread("aquila-direction-r86-info",
+        "The checkpoint is saved; authorized publication is in progress.",
+        body_html=wrap_body, short="Session wrap prepared", follows="aquila-direction-r85-info")
+    session_wrap += decide.request("aquila-direction-r86-playtest",
+        "After one Windows expedition, what felt confusing, slow, or unsatisfying, and did the upgrade survive reopening?",
+        summary="Carried forward for a later playtest; no playtest starts during this wrap.",
+        short="Earlier Windows feedback request", follows="aquila-direction-r85-playtest",
+        reply="What needs fixing, and did your progress survive reopening?")
+    session_wrap += decide.whats_next("aquila-direction-r86-next",
+        "Verify publication, then hand over the saved restart prompt.",
+        summary="Research review and game work wait for owner direction after the startup stop.",
+        short="Finish publication and stop", follows="aquila-direction-r85-next")
+    rounds = page.entry(86, "Session checkpoint saved", session_wrap, when="2026-11-17") + rounds
+    (out / "native-restart.txt").write_bytes((ROOT / "Docs/Handoffs/PROMPT_2026-11-17_native-direction.txt").read_bytes())
+    (out / "native-publication.json").write_bytes((ROOT / "Docs/Testing/native-direction-publication.json").read_bytes())
+    (out / "address-reliability-return.json").write_bytes((ROOT / "Docs/Research/texas-business-address-reliability-return-v0001.json").read_bytes())
+    (out / "address-reliability-receipt.json").write_bytes((ROOT / "Docs/Research/texas-business-address-reliability-receipt-v1.json").read_bytes())
+    (out / "address-alternatives-checks.json").write_bytes((ROOT / "Docs/Research/texas-llc-address-alternatives-source-checks-v0001.json").read_bytes())
+    (out / "address-alternatives-receipt.json").write_bytes((ROOT / "Docs/Research/texas-llc-address-alternatives-receipt-v1.json").read_bytes())
+    (out / "northwest-package-reply.json").write_bytes((ROOT / "Docs/Research/northwest-texas-package-reply-v1.json").read_bytes())
+    (out / "expedition-verification.json").write_bytes((ROOT / "Docs/Testing/native-expedition-verification.json").read_bytes())
+    (out / "northwest-inquiry-confirmation.json").write_bytes((ROOT / "Docs/Research/northwest-inquiry-confirmation-v1.json").read_bytes())
+    (out / "northwest-inquiry-v4.txt").write_bytes((ROOT / "Docs/Research/northwest-texas-package-inquiry-v4.txt").read_bytes())
+    (out / "northwest-inquiry-v3.txt").write_bytes((ROOT / "Docs/Research/northwest-texas-package-inquiry-v3.txt").read_bytes())
+    (out / "northwest-inquiry-v2.txt").write_bytes((ROOT / "Docs/Research/northwest-texas-package-inquiry-v2.txt").read_bytes())
+    (out / "northwest-inquiry.txt").write_bytes((ROOT / "Docs/Research/northwest-texas-package-inquiry-v1.txt").read_bytes())
+    (out / "northwest-package-check.json").write_bytes((ROOT / "Docs/Research/northwest-texas-package-check-v1.json").read_bytes())
+    (out / "publishing-reference.md").write_bytes((ROOT / "knowledge/publishing-business.md").read_bytes())
+    (out / "mobile-ui-verification.json").write_bytes((ROOT / "Docs/Testing/native-mobile-ui-verification.json").read_bytes())
+    (out / "native-verification.json").write_bytes((ROOT / "Docs/Testing/native-foundation-verification.json").read_bytes())
+    (out / "android-device-verification.json").write_bytes((ROOT / "Docs/Testing/native-android-device-verification.json").read_bytes())
     for source, name in [
-        (ROOT / "Docs/Handoffs/HANDOFF_2026-11-15_game-direction.md", "handoff.md"),
+        (ROOT / "Docs/History/game-direction/20261115T225503Z.md", "handoff.md"),
         (ROOT / "Docs/Handoffs/PROMPT_2026-11-15_game-direction.txt", "restart.txt"),
         (ROOT / "Docs/Testing/game-direction-publication.json", "publication.json"),
     ]:

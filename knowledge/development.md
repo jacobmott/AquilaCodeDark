@@ -1,5 +1,12 @@
 # Development and recovery
 
+## Native Unreal foundation
+
+The separate native project uses launcher Unreal 5.8.4. Follow [its guide](../native/Aquila/README.md) for build, test and packaging.
+Its SDK and generated files remain local and ignored; the build wrapper does not alter DuskForge or global SDK settings.
+Native checks and remaining device gaps belong in [native verification](../Docs/Testing/native-foundation-verification.json).
+Commands below describe the retained browser/Electron reference, not the native runtime.
+
 ## Existing commands
 
 Run in the repository root. Preserve `package-lock.json`; use `npm ci` on a fresh checkout.

@@ -1,0 +1,123 @@
+Repository: D:/OtherProjects/AquilaCodeDark.
+Task: Aquila native foundation and business/studio discussion.
+Read AGENTS.md and Docs/TaskRoutes.md, then Docs/Handoffs/HANDOFF_2026-11-15_game-direction.md in full.
+Read native/Aquila/README.md and Docs/Testing/native-foundation-verification.json for commands, hashes and gaps.
+Phone evidence: Docs/Testing/native-android-device-verification.json.
+Latest UI evidence: Docs/Testing/native-mobile-ui-verification.json.
+Owner authorized local native work with launcher Unreal 5.8.4, separate from DuskForge's source engine.
+Windows and Android packages pass. Six native automation groups pass after fixing mid-flight ammunition switching.
+Round-37 game installed on authorized Galaxy: Samsung SM-S948U, Android 17/API 37, arm64-v8a; retail model not inferred.
+Actual phone rendering, injected touch, automatic combat, background/relaunch and update save preservation pass.
+Owner found some phone menus too small. Round 38 adds larger bold type, larger buttons, three command tabs and menu hiding.
+Windows and Android packages pass; desktop and phone-layout previews render at verified 1600x900 and exit cleanly.
+Round 39: toggling USB debugging and reconnecting restored access. Final larger-menu update installed; two clipped labels fixed.
+Final Android package: 167574191 bytes, SHA-256 0be5f6999c21390ef6179b657d2d5cd8917a5f8dfae7a6a6b70facdfce62c32b; installed hash matches.
+All 58 earlier save revisions survived unchanged; exact campaign restored before input checks. Final journal contains 65 revisions.
+Actual 2340x1080 phone menus inspected. Tabs, menu hiding, bridge walking, saving and active-camera exclusion checks pass.
+Owner confirms larger labels and buttons feel good. Latest editor/Windows/Android builds pass; Windows previews predate final phone-label fixes.
+Phone left paused in exterior Navigation view; subsequent owner play unobserved. No save data was cleared.
+Readability update complete. Broader ergonomics and multitouch remain unverified.
+Sustained performance, heat/battery/memory, physical desktop input, cloud linking and Apple builds remain unverified or unbuilt.
+Owner has no Mac or iPhone. No cloud provider or purchase model chosen.
+Single-player, coordinated Steam/mobile release and one shared account/save remain accepted targets, with no release date.
+Future website retains Three.js and space/glass styling, gameplay backgrounds, news, logs and store links; no playable public game.
+Project-local SDK tools/caches remain ignored; wrapper environment changes affect only child processes.
+Browser source and wrap pushed at 39c8bcd. Native source, tools and records remain local and uncommitted.
+Preview 4200, reports 8952/8953, Epic Launcher and local ADB remain running. No builds, tests, transfers or paid jobs active.
+Phone protection restoration remains unverified: disable USB debugging and restore Auto Blocker after USB testing.
+Preserve peer work, shared staging, DuskForge settings and excluded secrets/assets. No spend, transfer, deployment, commit or push authority added.
+Report: http://127.0.0.1:8953/?agentreport=1&paseoAgent=ba50e3be-cc60-4d52-880e-1c84a67af008
+Report folder: reports/game-direction/; round 73 proposes resuming the first expedition. Northwest send request closed; awaiting provider reply.
+Northwest contact page opened and rechecked: https://www.northwestregisteredagent.com/contact-us.
+Filled Jacob Mott, the owner's supplied email and exact version 4 into Message, including its subject line.
+Browser readback verifies the complete 2,710-character message and blank company/phone fields, as requested.
+Owner shared Northwest's confirmation; browser independently shows https://www.northwestregisteredagent.com/thanks.
+Evidence: Docs/Research/northwest-inquiry-confirmation-v1.json. Agent did not submit or resend. Final payload and email delivery not captured.
+Live Texas business-address service selection shows $99 for the lease/suite/20-scan plan. No company or payment details entered.
+Northwest says unique suites are assigned after signup; exact Texas address, lease specimen and complete bundle quote remain unconfirmed.
+Current inquiry: Docs/Research/northwest-texas-package-inquiry-v4.txt; earlier drafts preserved. Inspection: Docs/Research/northwest-texas-package-check-v1.json.
+Owner now prefers three to six months to avoid immediate signup pressure; draft states tentative timing and information gathering only.
+This is not a committed formation date or game release schedule. Inquiry submitted; no purchase authorized.
+Owner requests a collegial tone: polite questions and appreciation, not demands.
+Contact details supplied and filled; do not re-ask. Personal email deliberately omitted from tracked records.
+Submission is complete. Do not send a duplicate or re-ask permission. No substantive reply received in this session.
+After a reply, inspect exact address, agreement, permitted uses and costs; distinguish Northwest permissions from Google/D&B approval.
+Proposed next scope: signal, automatic travel/survey/combat, salvage and one saved starting-turret upgrade, then sustained performance checks.
+Read Docs/Plans/NATIVE_FOUNDATION.md#proposed-next-step-first-expedition. This proposes gameplay before cloud selection; owner has not accepted it yet.
+Shared saves and Apple verification remain required and unfinished. Round 73 reaffirms the expedition proposal, not its implementation.
+Game work remains paused from the business discussion; resume only after direction. Northwest's reply is not a technical blocker.
+For business, privacy or store questions, read knowledge/publishing-business.md first; it links dated evidence and remaining checks.
+Owner explicitly requests reuse instead of repeating this discussion. Do not re-ask settled facts or rerun broad research without a new gap.
+Current research: http://127.0.0.1:8776/?project=aquila-code-dark#31c10ef813054b3fb48a080b0fc3a5ac
+Key: texas-llc-address-provider-selection-v1:run-1. Version 1 saved November 16 at 11:30:17 p.m. Central; retrieved byte-for-byte.
+Complete prompt and metadata: Docs/Research/texas-llc-address-provider-selection-prompt-v1.md and matching metadata-v1.json.
+Receipt: Docs/Research/texas-llc-address-provider-selection-receipt-v1.json. Exact prompt readback matches SHA-256 d37b22a6d219148d5f317338bce5855830ca827471d68a424fbf3609a8ed1936.
+Result: Assets/Research/texas-llc-address-provider-selection/result-v0001.md; 94421 bytes; SHA-256 bff22de9d6145afcaad0c1920d05fee47e99a34ea6be619f1428e514d58a1221.
+Retrieval receipt: Docs/Research/texas-llc-address-provider-selection-retrieval-v0001.json. Original bytes remain unchanged.
+Review receipt: Docs/Research/texas-llc-address-provider-selection-review-v0001.json. All 296 lines read; core primary sources checked; exact version 1 marked reviewed.
+Northwest ranks first for practical fit/cost, Texan second, iPostal1 third. No provider's exact Texas Google acceptance is proven.
+Suggested Northwest $99 annual address/20-scan/lease option yields $438 base first year and $224/year afterward, excluding processing and extras.
+Lease is not mandatory initial organization-registration proof; cheaper $49 tier yields $388/$174 if sufficient for the actual task.
+Resolve exact address format/permitted use, agreement specimen, itemized quote and Google/D&B treatment before relying on store privacy.
+Texas public reporting asks where records and daily operations occur; assess actual public fields separately. No complete anonymity promised.
+Full source/disposition notes: knowledge/native-release-direction.md#provider-research-reviewed-round-65. New inquiry prepared in round 66, not sent.
+The earlier apparently unsaved upload is undiagnosed; do not claim deletion, data loss or an application bug.
+Compare Northwest, Texan Registered Agent at texasregisteredagent.net, and iPostal1's exact Texas company-address plans.
+Target Google Play ORGANIZATION enrollment, supporting documents, permitted use, outcome evidence, privacy, continuity and total costs.
+Prior personal-account research: http://127.0.0.1:8776/?project=aquila-code-dark#cf71e97b7df84637b5180b6ea8662f0d
+Key: google-play-texas-virtual-addresses-v1:run-1. Returned version 1 read completely, preserved unchanged and triaged.
+Original: 56684 bytes; SHA-256 e8853fad7aa72492d035d15e44d5e8a4d4b30f5238e52aa3bca3bd74c39ebbc7.
+Review receipt: Docs/Research/google-play-texas-virtual-addresses-review-v0001.json.
+Research synthesis: knowledge/native-release-direction.md#google-virtual-address-research-reviewed-round-57. Its original and receipt stay unchanged.
+Historical receipt status: knowledge/native-release-direction.md#provider-research-receipt-confirmed-round-64.
+Decision and research scope: knowledge/native-release-direction.md#llc-path-and-provider-selection-round-63.
+Owner chooses to pursue a Texas LLC plus business address. Provider/package/company name remain unselected; no filing, purchase or signup started.
+Local Windows/Android testing can continue without an LLC or Play Console. Native implementation remains paused for discussion.
+Owner checked employment and confirms no LLC conflict or employer ownership issue for outside-work creations. Both are resolved by owner confirmation.
+Do not request this clearance again without new facts. No independent contract review or employer contact is claimed.
+The earlier suggestion to defer business costs until playable proof is not a blocker on the owner's chosen company route.
+Google says D-U-N-S can take up to 30 days; allow setup lead time.
+Northwest currently offers free basic domain/email without an LLC purchase, with domain privacy. No provisioning tested.
+Email signup does not automatically publish a home address; business email does not replace Google legal-address verification.
+Sole ownership/profits generally coexist with employment. Owner's specific employment/IP concerns are now resolved; general background stays in dated history.
+Earlier evidence: knowledge/native-release-direction.md#personal-versus-organization-addresses-and-northwest-example-round-59.
+Zensoul LLC names Northwest on its website; its monetized Google Play listing shows the same Wyoming business address.
+Exact Northwest plan, verification documents and Texas acceptance remain unverified. No Wyoming formation recommendation inferred.
+An organization account verifies company name/address against D-U-N-S and Google payments records; owning an LLC alone does not change a personal account.
+Prior contact route: knowledge/native-release-direction.md#google-contact-route-and-posted-support-replies-round-58.
+Google's fallback form has Creating a developer account and Individual options for people unable to create/access Play Console.
+Form: https://support.google.com/googleplay/android-developer/contact/general_contact. No submission or response tested.
+Posted support emails in a Swedish-language thread refuse virtual offices for personal accounts; authenticity and Texas applicability remain unverified.
+This conflicts with positive volunteer guidance and lowers confidence in the personal-account workaround. No LLC requirement inferred.
+Texan accepts individual subscribers; neither candidate has established Google approval for this U.S. monetized personal account.
+Unsent support wording asks address eligibility, exact proof and which address appears publicly. No contact sent or signup begun.
+Earlier broad research: texas-game-publishing-privacy-employment-v1:run-1, job bd6cbf0bf4e64935a6b993aa171316df.
+Its version 1 remains retrieved, preserved unchanged and triaged; core sources checked.
+Original hash, review receipt, accepted claims and gaps: knowledge/native-release-direction.md#texas-publishing-research-reviewed-round-51.
+Provider history: knowledge/native-release-direction.md#northwest-and-texan-address-candidates-round-55. Round 63 adds iPostal1 and company-account focus.
+Northwest Texas virtual office: $49/year for 15 scans; $99/year for 20 scans and lease. Standalone service explicitly offered.
+Texan virtual office: $19/month, Austin address, suite, unlimited scans, lease and phone. Published prices, no checkout verification.
+Earlier personal-account findings do not establish the organization's proof rules. Current research must check those separately.
+iPostal1 business plans start at $14.99/month or $149/year, location-dependent; content scans and registered-agent service cost extra.
+Use United States-only planning. No live store settings changed; company route chosen for further provider selection.
+Apple permits country selection. EU distribution requires verified trader details, but no address physically located in Europe.
+Personal Google monetization is allowed. Employment and basic LLC tax questions researched; no contract review, filing or tax work started.
+Last-read inbox: reports/game-direction/inbox/20261115T015927Z.json. Read newest real inbox after a submission; never fabricate one.
+Texas, no existing business and sole ownership confirmed. LLC route chosen; exact provider, package and company name remain open.
+Steam accepts individuals; Google personal accounts can monetize. No representative evidence establishes what most game developers choose.
+Steam public studio labels differ from legal onboarding identity. Google Play personal accounts also publicly show legal name, country and developer email.
+Google Play monetization also exposes the full legal address. A studio display name alone does not hide individual identity there.
+Do not expose the home address. Organization accounts also disclose their legal address; LLC formation alone does not solve this.
+Specific Google address acceptance is unverified. UK/Japan guides document business-address success; adapt their process to Texas before signup.
+No complete Texas personal-account Google approval case established for either provider. LLC remains optional.
+Texas individual DBA requires residence address; assess privacy before filing or renting an address.
+Side-business ownership and outside-work IP checks are resolved by the owner's November 16 confirmation. Do not leave them listed as open questions.
+Android target and local work are not canceled.
+Apple permits a verified PO box for individual EU trader public contact details; enrollment has separate address rules.
+Steam collects an address privately. No equivalent mandatory public listing rule found in reviewed docs; no universal privacy guarantee.
+No entity name or account created; no signup/filing begun. All three reports triaged; review does not prove every claim or authorize action.
+Read knowledge/native-release-direction.md for official identity rules and later Google closed-testing requirements; local phone tests do not satisfy those.
+Shared-save service choice, login/sync, conflict recovery and a Windows/Android/Windows campaign round trip remain later foundation work.
+No service provisioned or integration started in this discussion. Phone can stay unplugged during planning.
+Broader controls, sustained phone performance and Apple access remain open verification work.
+Do not start any of this. Read, say where things stand, then wait.

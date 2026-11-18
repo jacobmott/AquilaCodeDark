@@ -1,0 +1,102 @@
+{
+  "id": "1caac6482b7b4aa4803ae28d63b1c53d",
+  "project": "aquila-code-dark",
+  "external_key": "texas-llc-address-alternatives-v1:run-1",
+  "title": "Beyond Northwest: Texas LLC address alternatives for game publishing",
+  "prompt_hash": "32a185ec5799b42a941a70cf28633b100160ca9448190420a0438550d159a34e",
+  "metadata": {
+    "calling_provider": "openai",
+    "task": "Aquila game publishing business discussion, round 82",
+    "purpose": "Compare alternatives beyond Northwest, Texan Registered Agent and iPostal1 for a Texas LLC and public store address privacy.",
+    "owner_authority": "Current owner requested Perplexity research to discover additional or better providers.",
+    "prior_research": [
+      {
+        "id": "31c10ef813054b3fb48a080b0fc3a5ac",
+        "external_key": "texas-llc-address-provider-selection-v1:run-1",
+        "reviewed_version": 1
+      },
+      {
+        "id": "cf71e97b7df84637b5180b6ea8662f0d",
+        "external_key": "google-play-texas-virtual-addresses-v1:run-1",
+        "reviewed_version": 1
+      }
+    ],
+    "source_files": [
+      {
+        "path": "Docs/Research/northwest-texas-package-reply-v1.json",
+        "sha256": "a924c1ef47cb7a3bddb2c17740817e6de189dc3abd0148b5a54ccb7c8e39d072"
+      },
+      {
+        "path": "Docs/Research/texas-llc-address-provider-selection-review-v0001.json",
+        "sha256": "e9e899810d67d57baa724446bca70f4aff0f659fbe89356cb6e0cc9de7212fdd"
+      },
+      {
+        "path": "knowledge/publishing-business.md",
+        "sha256": "0a3c727997788e690f4ef2ce72c338be4645ec316136670f022fed8519394947"
+      }
+    ],
+    "knowledge_hub": {
+      "provider": "openai",
+      "project": "aquila-code-dark",
+      "queries": [
+        {
+          "query": "virtual office",
+          "request_id": "req_2277f32a2d55471abad6383cbaca2c73",
+          "outcome": "empty",
+          "complete_for_scope": true
+        },
+        {
+          "query": "Northwest",
+          "request_id": "req_5f6485a39b7445c7ae4efcb859641913",
+          "outcome": "unrelated visible source hits; paginated results not exhausted"
+        },
+        {
+          "query": "registered agent",
+          "request_id": "req_aa1b71ceba294c9e9896de278187ce0c",
+          "outcome": "unrelated plugin, filmmaking and engine documentation hits; no next page"
+        }
+      ],
+      "gap": "No usable provider comparison identified in these scoped searches. Existing project research is retained as the baseline."
+    },
+    "result_contract": {
+      "required_headings": [
+        "Findings",
+        "Limitations"
+      ],
+      "min_chars": 800
+    },
+    "scope_limits": [
+      "Local research request only; owner runs Perplexity manually.",
+      "No external contact, purchase, formation, signup, commit, push or deployment."
+    ],
+    "submitted_prompt_path": "D:\\OtherProjects\\AquilaCodeDark\\Docs\\Research\\texas-llc-address-alternatives-prompt-v1.md",
+    "submitted_prompt_sha256": "32a185ec5799b42a941a70cf28633b100160ca9448190420a0438550d159a34e"
+  },
+  "created": "2026-11-18T00:38:51.430604+00:00",
+  "updated": "2026-11-18T01:17:46.010795+00:00",
+  "state": "reviewed",
+  "reviewed_version": 1,
+  "review_note": "Read all 113 lines and preserved the unchanged 23374-byte version 1. Useful wider comparison; Northwest remains preferred for low-volume startup. Primary checks confirm Afterplace's Texas public-address match and correct Texas Virtual Office lease, unlimited scans, included agent year and $615/$205 base costs. Shared software does not prove common ownership; 90-day terms do not guarantee refunds. See knowledge/publishing-business.md#broader-provider-research-reviewed-round-83 and Docs/Research/texas-llc-address-alternatives-source-checks-v0001.json. No purchase or outreach.",
+  "results": [
+    {
+      "version": 1,
+      "sha256": "3ab674ea1f967717becc3ee987942fde6cc0ae1cca94b85fa5c7e9ce784e16a4",
+      "filename": "Beyond Northwest  Texas LLC Address Alternatives for Game Publishing.md",
+      "created": "2026-11-18T01:13:34.522760+00:00",
+      "path": "C:\\ResearchConsole\\data\\projects\\aquila-code-dark\\topic-texas-llc-address-alternatives-v1-run-1--1caac6482b7b4aa4803ae28d63b1c53d\\result-v0001.md"
+    }
+  ],
+  "removed_results": [],
+  "latest_version": 1,
+  "reviews": [
+    {
+      "version": 1,
+      "created": "2026-11-18T01:17:46.011878+00:00",
+      "note": "Read all 113 lines and preserved the unchanged 23374-byte version 1. Useful wider comparison; Northwest remains preferred for low-volume startup. Primary checks confirm Afterplace's Texas public-address match and correct Texas Virtual Office lease, unlimited scans, included agent year and $615/$205 base costs. Shared software does not prove common ownership; 90-day terms do not guarantee refunds. See knowledge/publishing-business.md#broader-provider-research-reviewed-round-83 and Docs/Research/texas-llc-address-alternatives-source-checks-v0001.json. No purchase or outreach."
+    }
+  ],
+  "folder": "C:\\ResearchConsole\\data\\jobs\\1caac6482b7b4aa4803ae28d63b1c53d",
+  "url": "http://127.0.0.1:8776/?project=aquila-code-dark#1caac6482b7b4aa4803ae28d63b1c53d",
+  "archive_folder": "C:\\ResearchConsole\\data\\projects\\aquila-code-dark\\topic-texas-llc-address-alternatives-v1-run-1--1caac6482b7b4aa4803ae28d63b1c53d",
+  "prompt_path": "C:\\ResearchConsole\\data\\projects\\aquila-code-dark\\topic-texas-llc-address-alternatives-v1-run-1--1caac6482b7b4aa4803ae28d63b1c53d\\prompt.md"
+}

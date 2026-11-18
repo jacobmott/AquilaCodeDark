@@ -1,5 +1,13 @@
 # Application architecture
 
+## Native foundation, 2026-11-15 local
+
+Separate C++ project under `native/Aquila/`, pinned to launcher Unreal 5.8.4. The browser prototype below remains the design reference.
+The native model uses fixed-step navigation and traveling-projectile combat, with a separate Slate interface and source-authored blockout scene.
+Portable JSON revisions preserve campaign identity, world seed, navigation, combat state and flying rounds; device controls remain separate.
+This first scene has one planet backdrop and one bridge. It does not yet port full exploration, shuttles or surface travel.
+Native files, save contract, build commands and current limits: [native guide](../native/Aquila/README.md).
+
 ## Active universe, 2026-11-15
 
 The owner approved building the shared 3D world with glass overlays after the Robinhood reference discussion.

@@ -1,0 +1,20 @@
+{
+  "id": "0013c8c0a3bb4ac982a44417de36ddf3",
+  "project": "aquila-code-dark",
+  "external_key": "texas-business-address-reliability-v1:run-1",
+  "state": "returned",
+  "latest_version": 1,
+  "reviewed_version": null,
+  "url": "http://127.0.0.1:8776/?project=aquila-code-dark#0013c8c0a3bb4ac982a44417de36ddf3",
+  "results": [
+    {
+      "version": 1,
+      "sha256": "7a1e5f5446e236557966b16625265c836687cbf266a873aac93f3b1ec1504b4e",
+      "filename": "Texas business address providers  reliability, stability and proven service.md",
+      "created": "2026-11-18T02:22:07.014648+00:00",
+      "path": "C:\\ResearchConsole\\data\\projects\\aquila-code-dark\\topic-texas-business-address-reliability-v1-run-1--0013c8c0a3bb4ac982a44417de36ddf3\\result-v0001.md"
+    }
+  ],
+  "removed_results": [],
+  "inspection": "Metadata only during session wrap. Original body not retrieved or reviewed; retain as next-session work."
+}

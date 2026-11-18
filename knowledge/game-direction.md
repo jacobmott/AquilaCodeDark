@@ -374,6 +374,42 @@ Neither general tactical planning nor automatic projectile evasion is implemente
 Details: [architecture](architecture.md). Evidence: [automatic helm](../Docs/Testing/automatic-helm-verification.json).
 Report round 29 records the change. No commit, push, deployment, transfer, paid generation or research submission is authorized.
 
+## Native release proposal, 2026-11-15 UTC
+
+Owner requests discussion of rebuilding the proven browser concept in Unreal for Steam, Apple and Android.
+The proposed website becomes an information and store-link destination. No migration or website changes are approved yet.
+[Native release direction](native-release-direction.md) records the recommendation, official sources and supplied AI-disclosure conversation.
+Recommended release order: Steam first, with physical phone testing from the first native slice. The owner's preference remains open.
+Accepted gameplay principles remain intact; platform choice, first release scope and minimum devices remain proposals.
+Implementation stays paused. Report round 31 records this discussion; previous wrap publication authority is consumed.
+
+## Shared progress and website direction, 2026-11-15 UTC
+
+Owner favors releasing Steam and mobile together, with the same account and save available through linking or login.
+Single-player is explicit: no multiplayer or networked gameplay. Online identity and save synchronization are a separate service concern.
+This removes multiplayer from the planned game scope; older references remain historical, not future commitments.
+The website will contain no playable game. Keep Three.js, space/glass styling, news, development logs and real store links.
+Background gameplay videos are a proposed website feature. Existing browser gameplay remains a development reference.
+[Native release direction](native-release-direction.md) separates these choices from proposed offline saves, conflict handling and account architecture.
+Report round 32 answers the previous release-order question from direct chat. No migration, backend or website implementation started.
+
+## Native direction agreed and saved, 2026-11-15 UTC
+
+Owner agrees with the preceding proposal, including shared progress, offline local saving, later synchronization and preserved conflict versions.
+The coordinated native release target and separate marketing website are accepted direction; service provider and commercial scope remain open.
+The owner asks to preserve discussion and decisions and asks what comes next. This does not resume implementation or grant new publication authority.
+The [native foundation brief](../Docs/Plans/NATIVE_FOUNDATION.md) proposes a small Unreal battle/interior and desktop/phone save round trip.
+Report round 33 records agreement and the proposed sequence. The current browser prototype remains unchanged.
+
+## Native foundation started: 2026-11-15
+
+Owner authorizes the next milestone and selects launcher Unreal 5.8.4, separate from DuskForge's source engine.
+Windows desktop and Galaxy S26 Plus lead feasibility; Mac/iPhone access is unavailable.
+Native project and workflow: [project guide](../native/Aquila/README.md). Native evidence stays separate from browser receipts.
+Local foundation includes flagship/planet/bridge, automatic command navigation and projectile combat, plus versioned local save revisions.
+Cloud accounts, hosted synchronization, Android execution and Apple proof remain unfinished. Existing playable website remains unchanged.
+No new commit, push, asset transfer, paid generation or website deployment is authorized.
+
 ## Evidence and limits
 
 Local source contains the quoted landing introduction, ship catalog markup and isometric Phaser code.

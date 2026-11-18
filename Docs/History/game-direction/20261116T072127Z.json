@@ -1,0 +1,8 @@
+{
+  "source": "Docs/Handoffs/HANDOFF_2026-11-15_game-direction.md",
+  "archive": "Docs/History/game-direction/20261116T072127Z.md",
+  "archived_at": "2026-11-16T07:21:27.861551+00:00",
+  "sha256": "17f3a45802403993cec6553ed54f0968df9a36cfd848f631551fd799c7e86474",
+  "bytes": 9841,
+  "reason": "Preserve round 54 before adding the two user-supplied address-service candidates."
+}

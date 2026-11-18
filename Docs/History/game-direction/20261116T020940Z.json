@@ -1,0 +1,20 @@
+{
+  "archived_at_utc": "2026-11-16T02:09:40.192699+00:00",
+  "files": {
+    "Docs/Handoffs/HANDOFF_2026-11-15_game-direction.md": {
+      "archive": "Docs/History/game-direction/20261116T020940Z.md",
+      "sha256": "d7f47b2768dfa7a2ca8ffa3320f0fefd9af26e659ed561e4da3739431c822686",
+      "bytes": 7856
+    },
+    "Docs/Testing/native-foundation-verification.json": {
+      "archive": "Docs/History/game-direction/20261116T020940Z-native-verification.json",
+      "sha256": "cee7c58810ef361703fc206109e6c052f34b06438cc3fca1fb42e6af9466586a",
+      "bytes": 23765
+    },
+    "Docs/Testing/native-android-device-verification.json": {
+      "archive": "Docs/History/game-direction/20261116T020940Z-android-verification.json",
+      "sha256": "f37c4e4fa21f554aa06086aeb7fdef81181f456b30c88fa7e91804003c6f4558",
+      "bytes": 10311
+    }
+  }
+}

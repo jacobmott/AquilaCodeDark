@@ -7,6 +7,9 @@ Search by task and read matching notes. Current state belongs in handoffs; histo
 | --- | --- |
 | [architecture.md](architecture.md) | Active universe, automatic battleship helm, walkable ship, projectile combat, renderer, streaming and saves |
 | [game-direction.md](game-direction.md) | Owner's choices, first playable slice and remaining game design |
+| [native-release-direction.md](native-release-direction.md) | Native release, shared saves, marketing website, business/studio discussion and official sources |
+| [publishing-business.md](publishing-business.md) | Start here for saved Texas LLC, Northwest, email, employment, studio branding and store-address privacy findings |
+| [Native project guide](../native/Aquila/README.md) | Launcher 5.8.4 build/run workflow, local save contract, Android/iOS gaps and native evidence |
 | [combat-design.md](combat-design.md) | Agreed combat vision, implemented projectile starter encounter and open progression choices |
 | [interface-direction.md](interface-direction.md) | Robinhood reference and implemented full-screen universe with glass overlays |
 | [development.md](development.md) | Installation, build, run, recovery and deployment boundary |

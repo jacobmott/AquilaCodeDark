@@ -1,0 +1,89 @@
+{
+  "id": "0013c8c0a3bb4ac982a44417de36ddf3",
+  "project": "aquila-code-dark",
+  "external_key": "texas-business-address-reliability-v1:run-1",
+  "title": "Texas business address providers: reliability and proven service before price",
+  "prompt_hash": "5da5ef20e7d0f91008f9380b219a6645baab67bfc1c4b6ffdccddd5ec434e397",
+  "metadata": {
+    "calling_provider": "openai",
+    "task": "Aquila business discussion, round 85",
+    "purpose": "Correct the missing quality comparison: stable premises, dependable mail, responsive support and demonstrated service outcomes before price.",
+    "owner_context": "Owner prioritizes robust, stable, proven service over price and asks where to go next after the earlier cost-led ranking.",
+    "execution": "Local follow-up prompt preparation; owner runs Perplexity manually. No paid provider execution.",
+    "prior_research": [
+      {
+        "id": "1caac6482b7b4aa4803ae28d63b1c53d",
+        "external_key": "texas-llc-address-alternatives-v1:run-1",
+        "reviewed_version": 1
+      }
+    ],
+    "source_files": [
+      {
+        "path": "knowledge/publishing-business.md",
+        "sha256": "4c7e12e47cb039ee5f5b3a88736689ba71a73af4e2b22d2eb91e800b4f4e0cb5"
+      },
+      {
+        "path": "Docs/Research/texas-llc-address-alternatives-source-checks-v0001.json",
+        "sha256": "550312951d8e164e623b94ef64215d87c3e123606f28ab5c66e2f8d1feeaec4c"
+      },
+      {
+        "path": "Docs/Research/texas-llc-address-alternatives-review-v0001.json",
+        "sha256": "54d8ff10c3a7b7dff0527cf89a6677b80f9cdc8c281c67698a6df66175a77f31"
+      },
+      {
+        "path": "Docs/Research/northwest-texas-package-reply-v1.json",
+        "sha256": "a924c1ef47cb7a3bddb2c17740817e6de189dc3abd0148b5a54ccb7c8e39d072"
+      }
+    ],
+    "knowledge_hub": {
+      "provider": "openai",
+      "project": "aquila-code-dark",
+      "queries": [
+        {
+          "query": "virtual office",
+          "request_id": "req_b173b8746cae490b8ebb67d1e4be6e45",
+          "outcome": "empty",
+          "complete_for_scope": true
+        },
+        {
+          "query": "mail forwarding",
+          "request_id": "req_8ecefc83916a411b821cf7d069d5c9b4",
+          "outcome": "empty",
+          "complete_for_scope": true
+        },
+        {
+          "query": "Northwest",
+          "request_id": "req_04dc897ada044c4ba493f91038ddf805",
+          "outcome": "Visible hits are art-style source references; paginated results not exhausted. First CLI attempt exited 5; retry succeeded."
+        }
+      ],
+      "gap": "No usable business-provider reliability comparison identified in the scoped searches. Existing project evidence remains the baseline."
+    },
+    "result_contract": {
+      "required_headings": [
+        "Findings",
+        "Limitations"
+      ],
+      "min_chars": 800
+    },
+    "scope_limits": [
+      "Local prompt submission only; no external messages, account creation, filing, purchase, commit, push or deployment.",
+      "Earlier broad comparison remains reviewed; this is a distinct quality-evidence follow-up."
+    ],
+    "submitted_prompt_path": "D:\\OtherProjects\\AquilaCodeDark\\Docs\\Research\\texas-business-address-reliability-prompt-v1.md",
+    "submitted_prompt_sha256": "5da5ef20e7d0f91008f9380b219a6645baab67bfc1c4b6ffdccddd5ec434e397"
+  },
+  "created": "2026-11-18T01:36:57.117645+00:00",
+  "updated": "2026-11-18T01:36:57.117645+00:00",
+  "state": "queued",
+  "reviewed_version": null,
+  "review_note": null,
+  "results": [],
+  "removed_results": [],
+  "latest_version": 0,
+  "reviews": [],
+  "folder": "C:\\ResearchConsole\\data\\jobs\\0013c8c0a3bb4ac982a44417de36ddf3",
+  "url": "http://127.0.0.1:8776/?project=aquila-code-dark#0013c8c0a3bb4ac982a44417de36ddf3",
+  "archive_folder": "C:\\ResearchConsole\\data\\projects\\aquila-code-dark\\topic-texas-business-address-reliability-v1-run-1--0013c8c0a3bb4ac982a44417de36ddf3",
+  "prompt_path": "C:\\ResearchConsole\\data\\projects\\aquila-code-dark\\topic-texas-business-address-reliability-v1-run-1--0013c8c0a3bb4ac982a44417de36ddf3\\prompt.md"
+}

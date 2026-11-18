@@ -1,0 +1,473 @@
+{
+  "schema_version": 1,
+  "observed_at_utc": "2026-11-17T08:13:41.039310+00:00",
+  "report_round": 74,
+  "scope": "First native expedition, local Windows-first development; Android package only, no new physical-phone test.",
+  "authority": {
+    "owner_approval": "yes, let's resume. Let's do that",
+    "primary_development_target": "Windows",
+    "phone_policy": "Batch physical checks at playable milestones, relevant mobile changes or phone-specific defects. No continuous USB."
+  },
+  "publication": {
+    "committed": false,
+    "pushed": false,
+    "deployed": false,
+    "store_submission": false
+  },
+  "engine": {
+    "distribution": "Epic Launcher installed build",
+    "version": "5.8.4",
+    "changelist": 58902052,
+    "path": "C:/Program Files/Epic Games/UE_5.8",
+    "duskforge_changed": false,
+    "global_toolchains_changed": false
+  },
+  "gameplay": {
+    "loop": [
+      "signal",
+      "automatic travel",
+      "90-second survey",
+      "automatic projectile battle",
+      "45-second salvage recovery",
+      "one turret refit"
+    ],
+    "reward": 120,
+    "upgrade_cost": 100,
+    "port_impact_multiplier": 1.5,
+    "remaining_salvage_after_first_upgrade": 20,
+    "baseline_simulated_seconds": 547.35,
+    "human_playtime_target_minutes": [
+      10,
+      15
+    ],
+    "human_pacing_verified": false,
+    "save_schema": 3,
+    "migrates_schemas": [
+      1,
+      2
+    ],
+    "practice_resets_active_expedition": false
+  },
+  "builds": {
+    "editor": {
+      "result": "passed",
+      "log": {
+        "path": ".runtime/r74-build-editor.log",
+        "bytes": 2315,
+        "sha256": "8d6c0fd85ec643b713c3e19972642f8c16e4e1a814ece7bd54cc4acdf17be0f4"
+      },
+      "seconds": 20.85
+    },
+    "windows": {
+      "result": "passed",
+      "log": {
+        "path": ".runtime/r74-package-win64.log",
+        "bytes": 72175,
+        "sha256": "f012ea3b4c7fac9b28c9f3fcd00dcc33233aa5959a939f7ce86531a7e458c5f1"
+      },
+      "seconds": 18.45
+    },
+    "android": {
+      "result": "passed",
+      "log": {
+        "path": ".runtime/r74-package-android.log",
+        "bytes": 100220,
+        "sha256": "d99e02bc4ead90a982ff078511908445e98931943112df42d323313bd0727cea"
+      },
+      "seconds": 29.11
+    }
+  },
+  "automation": {
+    "mode": "Unreal Editor NullRHI; real deterministic simulation, no human input or rendering.",
+    "passed": 11,
+    "failed": 0,
+    "not_run": 0,
+    "tests": [
+      {
+        "name": "Aquila.Combat.FrameRateAndHold",
+        "state": "Success"
+      },
+      {
+        "name": "Aquila.Combat.SwitchWithRoundsInFlight",
+        "state": "Success"
+      },
+      {
+        "name": "Aquila.Combat.TravelAndArmor",
+        "state": "Success"
+      },
+      {
+        "name": "Aquila.Expedition.CommandsFailureAndPracticeIsolation",
+        "state": "Success"
+      },
+      {
+        "name": "Aquila.Expedition.CompleteLoopAndUpgrade",
+        "state": "Success"
+      },
+      {
+        "name": "Aquila.Expedition.LegacyMigrationAndValidation",
+        "state": "Success"
+      },
+      {
+        "name": "Aquila.Expedition.ResumeAndRewardTransactions",
+        "state": "Success"
+      },
+      {
+        "name": "Aquila.Expedition.UpgradeImpactAndFrameParity",
+        "state": "Success"
+      },
+      {
+        "name": "Aquila.Navigation.ClearanceAndArrival",
+        "state": "Success"
+      },
+      {
+        "name": "Aquila.Save.InterruptionAndConflict",
+        "state": "Success"
+      },
+      {
+        "name": "Aquila.Save.RoundTripMigrationAndRejection",
+        "state": "Success"
+      }
+    ],
+    "log": {
+      "path": ".runtime/r74-tests.log",
+      "bytes": 285769,
+      "sha256": "dc71c31fb141595d6c0c52cda77052861e8b776f56cf6c7a73f513614cda4ac2"
+    },
+    "export": {
+      "path": ".runtime/native-tests/index.json",
+      "bytes": 5323,
+      "sha256": "15d0edfcbf18a4d648d703f64f914077e52bcce5253437787c8abeb1f2e3901d"
+    }
+  },
+  "windows": {
+    "package": {
+      "path": ".runtime/native-package/Win64/Aquila/Binaries/Win64/Aquila.exe",
+      "bytes": 332061696,
+      "sha256": "c457b4865b0d5d8c404c9a6387501c189e804facac02c4fad70658aa32a0ecfc"
+    },
+    "captures": [
+      {
+        "path": "reports/game-direction/media/r74-desktop-available-1600.png",
+        "bytes": 793441,
+        "sha256": "f93cff64ca7291146aebff1a44cb7414d6180d750ed82738cf3dfdc5628fc455",
+        "pixels": [
+          1600,
+          900
+        ],
+        "inspected": true,
+        "scene": "desktop-available-1600",
+        "log": {
+          "path": ".runtime/expedition-r74/desktop-available-1600.log",
+          "bytes": 89354,
+          "sha256": "659ae064d972a530d45f815eb1bd689dce1d32d07b416d3642316c1c615cda7d"
+        },
+        "warnings_errors": 0,
+        "method": "Packaged Windows offscreen renderer. Phase fixtures except upgrade journal from passing simulation test; no input injection."
+      },
+      {
+        "path": "reports/game-direction/media/r74-touch-available.png",
+        "bytes": 1044676,
+        "sha256": "94b2cd7f1cae4057033ff92e06baf504029c6157179919e7391880efd6513571",
+        "pixels": [
+          2340,
+          1080
+        ],
+        "inspected": true,
+        "scene": "touch-available",
+        "log": {
+          "path": ".runtime/expedition-r74/touch-available.log",
+          "bytes": 89733,
+          "sha256": "37f94cd0239249d5073a6d0bf767a01c555bf5769b3b0ee0d7459ab023d1f4a3"
+        },
+        "warnings_errors": 0,
+        "method": "Packaged Windows offscreen renderer. Phase fixtures except upgrade journal from passing simulation test; no input injection."
+      },
+      {
+        "path": "reports/game-direction/media/r74-desktop-battle.png",
+        "bytes": 809782,
+        "sha256": "d9ea5aae83f847bea4d5be7828f3d4b697bc0f21f41fd23d85964f98a2b0f96c",
+        "pixels": [
+          1600,
+          900
+        ],
+        "inspected": true,
+        "scene": "desktop-battle",
+        "log": {
+          "path": ".runtime/expedition-r74/desktop-battle.log",
+          "bytes": 89336,
+          "sha256": "57ded75dff310ecf4c306fedee2a6f8bedf1d7e6636831c8b4c3d89949c3dcff"
+        },
+        "warnings_errors": 0,
+        "method": "Packaged Windows offscreen renderer. Phase fixtures except upgrade journal from passing simulation test; no input injection."
+      },
+      {
+        "path": "reports/game-direction/media/r74-touch-salvage.png",
+        "bytes": 1145406,
+        "sha256": "efdacef5f0c12b9b0e6db8a75e3b121df5e3ae5d3915907a09acffd0ad56b3ab",
+        "pixels": [
+          2340,
+          1080
+        ],
+        "inspected": true,
+        "scene": "touch-salvage",
+        "log": {
+          "path": ".runtime/expedition-r74/touch-salvage.log",
+          "bytes": 89601,
+          "sha256": "21e60eedd445810d8a5c17a88701d06022b265da4a0dcec1c4060715d7ef5857"
+        },
+        "warnings_errors": 0,
+        "method": "Packaged Windows offscreen renderer. Phase fixtures except upgrade journal from passing simulation test; no input injection."
+      },
+      {
+        "path": "reports/game-direction/media/r74-desktop-upgraded.png",
+        "bytes": 396811,
+        "sha256": "9e2ad1235c3be5322f8bd733d67062b331e30bfc5cfc8f10dcc166451e7be8f7",
+        "pixels": [
+          1600,
+          900
+        ],
+        "inspected": true,
+        "scene": "desktop-upgraded",
+        "log": {
+          "path": ".runtime/expedition-r74/desktop-upgraded.log",
+          "bytes": 89332,
+          "sha256": "d92d5cb4be03e48d4bb5373f3ed776613858e8d7a27734f9d16e696a3c0c45d3"
+        },
+        "warnings_errors": 0,
+        "method": "Packaged Windows offscreen renderer. Phase fixtures except upgrade journal from passing simulation test; no input injection."
+      },
+      {
+        "path": "reports/game-direction/media/r74-touch-bridge.png",
+        "bytes": 1476159,
+        "sha256": "c8ff8d07f4a3acb2031db9fb16cde797e701e2c7843c764853c1c4df188b118e",
+        "pixels": [
+          2340,
+          1080
+        ],
+        "inspected": true,
+        "scene": "touch-bridge",
+        "log": {
+          "path": ".runtime/expedition-r74/touch-bridge.log",
+          "bytes": 89632,
+          "sha256": "d46a6196b7dca01a4d67a2df488572b3dd9cdac02a6e72ec446d2b07d7cd0f86"
+        },
+        "warnings_errors": 0,
+        "method": "Packaged Windows offscreen renderer. Phase fixtures except upgrade journal from passing simulation test; no input injection."
+      },
+      {
+        "path": "reports/game-direction/media/r74-desktop-upgraded-reload.png",
+        "bytes": 397561,
+        "sha256": "65adeff2665daeb14df29c5b6306b0f9fe53b0a9533b46c789640dc3744c09bb",
+        "pixels": [
+          1600,
+          900
+        ],
+        "inspected": true,
+        "scene": "desktop-upgraded-reload",
+        "log": {
+          "path": ".runtime/expedition-r74/desktop-upgraded-reload.log",
+          "bytes": 89360,
+          "sha256": "ea53349dee23ea55f2dab9b416080096b5811218a43aa9cff0722a65edc72b80"
+        },
+        "warnings_errors": 0,
+        "method": "Packaged Windows offscreen renderer. Phase fixtures except upgrade journal from passing simulation test; no input injection."
+      }
+    ],
+    "render_runs_exit_zero": 7,
+    "packaged_upgrade_relaunch": {
+      "source": "Passing simulation test journal copied to isolated runtime directory.",
+      "source_revisions": 2,
+      "final_revisions": 4,
+      "original_revisions_unchanged": true,
+      "ancestry_intact": true,
+      "salvage": 20,
+      "port_turret_level": 1,
+      "completed_expeditions": 1,
+      "completion_phase_preserved": true,
+      "reward_not_duplicated": true
+    },
+    "input_tested": false,
+    "input_blocker": "Computer Use native pipe unavailable (os error 2), confirmed by both native control surfaces.",
+    "performance_measured": false
+  },
+  "android": {
+    "package": {
+      "path": ".runtime/native-package/Android/Aquila-arm64.apk",
+      "bytes": 167594175,
+      "sha256": "17abe6e27c7cfa111544e58ae95b18dd3e297eca23a0922f36fbc3f9bd33f11d"
+    },
+    "signature_verified_by_wrapper": true,
+    "zip_crc_check": "passed",
+    "embedded_payload_entries": [
+      "assets/main.obb.png"
+    ],
+    "installed_this_round": false,
+    "physical_device_tested_this_round": false,
+    "previous_phone_acceptance": "Round 39 enlarged menus accepted; historical evidence only for this changed build."
+  },
+  "repository_checks": {
+    "native_source_guard_files": 25,
+    "native_source_guard_failures": 0,
+    "safety_tests_passed": 6,
+    "safety_log": {
+      "path": ".runtime/r74-repo-safety.log",
+      "bytes": 1459,
+      "sha256": "5da63764c4b65d643154ba261a603a80fda57a3858c2d3397f865436ddd17aa1"
+    },
+    "environment_retry": "System Python lacked botocore; existing repository tools environment passed all six tests. No dependency installed.",
+    "git_diff_check_passed": true,
+    "shared_index_empty": true
+  },
+  "source_files": [
+    {
+      "path": "native/Aquila/Aquila.uproject",
+      "bytes": 504,
+      "sha256": "291e5e25715d6dd4ddebb8357d633edd6a5e46d754eff16ee8fc5569f239f4d4"
+    },
+    {
+      "path": "native/Aquila/Config/DefaultEngine.ini",
+      "bytes": 1046,
+      "sha256": "1f3f8283dba28a2cc72180143ce2aa4041dbadde3f6fe8fe8ade39691fa2e029"
+    },
+    {
+      "path": "native/Aquila/Config/DefaultGame.ini",
+      "bytes": 634,
+      "sha256": "9683e5657ea1f752b32a026cf9adf00275f1fc6651e676a58a516944a31edb4e"
+    },
+    {
+      "path": "native/Aquila/Config/DefaultInput.ini",
+      "bytes": 9466,
+      "sha256": "fcf01bc34d31f5956150a1f607bded3f2958742f924d5139063083ca51a8e569"
+    },
+    {
+      "path": "native/Aquila/README.md",
+      "bytes": 11716,
+      "sha256": "3fdac662b7808d422ef5f814cc07b3b5cd2be63f7e254d848734ad872809f156"
+    },
+    {
+      "path": "native/Aquila/Source/Aquila/Aquila.Build.cs",
+      "bytes": 351,
+      "sha256": "c04e01f30f0e71612ea3b29d4166a0e02ab7ec51953f0492ca01d39148f072ca"
+    },
+    {
+      "path": "native/Aquila/Source/Aquila/Aquila.cpp",
+      "bytes": 109,
+      "sha256": "eadc13117b3e0f955f4f6349aa4e1ae4302d3e6ed6506c7ca9fd0e54a2eee03b"
+    },
+    {
+      "path": "native/Aquila/Source/Aquila/AquilaExpedition.cpp",
+      "bytes": 7555,
+      "sha256": "4f559aa25dadc062f8abf091b541627de16b7600f6f02cd48d1205f5a696eed0"
+    },
+    {
+      "path": "native/Aquila/Source/Aquila/AquilaExpeditionTests.cpp",
+      "bytes": 11355,
+      "sha256": "06b60d4357c71e38a5e486768669febc06d600f9f3f44ed9234f333b9920ad6e"
+    },
+    {
+      "path": "native/Aquila/Source/Aquila/AquilaFlightPawn.cpp",
+      "bytes": 31813,
+      "sha256": "a560d0bbd4f503587e5a50040f9b04ca1818a83cd3ca060b502bcf178fb09a01"
+    },
+    {
+      "path": "native/Aquila/Source/Aquila/AquilaFlightPawn.h",
+      "bytes": 2274,
+      "sha256": "237dfee2f302416c61e37b291ade854efad15557aa4d10cfad9e8933aefe4a3b"
+    },
+    {
+      "path": "native/Aquila/Source/Aquila/AquilaGameMode.cpp",
+      "bytes": 2993,
+      "sha256": "8dfd236c6db37c5305edd85dd35dd8a186924689ba6d334dd1f53d2051b7b1bf"
+    },
+    {
+      "path": "native/Aquila/Source/Aquila/AquilaGameMode.h",
+      "bytes": 735,
+      "sha256": "b8a61114d00fafd27d632d1e8b05095fcd9aa6464e25067bd982766ddcce6975"
+    },
+    {
+      "path": "native/Aquila/Source/Aquila/AquilaSave.cpp",
+      "bytes": 12099,
+      "sha256": "d05353ccb2b181b6abd9117b73dc1844129bf753560d46f9d5d925f750611953"
+    },
+    {
+      "path": "native/Aquila/Source/Aquila/AquilaSave.h",
+      "bytes": 516,
+      "sha256": "bdc58bc04c86ed762e75c732e682d30f8936caeee7cf5689fd552a0a20486d35"
+    },
+    {
+      "path": "native/Aquila/Source/Aquila/AquilaSimulation.cpp",
+      "bytes": 8502,
+      "sha256": "56e2e378a9d907cf7b48ebd833dc01c499d46e346a1f245f73771c78476179c8"
+    },
+    {
+      "path": "native/Aquila/Source/Aquila/AquilaSimulation.h",
+      "bytes": 3114,
+      "sha256": "cc9310ad4a323570b005ee82359aa743d8adf90f538669b19ea325c2aa3dfbf0"
+    },
+    {
+      "path": "native/Aquila/Source/Aquila/AquilaTests.cpp",
+      "bytes": 8908,
+      "sha256": "8b16f5610ba8467466b990ae7963a186e2fa5524f16ad2931318d31e203958d8"
+    },
+    {
+      "path": "native/Aquila/Source/Aquila.Target.cs",
+      "bytes": 367,
+      "sha256": "bd65582c545e86aad144974fd67d9ad607123d741376ef116ed96dd8980657cb"
+    },
+    {
+      "path": "native/Aquila/Source/AquilaEditor.Target.cs",
+      "bytes": 426,
+      "sha256": "f54c341f5bf0e9982854586de5b4b43616c4092e2e3b56df19f273cd4ce78ad1"
+    },
+    {
+      "path": "native/Aquila/Source/AquilaTools/AquilaContentCommandlet.cpp",
+      "bytes": 5058,
+      "sha256": "803840d70a33389a2a2dd7603037d3ebe64e717332eee8614cb22f54c3f08beb"
+    },
+    {
+      "path": "native/Aquila/Source/AquilaTools/AquilaContentCommandlet.h",
+      "bytes": 248,
+      "sha256": "fa1b36a4be2ec0c39ba6c57b25b7c3eb677694548f282b88f6f671cf0db4601b"
+    },
+    {
+      "path": "native/Aquila/Source/AquilaTools/AquilaTools.Build.cs",
+      "bytes": 310,
+      "sha256": "7ecb2dcf36edab8a273a82893b9d67243417d86714b0f0388d6ce834b8c59525"
+    },
+    {
+      "path": "native/Aquila/Source/AquilaTools/AquilaTools.cpp",
+      "bytes": 86,
+      "sha256": "15cf015dc014bd6bf6ce66692116c74aed2a96354ac2eb8b6891b3553d7e2104"
+    },
+    {
+      "path": "scripts/native.ps1",
+      "bytes": 5566,
+      "sha256": "e46deb66f0cb02836fe222234128781c7033d577e8f8503eee97f5f6674c444b"
+    }
+  ],
+  "knowledge_hub": {
+    "provider": "openai",
+    "reused_external_code": false,
+    "scope": "Permitted generic UE5.7 SaveGame discovery passage, not 5.8 engine guidance.",
+    "source": "s_2052aa3e8b939ae9645994096d5086412b909f3d4a9f7c3b333eee99d2529825",
+    "version": "sha256:a88a09f909d2ea389d3640c52cc51d625ab6b1cc1aa150ec58dc72271537af98",
+    "byte_range": [
+      3504,
+      5518
+    ],
+    "passage_sha256": "96049a3d22f5ba7b18ce9fd5fc63aa22e8adba3cb04f915413d2e346cac0f824"
+  },
+  "remaining": [
+    "New expedition desktop mouse/keyboard and Galaxy touch playtest",
+    "Human mission pacing",
+    "Sustained frame pacing, memory, phone heat and battery",
+    "Shared account/cloud synchronization",
+    "Apple build and device access",
+    "Finished art and effects; broader campaign, crew and exploration"
+  ],
+  "notes": [
+    "Initial 888x500 capture discarded as resolution evidence; ForceRes recaptures verified exact dimensions.",
+    "No player save directory changed. All runtime fixtures and captured journals are isolated under ignored .runtime.",
+    "No transferred assets, purchases, provider generation or website change. Historical foundation receipts retained unchanged."
+  ]
+}

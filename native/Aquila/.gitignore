@@ -1,0 +1,11 @@
+Binaries/
+Intermediate/
+Saved/
+DerivedDataCache/
+.vs/
+*.sln
+*.slnx
+*.VC.db
+Content/
+Build/Android/
+!Build/Android/.gitkeep

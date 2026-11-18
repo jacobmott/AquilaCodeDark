@@ -1,0 +1,14 @@
+{
+  "project": "aquila-code-dark",
+  "id": "1caac6482b7b4aa4803ae28d63b1c53d",
+  "external_key": "texas-llc-address-alternatives-v1:run-1",
+  "title": "Beyond Northwest: Texas LLC address alternatives for game publishing",
+  "prompt_hash": "32a185ec5799b42a941a70cf28633b100160ca9448190420a0438550d159a34e",
+  "url": "http://127.0.0.1:8776/?project=aquila-code-dark#1caac6482b7b4aa4803ae28d63b1c53d",
+  "created": "2026-11-18T00:38:51.430604+00:00",
+  "state": "queued",
+  "latest_version": 0,
+  "prompt_file": "Docs/Research/texas-llc-address-alternatives-prompt-v1.md",
+  "metadata_file": "Docs/Research/texas-llc-address-alternatives-metadata-v1.json",
+  "verification": "Read back through the project-bound HTTP CLI; submitted prompt hash matches local bytes. No provider execution or result."
+}

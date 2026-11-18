@@ -1,0 +1,329 @@
+{
+  "schema_version": 1,
+  "observed_at_utc": "2026-11-16T01:53:42.938312+00:00",
+  "scope": "Authorized local Android installation and input/save smoke checks; one combat bug fixed and packages rebuilt.",
+  "device": {
+    "manufacturer": "Samsung",
+    "reported_model": "SM-S948U",
+    "android_release": "17",
+    "api_level": 37,
+    "abi": "arm64-v8a",
+    "capture_pixels": [
+      2340,
+      1080
+    ],
+    "usb_authorized": true,
+    "serial_retained": false,
+    "retail_model_inferred": false
+  },
+  "app": {
+    "application_id": "io.aquilacode.foundation",
+    "build": "Development ASTC arm64",
+    "target_sdk": 36,
+    "initial_install": "passed",
+    "initial_apk_sha256": "3b2f5708c09555276511084c5f97b41b1276ff4edd387640c32bdaff85cd587a",
+    "update": {
+      "apk_sha256": "8ddd912fc610e493fb3609672ec24d8a37e50772fb1a53b29f0d0397829151e0",
+      "installed_apk_sha256": "8ddd912fc610e493fb3609672ec24d8a37e50772fb1a53b29f0d0397829151e0",
+      "installed_hash_matches": true,
+      "bytes": 167570819,
+      "zip_crc_passed": true,
+      "revisions_before_update": 15
+    },
+    "signature_verified": true,
+    "embedded_content_verified": true,
+    "final_state": "Fresh standard-ammunition practice paused in exterior view; app left installed."
+  },
+  "controls": {
+    "method": "ADB input taps and gestures on the physical device, not simulated gameplay setters or human usability review",
+    "observed": [
+      "Resume/pause",
+      "Approach Vesper followed by hold",
+      "Bridge/exterior switching",
+      "Forward hold and look gesture",
+      "Practice reset and automatic projectile combat",
+      "Standard/piercing ammunition",
+      "Hold fire",
+      "Save voyage"
+    ],
+    "multitouch_tested": false
+  },
+  "local_persistence": {
+    "checks": {
+      "same_campaign_and_seed": true,
+      "background_saved_revision": true,
+      "background_state_unchanged": true,
+      "relaunch_state_unchanged": true,
+      "relaunch_saved_descendant": true,
+      "all_earlier_revisions_preserved": true
+    },
+    "before_sequence": 10,
+    "background_sequence": 12,
+    "after_sequence": 13,
+    "summary": {
+      "worldSeed": 7142,
+      "shipPosition": [
+        56863.333333335155,
+        0,
+        0
+      ],
+      "shield": 70,
+      "hull": 100,
+      "enemyShield": 0,
+      "enemyHull": 100,
+      "battleTime": 8.816666666666807,
+      "holdFire": true,
+      "piercing": true
+    },
+    "round_count": 16
+  },
+  "update_preserves_saves": {
+    "all_preupdate_revisions_preserved": true,
+    "update_restored_campaign_exactly": true
+  },
+  "combat_fix": {
+    "problem": "Late standard rounds set the armor-block flag after piercing was fitted, stopping compatible new fire.",
+    "behavior": "Old rounds still bounce; the current piercing loadout continues firing. Stale saved flags do not block it.",
+    "phone_checks": {
+      "restored_stale_flag_allows_damage": true,
+      "fresh_switch_with_old_rounds_wins": true,
+      "restored_enemy_hull": 0,
+      "fresh_enemy_hull": 0,
+      "fresh_victories": 2,
+      "fresh_battle_time": 17.516666666666314
+    },
+    "model_test": "Aquila.Combat.SwitchWithRoundsInFlight"
+  },
+  "automation": {
+    "created": "2026.11.16-01.45.06",
+    "passed": 6,
+    "failed": 0,
+    "tests": [
+      {
+        "name": "Aquila.Combat.FrameRateAndHold",
+        "state": "Success"
+      },
+      {
+        "name": "Aquila.Combat.SwitchWithRoundsInFlight",
+        "state": "Success"
+      },
+      {
+        "name": "Aquila.Combat.TravelAndArmor",
+        "state": "Success"
+      },
+      {
+        "name": "Aquila.Navigation.ClearanceAndArrival",
+        "state": "Success"
+      },
+      {
+        "name": "Aquila.Save.InterruptionAndConflict",
+        "state": "Success"
+      },
+      {
+        "name": "Aquila.Save.RoundTripMigrationAndRejection",
+        "state": "Success"
+      }
+    ]
+  },
+  "windows_recheck": {
+    "package": "passed",
+    "package_seconds": 107.03,
+    "packaged_runtime_exit_code": 0,
+    "capture": {
+      "path": "reports/game-direction/media/r37-windows-combat.png",
+      "bytes": 269841,
+      "sha256": "a82c37a17db1039cd6ddb776356109724685319c295723809dad128083aa88e1"
+    },
+    "input_method": "Development scene arguments and offscreen rendering"
+  },
+  "android_package_seconds": 157.53,
+  "media": [
+    {
+      "path": "reports/game-direction/media/r37-android-approach.png",
+      "bytes": 1309782,
+      "sha256": "9f592ac11e68af6ac029957888f195fef928fce56c31c1fa15491dea2d1aab57",
+      "pixels": [
+        2340,
+        1080
+      ],
+      "inspected": true
+    },
+    {
+      "path": "reports/game-direction/media/r37-android-background-return.png",
+      "bytes": 1614238,
+      "sha256": "9d43089843dc84d9f2399241d1ea4bcb9739531a671fbd984f7eb8dd22f08efc",
+      "pixels": [
+        2340,
+        1080
+      ],
+      "inspected": true
+    },
+    {
+      "path": "reports/game-direction/media/r37-android-battle-paused.png",
+      "bytes": 1613589,
+      "sha256": "a7e0eb4ca55a4ded1a672fbc602897ff8247a238adc1258045cdfeaff0457c30",
+      "pixels": [
+        2340,
+        1080
+      ],
+      "inspected": true
+    },
+    {
+      "path": "reports/game-direction/media/r37-android-bridge-moved.png",
+      "bytes": 1622644,
+      "sha256": "0bfddd880572c63b27b745b91d9868a11460c9a794bdaac4b4ec7cd30bbd30bb",
+      "pixels": [
+        2340,
+        1080
+      ],
+      "inspected": true
+    },
+    {
+      "path": "reports/game-direction/media/r37-android-bridge.png",
+      "bytes": 1582627,
+      "sha256": "c89ff8b0cfc9355019f1f1f90f5ae9195d5f39b44c2cf719ec626316382d4b26",
+      "pixels": [
+        2340,
+        1080
+      ],
+      "inspected": true
+    },
+    {
+      "path": "reports/game-direction/media/r37-android-combat.png",
+      "bytes": 1615401,
+      "sha256": "2b8b44811adb23327ec6f98f9b1d902cc0104535b610ebd7cdb43e2fea694157",
+      "pixels": [
+        2340,
+        1080
+      ],
+      "inspected": true
+    },
+    {
+      "path": "reports/game-direction/media/r37-android-final-bridge.png",
+      "bytes": 1594936,
+      "sha256": "907befb4876a225d8c6f2b2ad1fc5d2e54fefe578174f335c4d8688c93a9a718",
+      "pixels": [
+        2340,
+        1080
+      ],
+      "inspected": true
+    },
+    {
+      "path": "reports/game-direction/media/r37-android-first-launch.png",
+      "bytes": 1272133,
+      "sha256": "fa31b5c0ccc1fde1156338af7e5a0c4a29072f51c2e4b92af43500e27ceaa9a5",
+      "pixels": [
+        2340,
+        1080
+      ],
+      "inspected": true
+    },
+    {
+      "path": "reports/game-direction/media/r37-android-fixed-combat.png",
+      "bytes": 1605961,
+      "sha256": "9f3c043263dbbc97e43c0f5908fd808c2bbda72b7d3203644697f62d1974533e",
+      "pixels": [
+        2340,
+        1080
+      ],
+      "inspected": true
+    },
+    {
+      "path": "reports/game-direction/media/r37-android-fixed-restored.png",
+      "bytes": 1611881,
+      "sha256": "33432575e60a3d61b8d6d9f9796ad76bf6da2dcd30af08192ff2f5ad45792e4c",
+      "pixels": [
+        2340,
+        1080
+      ],
+      "inspected": true
+    },
+    {
+      "path": "reports/game-direction/media/r37-android-fixed-victory.png",
+      "bytes": 1604225,
+      "sha256": "d1f7e077270f1270eefbb73d47bd88ecad2292ef04f6ee1dfadc304ee5544034",
+      "pixels": [
+        2340,
+        1080
+      ],
+      "inspected": true
+    },
+    {
+      "path": "reports/game-direction/media/r37-android-ready.png",
+      "bytes": 1612862,
+      "sha256": "8fbdc772387348a2838ca9f1286d364474a3b14363b52baad8ec41fc0e84d1f8",
+      "pixels": [
+        2340,
+        1080
+      ],
+      "inspected": true
+    },
+    {
+      "path": "reports/game-direction/media/r37-android-restored.png",
+      "bytes": 1614978,
+      "sha256": "87c71dd7d9649e869192bfe781518dff4189bc3a249e9d9f8a7b792f1caff168",
+      "pixels": [
+        2340,
+        1080
+      ],
+      "inspected": true
+    }
+  ],
+  "local_logs": [
+    {
+      "path": ".runtime/native-android-install-r37.log",
+      "bytes": 38,
+      "sha256": "c4aa470acafcf8576c15b0f0b5ae7e852d1ec5413372d0e6a9272e788e1306d3"
+    },
+    {
+      "path": ".runtime/native-android-launch-r37.log",
+      "bytes": 229,
+      "sha256": "69f87efb4183431b6bfdcb81bd306fb64ab390f038f13b4c677d7202ef75f10e"
+    },
+    {
+      "path": ".runtime/native-r37-editor-build.log",
+      "bytes": 1876,
+      "sha256": "11a96bc1e46e3a1426edab8dd6d112cef38f83f394cbb5978fe20bac7b20276e"
+    },
+    {
+      "path": ".runtime/native-r37-tests.log",
+      "bytes": 279591,
+      "sha256": "c6287bd2840be59285bebbb008acabeee9afc2194ba8d368cac4d00bffd2135b"
+    },
+    {
+      "path": ".runtime/native-r37-android-package.log",
+      "bytes": 98527,
+      "sha256": "7cb3d5477ebb757f2777e19b2a5a014c705dae6459c2954b065d336ee8227711"
+    },
+    {
+      "path": ".runtime/native-r37-windows-package.log",
+      "bytes": 68195,
+      "sha256": "74a4eab44d0bbded87dda8201765080e7cf021e68a5b12bf8042d75c673a90f4"
+    },
+    {
+      "path": ".runtime/native-r37-windows-runtime.log",
+      "bytes": 88354,
+      "sha256": "e90bfcd186321d17a8c0c0dd7c32051f87e10cad7881ca383deb29e3fbdcf3d8"
+    }
+  ],
+  "limits": [
+    "Rough blockout art and temporary effects.",
+    "Human touch comfort, multitouch and desktop physical input remain unverified.",
+    "No sustained frame-time, heat, battery or memory measurement; short rendering tests are not performance proof.",
+    "No account service, shared cloud saves or Apple build/device proof.",
+    "No power-loss or damaged-storage proof.",
+    "Phone protection restoration remains user-controlled and unverified."
+  ],
+  "security": {
+    "user_enabled_usb_debugging": true,
+    "auto_blocker_was_reported_blocking_debugging": true,
+    "restoration_instructions": "Disable USB debugging and restore Auto Blocker when USB testing is finished.",
+    "other_apps_or_global_toolchains_changed": false
+  },
+  "publication": {
+    "committed": false,
+    "pushed": false,
+    "deployed": false,
+    "store_submitted": false
+  }
+}

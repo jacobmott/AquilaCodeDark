@@ -1,0 +1,21 @@
+Repository: D:/OtherProjects/AquilaCodeDark.
+Task: Aquila native game and publishing discussion, wrapped for a new session.
+Read AGENTS.md, Docs/TaskRoutes.md and Docs/Handoffs/HANDOFF_2026-11-15_game-direction.md in full.
+Publication evidence: Docs/Testing/native-direction-publication.json. Follow its verified state; do not infer success from planned publication.
+Native expedition is built on launcher Unreal 5.8.4. Windows is primary; Galaxy checks occur occasionally at milestones.
+Earlier evidence: 11 automation groups and Windows/Android packages passed; enlarged Galaxy foundation menus were owner-accepted.
+Source content matches that evidence apart from one removed blank EOF line. New expedition human input/pacing, sustained phone performance, cloud saves and Apple remain untested.
+Business: Texas sole owner, US-only planning, home address private, LLC/address direction chosen. Employment/IP questions resolved by owner.
+Robust, stable, proven service takes priority over price. Northwest remains a candidate; no quality winner or package selected.
+Read knowledge/publishing-business.md before reopening this discussion. Preserve positive app examples and their limits.
+Focused reliability research version 1 has returned but remains unread and unreviewed:
+http://127.0.0.1:8776/?project=aquila-code-dark#0013c8c0a3bb4ac982a44417de36ddf3
+Metadata receipt: Docs/Research/texas-business-address-reliability-return-v0001.json. Do not ask the owner to run it again.
+Report: http://127.0.0.1:8953/?agentreport=1&paseoAgent=ba50e3be-cc60-4d52-880e-1c84a67af008
+Report folder: reports/game-direction/. Last real inbox read: reports/game-direction/inbox/20261115T015927Z.json.
+Reports 8952/8953 and Research Console 8776 remain running. Preview 4200 and Aquila runtime are inactive; no session job or transfer remains active.
+Traps: use launcher engine, not DuskForge's source build; native builds do not prove human gameplay; vendor claims do not establish Google rejection.
+Next choices after owner direction: review returned research, or resume Windows expedition playtesting and fix findings.
+This wrap grants no new provider contact, purchase, formation, store signup, generation, asset transfer or website deployment authority.
+Preserve peer work and the shared index. Secrets, generated assets, SDKs, builds and raw research stay outside Git.
+Do not start any of this. Read, say where things stand, then wait.

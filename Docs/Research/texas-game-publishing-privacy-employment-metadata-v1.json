@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "project": "aquila-code-dark",
+  "author_provider": "openai",
+  "requested_research_provider": "Perplexity",
+  "execution_workflow": "User manually runs the complete prompt in Perplexity and saves the returned report in Research Console.",
+  "source_record": "knowledge/native-release-direction.md#texas-perplexity-research-request-round-50",
+  "authority": "User requested Perplexity research for Texas, adding employment and individual publishing privacy across Google Play, Apple and Steam.",
+  "result_contract": {
+    "required_fields": ["research_date"],
+    "required_headings": ["Findings", "Practical routes", "Employment", "Sources", "Limitations"]
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "state": "prepared",
+  "prepared_at_utc": "2026-11-18T02:48:17.344879+00:00",
+  "authority": "Explicit $newsession invocation: wrap, commit and push continuing session-owned work.",
+  "base_commit": "39c8bcdb8bc195f74c088f72663294260f5b0a30",
+  "branch": "main",
+  "upstream": "origin/main",
+  "content_commit": null,
+  "remote_verified": false,
+  "scope": [
+    "Native foundation and first expedition source, tests and wrapper",
+    "Sanitized build/device/research receipts and authored plans",
+    "Business decisions, provider comparison and quality priority",
+    "Knowledge, task routing, archived checkpoints and report"
+  ],
+  "checks": {
+    "native_source_hashes_match": 24,
+    "repository_safety_tests_passed": 6,
+    "engine_registration": "Launcher 5.8.4 CL58902052 verified",
+    "native_runtime_rerun": false,
+    "earlier_runtime_receipt": "Docs/Testing/native-expedition-verification.json",
+    "private_candidate_scan_hits": 0,
+    "git_guard": "pending",
+    "report": "pending",
+    "formatting_only_changes": [
+      {
+        "path": "native/Aquila/Config/DefaultInput.ini",
+        "before_sha256": "fcf01bc34d31f5956150a1f607bded3f2958742f924d5139063083ca51a8e569",
+        "after_sha256": "c50d12d4552063e6ce467e04c3250f08e4a2f0413857b8e8012bda2d1c13bccf",
+        "change": "Remove redundant blank line at EOF only; all configuration entries and other bytes unchanged."
+      }
+    ],
+    "whitespace_note": "Recognize CRLF terminators for preserved historical evidence; trailing spaces and blank EOF lines remain checked."
+  },
+  "pending_research": {
+    "id": "0013c8c0a3bb4ac982a44417de36ddf3",
+    "version": 1,
+    "state": "returned; body unread and unreviewed",
+    "metadata_receipt": "Docs/Research/texas-business-address-reliability-return-v0001.json"
+  },
+  "active_services": [
+    8952,
+    8953,
+    8776
+  ],
+  "active_session_jobs": [],
+  "shared_index_before": "empty; private index required",
+  "transfers_performed": false,
+  "website_deployed": false,
+  "purchases_or_contacts_performed": false,
+  "notes": [
+    "Historical native verification receipts retain their original publication status. This receipt records the later wrap.",
+    "A final records-only commit may seal verified publication evidence without embedding its own hash."
+  ]
+}

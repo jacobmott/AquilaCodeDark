@@ -1,0 +1,8 @@
+{
+  "source": "Docs\\Handoffs\\HANDOFF_2026-11-15_game-direction.md",
+  "archive": "Docs/History/game-direction/20261118T024817Z.md",
+  "saved_at_utc": "2026-11-18T02:48:17.344879+00:00",
+  "bytes": 9881,
+  "sha256": "8fc79c4be38708d1f7dc22446d9e962999be6b1648bff7000240a72f70f8872f",
+  "reason": "Preserve round 85 before the authorized new-session wrap and publication checkpoint."
+}

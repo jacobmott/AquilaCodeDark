@@ -1,0 +1,8 @@
+{
+  "source": "Docs/Handoffs/PROMPT_2026-11-15_native-direction.txt",
+  "archive": "Docs/History/game-direction/20261117T081636Z-restart.txt",
+  "saved_at_utc": "2026-11-17T08:16:36.856102+00:00",
+  "bytes": 15145,
+  "sha256": "458eee25c302802ed3943df13ad8ee6c12d81aa9073fb9409ec6475fef3c14ce",
+  "reason": "Retain exact previous restart text before replacing repeated business history with current expedition checkpoint links."
+}

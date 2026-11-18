@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "review_provider": "openai",
+  "reviewed_at": "2026-11-16T06:47:44.237588+00:00",
+  "project": "aquila-code-dark",
+  "job_id": "bd6cbf0bf4e64935a6b993aa171316df",
+  "external_key": "texas-game-publishing-privacy-employment-v1:run-1",
+  "version": 1,
+  "original_sha256": "5d611d3c2a14e9f880cd19b244ead510d016e927ed5748398ebcc55c5fb2b77f",
+  "original_bytes": 112264,
+  "original_path": "Assets/Research/texas-game-publishing-privacy-employment/result-v0001.md",
+  "url": "http://127.0.0.1:8776/?project=aquila-code-dark#bd6cbf0bf4e64935a6b993aa171316df",
+  "read_scope": "Complete original; selected decision-critical primary sources checked. Not an exhaustive citation, price, provider or legal audit.",
+  "disposition": "Partial evidence accepted: individual eligibility, Apple public PO-box option, Google disclosure, Texas DBA residence requirement and general employment framework. Google non-home address acceptance remains unresolved.",
+  "synthesis": "knowledge/native-release-direction.md#texas-publishing-research-reviewed-round-51",
+  "confirmed_source_groups": [
+    "Google account types, merchant display, US identity documents and announced trader dates",
+    "Apple individual enrollment and EU trader contact fields",
+    "Valve individual onboarding and separate public creator names",
+    "Texas Chapter 71 individual residence-address requirement and Travis recording example",
+    "TWC conflict guidance, Copyright Office work-for-hire rules and FTC noncompete rule status",
+    "Texas marketplace-seller permit/return rule, without applying it to a specific game contract"
+  ],
+  "unverified": [
+    "Specific Google mailbox/address approval",
+    "Texas sole-proprietor organization-account eligibility",
+    "Vendor prices and platform acceptance",
+    "Individual employer contract and ownership conclusion",
+    "Every regional Steam disclosure and all-public-record privacy",
+    "Detailed formation fees, FinCEN dates and every secondary legal source"
+  ],
+  "source_read_failures": [
+    {
+      "url": "https://www.sos.state.tx.us/corp/instructions/205.shtml",
+      "error": "HTTP 405; alternate official domain also returned 405"
+    },
+    {
+      "url": "https://comptroller.texas.gov/about/docs/96-328.pdf",
+      "error": "Web tool unsupported application/octet-stream content type"
+    }
+  ],
+  "console_acknowledgment": {
+    "state": "reviewed",
+    "reviewed_version": 1,
+    "created": "2026-11-16T06:47:45.370348+00:00",
+    "meaning": "Intake and triage recorded; not blanket factual approval."
+  }
+}

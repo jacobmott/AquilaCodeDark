@@ -1,0 +1,28 @@
+{
+  "status": "submission_confirmation_observed",
+  "observed_at_utc": "2026-11-17T06:43:02.711079+00:00",
+  "source_url": "https://www.northwestregisteredagent.com/thanks",
+  "page_title": "Thanks For Reaching Out!",
+  "confirmation_text": "We can’t wait to talk to you. One of our awesome Corporate Guides® will be in touch soon!",
+  "evidence": [
+    "Owner pasted the confirmation in chat.",
+    "Read-only browser snapshot independently shows the same confirmation page in the existing Northwest tab."
+  ],
+  "prepared_message": "Docs/Research/northwest-texas-package-inquiry-v4.txt",
+  "prior_form_check": {
+    "round": 71,
+    "message_characters": 2710,
+    "message_matches_saved_draft": true,
+    "name_and_supplied_email_match": true,
+    "phone_blank": true,
+    "company_blank": true
+  },
+  "agent_clicked_submit": false,
+  "duplicate_submission_attempted": false,
+  "provider_reply_received": false,
+  "limits": [
+    "Exact submission time and final request payload were not captured.",
+    "Confirmation page does not establish a human reply, email delivery or address eligibility.",
+    "No purchase, company formation or account creation performed."
+  ]
+}

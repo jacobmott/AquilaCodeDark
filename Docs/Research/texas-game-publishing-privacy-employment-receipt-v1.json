@@ -1,0 +1,43 @@
+{
+  "id": "bd6cbf0bf4e64935a6b993aa171316df",
+  "project": "aquila-code-dark",
+  "external_key": "texas-game-publishing-privacy-employment-v1:run-1",
+  "title": "Texas solo game publishing, address privacy and employment",
+  "prompt_hash": "01cd3cc6a1204d8ae7293fb200346a64b0b017b4a0b4c9dab72be301f1b75380",
+  "metadata": {
+    "schema_version": 1,
+    "project": "aquila-code-dark",
+    "author_provider": "openai",
+    "requested_research_provider": "Perplexity",
+    "execution_workflow": "User manually runs the complete prompt in Perplexity and saves the returned report in Research Console.",
+    "source_record": "knowledge/native-release-direction.md#texas-perplexity-research-request-round-50",
+    "authority": "User requested Perplexity research for Texas, adding employment and individual publishing privacy across Google Play, Apple and Steam.",
+    "result_contract": {
+      "required_fields": [
+        "research_date"
+      ],
+      "required_headings": [
+        "Findings",
+        "Practical routes",
+        "Employment",
+        "Sources",
+        "Limitations"
+      ]
+    },
+    "submitted_prompt_path": "D:\\OtherProjects\\AquilaCodeDark\\Docs\\Research\\texas-game-publishing-privacy-employment-prompt-v1.md",
+    "submitted_prompt_sha256": "01cd3cc6a1204d8ae7293fb200346a64b0b017b4a0b4c9dab72be301f1b75380"
+  },
+  "created": "2026-11-16T06:15:50.035191+00:00",
+  "updated": "2026-11-16T06:15:50.035191+00:00",
+  "state": "queued",
+  "reviewed_version": null,
+  "review_note": null,
+  "results": [],
+  "removed_results": [],
+  "latest_version": 0,
+  "reviews": [],
+  "folder": "C:\\ResearchConsole\\data\\jobs\\bd6cbf0bf4e64935a6b993aa171316df",
+  "url": "http://127.0.0.1:8776/?project=aquila-code-dark#bd6cbf0bf4e64935a6b993aa171316df",
+  "archive_folder": "C:\\ResearchConsole\\data\\projects\\aquila-code-dark\\topic-texas-game-publishing-privacy-employment-v1-run-1--bd6cbf0bf4e64935a6b993aa171316df",
+  "prompt_path": "C:\\ResearchConsole\\data\\projects\\aquila-code-dark\\topic-texas-game-publishing-privacy-employment-v1-run-1--bd6cbf0bf4e64935a6b993aa171316df\\prompt.md"
+}

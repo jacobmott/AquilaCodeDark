@@ -1,0 +1,133 @@
+{
+  "schema_version": 1,
+  "project": "aquila-code-dark",
+  "round": 77,
+  "reviewed_at_utc": "2026-11-17T18:07:16.710634+00:00",
+  "status": "owner_pasted_substantive_reply_reviewed",
+  "provenance": {
+    "channel": "owner-pasted email text in this conversation",
+    "claimed_sender_domain": "northwestregisteredagent.com",
+    "displayed_email_time": "10:29 AM (1 hour ago)",
+    "exact_email_date_verified": false,
+    "email_headers_inspected": false,
+    "inbox_retrieved": false,
+    "original_email_bytes_available": false,
+    "local_paste_path": ".runtime/northwest-reply-r77/email-paste.txt",
+    "local_paste_bytes": 2258,
+    "local_paste_sha256": "806823b90275f93f25e331e0a6cdfddf65cf6be08647330d12fc14f72b8aa1bf",
+    "paste_encoding": "UTF-8 with LF; transcription of supplied chat text, not an exported email",
+    "tracked_record_redactions": [
+      "personal salutation",
+      "referral identifier and sales appeal"
+    ]
+  },
+  "related_submission_receipt": "Docs/Research/northwest-inquiry-confirmation-v1.json",
+  "provider_claims": {
+    "dnb_statement": "D&B does not accept registered-agent or virtual-office addresses; attributed to Northwest, not independently confirmed as a universal current rule.",
+    "google_statement": "Google payments and Play make their own address-verification decisions; a lease does not guarantee acceptance.",
+    "office": {
+      "annual_usd": 99,
+      "unique_suite": true,
+      "opened_and_scanned_mail_pieces_per_year": 20,
+      "unit_format": "# followed by assigned number, rather than STE or PMB",
+      "permitted_uses": [
+        "Texas formation paperwork",
+        "business correspondence",
+        "IRS mail"
+      ],
+      "operating_location_substitute": false
+    },
+    "mail_onboarding": [
+      "USPS Form 1583",
+      "photo ID",
+      "separate residential-address proof"
+    ],
+    "lease": {
+      "issued": "after purchase with assigned suite",
+      "validity_years": 1,
+      "replacement_afterward": "can be requested",
+      "corrections": [
+        "business name",
+        "service dates"
+      ],
+      "sample_received": false
+    },
+    "not_provided": [
+      "utility bills",
+      "in-person verification",
+      "verification videos"
+    ],
+    "quote_usd": {
+      "formation_service": 39,
+      "state_fee": 300,
+      "formation_subtotal": 339,
+      "registered_agent_first_year": "included",
+      "office_annual": 99,
+      "first_year_total": 438,
+      "registered_agent_renewal_annual": 125,
+      "agent_plus_office_renewal_annual": 224,
+      "scope": "Named services using standard online filing, at quoted rates; additional chosen services excluded."
+    }
+  },
+  "official_source_review": [
+    {
+      "url": "https://support.google.com/googleplay/android-developer/answer/13628312?hl=en",
+      "publisher": "Google Play Console Help",
+      "locator": "Create a developer account for an organization; Update your payments profile to match your Dun & Bradstreet profile",
+      "finding": "Organization legal name/address must match D&B and Google payments; Google displays the organization legal address publicly.",
+      "limit": "Does not approve this exact address package."
+    },
+    {
+      "url": "https://www.ams.usda.gov/sites/default/files/media/DNB_DUNSLookup_USDA.pdf",
+      "publisher": "Dun & Bradstreet, hosted by USDA",
+      "source_date": "August 2021",
+      "locator": "page 1, What do I need to know to get started?",
+      "finding": "Physical address excludes PO boxes, personal mailboxes and virtual offices; refers to operations or business-record location.",
+      "limit": "Historical USDA grant-program guide. Supports caution, not current Google-specific or universal acceptance/rejection proof."
+    },
+    {
+      "url": "https://www.dnb.com/en-us/smb/duns/get-a-duns.html",
+      "publisher": "Dun & Bradstreet",
+      "locator": "How to Get a D-U-N-S Number, steps 1-4",
+      "finding": "Business address and validation requested; different applicant categories listed.",
+      "limit": "Reviewed public text did not settle this Texas package or repeat a categorical ban for every route."
+    }
+  ],
+  "knowledge_hub_lookup": {
+    "provider": "openai",
+    "project": "aquila-code-dark",
+    "query": "D-U-N-S",
+    "request_id": "req_88f48878501848aa8d85f7f7fef41aee",
+    "outcome": "empty",
+    "complete_for_scope": true,
+    "limit": "No match in selected accessible catalog; not proof that the subject lacks evidence elsewhere."
+  },
+  "unanswered": [
+    "Current D&B treatment of this exact home-operated Texas LLC and mailing plan",
+    "Google address eligibility and public/private handling for that same setup",
+    "Exact street, city and ZIP",
+    "Sample agreement, issuer, name fields and access rights",
+    "Explanation of earlier $310 filing advertisement versus quoted $300 state fee",
+    "Extra scan/forwarding/document/notary and other required fees",
+    "Mail retention and destruction terms",
+    "Cancellation/refund terms if unsuitable",
+    "Address continuity and relocation assistance"
+  ],
+  "recommendation": "Do not buy on presumed Google privacy compatibility. Northwest remains a formation/mail candidate; clarify exact D&B/Google treatment before selection.",
+  "authority_and_actions": {
+    "new_external_message_sent": false,
+    "referral_link_followed": false,
+    "purchase_or_filing": false,
+    "store_signup": false,
+    "new_paid_research_submitted": false,
+    "commit_or_push": false,
+    "game_changes": false
+  },
+  "unchanged_owner_facts": [
+    "Texas, sole owner, US-only planning",
+    "Home address must stay off public store listings",
+    "LLC plus separate business address direction",
+    "Employment and outside-work ownership resolved by owner confirmation",
+    "Windows-first development; occasional Galaxy checks; Windows expedition feedback pending"
+  ]
+}

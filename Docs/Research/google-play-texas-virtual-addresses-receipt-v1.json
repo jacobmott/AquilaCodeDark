@@ -1,0 +1,52 @@
+{
+  "id": "cf71e97b7df84637b5180b6ea8662f0d",
+  "project": "aquila-code-dark",
+  "external_key": "google-play-texas-virtual-addresses-v1:run-1",
+  "title": "Google Play virtual addresses: Northwest and Texan",
+  "prompt_hash": "9a58aa063ea522ed0204b5629fdb914446a93accab408e414205feb0b7a6fced",
+  "metadata": {
+    "schema_version": 1,
+    "project": "aquila-code-dark",
+    "author_provider": "openai",
+    "requested_research_provider": "Perplexity",
+    "execution_workflow": "User manually runs the complete prompt in Perplexity and saves the returned report in Research Console.",
+    "source_record": "knowledge/native-release-direction.md#focused-google-virtual-address-research-round-56",
+    "authority": "User explicitly requested Perplexity research on Google's acceptance of the two previously supplied virtual-address providers.",
+    "scope": "United States personal Google Play account; Texas sole developer; Northwest Registered Agent and Texan Registered Agent; public home-address privacy.",
+    "prior_research": {
+      "job_id": "bd6cbf0bf4e64935a6b993aa171316df",
+      "external_key": "texas-game-publishing-privacy-employment-v1:run-1",
+      "reviewed_version": 1,
+      "result_sha256": "5d611d3c2a14e9f880cd19b244ead510d016e927ed5748398ebcc55c5fb2b77f"
+    },
+    "result_contract": {
+      "research_id": "AQUILA-GOOGLE-VIRTUAL-ADDRESS-001",
+      "required_fields": [
+        "research_date"
+      ],
+      "required_headings": [
+        "Verdict",
+        "Provider comparison",
+        "Evidence",
+        "Practical next step",
+        "Sources",
+        "Limitations"
+      ]
+    },
+    "submitted_prompt_path": "D:\\OtherProjects\\AquilaCodeDark\\Docs\\Research\\google-play-texas-virtual-addresses-prompt-v1.md",
+    "submitted_prompt_sha256": "9a58aa063ea522ed0204b5629fdb914446a93accab408e414205feb0b7a6fced"
+  },
+  "created": "2026-11-16T07:37:49.822988+00:00",
+  "updated": "2026-11-16T07:37:49.822988+00:00",
+  "state": "queued",
+  "reviewed_version": null,
+  "review_note": null,
+  "results": [],
+  "removed_results": [],
+  "latest_version": 0,
+  "reviews": [],
+  "folder": "C:\\ResearchConsole\\data\\jobs\\cf71e97b7df84637b5180b6ea8662f0d",
+  "url": "http://127.0.0.1:8776/?project=aquila-code-dark#cf71e97b7df84637b5180b6ea8662f0d",
+  "archive_folder": "C:\\ResearchConsole\\data\\projects\\aquila-code-dark\\topic-google-play-texas-virtual-addresses-v1-run-1--cf71e97b7df84637b5180b6ea8662f0d",
+  "prompt_path": "C:\\ResearchConsole\\data\\projects\\aquila-code-dark\\topic-google-play-texas-virtual-addresses-v1-run-1--cf71e97b7df84637b5180b6ea8662f0d\\prompt.md"
+}

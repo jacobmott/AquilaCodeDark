@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "project": "aquila-code-dark",
+  "author_provider": "openai",
+  "requested_research_provider": "Perplexity",
+  "execution_workflow": "User manually runs the complete prompt in Perplexity and saves the returned report in Research Console.",
+  "source_record": "knowledge/native-release-direction.md#llc-path-and-provider-selection-round-63",
+  "authority": "Owner asks to save resolved employment and outside-work ownership checks, chooses an LLC plus business address, and requests comparison research for Northwest, Texan and iPostal1. No filing, purchase or outside contact requested.",
+  "scope": "Texas single-member LLC; monetized United States Google Play organization account; exact address provider plans, verification documents, privacy and costs.",
+  "prior_research": [
+    {
+      "job_id": "bd6cbf0bf4e64935a6b993aa171316df",
+      "external_key": "texas-game-publishing-privacy-employment-v1:run-1",
+      "reviewed_version": 1,
+      "result_sha256": "5d611d3c2a14e9f880cd19b244ead510d016e927ed5748398ebcc55c5fb2b77f"
+    },
+    {
+      "job_id": "cf71e97b7df84637b5180b6ea8662f0d",
+      "external_key": "google-play-texas-virtual-addresses-v1:run-1",
+      "reviewed_version": 1,
+      "result_sha256": "e8853fad7aa72492d035d15e44d5e8a4d4b30f5238e52aa3bca3bd74c39ebbc7"
+    }
+  ],
+  "result_contract": {
+    "research_id": "AQUILA-TEXAS-LLC-ADDRESS-001",
+    "required_fields": ["research_date"],
+    "required_headings": ["Recommendation", "Provider comparison", "Google verification evidence", "Costs and address terms", "Unresolved questions", "Sources", "Limitations"]
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "id": "31c10ef813054b3fb48a080b0fc3a5ac",
+  "project": "aquila-code-dark",
+  "external_key": "texas-llc-address-provider-selection-v1:run-1",
+  "title": "Texas LLC address choice: Northwest, Texan and iPostal1",
+  "prompt_hash": "d37b22a6d219148d5f317338bce5855830ca827471d68a424fbf3609a8ed1936",
+  "metadata": {
+    "schema_version": 1,
+    "project": "aquila-code-dark",
+    "author_provider": "openai",
+    "requested_research_provider": "Perplexity",
+    "execution_workflow": "User manually runs the complete prompt in Perplexity and saves the returned report in Research Console.",
+    "source_record": "knowledge/native-release-direction.md#llc-path-and-provider-selection-round-63",
+    "authority": "Owner asks to save resolved employment and outside-work ownership checks, chooses an LLC plus business address, and requests comparison research for Northwest, Texan and iPostal1. No filing, purchase or outside contact requested.",
+    "scope": "Texas single-member LLC; monetized United States Google Play organization account; exact address provider plans, verification documents, privacy and costs.",
+    "prior_research": [
+      {
+        "job_id": "bd6cbf0bf4e64935a6b993aa171316df",
+        "external_key": "texas-game-publishing-privacy-employment-v1:run-1",
+        "reviewed_version": 1,
+        "result_sha256": "5d611d3c2a14e9f880cd19b244ead510d016e927ed5748398ebcc55c5fb2b77f"
+      },
+      {
+        "job_id": "cf71e97b7df84637b5180b6ea8662f0d",
+        "external_key": "google-play-texas-virtual-addresses-v1:run-1",
+        "reviewed_version": 1,
+        "result_sha256": "e8853fad7aa72492d035d15e44d5e8a4d4b30f5238e52aa3bca3bd74c39ebbc7"
+      }
+    ],
+    "result_contract": {
+      "research_id": "AQUILA-TEXAS-LLC-ADDRESS-001",
+      "required_fields": [
+        "research_date"
+      ],
+      "required_headings": [
+        "Recommendation",
+        "Provider comparison",
+        "Google verification evidence",
+        "Costs and address terms",
+        "Unresolved questions",
+        "Sources",
+        "Limitations"
+      ]
+    },
+    "submitted_prompt_path": "D:\\OtherProjects\\AquilaCodeDark\\Docs\\Research\\texas-llc-address-provider-selection-prompt-v1.md",
+    "submitted_prompt_sha256": "d37b22a6d219148d5f317338bce5855830ca827471d68a424fbf3609a8ed1936"
+  },
+  "created": "2026-11-16T23:38:25.005290+00:00",
+  "updated": "2026-11-16T23:38:25.005290+00:00",
+  "state": "queued",
+  "reviewed_version": null,
+  "review_note": null,
+  "results": [],
+  "removed_results": [],
+  "latest_version": 0,
+  "reviews": [],
+  "folder": "C:\\ResearchConsole\\data\\jobs\\31c10ef813054b3fb48a080b0fc3a5ac",
+  "url": "http://127.0.0.1:8776/?project=aquila-code-dark#31c10ef813054b3fb48a080b0fc3a5ac",
+  "archive_folder": "C:\\ResearchConsole\\data\\projects\\aquila-code-dark\\topic-texas-llc-address-provider-selection-v1-run-1--31c10ef813054b3fb48a080b0fc3a5ac",
+  "prompt_path": "C:\\ResearchConsole\\data\\projects\\aquila-code-dark\\topic-texas-llc-address-provider-selection-v1-run-1--31c10ef813054b3fb48a080b0fc3a5ac\\prompt.md"
+}

@@ -1,0 +1,24 @@
+{
+  "archived_at_utc": "2026-11-16T02:30:21.897034+00:00",
+  "reason": "Preserve round-38 checkpoint and receipts before the phone wake/reconnection follow-up.",
+  "files": [
+    {
+      "source": "Docs/Handoffs/HANDOFF_2026-11-15_game-direction.md",
+      "archive": "Docs/History/game-direction/20261116T023021Z.md",
+      "sha256": "11a2785abd2734776de99f7f50ddaca409d98c2dba0ba6cf0d1b121543a6196b",
+      "bytes": 8778
+    },
+    {
+      "source": "Docs/Testing/native-mobile-ui-verification.json",
+      "archive": "Docs/History/game-direction/20261116T023021Z-mobile-ui-verification.json",
+      "sha256": "1e45c96f3a59e88d37e322b894812426ad7388a206d262ac6f3ee86558b7433d",
+      "bytes": 6916
+    },
+    {
+      "source": "Docs/Testing/native-foundation-verification.json",
+      "archive": "Docs/History/game-direction/20261116T023021Z-native-verification.json",
+      "sha256": "d5bade290db9317621f2afd08ddc6764a4226c495208917fb9762d6ba05ad522",
+      "bytes": 27591
+    }
+  ]
+}

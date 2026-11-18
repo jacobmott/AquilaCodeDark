@@ -99,3 +99,46 @@
 - 2026-11-15 [J]: Owner pauses gameplay work and requests session wrap, commit and push before a new discussion.
   Publish only this continuing remake session's source, tests, records and report; preserve peer work and the shared index.
   The next topic will come from the owner. No further gameplay implementation, deployment, transfer or spend is authorized by this wrap.
+- 2026-11-15 [J]: Owner requests discussion of an Unreal game for Steam, Apple and Android, with a conventional game website.
+  Browser prototype is the concept reference. Engine migration, release order, commercial scope and branding are not yet settled.
+  Read the supplied AI-disclosure conversation and pasted studio-branding advice; recommendations and official sources are in knowledge/native-release-direction.md.
+  This resumes discussion only. Gameplay implementation, deployment, spending and further publication remain unauthorized.
+- 2026-11-15 [J]: Owner favors Steam and mobile launching together, with one linked account and shared saved progress.
+  This is the working launch target, not a fixed date. Single-player is explicit; multiplayer is excluded from scope.
+  Website direction is confirmed: no playable game; retain Three.js and the existing visual style for information, news, development logs and store links.
+  Background gameplay videos are proposed. This clarifies direction without authorizing migration, backend setup, website implementation or publication.
+  Cloud sync requires online account/storage access even though gameplay needs no multiplayer networking; implementation choices remain open.
+- 2026-11-15 [J]: "Yes, that all sounds great. I agree with all that." Confirms the native single-player direction,
+  coordinated launch target, shared profile/progress, offline local saves with later sync and preservation of conflicting save versions.
+  Confirms the separate website's existing style, Three.js presentation, background gameplay videos, information, news, logs and store links.
+  Owner asks to save discussion and decisions and asks for the next step. Durable records and the native foundation brief are updated.
+  Provider, precise login flow, target devices, purchase rules and commercial scope remain open. No migration start or publication is authorized.
+- 2026-11-15 [J]: "Let's do that" authorizes starting the native foundation. Use launcher Unreal 5.8.4, separate from DuskForge.
+  Owner has Samsung Galaxy S26 Plus; no Mac or iPhone. Windows/Android feasibility proceeds; Apple build/device proof remains pending access.
+  No new publication, website deployment, paid services, asset generation or transfers are authorized.
+- 2026-11-15 [M]: Launcher engine verified at `C:/Program Files/Epic Games/UE_5.8`, version 5.8.4, changelist 58902052.
+  Native project placed at `native/Aquila/`; build wrapper pins and verifies that installed engine. DuskForge remains unchanged.
+- 2026-11-15 [J]: Owner asks to open Epic Launcher for Android target support and confirms Galaxy USB connection is available.
+  Launcher was opened. Physical-device installation and testing await the connected and authorized phone.
+- 2026-11-16 [M]: Windows native package, five automation groups and packaged save restoration pass.
+  Android native compilation and cooked ASTC APK pass; embedded game content, signature and ZIP integrity were checked.
+  Device gameplay, sustained performance, hosted saves and Apple builds remain unverified or unbuilt. Evidence: native foundation receipt.
+- 2026-11-16 [J]: Owner rejects public personal-address disclosure on the game's store listing.
+  Keep the home address off public store listings. Google Play publishing depends on a verified route satisfying that requirement.
+  Android development and the platform target are not canceled; no account, paid address service or business structure selected.
+  An LLC alone does not solve address disclosure. Alternatives and official evidence: knowledge/native-release-direction.md.
+- 2026-11-16 [J]: Owner tentatively prefers a Texas LLC through Northwest and asks to retain the complete business discussion.
+  [Consolidated reference](../knowledge/publishing-business.md) separates choices, evidence and unresolved checks for future sessions.
+  United States-only planning and home-address privacy remain fixed. No formation, purchase or account creation authorized.
+- 2026-11-16 [J], round 63: Owner checked employment and confirms no LLC conflict or employer ownership issue for outside-work creations.
+  Mark both questions resolved by owner confirmation; no independent contract review claimed or repeated clearance requested.
+  Owner chooses to pursue a Texas LLC plus business address. Compare Northwest, Texan Registered Agent and iPostal1 before provider/package selection.
+  [Focused research request](Research/texas-llc-address-provider-selection-receipt-v1.json) targets company-address proof, Google organization enrollment and costs.
+  No specific purchase, filing, account creation or outside contact executed. Game implementation remains paused.
+- 2026-11-17 [J], rounds 74–75: Owner resumed the first native expedition, then explicitly accepted Windows-first development.
+  Windows is the daily coding, debugging and playtest environment. Install/test on Galaxy occasionally, at milestones or for mobile-specific changes.
+  No continuous phone connection or phone check after every change. Save and follow this workflow; continue accepted expedition validation.
+  Phone installation means a development build, not Git publication or a store release. Existing publication/spend boundaries remain unchanged.
+- 2026-11-17 [J], round 84: Provider selection prioritizes robust, stable, proven service and a stronger track record over price.
+  Owner will pay more for demonstrably better service. No numeric budget, selected provider/package or purchase authority inferred.
+  [Current comparison](../knowledge/publishing-business.md#quality-before-price-round-84) supersedes the earlier cost-led ranking.

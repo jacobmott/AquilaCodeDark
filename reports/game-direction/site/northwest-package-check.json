@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "project": "aquila-code-dark",
+  "round": 66,
+  "checked_at_utc": "2026-11-17T06:04:45Z",
+  "provider": "openai",
+  "purpose": "Inspect Northwest's exact Texas package before purchase and prepare a written inquiry for missing facts.",
+  "observed": {
+    "service_state": "Texas",
+    "customer_category": "Business",
+    "plan": "Most Popular: Office Lease & Unique Suite + 20 Mail Scans",
+    "advertised_annual_usd": 99,
+    "service_selection_summary_usd": 99,
+    "quote_stage": "Standalone virtual-office service selection, before company/account/payment details",
+    "faq_suite_assignment": "Manually assigned; emailed within two business days after signup",
+    "faq_scanned_original_retention_days": 50,
+    "contact_form_required_markers": ["First Name", "Last Name", "Email", "Message"],
+    "contact_form_unmarked_optional_fields": ["Business Name (explicitly optional)", "Phone Number"],
+    "contact_form_home_address_field": false
+  },
+  "sources": [
+    {"url": "https://www.northwestregisteredagent.com/business-address/virtual-office/texas", "method": "web", "supports": "Current advertised $49/$99 tiers and Texas plan contents"},
+    {"url": "https://www.northwestregisteredagent.com/business-address/virtual-office/signup?mfvo=vo&st=TX", "method": "Paseo browser snapshot after selecting Business and the $99 plan", "supports": "$99 service-stage total; company details still blank; no assigned address displayed"},
+    {"url": "https://www.northwestregisteredagent.com/business-address/virtual-office", "method": "web", "supports": "Suite assignment timing and 50-day scanned-original retention"},
+    {"url": "https://www.northwestregisteredagent.com/contact-us", "method": "Paseo browser snapshot and form-field inspection", "supports": "Accessible inquiry form, required markers and no home-address field"},
+    {"url": "https://www.northwestregisteredagent.com/terms-policy", "method": "web", "supports": "Public service restrictions and generic cancellation/refund terms; not a customer-specific lease"}
+  ],
+  "unresolved": [
+    "Exact assigned Texas street address and required complete suffix",
+    "Lease/license specimen, issuer, company-name evidence and use/access rights",
+    "Specific address's accurate D&B record treatment and Google organization eligibility",
+    "Itemized combined formation/agent/address first-year and renewal quote",
+    "Package-specific extras, verification-related refunds and address-change support"
+  ],
+  "inquiry": {
+    "path": "Docs/Research/northwest-texas-package-inquiry-v1.txt",
+    "status": "prepared_not_sent",
+    "recipient_route": "https://www.northwestregisteredagent.com/contact-us",
+    "awaiting": ["Owner-chosen contact name and reply email", "Explicit instruction to send this prepared inquiry"]
+  },
+  "local_browser_evidence": ".runtime/northwest-r66-browser-evidence.json",
+  "limits": [
+    "No account created, company/contact/payment details entered, order submitted or inquiry sent.",
+    "No final bundle checkout or customer-specific lease reviewed.",
+    "Service-stage price is not an all-in purchase quote.",
+    "Provider permission does not establish Google or D&B approval.",
+    "Checkout /terms link failed in the web reader; the separate public terms-policy page loaded.",
+    "Older search snippets showed obsolete monthly pricing; current page and browser observations govern this check."
+  ]
+}

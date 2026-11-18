@@ -1,0 +1,66 @@
+{
+  "calling_provider": "openai",
+  "task": "Aquila game publishing business discussion, round 82",
+  "purpose": "Compare alternatives beyond Northwest, Texan Registered Agent and iPostal1 for a Texas LLC and public store address privacy.",
+  "owner_authority": "Current owner requested Perplexity research to discover additional or better providers.",
+  "prior_research": [
+    {
+      "id": "31c10ef813054b3fb48a080b0fc3a5ac",
+      "external_key": "texas-llc-address-provider-selection-v1:run-1",
+      "reviewed_version": 1
+    },
+    {
+      "id": "cf71e97b7df84637b5180b6ea8662f0d",
+      "external_key": "google-play-texas-virtual-addresses-v1:run-1",
+      "reviewed_version": 1
+    }
+  ],
+  "source_files": [
+    {
+      "path": "Docs/Research/northwest-texas-package-reply-v1.json",
+      "sha256": "a924c1ef47cb7a3bddb2c17740817e6de189dc3abd0148b5a54ccb7c8e39d072"
+    },
+    {
+      "path": "Docs/Research/texas-llc-address-provider-selection-review-v0001.json",
+      "sha256": "e9e899810d67d57baa724446bca70f4aff0f659fbe89356cb6e0cc9de7212fdd"
+    },
+    {
+      "path": "knowledge/publishing-business.md",
+      "sha256": "0a3c727997788e690f4ef2ce72c338be4645ec316136670f022fed8519394947"
+    }
+  ],
+  "knowledge_hub": {
+    "provider": "openai",
+    "project": "aquila-code-dark",
+    "queries": [
+      {
+        "query": "virtual office",
+        "request_id": "req_2277f32a2d55471abad6383cbaca2c73",
+        "outcome": "empty",
+        "complete_for_scope": true
+      },
+      {
+        "query": "Northwest",
+        "request_id": "req_5f6485a39b7445c7ae4efcb859641913",
+        "outcome": "unrelated visible source hits; paginated results not exhausted"
+      },
+      {
+        "query": "registered agent",
+        "request_id": "req_aa1b71ceba294c9e9896de278187ce0c",
+        "outcome": "unrelated plugin, filmmaking and engine documentation hits; no next page"
+      }
+    ],
+    "gap": "No usable provider comparison identified in these scoped searches. Existing project research is retained as the baseline."
+  },
+  "result_contract": {
+    "required_headings": [
+      "Findings",
+      "Limitations"
+    ],
+    "min_chars": 800
+  },
+  "scope_limits": [
+    "Local research request only; owner runs Perplexity manually.",
+    "No external contact, purchase, formation, signup, commit, push or deployment."
+  ]
+}

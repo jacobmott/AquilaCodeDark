@@ -1,0 +1,37 @@
+Repository: D:/OtherProjects/AquilaCodeDark.
+Task: Aquila first native expedition; Windows-first development.
+Read AGENTS.md, Docs/TaskRoutes.md and Docs/Handoffs/HANDOFF_2026-11-15_game-direction.md in full.
+Read native/Aquila/README.md for play/build commands and Docs/Testing/native-expedition-verification.json for current evidence.
+Owner resumed the expedition in round 74. Signal, automatic travel/survey/combat, salvage and one persistent turret refit are built locally.
+Owner explicitly confirmed and asked to save this workflow in round 75: Windows primary; occasional Galaxy installs/tests at milestones or mobile changes.
+No reconnect needed now. New expedition physical input and sustained performance remain unverified.
+Launcher Unreal 5.8.4 only, separate from DuskForge. Editor, Windows and Android packages pass; 11 simulation/save groups pass.
+Seven Windows captures inspected. Packaged reload retains 20 salvage, port Mk II and one completion; earlier revisions remain unchanged.
+Captures use isolated phase fixtures; upgraded journal came from the passing mission simulation test. Captures do not prove input.
+Native control helper is unavailable. Android package passes signature/content/CRC checks but was not installed this round.
+Baseline automated mission: 547.35 simulated seconds; human 10â€“15-minute pacing target remains untested.
+Save schema 3 preserves mission, rewards, upgrade and launch damage; schemas 1/2 migrate without invented progress.
+Earlier Galaxy foundation and enlarged menus were owner-accepted; those older receipts are historical, not new expedition proof.
+No Mac/iPhone access. Shared account/cloud, real device round trip and Apple proof remain required later.
+Single-player automatic battleship command; future public website keeps Three.js/glass style, news/logs and store links, without a game.
+Browser source remains pushed at 39c8bcdb8bc195f74c088f72663294260f5b0a30. Native work and records remain local, uncommitted.
+Shared index untouched; preserve peer work and excluded secrets/assets. No new commit, push, transfer, spend or deployment authority.
+Reports 8952/8953 remain local; preview 4200 is not listening. No build/test/transfer/generation job or Windows game process left active.
+Report: http://127.0.0.1:8953/?agentreport=1&paseoAgent=ba50e3be-cc60-4d52-880e-1c84a67af008
+Report folder: reports/game-direction/, round 85 presents the focused provider-quality research request; Windows playthrough feedback carried forward. Round 74 remains the latest runtime evidence. Round-85 build, HTTP, prompt readback and checkpoint checks pass. Browser host disconnected; rendered review unavailable.
+Last real inbox: reports/game-direction/inbox/20261115T015927Z.json. Read newest real inbox after a submission; never write one.
+Next: owner plays one Windows expedition, buys the port refit, closes/reopens, then reports pacing, clarity and saved progress. Fix findings next.
+For business, read knowledge/publishing-business.md. Owner-pasted Northwest reply reviewed; quote and mail terms saved.
+No resend or sending-permission request. No provider/package purchase, LLC formation or store signup performed.
+Texas sole owner, US-only planning, home private. Employment/IP cleared by owner confirmation; do not reopen without changed facts.
+LLC plus address chosen. Owner prioritizes robust, stable, proven service over price and will pay more for it. No budget or selected provider/package inferred.
+Northwest remains a candidate; earlier cost/convenience ranking did not prove superior reliability, support or address continuity.
+Reply receipt: Docs/Research/northwest-texas-package-reply-v1.json. Exact street, sample lease, extras, retention/refunds and relocation support remain open.
+Zensoul website names Northwest; Google Play still shows its matching Wyoming address and in-app purchases. Observed public-address outcome demonstrated; our exact Texas plan unverified.
+Broader provider report version 1 read fully and marked reviewed: http://127.0.0.1:8776/?project=aquila-code-dark#1caac6482b7b4aa4803ae28d63b1c53d
+Receipt: Docs/Research/texas-llc-address-alternatives-review-v0001.json. Original preserved unchanged; primary checks correct lease, scan and agent-year omissions.
+Afterplace gives a paid Texas Play address match; actual provider/package unknown. No blanket Google rejection, ownership proof from shared software, or guaranteed refund window.
+Earlier broad research-run request is resolved. Focused quality follow-up: http://127.0.0.1:8776/?project=aquila-code-dark#0013c8c0a3bb4ac982a44417de36ddf3
+Owner runs this prompt in Perplexity and saves its full answer. No result yet; no external contact or purchase. Game work independent.
+Current checkpoint links exact preceding history; earlier long restart text was also archived before condensation.
+Do not start any of this. Read, say where things stand, then wait.

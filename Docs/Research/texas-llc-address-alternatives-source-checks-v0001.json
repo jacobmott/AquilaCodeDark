@@ -1,0 +1,93 @@
+{
+  "project": "aquila-code-dark",
+  "research_job": "1caac6482b7b4aa4803ae28d63b1c53d",
+  "version": 1,
+  "reviewed_at_utc": "2026-11-18T01:17:45.470186+00:00",
+  "original": {
+    "path": "Assets/Research/texas-llc-address-alternatives/result-v0001.md",
+    "bytes": 23374,
+    "sha256": "3ab674ea1f967717becc3ee987942fde6cc0ae1cca94b85fa5c7e9ce784e16a4",
+    "lines_read": 113,
+    "read_in_full": true,
+    "unchanged": true
+  },
+  "disposition": "Useful broader comparison with material corrections. Northwest remains preferred for low-volume initial setup; Texas Virtual Office LLC is a stronger alternative than the report describes.",
+  "primary_checks": [
+    {
+      "topic": "Texas paid-game address example",
+      "sources": [
+        "https://play.google.com/store/apps/details?id=com.kice.afterplace",
+        "https://www.fmcsa.dot.gov/registration/process-agents/northwest-registered-agent-llc-55"
+      ],
+      "observed": "Afterplace is offered for $6.99. Developer is Evan Kice LLC at 5900 Balcones Dr Ste 100, Austin. FMCSA lists Northwest at the same street/suite.",
+      "limit": "Demonstrates this public Texas address outcome; the developer's provider, purchased plan and private verification history remain unknown. Does not identify the future assigned Northwest suite.",
+      "retrieval": "Locale-parameter URL failed; canonical Play URL opened successfully. Release description says December 2022, contrary to the report's general statement that release dates could not be found."
+    },
+    {
+      "topic": "Texas Virtual Office correction",
+      "sources": [
+        "https://www.texasvirtualoffice.com/"
+      ],
+      "observed": "$15/month office plan explicitly advertises a month-to-month lease, unlimited content scans and no per-document fees. Registered agent $25/year. $435 formation includes state fee and a registered-agent year.",
+      "calculation": "$435 + 12*$15 = $615 base first year with their formation service; $25 + 12*$15 = $205 base renewal. Compared with Northwest quote: $177 more first year, $19 less per renewal year.",
+      "limit": "Advertised inclusions, not a checked checkout or specimen contract. Exact address, additional charges and provider-specific Google/D&B acceptance unresolved.",
+      "report_correction": "Do not retain the claims that lease, scan allowance and first-year registered agent were unverified. Northwest is not the cheapest recurring lease-bearing route."
+    },
+    {
+      "topic": "Workspace/document alternative",
+      "sources": [
+        "https://www.thefarmsoho.com/product/virtual-office/texas/"
+      ],
+      "observed": "The Farm lists $218/month utility-bill tier with six-month commitment and five shared-office days; $350/month lease/utility tier with twelve-month commitment and inspection/call support. The page expressly disclaims platform approval guarantees.",
+      "limit": "Vendor-advertised services and documents, not measured Google/D&B success. No reason established to buy these now. Exact location rights and terms need confirmation for any later use."
+    },
+    {
+      "topic": "Refund correction",
+      "sources": [
+        "https://www.northwestregisteredagent.com/terms-policy"
+      ],
+      "observed": "October 2026 terms say purchases generally non-refundable after 90 days, and state fees never refundable.",
+      "limit": "This does not promise an unconditional refund before 90 days. Do not describe formation/address purchase as a risk-free verification trial."
+    },
+    {
+      "topic": "Ownership/network inference",
+      "sources": [
+        "https://www.texasregisteredagent.net/about-us/",
+        "https://www.texasvirtualoffice.com/",
+        "https://www.northwestregisteredagent.com/terms-policy"
+      ],
+      "observed": "Shared Corporate Tools resources appear in provider page output.",
+      "limit": "Shared software, analytics, chat or premises do not independently establish common legal ownership, identical contract fulfillment or identical verification outcomes. Report introduction is more categorical than its own limitations."
+    },
+    {
+      "topic": "D&B photo verification",
+      "sources": [
+        "https://www.truepic.com/blog/duns-securing-business-identity-verification-authenticated-media"
+      ],
+      "observed": "D&B technology partner describes authenticated images and geolocation in business verification.",
+      "limit": "Partner evidence of a verification mechanism; not proof all developers receive a photo check or that Northwest addresses categorically fail. Flagged-application abandonment is not a general rejection rate."
+    },
+    {
+      "topic": "Google organization rules",
+      "sources": [
+        "https://support.google.com/googleplay/android-developer/answer/13628312?hl=en"
+      ],
+      "observed": "Organization identity and address come from the linked payments profile, with D-U-N-S matching and public display requirements.",
+      "limit": "No provider-specific acceptance or rejection established. D&B success alone is not a guaranteed Google approval."
+    }
+  ],
+  "held_report_claims": [
+    "Universal current D&B exclusion inferred from a 2021 USDA-program guide.",
+    "Exact common ownership asserted from shared software/premises.",
+    "A refundable 90-day trial for the complete purchase.",
+    "Immediate purchase or automatic move to an expensive workspace after rejection.",
+    "Guaranteed Apple acceptance because a Google/D&B setup works.",
+    "Using a mailing address for every Texas field regardless of what that field requests."
+  ],
+  "unrechecked_leads": [
+    "Other Play listings and anecdotes beyond Afterplace and the retained prior Zensoul check.",
+    "Davinci, Regus, BusinessAnywhere and Office Evolution package specifics.",
+    "Third-party iPostal1 location-tier prices."
+  ],
+  "authority": "Research intake/review and local records only. No contact, purchase, filing, signup, commit, push, transfer or deployment."
+}
