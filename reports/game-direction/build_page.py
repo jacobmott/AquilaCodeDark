@@ -4437,6 +4437,43 @@ def main(output):
         "Choose Resume course when you next play to continue toward the signal.",
         short="Continue the expedition", follows="aquila-direction-r102-next")
     rounds = page.entry(103, "Windows mouse orbit confirmed", orbit_accepted, when="2026-11-18") + rounds
+    playtest_wrap = decide.recap(
+        "Your Windows camera fix is on the remote branch. The first expedition and the D&B question both have restart notes.",
+        [
+            ("Mouse", "You confirmed the exterior camera turns with your mouse."),
+            ("Controls", "Desktop buttons are smaller. Their size still needs your judgment."),
+            ("Save", "The ship is holding position on the way to the first signal."),
+            ("Address", "The D&B question is saved. The chat agent could not send the referral."),
+            ("Checks", "The saved Windows build matches the one you tried."),
+        ],
+        {
+            "did": "Pushed the camera fix and saved both restart points.",
+            "why": "You can pick either topic back up without repeating the earlier discussion.",
+            "working": "Both automated camera checks and all eleven simulation and save checks passed.",
+            "not_working": "Full expedition pacing and the address paperwork still need answers.",
+            "next": "Both topics wait for your direction.",
+        },
+    )
+    playtest_wrap += decide.info_thread(
+        "aquila-direction-r104-info",
+        "The remote branch contains the Windows fix and the saved D&B inquiry.",
+        body_html=(
+            '<p>The 41 published paths include the test results and your mouse confirmation.</p>'
+            '<p>The separate expedition save closed at revision 37. Raw research and the redacted chat stayed local.</p>'
+            '<p><a href="windows-playtest-publication.json">Verified commit and checks</a></p>'
+            '<p><a href="playtest-restart.txt">Copy the next session’s prompt</a></p>'
+            '<p><a href="dnb-follow-up-restart.txt">Saved question for a D&amp;B representative</a></p>'
+        ),
+        short="Saved work and restart notes", follows="aquila-direction-r103-info",
+    )
+    playtest_wrap += decide.whats_next(
+        "aquila-direction-r104-next",
+        "When you return, choose Resume course to continue the flight or reopen the saved address question.",
+        short="Ready when you return", follows="aquila-direction-r103-next",
+    )
+    rounds = page.entry(104, "Windows playtest and D&B handoff saved", playtest_wrap, when="2026-11-20") + rounds
+    (out / "playtest-restart.txt").write_bytes((ROOT / "Docs/Handoffs/PROMPT_2026-11-20_native-playtest.txt").read_bytes())
+    (out / "windows-playtest-publication.json").write_bytes((ROOT / "Docs/Testing/native-playtest-publication.json").read_bytes())
     (out / "windows-orbit-acceptance.json").write_bytes((ROOT / "Docs/Testing/native-windows-orbit-acceptance.json").read_bytes())
     (out / "windows-desktop-controls.json").write_bytes((ROOT / "Docs/Testing/native-windows-desktop-controls.json").read_bytes())
     (out / "windows-camera-playtest.json").write_bytes((ROOT / "Docs/Testing/native-windows-camera-playtest.json").read_bytes())

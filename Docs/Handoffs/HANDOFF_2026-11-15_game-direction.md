@@ -1,101 +1,48 @@
-# Aquila: native expedition and publishing discussion
+# Aquila native expedition and publishing
 
-2026-11-18, round 103. Owner confirmed the Windows exterior mouse orbit. [Owner reply and save state](../Testing/native-windows-orbit-acceptance.json).
-The separate save is on Hold in the first signal investigation. Choose **Resume course** to continue.
-D&B remains paused without a retry date. Use the [saved question and transcript location](../Research/dnb-google-play-address-chat-v1.json) on request.
-Round 87’s native work and records were pushed and verified on `origin/main`. [Publication evidence](../Testing/native-direction-publication.json).
-Previous pushed browser checkpoint: `39c8bcdb8bc195f74c088f72663294260f5b0a30`.
+2026-11-20, round 104. The Windows camera fix, desktop controls and paused D&B inquiry reached `origin/main` in `80145671829e4bee53d6f0e107cda31f9f66da8d`. The [publication record](../Testing/native-playtest-publication.json) identifies the exact content and checks. This checkpoint and the [restart prompt](PROMPT_2026-11-20_native-playtest.txt) follow in the records commit.
 
-## Direction and boundaries
+## Windows playtest
 
-Owner authorized native foundation and first expedition, then confirmed Windows-first development.
-Galaxy installs/tests are occasional milestone or mobile-change checks; no continuous USB connection needed.
-Single-player; automatic battleship helm/weapons; visible traveling projectiles and defense compatibility remain core.
-Steam, Android and Apple share a coordinated release target, offline local progress and later linked cloud saves.
-No launch date, account/cloud provider, purchase model or minimum hardware chosen. No Mac/iPhone access.
-Future public website retains Three.js, glass/space styling, news/logs and store links, without gameplay.
-Browser game remains the reference. Website conversion and deployment have not started.
+The owner confirmed the exterior orbit with a physical mouse. The game closed normally on revision 37 of the isolated first expedition. The ship is on Hold during travel to the signal. On owner direction, open the separate campaign and choose **Resume course**. The [acceptance record](../Testing/native-windows-orbit-acceptance.json) identifies the journal, its hash and the owner's exact answer. The saved campaign lives locally at `.runtime/expedition-windows-r101/20261119T020630Z/Campaign`.
 
-The earlier newsession invocation authorized the round 87 wrap, commit and push. That authority is consumed.
-The new owner direction covers local Windows playtesting and fixes. No external message, purchase, filing, signup, transfer or deployment.
-On a fresh handoff, read, report and wait. Preserve peer files and shared staging.
+Left-click commands. Hold either mouse button over the ship or open space, then drag to look around. After release, the exterior camera recenters after 0.65 seconds. The bridge keeps its heading. At 1280×720, the desktop command strip narrowed from 1,204 to 854 pixels. A Windows touch preview kept the same large button bounds. [Desktop controls and build evidence](../Testing/native-windows-desktop-controls.json).
 
-## Native state and evidence
+The Development Windows package and 11 simulation/save groups passed. Automated mouse checks passed in the exterior and bridge views. This wrap verified the five changed source files, the packaged binary, saved test outputs and journal against their recorded hashes where available. Desktop size approval and full human expedition pacing remain open. Earlier Galaxy foundation menus were owner-accepted. Sustained phone performance, linked cloud saves and Apple builds remain untested. [Earlier expedition verification](../Testing/native-expedition-verification.json) and [Galaxy acceptance evidence](../Testing/native-mobile-ui-verification.json).
 
-Launcher Unreal 5.8.4, changelist 58902052, at `C:/Program Files/Epic Games/UE_5.8`; DuskForge remains separate.
-[Native guide](../../native/Aquila/README.md) owns build/play commands; [milestone](../Plans/NATIVE_FOUNDATION.md) owns accepted scope.
-One flagship, planet backdrop, bridge, hostile encounter and two automatic projectile turrets.
-Expedition: signal, approach, 90-second survey, automatic battle, 45-second recovery, 120 salvage and one 100-salvage refit.
-Port Mk II adds 50% impact; 20 salvage remains. Standard rounds drain shields but armor blocks them; piercing rounds penetrate.
-Save schema 3 preserves phases, rewards, upgrades and launch damage. Schemas 1/2 migrate; divergent/unsupported revisions stay recoverable.
-Immediate event saves and 30-second autosaves use immutable JSON journals. No hosted accounts or cloud transport exists.
+Use Epic's launcher Unreal 5.8.4 CL 58902052 at `C:/Program Files/Epic Games/UE_5.8`. DuskForge has a separate engine. Windows stays primary. Check Galaxy at milestones or after mobile changes. Single-player expedition, automatic helm and weapons, and offline revisioned saves remain the direction. Steam, Android and Apple share the release target. The browser game remains a reference for the future public site. [Native guide](../../native/Aquila/README.md) and [foundation plan](../Plans/NATIVE_FOUNDATION.md).
 
-[Round-74 verification](../Testing/native-expedition-verification.json): 11 simulation/save groups and editor/Windows/Android packages passed.
-Seven Windows captures and upgraded-journal reload were checked; older save revisions stayed byte-identical.
-Those captures used isolated fixtures. The owner later played the Windows build and reported weak turning.
-The new expedition APK was not installed on Galaxy. Human pacing remains untested; baseline is 547.35 simulated seconds.
-Earlier [Galaxy foundation](../Testing/native-android-device-verification.json) and [larger menus](../Testing/native-mobile-ui-verification.json) passed; owner accepted readability.
-Phone reports SM-S948U, Android 17/API 37; do not infer a retail model. Protection restoration remains unverified.
-Sustained frame pacing, memory/heat/battery, Apple builds, cross-device sync and the wider campaign remain open.
+## Paused publishing inquiry
 
-At the round 87 wrap, 24 native hashes matched except a blank EOF line. The current source and package are local.
-Either mouse button drags the view in open space. Exterior waits 0.65 seconds on release, then recenters. Bridge retains its heading.
-[Round 101](../Testing/native-windows-camera-playtest.json) enlarged the desktop controls. Owner found them too large.
-[Round 102](../Testing/native-windows-desktop-controls.json) narrowed the 1280×720 command strip from 1,204 to 854 pixels. Phone preview button bounds matched.
-Routed drags and command clicks passed in both views. Eleven simulation/save groups passed.
-Owner confirmed the physical exterior orbit. Compact desktop sizing and full expedition pacing await separate feedback.
+Texas sole owner, US-only planning. Keep the home address private. The owner chose an LLC with a dedicated business address and resolved the employment/IP question. Favor dependable handling of important letters over unlimited scans. Quality and stability come before price. Northwest is the leading candidate. Regus Plaza 7000 is a conditional fallback. No provider, package or filing date was chosen. [Publishing decisions and app examples](../../knowledge/publishing-business.md).
 
-## Business and reviewed research
+Four developers display the same Austin suite on Google Play. Zensoul names Northwest in Wyoming. The examples do not identify the plans or private verification documents. The [focused research](../Research/texas-business-address-reliability-review-v0001.json) was reviewed once. Actual mail performance and this LLC’s address eligibility remain open.
 
-[Publishing reference](../../knowledge/publishing-business.md) holds decisions, quotes, corrected research and positive app-address evidence.
-Texas sole owner; US-only planning; home address stays off public store listings. LLC plus business address chosen.
-Employment/IP questions resolved by owner confirmation. Tentative formation horizon: three to six months.
-Quality, stability and proven service precede price. No budget, provider/package selection or purchase inferred.
-The [focused review](../../knowledge/publishing-business.md#reliability-review-round-88) favors checking Northwest first. Regus Plaza 7000 is a conditional fallback.
-Afterplace and three further developers display the same Austin suite. Zensoul names Northwest in Wyoming.
-Exact plans, private verification steps, comparative mail performance and this LLC's public-address eligibility remain unknown.
-The reviewed 28,253-byte return matches the [receipt](../Research/texas-business-address-reliability-review-v0001.json) and stays outside Git.
-Privacy first, then dependable handling of important letters over unlimited scans. Assume same-day scans for planning and set aside office relocation.
-Northwest gave no deadline. The planned Google Play organization account requires the LLC’s D-U-N-S number.
-The D&B chat acknowledged the authorized full name and existing Northwest contact email. It could not send an email or confirm eligible documents.
-Nobody was available for live text chat that evening. The bot gave no reliable staffing hours.
-Round 99 summarized the open address question. The owner then deferred the November 18 retry.
-On an explicit request to resume D&B, paste the saved summary and ask for a live representative in text chat.
-Ask whether the virtual office can be the primary D-U-N-S address when all work happens at home, and which documents qualify.
-The bot supplied no case number. No meeting was booked. The full redacted exchange was saved locally outside Git and checked against its recorded hash.
+D&B’s chat agent could not send the proposed referral. There was no live representative, case number, appointment or reliable staffing schedule. The owner deferred the retry. On a new request, use the [saved D&B message](PROMPT_2026-11-18_dnb-follow-up.txt) to ask a representative whether a home-based LLC can claim this virtual office as its primary address and which documents qualify. The [redacted chat receipt](../Research/dnb-google-play-address-chat-v1.json) points to the local exchange. Raw research, chat and personal contact details stay outside Git.
 
-## Ownership, processes and next choices
+## Handoff
 
-Round 87 published 213 owned paths through a private index. Shared staging was preserved.
-Reports 8952/8953 and Research Console 8776 were listening at round 103. Preview 4200 and the D&B browser helper were inactive.
-The compact Windows build restored revision 25 and closed normally at revision 37. No game process remained.
-Newest real inbox read: `reports/game-direction/inbox/20261115T015927Z.json`; only historical camera answer. No fabricated submissions.
-Rounds 101–103 own the desktop pawn and mouse widget, camera regression, Windows receipts and related guide, checkpoint and report edits.
-Earlier business documents, archives and receipts remain local. The expedition repair and its evidence stay uncommitted.
-No purchase, filing, store signup, commit, push, asset transfer or deployment authority.
+The content commit included 41 reviewed paths. The shared index had no staged changes afterward. The previous [round 103 checkpoint](../History/game-direction/20261121T034508Z.md) and [hash manifest](../History/game-direction/20261121T034508Z.json) preserve its exact bytes, earlier history and approval boundaries.
 
-Exact round 87 checkpoint: [archive](../History/game-direction/20261118T030717Z.md), [manifest](../History/game-direction/20261118T030717Z.json).
-Before the authorized chat, round 96: [archive](../History/game-direction/20261118T044245Z.md), [manifest](../History/game-direction/20261118T044245Z.json).
-Before the follow-up was deferred: [archive](../History/game-direction/20261119T020009Z.md), [manifest](../History/game-direction/20261119T020009Z.json).
-Before the Windows playtest: [round 100 archive](../History/game-direction/20261119T022414Z.md), [manifest](../History/game-direction/20261119T022414Z.json).
-Before the desktop size correction: [round 101 archive](../History/game-direction/20261119T024839Z.md), [manifest](../History/game-direction/20261119T024839Z.json).
-Before the mouse confirmation: [round 102 archive](../History/game-direction/20261119T030349Z.md), [manifest](../History/game-direction/20261119T030349Z.json).
-[Earlier browser wrap](../History/game-direction/20261115T225503Z.md). [Historical round 87 restart prompt](PROMPT_2026-11-17_native-direction.txt).
+The local report runs on 8953. Research Console runs on 8776. Report 8952, preview 4200 and the game were inactive at the wrap. No game/build job, provider follow-up or asset transfer was running for this session. The only real inbox item remains `reports/game-direction/inbox/20261115T015927Z.json`. Physical orbit confirmation came through chat.
+
+Wait for the owner to resume the Windows playtest or reopen D&B. This wrap used the one-time commit and push authorization. Provider contact, purchases, filing, store signup, generation, further publication, asset transfer and website deployment require new direction. Preserve peer files and shared staging.
 
 ## Restart prompt
 
-[Saved D&B restart prompt](PROMPT_2026-11-18_dnb-follow-up.txt).
-
 ```text
-Aquila Code Dark (D:/OtherProjects/AquilaCodeDark). Windows expedition playtest, round 103. D&B follow-up saved and paused.
+Repo D:/OtherProjects/AquilaCodeDark. Windows expedition and paused D&B address inquiry.
 Read AGENTS.md, Docs/TaskRoutes.md and Docs/Handoffs/HANDOFF_2026-11-15_game-direction.md in full.
-Read Docs/Testing/native-windows-orbit-acceptance.json for the owner-confirmed orbit and local save. The linked build record covers both camera views.
-Report: http://127.0.0.1:8953/?agentreport=1&paseoAgent=1797de6d-c62b-478b-b154-82859c3ad278 (reports/game-direction/, round 103).
+Publication verified on origin/main. See Docs/Testing/native-playtest-publication.json.
+Report http://127.0.0.1:8953/?agentreport=1&paseoAgent=1797de6d-c62b-478b-b154-82859c3ad278 (reports/game-direction/, round 104).
 Last real inbox read: reports/game-direction/inbox/20261115T015927Z.json.
-Launcher Unreal 5.8.4 only. Eleven simulation/save groups and the revised Windows package passed. Check Galaxy occasionally at milestones.
-Full expedition pacing, sustained phone performance, cloud saves and Apple remain untested.
-The game closed normally at revision 37. Reports 8952/8953 and Research Console 8776 were running.
-Next playtest can use Resume course to continue the signal investigation. No new publication, generation, transfer or deployment authority.
-Only if the owner reopens D&B, read knowledge/publishing-business.md and the saved D&B restart prompt. Preserve app examples and limits.
+Use launcher Unreal 5.8.4. Windows first. Galaxy checks at milestones.
+Owner confirmed exterior mouse orbit. Windows package, 11 simulation/save groups and both automated camera checks passed.
+Desktop sizing, full human expedition pacing, sustained phone performance, cloud saves and Apple remain open.
+Separate save at revision 37, first signal, helm on Hold. On owner direction, choose Resume course.
+D&B follow-up waits for the owner. Read knowledge/publishing-business.md and Docs/Handoffs/PROMPT_2026-11-18_dnb-follow-up.txt before reopening.
+Keep the home address private. Preserve positive app examples and their limits. No specialist referral or provider selection.
+Report 8953 and Research Console 8776 running. Report 8952, preview 4200 and game inactive. No session job or transfer.
+Wrap authority consumed. New contact, purchase, filing, signup, generation, publication, transfer or deployment needs fresh approval.
 Do not start any of this. Read, say where things stand, then wait.
 ```

@@ -1,0 +1,8 @@
+{
+  "source": "Docs/Handoffs/HANDOFF_2026-11-15_game-direction.md",
+  "archive": "Docs/History/game-direction/20261121T034508Z.md",
+  "saved_at_utc": "2026-11-21T03:45:08.012839+00:00",
+  "bytes": 9653,
+  "sha256": "5c83445bdf3633f09e606a6027a03ef28cd5d7ede6a239be38de24ec9cbe7f3c",
+  "reason": "Preserve the exact round 103 checkpoint before saving the verified Windows playtest and paused publishing inquiry."
+}

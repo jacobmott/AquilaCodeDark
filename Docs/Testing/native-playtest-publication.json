@@ -1,0 +1,94 @@
+{
+  "schema_version": 1,
+  "state": "content_pushed_verified",
+  "report_round": 104,
+  "branch": "main",
+  "upstream": "origin/main",
+  "base_commit": "603026a967f112fd960bbef9b307b1e98290fa91",
+  "content_commit": "80145671829e4bee53d6f0e107cda31f9f66da8d",
+  "remote_tip_at_verification": "80145671829e4bee53d6f0e107cda31f9f66da8d",
+  "verified_at_utc": "2026-11-21T03:44:59.319211+00:00",
+  "published_content_paths": 41,
+  "scope": [
+    "Windows camera capture, desktop controls, test coverage and playtest evidence",
+    "Texas address research review, owner mail priorities and paused D&B question",
+    "Project knowledge, checkpoints, archives and report through round 103"
+  ],
+  "ownership": {
+    "prior_shared_staging": [],
+    "other_index_entries_preserved": true,
+    "after_content_push_shared_staging": [],
+    "after_content_push_worktree": [],
+    "private_staged_guard": {
+      "indexed_files": 558,
+      "failures": 0
+    },
+    "pre_commit_hook": "passed",
+    "whitespace": "passed"
+  },
+  "wrap_checks": {
+    "engine": "Epic launcher Unreal 5.8.4 CL 58902052 verified by the Win64 check",
+    "repository_safety_tests_passed": 6,
+    "source_files_matched_to_playtest_records": 5,
+    "windows_package_bytes": 332084736,
+    "windows_package_sha256": "3433fe1f0ff2f50c0cbb7011eaee412574506d4ebf774a2d488dc4724b0a85b2",
+    "saved_camera_automation_reports_matched_by_hash": [
+      "exterior",
+      "bridge"
+    ],
+    "saved_simulation_groups_passing": 11,
+    "local_captures_matched_by_hash": 6,
+    "playtest_journal_matched_by_hash": true,
+    "reports_matched_to_canonical_files": 6,
+    "content_archives_matched_to_manifests": 6,
+    "raw_research_and_redacted_chat_hashes_matched": true,
+    "runtime_rebuilt_or_replayed_during_wrap": false
+  },
+  "playtest": {
+    "desktop_build": "Docs/Testing/native-windows-desktop-controls.json",
+    "human_confirmation": "Docs/Testing/native-windows-orbit-acceptance.json",
+    "owner_confirmed": "Physical exterior mouse orbit in Windows",
+    "isolated_save_revision": 37,
+    "phase": "Travel",
+    "helm": "Hold",
+    "next_command": "Resume course",
+    "open": [
+      "Owner assessment of compact desktop controls",
+      "Full human expedition pacing",
+      "Sustained Galaxy performance",
+      "Cross-device cloud saves",
+      "Apple builds and device checks"
+    ]
+  },
+  "business": {
+    "review": "Docs/Research/texas-business-address-reliability-review-v0001.json",
+    "chat_receipt": "Docs/Research/dnb-google-play-address-chat-v1.json",
+    "resume_prompt": "Docs/Handoffs/PROMPT_2026-11-18_dnb-follow-up.txt",
+    "status": "Owner paused the inquiry. No live specialist or sent email referral. No provider or package selected.",
+    "raw_material": "Local only. Only sanitized records are included."
+  },
+  "services_at_wrap": {
+    "listening": [
+      8953,
+      8776
+    ],
+    "inactive_ports": [
+      8952,
+      4200
+    ],
+    "game_running": false,
+    "active_session_jobs": []
+  },
+  "handoff_verification": {
+    "round": 104,
+    "startup_context_failures": 0,
+    "checkpoint_links_checked": 14,
+    "served_downloads_checked": 3,
+    "paseo_browser_snapshot": "Round 104, Windows playtest and D&B handoff saved",
+    "restart_prompt": "Docs/Handoffs/PROMPT_2026-11-20_native-playtest.txt",
+    "restart_prompt_sha256": "9a992131748145eb9c1d3763b482e1216665c02ef864b7f550e037ad3d642321",
+    "prompt_matches_checkpoint_and_download": true
+  },
+  "authority": "Explicit newsession authorized this wrap, commit and push. Further publication, external contact, filing, purchase, signup, generation, transfer or deployment requires new authority.",
+  "records_commit": "A following records-only commit includes this receipt, the prior checkpoint archive, the restart prompt and round 104. Its own hash is recorded in Git."
+}
