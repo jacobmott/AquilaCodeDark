@@ -1,0 +1,38 @@
+{
+  "project": "aquila-code-dark",
+  "id": "0013c8c0a3bb4ac982a44417de36ddf3",
+  "external_key": "texas-business-address-reliability-v1:run-1",
+  "title": "Texas business address providers: reliability and proven service before price",
+  "prompt_hash": "5da5ef20e7d0f91008f9380b219a6645baab67bfc1c4b6ffdccddd5ec434e397",
+  "url": "http://127.0.0.1:8776/?project=aquila-code-dark#0013c8c0a3bb4ac982a44417de36ddf3",
+  "state": "reviewed",
+  "latest_version": 1,
+  "reviewed_version": 1,
+  "reviews": [
+    {
+      "version": 1,
+      "created": "2026-11-18T03:08:50.732162+00:00",
+      "note": "Reviewed all 193 lines of version 1. Northwest leads on public evidence; Regus Plaza 7000 is a conditional separate-site fallback. Three more Austin Play listings verified. Exact plan eligibility and comparative mail reliability remain open. Distinguished quoted suffix and lease from location assignment, USPS remailing from legal service, and direct Regus from Davinci terms. See knowledge/publishing-business.md#reliability-review-round-88. No provider selected or contacted."
+    }
+  ],
+  "removed_results": [],
+  "result_saved_at_utc": "2026-11-18T02:22:07.014648+00:00",
+  "retrieval": {
+    "project": "aquila-code-dark",
+    "job_id": "0013c8c0a3bb4ac982a44417de36ddf3",
+    "path": "D:\\OtherProjects\\AquilaCodeDark\\Assets\\Research\\texas-business-address-reliability\\result-v0001.md",
+    "sha256": "7a1e5f5446e236557966b16625265c836687cbf266a873aac93f3b1ec1504b4e",
+    "version": 1,
+    "bytes": 28253,
+    "lines": 193
+  },
+  "synthesis": "knowledge/publishing-business.md#reliability-review-round-88",
+  "knowledge_hub": {
+    "provider": "openai",
+    "query": "mail forwarding",
+    "request_id": "req_863f56017d5946b99f83a61b10bdce9d",
+    "outcome": "empty",
+    "complete_for_scope": true
+  },
+  "disposition": "Partial support for a shortlist. Public app listings are positive outcomes. No comparative mail measurements, exact-package platform approval, provider contact, service test or purchase."
+}

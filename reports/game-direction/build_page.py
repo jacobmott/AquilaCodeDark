@@ -1,6 +1,8 @@
 """Local Aquila direction and implementation report; prior rounds remain intact."""
 import importlib.util
+import json
 import sys
+from html import escape
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
@@ -3788,6 +3790,658 @@ def main(output):
         summary="Then choose research review or Windows expedition follow-up. No purchase, contact or deployment authority is added.",
         short="Ready for a fresh session", follows="aquila-direction-r86-next")
     rounds = page.entry(87, "Published and ready for restart", published_native, when="2026-11-17") + rounds
+    reliability_review = decide.recap(
+        "I’d check Northwest first. Four developers show the same Austin suite on Google Play. "
+        "The research found no measured scan times or mail loss rates for these offices. "
+        "Regus Plaza 7000 is the backup if its agreement gives you access you need.",
+        [
+            ("First choice to check", "Northwest combines a written quote, local mail handling duties and repeated public address examples."),
+            ("Texas evidence", "Three more developers list the same Austin suite as Afterplace."),
+            ("Known limit", "The listings do not identify the Texas packages or disclose verification paperwork."),
+            ("Fallback", "Regus offers a staffed office at a different building for a higher price."),
+            ("Still open", "Eligibility for your home-operated LLC depends on its exact address and permitted use."),
+        ],
+        {
+            "did": "Read the complete return and checked the public listings, provider terms and Google’s requirements.",
+            "why": "You put proven service ahead of price.",
+            "working": "Four Austin listings show the public address outcome you want.",
+            "not_working": "Comparable mail performance and eligibility for your exact package remain unknown.",
+            "next": "Compare written terms at formation time. Five draft questions are saved.",
+        },
+    )
+    review_body = table(["Provider", "What matters for your decision"], [
+        ("Northwest", "Quoted $438 in year one and $224 annually afterward. Includes formation once, registered agent and 20 annual mail scans. "
+         '<a href="northwest-package-reply.json">Written reply</a>. '
+         '<a href="https://www.northwestregisteredagent.com/jobs/core-product/business-solutions-specialist-tx/">Austin mail duties</a>.'),
+        ("Regus Plaza 7000", "Different staffed building. Texas records show a 2020–21 remodel. Mail performance and inspection permission remain unknown. "
+         '<a href="https://www.regus.com/en/us/291">Center</a>. '
+         '<a href="https://www.tdlr.texas.gov/TABS/Projects/TABS2020022346">Texas record</a>.'),
+        ("Texas Virtual Office", "Lists another suite in the Balcones building. A building closure would affect both addresses. "
+         '<a href="https://www.texasvirtualoffice.com/terms/">Address in its terms</a>.'),
+        ("The Farm", "Premium plans advertise workspace and supporting documents. The review found no demonstrated Texas approval advantage. "
+         '<a href="https://www.thefarmsoho.com/product/virtual-office/texas/">Austin offer</a>.'),
+    ])
+    review_body += (
+        '<p>Afterplace, Offshore Inc., Skol Games and Pibardos show the same Austin street and suite. '
+        'Federal records list two agents there. The listings do not identify these developers’ plans. '
+        '<a href="https://play.google.com/store/apps/details?id=com.kice.afterplace">Afterplace</a>. '
+        '<a href="https://play.google.com/store/apps/details?id=com.strongware.offshoreinc">Offshore Inc.</a> '
+        '<a href="https://play.google.com/store/apps/details?id=com.skollabs.bible">Skol Games</a>. '
+        '<a href="https://play.google.com/store/apps/details?id=com.filament3d">Pibardos</a>. '
+        '<a href="https://www.fmcsa.dot.gov/registration/process-agents/northwest-registered-agent-llc-55">Northwest</a>. '
+        '<a href="https://www.fmcsa.dot.gov/registration/process-agents/registered-agents-inc-88">Registered Agents Inc.</a></p>'
+        '<p>Zensoul names Northwest in Wyoming. Its Play listing displays that address. '
+        '<a href="https://zensoul.app/">Developer site</a>. '
+        '<a href="https://play.google.com/store/apps/details?id=app.zensoul.app">Play listing</a>.</p>'
+        '<p>Google publishes an organization’s legal address. Its payments details must match Dun &amp; Bradstreet. '
+        'Northwest warned about Dun &amp; Bradstreet eligibility. Its reply reported no Google rejection. '
+        '<a href="https://support.google.com/googleplay/android-developer/answer/13628312?hl=en">Google requirements</a>.</p>'
+        '<p>Northwest quoted a unique number and a one-year lease document. Its website offers a month-to-month lease option. '
+        'Exact street, contract duration and help during an office move still matter. '
+        '<a href="https://www.northwestregisteredagent.com/business-address/virtual-office/texas">Texas plan</a>.</p>'
+        '<p>Northwest’s terms stop forwarding after termination. Postal rules generally require six months of remailing unless customers give permitted written instructions. '
+        'The mailbox agreement matters for ordinary mail. Legal notices need separate arrangements. '
+        '<a href="https://www.northwestregisteredagent.com/terms-policy">Northwest terms</a>. '
+        '<a href="https://pe.usps.com/text/dmm300/508.htm">Postal rule, section 1.8.4</a>.</p>'
+        '<p>Davinci advertises the Regus location under a separate agreement. Its promotional figures total $2,691 initially, then $2,341 if rates hold. '
+        'That includes self-filing, the state fee and a registered agent. A direct Regus quote remains open. '
+        '<a href="https://www.davincivirtual.com/loc/us/texas/austin-virtual-offices/facility-4150">Reseller offer</a>. '
+        '<a href="https://www.davincivirtual.com/terms-and-conditions">Reseller terms</a>.</p>'
+        '<p><a href="publishing-reference.md">Saved publishing reference</a>. '
+        '<a href="http://127.0.0.1:8776/?project=aquila-code-dark#0013c8c0a3bb4ac982a44417de36ddf3">Original return</a>.</p>'
+    )
+    review_body += table(["Provider", "Draft questions, unsent"], [
+        ("Northwest", "Which street address, lease terms and permissions for public use would the $99 plan give our home-operated LLC?"),
+        ("Northwest", "If the office moves or service ends, what notice, forwarding choices, fees and legal-notice arrangements apply?"),
+        ("Northwest", "How do you track missing ordinary or certified mail, and what does each scan beyond 20 cost?"),
+        ("Regus Plaza 7000", "Which local services and access rights would our exact address plan provide if Dun &amp; Bradstreet requested premises evidence?"),
+        ("Regus Plaza 7000", "Could you confirm mailbox format, scanning fees, deposit, renewal costs and mail handling after a move?"),
+    ])
+    reliability_review += decide.info_thread(
+        "aquila-direction-r88-info", "Northwest has the strongest evidence for checking its Texas address first.",
+        body_html=review_body, short="Quality comparison reviewed", follows="aquila-direction-r87-info",
+    )
+    reliability_review += decide.whats_next(
+        "aquila-direction-r88-next", "At formation time, check the street, permitted use and mail arrangements in writing.",
+        summary="Consider Regus only if its agreement solves a specific gap. No provider selected or contacted.",
+        short="Exact package still open", follows="aquila-direction-r87-next",
+    )
+    rounds = page.entry(88, "Northwest leads the address shortlist", reliability_review, when="2026-11-17") + rounds
+    address_fit = decide.recap(
+        "I put too much weight on the street number. What matters is which address players see. "
+        "The mail question is whether you would see an important letter in time to act.",
+        [
+            ("Address", "This means the street and suite or mailbox number assigned to your LLC."),
+            ("Privacy", "Google Play shows the legal address on your verified organization profile."),
+            ("Mail", "A good service alerts you and scans every page when an important letter arrives."),
+            ("Move", "Written notice and a forwarding plan help letters reach you through an office move."),
+            ("Priority", "At your expected mail volume, a dependable scan matters more than unlimited scans."),
+        ],
+        {
+            "did": "Explained which parts of the address and mail agreement matter for your business.",
+            "why": "You want to keep your home private and still catch important mail.",
+            "working": "Northwest already quoted a numbered unit, a lease and 20 opened-and-scanned items each year.",
+            "not_working": "We still lack an enrollment outcome for your LLC or measured mail performance at the proposed office.",
+            "next": "Use the privacy requirement first when judging the terms.",
+        },
+    )
+    fit_body = table(["What matters", "Preferable", "Poor fit"], [
+        ("Address players see",
+         "Your LLC can document its assigned business address with Dun &amp; Bradstreet and Google.",
+         "The service accepts your mail, but your verified public profile would still have to show your home."),
+        ("A tax letter arrives",
+         "You receive a prompt alert, a readable scan of every page and help tracing the original.",
+         "You can see an envelope but cannot read the deadline inside or reach someone for help."),
+        ("The office moves",
+         "You get advance notice and know how letters addressed to the old office will reach you.",
+         "The address changes and nobody explains where the mail goes."),
+    ])
+    fit_body += (
+        '<p>Google takes the public legal address from your organization’s payments profile. It must match the Dun &amp; Bradstreet record. '
+        'Giving residential ID privately to the mail provider is a separate step. '
+        '<a href="https://support.google.com/googleplay/android-developer/answer/13628312?hl=en">Google’s public profile rules</a>. '
+        '<a href="https://support.google.com/googleplay/android-developer/answer/13634888?hl=en">Address matching</a>.</p>'
+        '<p>Afterplace shows one way a shared Austin suite can appear on Play. Another suitable business address would work equally well. '
+        'A sample format is enough to compare plans before Northwest assigns your number. '
+        '<a href="https://play.google.com/store/apps/details?id=com.kice.afterplace">Afterplace</a>.</p>'
+        '<p>Northwest’s $99 annual offer includes 20 opened-and-scanned items and a lease. It advertises same-day digital scans. '
+        'The quote describes a mailing address. Eligibility for your LLC’s public profile remains open. '
+        '<a href="https://www.northwestregisteredagent.com/business-address/virtual-office/texas">Texas offer</a>. '
+        '<a href="northwest-package-reply.json">Written reply</a>.</p>'
+    )
+    address_fit += decide.info_thread(
+        "aquila-direction-r89-info", "A good fit protects your home address and gets important letters to you in time.",
+        body_html=fit_body, short="What preferable means here", follows="aquila-direction-r88-info",
+    )
+    address_fit += decide.whats_next(
+        "aquila-direction-r89-next", "Northwest remains the first provider I’d check when you compare agreements.",
+        summary="No provider choice needed today.", short="Nothing needed now", follows="aquila-direction-r88-next",
+    )
+    rounds = page.entry(89, "Which address players see", address_fit, when="2026-11-17") + rounds
+    privacy_first = decide.recap(
+        "Keep your home address off public listings. Among plans that meet that requirement, dependable handling of important letters beats unlimited scans.",
+        [
+            ("Privacy", "Players should see a business address."),
+            ("Mail", "An important letter should reach you in time to act."),
+            ("Scans", "An unlimited allowance carries less weight."),
+            ("Record", "Your priorities are saved for future comparisons."),
+            ("Provider", "The package choice remains open."),
+        ],
+        {
+            "did": "Saved the order you confirmed.",
+            "why": "Home-address privacy comes first.",
+            "working": "We know how you want qualifying plans compared.",
+            "not_working": "The exact address and mail terms remain open.",
+            "next": "Use your priorities when the provider decision returns.",
+        },
+    )
+    privacy_first += decide.info_thread(
+        "aquila-direction-r90-info", "Your provider priorities are saved.",
+        body_html="<blockquote>privacy first, then favor dependable handling of important letters over unlimited scans.</blockquote>",
+        short="Your confirmed order", follows="aquila-direction-r89-info",
+    )
+    privacy_first += decide.whats_next(
+        "aquila-direction-r90-next", "Apply this order when comparing exact packages.",
+        short="Provider choice open", follows="aquila-direction-r89-next",
+    )
+    rounds = page.entry(90, "Privacy comes first", privacy_first, when="2026-11-17") + rounds
+    reply_timing = decide.recap(
+        "I’d reply while the thread is fresh. You can choose a provider closer to formation. "
+        "Northwest gave no deadline, and the referral request only applies if you sign up.",
+        [
+            ("Timing", "You already told Northwest that formation might be three to six months away."),
+            ("Quote", "Their reply explains the price, lease and mail allowance."),
+            ("Privacy", "Ask which office address the agreement lets your LLC display publicly."),
+            ("Mail", "Ask what happens to letters sent to the old office after a move."),
+            ("Decision", "Keep Northwest on the shortlist while the public address question remains open."),
+        ],
+        {
+            "did": "Read their reply and drafted a short follow-up.",
+            "why": "The remaining questions matter to your privacy and your mail.",
+            "working": "You can ask those questions in the existing thread.",
+            "not_working": "The exact package’s suitability for your public listing remains open.",
+            "next": "Choose a provider when formation is closer.",
+        },
+    )
+    email_draft = (
+        "<p>Hi Northwest team,</p>"
+        "<p>Thanks for explaining the pricing and what the lease covers. "
+        "I’m still gathering information and may form the LLC in three to six months.</p>"
+        "<p>Could you share the street address, city and ZIP for the $99 Texas office plan? "
+        "Would your agreement allow my LLC to display that address on Google Play if Google accepts it?</p>"
+        "<p>If the office moves, how much notice would I get? "
+        "How would letters sent to the old address reach me?</p>"
+        "<p>Thanks again for your help,<br>Jacob</p>"
+    )
+    reply_timing += decide.info_thread(
+        "aquila-direction-r91-info", "I’d send a short follow-up. You can leave the purchase decision open.",
+        body_html=email_draft, short="Suggested email reply", follows="aquila-direction-r90-info",
+    )
+    reply_timing += decide.whats_next(
+        "aquila-direction-r91-next", "Reply when convenient. Their email gives no deadline.",
+        summary="The draft is unsent.", short="Your timing", follows="aquila-direction-r90-next",
+    )
+    rounds = page.entry(91, "Replying to Northwest", reply_timing, when="2026-11-17") + rounds
+    friendly_reply = decide.recap(
+        "The revised reply thanks Northwest for explaining the renewal costs. A link to their mail policy would make answering easier.",
+        [
+            ("Opening", "Thank them for a detail that helped."),
+            ("Timing", "Keep the three-to-six-month window tentative."),
+            ("Address", "Ask for the office location and permission to display it."),
+            ("Mail", "Ask how much notice customers get and what happens to letters after a move."),
+            ("Reply", "Welcome a link to their usual policy."),
+        ],
+        {
+            "did": "Rewrote the email in a warmer tone.",
+            "why": "You want the representative to feel comfortable replying.",
+            "working": "The draft is ready for the existing thread.",
+            "not_working": "The address and mail questions remain open.",
+            "next": "Reply whenever convenient.",
+        },
+    )
+    friendly_draft = (
+        "<p>Hi Northwest team,</p>"
+        "<p>Thanks for walking me through the pricing and lease. "
+        "It helped to see what I’d pay up front and what renews each year. "
+        "I’m still planning and may form the LLC in three to six months.</p>"
+        "<p>When you have a chance, could you share the street address, city and ZIP for the $99 Texas office plan? "
+        "I understand the unit number comes later. "
+        "If Google accepts it, would your terms allow my LLC to display that address publicly on Google Play?</p>"
+        "<p>If the office ever moves, how much notice would I get? "
+        "How would letters sent to the old address reach me? "
+        "A link to your mail policy would be great if that’s easier.</p>"
+        "<p>Thanks again for helping me think this through!<br>Jacob</p>"
+    )
+    friendly_reply += decide.info_thread(
+        "aquila-direction-r92-info", "A warmer reply for the existing email thread.",
+        body_html=friendly_draft, short="Revised email", follows="aquila-direction-r91-info",
+    )
+    friendly_reply += decide.whats_next(
+        "aquila-direction-r92-next", "The draft is ready to send when convenient.",
+        short="On your schedule", follows="aquila-direction-r91-next",
+    )
+    rounds = page.entry(92, "A friendlier reply to Northwest", friendly_reply, when="2026-11-17") + rounds
+    site_check = decide.recap(
+        "I checked the plan and terms earlier. I missed the office directory and the Albany move article. "
+        "The email can focus on what happens to Texas customers’ mail if the office moves.",
+        [
+            ("City", "Northwest lists Austin, Texas 78731."),
+            ("Street", "They explain why they give customers the full address after signup."),
+            ("Public use", "Northwest allows the address on websites and other public business materials."),
+            ("Past move", "They promised three months of mail collection after their Albany registered office moved in 2022."),
+            ("Texas", "I found no written notice or collection period for a Texas virtual-office move."),
+        ],
+        {
+            "did": "Checked each question in the draft against Northwest’s public pages.",
+            "why": "Some details were already available.",
+            "working": "Their directory and service description answer the general location and public use questions.",
+            "not_working": "The Albany example leaves Texas customers’ terms open. Google Play eligibility also remains open.",
+            "next": "Ask only about advance notice and ordinary mail after an Austin office move.",
+        },
+    )
+    check_body = table(["Email topic", "What the website says"], [
+        ("Address", 'The directory lists Austin, TX 78731. Northwest withholds street addresses from its directory until signup. '
+         '<a href="https://www.northwestregisteredagent.com/office-locations">Office directory</a>.'),
+        ("Public display", 'The virtual office page allows websites, social media and other public business materials. '
+         'It makes no specific promise about Google Play verification. '
+         '<a href="https://www.northwestregisteredagent.com/business-address/virtual-office">Virtual office uses</a>.'),
+        ("An office move", 'Northwest described three months of collection at the old Albany address. '
+         'I found no Texas notice period or promise covering ordinary mail after a move. '
+         '<a href="https://www.northwestregisteredagent.com/registered-agent/address-change">Albany move</a>. '
+         '<a href="https://www.northwestregisteredagent.com/business-address/virtual-office/texas">Texas plan</a>.'),
+    ])
+    check_body += (
+        "<p>Hi Northwest team,</p>"
+        "<p>Thanks for explaining the lease and renewal costs. I’m still in the planning stage, and your breakdown helped.</p>"
+        "<p>I saw your note about collecting mail for three months after your Albany office moved. "
+        "Would that also apply to ordinary business mail on the $99 Texas virtual office plan if the Austin office moved? "
+        "How much advance notice would customers usually get?</p>"
+        "<p>Thanks again for your help,<br>Jacob</p>"
+    )
+    site_check += decide.info_thread(
+        "aquila-direction-r93-info", "Some answers were on the site. I narrowed the draft.",
+        body_html=check_body, short="Sources and shorter email", follows="aquila-direction-r92-info",
+    )
+    site_check += decide.whats_next(
+        "aquila-direction-r93-next", "The shorter draft is ready for the existing email thread.",
+        summary="Nothing sent.", short="Reply when convenient", follows="aquila-direction-r92-next",
+    )
+    rounds = page.entry(93, "What Northwest already answers", site_check, when="2026-11-17") + rounds
+    remaining = decide.recap(
+        "Yes. The main question is whether players can see Northwest’s address while your home address stays private. "
+        "The mail question is how their Austin team would trace a delivered letter when its scan is missing.",
+        [
+            ("Privacy", "Google Play publishes the organization’s verified legal address."),
+            ("Verification", "The address in Google payments must match the LLC’s Dun & Bradstreet record."),
+            ("Examples", "Four developers display the Austin suite. Their listings give no details about their plans or verification."),
+            ("Mail", "Northwest advertises same-day scans. I found no response time for a missing scan on this plan."),
+            ("Timing", "You can leave the email thread there for now."),
+        ],
+        {
+            "did": "Checked what still matters assuming the office stays put.",
+            "why": "Your first concern is which address players see.",
+            "working": "Northwest has explained its price, lease and routine mail service.",
+            "not_working": "Neither Google nor Dun & Bradstreet has verified an address for your future LLC.",
+            "next": "Check which address the LLC can document before paying for this plan for privacy.",
+        },
+    )
+    remaining += decide.info_thread(
+        "aquila-direction-r94-info", "Two questions affect the choice once a move is set aside.",
+        body_html=table(["Question", "What we know"], [
+            ("Can your LLC use the Austin address on Google Play?",
+             'Google publishes the legal address from your linked payments profile. It must match the organization’s Dun &amp; Bradstreet record. '
+             'Northwest warned about virtual offices. It reported no Google rejection. '
+             '<a href="https://support.google.com/googleplay/android-developer/answer/13628312?hl=en">Google’s display rules</a>. '
+             '<a href="https://support.google.com/googleplay/android-developer/answer/13634888?hl=en">Address matching</a>. '
+             '<p>Afterplace and three other developers display the suite listed for Northwest. '
+             'Their listings do not identify the plan or documents they used. '
+             '<a href="https://play.google.com/store/apps/details?id=com.kice.afterplace">Afterplace</a>. '
+             '<a href="https://www.fmcsa.dot.gov/registration/process-agents/northwest-registered-agent-llc-55">Northwest’s federal listing</a>.</p>'),
+            ("Who traces a letter marked delivered if no scan appears?",
+             'The $99 Texas plan includes 20 scans per year and advertises same-day notification. '
+             'I found no promised tracing time or price for scan 21 on that plan. '
+             '<a href="https://www.northwestregisteredagent.com/business-address/virtual-office/texas">Texas mail terms</a>.'),
+        ]),
+        short="Privacy and ordinary mail", follows="aquila-direction-r93-info",
+    )
+    remaining += decide.whats_next(
+        "aquila-direction-r94-next", "No reply needed now. Revisit the address evidence when formation is closer.",
+        summary="Northwest remains the leading candidate.", short="Before choosing", follows="aquila-direction-r93-next",
+    )
+    rounds = page.entry(94, "If the Austin office stays put", remaining, when="2026-11-17") + rounds
+    confirm_address = decide.recap(
+        "I meant who could find a delivered letter whose scan never appeared. We can assume same-day scans for planning. "
+        "For privacy, ask Dun & Bradstreet which address it would verify. Google later shows the address on the verified profile.",
+        [
+            ("Mail", "Drop the missing-letter question from the email."),
+            ("Before paying", "Dun & Bradstreet’s Google developer page has a contact form and a Call link."),
+            ("Address", "Explain that you work from home and would use Northwest for its mailing address and lease."),
+            ("Evidence", "Ask which address would appear on your business record and what documents would support it."),
+            ("Before publishing", "Check the Play developer profile after Google verifies your organization."),
+        ],
+        {
+            "did": "Checked the D&B contact route and Google’s rules for US organizations.",
+            "why": "You want players to see the business address while keeping your home address private.",
+            "working": "You can ask for written guidance before paying Northwest.",
+            "not_working": "The future LLC has no verified address yet.",
+            "next": "Start with the address question for D&B when you want to pursue it.",
+        },
+    )
+    address_steps = table(["When", "How to check"], [
+        ("Before purchase",
+         'Dun &amp; Bradstreet’s page has a <strong>Let’s get in touch</strong> form and a <strong>Call</strong> link. '
+         'Ask for written guidance about a home-based Texas LLC. '
+         '<a href="https://www.dnb.com/en-us/smb/duns/google-developers.html">D&amp;B’s Google developer page</a>.'),
+        ("If D&B requires your home address",
+         'If that is the address Google must match, Northwest’s mailing service alone cannot keep it off Play. '
+         '<a href="https://support.google.com/googleplay/android-developer/answer/13628312?hl=en">Google’s organization address rules</a>.'),
+        ("After formation",
+         'Check the LLC’s legal name and full business address on its validated D&amp;B record. '
+         'Match them in Google payments and complete organization verification. '
+         'Google lists IRS-issued letters among the US documents it accepts. '
+         '<a href="https://support.google.com/googleplay/android-developer/answer/15633622?hl=en">US verification documents</a>.'),
+        ("Before publishing",
+         'After verification, open <strong>Manage account &gt; Account details &gt; Play developer profile</strong>. '
+         'Check that the address shown there is the Northwest address. '
+         '<a href="https://support.google.com/googleplay/android-developer/answer/13634081?hl=en">Google’s profile instructions</a>.'),
+    ])
+    address_steps += (
+        "<blockquote><p>Hi, I’m planning a Texas LLC that I’ll run from home. "
+        "Northwest would provide a virtual-office mailing address and a lease. I wouldn’t work at that office.</p>"
+        "<p>Could the Northwest address be the business address on the D-U-N-S record Google Play checks? "
+        "Or could it only be a mailing address? What documents would you need? Thanks for your help.</p></blockquote>"
+    )
+    confirm_address += decide.info_thread(
+        "aquila-direction-r95-info", "D&B can explain its address policy before the LLC exists.",
+        body_html=address_steps, short="The address question and proof", follows="aquila-direction-r94-info",
+    )
+    confirm_address += decide.whats_next(
+        "aquila-direction-r95-next", "The question is ready if you want D&B’s guidance. Nothing has been sent.",
+        summary="No Northwest follow-up needed now.", short="Before spending", follows="aquila-direction-r94-next",
+    )
+    rounds = page.entry(95, "How to confirm the public address", confirm_address, when="2026-11-17") + rounds
+    duns_inquiry = decide.recap(
+        "Yes. Your LLC needs a D-U-N-S number to create its Google Play organization account. "
+        "You can ask D&B about the address now. The standard application is free.",
+        [
+            ("Purpose", "Google uses this nine-digit business ID to verify the organization."),
+            ("Today", "You can ask the address question before forming the LLC."),
+            ("After formation", "Look up the LLC first. Request a number if it has none."),
+            ("Application", "Have the legal name, business address, phone and owner’s name ready."),
+            ("Timing", "Dun & Bradstreet says standard processing can take up to 30 business days."),
+        ],
+        {
+            "did": "Checked the application details and rewrote the message for D&B.",
+            "why": "You wanted to know when the number matters and what to gather.",
+            "working": "Texas formation and the address inquiry can both happen before you have a number.",
+            "not_working": "The address D&B would verify for your future LLC remains open.",
+            "next": "Use the draft when you want address guidance.",
+        },
+    )
+    duns_body = table(["When", "What you need"], [
+        ("Planning the LLC",
+         'The Texas formation filing asks for no D-U-N-S number. You can also ask D&amp;B about the address now. '
+         '<a href="https://www.sos.state.tx.us/corp/instructions/205.shtml">Texas LLC filing instructions</a>.'),
+        ("Getting a number",
+         'After formation, look up the LLC. If needed, choose the Google developer application. '
+         'D&amp;B may request the legal name, address, business phone and owner’s name. '
+         'Other details include legal structure, founding year, industry and employee count. '
+         'Standard processing is free and can take up to 30 business days. '
+         '<a href="https://www.dnb.com/en-us/smb/duns/get-a-duns.html">D&amp;B’s application guide</a>.'),
+        ("Opening a Google Play organization account",
+         'Google requires the number and checks the LLC’s name and address against D&amp;B. '
+         '<a href="https://support.google.com/googleplay/android-developer/answer/13628312?hl=en">Google Play requirements</a>.'),
+    ])
+    duns_body += (
+        '<p><a href="https://www.dnb.com/en-us/smb/duns/google-developers.html">Contact D&amp;B about the address</a>.</p>'
+        "<blockquote><p>Hi D&amp;B team,</p>"
+        "<p>I’m planning a small game studio that I’ll run from my home in Texas. "
+        "I’d appreciate your advice before I form the LLC and choose an address service.</p>"
+        "<p>I’d like to keep my home address off Google Play. "
+        "I’m considering Northwest Registered Agent’s virtual office, which comes with a mailing address and a lease. "
+        "Could that address appear as my LLC’s business address on the D-U-N-S record Google Play checks? "
+        "Or would it only be a mailing address? If it can qualify, what paperwork should I have ready?</p>"
+        "<p>Thanks for helping me get this right!<br>Jacob</p></blockquote>"
+    )
+    duns_inquiry += decide.info_thread(
+        "aquila-direction-r96-info", "A friendlier inquiry and what the number means for your LLC.",
+        body_html=duns_body, short="Draft and application details", follows="aquila-direction-r95-info",
+    )
+    duns_inquiry += decide.whats_next(
+        "aquila-direction-r96-next", "The draft is ready. The number can wait until after formation.",
+        summary="Nothing submitted.", short="On your schedule", follows="aquila-direction-r95-next",
+    )
+    rounds = page.entry(96, "When your LLC needs a D-U-N-S number", duns_inquiry, when="2026-11-17") + rounds
+    chat_receipt = ROOT / "Docs/Research/dnb-google-play-address-chat-v1.json"
+    resume_message = json.loads(chat_receipt.read_text(encoding="utf-8"))["agent_suggested_message"]
+    dnb_chat = decide.recap(
+        "D&B’s chat couldn’t forward an email. Nobody was available for live text chat that evening. "
+        "Tomorrow, paste the saved message and ask for a live representative.",
+        [
+            ("Email", "The bot acknowledged the approved name and email, then said it could not forward the question."),
+            ("Live text", "It said a D&B representative can join this same chat when someone is available."),
+            ("Hours", "The bot could not give reliable staffing hours."),
+            ("Address", "No specialist has confirmed whether the Northwest address can be primary or what documents would qualify."),
+            ("Tomorrow", "The bot supplied a short message in case a new chat opens."),
+        ],
+        {
+            "did": "Read the full chat and saved the bot’s suggested message.",
+            "why": "You want to pick up tomorrow without repeating the conversation.",
+            "working": "The summary explains that the studio would operate from home in Texas.",
+            "not_working": "The AI could not give an address decision or create an email referral.",
+            "next": "Return November 18 and ask for a live person in text chat.",
+        },
+    )
+    chat_body = (
+        '<p>Paste this if a new chat starts.</p>'
+        f'<blockquote><p>{escape(resume_message)}</p></blockquote>'
+        '<p>Then ask, “Could a live representative join this chat?”</p>'
+        '<p><a href="https://www.dnb.com/en-us/smb/duns/google-developers.html">Open D&amp;B’s Google developer page</a> · '
+        '<a href="dnb-address-chat.json">Chat receipt and saved wording</a></p>'
+    )
+    dnb_chat += decide.info_thread(
+        "aquila-direction-r97-info", "D&B’s exact wording for tomorrow.", body_html=chat_body,
+        short="Message to paste", follows="aquila-direction-r96-info",
+    )
+    dnb_chat += decide.whats_next(
+        "aquila-direction-r97-next", "Retry live text chat when you return November 18.",
+        summary="No email referral to wait for.", short="Tomorrow’s chat", follows="aquila-direction-r96-next",
+    )
+    rounds = page.entry(97, "Resume D&B live chat tomorrow", dnb_chat, when="2026-11-17") + rounds
+    browser_cleanup = decide.recap(
+        "I stopped the helper I used for D&B. The tab had already closed, but the helper was still waiting for input.",
+        [
+            ("Purpose", "The helper controlled the separate Chrome window used for D&B chat."),
+            ("Earlier reply", "I identified the task and left it running."),
+            ("Window", "When I checked again, that browser had no open tabs."),
+            ("Shutdown", "The terminal exited cleanly. I verified that Windows had released both processes."),
+            ("Chat question", "The exact wording for a live representative remains saved."),
+        ],
+        {
+            "did": "Stopped the idle D&B browser helper.",
+            "why": "The chat tab had already closed.",
+            "working": "The saved question is ready for a fresh chat.",
+            "not_working": "D&B has yet to confirm which address qualifies.",
+            "next": "The live-chat retry can wait until you want it.",
+        },
+    )
+    browser_cleanup += decide.info_thread(
+        "aquila-direction-r98-info", "The background task was the browser helper from the D&B conversation.",
+        body_html=('<p>The terminal exited with status zero. Windows showed both the helper and its Chrome process had ended.</p>'
+                   '<p><a href="dnb-address-chat.json">Saved D&amp;B question</a></p>'),
+        short="What was running", follows="aquila-direction-r97-info",
+    )
+    browser_cleanup += decide.whats_next(
+        "aquila-direction-r98-next", "Use the saved question when you return to D&B.",
+        summary="Nothing needed for cleanup.", short="Saved wording", follows="aquila-direction-r97-next",
+    )
+    rounds = page.entry(98, "D&B browser helper stopped", browser_cleanup, when="2026-11-18") + rounds
+    current_status = decide.recap(
+        "Northwest is the leading candidate. D&B has yet to confirm whether the Austin office qualifies as the LLC’s primary address. "
+        "The native expedition is built and pushed. A Windows playtest with a person is still pending.",
+        [
+            ("Privacy", "The owner wants to keep their home address off Google Play."),
+            ("Austin office", "Four developers list the suite on Google Play. Their listings do not show how they verified it."),
+            ("D&B chat", "The bot could not send an email referral. No live representative was available last night."),
+            ("Background task", "The D&B browser helper has stopped."),
+            ("Game testing", "Eleven automation groups passed. Windows and Android packages built successfully."),
+        ],
+        {
+            "did": "Saved the exact question for a live D&B representative.",
+            "why": "The studio would work from home and receive mail at Northwest’s office.",
+            "working": "A fresh chat can pick up the address question without repeating last night’s conversation.",
+            "not_working": "Which documents D&B would accept for this address remains open.",
+            "next": "Retry live text chat before choosing an address package.",
+        },
+    )
+    current_status += decide.info_thread(
+        "aquila-direction-r99-info", "The saved message asks D&B which address and documents would qualify.",
+        body_html=chat_body, short="Question for D&B", follows="aquila-direction-r98-info",
+    )
+    current_status += decide.whats_next(
+        "aquila-direction-r99-next", "On the next visit, paste the saved question and ask for a live representative.",
+        summary="No provider decision needed today.", short="Live chat", follows="aquila-direction-r98-next",
+    )
+    rounds = page.entry(99, "Northwest address and Windows playtest", current_status, when="2026-11-18") + rounds
+    paused_follow_up = decide.recap(
+        "The D&B follow-up is saved and paused. The full chat and the exact message are ready whenever you return.",
+        [
+            ("Decision", "The November 18 retry was deferred. There is no new date."),
+            ("Chat", "The full conversation is saved locally with the contact details removed."),
+            ("Referral", "The bot could not forward an email. No specialist answered."),
+            ("Address", "Northwest leads. D&B has yet to confirm whether its Texas office qualifies as the primary address."),
+            ("Restart", "The saved message asks which documents D&B accepts for a studio operated from home."),
+        ],
+        {
+            "did": "Saved the chat, exact message and restart prompt.",
+            "why": "You want to work on other things before returning to this question.",
+            "working": "The saved transcript matches the original redacted capture.",
+            "not_working": "There is no case number or human answer to follow up on.",
+            "next": "Leave the representative follow-up paused until you ask to resume.",
+        },
+    )
+    resume_later = (
+        '<p>After you reopen this topic, ask for a live representative and paste the bot’s suggested message.</p>'
+        f'<blockquote><p>{escape(resume_message)}</p></blockquote>'
+        '<p><a href="https://www.dnb.com/en-us/smb/duns/google-developers.html">D&amp;B’s Google developer page</a> · '
+        '<a href="dnb-address-chat.json">Chat receipt and local transcript location</a> · '
+        '<a href="dnb-follow-up-restart.txt" download>Download the restart prompt</a></p>'
+    )
+    paused_follow_up += decide.info_thread(
+        "aquila-direction-r100-info", "Where to pick up the representative conversation.",
+        body_html=resume_later, short="Resume later", follows="aquila-direction-r99-info",
+    )
+    paused_follow_up += decide.whats_next(
+        "aquila-direction-r100-next", "When you want to return, say “Resume the D&B representative question.”",
+        summary="No decision needed for this save.", short="Follow-up paused", follows="aquila-direction-r99-next",
+    )
+    rounds = page.entry(100, "D&B follow-up saved for later", paused_follow_up, when="2026-11-18") + rounds
+    camera_retest = decide.recap(
+        "The rebuilt Windows game saved your signal investigation and closed normally. Hold either mouse button over the ship to look around.",
+        [
+            ("Mouse", "Fast drags now turn the camera. Either button works over open space."),
+            ("Release", "The exterior view holds briefly, then eases behind the ship. The bridge keeps its heading."),
+            ("Pause", "You can look around while the expedition clock stays paused."),
+            ("Game checks", "The packaged game turned 90 degrees in both views during the same simulated drag."),
+            ("Controls", "The expedition button grew from 15 to 30 pixels inside its border at 960 by 540."),
+        ],
+        {
+            "did": "Rebuilt the desktop camera and made the commands larger in small windows.",
+            "why": "You could barely turn the camera during your first playtest.",
+            "working": "Both camera views passed. All eleven simulation and save checks also passed.",
+            "not_working": "Turning comfort with your mouse still needs your verdict.",
+            "next": "Try one sideways drag from the ship or the stars.",
+        },
+    )
+    camera_body = '<p>The old camera discarded fast movements. The new camera reads each movement while you hold either button.</p>'
+    camera_body += '<p>A simulated drag turned the actual game camera through a quarter turn, including while paused.</p>'
+    camera_body += '<p>Your playtest save reached the travel phase. The window closed normally after saving revision 25.</p>'
+    camera_body += '<p><a href="windows-camera-playtest.json">Camera checks and button measurements</a></p>'
+    camera_body += page.figure(page.copy_media(HERE / "media/r101-desktop-before-960.png", out),
+        "101.1 Before.", "Earlier Windows build at 960 by 540. The expedition button had 15 pixels of fill vertically.")
+    camera_body += page.figure(page.copy_media(HERE / "media/r101-desktop-after-960.png", out),
+        "101.2 After.", "Same window size. The button has 30 pixels of fill and the mouse instructions appear below.")
+    camera_retest += decide.info_thread("aquila-direction-r101-info",
+        "Fast mouse drags now turn the desktop camera.", body_html=camera_body,
+        short="Windows camera fix", follows="aquila-direction-r74-info")
+    camera_retest += decide.question("aquila-direction-r101-camera",
+        "When you hold either mouse button over the ship and drag sideways, how does turning feel?",
+        [("comfortable", "Comfortable now"), ("slow", "Still too slow"), ("fast", "Too fast")],
+        short="Camera feel", follows="aquila-direction-r74-next")
+    camera_retest += decide.whats_next("aquila-direction-r101-next",
+        "Use your feedback to tune the camera or continue the expedition playtest.",
+        summary="The separate Windows save is ready to resume.", short="Windows playtest")
+    rounds = page.entry(101, "Windows camera ready to try", camera_retest, when="2026-11-18") + rounds
+    desktop_controls = decide.recap(
+        "Hold the right mouse button over the ship and drag sideways to see its side. "
+        "Left-click the controls to give orders. The desktop controls are smaller.",
+        [
+            ("Orbit", "Hold either mouse button over the ship or stars. Drag sideways to orbit or vertically to tilt."),
+            ("Release", "The pointer comes back. Outside, the camera eases behind the ship. On the bridge, it keeps your angle."),
+            ("Orders", "Left-click a command and the helm steers the ship."),
+            ("Desktop", "At 1280 by 720, the bottom panel shrank from 1,204 to 854 pixels wide."),
+            ("Phone", "All three top touch buttons kept their previous dimensions in the Windows phone preview."),
+        ],
+        {
+            "did": "Shrank the desktop controls and added a cue when the mouse grabs the view.",
+            "why": "The last desktop change made the controls too big for you.",
+            "working": "Both views turned during simulated mouse drags. A command click worked after release.",
+            "not_working": "How the physical mouse feels to you is still open.",
+            "next": "Look for “Orbiting” when you hold the right button over the ship.",
+        },
+    )
+    controls_body = '<p>While you hold a mouse button over space, the pointer hides and the hint reads “Orbiting.”</p>'
+    controls_body += '<p>On the bridge it reads “Looking around.” You can walk there with W, A, S and D.</p>'
+    controls_body += '<p>The packaged game kept the drag when the pointer crossed a button. Releasing made the buttons clickable again.</p>'
+    controls_body += '<p><a href="windows-desktop-controls.json">Button measurements and mouse checks</a></p>'
+    controls_body += page.figure(page.copy_media(HERE / "media/r102-desktop-before-1280.png", out),
+        "102.1 Previous desktop size.", "The bottom commands covered most of the window width.")
+    controls_body += page.figure(page.copy_media(HERE / "media/r102-desktop-after-1280.png", out),
+        "102.2 Smaller desktop controls.", "Same window size. The narrower strip leaves open space around the ship.", look=True)
+    controls_body += page.figure(page.copy_media(HERE / "media/r102-touch-layout.png", out),
+        "102.3 Touch layout.", "Windows preview of the large phone buttons. No new Galaxy playtest this round.")
+    desktop_controls += decide.info_thread("aquila-direction-r102-info",
+        "The Windows command strip now takes two-thirds of the play window.", body_html=controls_body,
+        short="Smaller desktop controls", follows="aquila-direction-r101-info")
+    desktop_controls += decide.question("aquila-direction-r102-camera",
+        "When you hold the right mouse button over the ship and drag sideways, can you see its side?",
+        [("turns", "Yes, it turns"), ("barely", "It barely moves"), ("still", "Nothing moves")],
+        short="Check the orbit", follows="aquila-direction-r101-camera")
+    desktop_controls += decide.whats_next("aquila-direction-r102-next",
+        "Use your mouse result to decide whether the camera needs another fix.",
+        summary="Your separate expedition save is ready for the check.", short="Windows mouse check",
+        follows="aquila-direction-r101-next")
+    rounds = page.entry(102, "Mouse controls and a smaller desktop panel", desktop_controls, when="2026-11-18") + rounds
+    orbit_accepted = decide.recap(
+        "You confirmed the mouse rotates the view around the ship. Your first expedition is saved with the helm on Hold.",
+        [
+            ("Mouse", "You could see the side of the ship when you dragged."),
+            ("Build", "You tried the Windows build with the smaller controls."),
+            ("Save", "The game saved revision 37 when the window closed."),
+            ("Helm", "Your ship is holding position during the first signal investigation."),
+            ("Pacing", "A full expedition playthrough remains open."),
+        ],
+        {
+            "did": "Recorded your confirmation of the exterior camera.",
+            "why": "You had reported that the camera barely turned.",
+            "working": "Dragging with your mouse now turns the view around the ship.",
+            "not_working": "Full expedition pacing still needs a playthrough.",
+            "next": "Choose Resume course next time to head toward the signal.",
+        },
+    )
+    orbit_accepted += decide.info_thread("aquila-direction-r103-info",
+        "You confirmed the exterior camera works with your mouse.",
+        body_html='<blockquote>Yeah, works good.</blockquote><p><a href="windows-orbit-acceptance.json">Playtest confirmation and save details</a></p>',
+        short="Mouse check complete", follows="aquila-direction-r102-camera")
+    orbit_accepted += decide.whats_next("aquila-direction-r103-next",
+        "Choose Resume course when you next play to continue toward the signal.",
+        short="Continue the expedition", follows="aquila-direction-r102-next")
+    rounds = page.entry(103, "Windows mouse orbit confirmed", orbit_accepted, when="2026-11-18") + rounds
+    (out / "windows-orbit-acceptance.json").write_bytes((ROOT / "Docs/Testing/native-windows-orbit-acceptance.json").read_bytes())
+    (out / "windows-desktop-controls.json").write_bytes((ROOT / "Docs/Testing/native-windows-desktop-controls.json").read_bytes())
+    (out / "windows-camera-playtest.json").write_bytes((ROOT / "Docs/Testing/native-windows-camera-playtest.json").read_bytes())
+    (out / "dnb-follow-up-restart.txt").write_bytes((ROOT / "Docs/Handoffs/PROMPT_2026-11-18_dnb-follow-up.txt").read_bytes())
+    (out / "dnb-address-chat.json").write_bytes(chat_receipt.read_bytes())
     (out / "native-restart.txt").write_bytes((ROOT / "Docs/Handoffs/PROMPT_2026-11-17_native-direction.txt").read_bytes())
     (out / "native-publication.json").write_bytes((ROOT / "Docs/Testing/native-direction-publication.json").read_bytes())
     (out / "address-reliability-return.json").write_bytes((ROOT / "Docs/Research/texas-business-address-reliability-return-v0001.json").read_bytes())

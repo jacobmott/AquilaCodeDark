@@ -59,9 +59,13 @@ Use the glass command strip to approach Vesper, hold, keep combat range or withd
 On phones, larger Navigation, Weapons and Expedition tabs show one group of commands at a time.
 Bridge, Pause/Resume and Hide menu/Commands stay available at the top. The menu can hide during viewing or walking.
 Phone text uses a bold, bright face with a dark shadow; buttons have larger touch areas and device safe-zone margins.
-The phone layout has a separate 960x480 reference canvas. Desktop retains its existing command strip.
+The phone uses a 960×480 reference canvas for finger-sized controls. Windows uses a 2304×1296 canvas with a centered command strip.
 For an offscreen desktop layout preview, add `-AquilaTouchUI`; a preview is not physical-phone input evidence.
-Drag the viewport to orbit the ship. Release to ease behind it.
+On Windows, left-click a command to give the helm an order. The ship steers automatically.
+Hold either mouse button over the ship or stars and drag sideways to see the ship from the side. Drag vertically to tilt.
+The pointer hides during a drag. The hint reads **Orbiting** outside or **Looking around** on the bridge.
+Release to use the pointer again. The exterior view waits briefly, then eases behind the ship. The bridge keeps its heading.
+Mouse look also works while paused. The expedition clock resumes with Escape or the Pause / resume button.
 Enter the bridge with its button or C. Walk with WASD or hold the on-screen movement buttons; drag to look.
 Escape or Pause stops simulation. Losing focus/suspending saves locally and pauses; explicitly resume on return.
 Weapons acquire and shoot automatically. Standard rounds drain shields but bounce off Sentinel's armor.
@@ -92,7 +96,8 @@ This is one repeatable encounter pattern and one upgrade, not a complete campaig
 - Combat uses a 120 Hz fixed step, bounded catch-up, swept contacts, at most 160 rounds and 32 cosmetic impacts.
   Visual quality does not change damage. Two burst turrets, ballistic enemy fire and shield/armor compatibility are present.
   This is an early effect/geometry blockout; recoil, detailed turrets, shield shells and finished effects remain later work.
-- Desktop and touch command widgets are authored in Slate. Earlier Galaxy input injection passes; new expedition input remains unverified.
+- Desktop and touch command widgets are authored in Slate. The Windows camera uses relative mouse motion beneath the command buttons.
+  The earlier Galaxy input checks cover the foundation. Physical touch on the new expedition remains open.
 - Owner's first phone playtest found menu text too small. The larger layout is installed; owner confirms reading and tapping comfort.
   Actual phone checks caught clipped labels: movement buttons now fit Forward, and the hidden-menu button reads Menu.
 - Shared rendering baseline disables Nanite, Lumen, virtual shadow maps and ray tracing.

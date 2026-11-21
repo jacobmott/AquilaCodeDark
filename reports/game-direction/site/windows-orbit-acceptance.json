@@ -1,0 +1,27 @@
+{
+  "report_round": 103,
+  "recorded_at_utc": "2026-11-19T03:03:49.383115+00:00",
+  "interaction": {
+    "source": "Owner reply in chat",
+    "question": "When you try that drag, can you see the ship from the side?",
+    "reply": "Yeah, works good.",
+    "confirmed": "Windows exterior camera orbit with the owner's mouse."
+  },
+  "build_evidence": "Docs/Testing/native-windows-desktop-controls.json",
+  "windows_runtime_sha256": "3433fe1f0ff2f50c0cbb7011eaee412574506d4ebf774a2d488dc4724b0a85b2",
+  "last_local_playtest": {
+    "source_journal": ".runtime/expedition-windows-r101/20261119T020630Z/Campaign/7A6B4A15-4F69-5D39-A102-C1A93BC39393.json",
+    "journal_sha256": "ed5d53f564a686fb538c59af7bea6fccff121e91f58b71743cb7a2d36d3f3cbf",
+    "revision": 37,
+    "expedition_number": 1,
+    "phase": "Travel",
+    "helm": "Hold",
+    "completed_expeditions": 0,
+    "next_command": "Resume course",
+    "exit": "Window closed normally with status zero."
+  },
+  "still_unverified": [
+    "Owner assessment of the compact desktop sizing",
+    "Full expedition pacing during human play"
+  ]
+}

@@ -122,6 +122,52 @@
    "state": "open",
    "answer": null,
    "page": "Aquila game and website direction"
+  },
+  {
+   "id": "aquila-direction-r101-camera",
+   "short": "Camera feel",
+   "ask": "When you hold either mouse button over the ship and drag sideways, how does turning feel? from round 1",
+   "why": null,
+   "options": [
+    {
+     "v": "comfortable",
+     "label": "Comfortable now"
+    },
+    {
+     "v": "slow",
+     "label": "Still too slow"
+    },
+    {
+     "v": "fast",
+     "label": "Too fast"
+    }
+   ],
+   "state": "open",
+   "answer": null,
+   "page": "Aquila game and website direction"
+  },
+  {
+   "id": "aquila-direction-r102-camera",
+   "short": "Check the orbit",
+   "ask": "When you hold the right mouse button over the ship and drag sideways, can you see its side? from round 1",
+   "why": null,
+   "options": [
+    {
+     "v": "turns",
+     "label": "Yes, it turns"
+    },
+    {
+     "v": "barely",
+     "label": "It barely moves"
+    },
+    {
+     "v": "still",
+     "label": "Nothing moves"
+    }
+   ],
+   "state": "open",
+   "answer": null,
+   "page": "Aquila game and website direction"
   }
  ]
 }

@@ -1,0 +1,34 @@
+{
+  "round": 97,
+  "observed_at_utc": "2026-11-18T05:09:20.205Z",
+  "source_url": "https://www.dnb.com/en-us/smb/duns/google-developers.html",
+  "source_type": "Firsthand interaction with the site's AI SDR Agent",
+  "question": "For a planned Texas LLC operating from home, can Northwest's Texas virtual-office address and one-year lease establish the primary address on the first D-U-N-S record for Google Play? Which documents would D&B accept?",
+  "owner_authorized": [
+    "Ask D&B's website agent about the address.",
+    "Share the reply email previously supplied to Northwest and the owner's full name for the email referral."
+  ],
+  "observed": [
+    "The agent could not confirm primary-address eligibility or provide a published policy or document list for this situation.",
+    "It offered a specialist email referral and acknowledged the supplied email and full name.",
+    "When asked to confirm forwarding, it said it could not send or forward an email request or trigger an email reply.",
+    "It described its scheduled specialist meeting as typically a phone call. It also said a live representative can join the text chat when available.",
+    "No live representative was available during the exchange. The AI could not give reliable live-chat hours.",
+    "It said a later visit may start a new chat and supplied a short message for resuming the question."
+  ],
+  "chat_email_referral_sent": false,
+  "case_number_provided": false,
+  "meeting_booked_by_agent_on_behalf_of_owner": false,
+  "human_address_determination": null,
+  "originally_planned_local_date": "2026-11-18",
+  "follow_up_status": "Owner paused this inquiry in round 100 to work on other things.",
+  "next_attempt_local_date": null,
+  "next_attempt": "Only when the owner asks to resume this topic, paste the saved message into D&B's Google developer chat and ask for a live representative.",
+  "agent_suggested_message": "First-time U.S. D‑U‑N‑S request for a planned Texas home-based game studio for Google Play; considering Northwest Registered Agent virtual-office address; question is whether that can be primary address vs mailing and what documents are accepted.",
+  "redacted_chat_evidence": {
+    "storage": "Project-local research folder, excluded from Git. Complete displayed conversation through the suggested restart wording, with name and email redacted.",
+    "repo_relative_path": "Assets/Research/dnb-google-play-address/chat-v0001-redacted.txt",
+    "bytes": 10952,
+    "sha256": "04f8cb9e2fa58ae652b58a0cf4a96cdf266590cfed432102c26157ea6c26518f"
+  }
+}

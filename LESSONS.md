@@ -1,8 +1,22 @@
 # Lessons
 
+## 2026-11-18 [M] D&B chat could collect details without forwarding a request
+
+D&B’s website agent acknowledged the contact details, then said it could not forward an email or trigger a reply.
+The chat produced no case number or human answer. A live representative can join that text chat when available, according to the agent.
+Use the [saved question and chat receipt](Docs/Research/dnb-google-play-address-chat-v1.json) when the owner reopens the topic.
+
+## 2026-11-17 [R] Check whose contract covers a mailbox
+
+Direct Regus terms offer another center after a permanent closure. Davinci advertises that center under its own agreement.
+Tie price, notice, inspection rights and mail handling to the same seller and plan.
+For ordinary USPS mail, check the mailbox agreement's post-termination instructions. Legal notices follow separate arrangements.
+See the [review and primary sources](knowledge/publishing-business.md#reliability-review-round-88).
+
 ## 2026-11-17 [J]: Provider quality precedes price
 
 Owner prefers robust, stable, proven service even at a higher cost. The earlier cost-led comparison did not establish a reliability leader.
+In round 90 the owner confirmed the order for address plans. Protect home-address privacy first, then favor dependable handling of important letters over unlimited scans.
 Keep observed public-address outcomes separate from mail/service reliability; retain both useful evidence and its limits.
 Compare support and address continuity before price, without treating higher expense as proof of quality.
 Evidence: [current publishing priorities](knowledge/publishing-business.md#quality-before-price-round-84).
@@ -184,3 +198,18 @@ Store each projectile's launch damage scale alongside its clocks and trajectory;
 Save reward plus completion, and upgrade plus debit, in the same revision. Reload tests must check balances and repeated attempts.
 The expedition tests cover all mission phases, 30/60 Hz parity, practice isolation and duplicate rewards/refits.
 Evidence: [expedition verification](Docs/Testing/native-expedition-verification.json).
+
+## 2026-11-18 [M]: Test desktop look with relative motion at a stationary cursor
+
+A packaged Slate hit test found the camera under open space and command buttons above it.
+In both camera views, one 240-count movement and eight opposing 30-count movements canceled at the same cursor position.
+This catches dropped fast movements and window-edge dependence. Physical mouse comfort still needs the player.
+The desktop command canvas also scaled twice. Fitting it once doubled the 960×540 expedition button's interior from 15 to 30 pixels.
+[Windows playtest evidence](Docs/Testing/native-windows-camera-playtest.json).
+
+## 2026-11-18 [J]: Size desktop commands separately from touch controls
+
+The owner accepted larger controls on the Galaxy and later found the enlarged Windows controls too big.
+At 1280×720, the revised Windows strip measured 854 pixels wide. The top touch buttons kept their bounds in Windows previews.
+Test each layout at its own target size. The owner confirmed the exterior mouse orbit in a separate check.
+[Control measurements](Docs/Testing/native-windows-desktop-controls.json) and [owner response](Docs/Testing/native-windows-orbit-acceptance.json).

@@ -142,6 +142,11 @@
 - 2026-11-17 [J], round 84: Provider selection prioritizes robust, stable, proven service and a stronger track record over price.
   Owner will pay more for demonstrably better service. No numeric budget, selected provider/package or purchase authority inferred.
   [Current comparison](../knowledge/publishing-business.md#quality-before-price-round-84) supersedes the earlier cost-led ranking.
+- 2026-11-17 [J], round 90. Keep the home address off public store listings first. Among eligible plans, dependable handling of important letters outranks unlimited scans. [Owner-confirmed priorities](../knowledge/publishing-business.md#owner-facts-and-current-choices).
 - 2026-11-17 [J], rounds 86–87: Explicit newsession authorizes this continuing session’s wrap, commit and push.
   Native work, research records and knowledge published in `64a1b619989a0d7c8674fa5014972b9b0abd23f0`; final receipt records the remote check.
   Publication authority is consumed. Returned quality research remains unread; the next session reads, reports status and waits.
+- 2026-11-18 [J], round 100. Owner deferred the D&B representative conversation to work on other things. No retry date.
+  Resume only when the owner asks about D&B again. The exact question and transcript location are in the [chat receipt](Research/dnb-google-play-address-chat-v1.json).
+- 2026-11-18 [J], round 102: Owner found the enlarged controls too big on desktop. Size the Windows HUD for mouse use.
+  Keep the larger Galaxy menus the owner accepted for touch.

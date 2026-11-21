@@ -123,3 +123,18 @@ New expedition mouse/touch input, physical Galaxy play and sustained performance
 Round 75: owner explicitly agrees to Windows-first development and occasional Galaxy installs/tests, and asks to save and proceed.
 This is the accepted workflow: daily Windows work, batched phone checks at milestones or for relevant mobile changes/bugs.
 Continue the existing expedition validation. No phone connection is needed for routine work; no new runtime proof added by this confirmation.
+
+November 18, round 101. The owner's first Windows playtest found that the camera barely turned.
+The rebuilt package reads relative mouse motion over open space. Left and right drags work on the exterior and bridge.
+In each view, a 240-count simulated drag turned the actual camera 90 degrees while paused. The expedition button doubled in height at 960×540.
+The [Windows playtest record](../Testing/native-windows-camera-playtest.json) includes package identity, input checks and measured button heights.
+The owner’s assessment of the new sensitivity and a complete timed expedition remain open. Phone checks stay at milestones.
+
+November 18, round 102. Owner found the enlarged desktop controls too big and asked how to look around.
+The Windows strip now spans 854 of 1,280 pixels. The expedition button fill measures 27 pixels tall at 720p.
+Both packaged camera views passed routed virtual mouse checks, including release over a command and a subsequent click.
+The Windows touch previews matched on all three top button bounds. [Current controls and measurements](../Testing/native-windows-desktop-controls.json).
+
+Round 103. The owner confirmed the right-button drag shows the side of the ship on Windows.
+The separate playtest saved the first signal investigation on Hold. **Resume course** continues toward the signal.
+[Owner confirmation](../Testing/native-windows-orbit-acceptance.json). Full expedition pacing still needs human play.

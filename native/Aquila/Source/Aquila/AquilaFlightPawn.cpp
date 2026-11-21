@@ -1,5 +1,6 @@
 #include "AquilaFlightPawn.h"
 #include "AquilaGameMode.h"
+#include "SAquilaMouseLook.h"
 #include "Camera/CameraComponent.h"
 #include "Components/StaticMeshComponent.h"
 #include "Components/InstancedStaticMeshComponent.h"
@@ -14,6 +15,7 @@
 #include "Widgets/Layout/SBorder.h"
 #include "Widgets/Layout/SBox.h"
 #include "Widgets/Layout/SDPIScaler.h"
+#include "Widgets/Layout/SScaleBox.h"
 #include "Widgets/Layout/SWidgetSwitcher.h"
 #include "Widgets/Layout/SSafeZone.h"
 #include "Widgets/SBoxPanel.h"
@@ -206,6 +208,23 @@ void AAquilaFlightPawn::ToggleBridge()
     if (Game()) Game()->Save();
 }
 
+void AAquilaFlightPawn::DragDesktopCamera(FVector2D Delta)
+{
+    constexpr float YawPerCount = 0.375f;
+    constexpr float PitchPerCount = 0.3f;
+    if (bBridge)
+    {
+        BridgeYaw = FRotator::NormalizeAxis(BridgeYaw + Delta.X * YawPerCount);
+        BridgePitch = FMath::Clamp(BridgePitch - float(Delta.Y) * PitchPerCount, -60.f, 60.f);
+    }
+    else
+    {
+        OrbitYaw = FRotator::NormalizeAxis(OrbitYaw + Delta.X * YawPerCount);
+        OrbitPitch = FMath::Clamp(OrbitPitch + float(Delta.Y) * PitchPerCount, -60.f, 75.f);
+        RecenterDelay = 0.65f;
+    }
+}
+
 void AAquilaFlightPawn::RenderCampaign()
 {
     auto* G = Game();
@@ -248,8 +267,12 @@ void AAquilaFlightPawn::Tick(float Seconds)
     if (PC->WasInputKeyJustPressed(EKeys::E) && CommandEnabled(11)) G->Command(11);
     if (PC->WasInputKeyJustPressed(EKeys::U) && CommandEnabled(12)) G->Command(12);
     float DX = 0, DY = 0;
-    PC->GetInputMouseDelta(DX, DY);
-    bool bHeld = PC->IsInputKeyDown(EKeys::RightMouseButton) || PC->IsInputKeyDown(EKeys::LeftMouseButton);
+    bool bHeld = false;
+    if (bTouchLayout)
+    {
+        PC->GetInputMouseDelta(DX, DY);
+        bHeld = PC->IsInputKeyDown(EKeys::RightMouseButton) || PC->IsInputKeyDown(EKeys::LeftMouseButton);
+    }
     float TX, TY;
     bool bTouch;
     PC->GetInputTouchState(ETouchIndex::Touch1, TX, TY, bTouch);
@@ -276,7 +299,7 @@ void AAquilaFlightPawn::Tick(float Seconds)
     if (G->bPaused) TouchWalk = FVector2D::ZeroVector;
     if (!G->bPaused)
     {
-        // Bound anomalous input samples: cursor warps and a resumed touch cannot snap the view.
+        // Touch samples report absolute positions. Ignore jumps when the finger reconnects.
         if (bHeld && FMath::Abs(DX) < 100 && FMath::Abs(DY) < 100)
         {
             if (bBridge)
@@ -290,9 +313,13 @@ void AAquilaFlightPawn::Tick(float Seconds)
                 OrbitPitch = FMath::Clamp(OrbitPitch + DY * 0.17f, -60.f, 75.f);
             }
         }
-        if (!bHeld && !bBridge)
+        if (MouseLook && MouseLook->IsDragging())
+            RecenterDelay = 0.65f;
+        else if (RecenterDelay > 0)
+            RecenterDelay = FMath::Max(0.f, RecenterDelay - Seconds);
+        else if (!bHeld && !bBridge)
         {
-            OrbitYaw = FMath::FInterpTo(OrbitYaw, 20.f, Seconds, 3.f);
+            OrbitYaw = 20.f + FMath::FInterpTo(FMath::FindDeltaAngleDegrees(20.f, OrbitYaw), 0.f, Seconds, 3.f);
             OrbitPitch = FMath::FInterpTo(OrbitPitch, 23.f, Seconds, 3.f);
         }
         if (bBridge)
@@ -373,7 +400,7 @@ void AAquilaFlightPawn::BuildOverlay()
     Commands->AddSlot().FillWidth(1).Padding(0,0,24,0)[Helm];
     Commands->AddSlot().FillWidth(1).Padding(0,0,24,0)[Tactical];
     Commands->AddSlot().FillWidth(1)[View];
-    auto Content = SNew(SOverlay)
+    auto Content = SNew(SOverlay).Visibility(EVisibility::SelfHitTestInvisible)
     + SOverlay::Slot().HAlign(HAlign_Left).VAlign(VAlign_Top).Padding(48,30)
     [SNew(SVerticalBox)
         + SVerticalBox::Slot().AutoHeight()[Text(FText::FromString(TEXT("A Q U I L A")),30)]
@@ -405,9 +432,16 @@ void AAquilaFlightPawn::BuildOverlay()
                     return FText::FromString(Game() ? Game()->Campaign.ExpeditionActionLabel() : TEXT(""));
                 }),16)]]
             + SHorizontalBox::Slot().AutoWidth()[Button(TEXT("Refit port turret / 100"),12)]]
-        + SVerticalBox::Slot().AutoHeight().Padding(0,10)[Text(FText::FromString(TEXT("E: expedition order   U: refit   C: bridge   Esc: pause")),12)]]]
-    + SOverlay::Slot().HAlign(HAlign_Fill).VAlign(VAlign_Bottom).Padding(48,24)
-    [SNew(SBorder).BorderImage(FCoreStyle::Get().GetBrush("WhiteBrush"))
+        + SVerticalBox::Slot().AutoHeight().Padding(0,10)[Text(TAttribute<FText>::CreateLambda([this]() {
+            if (MouseLook && MouseLook->IsDragging())
+                return FText::FromString(bBridge ? TEXT("Looking around  |  Release to use the controls")
+                                                 : TEXT("Orbiting  |  Release to return behind the ship"));
+            return FText::FromString(TEXT("Hold either mouse button over space and drag"));
+        }),15)]
+        + SVerticalBox::Slot().AutoHeight()[Text(FText::FromString(TEXT("E: expedition order   U: refit   C: bridge   Esc: pause / resume")),12)]]]
+    + SOverlay::Slot().HAlign(HAlign_Center).VAlign(VAlign_Bottom).Padding(0,24)
+    [SNew(SBox).WidthOverride(1536).Visibility(EVisibility::SelfHitTestInvisible)
+    [SNew(SBorder).Visibility(EVisibility::SelfHitTestInvisible).BorderImage(FCoreStyle::Get().GetBrush("WhiteBrush"))
         .BorderBackgroundColor(FLinearColor(0.015f,0.035f,0.065f,0.16f)).Padding(18)
         [SNew(SVerticalBox)
         + SVerticalBox::Slot().AutoHeight().Padding(0,0,0,8)[Text(TAttribute<FText>::CreateLambda([this]() {
@@ -420,7 +454,7 @@ void AAquilaFlightPawn::BuildOverlay()
         + SVerticalBox::Slot().AutoHeight()[Commands]
         + SVerticalBox::Slot().AutoHeight().Padding(0,15,0,0)[Text(TAttribute<FText>::CreateLambda([this]() {
             return FText::FromString(Game() ? Game()->SaveStatus : TEXT(""));
-        }),11)]]];
+        }),11)]]]];
     auto Pad = SNew(SHorizontalBox);
     const TCHAR* Labels[] = {TEXT("Forward"),TEXT("Back"),TEXT("Left"),TEXT("Right")};
     const FVector2D Directions[] = {FVector2D(1,0),FVector2D(-1,0),FVector2D(0,-1),FVector2D(0,1)};
@@ -433,10 +467,12 @@ void AAquilaFlightPawn::BuildOverlay()
     }
     Content->AddSlot().HAlign(HAlign_Left).VAlign(VAlign_Center).Padding(48,0)
         [SNew(SBox).Visibility_Lambda([this]() { return bBridge ? EVisibility::Visible : EVisibility::Collapsed; })[Pad]];
-    Overlay = SNew(SDPIScaler).DPIScale_Lambda([]() {
-        FVector2D Size(1600,900); if(GEngine && GEngine->GameViewport) GEngine->GameViewport->GetViewportSize(Size);
-        return FMath::Max(0.4f,FMath::Min(static_cast<float>(Size.X/1600),static_cast<float>(Size.Y/900)));
-    })[Content];
+    // A larger desktop reference canvas leaves more room for the ship at the same window size.
+    Overlay = SNew(SOverlay).Visibility(EVisibility::SelfHitTestInvisible)
+        + SOverlay::Slot()[SAssignNew(MouseLook, SAquilaMouseLook).OnDrag_UObject(this, &AAquilaFlightPawn::DragDesktopCamera)]
+        + SOverlay::Slot()[SNew(SScaleBox).Visibility(EVisibility::SelfHitTestInvisible)
+            .Stretch(EStretch::ScaleToFit).HAlign(HAlign_Fill).VAlign(VAlign_Fill)
+            [SNew(SBox).Visibility(EVisibility::SelfHitTestInvisible).WidthOverride(2304).HeightOverride(1296)[Content]]];
     GEngine->GameViewport->AddViewportWidgetContent(Overlay.ToSharedRef(), 10);
 }
 
@@ -571,6 +607,7 @@ void AAquilaFlightPawn::EndPlay(const EEndPlayReason::Type Reason)
 {
     if (Overlay && GEngine && GEngine->GameViewport) GEngine->GameViewport->RemoveViewportWidgetContent(Overlay.ToSharedRef());
     Overlay.Reset();
+    MouseLook.Reset();
     TouchUIRegions.Empty();
     Super::EndPlay(Reason);
 }

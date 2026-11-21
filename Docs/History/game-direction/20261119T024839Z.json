@@ -1,0 +1,8 @@
+{
+  "source": "Docs/Handoffs/HANDOFF_2026-11-15_game-direction.md",
+  "archive": "Docs/History/game-direction/20261119T024839Z.md",
+  "saved_at_utc": "2026-11-19T02:48:39.374374+00:00",
+  "bytes": 9337,
+  "sha256": "eca64893deeccbe55706f5948d01b9b146ef577f0a2dcf34b946622d00dd0809",
+  "reason": "Save the exact round 101 checkpoint before recording the owner's desktop size feedback and control reminder."
+}

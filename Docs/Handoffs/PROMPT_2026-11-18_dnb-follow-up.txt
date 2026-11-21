@@ -1,0 +1,13 @@
+Aquila Code Dark (D:/OtherProjects/AquilaCodeDark). The D&B representative follow-up is saved and paused at round 100.
+Read AGENTS.md, Docs/TaskRoutes.md and Docs/Handoffs/HANDOFF_2026-11-15_game-direction.md in full.
+Read knowledge/publishing-business.md for the Northwest quote, privacy priorities, research and public app examples.
+Docs/Research/dnb-google-play-address-chat-v1.json contains the exact message, D&B page and full redacted transcript location.
+No specialist answered, no email referral was sent and no case or meeting was confirmed. No retry date or provider selection.
+Unresolved: can Northwest’s leased Texas virtual office be the primary D-U-N-S address for a home-based LLC, and which documents qualify?
+Report: http://127.0.0.1:8953/?agentreport=1&paseoAgent=1797de6d-c62b-478b-b154-82859c3ad278 (reports/game-direction/, round 100).
+Last real inbox read: reports/game-direction/inbox/20261115T015927Z.json.
+Native expedition: launcher Unreal 5.8.4, 11 automation groups and Windows/Android packages passed. Human pacing, sustained Galaxy performance, cloud saves and Apple remain untested.
+At save, reports 8952/8953 and Research Console 8776 were running. D&B helper stopped. No session job or transfer. Save is local and uncommitted.
+Owner choices: 1. Work on another task. 2. Reopen the saved D&B question later. 3. Separately resume Windows playtesting.
+Keep the Austin app examples and their limits. Only D&B can confirm its address requirements. Use the launcher engine for Aquila.
+Do not start any of this. Read, say where things stand, then wait.

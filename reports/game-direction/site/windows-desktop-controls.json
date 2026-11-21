@@ -1,0 +1,182 @@
+{
+  "schema_version": 1,
+  "report_round": 102,
+  "observed_at_utc": "2026-11-19T02:54:13.401524+00:00",
+  "owner_feedback": "Owner asked how the mouse works and found the enlarged desktop controls too big. The accepted large phone controls are a separate preference.",
+  "platform": "Windows, launcher Unreal 5.8.4 CL 58902052",
+  "local_only": true,
+  "desktop_reference_canvas": [
+    2304,
+    1296
+  ],
+  "mouse_controls": {
+    "orders": "Left-click command buttons. Automatic helm steers the ship.",
+    "look": "Hold either mouse button over the ship or stars and drag. During capture the pointer hides and the HUD indicates Orbiting or Looking around.",
+    "release": "The pointer returns at the press position. Exterior eases back behind the ship after a short delay. Bridge keeps its angle."
+  },
+  "captures": {
+    "before_1280": {
+      "local": ".runtime/expedition-windows-r101/20261119T020630Z/fixed-opening.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "a5b68ef0d2affd76a423e27a95541c81de5bf100bf985b5fb92d4ea9dcfa2c69",
+      "expedition_button_fill_height_px": 40,
+      "bottom_strip_bounds_x_inclusive": [
+        38,
+        1241
+      ],
+      "bottom_strip_width_px": 1204,
+      "report_media": "reports/game-direction/media/r102-desktop-before-1280.png"
+    },
+    "after_1280": {
+      "local": ".runtime/expedition-windows-r102/20261119T024522Z/desktop-1280/frame.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "d386f4753af7fa3593c7f7c7ed53086eddb63c06c34e3c3f8a085d98d3460a52",
+      "expedition_button_fill_height_px": 27,
+      "bottom_strip_bounds_x_inclusive": [
+        213,
+        1066
+      ],
+      "bottom_strip_width_px": 854,
+      "report_media": "reports/game-direction/media/r102-desktop-after-1280.png"
+    },
+    "before_960": {
+      "local": ".runtime/expedition-windows-r101/20261119T020630Z/final-hud-960/desktop.png",
+      "size": [
+        960,
+        540
+      ],
+      "sha256": "36c7716f87d98e229e2b9d4731fa5fdca41f8b2a67e5613c405d0507fbd01bab",
+      "expedition_button_fill_height_px": 30
+    },
+    "after_960": {
+      "local": ".runtime/expedition-windows-r102/20261119T024522Z/desktop-960/frame.png",
+      "size": [
+        960,
+        540
+      ],
+      "sha256": "9547bf66456ee63ccdb13acf8096f645e40f1ab1617bcb30008bece5cfe2800c",
+      "expedition_button_fill_height_px": 20
+    },
+    "touch_before": {
+      "local": ".runtime/expedition-windows-r102/20261119T024522Z/touch-before/frame.png",
+      "size": [
+        1560,
+        720
+      ],
+      "sha256": "24261b5148f0f2e16e1f9425d0875685828cf07e28d6edb7ea26f842f4494791",
+      "top_button_rects_inclusive": {
+        "Bridge": [
+          1062,
+          16,
+          1205,
+          96
+        ],
+        "Pause": [
+          1214,
+          16,
+          1357,
+          96
+        ],
+        "Hide menu": [
+          1366,
+          16,
+          1535,
+          96
+        ]
+      }
+    },
+    "touch_after": {
+      "local": ".runtime/expedition-windows-r102/20261119T024522Z/touch-after/frame.png",
+      "size": [
+        1560,
+        720
+      ],
+      "sha256": "b1f39fdd5758f00d7851809f70ba1b5516ae2775a9c8074f219f395150570715",
+      "top_button_rects_inclusive": {
+        "Bridge": [
+          1062,
+          16,
+          1205,
+          96
+        ],
+        "Pause": [
+          1214,
+          16,
+          1357,
+          96
+        ],
+        "Hide menu": [
+          1366,
+          16,
+          1535,
+          96
+        ]
+      },
+      "report_media": "reports/game-direction/media/r102-touch-layout.png"
+    }
+  },
+  "measurement_method": "Longest continuous vertical run of enabled expedition button fill RGB (2,8,9) in the upper-right command area, borders excluded. At 1280x720 the bottom-strip width spans the first through last background-color sample on row 685.",
+  "touch": {
+    "method": "Same normal game startup in a 1560x720 Windows touch preview before and after. Compare the outline of all three top buttons. SHA-256 for the touch layout method uses normalized LF UTF-8 text.",
+    "layout_body_matches_published_source": true,
+    "layout_body_sha256": "1e7856e55b735875c5f1f7a659990e5ba15479425fbe3c0bc634cb15e83f97ca",
+    "physical_galaxy_retested": false
+  },
+  "windows_package": {
+    "editor_build": "passed",
+    "package": "passed",
+    "prior_runtime_sha256": "6ab935d5a6c1b32cbb99e09092226f877ead638a07b5bfdd8d729a9ee8aa7daa",
+    "runtime_sha256": "3433fe1f0ff2f50c0cbb7011eaee412574506d4ebf774a2d488dc4724b0a85b2",
+    "runtime_bytes": 332084736,
+    "simulation_save_groups": {
+      "succeeded": 11,
+      "failed": 0
+    }
+  },
+  "routed_camera_checks": {
+    "method": "Registered a virtual Slate user in the rendered packaged game. Routed presses, movement and releases against actual widget paths. Observed the active pointer captor, camera transform and pause command. No physical mouse events were injected.",
+    "cases": {
+      "exterior": {
+        "path": "Aquila.Input.DesktopCamera",
+        "result": "Success",
+        "warnings": 0,
+        "errors": 0,
+        "json_sha256": "4c083e93b6566ca4e6f359d1379bc6b2754ec6881491455cc52aa9abe3283323",
+        "local": ".runtime/expedition-windows-r102/20261119T024522Z/exterior/report/index.json"
+      },
+      "bridge": {
+        "path": "Aquila.Input.DesktopCamera",
+        "result": "Success",
+        "warnings": 0,
+        "errors": 0,
+        "json_sha256": "e25397895375ef3493615558221e841fdfa556f4ad0fdb15fb9e0ce1f7d30b40",
+        "local": ".runtime/expedition-windows-r102/20261119T024522Z/bridge/report/index.json"
+      }
+    },
+    "assertions": [
+      "Both mouse buttons acquired camera capture in open space.",
+      "While paused, a 240-count drag with the pointer positioned over a command turned the camera 90 degrees and tilted up 6 degrees.",
+      "Releasing over a command ended capture and requested cursor restoration. Subsequent unheld movement left the camera angle alone.",
+      "Eight smaller opposite movements restored the starting angle. Capture loss ended the drag.",
+      "After release the exterior recentered and the bridge held its heading. A subsequent left click activated the real Pause command without writing a game save."
+    ]
+  },
+  "working_source_sha256": {
+    "native/Aquila/Source/Aquila/AquilaFlightPawn.cpp": "d2c151cc216e7ea624c7f5b9827ed763080937a98156e1482519f039a476ec6f",
+    "native/Aquila/Source/Aquila/AquilaDesktopCameraTests.cpp": "0155a24573ebf8119e01254889c062cdb3ac659338f8d0cdcc71398917357aca",
+    "native/Aquila/Source/Aquila/SAquilaMouseLook.cpp": "13f31f8bdc6fafde04e743f9719f00a6621ea594c8e51f17808319ff40e9274a"
+  },
+  "playtest_save": ".runtime/expedition-windows-r101/20261119T020630Z/Campaign",
+  "open": [
+    "Physical mouse behavior as experienced by the owner",
+    "Owner judgement on compact Windows sizes",
+    "Full expedition pacing"
+  ],
+  "raw_run_directory": ".runtime/expedition-windows-r102/20261119T024522Z"
+}

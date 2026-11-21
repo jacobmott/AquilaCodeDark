@@ -1,0 +1,133 @@
+{
+  "schema_version": 1,
+  "report_round": 101,
+  "observed_at_utc": "2026-11-19T02:29:01.228708+00:00",
+  "scope": "Local Windows playtest and repair of desktop camera response and HUD scale.",
+  "owner_finding": "I can't turn the camera at all hardly.",
+  "owner_retest": "Pending at build verification.",
+  "engine": {
+    "distribution": "Epic Launcher",
+    "version": "5.8.4",
+    "changelist": 58902052
+  },
+  "baseline": {
+    "publication": "Docs/Testing/native-direction-publication.json",
+    "runtime_sha256": "c457b4865b0d5d8c404c9a6387501c189e804facac02c4fad70658aa32a0ecfc"
+  },
+  "working_source_sha256": {
+    "native/Aquila/Source/Aquila/AquilaFlightPawn.cpp": "b17a3cefb7b4c60f174a1f92d12817c4390d87a59d614402f63b09c7693dab2b",
+    "native/Aquila/Source/Aquila/AquilaFlightPawn.h": "35e856134a9dd14512f64e74d2cf4a25415e2a7e456e47db3fc133cb076e611d",
+    "native/Aquila/Source/Aquila/SAquilaMouseLook.cpp": "13f31f8bdc6fafde04e743f9719f00a6621ea594c8e51f17808319ff40e9274a",
+    "native/Aquila/Source/Aquila/SAquilaMouseLook.h": "ca2ce0cca57ba537a1ee3c43c8328bc296995d52d7b09629be473dc8dd0d51aa",
+    "native/Aquila/Source/Aquila/AquilaDesktopCameraTests.cpp": "0286d7537b5991623becff938667d89f2c5d3fc8bb4cac720e3580190a28622f"
+  },
+  "build": {
+    "editor": "passed",
+    "windows_development_package": "passed",
+    "entry": ".runtime/native-package/Win64/Aquila.exe",
+    "runtime_file": ".runtime/native-package/Win64/Aquila/Binaries/Win64/Aquila.exe",
+    "runtime_bytes": 332081152,
+    "runtime_sha256": "6ab935d5a6c1b32cbb99e09092226f877ead638a07b5bfdd8d729a9ee8aa7daa",
+    "simulation_and_save_groups": {
+      "succeeded": 11,
+      "failed": 0,
+      "notRun": 0
+    }
+  },
+  "camera": {
+    "method": "In each rendered Windows package, the test queried Slate's real hit-test grid, delivered synthetic pointer events directly to the chosen widget, inspected capture/release replies and read the active pawn camera. The bridge start used the bridge fixture. No physical mouse was injected.",
+    "cases": {
+      "exterior": {
+        "test": "Aquila.Input.DesktopCamera",
+        "result": "Success",
+        "report": ".runtime/expedition-windows-r101/20261119T020630Z/final-exterior/report/index.json",
+        "sha256": "b0ef12aca11c00ef47fabac1e17af47b7ad6d4b711fefa1429246b81a78a5b93"
+      },
+      "bridge": {
+        "test": "Aquila.Input.DesktopCamera",
+        "result": "Success",
+        "report": ".runtime/expedition-windows-r101/20261119T020630Z/final-bridge/report/index.json",
+        "sha256": "78ae1976563cb62a14a2083b6d5bbfb7e5258c9ee9d1ef83bc4e461ed3a2ccb2"
+      }
+    },
+    "verified": [
+      "Relative capture requested for left and right buttons",
+      "Stationary screen position plus 240 horizontal raw counts produced 90 degrees of camera yaw",
+      "Eight opposite 30-count samples restored the starting angle",
+      "20 raw counts upward produced 6 degrees of upward tilt",
+      "Exterior orbit radius and bridge eye distance held",
+      "Open space hit the camera and a command button remained reachable above it",
+      "Release requested cursor restoration; motion after release or capture loss was ignored",
+      "Looking while paused worked in both views",
+      "A 0.1-second release held the view; after 3 seconds exterior returned behind the ship and bridge kept its heading"
+    ],
+    "desktop_release_grace_seconds": 0.65,
+    "report_output": "The packaged test exporter wrote both JSON results. Its optional HTML template was absent."
+  },
+  "hud": {
+    "measurement": "Maximum uninterrupted vertical run of enabled expedition button fill RGB (2,8,9) within the top-right command area. Borders excluded.",
+    "captures": {
+      "before_960": {
+        "file": ".runtime/expedition-windows-r101/20261119T020630Z/before-960/desktop.png",
+        "size": [
+          960,
+          540
+        ],
+        "primary_button_fill_height_px": 15,
+        "sha256": "d3533dc83bd8d72776863edef6eb5cd4ab5a25f4d838bf11470fbe0bd08488a6",
+        "report_media": "reports/game-direction/media/r101-desktop-before-960.png"
+      },
+      "after_960": {
+        "file": ".runtime/expedition-windows-r101/20261119T020630Z/final-hud-960/desktop.png",
+        "size": [
+          960,
+          540
+        ],
+        "primary_button_fill_height_px": 30,
+        "sha256": "36c7716f87d98e229e2b9d4731fa5fdca41f8b2a67e5613c405d0507fbd01bab",
+        "report_media": "reports/game-direction/media/r101-desktop-after-960.png"
+      },
+      "before_1280": {
+        "file": ".runtime/expedition-windows-r101/20261119T020630Z/opening.png",
+        "size": [
+          1280,
+          720
+        ],
+        "primary_button_fill_height_px": 25,
+        "sha256": "28691a4add7ba400430aa903b19cef60c299d746be00508d685a752d699d34c0"
+      },
+      "after_1280": {
+        "file": ".runtime/expedition-windows-r101/20261119T020630Z/fixed-opening.png",
+        "size": [
+          1280,
+          720
+        ],
+        "primary_button_fill_height_px": 40,
+        "sha256": "a5b68ef0d2affd76a423e27a95541c81de5bf100bf985b5fb92d4ea9dcfa2c69"
+      }
+    }
+  },
+  "playtest": {
+    "isolated_save": ".runtime/expedition-windows-r101/20261119T020630Z/Campaign",
+    "original_build_last_sequence": 14,
+    "corrected_build_reopened_sequence": 14,
+    "corrected_window_dimensions": [
+      1280,
+      720
+    ],
+    "normal_campaign": true,
+    "exit": "Window closed normally with status zero",
+    "last_save_sequence": 25,
+    "last_expedition_phase": "Travel",
+    "completed_expeditions": 0,
+    "last_save_sha256": "ab933fe2f58c54ed11b98c684f8a8fa349220d66bd42c538c67b22f38c812d5b"
+  },
+  "prior_package_keyboard_check": "The earlier Windows binary received E through Unreal Enhanced Input. The separate test save entered outbound travel; this was not a human order.",
+  "limits": [
+    "Comfort with a physical mouse on the corrected build and full expedition pacing await the owner.",
+    "The Windows UI automation pipe was unavailable. Packaged camera checks covered widget hit testing, pointer handling, and camera transforms.",
+    "Android, sustained phone performance, cloud saves and Apple were not exercised in this Windows pass."
+  ],
+  "raw_run_directory": ".runtime/expedition-windows-r101/20261119T020630Z",
+  "published": false
+}

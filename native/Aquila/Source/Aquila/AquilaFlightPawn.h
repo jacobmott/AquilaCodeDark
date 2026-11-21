@@ -7,6 +7,7 @@ class UStaticMeshComponent;
 class UInstancedStaticMeshComponent;
 class UMaterialInstanceDynamic;
 class SWidget;
+class SAquilaMouseLook;
 class AAquilaGameMode;
 
 UCLASS()
@@ -33,12 +34,13 @@ private:
     UPROPERTY() TObjectPtr<UInstancedStaticMeshComponent> Stars;
     UPROPERTY() TArray<TObjectPtr<UMaterialInstanceDynamic>> Materials;
     TSharedPtr<SWidget> Overlay;
+    TSharedPtr<SAquilaMouseLook> MouseLook;
     TArray<TSharedPtr<SWidget>> TouchUIRegions;
     bool bTouchLayout = false;
     bool bCommandsVisible = true;
     int32 CommandTab = 2;
     bool bBridge = false;
-    bool bDragging = false;
+    float RecenterDelay = 0;
     float OrbitYaw = 20;
     float OrbitPitch = 23;
     float BridgeYaw = 0;
@@ -51,6 +53,7 @@ private:
     bool bCaptured = false;
     AAquilaGameMode* Game() const;
     bool CommandEnabled(int32 Id) const;
+    void DragDesktopCamera(FVector2D Delta);
     UStaticMeshComponent* Shape(USceneComponent* Parent, const TCHAR* MeshPath, FVector Position, FVector Size, int32 Material);
     UInstancedStaticMeshComponent* Instances(int32 Material);
     void BuildShip(USceneComponent* Parent, bool bEnemy);
