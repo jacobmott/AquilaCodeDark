@@ -1,0 +1,183 @@
+{
+  "report_round": 119,
+  "verified_at_utc": "2026-11-23T03:01:16.550403+00:00",
+  "engine": "Epic launcher Unreal 5.8.4 CL 58902052, Windows Development",
+  "runtime": {
+    "path": ".runtime/combat-simulator-r119/package/Windows/Aquila/Binaries/Win64/Aquila.exe",
+    "sha256": "363d83bcc7123fee96b7a20a09b6712f04193fb6a39667c480512197c2fcd086"
+  },
+  "launcher": {
+    "path": ".runtime/combat-simulator-r119/package/Windows/Aquila.exe",
+    "sha256": "b4ff849eeca265764669f570a56d9f64907a26a48319e6dbf72e2856427aade9"
+  },
+  "direct_argument": "-AquilaMode=Simulator",
+  "direct_shortcut": ".runtime/combat-simulator-r119/package/Windows/Combat Simulator.lnk",
+  "changed_native_sources": [
+    {
+      "path": "native/Aquila/Source/Aquila/AquilaDesktopCameraTests.cpp",
+      "sha256": "3a8b24e2321fa02e32b80200e824afa6885b0819d20a8f55a869093cdceaa50f"
+    },
+    {
+      "path": "native/Aquila/Source/Aquila/AquilaExpedition.cpp",
+      "sha256": "268f51e8835c78352d3fec14401ecdef20f6f551da8b0675100eccd022b78d04"
+    },
+    {
+      "path": "native/Aquila/Source/Aquila/AquilaFlightPawn.cpp",
+      "sha256": "2a5ce46c1b2e0471d2f54aec1d6ef3cea849fee078abf907b741e9848b1d4065"
+    },
+    {
+      "path": "native/Aquila/Source/Aquila/AquilaFlightPawn.h",
+      "sha256": "8afb2155c27a80ce29454f0df75b36650928b45a0510a0c7119858590f63c9ae"
+    },
+    {
+      "path": "native/Aquila/Source/Aquila/AquilaGameMode.cpp",
+      "sha256": "1a8c7ac293f1c1e71088e7f2e1bc31fcfb22a54b8715ebcf6c8c58c87e2aeced"
+    },
+    {
+      "path": "native/Aquila/Source/Aquila/AquilaGameMode.h",
+      "sha256": "af76c8a14d7850cb5d9de736513b00adf5b57c0c301c66b1cee18d61fe8ff56c"
+    },
+    {
+      "path": "native/Aquila/Source/Aquila/AquilaSimulation.h",
+      "sha256": "677df6617c6770a0a7bf93116d620e4e095527fb9a9f6c3a8f9935e8b1e48311"
+    },
+    {
+      "path": "native/Aquila/Source/Aquila/AquilaSimulatorUI.cpp",
+      "sha256": "3cac875a1da8fad9063fa94181820784a932d34e5baf284761136ba972bd02ea"
+    }
+  ],
+  "headless": {
+    "path": ".runtime/combat-simulator-r119/headless-delivery/index.json",
+    "sha256": "e7181d52d71814b8ecefed9477d426847b1da2f0b76da118e44a97699eca58e6",
+    "tests": [
+      "Aquila.Combat.FrameRateAndHold",
+      "Aquila.Combat.SwitchWithRoundsInFlight",
+      "Aquila.Combat.TravelAndArmor",
+      "Aquila.Expedition.CommandsFailureAndPracticeIsolation",
+      "Aquila.Expedition.CompleteLoopAndUpgrade",
+      "Aquila.Expedition.LegacyMigrationAndValidation",
+      "Aquila.Expedition.ResumeAndRewardTransactions",
+      "Aquila.Expedition.UpgradeImpactAndFrameParity",
+      "Aquila.Navigation.ClearanceAndArrival",
+      "Aquila.Save.InterruptionAndConflict",
+      "Aquila.Save.RoundTripMigrationAndRejection"
+    ],
+    "passed": 11,
+    "failed": 0
+  },
+  "packaged": {
+    "duel-direct": {
+      "path": ".runtime/combat-simulator-r119/duel-direct-205920/report/index.json",
+      "sha256": "d124c628f2103d802acc9837bbfa6a6abc1d577c5da3d5dc7ac8ea9255304f7c",
+      "tests": [
+        "Aquila.Input.Simulator.Simulator"
+      ],
+      "passed": 1,
+      "failed": 0
+    },
+    "duel-menu": {
+      "path": ".runtime/combat-simulator-r119/duel-menu-205929/report/index.json",
+      "sha256": "a903cac3db7f78982436c43d1a52c59a25cacedb3d0ab89376ad734adb0a22ff",
+      "tests": [
+        "Aquila.Input.Simulator.Menu"
+      ],
+      "passed": 1,
+      "failed": 0
+    },
+    "match-desktop": {
+      "path": ".runtime/combat-simulator-r119/match-desktop-210015/report/index.json",
+      "sha256": "d5e1d6e2c02fc2c218d48892b972da16c92bb2a43ca4275da7873373ee95996e",
+      "tests": [
+        "Aquila.Input.DesktopCamera"
+      ],
+      "passed": 1,
+      "failed": 0
+    },
+    "match-observer": {
+      "path": ".runtime/combat-simulator-r119/match-observer-210026/report/index.json",
+      "sha256": "825c8f595b83a0e5d5e9892eca93c77eb22b969089af0be43ef78a3253765a5e",
+      "tests": [
+        "Aquila.Input.Observer.Desktop"
+      ],
+      "passed": 1,
+      "failed": 0
+    },
+    "match-restored-observer": {
+      "path": ".runtime/combat-simulator-r119/match-restored-observer/report/index.json",
+      "sha256": "e86fd04c1f2f6a93bc7570f64f749657652105ce556fecb1478b80cc1e60591f",
+      "tests": [
+        "Aquila.Input.Observer.Desktop"
+      ],
+      "passed": 1,
+      "failed": 0
+    },
+    "match-bridge": {
+      "path": ".runtime/combat-simulator-r119/match-bridge-210043/report/index.json",
+      "sha256": "f10cf5546b5a2db0006072346a40b2808a3752f5b8f93aa27e93c55e3593defa",
+      "tests": [
+        "Aquila.Input.DesktopCamera"
+      ],
+      "passed": 1,
+      "failed": 0
+    },
+    "match-touch": {
+      "path": ".runtime/combat-simulator-r119/match-touch-210051/report/index.json",
+      "sha256": "65102924512da4314ca2acf2bbb271056ed1496a6f29851179cb0e7003f00af1",
+      "tests": [
+        "Aquila.Input.TouchMenu.RevealAndHide"
+      ],
+      "passed": 1,
+      "failed": 0
+    },
+    "match-touch-observer": {
+      "path": ".runtime/combat-simulator-r119/match-touch-observer/report/index.json",
+      "sha256": "41932d258b044315b063590d8ecdc90365fd9e544868814ce3fc97378eb9c037",
+      "tests": [
+        "Aquila.Input.Observer.Touch"
+      ],
+      "passed": 1,
+      "failed": 0
+    }
+  },
+  "captures": {
+    "capture-menu": {
+      "path": "reports/game-direction/media/r119-mode-menu.png",
+      "sha256": "7885664dc98f0a713d874965dd3abe6dab0d7fe62e9290140acdaf1340e8a8fb",
+      "size": [
+        1280,
+        720
+      ],
+      "source": ".runtime/combat-simulator-r119/capture-menu-205936/scene.png"
+    },
+    "capture-arena": {
+      "path": "reports/game-direction/media/r119-combat-duel.png",
+      "sha256": "b7a082bf6d76f2e8ffa7df494a2100fda0245c893201310003d18515aace062a",
+      "size": [
+        1280,
+        720
+      ],
+      "source": ".runtime/combat-simulator-r119/capture-arena-205955/scene.png"
+    }
+  },
+  "duel": {
+    "controlled_pair": "Resolute with two starter turrets and armored Sentinel",
+    "checks": "Matched shield, hull, projectile count and battle clock every frame through disablement. Compared both ships and projectiles until in-flight rounds and impacts cleared. Replayed piercing from fresh starting state. Tested pause, resume and the 8x fixed-step option.",
+    "outcomes_at_disablement": [
+      "Standard at 696.22 s: Resolute hull 0.00, Sentinel shield 0.00 and hull 100.00.",
+      "Piercing at 220.97 s: Resolute hull 100.00, Sentinel shield 0.00 and hull 0.00.",
+      "Piercing at 220.97 s: Resolute hull 100.00, Sentinel shield 0.00 and hull 0.00."
+    ]
+  },
+  "journal": {
+    "fixture": "Disposable two-revision journal from a completed automated expedition with a purchased port refit.",
+    "direct_revision_count_before": 2,
+    "direct_revision_count_after": 2,
+    "direct_journal_digest_before": "424075538ffaa87c2cefc25083240e0a6a0bc6551bce34dff1d8dbb3c2010c7b",
+    "direct_journal_digest_after": "424075538ffaa87c2cefc25083240e0a6a0bc6551bce34dff1d8dbb3c2010c7b",
+    "menu_revision_count_before": 2,
+    "menu_revision_count_after": 2,
+    "checked": "Direct arena startup, replay, save and expedition command attempts, background pause, menu return and process exit. Play Match restored the full serialized fixture at revision 2 on the menu path. No game input was sent to the running owner expedition."
+  },
+  "limitations": "Automated Windows UI and simulation, including a Windows touch preview. Human play, physical-device validation and the remaining ship and armor catalog are open.",
+  "corrections": "The first virtual button check lacked pointer hover. A separate bridge check found early cursor state. Corrected the test gesture, selected the mode before pawn startup and refreshed the ready-world cursor. The final package passed both checks."
+}

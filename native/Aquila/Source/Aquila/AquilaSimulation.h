@@ -71,6 +71,7 @@ struct FAquilaCampaign
 
     bool StartPractice();
     void BeginEncounter();
+    void BeginExpeditionBattle();
     bool StartExpedition();
     bool ExpeditionAction();
     bool UpgradePortTurret();

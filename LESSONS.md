@@ -245,3 +245,11 @@ The native loader pauses writes when one journal contains multiple run identitie
 ## 2026-11-22 [J]: Share combat rules and isolate practice state
 
 The owner wants to test a loadout or a balance change without starting a universe. Use the match's combat code in a temporary arena with repeatable starting conditions. The current practice command shares the expedition's state and changes damage scaling. Check both match damage parity and journal isolation before using the arena to judge balance. [Simulator decision and source](knowledge/game-direction.md#combat-simulator).
+
+## 2026-11-22 [M]: Select the play mode before the pawn starts
+
+A packaged bridge regression caught the pointer inheriting menu visibility on a direct match launch. Select the session in game-mode initialization, before pawn startup, and refresh the pointer once its controller and world are ready. Check direct entry as well as menu entry. [Windows simulator verification](Docs/Testing/native-combat-simulator.json).
+
+## 2026-11-22 [M]: Verify the shortcut on the Windows desktop
+
+The duel link in chat failed for the owner. A shortcut on the Windows desktop opened the packaged game directly. The game log recorded a standard duel and Windows reported a responsive window. Use the desktop shortcut for this playtest. [Direct launch and controls](native/Aquila/README.md#combat-simulator-on-windows).

@@ -10,7 +10,9 @@ Native files, save contract, build commands and current limits: [native guide](.
 The native exterior is a free RTS observer. Its focus uses simulation-space meters. Ships, rounds, impacts, the signal and planet render relative to that focus. The bridge retains its ship-relative frame. Distant stars follow camera translation.
 On Windows, the Slate surface distinguishes clicks from drags. A visibility ray picks ship meshes in front of the planet. A selected ship supplies the moving focus. Free movement, empty-space clicks and losing the selected contact release follow without moving the camera. Viewing a ship leaves command ownership with Resolute.
 The earlier [owner-confirmed exterior orbit](../Docs/Testing/native-windows-orbit-acceptance.json) remains available when following a ship. The free observer and bridge retain the chosen heading.
-Both native layouts start hidden. Desktop uses a centered command panel toggled with H. Touch uses two fingers to reveal large tabbed commands.
+Match controls start hidden on both layouts. Desktop uses a centered command panel toggled with H. Touch uses two fingers to reveal large tabbed commands.
+
+Normal Windows startup presents a mode menu before opening a journal. Play Match restores the expedition. Combat Simulator builds a fresh in-memory duel and calls the same battle entry as the survey encounter. Only Match can read or commit journal revisions. Restarting a duel replaces its entire state, including ship positions and shots in flight. The bridge, planet and expedition marker are built on first entry into a match. [Simulator controls](../native/Aquila/README.md#combat-simulator-on-windows).
 
 ## Active universe, 2026-11-15
 

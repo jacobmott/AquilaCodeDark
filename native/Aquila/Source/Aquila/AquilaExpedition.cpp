@@ -77,6 +77,15 @@ bool FAquilaCampaign::UpgradePortTurret()
     return true;
 }
 
+void FAquilaCampaign::BeginExpeditionBattle()
+{
+    const bool bSelectedPiercing = bPiercing;
+    Expedition = EAquilaExpedition::Battle;
+    BeginEncounter();
+    SetPiercing(bSelectedPiercing);
+    Order = EAquilaOrder::CombatRange;
+}
+
 void FAquilaCampaign::AdvanceExpedition(double Seconds)
 {
     if (!ExpeditionActive()) return;
@@ -96,14 +105,7 @@ void FAquilaCampaign::AdvanceExpedition(double Seconds)
     {
         SurveySeconds = FMath::Min(SurveyDuration,SurveySeconds + Seconds);
         if (SurveySeconds >= SurveyDuration)
-        {
-            Expedition = EAquilaExpedition::Battle;
-            // Keep the selected ammunition. Navigation and acquisition are automatic; tactical modes remain player decisions.
-            const bool bSelectedPiercing = bPiercing;
-            BeginEncounter();
-            SetPiercing(bSelectedPiercing);
-            Order = EAquilaOrder::CombatRange;
-        }
+            BeginExpeditionBattle();
     }
     else if (Expedition == EAquilaExpedition::Battle && EnemyHull <= 0)
     {

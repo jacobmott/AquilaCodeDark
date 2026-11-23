@@ -84,6 +84,10 @@ private:
     UInstancedStaticMeshComponent* Instances(int32 Material);
     void BuildShip(USceneComponent* Parent, bool bEnemy);
     void BuildRoom();
+    void BuildMatchScene();
+    void ResetSessionView();
+    TSharedRef<SWidget> BuildModeMenu();
+    TSharedRef<SWidget> BuildDuelPanel();
     void BuildOverlay();
     void BuildTouchOverlay();
     void RenderCampaign();

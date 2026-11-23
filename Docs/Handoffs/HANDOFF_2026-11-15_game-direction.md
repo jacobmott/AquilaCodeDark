@@ -1,16 +1,20 @@
 # Aquila matches, Combat Simulator and Windows playtest
 
-2026-11-22 local, round 118. The owner confirmed a separate Combat Simulator in chat, requested a planning commit and push, and asked what to work on next. Match and observer work was already on `origin/main` in `75939af`, with its round 117 records in `c07f284`. [Previous publication](../Testing/native-observer-publication.json).
+2026-11-22 local, round 119. The Combat Simulator plan reached `origin/main` in `3e66124`. The owner said “Sounds good. Proceed” to the first Windows duel. The implementation and its test records are local. The earlier push covered planning. [Exact prior checkpoint](../History/game-direction/20261123T024854Z.md) and [hash](../History/game-direction/20261123T024854Z.json).
 
 ## Combat Simulator
 
+Round 120. The chat link failed for the owner. Double-click **Aquila Combat Simulator** on the Windows desktop. That shortcut opened the round 119 package directly in simulator mode. The log confirmed a standard ammunition duel and Windows reported a responsive Aquila window.
+
 Alongside Play Match, enter a small arena directly. Try any ship and its compatible equipment, compare builds, see where gear is earned, or fight for fun. Developers can repeat a duel after a balance change without starting a universe. Use match combat code, equipment rules and damage settings. Keep arena state outside all match saves. [Agreed design and proposed first duel](../../knowledge/game-direction.md#combat-simulator).
 
-Recommended next build on Windows is Resolute against Sentinel with standard and piercing ammunition. Reset the same duel, compare shields and hull, then leave and resume an unchanged test match. Existing practice shares expedition state and has different damage scaling. Round 118 reran the eleven existing native test groups with a separate scratch save path. All passed. This checks the existing mechanics. Direct arena launch, matching damage settings and save isolation still need implementation and their own tests. Local result: `.runtime/combat-simulator-r118/tests/index.json`.
+The local Windows build offers Play Match and Combat Simulator. For the duel, open `.runtime/combat-simulator-r119/package/Windows/Combat Simulator.lnk` or choose Combat Simulator in the packaged game. Resolute faces Sentinel with standard or piercing rounds. Either ammunition button resets both ships. The speed button switches between 1× and 8×. Full equipment selection, armor fitting and additional ships remain design work. [Controls](../../native/Aquila/README.md#combat-simulator-on-windows).
+
+The [packaged duel checks](../Testing/native-combat-simulator.json) compare damage with an actual expedition battle and verify replay and journal isolation. Human play and equipment selection beyond the two rounds remain open.
 
 ## Playable on Windows
 
-Use Epic's launcher Unreal 5.8.4 CL 58902052 at `C:/Program Files/Epic Games/UE_5.8`. The game opens near Resolute with the UI hidden. WASD pans, R/F changes height and Shift speeds movement. Drag either mouse button to rotate, middle-drag to pan, and use the wheel to zoom. Click a visible ship to follow it. Pan or click empty space to detach. Home finds Resolute, C visits its bridge, and H toggles the command panel. Two fingers reveal touch controls. Purple impact discs mark shield, hull or armor contact. [Play controls](../../native/Aquila/README.md#play) and [camera decision](../../knowledge/interface-direction.md#native-observer-decision-2026-11-22).
+Use Epic's launcher Unreal 5.8.4 CL 58902052. Play Match restores the expedition with the command panel hidden. The free observer can follow either ship. Home finds Resolute, C visits its bridge and H shows its commands. [All controls](../../native/Aquila/README.md#play) and [camera decision](../../knowledge/interface-direction.md#native-observer-decision-2026-11-22).
 
 At wrap the seven native source hashes and the Windows executable matched the [observer evidence](../Testing/native-rts-observer.json). Six packaged input runs and eleven simulation/save groups had passed. Six local captures and the Android arm64 build log also checked out. Earlier owner confirmation covers exterior mouse orbit. Owner comfort with the new view, desktop sizing, a full human expedition and physical Galaxy inputs remain open. Windows is primary. Galaxy checks happen at milestones. Sustained phone performance, cloud saves and Apple also remain open.
 
@@ -34,23 +38,23 @@ D&B’s chat agent could not send the proposed referral. There was no live repre
 
 The [round 116 checkpoint](../History/game-direction/20261123T013848Z.md) and [hash manifest](../History/game-direction/20261123T013848Z.json) preserve the exact prior record. The [earlier publication receipt](../Testing/native-playtest-publication.json) covers the previous Windows controls and paused inquiry. [Project lessons](../../LESSONS.md) cover held input, framing restored ships and keeping run histories separate. The Windows package, game journal and media remain local.
 
-The [round 117 handoff](../History/game-direction/20261123T021928Z.md) and [hash record](../History/game-direction/20261123T021928Z.json) preserve the prior checkpoint. At that wrap, the Windows game, report 8953 and Research Console 8776 were running. Report 8952 and preview 4200 were inactive. In round 118 a read-only check of the running game's save found revision 151583, Failed with the helm on Hold. It can advance on its own. Check again before acting. Keep the journal and launch owner sessions without injected input.
+At the [round 117 wrap](../History/game-direction/20261123T021928Z.md), the Windows game, report 8953 and Research Console 8776 were running. Report 8952 and preview 4200 were inactive. In round 119 the previous packaged game was still running. A read-only check saw revision 151637, Failed with the helm on Hold. The new package and all simulator tests use separate locations. Check the current save before acting. Keep its journal and launch owner sessions without injected input.
 
-Last real inbox: `reports/game-direction/inbox/20261115T015927Z.json`. Later decisions came through chat. The current push request covers these game planning records. D&B stays paused. Contacts, purchases, filing, signup, generation, other publication, asset transfer and deployment require fresh approval.
+Last real inbox: `reports/game-direction/inbox/20261115T015927Z.json`. Later decisions came through chat. D&B stays paused. Contacts, purchases, filing, signup, generation, publication, asset transfer and deployment need fresh approval.
 
 ## Restart prompt
 
 ```text
 Aquila Code Dark at D:/OtherProjects/AquilaCodeDark. Continue the game direction task.
 Read AGENTS.md, Docs/TaskRoutes.md and Docs/Handoffs/HANDOFF_2026-11-15_game-direction.md in full.
-Report http://127.0.0.1:8953/?agentreport=1&paseoAgent=09c42e01-b201-4b15-8ad9-8a9f4ed3c740 (reports/game-direction/, round 118).
+Report http://127.0.0.1:8953/?agentreport=1&paseoAgent=09c42e01-b201-4b15-8ad9-8a9f4ed3c740 (reports/game-direction/, round 120).
 Last real inbox read: reports/game-direction/inbox/20261115T015927Z.json. Later decisions came through chat.
 1. Match design: one homeworld, Resolute and one expanding computer rival. New runs start fresh. Save points belong to their run. Different universes per run are proposed.
-Combat Simulator is a separate arena for trying all compatible builds and testing the same combat rules without loading a universe. Read knowledge/game-direction.md#combat-simulator. The first recommended Windows duel uses Resolute, Sentinel and two ammo types. The standalone mode remains to build.
+The first local Windows simulator duel uses Resolute, Sentinel and two ammunition types. The full equipment catalog is future work. See native/Aquila/README.md for direct launch. Planning is on origin/main. Code and test records for this build are local.
 2. Windows playtest: launcher Unreal 5.8.4. Free RTS observer and hidden controls work. Six packaged input checks and eleven simulation/save groups passed. Camera feel, sizing and human pacing remain open.
 Galaxy checks at milestones. Sustained mobile performance, cloud saves and Apple remain open.
 The running expedition recorded defeat with the helm on Hold. Check the current save before acting. Preserve the journal and launch without injected input.
-The Windows game was still running in round 118. Service states from the previous wrap are recorded above.
+The prior Windows expedition remained open during isolated simulator validation.
 3. D&B waits for owner direction. Read knowledge/publishing-business.md and Docs/Handoffs/PROMPT_2026-11-18_dnb-follow-up.txt before reopening. Keep the home address private.
 Preserve the positive app examples and their limits. No specialist referral or provider selection.
 The planning push is one-time. New contact, purchase, filing, signup, generation, further publication, transfer or deployment needs fresh approval.

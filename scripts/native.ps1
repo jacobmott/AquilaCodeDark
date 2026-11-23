@@ -1,6 +1,7 @@
 param(
     [ValidateSet('Check','Build','Prepare','Test','Run','Package')][string]$Action = 'Check',
-    [ValidateSet('Win64','Android')][string]$Platform = 'Win64'
+    [ValidateSet('Win64','Android')][string]$Platform = 'Win64',
+    [ValidateSet('Menu','Match','Simulator')][string]$Mode = 'Menu'
 )
 $ErrorActionPreference = 'Stop'
 $repoPath = Split-Path $PSScriptRoot -Parent
@@ -59,7 +60,7 @@ switch ($Action) {
         & $commandletPath $projectPath -run=AquilaContent -unattended -NullRHI -stdout -FullStdOutLogOutput
     }
     'Run' {
-        & $editorPath $projectPath /Engine/Maps/Entry -game -windowed -ResX=1600 -ResY=900 -NoSplash
+        & $editorPath $projectPath /Engine/Maps/Entry -game -windowed -ResX=1600 -ResY=900 -NoSplash "-AquilaMode=$Mode"
     }
     'Package' {
         if (!(Test-Path -LiteralPath "$repoPath/native/Aquila/Content/Foundation/M_Planet.uasset")) {

@@ -22,7 +22,13 @@ The same arena serves development. Start it without generating a universe or loa
 
 **Recommended first Windows duel.** Use Resolute and the armored Sentinel already in the game. Select standard or piercing rounds, see the effect on shields and hull, then reset either loadout to the same starting positions and defenses. Compare both outcomes against the match’s damage settings. Check that entering, resetting and leaving the arena preserves a disposable match journal byte for byte, and that the match resumes at the same point. Expand ship and equipment choices after this comparison works.
 
-The existing **Practice** command fights within the loaded expedition state, shares its save path and uses a different damage multiplier. A standalone arena and equipment catalog remain to build. [Encounter code](../native/Aquila/Source/Aquila/AquilaSimulation.cpp), [game startup and saves](../native/Aquila/Source/Aquila/AquilaGameMode.cpp) and [existing Windows controls](../native/Aquila/README.md#play).
+The older **Practice** command fights inside the expedition, shares its save path and uses a different damage multiplier. It remains available inside a match. [Encounter code](../native/Aquila/Source/Aquila/AquilaSimulation.cpp) and [game startup and saves](../native/Aquila/Source/Aquila/AquilaGameMode.cpp).
+
+### First playable Windows duel
+
+Round 119. Opening Combat Simulator starts Resolute against Sentinel without loading a match. A player can switch ammunition or replay the same loadout. Each attempt begins with the same ships, range, shield and hull values, turret clocks and empty projectile list. Both ammunition types are available in the match's Tactical panel. The duel uses the expedition battle entry and the same fixed-step combat. The 8× option runs those steps faster. Standard rounds exhaust Sentinel's shield and stop at its armor. Piercing rounds reach its hull. [Windows controls and direct launch](../native/Aquila/README.md#combat-simulator-on-windows).
+
+This first build has one ship pairing and two ammunition choices. Swappable armor, further ships and weapons, and a catalog explaining their acquisition remain open.
 
 ## One computer rival
 

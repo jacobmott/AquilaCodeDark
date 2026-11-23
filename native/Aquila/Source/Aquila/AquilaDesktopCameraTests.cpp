@@ -2,6 +2,7 @@
 
 #include "AquilaFlightPawn.h"
 #include "AquilaGameMode.h"
+#include "AquilaSave.h"
 #include "Camera/CameraComponent.h"
 #include "Engine/Engine.h"
 #include "Engine/GameViewportClient.h"
@@ -215,4 +216,118 @@ bool FAquilaTouchMenuTest::RunTest(const FString& Parameters)
     return true;
 }
 
+// Explicit opt-in because this exercise opens the supplied disposable match at the end of the menu test.
+IMPLEMENT_COMPLEX_AUTOMATION_TEST(FAquilaSimulatorTest, "Aquila.Input.Simulator",
+    EAutomationTestFlags::ClientContext | EAutomationTestFlags::NonNullRHI | EAutomationTestFlags::EngineFilter)
+
+void FAquilaSimulatorTest::GetTests(TArray<FString>& Names, TArray<FString>& Commands) const
+{
+    FString Directory, Mode;
+    const TCHAR* Args = FCommandLine::Get();
+    if (!FParse::Param(Args, TEXT("AquilaDuelTest")) || !FParse::Value(Args, TEXT("AquilaSaveDir="), Directory)) return;
+    FParse::Value(Args, TEXT("AquilaMode="), Mode);
+    Names.Add(Mode);
+    Commands.Add(Mode);
+}
+
+bool FAquilaSimulatorTest::RunTest(const FString& ModeName)
+{
+    UGameViewportClient* Viewport = GEngine->GameViewport;
+    auto* Game = Viewport && Viewport->GetWorld() ? Viewport->GetWorld()->GetAuthGameMode<AAquilaGameMode>() : nullptr;
+    if (!TestTrue(TEXT("Rendered duel window"), Game && Viewport->GetWindow())) return false;
+    const auto Window = Viewport->GetWindow().ToSharedRef();
+    auto& Slate = FSlateApplication::Get();
+    const int32 User = Slate.FindOrCreateVirtualUser(0)->GetUserIndex();
+    auto Click = [&](const TCHAR* Text)
+    {
+        Slate.ForceRedrawWindow(Window);
+        const auto Label = FindText(Window, Text);
+        if (!TestTrue(Text, Label.IsValid())) return false;
+        const FVector2D Position = Label->GetCachedGeometry().GetAbsolutePositionAtCoordinates(FVector2D(.5,.5));
+        const FWidgetPath Path(Window->GetHittestGrid().GetBubblePath(Position, 0, false, User));
+        const bool bButton = Path.Widgets.GetInternalArray().ContainsByPredicate([](const FArrangedWidget& Item) {
+            return Item.Widget->GetType() == TEXT("SButton");
+        });
+        if (!TestTrue(FString::Printf(TEXT("Hit a button for %s"), Text), bButton)) return false;
+        const TSet<FKey> Empty;
+        Slate.RoutePointerMoveEvent(Path, FPointerEvent(User, FSlateApplication::CursorPointerIndex, Position, Position,
+            FVector2D::ZeroVector, Empty, FModifierKeysState()), false);
+        for (bool bDown : {true, false})
+        {
+            TSet<FKey> Held;
+            if (bDown) Held.Add(EKeys::LeftMouseButton);
+            FPointerEvent Event(User, FSlateApplication::CursorPointerIndex, Position, Position, Held, EKeys::LeftMouseButton, 0, FModifierKeysState());
+            if (bDown) Slate.RoutePointerDownEvent(Path, Event);
+            else Slate.RoutePointerUpEvent(Path, Event);
+        }
+        return true;
+    };
+    const bool bMenu = ModeName.Equals(TEXT("Menu"), ESearchCase::IgnoreCase);
+    if (bMenu && !TestTrue(TEXT("Menu precedes match loading"), Game->Session() == EAquilaSession::Menu && Game->Campaign.Sequence == 0))
+        return false;
+    if (bMenu && !Click(TEXT("Combat Simulator"))) return false;
+    if (!TestTrue(TEXT("Duel active"), Game->Session() == EAquilaSession::Simulator)) return false;
+    if (!Click(TEXT("Replay standard")) || !Click(TEXT("Speed 8×"))) return false;
+    if (!TestFalse(TEXT("Real-time speed selected"), Game->bFastDuel)) return false;
+    for (bool bPiercing : {false, true, true})
+    {
+        if (!Click(bPiercing ? (Game->Campaign.bPiercing ? TEXT("Replay piercing") : TEXT("Try piercing")) : TEXT("Replay standard")))
+            return false;
+        const auto& Duel = Game->Campaign;
+        TestTrue(TEXT("Both ships and all flying rounds reset"), Duel.Shield == 100 && Duel.Hull == 100 &&
+            Duel.EnemyShield == 100 && Duel.EnemyHull == 100 && Duel.BattleTime == 0 && Duel.Rounds.IsEmpty());
+        TestTrue(TEXT("Chosen ammunition starts at the same origin"), Duel.bPiercing == bPiercing && Duel.ShipPosition.IsZero());
+        FAquilaCampaign Match;
+        Match.Expedition = EAquilaExpedition::Survey;
+        Match.SurveySeconds = FAquilaCampaign::SurveyDuration;
+        Match.SetPiercing(bPiercing);
+        Match.AdvanceExpedition(0); // The ordinary expedition enters its battle at the identical survey position.
+        bool bParity = true;
+        for (int32 Frame = 0; Frame < 60 * 900 && Match.Expedition == EAquilaExpedition::Battle; ++Frame)
+        {
+            Game->Tick(1.f/60);
+            Match.Advance(1.f/60);
+            bParity &= Match.Shield == Duel.Shield && Match.Hull == Duel.Hull && Match.EnemyHull == Duel.EnemyHull &&
+                Match.EnemyShield == Duel.EnemyShield && Match.Rounds.Num() == Duel.Rounds.Num() && Match.BattleTime == Duel.BattleTime;
+        }
+        TestTrue(TEXT("Shields, hull, shot count and clock match the expedition every frame"), bParity);
+        TestTrue(TEXT("Ammunition produces its expected result"), bPiercing ? Duel.EnemyHull == 0 : (Duel.bArmorBlocked && Duel.EnemyHull == 100 && Duel.Hull == 0));
+        AddInfo(FString::Printf(TEXT("%s at %.2f s: Resolute hull %.2f, Sentinel shield %.2f and hull %.2f."),
+            bPiercing ? TEXT("Piercing") : TEXT("Standard"), Duel.BattleTime, Duel.Hull, Duel.EnemyShield, Duel.EnemyHull));
+        for (int32 Frame = 0; Frame < 25 * 60; ++Frame)
+        {
+            Game->Tick(1.f/60);
+            Match.Advance(1.f/60);
+            bParity &= Match.Shield == Duel.Shield && Match.Hull == Duel.Hull && Match.EnemyHull == Duel.EnemyHull &&
+                Match.EnemyShield == Duel.EnemyShield && Match.Rounds.Num() == Duel.Rounds.Num();
+        }
+        TestTrue(TEXT("Last rounds resolve as in the match after disablement"), bParity && Duel.Rounds.IsEmpty() && Duel.Impacts.IsEmpty());
+    }
+    if (!Click(TEXT("Replay piercing")) || !Click(TEXT("Speed 1×"))) return false;
+    Game->Tick(0.125f);
+    TestTrue(TEXT("8x runs eight identical batches of combat steps"), FMath::IsNearlyEqual(Game->Campaign.BattleTime, 1., 1.e-8));
+    if (!Click(TEXT("Pause"))) return false;
+    const double Stopped = Game->Campaign.BattleTime;
+    Game->Tick(.125f);
+    TestEqual(TEXT("Pause freezes the duel"), Game->Campaign.BattleTime, Stopped);
+    Game->Background();
+    Game->Foreground();
+    if (!Click(TEXT("Resume"))) return false;
+    Game->Command(9);
+    Game->Command(11);
+    TestTrue(TEXT("Arena ignores save and expedition commands"), Game->Campaign.Sequence == 0 && Game->Campaign.Expedition == EAquilaExpedition::Battle);
+    if (!Click(TEXT("Main menu")) || !TestTrue(TEXT("Menu restored"), Game->Session() == EAquilaSession::Menu)) return false;
+    if (bMenu)
+    {
+        FString Directory, Status;
+        bool bWritable = false;
+        FParse::Value(FCommandLine::Get(), TEXT("AquilaSaveDir="), Directory);
+        FAquilaCampaign Saved;
+        if (!TestTrue(TEXT("Disposable match fixture"), FAquilaSave::LoadJournal(Directory, Saved, Status, bWritable) && bWritable)) return false;
+        if (!Click(TEXT("Play Match"))) return false;
+        TestTrue(TEXT("Match resumes with the entire saved state"), Game->Session() == EAquilaSession::Match &&
+            FAquilaSave::Encode(Game->Campaign) == FAquilaSave::Encode(Saved));
+    }
+    return true;
+}
 #endif

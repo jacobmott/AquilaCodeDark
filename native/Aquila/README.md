@@ -55,7 +55,23 @@ iOS requires future Mac/Xcode/signing access and an actual Apple test device. Ne
 
 ## Play
 
-Flight and bridge views open with the entire interface hidden. Press **H** to show the command panel and **H** again to dismiss it.
+On Windows, open Aquila and choose **Play Match** or **Combat Simulator**. Play Match opens the existing expedition and restores its local journal. The Windows command panel has a **Main menu** button that saves the match before returning. Touch devices still open the expedition directly.
+
+### Combat Simulator on Windows
+
+On the playtest PC, double-click **Aquila Combat Simulator** on the Windows desktop.
+
+Resolute faces one armored Sentinel with two automatic turrets. **Try piercing** or **Try standard** starts the same duel with the chosen rounds. **Replay** with the current ammunition restores both ships, their starting positions, defenses and firing clocks. Both ammunition types are also available from the match's Tactical panel. Watch each ship's shield and hull in the simulator panel.
+
+The duel starts at **8×** speed. Click the speed button for **1×** or use **Pause** to inspect a hit. The game advances more fixed combat steps at 8×. Both speeds use the expedition's projectile and damage rules. **Main menu** discards the fight. Choosing Play Match afterward opens the saved expedition. The arena never loads or writes its journal.
+
+The [Windows simulator verification](../../Docs/Testing/native-combat-simulator.json) records the two ammunition outcomes, direct and menu launches, and the saved match comparison.
+
+For direct development launches, use `pwsh -NoProfile -File scripts/native.ps1 -Action Run -Mode Simulator`. The packaged executable accepts `-AquilaMode=Simulator` too. An explicit `-AquilaSaveDir` by itself retains the existing direct match launch. Add `-AquilaMode=Menu` or `-AquilaMode=Simulator` to enter that mode with a specific match directory.
+
+### Match controls
+
+Match flight and bridge views open with the entire interface hidden. Press **H** to show the command panel and **H** again to dismiss it.
 The panel groups ship status, expedition, navigation, tactical, view and save controls. Opening or closing it preserves the simulation clock.
 On touchscreens, touch the view with two fingers to reveal the controls. **Hide menu** clears the whole display.
 Navigation, Weapons and Expedition use large touch tabs. Bridge, Pause/Resume and Hide menu sit above them when open.

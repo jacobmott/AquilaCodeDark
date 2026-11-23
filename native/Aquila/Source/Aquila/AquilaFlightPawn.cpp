@@ -57,7 +57,7 @@ AAquilaGameMode* AAquilaFlightPawn::Game() const { return GetWorld()->GetAuthGam
 bool AAquilaFlightPawn::CommandEnabled(int32 Id) const
 {
     auto* G = Game();
-    if (!G) return false;
+    if (!G || G->Session() != EAquilaSession::Match) return false;
     if (Id == 7 || Id == 8 || Id == 10) return true;
     if (Id >= 13 && Id <= 16) return !bBridge;
     if (!G->bWritable) return false;
@@ -77,6 +77,7 @@ void AAquilaFlightPawn::SetupPlayerInputComponent(UInputComponent* PlayerInputCo
 
 void AAquilaFlightPawn::ToggleCommands()
 {
+    if (!Game() || Game()->Session() != EAquilaSession::Match) return;
     bCommandsVisible = !bCommandsVisible;
     TouchWalk = FVector2D::ZeroVector;
     bTouching = false;
@@ -88,7 +89,7 @@ void AAquilaFlightPawn::ToggleCommands()
 void AAquilaFlightPawn::UpdateCursor()
 {
     if (auto* PC = Cast<APlayerController>(GetController()))
-        PC->bShowMouseCursor = bCommandsVisible || (!bBridge && !bTouchLayout);
+        PC->bShowMouseCursor = (Game() && Game()->Session() != EAquilaSession::Match) || bCommandsVisible || (!bBridge && !bTouchLayout);
 }
 
 void AAquilaFlightPawn::RunControl(int32 Id)
@@ -196,23 +197,7 @@ void AAquilaFlightPawn::BeginPlay()
     }
     BuildShip(ShipRoot, false);
     BuildShip(EnemyRoot, true);
-    BuildRoom();
     PortUpgradeGlow = Shape(ShipRoot,Cube,FVector(160,-190,96),FVector(48,55,5),2);
-    Shape(SignalRoot,Sphere,FVector::ZeroVector,FVector(120),2);
-    Shape(SignalRoot,Cube,FVector::ZeroVector,FVector(440,25,25),1);
-    Shape(SignalRoot,Cube,FVector::ZeroVector,FVector(25,440,25),1);
-    FRandomStream Debris(7142);
-    for (int32 I=0; I<18; ++I)
-    {
-        auto* Piece = Shape(SignalRoot,Cube,Debris.VRand()*Debris.FRandRange(500,1600),
-            FVector(Debris.FRandRange(50,200),Debris.FRandRange(25,70),Debris.FRandRange(20,60)),1);
-        Piece->SetRelativeRotation(FRotator(Debris.FRandRange(0,180),Debris.FRandRange(0,180),30));
-    }
-    Planet = Shape(RootComponent, Sphere, FVector(18000,0,-3000), FVector(12000), 6);
-    Planet->SetCollisionResponseToAllChannels(ECR_Ignore);
-    Planet->SetCollisionResponseToChannel(ECC_Visibility, ECR_Block);
-    Planet->SetCollisionEnabled(ECollisionEnabled::QueryOnly);
-    if (auto* Surface = LoadObject<UMaterialInterface>(nullptr, TEXT("/Game/Foundation/M_Planet.M_Planet"))) Planet->SetMaterial(0,Surface);
     FriendlyRounds = Instances(3);
     HostileRounds = Instances(4);
     Impacts = Instances(5);
@@ -255,10 +240,48 @@ void AAquilaFlightPawn::BeginPlay()
 
 void AAquilaFlightPawn::ToggleBridge()
 {
+    if (!Game() || Game()->Session() != EAquilaSession::Match) return;
     TouchWalk = FVector2D::ZeroVector;
     bTouching = false;
     bBridge = !bBridge;
     UpdateCursor();
+}
+
+void AAquilaFlightPawn::BuildMatchScene()
+{
+    BuildRoom();
+    Shape(SignalRoot,Sphere,FVector::ZeroVector,FVector(120),2);
+    Shape(SignalRoot,Cube,FVector::ZeroVector,FVector(440,25,25),1);
+    Shape(SignalRoot,Cube,FVector::ZeroVector,FVector(25,440,25),1);
+    FRandomStream Debris(7142);
+    for (int32 I=0; I<18; ++I)
+    {
+        auto* Piece = Shape(SignalRoot,Cube,Debris.VRand()*Debris.FRandRange(500,1600),
+            FVector(Debris.FRandRange(50,200),Debris.FRandRange(25,70),Debris.FRandRange(20,60)),1);
+        Piece->SetRelativeRotation(FRotator(Debris.FRandRange(0,180),Debris.FRandRange(0,180),30));
+    }
+    Planet = Shape(RootComponent, Sphere, FVector(18000,0,-3000), FVector(12000), 6);
+    Planet->SetCollisionResponseToAllChannels(ECR_Ignore);
+    Planet->SetCollisionResponseToChannel(ECC_Visibility, ECR_Block);
+    Planet->SetCollisionEnabled(ECollisionEnabled::QueryOnly);
+    if (auto* Surface = LoadObject<UMaterialInterface>(nullptr, TEXT("/Game/Foundation/M_Planet.M_Planet"))) Planet->SetMaterial(0,Surface);
+}
+
+void AAquilaFlightPawn::ResetSessionView()
+{
+    bBridge = bCommandsVisible = bObserverPlaced = bTouching = false;
+    CameraTarget = EAquilaCameraTarget::Free;
+    OrbitDistance = 4800;
+    OrbitPitch = 38;
+    TouchWalk = FVector2D::ZeroVector;
+    if (Planet)
+    {
+        const bool bMatch = Game()->Session() == EAquilaSession::Match;
+        Planet->SetVisibility(bMatch);
+        Planet->SetCollisionEnabled(bMatch ? ECollisionEnabled::QueryOnly : ECollisionEnabled::NoCollision);
+    }
+    UpdateCursor();
+    if (FSlateApplication::IsInitialized()) FSlateApplication::Get().SetUserFocusToGameViewport(0);
 }
 
 void AAquilaFlightPawn::RenderCampaign()
@@ -267,7 +290,9 @@ void AAquilaFlightPawn::RenderCampaign()
     if (!G) return;
     const auto& C = G->Campaign;
     const FVector Origin = bBridge ? C.ShipPosition : ObserverFocus;
-    SignalRoot->SetVisibility(C.ExpeditionActive(),true);
+    const bool bMatch = G->Session() == EAquilaSession::Match;
+    if (bMatch && !Planet) BuildMatchScene();
+    SignalRoot->SetVisibility(bMatch && C.ExpeditionActive(),true);
     SignalRoot->SetRelativeLocation(((C.Expedition == EAquilaExpedition::Salvage ? C.EnemyPosition : C.SignalPosition) - Origin) * ExteriorScale);
     ShipRoot->SetVisibility(!bBridge, true);
     ShipRoot->SetRelativeLocation((C.ShipPosition - Origin) * ExteriorScale);
@@ -277,7 +302,7 @@ void AAquilaFlightPawn::RenderCampaign()
     ShipRoot->SetRelativeRotation(FRotator(0, FMath::RadiansToDegrees(C.Heading), 0));
     EnemyRoot->SetRelativeLocation((C.EnemyPosition - Origin) * ExteriorScale);
     EnemyRoot->SetRelativeRotation(FRotator(0, 180, 0));
-    Planet->SetRelativeLocation((FVector(180000,0,-30000) - Origin) * ExteriorScale);
+    if (bMatch) Planet->SetRelativeLocation((FVector(180000,0,-30000) - Origin) * ExteriorScale);
     Stars->SetRelativeLocation(Camera->GetRelativeLocation());
     FriendlyRounds->ClearInstances();
     HostileRounds->ClearInstances();
@@ -305,7 +330,20 @@ void AAquilaFlightPawn::Tick(float Seconds)
     {
         ObserverFocus = G->Campaign.ShipPosition;
         OrbitYaw = FRotator::NormalizeAxis(32.f + FMath::RadiansToDegrees(G->Campaign.Heading));
+        if (G->Session() == EAquilaSession::Menu)
+        {
+            ObserverFocus += FVector(6500, 0, 0);
+            OrbitDistance = 2900;
+            OrbitYaw = 110;
+            OrbitPitch = 23;
+        }
+        else if (G->Session() == EAquilaSession::Simulator)
+        {
+            ObserverFocus = (G->Campaign.ShipPosition + G->Campaign.EnemyPosition) * 0.5;
+            OrbitYaw = 100;
+        }
         bObserverPlaced = true;
+        UpdateCursor();
     }
     AliveTime += Seconds;
     if (PC->WasInputKeyJustPressed(EKeys::Escape)) G->Command(8);
@@ -313,16 +351,16 @@ void AAquilaFlightPawn::Tick(float Seconds)
     if (PC->WasInputKeyJustPressed(EKeys::E) && CommandEnabled(11)) G->Command(11);
     if (PC->WasInputKeyJustPressed(EKeys::U) && CommandEnabled(12)) G->Command(12);
     if (bTouchLayout) UpdateTouchCamera(PC);
-    if (PC->WasInputKeyJustPressed(EKeys::Home) && !bBridge) Follow(EAquilaCameraTarget::Resolute);
+    if (PC->WasInputKeyJustPressed(EKeys::Home) && !bBridge && G->Session() != EAquilaSession::Menu) Follow(EAquilaCameraTarget::Resolute);
     const double Forward = int32(PC->IsInputKeyDown(EKeys::W)) - int32(PC->IsInputKeyDown(EKeys::S));
     const double Side = int32(PC->IsInputKeyDown(EKeys::D)) - int32(PC->IsInputKeyDown(EKeys::A));
-    if (!bBridge)
+    if (!bBridge && G->Session() != EAquilaSession::Menu)
     {
         const double Up = int32(PC->IsInputKeyDown(EKeys::R)) - int32(PC->IsInputKeyDown(EKeys::F));
         const double Speed = PC->IsInputKeyDown(EKeys::LeftShift) || PC->IsInputKeyDown(EKeys::RightShift) ? 4.0 : 1.0;
         PanObserver(FVector(Forward, Side, Up).GetClampedToMaxSize(1), OrbitDistance * 0.8 * Speed * FMath::Min(Seconds, 0.1f));
     }
-    else if (!G->bPaused)
+    else if (bBridge && !G->bPaused)
     {
         const FRotator Heading(0,BridgeYaw,0);
         FVector Movement = Heading.RotateVector(FVector(Forward + TouchWalk.X, Side + TouchWalk.Y, 0)).GetClampedToMaxSize(1);
@@ -461,6 +499,11 @@ void AAquilaFlightPawn::BuildOverlay()
                     return FText::FromString(FString::Printf(TEXT("Shield %.0f   Hull %.0f   |   %s"),
                         G->Campaign.Shield, G->Campaign.Hull, G->bPaused ? TEXT("Paused") : TEXT("Auto helm")));
                 }), 16)]
+                + SHorizontalBox::Slot().AutoWidth().VAlign(VAlign_Center).Padding(0,0,8,0)[SNew(SButton)
+                    .Text(INVTEXT("Main menu")).OnClicked_Lambda([this]() {
+                        if (Game()->ReturnToMenu()) ResetSessionView();
+                        return FReply::Handled();
+                    })]
                 + SHorizontalBox::Slot().AutoWidth().VAlign(VAlign_Center)[Button(INVTEXT("Hide   [H]"), 10)]]
             + SVerticalBox::Slot().AutoHeight().Padding(0, 18, 0, 0)[SNew(SHorizontalBox)
                 + SHorizontalBox::Slot().FillWidth(1).Padding(0, 0, 16, 0)[SNew(SVerticalBox)
@@ -484,13 +527,17 @@ void AAquilaFlightPawn::BuildOverlay()
 
     // Only the panel collapses. Open space still receives orbit and bridge look across the viewport.
     Overlay = SNew(SOverlay).Visibility(EVisibility::SelfHitTestInvisible)
-        + SOverlay::Slot()[SAssignNew(MouseLook, SAquilaMouseLook).OnDrag_UObject(this, &AAquilaFlightPawn::DragDesktopCamera)
+        + SOverlay::Slot()[SAssignNew(MouseLook, SAquilaMouseLook)
+            .Visibility_Lambda([this]() { return Game() && Game()->Session() != EAquilaSession::Menu ? EVisibility::Visible : EVisibility::Collapsed; })
+            .OnDrag_UObject(this, &AAquilaFlightPawn::DragDesktopCamera)
             .OnPick_UObject(this, &AAquilaFlightPawn::PickShip).OnZoom_UObject(this, &AAquilaFlightPawn::ZoomObserver)]
         + SOverlay::Slot()[SNew(SScaleBox)
             .Visibility_Lambda([this]() { return bCommandsVisible ? EVisibility::SelfHitTestInvisible : EVisibility::Collapsed; })
             .Stretch(EStretch::ScaleToFit).HAlign(HAlign_Fill).VAlign(VAlign_Fill)
             [SNew(SBox).WidthOverride(1600).HeightOverride(900).Visibility(EVisibility::SelfHitTestInvisible)
-                .HAlign(HAlign_Center).VAlign(VAlign_Center)[SNew(SBox).WidthOverride(1080)[Panel]]]];
+                .HAlign(HAlign_Center).VAlign(VAlign_Center)[SNew(SBox).WidthOverride(1080)[Panel]]]]
+        + SOverlay::Slot().HAlign(HAlign_Left).VAlign(VAlign_Center).Padding(64,0,0,0)[BuildModeMenu()]
+        + SOverlay::Slot().HAlign(HAlign_Center).VAlign(VAlign_Bottom).Padding(12)[BuildDuelPanel()];
     GEngine->GameViewport->AddViewportWidgetContent(Overlay.ToSharedRef(), 10);
 }
 

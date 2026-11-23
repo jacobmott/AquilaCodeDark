@@ -4894,6 +4894,67 @@ def main(output):
         short="First Windows duel", follows="aquila-direction-r117-next",
     )
     rounds = page.entry(118, "Combat Simulator beside Play Match", simulator, when="2026-11-22") + rounds
+    duel = decide.recap(
+        "The first Windows simulator duel is playable. Pick either ammunition type to restart both ships. "
+        "Standard rounds stop at Sentinel’s armor. Piercing rounds disable it.",
+        [
+            ("Open", "Choose Combat Simulator in the Windows game, or use the direct shortcut."),
+            ("Compare", "Replay the same duel with standard or piercing rounds."),
+            ("Watch", "Both ships show their shield and hull. You can pause the fight."),
+            ("Speed", "The duel starts at eight times normal speed. Click the speed button for real time."),
+            ("Return", "Main menu leaves the arena. Play Match opens your saved expedition."),
+        ],
+        {
+            "did": "Built and tested the Windows duel with the same turrets, projectiles and armor as the expedition.",
+            "why": "Try a loadout or test a combat change without starting a universe.",
+            "working": "Damage matched the expedition every frame. The two saved test revisions kept their exact bytes.",
+            "not_working": "This version has one ship pairing and two ammunition choices. Armor selection and additional ships remain open.",
+            "next": "Try the fight from each loadout and judge how clearly the armor difference comes across.",
+        },
+    )
+    duel_body = "<p>Standard rounds exhausted Sentinel’s shield and left its hull at 100.</p>"
+    duel_body += "<p>Piercing rounds disabled Sentinel after 220.97 simulated seconds. Replaying gave the same result.</p>"
+    duel_body += "<p>The local shortcut opens the arena directly.</p><p><code>.runtime/combat-simulator-r119/package/Windows/Combat Simulator.lnk</code></p>"
+    duel_body += '<p><a href="combat-simulator-checks.json">Windows duel and saved match checks</a></p>'
+    for name, title, caption in [
+        ("r119-mode-menu.png", "Windows startup.", "Choose an expedition or a duel."),
+        ("r119-combat-duel.png", "Resolute against Sentinel.", "The bottom panel shows both defenses and resets either loadout."),
+    ]:
+        source = HERE / "media" / name
+        if source.is_file():
+            duel_body += page.figure(page.copy_media(source, out), title, caption, look=name == "r119-combat-duel.png")
+    duel += decide.info_thread("aquila-direction-r119-info", "The simulator and the expedition produced the same damage.",
+        body_html=duel_body, short="Playable Windows duel", follows="aquila-direction-r118-info")
+    duel += decide.whats_next("aquila-direction-r119-next",
+        "The local Windows build is ready for human play. An armor choice would give the next comparison.",
+        short="Play the first duel", follows="aquila-direction-r118-next")
+    rounds = page.entry(119, "Replay a Windows combat duel", duel, when="2026-11-22") + rounds
+    launch = decide.recap(
+        "The duel is open. Next time, double-click Aquila Combat Simulator on your Windows desktop.",
+        [
+            ("Now", "Windows opened the game window."),
+            ("Find it", "Press Alt+Tab and choose Aquila if another window covers it."),
+            ("Next launch", "Double-click Aquila Combat Simulator on your desktop."),
+            ("Fallback", "Windows Run can open the duel using the command below."),
+            ("Check", "The game logged the start of the standard ammunition duel."),
+        ],
+        {
+            "did": "Created a desktop shortcut and used it to launch the game.",
+            "why": "The earlier chat button did not open the duel for you.",
+            "working": "The packaged game entered the simulator and its window responded.",
+            "not_working": "The earlier chat button failed on your machine.",
+            "next": "Switch to Aquila to play.",
+        },
+    )
+    launch += decide.info_thread("aquila-direction-r120-info", "The desktop shortcut opens the duel directly.",
+        body_html=(
+            "<p>To launch from Windows Run, press Win+R, paste this command and press Enter.</p>"
+            r'<pre><code>"D:\OtherProjects\AquilaCodeDark\.runtime\combat-simulator-r119\package\Windows\Aquila.exe" -AquilaMode=Simulator</code></pre>'
+        ), short="Windows launch", follows="aquila-direction-r119-info")
+    launch += decide.whats_next("aquila-direction-r120-next", "Use the desktop shortcut whenever you want another duel.",
+        short="Reopen the duel", follows="aquila-direction-r119-next")
+    rounds = page.entry(120, "Open the duel from Windows", launch, when="2026-11-22") + rounds
+    (out / "combat-simulator-checks.json").write_bytes((ROOT / "Docs/Testing/native-combat-simulator.json").read_bytes())
     (out / "observer-publication.json").write_bytes((ROOT / "Docs/Testing/native-observer-publication.json").read_bytes())
     (out / "observer-match-restart.txt").write_bytes((ROOT / "Docs/Handoffs/PROMPT_2026-11-22_observer-and-matches.txt").read_bytes())
     (out / "rts-observer-checks.json").write_bytes((ROOT / "Docs/Testing/native-rts-observer.json").read_bytes())
