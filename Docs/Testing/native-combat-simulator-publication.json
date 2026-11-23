@@ -1,0 +1,106 @@
+{
+  "schema_version": 1,
+  "state": "content_pushed_verified",
+  "report_round": 121,
+  "branch": "main",
+  "upstream": "origin/main",
+  "base_commit": "3e66124a9cb26d144141c407585cb5ea654814bf",
+  "content_commit": "dfe5c027f84f2b937f1288f5eaa6cac53f402006",
+  "remote_tip_at_verification": "dfe5c027f84f2b937f1288f5eaa6cac53f402006",
+  "verified_at_utc": "2026-11-23T03:22:07.023956+00:00",
+  "published_content_paths": 23,
+  "scope": [
+    "Windows Combat Simulator and direct desktop launch instructions",
+    "Resolute and Sentinel duel with repeatable ammunition comparisons",
+    "Match save isolation, startup modes, packaged input and headless tests",
+    "Game decisions, knowledge, history and report through round 120"
+  ],
+  "ownership": {
+    "private_staged_guard": {
+      "indexed_files": 601,
+      "failures": 0
+    },
+    "pre_commit_hook": "passed",
+    "whitespace": "passed",
+    "shared_index_reconciliation": {
+      "reconciled_owned_entries": 23,
+      "preserved_owned_conflicts": [],
+      "other_entries_preserved": true
+    },
+    "prior_shared_staging": [],
+    "after_content_push_shared_staging": [],
+    "after_content_push_worktree": []
+  },
+  "test_evidence": "Docs/Testing/native-combat-simulator.json",
+  "wrap_checks": {
+    "observed_at_utc": "2026-11-23T03:19:22.126499+00:00",
+    "test_manifest_sha256": "f02d567489ce83bc9fc797f1690cf696e21e6aae85690db5488ea70ef2ca01b9",
+    "runtime_sha256": "363d83bcc7123fee96b7a20a09b6712f04193fb6a39667c480512197c2fcd086",
+    "launcher_sha256": "b4ff849eeca265764669f570a56d9f64907a26a48319e6dbf72e2856427aade9",
+    "source_hashes_checked": 8,
+    "headless_groups": 11,
+    "packaged_input_runs": 8,
+    "rendered_views": 2,
+    "owner_journal": {
+      "sequence": 151681,
+      "parent_sequence": 151680,
+      "parent_link_checked": true,
+      "expedition": "Failed",
+      "helm": "Hold",
+      "read_only": true
+    },
+    "engine_tests_rerun_during_wrap": false,
+    "repository_safety_tests_passed": 6,
+    "input_sent_to_owner_session_during_wrap": false
+  },
+  "windows_at_wrap": {
+    "observed_at_utc": "2026-11-23T03:20:15.4233604Z",
+    "aquila_processes": 0,
+    "desktop_shortcut": "Aquila Combat Simulator",
+    "target_package_and_mode_verified": true,
+    "log_records_standard_duel": true,
+    "log_records_piercing_duel": true,
+    "log_records_normal_exit": true,
+    "listening": [
+      8953,
+      8776
+    ],
+    "inactive": [
+      4200,
+      8952
+    ]
+  },
+  "local_only": [
+    "Windows package and desktop shortcut",
+    "Live expedition journal",
+    "Rendered playtest media and raw logs"
+  ],
+  "open": [
+    "Additional ships, weapons, armor selection and acquisition information",
+    "Full standalone match, rival expansion and per-run saves",
+    "Windows camera feel, desktop sizing and full human expedition pacing",
+    "Physical Galaxy milestone, sustained mobile performance, cloud saves and Apple"
+  ],
+  "handoff": {
+    "path": "Docs/Handoffs/HANDOFF_2026-11-15_game-direction.md",
+    "restart_prompt": "Docs/Handoffs/PROMPT_2026-11-22_combat-simulator.txt",
+    "restart_prompt_sha256": "5da1735a8e4ec65011341d595439050dd92211ca7bd2095ed88da5a0b2623010",
+    "previous_checkpoint_archive": "Docs/History/game-direction/20261123T032221Z.md",
+    "previous_checkpoint_sha256": "14a3187ea31b153c72e2c077df55ec2aa4e7713686a543325780ca268dd23e0d",
+    "last_real_inbox": "reports/game-direction/inbox/20261115T015927Z.json"
+  },
+  "business": "D&B deferred. Keep the home address private. Public app examples cannot confirm private verification or eligibility. No specialist referral or provider selection.",
+  "handoff_checks": {
+    "startup_route_failures": 0,
+    "prior_report_rounds_preserved": 120,
+    "prior_checkpoint_archive_bytes": 9150,
+    "report_downloads_matched_project_files": [
+      "combat-simulator-publication.json",
+      "combat-simulator-checks.json",
+      "combat-simulator-restart.txt"
+    ],
+    "paseo_workspace_browser": "Round 121 and the restart prompt link appeared in the existing report tab."
+  },
+  "authority": "One-time session wrap, commit and push. Further contact, purchase, filing, signup, generation, publication, transfer or deployment requires fresh approval.",
+  "records_commit": "The following commit contains this receipt and round 121. Git history supplies its identity."
+}

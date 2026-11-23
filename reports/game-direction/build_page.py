@@ -4954,6 +4954,41 @@ def main(output):
     launch += decide.whats_next("aquila-direction-r120-next", "Use the desktop shortcut whenever you want another duel.",
         short="Reopen the duel", follows="aquila-direction-r119-next")
     rounds = page.entry(120, "Open the duel from Windows", launch, when="2026-11-22") + rounds
+    duel_wrap = decide.recap(
+        "The playable Windows duel and its test records are on the remote branch. The restart prompt is ready.",
+        [
+            ("Saved", "The push includes the duel, launch instructions, match decisions and test records."),
+            ("Checked", "Eight Windows input runs and eleven simulation and save groups passed."),
+            ("Local", "The Windows package and live expedition journal remain on this PC."),
+            ("Game", "The simulator closed normally after both ammunition types ran."),
+            ("Restart", "The prompt names the current checkpoint and the last real inbox message."),
+        ],
+        {
+            "did": "Pushed the playable duel and saved the session checkpoint.",
+            "why": "A new session can pick up the same work after the chat compacts.",
+            "working": "The packaged game and eight source files matched the test records.",
+            "not_working": "The earlier chat launch link failed. The Windows desktop shortcut opened the duel.",
+            "next": "The next session reads the checkpoint and waits for your direction.",
+        },
+    )
+    duel_wrap += decide.info_thread(
+        "aquila-direction-r121-info", "The remote branch contains the first playable Windows simulator duel.",
+        body_html=(
+            "<p>Verified duel commit <code>dfe5c02</code> on <code>origin/main</code>.</p>"
+            "<p>The last expedition save was revision 151681. Its parent matched. The expedition had failed with the helm on Hold.</p>"
+            '<p><a href="combat-simulator-publication.json">Verified push and local checks</a></p>'
+            '<p><a href="combat-simulator-checks.json">Windows duel test results</a></p>'
+        ), short="Verified duel push", follows="aquila-direction-r120-info",
+    )
+    duel_wrap += decide.whats_next(
+        "aquila-direction-r121-next",
+        "The next session reads the checkpoint and waits for your direction.",
+        info='<p><a href="combat-simulator-restart.txt">Copy the restart prompt</a></p>',
+        short="Restart prompt", follows="aquila-direction-r120-next",
+    )
+    rounds = page.entry(121, "Windows duel saved and pushed", duel_wrap, when="2026-11-22") + rounds
+    (out / "combat-simulator-publication.json").write_bytes((ROOT / "Docs/Testing/native-combat-simulator-publication.json").read_bytes())
+    (out / "combat-simulator-restart.txt").write_bytes((ROOT / "Docs/Handoffs/PROMPT_2026-11-22_combat-simulator.txt").read_bytes())
     (out / "combat-simulator-checks.json").write_bytes((ROOT / "Docs/Testing/native-combat-simulator.json").read_bytes())
     (out / "observer-publication.json").write_bytes((ROOT / "Docs/Testing/native-observer-publication.json").read_bytes())
     (out / "observer-match-restart.txt").write_bytes((ROOT / "Docs/Handoffs/PROMPT_2026-11-22_observer-and-matches.txt").read_bytes())

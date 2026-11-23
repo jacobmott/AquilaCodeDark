@@ -1,0 +1,12 @@
+Aquila Code Dark at D:/OtherProjects/AquilaCodeDark. Continue the game direction task. The Windows Combat Simulator source and tests are on origin/main in dfe5c02.
+Read AGENTS.md, Docs/TaskRoutes.md and Docs/Handoffs/HANDOFF_2026-11-15_game-direction.md in full.
+Report http://127.0.0.1:8953/?agentreport=1&paseoAgent=09c42e01-b201-4b15-8ad9-8a9f4ed3c740 (reports/game-direction/, round 121).
+Last real inbox read: reports/game-direction/inbox/20261115T015927Z.json. Later decisions came through chat.
+
+On this PC, the Windows desktop shortcut is Aquila Combat Simulator. Resolute duels Sentinel with standard or piercing ammunition, separate from match saves. Eight packaged input runs and eleven simulation/save groups passed. More ships, armor fitting, additional weapons and acquisition guidance remain open.
+Each standalone match starts with one homeworld, Resolute and one expanding computer rival. New runs start fresh. Save points belong to their run. A different universe per run is proposed.
+The free Windows observer and hidden controls work. Camera feel, desktop sizing and full human expedition pacing remain open. Galaxy checks at milestones. Sustained mobile performance, cloud saves and Apple remain open.
+At wrap the game was closed. Report 8953 and Research Console 8776 were listening. Preview 4200 and report 8952 were inactive. The last checked expedition save was revision 151681, Failed, helm on Hold. Recheck the current save before acting. Preserve the full journal and launch owner sessions without injected input.
+D&B remains paused. Read knowledge/publishing-business.md and Docs/Handoffs/PROMPT_2026-11-18_dnb-follow-up.txt before an owner-requested follow-up. Keep the home address private. Preserve the positive app examples and their limits. No specialist referral or provider selection.
+This wrap's push approval is spent. New contact, purchase, filing, signup, generation, publication, transfer or deployment needs fresh approval.
+Do not start any of this. Read, say where things stand, then wait.

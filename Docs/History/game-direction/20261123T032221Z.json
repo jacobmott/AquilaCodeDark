@@ -1,0 +1,8 @@
+{
+  "source": "Docs/Handoffs/HANDOFF_2026-11-15_game-direction.md",
+  "archive": "Docs/History/game-direction/20261123T032221Z.md",
+  "saved_at_utc": "2026-11-23T03:22:21.665259+00:00",
+  "bytes": 9150,
+  "sha256": "14a3187ea31b153c72e2c077df55ec2aa4e7713686a543325780ca268dd23e0d",
+  "reason": "Preserve the round 120 desktop launch checkpoint before recording the verified simulator push."
+}
