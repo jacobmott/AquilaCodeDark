@@ -4861,6 +4861,39 @@ def main(output):
         short="Ready to resume", follows="aquila-direction-r116-next",
     )
     rounds = page.entry(117, "Windows observer and match design saved", observer_wrap, when="2026-11-22") + rounds
+    simulator = decide.recap(
+        "Combat Simulator belongs beside Play Match. Try any ship and its gear in a separate arena. "
+        "My first pick is Resolute against Sentinel, with two ammunition choices and a repeat button.",
+        [
+            ("Ships", "Try every ship with the weapons and armor it supports, including equipment you still need to earn."),
+            ("Gear", "Each item should tell you where to get it in a match."),
+            ("Practice", "Jump straight into a fight for practice or fun."),
+            ("Balance", "Repeat one duel after a change using the same combat rules as a match."),
+            ("Saves", "The arena runs on its own and leaves each match where you saved it."),
+        ],
+        {
+            "did": "Recorded the agreed mode and checked the existing Windows combat and save tests.",
+            "why": "Players can try a build before earning it. Developers can test combat without loading a universe.",
+            "working": "All eleven existing native test groups passed in a separate test session.",
+            "not_working": "Current practice uses the expedition save and different damage settings. The standalone simulator remains to build.",
+            "next": "Build one duel with standard and piercing rounds. Check the damage and the saved match.",
+        },
+    )
+    simulator += decide.info_thread(
+        "aquila-direction-r118-info", "Resolute and Sentinel already show why an ammunition choice matters.",
+        body_html=(
+            "<p>Both rounds drain shields. Sentinel’s armor stops standard rounds. Piercing rounds reach its hull.</p>"
+            "<p>Use the existing combat code. Match the damage settings and start both ships in the same condition each time.</p>"
+            "<p>Capital ship guns aim automatically today. The controls for aim practice remain open.</p>"
+        ),
+        short="First matchup", follows="aquila-direction-r117-info",
+    )
+    simulator += decide.whats_next(
+        "aquila-direction-r118-next",
+        "Launch the duel directly, repeat it with different ammunition, then verify a saved match resumes exactly where it stopped.",
+        short="First Windows duel", follows="aquila-direction-r117-next",
+    )
+    rounds = page.entry(118, "Combat Simulator beside Play Match", simulator, when="2026-11-22") + rounds
     (out / "observer-publication.json").write_bytes((ROOT / "Docs/Testing/native-observer-publication.json").read_bytes())
     (out / "observer-match-restart.txt").write_bytes((ROOT / "Docs/Handoffs/PROMPT_2026-11-22_observer-and-matches.txt").read_bytes())
     (out / "rts-observer-checks.json").write_bytes((ROOT / "Docs/Testing/native-rts-observer.json").read_bytes())

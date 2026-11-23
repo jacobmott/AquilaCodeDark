@@ -1,0 +1,8 @@
+{
+  "source": "Docs/Handoffs/HANDOFF_2026-11-15_game-direction.md",
+  "archive": "Docs/History/game-direction/20261123T021928Z.md",
+  "saved_at_utc": "2026-11-23T02:19:28.355417+00:00",
+  "bytes": 7756,
+  "sha256": "585ca19fba80fdfe66308c3aca61c953a175fe7095501d3be9d59b0c2107abe6",
+  "reason": "Preserve round 117 and its restart prompt before recording the Combat Simulator direction."
+}

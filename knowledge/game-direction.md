@@ -14,6 +14,16 @@ The owner suggested generating a different universe for each run. A fresh map se
 
 The Windows prototype already saves and restores the active expedition, including its world seed. It uses a fixed default seed. Choosing among saved runs and generating a new universe for each are design work. [Existing local saves](../native/Aquila/README.md#local-save-contract).
 
+## Combat Simulator
+
+2026-11-22, round 118. The owner wants **Combat Simulator** beside **Play Match**. Enter a small arena directly, with every ship and all its compatible weapons, ammunition and armor available to try. Players can repeat a fight, change one part of a loadout and decide what they want to earn. Equipment descriptions should say where to find or earn the item during a match. A player can also stay in the arena for combat practice or a quick fight.
+
+The same arena serves development. Start it without generating a universe or loading a run. Both modes use the same combat code and equipment rules, so a balance change can be tested against the same opponent under the same starting conditions. Simulator trials have their own temporary state. Damage, equipment, rewards and time spent there stay out of match saves. The owner mentioned aim practice. Capital ship turrets currently aim and fire automatically. The simulator's exact practice controls remain open. [Combat direction](combat-design.md#confirmed-direction).
+
+**Recommended first Windows duel.** Use Resolute and the armored Sentinel already in the game. Select standard or piercing rounds, see the effect on shields and hull, then reset either loadout to the same starting positions and defenses. Compare both outcomes against the match’s damage settings. Check that entering, resetting and leaving the arena preserves a disposable match journal byte for byte, and that the match resumes at the same point. Expand ship and equipment choices after this comparison works.
+
+The existing **Practice** command fights within the loaded expedition state, shares its save path and uses a different damage multiplier. A standalone arena and equipment catalog remain to build. [Encounter code](../native/Aquila/Source/Aquila/AquilaSimulation.cpp), [game startup and saves](../native/Aquila/Source/Aquila/AquilaGameMode.cpp) and [existing Windows controls](../native/Aquila/README.md#play).
+
 ## One computer rival
 
 2026-11-22, round 113. Each side aims to find and eliminate the other. Both expand across star systems during the same game time. Settling more worlds gives either side somewhere to carry on after losing a world. The time spent strengthening the player's civilization also gives the rival time to settle places the player has yet to discover.

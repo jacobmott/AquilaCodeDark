@@ -241,3 +241,7 @@ The owner's example pairs a survey with building another ship at home. Returning
 ## 2026-11-22 [M]: Keep each run's save history separate
 
 The native loader pauses writes when one journal contains multiple run identities or divergent revision tips. For the planned run picker, open the selected run's own history. Restoring a save point should recover its universe and both sides' progress. [Native save contract](native/Aquila/README.md#local-save-contract) and [run design](knowledge/game-direction.md#starting-and-resuming-a-run).
+
+## 2026-11-22 [J]: Share combat rules and isolate practice state
+
+The owner wants to test a loadout or a balance change without starting a universe. Use the match's combat code in a temporary arena with repeatable starting conditions. The current practice command shares the expedition's state and changes damage scaling. Check both match damage parity and journal isolation before using the arena to judge balance. [Simulator decision and source](knowledge/game-direction.md#combat-simulator).

@@ -25,6 +25,7 @@
 - 2026-11-22 [J]: A destroyed ship is lost from the fleet. Resolute can be lost too. The player builds more ships to replace losses and keep expeditions going. [Ship loss and replacement](../knowledge/game-direction.md#ship-loss-and-replacement).
 - 2026-11-22 [J]: A new game starts a standalone, real-time match. Both sides choose how to expand and fight until one wins. The owner ruled out a story campaign. [Match format](../knowledge/game-direction.md#standalone-matches).
 - 2026-11-22 [J]: At startup, start a fresh run or resume from a save point within a run. Starting over is available after a loss or by choice. The owner suggested a different generated universe each time. [New runs and save points](../knowledge/game-direction.md#starting-and-resuming-a-run).
+- 2026-11-22 [J]: Add Combat Simulator alongside Play Match. Open a small arena directly to try every ship and compatible loadout, practice combat, and see how to acquire gear. Players and developers use the same combat rules as matches. Trials leave match saves untouched. Confirmed in chat. [Mode design and proposed first duel](../knowledge/game-direction.md#combat-simulator).
 - 2026-11-15 [J]: Inspect Robinhood's 3D application with transparent glass-like UI as the reference for Aquila's interface discussion.
   Source review confirms the existing scene/overlay pattern; the complete reference website is still proposed.
   Aquila layout and styling remain discussion scope, with no implementation or deployment authority added.

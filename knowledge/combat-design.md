@@ -4,6 +4,7 @@
 
 ## Confirmed direction
 
+- The [Combat Simulator](game-direction.md#combat-simulator) uses the same equipment and combat rules as a match. A repeatable arena lets players compare builds and lets developers check balance changes without starting a universe.
 - Weapons acquire targets, aim and fire automatically. Players change operating modes at consoles, never aim or lock manually.
 - The player commands the battleship through decisions; its helm steers and navigates automatically.
   Manual capital controls remain in source but are hidden and gated. This supersedes the earlier manual-override proposal.
