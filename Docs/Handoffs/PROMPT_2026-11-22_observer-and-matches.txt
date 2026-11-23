@@ -1,0 +1,13 @@
+Aquila Code Dark at D:/OtherProjects/AquilaCodeDark. The Windows RTS observer and standalone match decisions are saved on origin/main.
+Read AGENTS.md, Docs/TaskRoutes.md and Docs/Handoffs/HANDOFF_2026-11-15_game-direction.md in full.
+Report http://127.0.0.1:8953/?agentreport=1&paseoAgent=10d43293-7bfc-4eb7-b62f-27d8f627e026 (reports/game-direction/, round 117).
+Last real inbox read: reports/game-direction/inbox/20261115T015927Z.json. Later decisions came through chat.
+1. Match design: one homeworld, Resolute and one expanding computer rival. New runs start fresh. Save points belong to their run. Different universes per run are proposed.
+2. Windows playtest: launcher Unreal 5.8.4. Free RTS observer and hidden controls work. Six packaged input checks and eleven simulation/save groups passed. Camera feel, sizing and human pacing remain open.
+Galaxy checks at milestones. Sustained mobile performance, cloud saves and Apple remain open.
+The running expedition recorded defeat with the helm on Hold. Check the current save before acting. Preserve the journal and launch without injected input.
+At inspection, the Windows game, report 8953 and Research Console 8776 were running. Preview 4200 and report 8952 were inactive.
+3. D&B waits for owner direction. Read knowledge/publishing-business.md and Docs/Handoffs/PROMPT_2026-11-18_dnb-follow-up.txt before reopening. Keep the home address private.
+Preserve the positive app examples and their limits. No specialist referral or provider selection.
+The wrap and push approval is spent. New contact, purchase, filing, signup, generation, publication, transfer or deployment needs fresh approval.
+Do not start any of this. Read, say where things stand, then wait.

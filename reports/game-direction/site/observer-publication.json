@@ -1,0 +1,118 @@
+{
+  "schema_version": 1,
+  "state": "content_pushed_verified",
+  "report_round": 117,
+  "branch": "main",
+  "upstream": "origin/main",
+  "base_commit": "22ffe79f33ed456870368fb3c90876720aaaf3a5",
+  "content_commit": "75939aff6c13d32d36c995405b92b6cac24177be",
+  "remote_tip_at_verification": "75939aff6c13d32d36c995405b92b6cac24177be",
+  "verified_at_utc": "2026-11-23T01:38:32.053910+00:00",
+  "published_content_paths": 42,
+  "scope": [
+    "Native Windows RTS observer, optional ship following, bridge access and on-demand controls",
+    "Windows resume, restart and playtest evidence from rounds 105 through 108",
+    "Standalone match, homeworld, fleets, ship loss, expansion and one computer rival",
+    "Fresh runs, per-run save points and the proposed different universe for each run",
+    "Game decisions, open work, checkpoint archives and report through round 116"
+  ],
+  "ownership": {
+    "prior_shared_staging": [],
+    "private_staged_guard": {
+      "indexed_files": 588,
+      "failures": 0
+    },
+    "pre_commit_hook": "passed",
+    "whitespace": "passed",
+    "index_reconciliation": {
+      "reconciled_owned_entries": 42,
+      "preserved_owned_conflicts": [],
+      "other_entries_preserved": true
+    },
+    "after_content_push_shared_staging": [],
+    "after_content_push_worktree": []
+  },
+  "wrap_checks": {
+    "verified_at_utc": "2026-11-23T01:36:38.553200+00:00",
+    "engine": "Epic launcher Unreal 5.8.4 CL 58902052",
+    "checked_source_hashes": 7,
+    "windows_package_sha256": "47fb7aad457823ac76d544f138cfd8a4e08ef58634be68e5769ee644c8697dea",
+    "windows_package_bytes": 332134912,
+    "packaged_input_reports": 6,
+    "simulation_save_groups": 11,
+    "prior_command_panel_input_reports": 3,
+    "prior_command_panel_simulation_groups": 11,
+    "local_captures": 6,
+    "verified_report_downloads": 4,
+    "android_build_log": "Result: Succeeded",
+    "repository_safety_tests": 6,
+    "retested_game_during_wrap": false,
+    "restored_revision": 151102,
+    "observed_journal": {
+      "utc": "2026-11-23T01:36:38.553235+00:00",
+      "revision": 151499,
+      "revision_sha256": "888687fe25d77ec1e3a15e7f4c6cb4578f7041541d1883897c8293dc164d17e7",
+      "parent_chain_one_step": true,
+      "expedition": "Failed",
+      "helm": "Hold"
+    },
+    "live_game_input_during_wrap": false
+  },
+  "source_evidence": "Docs/Testing/native-rts-observer.json",
+  "repository_test_command": ".venv-tools/Scripts/python.exe -B -m unittest discover -s scripts/tests -v",
+  "playtest": {
+    "latest_source_verified_by_hash": true,
+    "game_running": true,
+    "window_responding": true,
+    "live_journal_local_only": ".runtime/expedition-windows-r101/20261119T020630Z/Campaign",
+    "earlier_input_incident": "Docs/Testing/native-command-panel.json",
+    "open": [
+      "Owner camera feel and desktop sizing",
+      "Full human expedition pacing",
+      "Physical Galaxy input and sustained mobile performance",
+      "Shared cloud saves",
+      "Apple packaging and device checks"
+    ]
+  },
+  "match_design": {
+    "new_run": "Start a standalone real-time match with a homeworld, Resolute and one computer rival.",
+    "resume": "Each save point belongs to its run and restores both sides.",
+    "proposed": "Generate a different universe per run.",
+    "runtime_limit": "The Windows prototype restores one expedition with a fixed default seed. The larger match and run selection remain design work."
+  },
+  "business": {
+    "status": "Owner deferred D&B follow-up. Keep the home address private and retain the limits on public app examples.",
+    "reference": "knowledge/publishing-business.md",
+    "restart": "Docs/Handoffs/PROMPT_2026-11-18_dnb-follow-up.txt"
+  },
+  "services_at_wrap": {
+    "listening": [
+      8953,
+      8776
+    ],
+    "inactive_ports": [
+      8952,
+      4200
+    ],
+    "session_job_to_transfer": false
+  },
+  "handoff": {
+    "path": "Docs/Handoffs/HANDOFF_2026-11-15_game-direction.md",
+    "restart_prompt": "Docs/Handoffs/PROMPT_2026-11-22_observer-and-matches.txt",
+    "restart_prompt_sha256": "2bab6e4e0d8c84c5541375b797302e88e545be640141263cfadf1c6fbf8f8734",
+    "prior_checkpoint_archive": "Docs/History/game-direction/20261123T013848Z.md",
+    "prior_checkpoint_sha256": "2eb820edd33fd4a66967b2defad706096e96abddea7e7f30654aa5a5ca0be0a6",
+    "last_real_inbox": "reports/game-direction/inbox/20261115T015927Z.json"
+  },
+  "handoff_checks": {
+    "round": 117,
+    "startup_context_failures": 0,
+    "checkpoint_links_checked": 18,
+    "restart_prompt_matches_checkpoint": true,
+    "paused_inquiry_preserved": true,
+    "served_downloads_verified": ["observer-publication.json", "observer-match-restart.txt"],
+    "paseo_browser_at_initial_check": "No browser automation host was connected. The local HTTP response and both downloads were checked independently."
+  },
+  "authority": "The owner requested this session wrap, commit and push. Further external contact, purchase, filing, signup, generation, publication, asset transfer or deployment requires fresh approval.",
+  "records_commit": "The follow-up records commit contains this receipt, the archived checkpoint, the restart prompt and report round 117. Git records its own commit ID."
+}

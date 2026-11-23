@@ -4830,6 +4830,39 @@ def main(output):
         short="Run selection", follows="aquila-direction-r115-next",
     )
     rounds = page.entry(116, "Start a new run or continue one", runs, when="2026-11-22") + rounds
+    observer_wrap = decide.recap(
+        "The Windows observer and match design are on the remote branch. The next session has a restart prompt.",
+        [
+            ("Playable", "Watch from space, follow a ship or walk Resolute’s bridge. The controls open on demand."),
+            ("Match", "Start with one homeworld and one ship against one computer rival."),
+            ("Fleet", "Settled worlds can build new ships or replace vessels lost while exploring."),
+            ("Runs", "Each run has its own save points. A different universe per run is proposed."),
+            ("Playtest", "The running Windows game saved the failed expedition with its helm on Hold."),
+        ],
+        {
+            "did": "Pushed the game changes, design decisions and test evidence.",
+            "why": "A fresh session can recover the decisions and the state of the running game.",
+            "working": "Six packaged Windows input checks and eleven simulation and save groups passed in the recorded build.",
+            "not_working": "Fleet matches and run selection remain design work. Physical Galaxy controls, cloud saves and Apple checks remain open.",
+            "next": "The next session waits for your direction.",
+        },
+    )
+    observer_wrap += decide.info_thread(
+        "aquila-direction-r117-info", "Seven native source files and the Windows executable matched the tested versions.",
+        body_html=(
+            "<p>The remote branch contains all 42 content paths. The full playtest journal stays on this computer.</p>"
+            '<p><a href="observer-publication.json">Verified commit, checks and save state</a></p>'
+            '<p><a href="observer-match-restart.txt">Copy the restart prompt</a></p>'
+        ),
+        short="Verified push", follows="aquila-direction-r116-info",
+    )
+    observer_wrap += decide.whats_next(
+        "aquila-direction-r117-next", "Match design, Windows playtesting and the paused D&B inquiry each wait for your choice.",
+        short="Ready to resume", follows="aquila-direction-r116-next",
+    )
+    rounds = page.entry(117, "Windows observer and match design saved", observer_wrap, when="2026-11-22") + rounds
+    (out / "observer-publication.json").write_bytes((ROOT / "Docs/Testing/native-observer-publication.json").read_bytes())
+    (out / "observer-match-restart.txt").write_bytes((ROOT / "Docs/Handoffs/PROMPT_2026-11-22_observer-and-matches.txt").read_bytes())
     (out / "rts-observer-checks.json").write_bytes((ROOT / "Docs/Testing/native-rts-observer.json").read_bytes())
     (out / "windows-restart.json").write_bytes(launch_receipt.read_bytes())
     (out / "command-panel-checks.json").write_bytes((ROOT / "Docs/Testing/native-command-panel.json").read_bytes())

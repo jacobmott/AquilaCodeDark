@@ -1,24 +1,20 @@
-# Aquila native expedition and publishing
+# Aquila Windows observer, matches and paused publishing inquiry
 
-2026-11-22, round 116. At startup, start a fresh run or resume one from a save point. Starting over is available by choice or after defeat. The owner suggested a different universe per run. Each save point restores its own universe and progress. Windows already restores one expedition. Selecting saved runs and generating new universes are design work. [New runs and save points](../../knowledge/game-direction.md#starting-and-resuming-a-run).
+2026-11-22 local, round 117. Wrapped on owner request. The Windows observer, playtest records and match decisions through round 116 reached `origin/main` in `75939af`. The [publication receipt](../Testing/native-observer-publication.json) identifies the content commit and the checks. This checkpoint, round 117 and the [copyable restart prompt](PROMPT_2026-11-22_observer-and-matches.txt) belong to the follow-up records commit. Wait for the owner's next choice.
 
-Each run is a standalone match against one computer rival. Both sides expand in real time and aim to eliminate each other. The player can visit ships and settled worlds. Even Resolute can be lost. Surviving ships keep exploring while capable worlds build replacements. [Match format](../../knowledge/game-direction.md#standalone-matches), [match objective](../../knowledge/game-direction.md#one-computer-rival) and [ship loss](../../knowledge/game-direction.md#ship-loss-and-replacement).
+## Playable on Windows
 
-The owner chose a free RTS observer, optional ship follow and a walkable bridge aboard Resolute. [Camera direction](../../knowledge/interface-direction.md#native-observer-decision-2026-11-22) and [Windows checks](../Testing/native-rts-observer.json).
+Use Epic's launcher Unreal 5.8.4 CL 58902052 at `C:/Program Files/Epic Games/UE_5.8`. The game opens near Resolute with the UI hidden. WASD pans, R/F changes height and Shift speeds movement. Drag either mouse button to rotate, middle-drag to pan, and use the wheel to zoom. Click a visible ship to follow it. Pan or click empty space to detach. Home finds Resolute, C visits its bridge, and H toggles the command panel. Two fingers reveal touch controls. Purple impact discs mark shield, hull or armor contact. [Play controls](../../native/Aquila/README.md#play) and [camera decision](../../knowledge/interface-direction.md#native-observer-decision-2026-11-22).
 
-## Windows playtest
+At wrap the seven native source hashes and the Windows executable matched the [observer evidence](../Testing/native-rts-observer.json). Six packaged input runs and eleven simulation/save groups had passed. Six local captures and the Android arm64 build log also checked out. Earlier owner confirmation covers exterior mouse orbit. Owner comfort with the new view, desktop sizing, a full human expedition and physical Galaxy inputs remain open. Windows is primary. Galaxy checks happen at milestones. Sustained phone performance, cloud saves and Apple also remain open.
 
-The exterior opens near Resolute with controls hidden. WASD pans, R/F changes height, Shift speeds travel and the wheel zooms. Left- or right-drag rotates. Middle-drag pans. Click Resolute or an active Sentinel to follow. Pan or click empty space to release. Home finds Resolute. C toggles its bridge. H toggles commands, which always address Resolute. [Play controls](../../native/Aquila/README.md#play).
+The packaged game was responsive and autosaving in `.runtime/expedition-windows-r101/20261119T020630Z/Campaign`. It restored revision 151102 on launch. A read-only wrap check at 01:36 UTC on November 23 verified revision 151499 and its parent. The first expedition was in **Failed** with the helm on **Hold**. The game remained open, so check the current revision before acting. The earlier held E input caused a defeat, retry and excessive saves. Launch owner sessions without injected input. Keep the full journal. [Incident](../Testing/native-command-panel.json) and [restart evidence](../Testing/native-windows-restart.json).
 
-On touch, drag to pan, tap a ship to follow it and tap empty space to release. Two fingers reveal the usual controls. The Camera tab offers zoom, free-view rotation and a return to Resolute. The gesture checks used a Windows touch preview. The [earlier Galaxy acceptance](../Testing/native-mobile-ui-verification.json) covers the previous foundation interface.
+## Match and save direction
 
-The Windows package, six packaged input-check runs and 11 simulation/save groups passed. Free observation stayed fixed as the ship moved and turned. Routed picks followed each ship. Losing a target released the camera. Bridge walking and returning to the same exterior view passed. The Android arm64 target built locally. Owner camera feel and desktop sizing, physical Galaxy controls, full human expedition pacing, sustained phone performance, linked cloud saves and Apple remain open.
+Each run is one standalone, real-time match. The player begins with a homeworld and Resolute against one expanding computer rival. Choose where to explore, settle, build or fight. Ships and worlds keep working while attention moves elsewhere. Either side can lose ships and worlds. Settling more worlds makes a civilization harder to eliminate. The precise defeat rule remains open.
 
-The isolated first expedition uses `.runtime/expedition-windows-r101/20261119T020630Z/Campaign`. The previous game saved revision 151102 on normal close. The new observer package restored that exact revision in the same journal. A restored-save regression check placed the initial view at the flagship’s saved coordinates, about 492 km from the map origin. The live map load took 1 minute 55 seconds following a partial pre-read and read-only cache warmup. The window was visible and responsive, with autosaves starting at 151103. [Restart evidence](../Testing/native-rts-observer.json).
-
-The earlier forced E shortcut retried the first expedition after defeat and wrote excessive revisions. The defeat and retry remain at 82258 and 82259. The original journal is intact. Launch owner sessions without injected keys. A window may appear unresponsive while this journal loads. [Earlier incident](../Testing/native-command-panel.json) and [prior successful restart](../Testing/native-windows-restart.json). Purple discs remain shield or hull/armor contact flashes.
-
-Use Epic's launcher Unreal 5.8.4 CL 58902052 at `C:/Program Files/Epic Games/UE_5.8`. DuskForge has its own engine. Windows remains primary. Galaxy checks occur at milestones or after mobile changes. The release direction remains single-player on Steam, Android and Apple, with automatic helm and weapons and offline revisioned saves. The browser game remains a reference for the future public site. [Native guide](../../native/Aquila/README.md) and [foundation plan](../Plans/NATIVE_FOUNDATION.md).
+Ships can be replaced, including Resolute. Supplies and upgrades extend the fleet's reach. Terraforming and new civilizations can make once-empty regions worth revisiting. Local supplies, technology and ships are possible rewards. New Run starts from scratch. Save points belong to their run and restore both sides. A different generated universe per run is proposed. Windows currently restores one expedition with a fixed default seed. Fleet construction, strategic opponents, world development and run selection remain design work. [Match and run notes](../../knowledge/game-direction.md#standalone-matches), [decisions](../DECISIONS.md) and [backlog](../BACKLOG.md).
 
 ## Paused publishing inquiry
 
@@ -28,32 +24,26 @@ Four developers display the same Austin suite on Google Play. Zensoul names Nort
 
 D&B’s chat agent could not send the proposed referral. There was no live representative, case number, appointment or reliable staffing schedule. The owner deferred the retry. On a new request, use the [saved D&B message](PROMPT_2026-11-18_dnb-follow-up.txt) to ask a representative whether a home-based LLC can claim this virtual office as its primary address and which documents qualify. The [redacted chat receipt](../Research/dnb-google-play-address-chat-v1.json) points to the local exchange. Raw research, chat and personal contact details stay outside Git.
 
-## Handoff
+## Session state
 
-The [round 115 checkpoint](../History/game-direction/20261123T012613Z.md) and [hash manifest](../History/game-direction/20261123T012613Z.json) preserve the previous match direction and authority. The [publication record](../Testing/native-playtest-publication.json) covers the older Windows controls and paused inquiry. Rounds 105 through 116 are local. Session-owned changes include the native observers and interface, input tests, play guide, decisions, knowledge, lessons, receipts, current checkpoint, checkpoint archives and local report. Nothing was staged, committed or pushed.
+The [round 116 checkpoint](../History/game-direction/20261123T013848Z.md) and [hash manifest](../History/game-direction/20261123T013848Z.json) preserve the exact prior record. The [earlier publication receipt](../Testing/native-playtest-publication.json) covers the previous Windows controls and paused inquiry. [Project lessons](../../LESSONS.md) cover held input, framing restored ships and keeping run histories separate. The Windows package, game journal and media remain local.
 
-At verification the Windows game was running. Report 8953 and Research Console 8776 were active. Preview 4200 and report 8952 were inactive. The last real inbox item remains `reports/game-direction/inbox/20261115T015927Z.json`. The newer default-camera decision came through chat and supersedes that earlier chase vote for native play.
-
-Wait for the owner’s next direction. Check the live window and newest save before any later playtest action. D&B stays paused. The previous wrap consumed its one-time approval. Provider contact, purchases, filing, signup, generation, publication, asset transfer and deployment need fresh authority. Preserve peer files, staging and the full save history.
+Report 8953 and Research Console 8776 were listening. The Windows game was running. Report 8952 and preview 4200 were inactive. The last real inbox was `reports/game-direction/inbox/20261115T015927Z.json`. Later game decisions came through chat. The shared index and worktree were clean after the content push. The owner's one-time authority covers the content and records pushes and ends with this wrap. This wrap transfers no running job. Contacts, purchases, filing, signup, generation, further publication, asset transfer and deployment require fresh approval.
 
 ## Restart prompt
 
 ```text
-Repo D:/OtherProjects/AquilaCodeDark. Windows RTS observer, first expedition and paused D&B inquiry.
+Aquila Code Dark at D:/OtherProjects/AquilaCodeDark. The Windows RTS observer and standalone match decisions are saved on origin/main.
 Read AGENTS.md, Docs/TaskRoutes.md and Docs/Handoffs/HANDOFF_2026-11-15_game-direction.md in full.
-Rounds 105 through 116 are local. Prior publication on origin/main is recorded in Docs/Testing/native-playtest-publication.json.
-Report http://127.0.0.1:8953/?agentreport=1&paseoAgent=10d43293-7bfc-4eb7-b62f-27d8f627e026 (reports/game-direction/, round 116).
-Last real inbox read: reports/game-direction/inbox/20261115T015927Z.json. New RTS direction came through chat.
-Use launcher Unreal 5.8.4. Windows first. Galaxy at milestones.
-At startup, start a run from scratch or resume one from a save point. A different generated universe per run is proposed.
-Each real-time match starts with a homeworld and Resolute against one computer rival. Explore, terraform, replace lost ships and seek the rival.
-Free observer by default. WASD pans, wheel zooms, click a ship to follow, pan or click space to release. Home finds Resolute. C visits its bridge. H shows controls.
-The updated Windows game restored revision 151102 of the separate first expedition. Recheck before acting. See Docs/Testing/native-rts-observer.json.
-A prior held E retried the battle and wrote excess revisions. All history is preserved. Launch owner sessions without injected keys.
-Windows packaged camera/input and simulation/save tests passed. Android arm64 built. Physical Galaxy, owner camera feel and sizing, human pacing, sustained mobile performance, cloud and Apple remain open.
-D&B waits for the owner. Read knowledge/publishing-business.md and Docs/Handoffs/PROMPT_2026-11-18_dnb-follow-up.txt before reopening.
-Keep the home address private. Preserve the positive app examples and their limits. No specialist referral or provider selection.
-At verification, game, report 8953 and Research Console 8776 were running. Report 8952 and preview 4200 were inactive.
-Prior wrap authority consumed. No new contact, purchase, filing, signup, generation, publication, transfer or deployment.
+Report http://127.0.0.1:8953/?agentreport=1&paseoAgent=10d43293-7bfc-4eb7-b62f-27d8f627e026 (reports/game-direction/, round 117).
+Last real inbox read: reports/game-direction/inbox/20261115T015927Z.json. Later decisions came through chat.
+1. Match design: one homeworld, Resolute and one expanding computer rival. New runs start fresh. Save points belong to their run. Different universes per run are proposed.
+2. Windows playtest: launcher Unreal 5.8.4. Free RTS observer and hidden controls work. Six packaged input checks and eleven simulation/save groups passed. Camera feel, sizing and human pacing remain open.
+Galaxy checks at milestones. Sustained mobile performance, cloud saves and Apple remain open.
+The running expedition recorded defeat with the helm on Hold. Check the current save before acting. Preserve the journal and launch without injected input.
+At inspection, the Windows game, report 8953 and Research Console 8776 were running. Preview 4200 and report 8952 were inactive.
+3. D&B waits for owner direction. Read knowledge/publishing-business.md and Docs/Handoffs/PROMPT_2026-11-18_dnb-follow-up.txt before reopening. Keep the home address private.
+Preserve the positive app examples and their limits. No specialist referral or provider selection.
+The wrap and push approval is spent. New contact, purchase, filing, signup, generation, publication, transfer or deployment needs fresh approval.
 Do not start any of this. Read, say where things stand, then wait.
 ```
