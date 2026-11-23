@@ -213,3 +213,31 @@ The owner accepted larger controls on the Galaxy and later found the enlarged Wi
 At 1280×720, the revised Windows strip measured 854 pixels wide. The top touch buttons kept their bounds in Windows previews.
 Test each layout at its own target size. The owner confirmed the exterior mouse orbit in a separate check.
 [Control measurements](Docs/Testing/native-windows-desktop-controls.json) and [owner response](Docs/Testing/native-windows-orbit-acceptance.json).
+
+## 2026-11-22 [J]: Keep the native flight view clear
+
+The owner wants all current readouts and controls hidden at launch. Put them behind one reversible command.
+Carry that choice across exterior and bridge views. [Interface direction](knowledge/interface-direction.md#native-playtest-decision-2026-11-22).
+
+## 2026-11-22 [M]: Release injected playtest keys
+
+The previous live launch forced E every frame. At combat range, the expedition order became available each time the helm reached Hold.
+The game repeatedly saved the order and retried the first expedition after defeat. The journal closed normally at revision 151060.
+Start owner sessions without persistent input. For an automated command, send a single press and release in the game’s input path.
+The isolated panel capture paired `Input.+key H` with `DEFER Input.-key H`. The packaged keyboard test sent separate press and release events.
+
+## 2026-11-22 [J]: Observe the expedition independently
+
+The owner chose a free RTS camera for the main view. Selecting a ship opts into follow. Orders still operate Resolute and the first-person bridge remains aboard. [Interface direction](knowledge/interface-direction.md#native-observer-decision-2026-11-22).
+
+## 2026-11-22 [M]: Frame the restored ship on the first ready-world tick
+
+A pawn can begin play before its campaign is restored. A fresh campaign at the origin concealed an incorrect camera start. A save almost 492 km away exposed it. The packaged check now verifies the actual saved coordinates and heading before testing free movement. [Observer evidence](Docs/Testing/native-rts-observer.json).
+
+## 2026-11-22 [J]: Ships and worlds keep working when the player looks elsewhere
+
+The owner's example pairs a survey with building another ship at home. Returning to Resolute should show how far it traveled during that time. [Fleet direction](knowledge/game-direction.md#homeworld-and-fleet-exploration).
+
+## 2026-11-22 [M]: Keep each run's save history separate
+
+The native loader pauses writes when one journal contains multiple run identities or divergent revision tips. For the planned run picker, open the selected run's own history. Restoring a save point should recover its universe and both sides' progress. [Native save contract](native/Aquila/README.md#local-save-contract) and [run design](knowledge/game-direction.md#starting-and-resuming-a-run).

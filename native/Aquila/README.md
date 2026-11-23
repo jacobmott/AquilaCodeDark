@@ -55,18 +55,28 @@ iOS requires future Mac/Xcode/signing access and an actual Apple test device. Ne
 
 ## Play
 
-Use the glass command strip to approach Vesper, hold, keep combat range or withdraw.
-On phones, larger Navigation, Weapons and Expedition tabs show one group of commands at a time.
-Bridge, Pause/Resume and Hide menu/Commands stay available at the top. The menu can hide during viewing or walking.
+Flight and bridge views open with the entire interface hidden. Press **H** to show the command panel and **H** again to dismiss it.
+The panel groups ship status, expedition, navigation, tactical, view and save controls. Opening or closing it preserves the simulation clock.
+On touchscreens, touch the view with two fingers to reveal the controls. **Hide menu** clears the whole display.
+Navigation, Weapons and Expedition use large touch tabs. Bridge, Pause/Resume and Hide menu sit above them when open.
 Phone text uses a bold, bright face with a dark shadow; buttons have larger touch areas and device safe-zone margins.
-The phone uses a 960×480 reference canvas for finger-sized controls. Windows uses a 2304×1296 canvas with a centered command strip.
+The phone uses a 960×480 reference canvas for finger-sized controls. Windows centers its panel inside a 1600×900 reference canvas.
 For an offscreen desktop layout preview, add `-AquilaTouchUI`; a preview is not physical-phone input evidence.
-On Windows, left-click a command to give the helm an order. The ship steers automatically.
-Hold either mouse button over the ship or stars and drag sideways to see the ship from the side. Drag vertically to tilt.
-The pointer hides during a drag. The hint reads **Orbiting** outside or **Looking around** on the bridge.
-Release to use the pointer again. The exterior view waits briefly, then eases behind the ship. The bridge keeps its heading.
-Mouse look also works while paused. The expedition clock resumes with Escape or the Pause / resume button.
-Enter the bridge with its button or C. Walk with WASD or hold the on-screen movement buttons; drag to look.
+The main exterior view is a free RTS observer. It opens near Resolute, facing the surrounding space. The ship keeps flying under its own helm while the camera stays wherever you leave it.
+
+| Windows control | Action |
+| --- | --- |
+| WASD or middle-drag | Pan across space. Moving releases a followed ship. Hold Shift with the keys for faster travel. |
+| R / F | Raise or lower the observer. |
+| Left- or right-drag | Rotate around the current point. Scroll the wheel to zoom. |
+| Click a ship | Follow that ship. Resolute and the active Sentinel can both be selected. In follow mode, releasing a drag eases back behind the selected ship. |
+| Click empty space | Release follow at the current viewpoint. Home or **Find Resolute** follows the flagship again. |
+| C | Enter Resolute’s first-person bridge. WASD walks and dragging looks around. Press C again to return to the exterior view you left. |
+
+The exterior pointer allows selection while the command panel is hidden. Camera movement and orders are independent. Open **H** to give Resolute an order, including while observing Sentinel.
+On touch, drag to pan and tap a ship to follow it. Dragging then orbits that ship. Tap empty space to release.
+The touch menu’s **Camera** tab offers zoom, free-view rotation and a shortcut back to Resolute. On the bridge, the movement buttons walk.
+Exterior observation and mouse look also work while paused. Resume the expedition clock with Escape or the Pause / resume button.
 Escape or Pause stops simulation. Losing focus/suspending saves locally and pauses; explicitly resume on return.
 Weapons acquire and shoot automatically. Standard rounds drain shields but bounce off Sentinel's armor.
 Select piercing ammunition to penetrate. Hold fire stops new launches while flying rounds remain live.
@@ -86,11 +96,11 @@ Practice can be reset outside an active expedition. It has unlimited ammunition 
 Hold and withdrawal remain player decisions. Practice cannot interrupt an active expedition or erase its progress.
 The automated baseline completes in 547.35 simulated seconds (9.12 minutes), without menu decisions or pauses.
 The design target remains roughly 10–15 minutes of player time; human pacing needs a playtest.
-This is one repeatable encounter pattern and one upgrade, not a complete campaign or economy.
+The prototype offers one repeatable encounter and one upgrade. The planned [standalone match](../../knowledge/game-direction.md#standalone-matches) pits the player against an expanding computer rival.
 
 ## Design boundaries
 
-- Gameplay positions use meters. Exterior rendering uses 0.1 cm per meter and a ship-relative origin.
+- Gameplay positions use meters. Exterior rendering uses 0.1 cm per meter and the observer’s focus as its origin.
   The separate bridge uses ordinary centimeter dimensions; its interior need not fit the exterior exactly.
   This backdrop and bounded navigation do not yet port the browser's infinite sectors, shuttles or planet descent.
 - Combat uses a 120 Hz fixed step, bounded catch-up, swept contacts, at most 160 rounds and 32 cosmetic impacts.

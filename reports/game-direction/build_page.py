@@ -4472,6 +4472,368 @@ def main(output):
         short="Ready when you return", follows="aquila-direction-r103-next",
     )
     rounds = page.entry(104, "Windows playtest and D&B handoff saved", playtest_wrap, when="2026-11-20") + rounds
+    resumed = decide.recap(
+        "Resolute reached the first signal and began its survey.",
+        [
+            ("Campaign", "The Windows game opened your separate first expedition."),
+            ("Start", "Revision 37 had the helm on Hold."),
+            ("Order", "Resume course set the helm to Signal at revision 38."),
+            ("Travel", "Distance fell from 500.7 km to 430.6 km by revision 39."),
+            ("Arrival", "Revision 45 saved the start of the survey."),
+        ],
+        {
+            "did": "Resumed the course in your Windows game.",
+            "why": "Your first expedition had stopped on the way to the signal.",
+            "working": "The ship reached the same signal and began its survey.",
+            "not_working": "Full expedition pacing still needs human play.",
+            "next": "The survey runs automatically while the ship holds position.",
+        },
+    )
+    resumed += decide.info_thread(
+        "aquila-direction-r105-info", "Resolute reached the first signal on the resumed course.",
+        body_html=(
+            '<p>The game restored revision 37. Its expedition shortcut gave the helm the order.</p>'
+            '<p>Revision 38 saved the course. Revision 39 placed the ship 430.6 km from the same signal.</p>'
+            '<p>At revision 45, the helm held position inside survey range.</p>'
+            '<p><a href="windows-resume-course.json">Saved distances and campaign checks</a></p>'
+        ),
+        short="Course resumed", follows="aquila-direction-r104-info",
+    )
+    resumed += decide.whats_next(
+        "aquila-direction-r105-next", "The survey runs automatically while the ship holds position. The Windows game is open for you.",
+        short="Automatic survey", follows="aquila-direction-r104-next",
+    )
+    rounds = page.entry(105, "First signal course resumed", resumed, when="2026-11-22") + rounds
+    panel = decide.recap(
+        "The game starts with a clear view. Press H for ship commands. Press H again to hide them.",
+        [
+            ("Flight", "The ship, scenery and impacts stay visible with the controls hidden."),
+            ("Commands", "H opens one centered panel with status, orders, view and save controls."),
+            ("Bridge", "Walking and mouse look still work with the panel closed."),
+            ("Touch", "Touch with two fingers to show the controls. Tap Hide menu to clear the view."),
+            ("Hits", "Large purple flashes mark shield hits. Smaller flashes mark hull or armor contact."),
+        ],
+        {
+            "did": "Put the Windows readouts and controls in one panel, hidden at launch.",
+            "why": "You wanted the game view clear until you ask for controls.",
+            "working": "H opens and closes the panel in flight, on the bridge and while paused.",
+            "not_working": "The new touch gesture still needs a physical Galaxy check.",
+            "next": "The updated game saved your expedition and closed.",
+        },
+    )
+    panel_body = '<p>The wider purple disc means a round struck a shield. Hull or armor contact makes a smaller disc.</p>'
+    panel_body += '<p>Both expand for about 0.7 seconds. The blue blocks around the signal are debris.</p>'
+    panel_body += page.figure(page.copy_media(HERE / "media/r106-hud-hidden.png", out),
+        "Default flight view.", "The purple disc on the ship’s left edge marks a shield hit.", look=True)
+    panel_body += page.figure(page.copy_media(HERE / "media/r106-command-panel.png", out),
+        "Command panel open.", "H brings up the ship’s controls together.")
+    panel_body += '<p>My earlier launch held the expedition key. The game retried after defeat and repeatedly wrote saves.</p>'
+    panel_body += '<p>The full journal took 17 minutes to load. A window-close request took effect after the expedition loaded.</p>'
+    panel_body += '<p>The game saved revision 151061 on exit. The save from before the retry is intact.</p>'
+    panel_body += '<p><a href="command-panel-checks.json">Game checks and save evidence</a></p>'
+    panel += decide.info_thread(
+        "aquila-direction-r106-info", "The flight view starts clear. H shows the commands when you want them.",
+        body_html=panel_body, short="Hidden controls and hit flashes", follows="aquila-direction-r105-info",
+    )
+    panel += decide.whats_next(
+        "aquila-direction-r106-next", "Press H whenever you want the ship’s controls.",
+        short="Windows playtest", follows="aquila-direction-r105-next",
+    )
+    rounds = page.entry(106, "Ship controls on demand", panel, when="2026-11-22") + rounds
+    launch_receipt = ROOT / "Docs/Testing/native-windows-restart.json"
+    launch = json.loads(launch_receipt.read_text(encoding="utf-8"))
+    restored = format(launch["restored_revision"], ",")
+    restart = decide.recap(
+        "Your Windows game is running. The ship loaded from your last save.",
+        [
+            ("Game", "The updated Windows game opened."),
+            ("Save", f"Your first expedition restored revision {restored}."),
+            ("Window", "The game window responded before and after its first autosave."),
+            ("Controls", "Press H to show or hide ship commands."),
+            ("Play", "The window stayed open for you."),
+        ],
+        {
+            "did": "Restarted your Windows game.",
+            "why": "The previous window had closed during startup.",
+            "working": "Your saved expedition loaded and the game window responds.",
+            "not_working": "Reading the full save history took 13 minutes.",
+            "next": "The game is open for you to play.",
+        },
+    )
+    restart += decide.info_thread(
+        "aquila-direction-r107-info", "The Windows game is running with your saved expedition.",
+        body_html=(
+            f"<p>It loaded revision {restored} from the same save folder.</p>"
+            "<p>The window stayed visible. The game wrote revision 151,062 to the same expedition.</p>"
+            '<p><a href="windows-restart.json">Window and save checks</a></p>'
+        ),
+        short="Game reopened", follows="aquila-direction-r106-info",
+    )
+    restart += decide.whats_next(
+        "aquila-direction-r107-next", "The game is ready to play.",
+        short="Windows playtest", follows="aquila-direction-r106-next",
+    )
+    rounds = page.entry(107, "Windows game restarted", restart, when="2026-11-22") + rounds
+    observer = decide.recap(
+        "You can watch Resolute fly away. Move around freely, click a ship to follow it, or visit your bridge.",
+        [
+            ("Explore", "WASD or a middle-button drag moves the camera. The wheel zooms."),
+            ("Look", "Drag with either other mouse button to rotate. R and F raise or lower your view."),
+            ("Follow", "Click either ship. Pan or click empty space to release it."),
+            ("Bridge", "C enters Resolute’s bridge. Press C again to return to your previous view."),
+            ("Orders", "H shows commands for Resolute, even while you watch another ship."),
+        ],
+        {
+            "did": "Made free observation the main game view.",
+            "why": "Resolute flies and fights automatically while you explore.",
+            "working": "The Windows camera follows either ship on request. Walking aboard still works.",
+            "not_working": "The new touch camera still needs a physical Galaxy playtest.",
+            "next": "Your Windows expedition is open with the new camera.",
+        },
+    )
+    observer_body = "<p>The camera opens near your saved flagship. Home finds Resolute again from anywhere.</p>"
+    observer_body += page.figure(page.copy_media(HERE / "media/r108-both-ships.png", out),
+        "Two ships in view.", "Click Resolute or Sentinel to watch that ship.", look=True)
+    observer_body += page.figure(page.copy_media(HERE / "media/r108-free-observer.png", out),
+        "Free observer.", "Resolute has flown toward the upper left while the camera stayed in place.")
+    observer_body += page.figure(page.copy_media(HERE / "media/r108-following.png", out),
+        "Following Resolute.", "The same voyage with follow enabled keeps the flagship centered.")
+    observer_body += '<p>A restored-save check caught the observer opening at the map origin. The corrected build starts at the saved ship.</p>'
+    observer_body += '<p><a href="rts-observer-checks.json">Windows camera, save and touch preview checks</a></p>'
+    observer += decide.info_thread(
+        "aquila-direction-r108-info", "The free camera stays where you leave it while the ship carries out its orders.",
+        body_html=observer_body, short="Free view and ship follow", follows="aquila-direction-r107-info",
+    )
+    observer += decide.whats_next(
+        "aquila-direction-r108-next", "Your saved expedition is ready to explore.",
+        short="Windows playtest", follows="aquila-direction-r107-next",
+    )
+    rounds = page.entry(108, "Free RTS camera", observer, when="2026-11-22") + rounds
+    height = decide.recap(
+        "Yes. WASD stays level. Hold R to move the exterior camera up or F to move it down.",
+        [
+            ("Pan", "WASD moves across the horizontal plane."),
+            ("Rise", "Hold R to climb above the ship."),
+            ("Descend", "Hold F to move below the ship."),
+            ("Combine", "Hold W and R together to move forward and climb."),
+            ("Tilt", "Looking up or down keeps W horizontal."),
+        ],
+        {
+            "did": "Checked how the current Windows camera handles height.",
+            "why": "WASD felt locked to one plane.",
+            "working": "R and F move the exterior camera vertically.",
+            "not_working": "WASD alone keeps the same height.",
+            "next": "Hold F to move below the ship.",
+        },
+    )
+    height += decide.info_thread(
+        "aquila-direction-r109-info", "WASD pans level. R raises the camera and F lowers it.",
+        body_html="<p>You can hold a movement key and a height key together.</p>",
+        short="Exterior camera height", follows="aquila-direction-r108-info",
+    )
+    height += decide.whats_next(
+        "aquila-direction-r109-next", "Hold R or F in the exterior view.",
+        short="Vertical movement", follows="aquila-direction-r108-next",
+    )
+    rounds = page.entry(109, "Moving above and below the ship", height, when="2026-11-22") + rounds
+    voyage = decide.recap(
+        "You choose where Resolute goes. One day, a world you helped settle could build the ship that greets you there.",
+        [
+            ("Home", "Walk aboard Resolute or watch the same voyage from outside."),
+            ("Preparation", "Choose a route, stock the ship and decide what equipment that trip calls for."),
+            ("Reach", "A better drive could open a distant route. Better armor could get you past a guarded passage."),
+            ("Founding", "Resolute could terraform a planet and bring its first human generation there."),
+            ("Return", "Visit the people who grew up there, see what they built and take on supplies."),
+        ],
+        {
+            "did": "Recorded relaxed exploration as the purpose of the voyage.",
+            "why": "You want time to watch what happens around the ship.",
+            "working": "The current expedition already has automatic travel, combat, salvage and one turret refit.",
+            "not_working": "Terraforming and settlement growth are still ideas.",
+            "next": "How much a world could change between visits remains open.",
+        },
+    )
+    voyage += decide.info_thread(
+        "aquila-direction-r110-info", "Settlements could give you a reason to return to a place you remember.",
+        body_html=(
+            "<p>Imagine leaving a nursery beside an empty bay. Years later, a shuttle built there meets Resolute in orbit.</p>"
+            "<p>Go down and see the harbor. Refuel there and the next stretch of empty space becomes reachable.</p>"
+        ),
+        short="Why make the voyage", follows="aquila-direction-r109-info",
+    )
+    voyage += decide.whats_next(
+        "aquila-direction-r110-next", "The pace of settlement growth and other reasons to explore remain open.",
+        short="Game design", follows="aquila-direction-r109-next",
+    )
+    rounds = page.entry(110, "What brings Resolute back", voyage, when="2026-11-22") + rounds
+    fleet = decide.recap(
+        "Resolute is your first ship. The planet that built it can build another while Resolute explores.",
+        [
+            ("Start", "You know one inhabited system. The space beyond it is yours to discover."),
+            ("Ships", "Send ships on different voyages and jump to whichever one you want to see."),
+            ("Worlds", "Visit a planet and use what its people can build or supply."),
+            ("Time", "A ship keeps traveling while you give an order back home."),
+            ("Growth", "Discover resources, build ships and terraform worlds where new civilizations can grow."),
+        ],
+        {
+            "did": "Recorded the homeworld and growing fleet as the center of the game.",
+            "why": "A long trip leaves time to spend somewhere else in the universe.",
+            "working": "The Windows game has one playable expedition and a free camera.",
+            "not_working": "Building ships at home and running several expeditions are still design work.",
+            "next": "The starting system and the homeworld’s other capabilities remain open.",
+        },
+    )
+    fleet += decide.info_thread(
+        "aquila-direction-r111-info", "Jump back to Resolute and see how far it traveled while you were home.",
+        body_html=(
+            "<p>Send Resolute to survey a nearby star. Start a second ship at home, then visit Resolute’s bridge midflight.</p>"
+            "<p>Once the second ship is ready, you can send it to explore somewhere else.</p>"
+        ),
+        short="The first two ships", follows="aquila-direction-r110-info",
+    )
+    fleet += decide.whats_next(
+        "aquila-direction-r111-next", "The first fleet playtest would pair a survey with building a second ship at home.",
+        short="Fleet play", follows="aquila-direction-r110-next",
+    )
+    rounds = page.entry(111, "One homeworld and the first ship", fleet, when="2026-11-22") + rounds
+    civilization = decide.recap(
+        "You build a civilization across star systems in real time. You can visit any settled world or check any ship.",
+        [
+            ("Worlds", "Settled worlds play the role of cities, each with its own capabilities."),
+            ("Ships", "Every ship has a location and an order you can check during its voyage."),
+            ("Time", "Worlds build and ships travel at the same time."),
+            ("Reach", "Discover resources and settle new systems as your fleet grows."),
+            ("Pace", "Give a ship its orders and stay to watch the arrival if you like."),
+        ],
+        {
+            "did": "Recorded the owner's comparison to managing cities across the stars.",
+            "why": "You want to see how each place and each ship is doing.",
+            "working": "The Windows prototype already lets you watch one automated expedition.",
+            "not_working": "Managing several worlds and fleets is still design work.",
+            "next": "The time a voyage or a building project should take remains open.",
+        },
+    )
+    civilization += decide.info_thread(
+        "aquila-direction-r112-info", "A ship can reach its destination while you decide what to build on another world.",
+        body_html="<p>You can also stay aboard for that arrival while construction continues a star system away.</p>",
+        short="Ships and worlds", follows="aquila-direction-r111-info",
+    )
+    civilization += decide.whats_next(
+        "aquila-direction-r112-next", "Travel and building times remain open for a future fleet playtest.",
+        short="Pacing", follows="aquila-direction-r111-next",
+    )
+    rounds = page.entry(112, "A civilization across star systems", civilization, when="2026-11-22") + rounds
+    rival = decide.recap(
+        "You and one computer rival are each trying to find and eliminate the other.",
+        [
+            ("Objective", "The campaign ends when one civilization eliminates the other."),
+            ("Scouting", "A survey can reveal where the rival has settled."),
+            ("Survival", "A second inhabited world gives your civilization somewhere to carry on if the first falls."),
+            ("Time", "While you settle another world, your rival has time to spread too."),
+            ("Choice", "Your next ship could look for a place to settle or search for signs of the rival."),
+        ],
+        {
+            "did": "Recorded one computer opponent and the campaign goal.",
+            "why": "Finding your rival gives a voyage a purpose beyond gathering supplies or upgrading ships.",
+            "working": "The current expedition reveals an armed contact after a survey.",
+            "not_working": "The expanding computer rival is still design work.",
+            "next": "What counts as eliminating a civilization remains open.",
+        },
+    )
+    rival += decide.info_thread(
+        "aquila-direction-r113-info", "A quiet survey could be the first time Resolute finds a world settled by its rival.",
+        body_html="<p>Finding one world tells you where the rival has been. Its ships may already have settled another system.</p>",
+        short="First contact", follows="aquila-direction-r112-info",
+    )
+    rival += decide.whats_next(
+        "aquila-direction-r113-next", "Whether a surviving ship can rebuild after the last settled world falls remains open.",
+        short="Campaign defeat", follows="aquila-direction-r112-next",
+    )
+    rounds = page.entry(113, "Finding the rival civilization", rival, when="2026-11-22") + rounds
+    ship_loss = decide.recap(
+        "A destroyed ship is gone from your fleet. Even Resolute can be lost.",
+        [
+            ("Loss", "Destruction costs you that individual vessel."),
+            ("Fleet", "Your surviving ships can keep exploring."),
+            ("Replacement", "A world that can build ships can replace what you lost."),
+            ("Preparation", "Building a second ship early gives you one ready to take over."),
+            ("Campaign", "Your civilization can carry on after losing its flagship."),
+        ],
+        {
+            "did": "Recorded ship loss as a reason to keep building.",
+            "why": "Sending a ship out means risking a vessel you might need again.",
+            "working": "The Windows expedition lets you retry a failed mission.",
+            "not_working": "Losing and replacing individual ships in a fleet is still design work.",
+            "next": "A future fleet playtest could follow a surviving ship while its homeworld builds a replacement.",
+        },
+    )
+    ship_loss += decide.info_thread(
+        "aquila-direction-r114-info", "If Resolute is lost, a second ship can take over its survey.",
+        short="After a loss", follows="aquila-direction-r113-info",
+    )
+    ship_loss += decide.whats_next(
+        "aquila-direction-r114-next", "Fleet construction would let the player recover from the loss during the same campaign.",
+        short="Fleet building", follows="aquila-direction-r113-next",
+    )
+    rounds = page.entry(114, "Losing a ship", ship_loss, when="2026-11-22") + rounds
+    match_format = decide.recap(
+        "You start a standalone match against one computer rival and play it out.",
+        [
+            ("Start", "Your homeworld built Resolute. You choose its first destination."),
+            ("Explore", "Send ships to find resources, new worlds or signs of your rival."),
+            ("Expand", "Choose when to settle a world or build another ship."),
+            ("Rival", "The computer explores and expands during the same time."),
+            ("Finish", "The match ends when one side eliminates the other."),
+        ],
+        {
+            "did": "Corrected the design to describe standalone matches.",
+            "why": "You want each game to unfold through the choices both sides make.",
+            "working": "The Windows expedition lets you travel, fight and refit a ship.",
+            "not_working": "A complete match against an expanding rival remains to build.",
+            "next": "The exact defeat rule remains open.",
+        },
+    )
+    match_format += decide.info_thread(
+        "aquila-direction-r115-info", "Both sides choose where to go and when to fight.",
+        body_html="<p>The owner ruled out a story campaign. Discoveries, settlements and ship losses belong to the match being played.</p>",
+        short="Match format", follows="aquila-direction-r114-info",
+    )
+    match_format += decide.whats_next(
+        "aquila-direction-r115-next", "The open victory detail is whether a surviving ship can rebuild after its last world falls.",
+        short="Match victory", follows="aquila-direction-r114-next",
+    )
+    rounds = page.entry(115, "A standalone match", match_format, when="2026-11-22") + rounds
+    runs = decide.recap(
+        "Start a fresh run whenever you want, or return to a save point in a run you already started.",
+        [
+            ("New Run", "Start from scratch with your homeworld, Resolute and one computer rival."),
+            ("Continue", "Load the same universe with both sides where they were when you saved."),
+            ("Save points", "Each save point belongs to the run where you made it."),
+            ("Fresh universe", "Generating a new map each time would give Resolute different places to discover."),
+            ("Start over", "You can leave a match halfway through or start another after a loss."),
+        ],
+        {
+            "did": "Recorded the startup choices and how saves belong to individual runs.",
+            "why": "You can keep a match you like and start fresh when you want another.",
+            "working": "Windows already saves and restores the current expedition.",
+            "not_working": "Selecting saved runs and generating a new universe for each are still design work.",
+            "next": "When the game makes save points remains open.",
+        },
+    )
+    runs += decide.info_thread(
+        "aquila-direction-r116-info", "Loading a save brings back the discoveries, ships and settlements from that moment.",
+        body_html="<p>You could try a second universe and return to the first when you feel like it.</p>",
+        short="Saved runs", follows="aquila-direction-r115-info",
+    )
+    runs += decide.whats_next(
+        "aquila-direction-r116-next", "A future check would reopen the first run after starting a second and verify each kept its own map.",
+        short="Run selection", follows="aquila-direction-r115-next",
+    )
+    rounds = page.entry(116, "Start a new run or continue one", runs, when="2026-11-22") + rounds
+    (out / "rts-observer-checks.json").write_bytes((ROOT / "Docs/Testing/native-rts-observer.json").read_bytes())
+    (out / "windows-restart.json").write_bytes(launch_receipt.read_bytes())
+    (out / "command-panel-checks.json").write_bytes((ROOT / "Docs/Testing/native-command-panel.json").read_bytes())
+    (out / "windows-resume-course.json").write_bytes((ROOT / "Docs/Testing/native-windows-resume-course.json").read_bytes())
     (out / "playtest-restart.txt").write_bytes((ROOT / "Docs/Handoffs/PROMPT_2026-11-20_native-playtest.txt").read_bytes())
     (out / "windows-playtest-publication.json").write_bytes((ROOT / "Docs/Testing/native-playtest-publication.json").read_bytes())
     (out / "windows-orbit-acceptance.json").write_bytes((ROOT / "Docs/Testing/native-windows-orbit-acceptance.json").read_bytes())

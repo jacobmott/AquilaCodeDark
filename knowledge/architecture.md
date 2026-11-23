@@ -7,11 +7,10 @@ The native model uses fixed-step navigation and traveling-projectile combat, wit
 Portable JSON revisions preserve campaign identity, world seed, navigation, combat state and flying rounds; device controls remain separate.
 This first scene has one planet backdrop and one bridge. It does not yet port full exploration, shuttles or surface travel.
 Native files, save contract, build commands and current limits: [native guide](../native/Aquila/README.md).
-On Windows, a Slate layer below the commands captures either mouse button over open space.
-It reads relative motion while the button is held and returns the pointer on release.
-Exterior look briefly holds before returning behind the ship. Bridge look retains its heading. Camera inspection can continue during a pause.
-The owner [confirmed the exterior orbit](../Docs/Testing/native-windows-orbit-acceptance.json) using a physical mouse on Windows.
-Mouse and touch command layouts have independent reference sizes. Desktop uses a compact centered strip. Phone uses large tabbed commands.
+The native exterior is a free RTS observer. Its focus uses simulation-space meters. Ships, rounds, impacts, the signal and planet render relative to that focus. The bridge retains its ship-relative frame. Distant stars follow camera translation.
+On Windows, the Slate surface distinguishes clicks from drags. A visibility ray picks ship meshes in front of the planet. A selected ship supplies the moving focus. Free movement, empty-space clicks and losing the selected contact release follow without moving the camera. Viewing a ship leaves command ownership with Resolute.
+The earlier [owner-confirmed exterior orbit](../Docs/Testing/native-windows-orbit-acceptance.json) remains available when following a ship. The free observer and bridge retain the chosen heading.
+Both native layouts start hidden. Desktop uses a centered command panel toggled with H. Touch uses two fingers to reveal large tabbed commands.
 
 ## Active universe, 2026-11-15
 

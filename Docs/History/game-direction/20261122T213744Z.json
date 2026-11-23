@@ -1,0 +1,8 @@
+{
+  "source": "Docs/Handoffs/HANDOFF_2026-11-15_game-direction.md",
+  "archive": "Docs/History/game-direction/20261122T213744Z.md",
+  "saved_at_utc": "2026-11-22T21:37:44.645737+00:00",
+  "bytes": 7437,
+  "sha256": "98537844d25744404ae6edf901de334f8c747588b1cc830bb8e638178be36d64",
+  "reason": "Preserve the closed-window checkpoint before recording the requested Windows restart."
+}

@@ -1,0 +1,203 @@
+{
+  "report_round": 108,
+  "observed_at_utc": "2026-11-22T22:19:53.441133+00:00",
+  "engine": "Epic launcher Unreal 5.8.4 CL 58902052",
+  "owner_direction": "The main experience is a free RTS observer. The flagship flies automatically. Click a specific visible ship to follow it and retain the first-person bridge.",
+  "windows": {
+    "package": "passed",
+    "runtime_sha256": "47fb7aad457823ac76d544f138cfd8a4e08ef58634be68e5769ee644c8697dea",
+    "bytes": 332134912,
+    "path": ".runtime/native-package/Win64/Aquila/Binaries/Win64/Aquila.exe"
+  },
+  "controls": {
+    "free": "WASD or middle-drag pans, R/F moves vertically, Shift speeds up keyboard travel, left/right drag rotates, wheel zooms.",
+    "follow": "Click Resolute or the live Sentinel, then pan or click empty space to release. Home finds Resolute. A lost target leaves the observer in place.",
+    "bridge": "C enters Resolute and returns to the previous exterior view. H toggles the existing menu. Camera input does not order the ship.",
+    "touch": "A one-finger drag pans, a ship tap follows and an empty tap releases. Two fingers show the on-demand camera and ship controls."
+  },
+  "source_sha256": {
+    "AquilaFlightPawn.cpp": "c57fd8f72df9ec20c41039fc2e5927c7d9664dd902834f67b812513f8b6c33c0",
+    "AquilaFlightPawn.h": "46b2a6c38acf721882ce7bac2a3172f70ecbd04e104063de40df6293585a1e85",
+    "AquilaObserverCamera.cpp": "9036b531279df88a507a43690954ab446131640a46d8dc25be160f7d5e5ee8ec",
+    "SAquilaMouseLook.cpp": "cf84ccd6bec8ab8d33f027904355bd806cdf7ede418b820f6f4890b6d6f74ebc",
+    "SAquilaMouseLook.h": "28d08c0f39a86cf31e7d60613ee1ec28cbe2257726bd3633087ade9831dc9eee",
+    "AquilaObserverCameraTests.cpp": "743007ca4bd0d3dc9725673f94039b35720f3590366eb9c73743dd378738fc25",
+    "AquilaDesktopCameraTests.cpp": "4dd7a0c2d1ef214c39c43ed322c814f95136ca63e43a48660560c448d7853363"
+  },
+  "packaged_input": {
+    "restored-observer": {
+      "source": ".runtime/expedition-windows-r108/20261122T215656Z/restored-observer/report/index.json",
+      "sha256": "90e778b2acfabbd2a3992f31e200e7ce171b872669e5b1d68ee78830da72aeac",
+      "tests": [
+        "Aquila.Input.Observer.Desktop"
+      ],
+      "groups": 1
+    },
+    "accepted-observer": {
+      "source": ".runtime/expedition-windows-r108/20261122T215656Z/accepted-observer/report/index.json",
+      "sha256": "64bd27cce2a18228448a9d3780d53a3d33d0e1f42f8e22ae51fd3801a4d7663d",
+      "tests": [
+        "Aquila.Input.Observer.Desktop"
+      ],
+      "groups": 1
+    },
+    "accepted-touch-observer": {
+      "source": ".runtime/expedition-windows-r108/20261122T215656Z/accepted-touch-observer/report/index.json",
+      "sha256": "5ce4d0e3adf21c6865ee6f1f4a39aec6cce6365db03484f08b3af61fa0f868a6",
+      "tests": [
+        "Aquila.Input.Observer.Touch"
+      ],
+      "groups": 1
+    },
+    "accepted-outside": {
+      "source": ".runtime/expedition-windows-r108/20261122T215656Z/accepted-outside/report/index.json",
+      "sha256": "93dd697a326977ae32117fe6838230700a1049fc4803bc591c7e60d3691e97fd",
+      "tests": [
+        "Aquila.Input.DesktopCamera"
+      ],
+      "groups": 1
+    },
+    "accepted-bridge": {
+      "source": ".runtime/expedition-windows-r108/20261122T215656Z/accepted-bridge/report/index.json",
+      "sha256": "c3f04938c681de45a086ac69c8ed3e759086bb8f109ea0bda65d87b4c8251bb8",
+      "tests": [
+        "Aquila.Input.DesktopCamera"
+      ],
+      "groups": 1
+    },
+    "accepted-touch-menu": {
+      "source": ".runtime/expedition-windows-r108/20261122T215656Z/accepted-touch-menu/report/index.json",
+      "sha256": "bc97d3b3edf93567a8ec5c619f65dc99c8d2ee1c1a382ae6058fe20bb4d7cc20",
+      "tests": [
+        "Aquila.Input.TouchMenu.RevealAndHide"
+      ],
+      "groups": 1
+    }
+  },
+  "simulation_save_groups": {
+    "source": ".runtime/expedition-windows-r108/20261122T215656Z/simulation-final.json",
+    "sha256": "72b63696c79b240df65029e3f14ea76b2c5b9d77ec147abc560d4e9775a8e85a",
+    "tests": [
+      "Aquila.Combat.FrameRateAndHold",
+      "Aquila.Combat.SwitchWithRoundsInFlight",
+      "Aquila.Combat.TravelAndArmor",
+      "Aquila.Expedition.CommandsFailureAndPracticeIsolation",
+      "Aquila.Expedition.CompleteLoopAndUpgrade",
+      "Aquila.Expedition.LegacyMigrationAndValidation",
+      "Aquila.Expedition.ResumeAndRewardTransactions",
+      "Aquila.Expedition.UpgradeImpactAndFrameParity",
+      "Aquila.Navigation.ClearanceAndArrival",
+      "Aquila.Save.InterruptionAndConflict",
+      "Aquila.Save.RoundTripMigrationAndRejection"
+    ],
+    "groups": 11
+  },
+  "android_arm64_build": "passed",
+  "exercised": [
+    "The free observer retained its world position and yaw as the simulated flagship moved and turned.",
+    "Routed mouse or touch input panned and picked real ship hulls. The observer followed each chosen ship.",
+    "The mouse wheel changed the camera distance. Releasing or losing a ship remained detached. Follow orbit returned behind its target.",
+    "The bridge accepted walking input, then returned to the previous exterior observer. Camera actions preserved helm, pause and save revision.",
+    "The actual restored expedition, about 492 km from the map origin, opened framed on its saved flagship."
+  ],
+  "renders": {
+    "approved-battle": {
+      "local": ".runtime/expedition-windows-r108/20261122T215656Z/approved-battle/frame.png",
+      "size": [
+        1440,
+        810
+      ],
+      "sha256": "d5aa2761276e97564db41946891b30a36bf9eb84fc85b8d14c52064f1cc3e27a",
+      "report_media": "reports/game-direction/media/r108-both-ships.png"
+    },
+    "approved-travel": {
+      "local": ".runtime/expedition-windows-r108/20261122T215656Z/approved-travel/frame.png",
+      "size": [
+        1440,
+        810
+      ],
+      "sha256": "ca9a87e123fc49b86f2e070093abd74788ba71526fcb171fd1bcc9e0202450ab",
+      "report_media": "reports/game-direction/media/r108-free-observer.png"
+    },
+    "approved-follow": {
+      "local": ".runtime/expedition-windows-r108/20261122T215656Z/approved-follow/frame.png",
+      "size": [
+        1440,
+        810
+      ],
+      "sha256": "3e89117595018e282a3f1c2343821cab6c72238b2fdd1f29beca110c253aeb6e",
+      "report_media": "reports/game-direction/media/r108-following.png"
+    },
+    "approved-save": {
+      "local": ".runtime/expedition-windows-r108/20261122T215656Z/approved-save/frame.png",
+      "size": [
+        1440,
+        810
+      ],
+      "sha256": "065efd16458073f99bac4985bdbfcc2f34fd60119caaf93b45aae2b624ceb54f"
+    }
+  },
+  "travel_capture_comparison": {
+    "approved-travel": {
+      "opened": 39,
+      "saved_on_exit": 40,
+      "travelled_meters_at_exit": 41603.33
+    },
+    "approved-follow": {
+      "opened": 39,
+      "saved_on_exit": 40,
+      "travelled_meters_at_exit": 41743.33
+    }
+  },
+  "corrected_startup": "A travel capture exposed the observer being seeded before the restored campaign was ready. Initial placement now uses the restored position and heading during the first ready-world tick.",
+  "live": {
+    "campaign_directory": ".runtime/expedition-windows-r101/20261119T020630Z/Campaign",
+    "prior_normal_close_and_restore": 151102,
+    "tip_sha256": "5172474737182cfc4fd4b28b19e364c43500fd4d05366f6fb9313f104050d0d1",
+    "saved_ship_distance_from_world_origin_km": 492.12,
+    "intermediate_loader_cancelled_before_play_or_saves": true,
+    "parallel_read_ahead": {
+      "files_read": 75551,
+      "bytes_read": 244437950,
+      "seconds": 47.38,
+      "mode": "read-only"
+    },
+    "journal_files_before_corrected_restart": 151102,
+    "log": ".runtime/expedition-windows-r108/20261122T215656Z/owner-restored.log",
+    "ready_utc": "2026-11-22T22:17:43.479000+00:00",
+    "full_map_load_seconds": 114.97,
+    "injected_game_input": false,
+    "visible_window_checks": [
+      {
+        "utc": "2026-11-22T22:19:41.411798+00:00",
+        "pid": 55868,
+        "hwnd": 344463514,
+        "title": "Aquila (64-bit Development PCD3D_SM5)",
+        "visible": true,
+        "minimized": false,
+        "answers_window_messages": true
+      },
+      {
+        "utc": "2026-11-22T22:19:53.441133+00:00",
+        "pid": 55868,
+        "hwnd": 344463514,
+        "title": "Aquila (64-bit Development PCD3D_SM5)",
+        "visible": true,
+        "minimized": false,
+        "answers_window_messages": true
+      }
+    ],
+    "first_new_save": {
+      "revision": 151103,
+      "sha256": "621c78693c0cfcd3aea54a2db0dcc4f8cea8fc69bfb11b349fc3904132dd2438",
+      "parent_matches": true
+    },
+    "observed_save_revisions": [
+      151103,
+      151104,
+      151105,
+      151106
+    ]
+  },
+  "limits": "Windows packaged input and Windows touch preview were automated. Physical Galaxy input, owner camera feel, sustained phone performance, cloud saves and Apple remain open. The playable area is the existing expedition system."
+}

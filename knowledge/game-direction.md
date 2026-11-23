@@ -2,6 +2,56 @@
 
 Discussion began 2026-11-15 UTC (2026-11-14 local). The owner subsequently approved the shared world and glass interface build.
 
+## Standalone matches
+
+2026-11-22, round 115. The player starts a standalone, real-time match against one computer rival. The owner ruled out a story campaign. Beginning with the homeworld and Resolute, the player chooses where to explore, settle and fight. Both sides expand and seek each other across star systems. Their decisions shape the match until one eliminates the other.
+
+### Starting and resuming a run
+
+2026-11-22, round 116. At startup the player can start a new run or resume a saved one. Each run is one match. A new run starts from scratch with a homeworld, Resolute and one computer rival. The player can start again after a loss or whenever they want a different game.
+
+The owner suggested generating a different universe for each run. A fresh map seed per run would vary what lies beyond the homeworld. Save points belong to their run. Loading one restores its map, discoveries, fleets, settlements and rival at that point. Keeping earlier runs available lets the player try a fresh start and return later.
+
+The Windows prototype already saves and restores the active expedition, including its world seed. It uses a fixed default seed. Choosing among saved runs and generating a new universe for each are design work. [Existing local saves](../native/Aquila/README.md#local-save-contract).
+
+## One computer rival
+
+2026-11-22, round 113. Each side aims to find and eliminate the other. Both expand across star systems during the same game time. Settling more worlds gives either side somewhere to carry on after losing a world. The time spent strengthening the player's civilization also gives the rival time to settle places the player has yet to discover.
+
+Scouting has a strategic purpose alongside finding resources, ship upgrades and places to settle. A survey can reveal the first sign of the rival or show that it has spread farther than expected. The precise loss condition, including whether a surviving ship can rebuild after the last settled world falls, remains open.
+
+Resolute's current Windows expedition reveals an armed contact after a survey. A computer civilization that explores, settles worlds and plays to win the match remains to build. [Playable expedition](../native/Aquila/README.md#first-expedition-vesper-echo).
+
+## Homeworld and fleet exploration
+
+2026-11-22, round 112. The owner compared the game to building a civilization across star systems in real time. In that comparison, inhabited worlds fill the role of cities. Each is a place to return to, see what has developed and choose what to build. Ships are individual RTS units. The player can check where any ship has reached, then jump to another world. Voyages, construction and settlement growth share the same elapsed game time during play.
+
+2026-11-22, round 111. The player manages a growing fleet and multiple inhabited worlds. The opening starts in one system with little discovered beyond it. An existing civilization on the home planet built Resolute, the first ship. The owner left the choice of Sol or another starting system open.
+
+Send Resolute to survey another system. While it travels, return to the homeworld, use its resources and start building a second ship. Jump the view back to Resolute to see where it has reached, watch from outside or walk its bridge. The voyage and construction each keep progressing while the player looks elsewhere during play. Each planet offers the actions its capabilities support.
+
+New discoveries provide resources for further ships and expeditions. Terraforming worlds and founding more civilizations are part of that expansion. Over time, settled worlds could supply a route, develop local technology or build their own ships. How a new civilization starts and how fast it grows remain open. The relaxed pace and automated travel and fighting carry forward from the first voyage.
+
+The Windows prototype demonstrates one automated expedition and a free observer camera. Homeworld construction, simultaneous fleet missions and terraforming remain design work. [Playable expedition](../native/Aquila/README.md#first-expedition-vesper-echo).
+
+### Ship loss and replacement
+
+2026-11-22, round 114. Destruction costs the player that individual ship, including Resolute. Another ship can carry on exploring while a world with shipbuilding capability builds a replacement. Building extra ships ahead of a loss also lets the player keep more expeditions underway.
+
+The current Windows expedition lets the player retry a failed mission. Fleet losses and replacements belong to the planned match. [Playable expedition](../native/Aquila/README.md#first-expedition-vesper-echo).
+
+## Quiet exploration aboard Resolute
+
+2026-11-22, round 110. The owner initially described Resolute as the player's home and presence in the universe. Round 111 broadened that role to the [homeworld and fleet](#homeworld-and-fleet-exploration). From aboard a ship, the player can walk around. From the free RTS camera, they can watch the same ship carry out its orders. Both perspectives belong to one voyage. The intended pace leaves room to stop and watch something happen.
+
+The player chooses a destination, stocks the ship and decides which capability to improve. A faster or farther-reaching drive could open a distant route. Armor and weapons could let Resolute pass a defended region. Those upgrades expand where the player can go, what they can witness and which capabilities they can discover. The helm and weapons handle routine execution.
+
+In round 110 the owner proposed terraforming planets and using fictional, renewable human incubation technology to establish a first generation. A settlement could develop independently while Resolute travels. On returning, the player could take a shuttle down to see what people built, collect supplies, or encounter locally developed technology and ships. A port on a previously empty stretch would change the range of the next voyage.
+
+Imagine leaving a nursery beside an empty bay. On a later visit, a locally built tender meets Resolute in orbit. From the surface the player can recognize the bay beneath the new harbor. Refueling there enables a longer crossing. The harbor itself gives the player a reason to come back. The bay and tender are design examples. Travel time, settlement growth, and other reasons to explore remain open.
+
+The existing native expedition demonstrates automatic travel, an encounter, salvage and a turret refit. The drive, stocking and settlement ideas above are design discussion. [Playable expedition](../native/Aquila/README.md#first-expedition-vesper-echo) and [native observer decision](interface-direction.md#native-observer-decision-2026-11-22).
+
 ## Owner intent
 
 - Remake the existing website and game around the landing page's promise of cosmic exploration.

@@ -5,6 +5,8 @@
 The separate native project uses launcher Unreal 5.8.4. Follow [its guide](../native/Aquila/README.md) for build, test and packaging.
 Its SDK and generated files remain local and ignored; the build wrapper does not alter DuskForge or global SDK settings.
 Native checks and remaining device gaps belong in [native verification](../Docs/Testing/native-foundation-verification.json).
+During a long journal load, Windows can show an unresponsive game window. The [verified restart](../Docs/Testing/native-windows-restart.json) checked the restored revision and a responsive window after engine startup.
+For the 151,102-file playtest journal, a partial previous scan and a concurrent read-only warmup preceded a 115-second load. Ten workers read the later half of the existing files. Unreal performed its normal full validation. The [observer evidence](../Docs/Testing/native-rts-observer.json) records both operations. Cold-load timing can differ.
 Commands below describe the retained browser/Electron reference, not the native runtime.
 
 ## Existing commands

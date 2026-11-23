@@ -5,12 +5,24 @@
 Current controls supersede the historical refinement below: both battleship drags orbit; shuttles use left steering and right orbit.
 Walking supports mouse lock with drag/keyboard fallbacks. See [current architecture](architecture.md) for the active input rules.
 
+## Native playtest decision, 2026-11-22
+
+The owner wants the ship and space clear by default. Open one command panel on demand. Health, orders, hints and buttons belong inside it.
+Any future always-visible indicator needs a specific player need. Windows uses **H** in flight and on the bridge.
+Touch uses two fingers to reveal the controls and **Hide menu** to dismiss them. [Native play controls](../native/Aquila/README.md#play).
+
+## Native observer decision, 2026-11-22
+
+The main view is an RTS observer. The player can look around space independently while the flagship navigates and fights automatically. Clicking a visible ship opts into following it. Panning or clicking empty space returns to free observation. The first-person bridge remains aboard Resolute. In the Windows prototype, ship orders always address Resolute through the command panel. [Native controls](../native/Aquila/README.md#play).
+
+For fleet play, the owner wants to jump between a traveling ship and an inhabited planet. Looking home gives access to what that world can build while the ship continues its orders. [Homeworld and fleet exploration](game-direction.md#homeworld-and-fleet-exploration).
+
 ## Owner's reference
 
 The owner described the Robinhood project's newest direction: the main website is a Three.js application,
 with transparent glass-like interface elements layered over that application. They asked us to inspect that approach.
 The reference request itself supplied no implementation authority. The later "Yep, let's do that" authorizes the Aquila adaptation.
-The game direction retains free movement in three dimensions and a follow-behind default camera.
+The browser reference used a follow-behind default camera. The native observer decision above supersedes that default for the game.
 
 ## Observed reference source
 

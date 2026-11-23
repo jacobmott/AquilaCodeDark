@@ -1,0 +1,60 @@
+{
+  "report_round": 107,
+  "checked_at_utc": "2026-11-22T21:49:52.756712+00:00",
+  "engine": "Epic launcher Unreal 5.8.4 CL 58902052",
+  "runtime_sha256": "06527ac93f6f9dfd40a972e3b6cc4c40f034b186c352a16e8e054d0342026a17",
+  "local_log": ".runtime/expedition-windows-r107/20261122T213549Z/owner-playtest.log",
+  "campaign_directory": ".runtime/expedition-windows-r101/20261119T020630Z/Campaign",
+  "journal_before_launch": {
+    "count": 151061,
+    "latest": 151061,
+    "sha256": "da28d94625289c066712dc97cb085214d4b7998598b6614ada3d3157d6022116"
+  },
+  "restored_revision": 151061,
+  "ready_utc": "2026-11-22T21:49:03.955000+00:00",
+  "map_load_seconds": 791.66,
+  "normal_windowed_launch": true,
+  "programmatic_game_input": false,
+  "confirmed_windows": [
+    {
+      "utc": "2026-11-22T21:49:17.137286+00:00",
+      "pid": 74084,
+      "hwnd": 42207436,
+      "title": "Aquila (64-bit Development PCD3D_SM5)",
+      "visible": true,
+      "minimized": false,
+      "answers_window_messages": true
+    },
+    {
+      "utc": "2026-11-22T21:49:33.141327+00:00",
+      "pid": 74084,
+      "hwnd": 42207436,
+      "title": "Aquila (64-bit Development PCD3D_SM5)",
+      "visible": true,
+      "minimized": false,
+      "answers_window_messages": true
+    },
+    {
+      "utc": "2026-11-22T21:49:52.756712+00:00",
+      "pid": 74084,
+      "hwnd": 42207436,
+      "title": "Aquila (64-bit Development PCD3D_SM5)",
+      "visible": true,
+      "minimized": false,
+      "answers_window_messages": true
+    }
+  ],
+  "seconds_open_after_restore": 48.8,
+  "first_new_save": {
+    "sequence": 151062,
+    "sha256": "7450aa3fe4881aff8992cd07f72c92069e02019afbb5da746e70488f48b765e4",
+    "parent_matches_restored_revision": true
+  },
+  "saves_at_check": [
+    {
+      "revision": 151062,
+      "utc": "2026-11-22T21:49:34.260000+00:00"
+    }
+  ],
+  "scope": "Live packaged Windows game with the existing first expedition. Visibility and window responsiveness were checked after Unreal finished startup."
+}

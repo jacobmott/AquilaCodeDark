@@ -2,6 +2,7 @@
 #include "AquilaGameMode.h"
 #include "SAquilaMouseLook.h"
 #include "Camera/CameraComponent.h"
+#include "Components/InputComponent.h"
 #include "Components/StaticMeshComponent.h"
 #include "Components/InstancedStaticMeshComponent.h"
 #include "Components/DirectionalLightComponent.h"
@@ -9,6 +10,7 @@
 #include "Engine/GameViewportClient.h"
 #include "Engine/Engine.h"
 #include "Engine/World.h"
+#include "Framework/Application/SlateApplication.h"
 #include "GameFramework/PlayerController.h"
 #include "Materials/MaterialInstanceDynamic.h"
 #include "Widgets/SOverlay.h"
@@ -28,7 +30,6 @@
 
 namespace
 {
-constexpr double ExteriorScale = 0.1; // Render cm per simulation meter; bridge uses ordinary centimeters separately.
 const TCHAR* Cube = TEXT("/Engine/BasicShapes/Cube.Cube");
 const TCHAR* Sphere = TEXT("/Engine/BasicShapes/Sphere.Sphere");
 const FLinearColor Ink(0.78f, 0.9f, 1.f, 1.f);
@@ -58,11 +59,50 @@ bool AAquilaFlightPawn::CommandEnabled(int32 Id) const
     auto* G = Game();
     if (!G) return false;
     if (Id == 7 || Id == 8 || Id == 10) return true;
+    if (Id >= 13 && Id <= 16) return !bBridge;
     if (!G->bWritable) return false;
     if (Id == 4) return !G->Campaign.ExpeditionActive();
     if (Id == 11) return G->Campaign.CanExpeditionAction();
     if (Id == 12) return G->Campaign.CanUpgradePortTurret();
     return true;
+}
+
+void AAquilaFlightPawn::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
+{
+    Super::SetupPlayerInputComponent(PlayerInputComponent);
+    PlayerInputComponent->BindKey(EKeys::H, IE_Pressed, this, &AAquilaFlightPawn::ToggleCommands);
+    PlayerInputComponent->BindTouch(IE_Pressed, this, &AAquilaFlightPawn::BeginCameraTouch).bConsumeInput = false;
+    PlayerInputComponent->BindTouch(IE_Released, this, &AAquilaFlightPawn::EndCameraTouch).bConsumeInput = false;
+}
+
+void AAquilaFlightPawn::ToggleCommands()
+{
+    bCommandsVisible = !bCommandsVisible;
+    TouchWalk = FVector2D::ZeroVector;
+    bTouching = false;
+    UpdateCursor();
+    if (!bCommandsVisible && FSlateApplication::IsInitialized())
+        FSlateApplication::Get().SetUserFocusToGameViewport(0);
+}
+
+void AAquilaFlightPawn::UpdateCursor()
+{
+    if (auto* PC = Cast<APlayerController>(GetController()))
+        PC->bShowMouseCursor = bCommandsVisible || (!bBridge && !bTouchLayout);
+}
+
+void AAquilaFlightPawn::RunControl(int32 Id)
+{
+    if (Id == 7) ToggleBridge();
+    else if (Id == 10) ToggleCommands();
+    else if (Id == 13) Follow(EAquilaCameraTarget::Resolute);
+    else if (Id == 14)
+    {
+        if (CameraTarget != EAquilaCameraTarget::Free) ReleaseFollow();
+        else bTouchRotate = !bTouchRotate;
+    }
+    else if (Id == 15 || Id == 16) ZoomObserver(Id == 15 ? 1.f : -1.f);
+    else if (auto* G = Game()) G->Command(Id);
 }
 
 UStaticMeshComponent* AAquilaFlightPawn::Shape(USceneComponent* Parent, const TCHAR* MeshPath, FVector Position, FVector Size, int32 Material)
@@ -71,7 +111,14 @@ UStaticMeshComponent* AAquilaFlightPawn::Shape(USceneComponent* Parent, const TC
     Mesh->SetupAttachment(Parent);
     Mesh->SetStaticMesh(LoadObject<UStaticMesh>(nullptr, MeshPath));
     Mesh->SetMaterial(0, Materials[Material]);
-    Mesh->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+    if (Parent == ShipRoot || Parent == EnemyRoot)
+    {
+        Mesh->SetCollisionResponseToAllChannels(ECR_Ignore);
+        Mesh->SetCollisionResponseToChannel(ECC_Visibility, ECR_Overlap);
+        Mesh->SetGenerateOverlapEvents(false);
+        Mesh->SetCollisionEnabled(ECollisionEnabled::QueryOnly);
+    }
+    else Mesh->SetCollisionEnabled(ECollisionEnabled::NoCollision);
     Mesh->SetCastShadow(false);
     Mesh->RegisterComponent();
     Mesh->SetRelativeLocation(Position);
@@ -162,6 +209,9 @@ void AAquilaFlightPawn::BeginPlay()
         Piece->SetRelativeRotation(FRotator(Debris.FRandRange(0,180),Debris.FRandRange(0,180),30));
     }
     Planet = Shape(RootComponent, Sphere, FVector(18000,0,-3000), FVector(12000), 6);
+    Planet->SetCollisionResponseToAllChannels(ECR_Ignore);
+    Planet->SetCollisionResponseToChannel(ECC_Visibility, ECR_Block);
+    Planet->SetCollisionEnabled(ECollisionEnabled::QueryOnly);
     if (auto* Surface = LoadObject<UMaterialInterface>(nullptr, TEXT("/Game/Foundation/M_Planet.M_Planet"))) Planet->SetMaterial(0,Surface);
     FriendlyRounds = Instances(3);
     HostileRounds = Instances(4);
@@ -185,7 +235,6 @@ void AAquilaFlightPawn::BeginPlay()
     }
     if (auto* PC = Cast<APlayerController>(GetController()))
     {
-        PC->bShowMouseCursor = true;
         PC->bEnableTouchEvents = true;
         FInputModeGameAndUI Input;
         Input.SetHideCursorDuringCapture(false);
@@ -199,30 +248,17 @@ void AAquilaFlightPawn::BeginPlay()
         bBridge = Demo == TEXT("bridge");
         if (Demo == TEXT("combat") && Game()) Game()->Command(4);
     }
+    UpdateCursor();
+    UpdateCamera(0);
     RenderCampaign();
 }
 
 void AAquilaFlightPawn::ToggleBridge()
 {
+    TouchWalk = FVector2D::ZeroVector;
+    bTouching = false;
     bBridge = !bBridge;
-    if (Game()) Game()->Save();
-}
-
-void AAquilaFlightPawn::DragDesktopCamera(FVector2D Delta)
-{
-    constexpr float YawPerCount = 0.375f;
-    constexpr float PitchPerCount = 0.3f;
-    if (bBridge)
-    {
-        BridgeYaw = FRotator::NormalizeAxis(BridgeYaw + Delta.X * YawPerCount);
-        BridgePitch = FMath::Clamp(BridgePitch - float(Delta.Y) * PitchPerCount, -60.f, 60.f);
-    }
-    else
-    {
-        OrbitYaw = FRotator::NormalizeAxis(OrbitYaw + Delta.X * YawPerCount);
-        OrbitPitch = FMath::Clamp(OrbitPitch + float(Delta.Y) * PitchPerCount, -60.f, 75.f);
-        RecenterDelay = 0.65f;
-    }
+    UpdateCursor();
 }
 
 void AAquilaFlightPawn::RenderCampaign()
@@ -230,28 +266,31 @@ void AAquilaFlightPawn::RenderCampaign()
     auto* G = Game();
     if (!G) return;
     const auto& C = G->Campaign;
+    const FVector Origin = bBridge ? C.ShipPosition : ObserverFocus;
     SignalRoot->SetVisibility(C.ExpeditionActive(),true);
-    SignalRoot->SetRelativeLocation(((C.Expedition == EAquilaExpedition::Salvage ? C.EnemyPosition : C.SignalPosition) - C.ShipPosition) * ExteriorScale);
+    SignalRoot->SetRelativeLocation(((C.Expedition == EAquilaExpedition::Salvage ? C.EnemyPosition : C.SignalPosition) - Origin) * ExteriorScale);
     ShipRoot->SetVisibility(!bBridge, true);
+    ShipRoot->SetRelativeLocation((C.ShipPosition - Origin) * ExteriorScale);
     PortUpgradeGlow->SetVisibility(C.PortTurretLevel > 0 && !bBridge);
     RoomRoot->SetVisibility(bBridge, true);
     EnemyRoot->SetVisibility(C.bBattle && C.EnemyHull > 0, true);
     ShipRoot->SetRelativeRotation(FRotator(0, FMath::RadiansToDegrees(C.Heading), 0));
-    EnemyRoot->SetRelativeLocation((C.EnemyPosition - C.ShipPosition) * ExteriorScale);
+    EnemyRoot->SetRelativeLocation((C.EnemyPosition - Origin) * ExteriorScale);
     EnemyRoot->SetRelativeRotation(FRotator(0, 180, 0));
-    Planet->SetRelativeLocation((FVector(180000,0,-30000) - C.ShipPosition) * ExteriorScale);
+    Planet->SetRelativeLocation((FVector(180000,0,-30000) - Origin) * ExteriorScale);
+    Stars->SetRelativeLocation(Camera->GetRelativeLocation());
     FriendlyRounds->ClearInstances();
     HostileRounds->ClearInstances();
     Impacts->ClearInstances();
     for (const auto& R : C.Rounds)
     {
-        const FTransform Transform(R.Velocity.Rotation(), (R.Position - C.ShipPosition) * ExteriorScale, FVector(0.6,0.055,0.055));
+        const FTransform Transform(R.Velocity.Rotation(), (R.Position - Origin) * ExteriorScale, FVector(0.6,0.055,0.055));
         (R.bEnemy ? HostileRounds : FriendlyRounds)->AddInstance(Transform);
     }
     for (const auto& Hit : C.Impacts)
     {
         const double Size = (Hit.bShield ? 1.5 : 0.5) * (1 + Hit.Age * 4);
-        Impacts->AddInstance(FTransform(FRotator::ZeroRotator, (Hit.Position - C.ShipPosition) * ExteriorScale, FVector(Size,Size,0.12)));
+        Impacts->AddInstance(FTransform(FRotator::ZeroRotator, (Hit.Position - Origin) * ExteriorScale, FVector(Size,Size,0.12)));
     }
 }
 
@@ -261,91 +300,43 @@ void AAquilaFlightPawn::Tick(float Seconds)
     auto* G = Game();
     auto* PC = Cast<APlayerController>(GetController());
     if (!G || !PC) return;
+    // A restored campaign can arrive after the pawn's BeginPlay. Seed the observer only from the ready world.
+    if (!bObserverPlaced && G->HasActorBegunPlay())
+    {
+        ObserverFocus = G->Campaign.ShipPosition;
+        OrbitYaw = FRotator::NormalizeAxis(32.f + FMath::RadiansToDegrees(G->Campaign.Heading));
+        bObserverPlaced = true;
+    }
     AliveTime += Seconds;
     if (PC->WasInputKeyJustPressed(EKeys::Escape)) G->Command(8);
     if (PC->WasInputKeyJustPressed(EKeys::C)) ToggleBridge();
     if (PC->WasInputKeyJustPressed(EKeys::E) && CommandEnabled(11)) G->Command(11);
     if (PC->WasInputKeyJustPressed(EKeys::U) && CommandEnabled(12)) G->Command(12);
-    float DX = 0, DY = 0;
-    bool bHeld = false;
-    if (bTouchLayout)
+    if (bTouchLayout) UpdateTouchCamera(PC);
+    if (PC->WasInputKeyJustPressed(EKeys::Home) && !bBridge) Follow(EAquilaCameraTarget::Resolute);
+    const double Forward = int32(PC->IsInputKeyDown(EKeys::W)) - int32(PC->IsInputKeyDown(EKeys::S));
+    const double Side = int32(PC->IsInputKeyDown(EKeys::D)) - int32(PC->IsInputKeyDown(EKeys::A));
+    if (!bBridge)
     {
-        PC->GetInputMouseDelta(DX, DY);
-        bHeld = PC->IsInputKeyDown(EKeys::RightMouseButton) || PC->IsInputKeyDown(EKeys::LeftMouseButton);
+        const double Up = int32(PC->IsInputKeyDown(EKeys::R)) - int32(PC->IsInputKeyDown(EKeys::F));
+        const double Speed = PC->IsInputKeyDown(EKeys::LeftShift) || PC->IsInputKeyDown(EKeys::RightShift) ? 4.0 : 1.0;
+        PanObserver(FVector(Forward, Side, Up).GetClampedToMaxSize(1), OrbitDistance * 0.8 * Speed * FMath::Min(Seconds, 0.1f));
     }
-    float TX, TY;
-    bool bTouch;
-    PC->GetInputTouchState(ETouchIndex::Touch1, TX, TY, bTouch);
-    int32 Width, Height;
-    PC->GetViewportSize(Width, Height);
-    // Use the actual phone panel bounds: opening a larger menu must not turn its buttons into camera drags.
-    bool bCameraArea = TY > Height * 0.2 && TY < Height * 0.68 && TX > Width * 0.25;
-    if (bTouchLayout && Overlay && Width > 0 && Height > 0)
+    else if (!G->bPaused)
     {
-        const FGeometry& Geometry = Overlay->GetCachedGeometry();
-        const FVector2D Point = Geometry.LocalToAbsolute(FVector2D(TX / Width, TY / Height) * Geometry.GetLocalSize());
-        bCameraArea = true;
-        for (const auto& Region : TouchUIRegions)
-            if (Region->GetVisibility().IsVisible() && Region->GetCachedGeometry().IsUnderLocation(Point)) bCameraArea = false;
-        if (bTouch) bHeld = false;
-    }
-    if (bTouch && bCameraArea)
-    {
-        if (bTouching) { DX = TX - LastTouch.X; DY = TY - LastTouch.Y; }
-        LastTouch = FVector2D(TX,TY);
-        bHeld = true;
-    }
-    bTouching = bTouch && bCameraArea;
-    if (G->bPaused) TouchWalk = FVector2D::ZeroVector;
-    if (!G->bPaused)
-    {
-        // Touch samples report absolute positions. Ignore jumps when the finger reconnects.
-        if (bHeld && FMath::Abs(DX) < 100 && FMath::Abs(DY) < 100)
+        const FRotator Heading(0,BridgeYaw,0);
+        FVector Movement = Heading.RotateVector(FVector(Forward + TouchWalk.X, Side + TouchWalk.Y, 0)).GetClampedToMaxSize(1);
+        const FVector Proposed = Eye + Movement * 500 * FMath::Min(Seconds, 0.05f);
+        const bool bConsole = FMath::Abs(Proposed.X - 250) < 240 && FMath::Abs(FMath::Abs(Proposed.Y) - 460) < 130;
+        const bool bChair = FMath::Abs(Proposed.X + 400) < 150 && FMath::Abs(Proposed.Y) < 140;
+        if (!bConsole && !bChair)
         {
-            if (bBridge)
-            {
-                BridgeYaw += DX * 0.17;
-                BridgePitch = FMath::Clamp(BridgePitch - DY * 0.17f, -60.f, 60.f);
-            }
-            else
-            {
-                OrbitYaw += DX * 0.2;
-                OrbitPitch = FMath::Clamp(OrbitPitch + DY * 0.17f, -60.f, 75.f);
-            }
-        }
-        if (MouseLook && MouseLook->IsDragging())
-            RecenterDelay = 0.65f;
-        else if (RecenterDelay > 0)
-            RecenterDelay = FMath::Max(0.f, RecenterDelay - Seconds);
-        else if (!bHeld && !bBridge)
-        {
-            OrbitYaw = 20.f + FMath::FInterpTo(FMath::FindDeltaAngleDegrees(20.f, OrbitYaw), 0.f, Seconds, 3.f);
-            OrbitPitch = FMath::FInterpTo(OrbitPitch, 23.f, Seconds, 3.f);
-        }
-        if (bBridge)
-        {
-            const double Forward = (PC->IsInputKeyDown(EKeys::W) ? 1 : 0) - (PC->IsInputKeyDown(EKeys::S) ? 1 : 0) + TouchWalk.X;
-            const double Side = (PC->IsInputKeyDown(EKeys::D) ? 1 : 0) - (PC->IsInputKeyDown(EKeys::A) ? 1 : 0) + TouchWalk.Y;
-            const FRotator Heading(0,BridgeYaw,0);
-            FVector Movement = Heading.RotateVector(FVector(Forward,Side,0)).GetClampedToMaxSize(1);
-            const FVector Proposed = Eye + Movement * 500 * FMath::Min(Seconds, 0.05f);
-            const bool bConsole = FMath::Abs(Proposed.X - 250) < 240 && FMath::Abs(FMath::Abs(Proposed.Y) - 460) < 130;
-            const bool bChair = FMath::Abs(Proposed.X + 400) < 150 && FMath::Abs(Proposed.Y) < 140;
-            if (!bConsole && !bChair)
-            {
-                Eye.X = FMath::Clamp(Proposed.X, -1030.0, 870.0);
-                Eye.Y = FMath::Clamp(Proposed.Y, -770.0, 770.0);
-            }
+            Eye.X = FMath::Clamp(Proposed.X, -1030.0, 870.0);
+            Eye.Y = FMath::Clamp(Proposed.Y, -770.0, 770.0);
         }
     }
-    // The entry map may offset the pawn at spawn. Keep camera and scene in the same local frame.
-    if (bBridge) Camera->SetRelativeLocationAndRotation(Eye, FRotator(BridgePitch,BridgeYaw,0));
-    else
-    {
-        const double Yaw = FMath::RadiansToDegrees(G->Campaign.Heading) + OrbitYaw;
-        const FVector Offset = FRotator(-OrbitPitch,Yaw,0).RotateVector(FVector(-2200,0,0));
-        Camera->SetRelativeLocationAndRotation(Offset, (-Offset).Rotation());
-    }
+    else TouchWalk = FVector2D::ZeroVector;
+    UpdateCamera(Seconds);
     RenderCampaign();
     FString Capture;
     if (!bCaptured && AliveTime > 12 && FParse::Value(FCommandLine::Get(), TEXT("AquilaCapture="), Capture))
@@ -362,117 +353,144 @@ void AAquilaFlightPawn::BuildOverlay()
     if (!GEngine || !GEngine->GameViewport) return;
     bTouchLayout = PLATFORM_ANDROID || PLATFORM_IOS || FParse::Param(FCommandLine::Get(), TEXT("AquilaTouchUI"));
     if (bTouchLayout) { BuildTouchOverlay(); return; }
-    auto Text = [](TAttribute<FText> Value, int32 Size)
+    auto Text = [](TAttribute<FText> Value, int32 Size, FName Weight = "Regular")
     {
-        return SNew(STextBlock).Text(Value).Font(FCoreStyle::GetDefaultFontStyle("Regular", Size))
-            .ColorAndOpacity(Ink).ShadowOffset(FVector2D(1,1)).ShadowColorAndOpacity(FLinearColor(0,0,0,0.9f));
+        return SNew(STextBlock).Text(Value).Font(FCoreStyle::GetDefaultFontStyle(Weight, Size))
+            .ColorAndOpacity(Ink).AutoWrapText(true);
     };
-    auto Button = [this,Text](const TCHAR* Label, int32 Id)
+    auto Heading = [](const FText& Value)
     {
-        return SNew(SButton).ButtonColorAndOpacity(FLinearColor(0.06f,0.15f,0.22f,0.32f)).ContentPadding(FMargin(18,12))
-            .IsEnabled_Lambda([this,Id]() { return CommandEnabled(Id); })
-            .OnClicked_Lambda([this,Id]() { if (Id == 7) ToggleBridge(); else if (Game()) Game()->Command(Id); return FReply::Handled(); })
-            [Text(FText::FromString(Label),16)];
+        return SNew(STextBlock).Text(Value).Font(FCoreStyle::GetDefaultFontStyle("Bold", 16))
+            .ColorAndOpacity(FLinearColor(0.39f, 0.81f, 0.87f));
     };
-    auto Commands = SNew(SHorizontalBox);
-    auto Helm = SNew(SVerticalBox);
-    Helm->AddSlot().AutoHeight().Padding(0,0,0,10)[Text(FText::FromString(TEXT("01   NAVIGATION")),12)];
-    auto HelmRow = SNew(SHorizontalBox);
-    HelmRow->AddSlot().AutoWidth().Padding(0,0,6,0)[Button(TEXT("Hold"),0)];
-    HelmRow->AddSlot().AutoWidth().Padding(0,0,6,0)[Button(TEXT("Approach Vesper"),1)];
-    HelmRow->AddSlot().AutoWidth()[Button(TEXT("Keep range"),2)];
-    Helm->AddSlot().AutoHeight()[HelmRow];
-    Helm->AddSlot().AutoHeight().Padding(0,6,0,0)[Button(TEXT("Withdraw"),3)];
-    auto Tactical = SNew(SVerticalBox);
-    Tactical->AddSlot().AutoHeight().Padding(0,0,0,10)[Text(FText::FromString(TEXT("02   TACTICAL")),12)];
-    auto BattleRow = SNew(SHorizontalBox);
-    BattleRow->AddSlot().AutoWidth().Padding(0,0,6,0)[Button(TEXT("Start / reset practice"),4)];
-    BattleRow->AddSlot().AutoWidth()[Button(TEXT("Auto / hold fire"),5)];
-    Tactical->AddSlot().AutoHeight()[BattleRow];
-    Tactical->AddSlot().AutoHeight().Padding(0,6,0,0)[Button(TEXT("Standard / piercing rounds"),6)];
-    auto View = SNew(SVerticalBox);
-    View->AddSlot().AutoHeight().Padding(0,0,0,10)[Text(FText::FromString(TEXT("03   COMMAND")),12)];
-    auto ViewRow = SNew(SHorizontalBox);
-    ViewRow->AddSlot().AutoWidth().Padding(0,0,6,0)[Button(TEXT("Bridge / exterior"),7)];
-    ViewRow->AddSlot().AutoWidth()[Button(TEXT("Pause / resume"),8)];
-    View->AddSlot().AutoHeight()[ViewRow];
-    View->AddSlot().AutoHeight().Padding(0,6,0,0)[Button(TEXT("Save voyage"),9)];
-    Commands->AddSlot().FillWidth(1).Padding(0,0,24,0)[Helm];
-    Commands->AddSlot().FillWidth(1).Padding(0,0,24,0)[Tactical];
-    Commands->AddSlot().FillWidth(1)[View];
-    auto Content = SNew(SOverlay).Visibility(EVisibility::SelfHitTestInvisible)
-    + SOverlay::Slot().HAlign(HAlign_Left).VAlign(VAlign_Top).Padding(48,30)
-    [SNew(SVerticalBox)
-        + SVerticalBox::Slot().AutoHeight()[Text(FText::FromString(TEXT("A Q U I L A")),30)]
-        + SVerticalBox::Slot().AutoHeight().Padding(0,9)[Text(FText::FromString(TEXT("RESOLUTE  /  RESEARCH BATTLESHIP")),13)]
+    auto Button = [this](TAttribute<FText> Label, int32 Id)
+    {
+        return SNew(SButton).HAlign(HAlign_Center).VAlign(VAlign_Center).ContentPadding(FMargin(12, 7))
+            .ButtonColorAndOpacity(FLinearColor(0.12f, 0.23f, 0.31f))
+            .IsEnabled_Lambda([this, Id]() { return CommandEnabled(Id); })
+            .OnClicked_Lambda([this, Id]() { RunControl(Id); return FReply::Handled(); })
+            [SNew(STextBlock).Text(Label).Font(FCoreStyle::GetDefaultFontStyle("Regular", 15)).ColorAndOpacity(Ink)];
+    };
+
+    auto Expedition = SNew(SVerticalBox)
+        + SVerticalBox::Slot().AutoHeight()[Heading(INVTEXT("Expedition"))]
+        + SVerticalBox::Slot().AutoHeight().Padding(0, 6)[Text(TAttribute<FText>::CreateLambda([this]() {
+            const auto* G = Game();
+            if (!G) return FText::GetEmpty();
+            if (G->Campaign.Expedition == EAquilaExpedition::Battle) return INVTEXT("Secure the signal.");
+            return FText::FromString(G->Campaign.ExpeditionStatus());
+        }), 17)]
         + SVerticalBox::Slot().AutoHeight()[Text(TAttribute<FText>::CreateLambda([this]() {
-            auto* G = Game(); if (!G) return FText::GetEmpty();
-            return FText::FromString(FString::Printf(TEXT("SHIELD %03.0f    HULL %03.0f    %s"),G->Campaign.Shield,G->Campaign.Hull,G->bPaused?TEXT("PAUSED"):TEXT("AUTO HELM")));
-        }),18)]
-        + SVerticalBox::Slot().AutoHeight().Padding(0,6)[Text(TAttribute<FText>::CreateLambda([this]() {
-            if (!Game()) return FText::GetEmpty(); const auto& C=Game()->Campaign;
-            return FText::FromString(C.OrderStatus());
-        }),13)]]
-    + SOverlay::Slot().HAlign(HAlign_Right).VAlign(VAlign_Top).Padding(48,35)
-    [SNew(SBox).WidthOverride(620)[SNew(SVerticalBox)
-        + SVerticalBox::Slot().AutoHeight()[Text(FText::FromString(TEXT("VESPER ECHO  /  EXPEDITION")),19)]
-        + SVerticalBox::Slot().AutoHeight().Padding(0,12)[SNew(STextBlock)
-            .Text_Lambda([this]() { return FText::FromString(Game() ? Game()->Campaign.ExpeditionStatus() : TEXT("")); })
-            .Font(FCoreStyle::GetDefaultFontStyle("Bold",16)).AutoWrapText(true).ColorAndOpacity(Ink)
-            .ShadowOffset(FVector2D(1,1)).ShadowColorAndOpacity(FLinearColor::Black)]
-        + SVerticalBox::Slot().AutoHeight().Padding(0,0,0,10)[Text(TAttribute<FText>::CreateLambda([this]() {
-            return FText::FromString(Game() ? Game()->Campaign.UpgradeStatus() : TEXT(""));
-        }),14)]
+            return FText::FromString(Game() ? Game()->Campaign.UpgradeStatus() : FString());
+        }), 14)]
+        + SVerticalBox::Slot().AutoHeight().Padding(0, 10, 0, 0)[SNew(SHorizontalBox)
+            + SHorizontalBox::Slot().FillWidth(1).Padding(0, 0, 6, 0)[Button(TAttribute<FText>::CreateLambda([this]() {
+                return FText::FromString(Game() ? Game()->Campaign.ExpeditionActionLabel() : FString());
+            }), 11)]
+            + SHorizontalBox::Slot().FillWidth(1)[Button(INVTEXT("Refit port turret / 100"), 12)]];
+    auto Helm = SNew(SVerticalBox)
+        + SVerticalBox::Slot().AutoHeight()[Heading(INVTEXT("Navigation"))]
+        + SVerticalBox::Slot().AutoHeight().Padding(0, 6, 0, 10)[Text(TAttribute<FText>::CreateLambda([this]() {
+            return FText::FromString(Game() ? Game()->Campaign.OrderStatus() : FString());
+        }), 15)]
         + SVerticalBox::Slot().AutoHeight()[SNew(SHorizontalBox)
-            + SHorizontalBox::Slot().FillWidth(1).Padding(0,0,8,0)[SNew(SButton)
-                .ButtonColorAndOpacity(FLinearColor(0.06f,0.3f,0.38f,0.28f)).ContentPadding(FMargin(18,12))
-                .IsEnabled_Lambda([this]() { return CommandEnabled(11); })
-                .OnClicked_Lambda([this]() { if (Game()) Game()->Command(11); return FReply::Handled(); })
-                [Text(TAttribute<FText>::CreateLambda([this]() {
-                    return FText::FromString(Game() ? Game()->Campaign.ExpeditionActionLabel() : TEXT(""));
-                }),16)]]
-            + SHorizontalBox::Slot().AutoWidth()[Button(TEXT("Refit port turret / 100"),12)]]
-        + SVerticalBox::Slot().AutoHeight().Padding(0,10)[Text(TAttribute<FText>::CreateLambda([this]() {
-            if (MouseLook && MouseLook->IsDragging())
-                return FText::FromString(bBridge ? TEXT("Looking around  |  Release to use the controls")
-                                                 : TEXT("Orbiting  |  Release to return behind the ship"));
-            return FText::FromString(TEXT("Hold either mouse button over space and drag"));
-        }),15)]
-        + SVerticalBox::Slot().AutoHeight()[Text(FText::FromString(TEXT("E: expedition order   U: refit   C: bridge   Esc: pause / resume")),12)]]]
-    + SOverlay::Slot().HAlign(HAlign_Center).VAlign(VAlign_Bottom).Padding(0,24)
-    [SNew(SBox).WidthOverride(1536).Visibility(EVisibility::SelfHitTestInvisible)
-    [SNew(SBorder).Visibility(EVisibility::SelfHitTestInvisible).BorderImage(FCoreStyle::Get().GetBrush("WhiteBrush"))
-        .BorderBackgroundColor(FLinearColor(0.015f,0.035f,0.065f,0.16f)).Padding(18)
-        [SNew(SVerticalBox)
-        + SVerticalBox::Slot().AutoHeight().Padding(0,0,0,8)[Text(TAttribute<FText>::CreateLambda([this]() {
-            return FText::FromString(Game() ? Game()->Campaign.CombatStatus() : TEXT("INITIALIZING"));
-        }),14)]
-        + SVerticalBox::Slot().AutoHeight().Padding(0,0,0,14)[Text(TAttribute<FText>::CreateLambda([this]() {
-            if (!Game()) return FText::GetEmpty(); const auto& C=Game()->Campaign;
-            return FText::FromString(FString::Printf(TEXT("%s  |  SENTINEL SHIELD %.0f / HULL %.0f  |  %d ROUNDS IN FLIGHT"),C.bPiercing?TEXT("PIERCING"):TEXT("STANDARD"),C.EnemyShield,C.EnemyHull,C.Rounds.Num()));
-        }),12)]
-        + SVerticalBox::Slot().AutoHeight()[Commands]
-        + SVerticalBox::Slot().AutoHeight().Padding(0,15,0,0)[Text(TAttribute<FText>::CreateLambda([this]() {
-            return FText::FromString(Game() ? Game()->SaveStatus : TEXT(""));
-        }),11)]]]];
-    auto Pad = SNew(SHorizontalBox);
-    const TCHAR* Labels[] = {TEXT("Forward"),TEXT("Back"),TEXT("Left"),TEXT("Right")};
-    const FVector2D Directions[] = {FVector2D(1,0),FVector2D(-1,0),FVector2D(0,-1),FVector2D(0,1)};
-    for (int32 I=0; I<4; ++I)
+            + SHorizontalBox::Slot().FillWidth(1).Padding(0, 0, 6, 0)[Button(INVTEXT("Hold"), 0)]
+            + SHorizontalBox::Slot().FillWidth(1)[Button(INVTEXT("Approach Vesper"), 1)]]
+        + SVerticalBox::Slot().AutoHeight().Padding(0, 5, 0, 0)[SNew(SHorizontalBox)
+            + SHorizontalBox::Slot().FillWidth(1).Padding(0, 0, 6, 0)[Button(INVTEXT("Keep range"), 2)]
+            + SHorizontalBox::Slot().FillWidth(1)[Button(INVTEXT("Withdraw"), 3)]];
+    auto Tactical = SNew(SVerticalBox)
+        + SVerticalBox::Slot().AutoHeight()[Heading(INVTEXT("Tactical"))]
+        + SVerticalBox::Slot().AutoHeight().Padding(0, 6)[Text(TAttribute<FText>::CreateLambda([this]() {
+            return FText::FromString(Game() ? Game()->Campaign.CombatStatus() : FString());
+        }), 17)]
+        + SVerticalBox::Slot().AutoHeight()[Text(TAttribute<FText>::CreateLambda([this]() {
+            const auto* G = Game();
+            if (!G) return FText::GetEmpty();
+            const auto& C = G->Campaign;
+            const TCHAR* Ammo = C.bPiercing ? TEXT("Piercing rounds") : TEXT("Standard rounds");
+            if (!C.bBattle) return FText::FromString(Ammo);
+            return FText::FromString(FString::Printf(TEXT("%s  |  Sentinel shield %.0f / hull %.0f  |  %d in flight"),
+                Ammo, C.EnemyShield, C.EnemyHull, C.Rounds.Num()));
+        }), 14)]
+        + SVerticalBox::Slot().AutoHeight().Padding(0, 10, 0, 0)[SNew(SHorizontalBox)
+            + SHorizontalBox::Slot().FillWidth(1).Padding(0, 0, 6, 0)[Button(TAttribute<FText>::CreateLambda([this]() {
+                return Game() && Game()->Campaign.bBattle ? INVTEXT("Reset practice") : INVTEXT("Start practice");
+            }), 4)]
+            + SHorizontalBox::Slot().FillWidth(1)[Button(TAttribute<FText>::CreateLambda([this]() {
+                return Game() && Game()->Campaign.bHoldFire ? INVTEXT("Resume fire") : INVTEXT("Hold fire");
+            }), 5)]]
+        + SVerticalBox::Slot().AutoHeight().Padding(0, 5, 0, 0)[Button(TAttribute<FText>::CreateLambda([this]() {
+            return Game() && Game()->Campaign.bPiercing ? INVTEXT("Fit standard rounds") : INVTEXT("Fit piercing rounds");
+        }), 6)];
+    auto View = SNew(SVerticalBox)
+        + SVerticalBox::Slot().AutoHeight()[Heading(INVTEXT("Ship controls"))]
+        + SVerticalBox::Slot().AutoHeight().Padding(0, 8, 0, 0)[SNew(SHorizontalBox)
+            + SHorizontalBox::Slot().FillWidth(1).Padding(0, 0, 6, 0)[Button(TAttribute<FText>::CreateLambda([this]() {
+                return bBridge ? INVTEXT("Exterior view") : INVTEXT("Enter bridge");
+            }), 7)]
+            + SHorizontalBox::Slot().FillWidth(1)[Button(TAttribute<FText>::CreateLambda([this]() {
+                return Game() && Game()->bPaused ? INVTEXT("Resume") : INVTEXT("Pause");
+            }), 8)]]
+        + SVerticalBox::Slot().AutoHeight().Padding(0, 5, 0, 0)[SNew(SHorizontalBox)
+            + SHorizontalBox::Slot().FillWidth(1).Padding(0, 0, 6, 0)[Button(INVTEXT("Find Resolute"), 13)]
+            + SHorizontalBox::Slot().FillWidth(1)[Button(INVTEXT("Save voyage"), 9)]];
+
+    auto Walk = SNew(SHorizontalBox);
+    const TCHAR* Labels[] = {TEXT("Forward"), TEXT("Back"), TEXT("Left"), TEXT("Right")};
+    const FVector2D Directions[] = {FVector2D(1,0), FVector2D(-1,0), FVector2D(0,-1), FVector2D(0,1)};
+    for (int32 I = 0; I < 4; ++I)
     {
         const FVector2D Direction = Directions[I];
-        Pad->AddSlot().AutoWidth().Padding(3)[SNew(SButton).ContentPadding(FMargin(12,18))
-            .OnPressed_Lambda([this,Direction]() { TouchWalk = Direction; })
-            .OnReleased_Lambda([this]() { TouchWalk = FVector2D::ZeroVector; })[Text(FText::FromString(Labels[I]),14)]];
+        Walk->AddSlot().FillWidth(1).Padding(2, 0)[SNew(SButton).HAlign(HAlign_Center).ContentPadding(6)
+            .ButtonColorAndOpacity(FLinearColor(0.12f, 0.23f, 0.31f))
+            .OnPressed_Lambda([this, Direction]() { TouchWalk = Direction; })
+            .OnReleased_Lambda([this]() { TouchWalk = FVector2D::ZeroVector; })
+            [Text(FText::FromString(Labels[I]), 14)]];
     }
-    Content->AddSlot().HAlign(HAlign_Left).VAlign(VAlign_Center).Padding(48,0)
-        [SNew(SBox).Visibility_Lambda([this]() { return bBridge ? EVisibility::Visible : EVisibility::Collapsed; })[Pad]];
-    // A larger desktop reference canvas leaves more room for the ship at the same window size.
+    const FSlateBrush* Solid = FCoreStyle::Get().GetBrush("WhiteBrush");
+    auto Panel = SNew(SBorder).Visibility(EVisibility::Visible)
+        .BorderImage(Solid).BorderBackgroundColor(FLinearColor(0.12f, 0.37f, 0.43f)).Padding(1)
+        [SNew(SBorder).BorderImage(Solid).BorderBackgroundColor(FLinearColor(0.012f, 0.027f, 0.043f, 0.96f)).Padding(24)
+        [SNew(SVerticalBox)
+            + SVerticalBox::Slot().AutoHeight()[SNew(SHorizontalBox)
+                + SHorizontalBox::Slot().AutoWidth().VAlign(VAlign_Center)[Text(INVTEXT("Resolute"), 27, "Bold")]
+                + SHorizontalBox::Slot().FillWidth(1).VAlign(VAlign_Center).Padding(20, 0)[Text(TAttribute<FText>::CreateLambda([this]() {
+                    const auto* G = Game();
+                    if (!G) return FText::GetEmpty();
+                    return FText::FromString(FString::Printf(TEXT("Shield %.0f   Hull %.0f   |   %s"),
+                        G->Campaign.Shield, G->Campaign.Hull, G->bPaused ? TEXT("Paused") : TEXT("Auto helm")));
+                }), 16)]
+                + SHorizontalBox::Slot().AutoWidth().VAlign(VAlign_Center)[Button(INVTEXT("Hide   [H]"), 10)]]
+            + SVerticalBox::Slot().AutoHeight().Padding(0, 18, 0, 0)[SNew(SHorizontalBox)
+                + SHorizontalBox::Slot().FillWidth(1).Padding(0, 0, 16, 0)[SNew(SVerticalBox)
+                    + SVerticalBox::Slot().AutoHeight()[Expedition]
+                    + SVerticalBox::Slot().AutoHeight().Padding(0, 22, 0, 0)[Helm]]
+                + SHorizontalBox::Slot().FillWidth(1).Padding(16, 0, 0, 0)[SNew(SVerticalBox)
+                    + SVerticalBox::Slot().AutoHeight()[Tactical]
+                    + SVerticalBox::Slot().AutoHeight().Padding(0, 22, 0, 0)[View]]]
+            + SVerticalBox::Slot().AutoHeight()[SNew(SBox).Padding(0, 12, 0, 0)
+                .Visibility_Lambda([this]() { return bBridge ? EVisibility::Visible : EVisibility::Collapsed; })[Walk]]
+            + SVerticalBox::Slot().AutoHeight().Padding(0, 18, 0, 0)[Text(TAttribute<FText>::CreateLambda([this]() {
+                if (bBridge) return INVTEXT("Bridge   ·   WASD walk   ·   Drag to look   ·   C returns to the observer");
+                if (CameraTarget == EAquilaCameraTarget::Free)
+                    return INVTEXT("Free view   ·   WASD pan   ·   R / F rise or lower   ·   Drag to rotate   ·   Wheel zoom   ·   Click a ship to follow");
+                return FText::Format(INVTEXT("Following {0}   ·   Drag to orbit   ·   Wheel zoom   ·   Pan or click empty space to release"),
+                    CameraTarget == EAquilaCameraTarget::Resolute ? INVTEXT("Resolute") : INVTEXT("Sentinel"));
+            }), 14)]
+            + SVerticalBox::Slot().AutoHeight().Padding(0, 4, 0, 0)[Text(TAttribute<FText>::CreateLambda([this]() {
+                return FText::FromString(Game() ? Game()->SaveStatus : FString());
+            }), 13)]]];
+
+    // Only the panel collapses. Open space still receives orbit and bridge look across the viewport.
     Overlay = SNew(SOverlay).Visibility(EVisibility::SelfHitTestInvisible)
-        + SOverlay::Slot()[SAssignNew(MouseLook, SAquilaMouseLook).OnDrag_UObject(this, &AAquilaFlightPawn::DragDesktopCamera)]
-        + SOverlay::Slot()[SNew(SScaleBox).Visibility(EVisibility::SelfHitTestInvisible)
+        + SOverlay::Slot()[SAssignNew(MouseLook, SAquilaMouseLook).OnDrag_UObject(this, &AAquilaFlightPawn::DragDesktopCamera)
+            .OnPick_UObject(this, &AAquilaFlightPawn::PickShip).OnZoom_UObject(this, &AAquilaFlightPawn::ZoomObserver)]
+        + SOverlay::Slot()[SNew(SScaleBox)
+            .Visibility_Lambda([this]() { return bCommandsVisible ? EVisibility::SelfHitTestInvisible : EVisibility::Collapsed; })
             .Stretch(EStretch::ScaleToFit).HAlign(HAlign_Fill).VAlign(VAlign_Fill)
-            [SNew(SBox).Visibility(EVisibility::SelfHitTestInvisible).WidthOverride(2304).HeightOverride(1296)[Content]]];
+            [SNew(SBox).WidthOverride(1600).HeightOverride(900).Visibility(EVisibility::SelfHitTestInvisible)
+                .HAlign(HAlign_Center).VAlign(VAlign_Center)[SNew(SBox).WidthOverride(1080)[Panel]]]];
     GEngine->GameViewport->AddViewportWidgetContent(Overlay.ToSharedRef(), 10);
 }
 
@@ -491,9 +509,7 @@ void AAquilaFlightPawn::BuildTouchOverlay()
                 .ButtonColorAndOpacity(FLinearColor(0.09f,0.19f,0.26f,0.42f))
                 .IsEnabled_Lambda([this,Id]() { return CommandEnabled(Id); })
                 .OnClicked_Lambda([this,Id]() {
-                    if (Id == 7) { TouchWalk = FVector2D::ZeroVector; ToggleBridge(); }
-                    else if (Id == 10) bCommandsVisible = !bCommandsVisible;
-                    else if (Game()) Game()->Command(Id);
+                    RunControl(Id);
                     return FReply::Handled();
                 })[Text(Label,20)]];
     };
@@ -512,13 +528,11 @@ void AAquilaFlightPawn::BuildTouchOverlay()
         + SHorizontalBox::Slot().AutoWidth().Padding(0,0,8,0)[SNew(SBox).WidthOverride(144)[Button(TAttribute<FText>::CreateLambda([this]() {
             return FText::FromString(Game() && Game()->bPaused ? TEXT("Resume") : TEXT("Pause"));
         }),8)]]
-        + SHorizontalBox::Slot().AutoWidth()[SNew(SBox).WidthOverride(170)[Button(TAttribute<FText>::CreateLambda([this]() {
-            return FText::FromString(bCommandsVisible ? TEXT("Hide menu") : TEXT("Menu"));
-        }),10)]];
+        + SHorizontalBox::Slot().AutoWidth()[SNew(SBox).WidthOverride(170)[Button(Label(TEXT("Hide menu")),10)]];
 
     auto Tabs = SNew(SHorizontalBox);
-    const TCHAR* TabLabels[] = {TEXT("Navigation"),TEXT("Weapons"),TEXT("Expedition")};
-    for (int32 I=0; I<3; ++I)
+    const TCHAR* TabLabels[] = {TEXT("Navigation"),TEXT("Weapons"),TEXT("Expedition"),TEXT("Camera")};
+    for (int32 I=0; I<UE_ARRAY_COUNT(TabLabels); ++I)
         Tabs->AddSlot().FillWidth(1).Padding(I == 0 ? 0 : 6,0,0,0)
             [SNew(SBox).MinDesiredHeight(46)
                 [SNew(SButton).HAlign(HAlign_Center).VAlign(VAlign_Center).ContentPadding(FMargin(10,4))
@@ -544,12 +558,27 @@ void AAquilaFlightPawn::BuildTouchOverlay()
         }),11)]
         + SHorizontalBox::Slot().FillWidth(1.1f).Padding(6,0)[Button(Label(TEXT("Refit / 100")),12)]
         + SHorizontalBox::Slot().FillWidth(1)[Button(Label(TEXT("Save voyage")),9)];
+    auto CameraControls = SNew(SHorizontalBox)
+        + SHorizontalBox::Slot().FillWidth(1)[Button(Label(TEXT("Find Resolute")),13)]
+        + SHorizontalBox::Slot().FillWidth(1).Padding(6,0)[Button(TAttribute<FText>::CreateLambda([this]() {
+            if (CameraTarget != EAquilaCameraTarget::Free) return INVTEXT("Release");
+            return bTouchRotate ? INVTEXT("Pan view") : INVTEXT("Rotate view");
+        }),14)]
+        + SHorizontalBox::Slot().FillWidth(1).Padding(0,0,6,0)[Button(Label(TEXT("Zoom in")),15)]
+        + SHorizontalBox::Slot().FillWidth(1)[Button(Label(TEXT("Zoom out")),16)];
     auto Menu = SNew(SBorder).BorderImage(FCoreStyle::Get().GetBrush("WhiteBrush"))
-        .Visibility_Lambda([this]() { return bCommandsVisible ? EVisibility::Visible : EVisibility::Collapsed; })
         .BorderBackgroundColor(FLinearColor(0.015f,0.035f,0.065f,0.18f)).Padding(12)
         [SNew(SVerticalBox)
             + SVerticalBox::Slot().AutoHeight()[Text(TAttribute<FText>::CreateLambda([this]() {
                 if (!Game()) return FText::GetEmpty(); const auto& C = Game()->Campaign;
+                if (CommandTab == 3)
+                {
+                    if (bBridge) return INVTEXT("On the bridge. Drag to look around.");
+                    if (CameraTarget == EAquilaCameraTarget::Free)
+                        return bTouchRotate ? INVTEXT("Free view. Drag to rotate. Tap a ship to follow.")
+                                            : INVTEXT("Free view. Drag to pan. Tap a ship to follow.");
+                    return INVTEXT("Drag to orbit. Tap empty space to release.");
+                }
                 if (CommandTab == 2) return FText::FromString(C.ExpeditionStatus());
                 if (CommandTab == 1) return FText::FromString(FString::Printf(TEXT("%s  |  Target shield %.0f / hull %.0f"),
                     *C.CombatStatus(), C.EnemyShield, C.EnemyHull));
@@ -565,7 +594,8 @@ void AAquilaFlightPawn::BuildTouchOverlay()
             [SNew(SWidgetSwitcher).WidgetIndex_Lambda([this]() { return CommandTab; })
                 + SWidgetSwitcher::Slot()[Navigation]
                 + SWidgetSwitcher::Slot()[Weapons]
-                + SWidgetSwitcher::Slot()[Voyage]]
+                + SWidgetSwitcher::Slot()[Voyage]
+                + SWidgetSwitcher::Slot()[CameraControls]]
             + SVerticalBox::Slot().AutoHeight().Padding(0,6,0,0)[SNew(SBox)
                 .Visibility_Lambda([this]() { return CommandTab == 2 ? EVisibility::Visible : EVisibility::Collapsed; })
                 [Text(TAttribute<FText>::CreateLambda([this]() { return FText::FromString(Game() ? Game()->SaveStatus : TEXT("")); }),14)]]];
@@ -596,7 +626,9 @@ void AAquilaFlightPawn::BuildTouchOverlay()
         + SOverlay::Slot().HAlign(HAlign_Left).VAlign(VAlign_Top).Padding(24,104,0,0)[Walk];
     TouchUIRegions = {Top,Menu,Walk};
     // Phone layout has its own readable reference canvas; the desktop strip cannot be scaled down to fit a handset.
-    Overlay = SNew(SDPIScaler).DPIScale_Lambda([]() {
+    Overlay = SNew(SDPIScaler)
+        .Visibility_Lambda([this]() { return bCommandsVisible ? EVisibility::SelfHitTestInvisible : EVisibility::Collapsed; })
+        .DPIScale_Lambda([]() {
         FVector2D Size(960,480); if (GEngine && GEngine->GameViewport) GEngine->GameViewport->GetViewportSize(Size);
         return FMath::Max(0.5f,FMath::Min(static_cast<float>(Size.X/960),static_cast<float>(Size.Y/480)));
     })[SNew(SSafeZone)[Content]];

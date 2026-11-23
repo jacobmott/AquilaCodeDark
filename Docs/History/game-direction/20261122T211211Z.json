@@ -1,0 +1,8 @@
+{
+  "source": "Docs/Handoffs/HANDOFF_2026-11-15_game-direction.md",
+  "archive": "Docs/History/game-direction/20261122T211211Z.md",
+  "saved_at_utc": "2026-11-22T21:12:11.704576+00:00",
+  "bytes": 6873,
+  "sha256": "1def651c95ff3ef382740536fc7600b0f1b4c683d16a8a479d689ce7a1bceb69",
+  "reason": "Preserve the resumed expedition checkpoint before recording the owner's hidden-interface decision."
+}

@@ -10,7 +10,10 @@
 #include "Framework/Application/SlateUser.h"
 #include "GameFramework/PlayerController.h"
 #include "Input/HittestGrid.h"
+#include "InputKeyEventArgs.h"
 #include "Misc/AutomationTest.h"
+#include "Misc/CommandLine.h"
+#include "Misc/Parse.h"
 #include "Widgets/SViewport.h"
 #include "Widgets/SWindow.h"
 #include "Widgets/Text/STextBlock.h"
@@ -19,6 +22,7 @@ namespace
 {
 TSharedPtr<SWidget> FindText(const TSharedRef<SWidget>& Widget, const TCHAR* Label)
 {
+    if (!Widget->GetVisibility().IsVisible()) return nullptr;
     if (Widget->GetType() == TEXT("STextBlock") && StaticCastSharedRef<STextBlock>(Widget)->GetText().ToString() == Label)
         return Widget;
     if (FChildren* Children = Widget->GetChildren())
@@ -41,9 +45,10 @@ bool FAquilaDesktopCameraTest::RunTest(const FString& Parameters)
     auto* Mode = World ? World->GetAuthGameMode<AAquilaGameMode>() : nullptr;
     auto* Camera = Pawn ? Pawn->FindComponentByClass<UCameraComponent>() : nullptr;
     if (!TestTrue(TEXT("Live Aquila camera and campaign"), Camera && Mode)) return false;
+    const bool bExterior = Camera->GetRelativeLocation().Size() > 1500;
 
     const FGeometry View = Viewport->GetGameViewportWidget()->GetCachedGeometry();
-    const FVector2D Center = View.LocalToAbsolute(View.GetLocalSize() * 0.5f);
+    const FVector2D Center = View.LocalToAbsolute(View.GetLocalSize() * FVector2D(0.08, 0.5));
     FHittestGrid& Grid = Viewport->GetWindow()->GetHittestGrid();
     FSlateApplication& Slate = FSlateApplication::Get();
     const auto VirtualUser = Slate.FindOrCreateVirtualUser(0);
@@ -59,12 +64,33 @@ bool FAquilaDesktopCameraTest::RunTest(const FString& Parameters)
     const FWidgetPath Space = HitPath(Center);
     if (!TestTrue(TEXT("Open space routes to camera"), Space.IsValid() && Space.GetLastWidget()->GetType() == TEXT("SAquilaMouseLook"))) return false;
     const auto Surface = Space.GetLastWidget();
-    const auto PauseLabel = FindText(Viewport->GetWindow().ToSharedRef(), TEXT("Pause / resume"));
+    const FVector2D PanelCenter = View.LocalToAbsolute(View.GetLocalSize() * 0.5f);
+    const FWidgetPath AtStartup = HitPath(PanelCenter);
+    if (!TestTrue(TEXT("The panel starts hidden; exterior selection has a pointer"), AtStartup.IsValid() && AtStartup.GetLastWidget() == Surface && PC->bShowMouseCursor == bExterior)) return false;
+    const int32 StartRevision = Mode->Campaign.Sequence;
+    const bool bStartPaused = Mode->bPaused;
+    auto PressH = [&]()
+    {
+        PC->InputKey(FInputKeyEventArgs::CreateSimulated(EKeys::H, IE_Pressed, 1.f));
+        PC->PlayerTick(1.f / 60);
+        PC->InputKey(FInputKeyEventArgs::CreateSimulated(EKeys::H, IE_Released, 0.f));
+        PC->PlayerTick(1.f / 60);
+        Slate.ForceRedrawWindow(Viewport->GetWindow().ToSharedRef());
+    };
+    PressH();
+    const auto PauseLabel = FindText(Viewport->GetWindow().ToSharedRef(), bStartPaused ? TEXT("Resume") : TEXT("Pause"));
     if (!TestTrue(TEXT("Pause command present"), PauseLabel.IsValid())) return false;
     const FGeometry LabelGeometry = PauseLabel->GetCachedGeometry();
     const FVector2D OverButton = LabelGeometry.LocalToAbsolute(LabelGeometry.GetLocalSize() * 0.5f);
+    const FWidgetPath Shown = HitPath(OverButton);
+    if (!TestTrue(TEXT("H reveals a clickable command and pointer"), PC->bShowMouseCursor && Shown.IsValid() && Shown.GetLastWidget() != Surface)) return false;
+    PressH();
+    const FWidgetPath Hidden = HitPath(OverButton);
+    TestTrue(TEXT("H hides the command and returns its pixels to camera control"), PC->bShowMouseCursor == bExterior && Hidden.IsValid() && Hidden.GetLastWidget() == Surface);
+    PressH();
     const FWidgetPath Command = HitPath(OverButton);
-    if (!TestTrue(TEXT("Command reachable above camera"), Command.IsValid() && Command.GetLastWidget() != Surface)) return false;
+    if (!TestTrue(TEXT("A third H reopens the panel"), PC->bShowMouseCursor && Command.IsValid() && Command.GetLastWidget() != Surface)) return false;
+    TestTrue(TEXT("HUD toggles preserve pause and the save revision"), Mode->bPaused == bStartPaused && Mode->Campaign.Sequence == StartRevision);
 
     const TSet<FKey> Empty;
     const TSet<FKey> Left{EKeys::LeftMouseButton};
@@ -80,7 +106,6 @@ bool FAquilaDesktopCameraTest::RunTest(const FString& Parameters)
     TGuardValue<bool> RestorePause(Mode->bPaused, true);
     const FRotator Start = Camera->GetRelativeRotation();
     const double Radius = Camera->GetRelativeLocation().Size();
-    const bool bExterior = FMath::IsNearlyEqual(Radius, 2200., 1.);
     auto YawFromStart = [&]() { return FMath::FindDeltaAngleDegrees(Start.Yaw, Camera->GetRelativeRotation().Yaw); };
 
     const auto Down = Slate.RoutePointerDownEvent(Space, ButtonEvent(Center, EKeys::RightMouseButton, Right));
@@ -108,14 +133,85 @@ bool FAquilaDesktopCameraTest::RunTest(const FString& Parameters)
     Pawn->Tick(1.f / 60);
     TestTrue(TEXT("Lost capture ends the drag"), FMath::IsNearlyEqual(YawFromStart(), 90., 0.05));
     for (int32 Frame = 0; Frame < 180; ++Frame) Pawn->Tick(1.f / 60);
-    const double ExpectedYaw = bExterior ? 0. : 90.;
-    TestTrue(TEXT("Exterior recenters and bridge keeps its heading"), FMath::IsNearlyEqual(YawFromStart(), ExpectedYaw, 0.15));
+    TestTrue(TEXT("Free observer and bridge keep their heading"), FMath::IsNearlyEqual(YawFromStart(), 90., 0.15));
     TGuardValue<bool> SkipTestSave(Mode->bWritable, false);
     Move(Command, OverButton, FVector2D::ZeroVector, Empty);
     Slate.RoutePointerDownEvent(Command, ButtonEvent(OverButton, EKeys::LeftMouseButton, Left));
     Slate.RoutePointerUpEvent(Command, ButtonEvent(OverButton, EKeys::LeftMouseButton, Empty));
     TestTrue(TEXT("Clicking the command toggles pause after a drag"), Mode->bPaused);
+    TSharedPtr<SWidget> FocusButton;
+    for (int32 Index = 0; Index < Command.Widgets.Num(); ++Index)
+    {
+        const FArrangedWidget& Item = Command.Widgets[Index];
+        if (Item.Widget->GetType() == TEXT("SButton"))
+        {
+            FocusButton = Item.Widget;
+            break;
+        }
+    }
+    if (!TestTrue(TEXT("Command receives keyboard focus"), FocusButton && Slate.SetUserFocus(0, FocusButton, EFocusCause::Navigation))) return false;
+    const FKeyEvent H(EKeys::H, FModifierKeysState(), 0, false, 0, 0);
+    Slate.ProcessKeyDownEvent(H);
+    PC->PlayerTick(1.f / 60);
+    Slate.ProcessKeyUpEvent(H);
+    PC->PlayerTick(1.f / 60);
+    Slate.ForceRedrawWindow(Viewport->GetWindow().ToSharedRef());
+    const FWidgetPath AfterClick = HitPath(OverButton);
+    TestTrue(TEXT("H closes a focused command panel while paused"), PC->bShowMouseCursor == bExterior && AfterClick.IsValid() && AfterClick.GetLastWidget() == Surface);
     AddInfo(bExterior ? TEXT("Exterior camera exercised") : TEXT("Bridge camera exercised"));
+    return true;
+}
+
+IMPLEMENT_COMPLEX_AUTOMATION_TEST(FAquilaTouchMenuTest, "Aquila.Input.TouchMenu",
+    EAutomationTestFlags::ClientContext | EAutomationTestFlags::NonNullRHI | EAutomationTestFlags::EngineFilter)
+
+void FAquilaTouchMenuTest::GetTests(TArray<FString>& Names, TArray<FString>& Commands) const
+{
+    if (FParse::Param(FCommandLine::Get(), TEXT("AquilaTouchUI")))
+    {
+        Names.Add(TEXT("RevealAndHide"));
+        Commands.Add(TEXT("Touch"));
+    }
+}
+
+bool FAquilaTouchMenuTest::RunTest(const FString& Parameters)
+{
+    UGameViewportClient* Viewport = GEngine->GameViewport;
+    auto* PC = Viewport && Viewport->GetWorld() ? Viewport->GetWorld()->GetFirstPlayerController() : nullptr;
+    if (!TestTrue(TEXT("Live touch preview"), PC && Viewport->GetWindow())) return false;
+    const auto Window = Viewport->GetWindow().ToSharedRef();
+    auto& Slate = FSlateApplication::Get();
+    auto Touch = [&](ETouchIndex::Type Finger, ETouchType::Type Event)
+    {
+        const FTouchId Id(FInputDeviceId::CreateFromInternalId(0), Finger);
+        PC->InputTouch(Id, Event, FVector2D(300 + int32(Finger) * 50, 300), Event == ETouchType::Ended ? 0.f : 1.f, FPlatformTime::Cycles64());
+        PC->PlayerTick(1.f / 60);
+        Slate.ForceRedrawWindow(Window);
+    };
+    TestFalse(TEXT("Touch interface starts hidden"), FindText(Window, TEXT("RESOLUTE")).IsValid());
+    Touch(ETouchIndex::Touch1, ETouchType::Began);
+    TestFalse(TEXT("One finger keeps the view clear"), FindText(Window, TEXT("Hide menu")).IsValid());
+    Touch(ETouchIndex::Touch2, ETouchType::Began);
+    Touch(ETouchIndex::Touch2, ETouchType::Ended);
+    Touch(ETouchIndex::Touch1, ETouchType::Ended);
+    const auto Hide = FindText(Window, TEXT("Hide menu"));
+    if (!TestTrue(TEXT("Second finger reveals touch controls"), Hide.IsValid())) return false;
+    const auto Geometry = Hide->GetCachedGeometry();
+    const FVector2D Point = Geometry.LocalToAbsolute(Geometry.GetLocalSize() * 0.5f);
+    const auto VirtualUser = Slate.FindOrCreateVirtualUser(0);
+    const int32 UserId = VirtualUser->GetUserIndex();
+    const FWidgetPath Path(Window->GetHittestGrid().GetBubblePath(Point, 0, false, UserId));
+    if (!TestTrue(TEXT("Hide button has a live hit path"), Path.IsValid())) return false;
+    AddInfo(FString::Printf(TEXT("Hide at %.0f, %.0f. Hit %s"), Point.X, Point.Y, *Path.GetLastWidget()->GetTypeAsString()));
+    const uint32 Finger = 0;
+    const FPointerEvent Press(UserId, Finger, Point, Point, 1.f, true);
+    const FPointerEvent Release(UserId, Finger, Point, Point, 0.f, false);
+    Slate.RoutePointerDownEvent(Path, Press);
+    Slate.RoutePointerUpEvent(Path, Release);
+    Slate.ForceRedrawWindow(Window);
+    TestFalse(TEXT("Hide removes the top bar"), FindText(Window, TEXT("RESOLUTE")).IsValid());
+    TestFalse(TEXT("Hide removes the command tabs"), FindText(Window, TEXT("Navigation")).IsValid());
+    TestFalse(TEXT("Hide removes bridge movement controls"), FindText(Window, TEXT("Forward")).IsValid());
     return true;
 }
 

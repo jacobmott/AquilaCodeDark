@@ -1,0 +1,8 @@
+{
+  "source": "Docs/Handoffs/HANDOFF_2026-11-15_game-direction.md",
+  "archive": "Docs/History/game-direction/20261123T012613Z.md",
+  "saved_at_utc": "2026-11-23T01:26:13.034244+00:00",
+  "bytes": 9319,
+  "sha256": "9ac2362f0c0d08f6d600fb56bddb4c38be478f896836e38d2f5a9d5dcebb3407",
+  "reason": "Preserve the standalone-match checkpoint before condensing it for the new-run and save-point direction."
+}

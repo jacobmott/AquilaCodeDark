@@ -1,16 +1,24 @@
 # Aquila native expedition and publishing
 
-2026-11-20, round 104. The Windows camera fix, desktop controls and paused D&B inquiry reached `origin/main` in `80145671829e4bee53d6f0e107cda31f9f66da8d`. The [publication record](../Testing/native-playtest-publication.json) identifies the exact content and checks. This checkpoint and the [restart prompt](PROMPT_2026-11-20_native-playtest.txt) follow in the records commit.
+2026-11-22, round 116. At startup, start a fresh run or resume one from a save point. Starting over is available by choice or after defeat. The owner suggested a different universe per run. Each save point restores its own universe and progress. Windows already restores one expedition. Selecting saved runs and generating new universes are design work. [New runs and save points](../../knowledge/game-direction.md#starting-and-resuming-a-run).
+
+Each run is a standalone match against one computer rival. Both sides expand in real time and aim to eliminate each other. The player can visit ships and settled worlds. Even Resolute can be lost. Surviving ships keep exploring while capable worlds build replacements. [Match format](../../knowledge/game-direction.md#standalone-matches), [match objective](../../knowledge/game-direction.md#one-computer-rival) and [ship loss](../../knowledge/game-direction.md#ship-loss-and-replacement).
+
+The owner chose a free RTS observer, optional ship follow and a walkable bridge aboard Resolute. [Camera direction](../../knowledge/interface-direction.md#native-observer-decision-2026-11-22) and [Windows checks](../Testing/native-rts-observer.json).
 
 ## Windows playtest
 
-The owner confirmed the exterior orbit with a physical mouse. The game closed normally on revision 37 of the isolated first expedition. The ship is on Hold during travel to the signal. On owner direction, open the separate campaign and choose **Resume course**. The [acceptance record](../Testing/native-windows-orbit-acceptance.json) identifies the journal, its hash and the owner's exact answer. The saved campaign lives locally at `.runtime/expedition-windows-r101/20261119T020630Z/Campaign`.
+The exterior opens near Resolute with controls hidden. WASD pans, R/F changes height, Shift speeds travel and the wheel zooms. Left- or right-drag rotates. Middle-drag pans. Click Resolute or an active Sentinel to follow. Pan or click empty space to release. Home finds Resolute. C toggles its bridge. H toggles commands, which always address Resolute. [Play controls](../../native/Aquila/README.md#play).
 
-Left-click commands. Hold either mouse button over the ship or open space, then drag to look around. After release, the exterior camera recenters after 0.65 seconds. The bridge keeps its heading. At 1280×720, the desktop command strip narrowed from 1,204 to 854 pixels. A Windows touch preview kept the same large button bounds. [Desktop controls and build evidence](../Testing/native-windows-desktop-controls.json).
+On touch, drag to pan, tap a ship to follow it and tap empty space to release. Two fingers reveal the usual controls. The Camera tab offers zoom, free-view rotation and a return to Resolute. The gesture checks used a Windows touch preview. The [earlier Galaxy acceptance](../Testing/native-mobile-ui-verification.json) covers the previous foundation interface.
 
-The Development Windows package and 11 simulation/save groups passed. Automated mouse checks passed in the exterior and bridge views. This wrap verified the five changed source files, the packaged binary, saved test outputs and journal against their recorded hashes where available. Desktop size approval and full human expedition pacing remain open. Earlier Galaxy foundation menus were owner-accepted. Sustained phone performance, linked cloud saves and Apple builds remain untested. [Earlier expedition verification](../Testing/native-expedition-verification.json) and [Galaxy acceptance evidence](../Testing/native-mobile-ui-verification.json).
+The Windows package, six packaged input-check runs and 11 simulation/save groups passed. Free observation stayed fixed as the ship moved and turned. Routed picks followed each ship. Losing a target released the camera. Bridge walking and returning to the same exterior view passed. The Android arm64 target built locally. Owner camera feel and desktop sizing, physical Galaxy controls, full human expedition pacing, sustained phone performance, linked cloud saves and Apple remain open.
 
-Use Epic's launcher Unreal 5.8.4 CL 58902052 at `C:/Program Files/Epic Games/UE_5.8`. DuskForge has a separate engine. Windows stays primary. Check Galaxy at milestones or after mobile changes. Single-player expedition, automatic helm and weapons, and offline revisioned saves remain the direction. Steam, Android and Apple share the release target. The browser game remains a reference for the future public site. [Native guide](../../native/Aquila/README.md) and [foundation plan](../Plans/NATIVE_FOUNDATION.md).
+The isolated first expedition uses `.runtime/expedition-windows-r101/20261119T020630Z/Campaign`. The previous game saved revision 151102 on normal close. The new observer package restored that exact revision in the same journal. A restored-save regression check placed the initial view at the flagship’s saved coordinates, about 492 km from the map origin. The live map load took 1 minute 55 seconds following a partial pre-read and read-only cache warmup. The window was visible and responsive, with autosaves starting at 151103. [Restart evidence](../Testing/native-rts-observer.json).
+
+The earlier forced E shortcut retried the first expedition after defeat and wrote excessive revisions. The defeat and retry remain at 82258 and 82259. The original journal is intact. Launch owner sessions without injected keys. A window may appear unresponsive while this journal loads. [Earlier incident](../Testing/native-command-panel.json) and [prior successful restart](../Testing/native-windows-restart.json). Purple discs remain shield or hull/armor contact flashes.
+
+Use Epic's launcher Unreal 5.8.4 CL 58902052 at `C:/Program Files/Epic Games/UE_5.8`. DuskForge has its own engine. Windows remains primary. Galaxy checks occur at milestones or after mobile changes. The release direction remains single-player on Steam, Android and Apple, with automatic helm and weapons and offline revisioned saves. The browser game remains a reference for the future public site. [Native guide](../../native/Aquila/README.md) and [foundation plan](../Plans/NATIVE_FOUNDATION.md).
 
 ## Paused publishing inquiry
 
@@ -22,27 +30,30 @@ D&B’s chat agent could not send the proposed referral. There was no live repre
 
 ## Handoff
 
-The content commit included 41 reviewed paths. The shared index had no staged changes afterward. The previous [round 103 checkpoint](../History/game-direction/20261121T034508Z.md) and [hash manifest](../History/game-direction/20261121T034508Z.json) preserve its exact bytes, earlier history and approval boundaries.
+The [round 115 checkpoint](../History/game-direction/20261123T012613Z.md) and [hash manifest](../History/game-direction/20261123T012613Z.json) preserve the previous match direction and authority. The [publication record](../Testing/native-playtest-publication.json) covers the older Windows controls and paused inquiry. Rounds 105 through 116 are local. Session-owned changes include the native observers and interface, input tests, play guide, decisions, knowledge, lessons, receipts, current checkpoint, checkpoint archives and local report. Nothing was staged, committed or pushed.
 
-The local report runs on 8953. Research Console runs on 8776. Report 8952, preview 4200 and the game were inactive at the wrap. No game/build job, provider follow-up or asset transfer was running for this session. The only real inbox item remains `reports/game-direction/inbox/20261115T015927Z.json`. Physical orbit confirmation came through chat.
+At verification the Windows game was running. Report 8953 and Research Console 8776 were active. Preview 4200 and report 8952 were inactive. The last real inbox item remains `reports/game-direction/inbox/20261115T015927Z.json`. The newer default-camera decision came through chat and supersedes that earlier chase vote for native play.
 
-Wait for the owner to resume the Windows playtest or reopen D&B. This wrap used the one-time commit and push authorization. Provider contact, purchases, filing, store signup, generation, further publication, asset transfer and website deployment require new direction. Preserve peer files and shared staging.
+Wait for the owner’s next direction. Check the live window and newest save before any later playtest action. D&B stays paused. The previous wrap consumed its one-time approval. Provider contact, purchases, filing, signup, generation, publication, asset transfer and deployment need fresh authority. Preserve peer files, staging and the full save history.
 
 ## Restart prompt
 
 ```text
-Repo D:/OtherProjects/AquilaCodeDark. Windows expedition and paused D&B address inquiry.
+Repo D:/OtherProjects/AquilaCodeDark. Windows RTS observer, first expedition and paused D&B inquiry.
 Read AGENTS.md, Docs/TaskRoutes.md and Docs/Handoffs/HANDOFF_2026-11-15_game-direction.md in full.
-Publication verified on origin/main. See Docs/Testing/native-playtest-publication.json.
-Report http://127.0.0.1:8953/?agentreport=1&paseoAgent=1797de6d-c62b-478b-b154-82859c3ad278 (reports/game-direction/, round 104).
-Last real inbox read: reports/game-direction/inbox/20261115T015927Z.json.
-Use launcher Unreal 5.8.4. Windows first. Galaxy checks at milestones.
-Owner confirmed exterior mouse orbit. Windows package, 11 simulation/save groups and both automated camera checks passed.
-Desktop sizing, full human expedition pacing, sustained phone performance, cloud saves and Apple remain open.
-Separate save at revision 37, first signal, helm on Hold. On owner direction, choose Resume course.
-D&B follow-up waits for the owner. Read knowledge/publishing-business.md and Docs/Handoffs/PROMPT_2026-11-18_dnb-follow-up.txt before reopening.
-Keep the home address private. Preserve positive app examples and their limits. No specialist referral or provider selection.
-Report 8953 and Research Console 8776 running. Report 8952, preview 4200 and game inactive. No session job or transfer.
-Wrap authority consumed. New contact, purchase, filing, signup, generation, publication, transfer or deployment needs fresh approval.
+Rounds 105 through 116 are local. Prior publication on origin/main is recorded in Docs/Testing/native-playtest-publication.json.
+Report http://127.0.0.1:8953/?agentreport=1&paseoAgent=10d43293-7bfc-4eb7-b62f-27d8f627e026 (reports/game-direction/, round 116).
+Last real inbox read: reports/game-direction/inbox/20261115T015927Z.json. New RTS direction came through chat.
+Use launcher Unreal 5.8.4. Windows first. Galaxy at milestones.
+At startup, start a run from scratch or resume one from a save point. A different generated universe per run is proposed.
+Each real-time match starts with a homeworld and Resolute against one computer rival. Explore, terraform, replace lost ships and seek the rival.
+Free observer by default. WASD pans, wheel zooms, click a ship to follow, pan or click space to release. Home finds Resolute. C visits its bridge. H shows controls.
+The updated Windows game restored revision 151102 of the separate first expedition. Recheck before acting. See Docs/Testing/native-rts-observer.json.
+A prior held E retried the battle and wrote excess revisions. All history is preserved. Launch owner sessions without injected keys.
+Windows packaged camera/input and simulation/save tests passed. Android arm64 built. Physical Galaxy, owner camera feel and sizing, human pacing, sustained mobile performance, cloud and Apple remain open.
+D&B waits for the owner. Read knowledge/publishing-business.md and Docs/Handoffs/PROMPT_2026-11-18_dnb-follow-up.txt before reopening.
+Keep the home address private. Preserve the positive app examples and their limits. No specialist referral or provider selection.
+At verification, game, report 8953 and Research Console 8776 were running. Report 8952 and preview 4200 were inactive.
+Prior wrap authority consumed. No new contact, purchase, filing, signup, generation, publication, transfer or deployment.
 Do not start any of this. Read, say where things stand, then wait.
 ```

@@ -1,0 +1,132 @@
+{
+  "schema_version": 1,
+  "report_round": 106,
+  "observed_at_utc": "2026-11-22T21:33:21.611443+00:00",
+  "owner_direction": "The native game starts with every current readout, hint and control hidden. Show them on demand.",
+  "runtime": {
+    "engine": "Epic launcher Unreal 5.8.4 CL 58902052",
+    "windows_package": "passed",
+    "runtime_sha256": "06527ac93f6f9dfd40a972e3b6cc4c40f034b186c352a16e8e054d0342026a17",
+    "bytes": 332103168,
+    "android_arm64_build": "passed"
+  },
+  "controls": {
+    "desktop": "H toggles the centered panel in exterior or bridge view. The game clock, helm order and save do not depend on menu visibility.",
+    "touch": "Two fingers reveal the touch interface. Hide menu collapses the top bar, commands and bridge movement pad.",
+    "visibility_is_saved": false
+  },
+  "rendered_input_checks": {
+    "verified-exterior": {
+      "local": ".runtime/expedition-windows-r106/20261122T210106Z/verified-exterior/report/index.json",
+      "groups": 1,
+      "sha256": "01135fc2183a8ba15c808a2da0965f57ec5786742cc5e16f73ce8835aa081e36",
+      "tests": [
+        "Aquila.Input.DesktopCamera"
+      ]
+    },
+    "verified-bridge": {
+      "local": ".runtime/expedition-windows-r106/20261122T210106Z/verified-bridge/report/index.json",
+      "groups": 1,
+      "sha256": "467f6b9e04f57e1549fac38e5013be447ea7d949e0923a4159750e2e14212027",
+      "tests": [
+        "Aquila.Input.DesktopCamera"
+      ]
+    },
+    "verified-touch": {
+      "local": ".runtime/expedition-windows-r106/20261122T210106Z/verified-touch/report/index.json",
+      "groups": 1,
+      "sha256": "b2860be407d940466747ec8ad69ec69e99df4fced47c81085306bf74bee5645f",
+      "tests": [
+        "Aquila.Input.TouchMenu.RevealAndHide"
+      ]
+    }
+  },
+  "source_sha256": {
+    "AquilaFlightPawn.cpp": "48ba1b58a9200994013a864785af45cc2990244e7795625e69a7a42efe4b2a01",
+    "AquilaFlightPawn.h": "2b4aab3bc2c8b7b6609431a443d1ec807b4602f44a1f5bfd3af5934187d86bad",
+    "AquilaDesktopCameraTests.cpp": "3db988aa970ec64b4f1a092f89e9f574b3da1bda2239a439af1d9122591bfc05"
+  },
+  "checks_exercised": [
+    "Startup hit testing and a hidden pointer",
+    "H reveal, hide and reopen using controller key presses and releases",
+    "Closing with H routed through a focused button while paused",
+    "Exterior orbit, bridge look, both drag buttons and command clicks",
+    "One simulated touch stays clear, two reveal the menu, and a routed touch on Hide menu closes it in the Windows touch preview"
+  ],
+  "simulation_and_saves": {
+    "local": ".runtime/expedition-windows-r106/20261122T210106Z/simulation-accepted.json",
+    "groups": 11,
+    "sha256": "4ac8501e5114dddf08a26d7c704b71cc0158f602e22eadc0fe2ea1a2e2b9bbe8",
+    "tests": [
+      "Aquila.Combat.FrameRateAndHold",
+      "Aquila.Combat.SwitchWithRoundsInFlight",
+      "Aquila.Combat.TravelAndArmor",
+      "Aquila.Expedition.CommandsFailureAndPracticeIsolation",
+      "Aquila.Expedition.CompleteLoopAndUpgrade",
+      "Aquila.Expedition.LegacyMigrationAndValidation",
+      "Aquila.Expedition.ResumeAndRewardTransactions",
+      "Aquila.Expedition.UpgradeImpactAndFrameParity",
+      "Aquila.Navigation.ClearanceAndArrival",
+      "Aquila.Save.InterruptionAndConflict",
+      "Aquila.Save.RoundTripMigrationAndRejection"
+    ]
+  },
+  "renders": {
+    "hidden": {
+      "report_media": "reports/game-direction/media/r106-hud-hidden.png",
+      "local": ".runtime/expedition-windows-r106/20261122T210106Z/hidden-hit/frame.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "0482ca2c636794d2a1bbc31de4426edc87f07483717877d8c5a275dab1ebd54a"
+    },
+    "shown": {
+      "report_media": "reports/game-direction/media/r106-command-panel.png",
+      "local": ".runtime/expedition-windows-r106/20261122T210106Z/panel-tap-release/frame.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "41112b07c640b20440c3fcae2ce9ecbb17673fee08449c59f61d9d1a1d83132c"
+    },
+    "method": "Offscreen Windows package runs on isolated copies of the first expedition. The menu capture released the simulated H key on the next frame."
+  },
+  "impact_effect": {
+    "source": "native/Aquila/Source/Aquila/AquilaFlightPawn.cpp",
+    "simulation": "native/Aquila/Source/Aquila/AquilaSimulation.cpp",
+    "purple_discs": "Temporary expanding, flattened spheres at bullet contact. Shield hits start three times wider than hull or armor hits.",
+    "lifetime_seconds": 0.7,
+    "blue_blocks": "Fixed debris around the expedition signal."
+  },
+  "live_playtest": {
+    "campaign_directory": ".runtime/expedition-windows-r101/20261119T020630Z/Campaign",
+    "local_log": ".runtime/expedition-windows-r106/20261122T210106Z/owner-playtest.log",
+    "prior_held_key": "Earlier live launch forced E each frame. It repeatedly reissued orders and retried after defeat.",
+    "preserved_failure_and_retry_revisions": [
+      82258,
+      82259
+    ],
+    "previous_normal_close": 151060,
+    "preserved_revisions_at_close": 151060,
+    "journal_bytes_at_close": 488571645,
+    "previous_tip_sha256": "ce8a46d7763f358a240b49944c5e637581971293a5c750d8d4bd740cc02d12a4",
+    "restored": 151060,
+    "map_load_to_campaign_ready_seconds": 1026.62,
+    "seconds_from_campaign_ready_to_exit": 3.37,
+    "window_at_verification": "closed",
+    "close_reason": "Unreal processed a window-close request received during preload. Exit status 0.",
+    "post_restore_save_count": 1,
+    "real_launch_has_injected_input": false,
+    "first_child": 151061,
+    "first_child_sha256": "da28d94625289c066712dc97cb085214d4b7998598b6614ada3d3157d6022116",
+    "observed_saves": [
+      {
+        "revision": 151061,
+        "seconds_after_restore": 3.0
+      }
+    ],
+    "preserved_full_journal": true
+  },
+  "limits": "Windows packaged input was automated. The live window closed immediately after the journal loaded, so normal autosave cadence was not observed in this launch. Physical Galaxy gesture, long phone performance, human pacing, cloud saves and Apple remain open."
+}

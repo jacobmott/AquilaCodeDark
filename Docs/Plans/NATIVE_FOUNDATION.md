@@ -5,7 +5,7 @@
 ## Purpose and authority
 
 Prove that Aquila's existing gameplay direction works as a native Unreal game across desktop and phones,
-with the same single-player campaign continuing between them.
+with the player able to resume the same saved game on either.
 Owner now says, "Let's do that," and specifies launcher Unreal 5.8.4, independent from DuskForge's source engine.
 This authorizes the local native foundation and readiness checks. No paid service, store submission, deployment, commit or push is authorized.
 Accepted requirements and source evidence: [native release direction](../../knowledge/native-release-direction.md).
@@ -14,8 +14,8 @@ Current runtime and verification: [checkpoint](../Handoffs/HANDOFF_2026-11-15_ga
 ## Product requirements carried forward
 
 - Coordinated Steam, iPhone/iPad and Android release is the target; no date or minimum device is promised.
-- Single-player only. Battles, navigation and world simulation require no multiplayer networking.
-- A shared game profile and campaign save work across platforms through login or linking.
+- Single-player only. Battles, navigation and world simulation require no multiplayer networking. The intended game is a [standalone match against one computer rival](../../knowledge/game-direction.md#standalone-matches).
+- A shared game profile and saved match work across platforms through login or linking.
 - Local saving supports offline play, with synchronization when connected and protection against silent loss during conflicts.
 - Battleship navigation and weapons remain automatic. Players choose orders and modes.
 - Visible traveling projectiles, deliberate combat, shield impacts and weapon/defense compatibility retain the agreed design.
@@ -61,10 +61,10 @@ No Nanite, Lumen, virtual shadow maps or ray tracing in the shared baseline.
 | Builds | Installable native builds run on the selected desktop, iPhone and Android devices; editor preview alone is insufficient |
 | Controls and presentation | Player can issue movement and weapon modes, use the camera and enter the small interior on each device |
 | Combat consistency | Projectile travel and defense outcomes remain consistent across quality levels; reduced effects do not alter damage |
-| Local saves | Relaunch restores the intended campaign state; offline progress survives application suspension or interruption |
+| Local saves | Relaunch restores the intended game state. Offline progress survives application suspension or interruption |
 | Shared progress | Linked devices receive the acknowledged saved revision; ship state, world identity and progress agree |
 | Conflicts | Two divergent offline saves remain recoverable; neither silently destroys the other |
-| Updates | A supported save migration works, and unsupported versions are refused without damaging the saved campaign |
+| Updates | Supported saves migrate successfully. The game refuses unsupported versions and preserves the saved game |
 | Performance | Sustained physical-device checks meet the previously selected frame-time and memory budgets; heat and battery behavior are recorded |
 
 Track measured native results separately in the native verification receipt. Browser receipts prove only the browser prototype.
@@ -76,7 +76,7 @@ Retain the existing project and published browser checkpoint. Do not remove the 
 Choose native project/repository placement deliberately before creating files; keep generated assets and secrets outside Git.
 The website conversion follows stable game identity and usable native gameplay footage. Its deployment needs separate explicit authority.
 Full exploration, crew, expanded interiors, surface activities, economy and long-term progression remain later scope discussions.
-Purchases and store ownership do not automatically follow campaign saves; commercial rules remain undecided.
+Purchases and store ownership do not automatically follow a saved game. Commercial rules remain undecided.
 
 Current state: Windows/Android small playable and portable local saves work; larger phone menus are owner-accepted.
 Shared identity/sync, sustained performance and Apple build/device proof remain unfinished. First-expedition work resumed November 17.

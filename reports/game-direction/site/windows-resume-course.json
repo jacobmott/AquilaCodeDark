@@ -1,0 +1,54 @@
+{
+  "report_round": 105,
+  "verified_at_utc": "2026-11-22T20:38:19.439578+00:00",
+  "request": "Let's resume course.",
+  "platform": "Windows Development package, Epic launcher Unreal 5.8.4",
+  "runtime_sha256": "3433fe1f0ff2f50c0cbb7011eaee412574506d4ebf774a2d488dc4724b0a85b2",
+  "action": "The visible Windows game loaded revision 37 and received its normal expedition shortcut E through Unreal input.",
+  "shortcut": "Input.+key E",
+  "campaign_directory": ".runtime/expedition-windows-r101/20261119T020630Z/Campaign",
+  "local_run_log": ".runtime/expedition-windows-r105/20261122T203443Z/owner-playtest.log",
+  "campaign_id": "1F8DA3C8-4779-0942-BC6F-1BBF66BBC10B",
+  "expedition_number": 1,
+  "evidence": [
+    {
+      "revision": 37,
+      "revision_id": "7A6B4A15-4F69-5D39-A102-C1A93BC39393",
+      "parent_id": "192C108F-4DBE-20B5-FD54-13BBEC65D853",
+      "phase": "Travel",
+      "helm": "Hold",
+      "remaining_km": 500.7465,
+      "journal_sha256": "ed5d53f564a686fb538c59af7bea6fccff121e91f58b71743cb7a2d36d3f3cbf"
+    },
+    {
+      "revision": 38,
+      "revision_id": "D8971D6D-4746-BA2C-DCFA-D1B6C4EF9112",
+      "parent_id": "7A6B4A15-4F69-5D39-A102-C1A93BC39393",
+      "phase": "Travel",
+      "helm": "Signal",
+      "remaining_km": 500.7465,
+      "journal_sha256": "72800b7f6474e8e7191b5b97c23eee1f3e787bd3ef36dd4788a346d7576fd4bf"
+    },
+    {
+      "revision": 39,
+      "revision_id": "2FFFAEC1-4B40-8791-A6A6-E49543110921",
+      "parent_id": "D8971D6D-4746-BA2C-DCFA-D1B6C4EF9112",
+      "phase": "Travel",
+      "helm": "Signal",
+      "remaining_km": 430.6047,
+      "journal_sha256": "116ec3352092e25cd0fd4d4064406ce3d28d439f08742f795c97fc487eb4bdb8"
+    }
+  ],
+  "result": "The ship followed the restored course to the same signal. Revision 45 records automatic survey entry.",
+  "scope": "Point-in-time proof of restored travel. Human pacing and desktop sizing remain open.",
+  "arrival": {
+    "revision": 45,
+    "revision_id": "7CD61AA5-453F-B65D-E60A-B2A894B9B7F1",
+    "parent_id": "D2D3F7D8-4E49-B5A7-C564-EAA2E303287F",
+    "phase": "Survey",
+    "helm": "Hold",
+    "remaining_km": 7.9913,
+    "journal_sha256": "5f83a590972758b7b41c26f7fe0094dc7a85cad37f05f69f0402208bda5a0488",
+    "ancestry_checked_from_revision": 39
+  }
+}
