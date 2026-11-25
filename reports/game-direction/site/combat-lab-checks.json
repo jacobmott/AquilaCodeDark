@@ -1,0 +1,8 @@
+{
+  "round": 130,
+  "engine": "Epic Launcher Unreal 5.8.4 CL 58902052, Win64 Development",
+  "armor_matrix": {
+    "cases": 192,
+    "coverage": "Two firing sides, four weapons, two stored kinetic ammo selections, three armors, shield absent or exhausting mid-hit. Plasma always uses its fixed payload. Repeated blocked hits against bare prism plating left hull at 100%. Standard kinetics damaged the same plating."
+  }
+}

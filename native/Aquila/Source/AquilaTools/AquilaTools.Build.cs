@@ -4,6 +4,6 @@ public class AquilaTools : ModuleRules
     public AquilaTools(ReadOnlyTargetRules Target) : base(Target)
     {
         PCHUsage = PCHUsageMode.UseExplicitOrSharedPCHs;
-        PrivateDependencyModuleNames.AddRange(new string[] { "Core", "CoreUObject", "Engine", "UnrealEd" });
+        PrivateDependencyModuleNames.AddRange(new string[] { "Core", "CoreUObject", "Engine", "UnrealEd", "Aquila", "MeshDescription", "StaticMeshDescription", "MeshConversion", "ImageCore" });
     }
 }

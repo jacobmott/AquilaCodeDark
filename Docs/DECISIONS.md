@@ -27,6 +27,14 @@
 - 2026-11-22 [J]: At startup, start a fresh run or resume from a save point within a run. Starting over is available after a loss or by choice. The owner suggested a different generated universe each time. [New runs and save points](../knowledge/game-direction.md#starting-and-resuming-a-run).
 - 2026-11-22 [J]: Add Combat Simulator alongside Play Match. Open a small arena directly to try every ship and compatible loadout, practice combat, and see how to acquire gear. Players and developers use the same combat rules as matches. Trials leave match saves untouched. Confirmed in chat. [Mode design and proposed first duel](../knowledge/game-direction.md#combat-simulator).
 - 2026-11-22 [J]: Proceed with the first Windows simulator duel. Use Resolute and Sentinel, compare standard and piercing rounds, and reset both ships between attempts. [Windows controls](../native/Aquila/README.md#combat-simulator-on-windows).
+- 2026-11-22 [J]: A round shield appears when struck and fades between hits. Show the impact where it lands on the shield or hull. A defeated ship ends in a large explosion. [Combat feedback](../knowledge/combat-design.md#native-combat-feedback).
+- 2026-11-22 [J]: Show each arena ship’s equipment and let the player fit both sides. A charged shield stays faint between hits and brightens at contact. Fit a smooth oval to the hull’s three dimensions. Equal dimensions give a sphere. This refines the earlier shield visibility decision. [Arena fitting](../knowledge/game-direction.md#fitting-both-sides) and [shield display](../knowledge/combat-design.md#native-combat-feedback).
+- 2026-11-22 [J]: Try a shield made from the ship’s own mesh, scaled uniformly a little larger. The arena comparison uses 108% as a trial value. The final shield style is open. [Shield trial](../knowledge/combat-design.md#native-combat-feedback).
+- 2026-11-22 [J]: Use the observer’s own position as the pivot for free look. Selecting a ship keeps the ship-centered orbit. [Observer controls](../knowledge/interface-direction.md#native-observer-decision-2026-11-22).
+- 2026-11-23 [J]: Fly the free camera in the direction it faces, including its upward or downward pitch. [Windows controls](../native/Aquila/README.md#play).
+- 2026-11-23 [J]: Fit ships by clicking their physical mounting points. Up to 30 positions remain selectable regardless of owned turret count. An optional chip lets an ordinary gun target incoming projectiles. [Fitting and defense](../knowledge/combat-design.md#native-combat-feedback).
+- 2026-11-23 [J] Add a shield-bypassing bullet to the Combat Simulator. After either ship explodes, the survivor’s interceptors must still engage incoming rounds. The lab calls the ammunition **Phase**. [Combat rules](../knowledge/combat-design.md#native-combat-feedback).
+- 2026-11-23 [J] Choose turrets from distinct models hovering in space. Each turns in place. Clicking a model and then a hull port installs it immediately. [Windows turret fitting](../knowledge/interface-direction.md#windows-turret-fitting).
 - 2026-11-15 [J]: Inspect Robinhood's 3D application with transparent glass-like UI as the reference for Aquila's interface discussion.
   Source review confirms the existing scene/overlay pattern; the complete reference website is still proposed.
   Aquila layout and styling remain discussion scope, with no implementation or deployment authority added.
@@ -80,7 +88,7 @@
   Keep those weapons only as future exceptionally rare equipment with large cooldowns; this supersedes the proposed ordinary beam family.
   The starter battleship is capable but begins at its lowest combat level, with one simple shield and basic kinetic weapons.
   Progression can add shield capacity/sustain/types/layers or replace shields with special armor, including reactive armor.
-  Guided weapons can lose tracking through countermeasures. Automatic evasion is an upgrade direction, not guaranteed starter immunity.
+  Guided weapons can lose tracking through countermeasures.
   Turrets occupy finite physical mounts and have individual upgrades. Examples: two starter turrets and around thirty mature-ship turrets.
   Neither the final cap nor a year-long unlock schedule is fixed. Exact guidance, defense, balance and acquisition rules remain open.
   This turn records discussion; the running prototype's instant pulse remains pending replacement. No new runtime or publication work performed.
@@ -101,10 +109,10 @@
 - 2026-11-15 [J]: Owner reports "projectiles work well" and that everything in the current prototype works well.
   This confirms the preceding projectile encounter through owner playtest, without extending that acceptance to subsequent changes.
 - 2026-11-15 [J]: Keep battleship controls underneath but hide them. The player specifies decisions; the battleship adjusts and navigates automatically.
-  This supersedes manual capital piloting and the earlier proposed manual evasion override. Shuttle piloting and walking remain available.
+  This supersedes manual capital piloting. Shuttle piloting and walking remain available.
   No publication, transfer, paid generation or research submission authority added.
 - 2026-11-15 [M]: Local automatic helm supports destination approach, Hold position, Keep combat range and Withdraw.
-  Practice standoff 35 km and withdrawal 85 km are provisional implementation choices, not final balance or projectile-aware evasion.
+  Practice standoff 35 km and withdrawal 85 km are provisional implementation choices, not final balance.
   Orders continue while walking and survive paused views. Launching a shuttle parks the capital; reload clears orders.
   Manual capital input is gated, with original flight controls retained for shuttles. Verification is recorded in the automatic helm receipt.
 - 2026-11-15 [J]: Owner pauses gameplay work and requests session wrap, commit and push before a new discussion.
@@ -161,3 +169,33 @@
   Resume only when the owner asks about D&B again. The exact question and transcript location are in the [chat receipt](Research/dnb-google-play-address-chat-v1.json).
 - 2026-11-18 [J], round 102: Owner found the enlarged controls too big on desktop. Size the Windows HUD for mouse use.
   Keep the larger Galaxy menus the owner accepted for touch.
+
+- 2026-11-23 [J], round 134. Choose armor and shield equipment from models floating around the ship. Each armor finish appears on the hull. A shield enhancement restores full charge once after depletion.
+- 2026-11-23 [M], round 134. The Windows simulator calls the enhancement **Reserve Capacitor**. The hit that breaks the first bank can use part of the second. Phase damage bypasses both. [Combat rules](../knowledge/combat-design.md#native-combat-feedback).
+
+- 2026-11-23 [J], round 135. Owner accepted defense fitting. Hovering or selecting a turret should repeatedly demonstrate its current rounds against a shielded, reinforced target. A short description emerges toward the screen edge and pauses one second before repeating.
+- 2026-11-23 [J], round 136. Choose Standard, Piercing and Phase by their 3D models where ammunition is selected below the fitting hull. [Windows fitting controls](../native/Aquila/README.md#combat-simulator-on-windows).
+- 2026-11-23 [J], round 137. Give either simulator ship a way to clear its entire configuration and rebuild from scratch. [Fitting controls](../native/Aquila/README.md#combat-simulator-on-windows).
+- 2026-11-23 [J], round 138. Clear all equipment immediately when pressed in Configure ship, regardless of the duel’s state. Cancel exits fitting and keeps the change. Starting a duel is a separate action. [Windows fitting checks](Testing/native-live-fitting.json).
+- 2026-11-23 [J], round 140. Discuss replacement designs for both ships with the owner first. Include walkable interiors from the outset. The owner wants new silhouettes and dislikes the square first studies. [Ship design discussion](Plans/ShipHulls/README.md).
+- 2026-11-23 [J], round 141. Most large ships, explicitly Resolute and Sentinel, are built in space and stay there. They never enter an atmosphere. Their silhouettes are free of aerodynamic requirements. [Space-built ships](Plans/ShipHulls/README.md#ships-built-in-space).
+- 2026-11-23 [J], round 143. Use GPT Image 2.6 Sunburst at 1K low quality for the current ship concept trial. The larger collection’s count and budget remain open. [Three Sunburst concepts](Plans/ShipHulls/README.md#three-sunburst-concepts).
+- 2026-11-23 [J], round 144. The owner selected 60 concepts total, including the three completed Sunburst trials. The report submission authorized 57 more at 1K low quality, capped at 42.75 additional credits. [Collection and approval](Plans/ShipHulls/README.md#the-60-ship-collection).
+- 2026-11-24 [J], round 145. The owner kept all 60 ship concepts. Many can serve as research battleships, including hulls with city-like inhabited decks. Individual ship assignments remain open. [Research battleships](Plans/ShipHulls/README.md#research-battleships).
+- 2026-11-24 [J], round 146. All 60 are obtainable research battleships and keep their generated names. Start with one. Discovery while exploring and research are two unlock routes. Other routes and the starter remain open. Delta Tree (58) and Glacier Tongue (41) are the first Asset Pipeline pair. Retire the two prototype names. [Roster and model studies](Plans/ShipHulls/README.md#the-first-two-model-studies).
+- 2026-11-24 [J], round 147. Asset Pipeline textures Delta Tree and Glacier Tongue and assigns materials to the exterior models. [Verified models and maps](Testing/research-battleship-materials.json).
+- 2026-11-24 [J], round 149. Prepare as many useful modeling references as each selected ship needs, starting with Delta Tree and Glacier Tongue. The proposed views and prompts are in the [modeling brief](Plans/ShipHulls/ModelingReferences.md).
+- 2026-11-24 [J], round 157. The owner selected **1,280 m** as Glacier Tongue’s design length and approved the **142 × 180 m** landing pad. The 640 m hull is available for comparison in the boarding test. [Submitted size choice](../reports/game-direction/inbox/20261124T235647Z.json) and [playable dimensions](Testing/native-glacier-pad.json).
+- 2026-11-24 [J], round 160. The owner selected **1,280 m** bow to stern as Delta Tree’s design length after the boarding test. [Submitted size choice](../reports/game-direction/inbox/20261125T012507Z.json) and [ship plan](Plans/ShipHulls/README.md#delta-tree-boarding-scale).
+- 2026-11-24 [J], round 162. Build Delta Tree’s command lift and walkable bridge for the Windows boarding test. One station fires a fitted cannon at a shielded drone. The exterior view shows the same hit. [Submitted bridge choice](../reports/game-direction/inbox/20261125T023749Z.json).
+- 2026-11-24 [J], round 164. A visitor watches combat through the command center windows. The ship handles targeting and firing. Reserve direct weapon controls for explicitly selected special scenarios. This supersedes the ordinary station interaction from round 162. [Boarding design](../native/Aquila/README.md#delta-tree-command-bridge).
+- 2026-11-25 [J], round 168. Use the approved Delta Tree and Glacier Tongue hulls throughout the duel. Place fitted guns against the decks of those ships. [Playtest](Testing/native-duel-hulls.json).
+- 2026-11-25 [J], round 169. During a simulator duel, the visitor can jump between Delta Tree’s bridge and Glacier Tongue’s bridge to watch the same fight. [Two-bridge playtest](Testing/native-two-bridges.json).
+- 2026-11-25 [J], round 170. Keep the bridge switch as played. The owner confirmed it works well in the Windows duel. [Playtest feedback](Testing/native-two-bridges.json).
+- 2026-11-25 [J], round 172. Keep the seated gun mounts. Texture the playable Delta Tree and Glacier Tongue and apply their materials throughout the existing ships. [Owner’s mount feedback](../reports/game-direction/inbox/20261125T071845Z.json) and [playable finishes](Testing/native-ship-finishes.json).
+- 2026-11-25 [J], round 173. The owner rejected the textured exterior models’ resemblance to the selected ships. Delta Tree and Glacier Tongue should match their original designs beyond outline. [Current models beside original artwork](Plans/ShipHulls/README.md#likeness-to-the-chosen-ships).
+- 2026-11-25 [J], round 174. Compare separate revised exteriors with the two original paintings before changing the game. The owner made this choice in chat. Each ship awaits its own likeness review. [Models and artwork](Plans/ShipHulls/README.md#rebuilt-exteriors-for-review).
+- 2026-11-25 [J], round 175. Continue refining each ship against its original. Save successful Blender scripts and techniques in Asset Pipeline so future sessions can reuse them. [Reusable workflow](<D:/OtherProjects/asset-pipeline/knowledge/blender-reference-modeling.md>).
+- 2026-11-25 [J], round 176. Continue refining against the available specs and images, including Delta Tree’s stern housings and Glacier Tongue’s forward armor. The owner mentioned the character project’s Shape Match tools as an optional resource. [Exterior comparisons](Plans/ShipHulls/README.md#rebuilt-exteriors-for-review).
+
+- 2026-11-25 [J], round 177. Both round 176 exteriors are closer. Continue iterating while specific features improve. Keep successful scripts, methods and usable examples in Asset Pipeline for future Blender work. Review against the paintings before changing the playable hulls. [Submitted ratings](../reports/game-direction/inbox/20261125T193707Z.json) · [Workflow and examples](<D:/OtherProjects/asset-pipeline/Tools/asset-pipeline/experimental/blender_reference_modeling/README.md>).

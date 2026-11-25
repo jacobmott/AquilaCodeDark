@@ -1,0 +1,265 @@
+{
+  "round": 174,
+  "local_date": "2026-11-25",
+  "created_at": "2026-11-25T14:35:29.060429+00:00",
+  "decision": {
+    "source": "Owner response in chat to round 173",
+    "answer": "Compare revised models with the original art before changing the game"
+  },
+  "scope": "Separate editable exterior models and review renders. No replacement or integration in the playable game.",
+  "references": "The two selected gallery paintings define the designs. Orthographic guide colors are registered onto actual curved top or side surfaces. Existing Asset Pipeline paint, roughness, metallic and tangent normal maps cover other parts.",
+  "internal_tools": "Local Blender 5.2.0 Cycles. Local Three.js comparison. No external provider job or charge.",
+  "ships": {
+    "delta-tree": {
+      "name": "Delta Tree",
+      "original": {
+        "path": "Assets/ShipConcepts/sunburst-r144/58-delta-tree.png",
+        "sha256": "6628ed15b22fbf2990729eb8417b9babcb66cc8ebcb5635dad57c8776efeeac3"
+      },
+      "folder": "Assets/ShipConcepts/hull-review-r174/delta-tree",
+      "render_folder": "reports/game-direction/media/hull-review-r174",
+      "model": {
+        "ship": "delta-tree",
+        "created_at": "2026-11-25T14:25:56.546395+00:00",
+        "length_m": 1280.0,
+        "beam_m": 538.22437890625,
+        "height_m": 307.4336746588119,
+        "vertices": 101723,
+        "triangles": 186296,
+        "assemblies": [
+          "Delta · Branch docking rotundas",
+          "Delta · Cabin glazing",
+          "Delta · Command terraces and forward canopy",
+          "Delta · Cut channel deck",
+          "Delta · Inset courtyard terraces",
+          "Delta · Observatory and aerials",
+          "Delta · Pressure hull and keel",
+          "Delta · Recessed service doors",
+          "Delta · Twelve separate drive housings"
+        ],
+        "painted_materials": 9,
+        "camera": [
+          0.96,
+          1.0,
+          0.76
+        ],
+        "roll_degrees": -1.0,
+        "render_device": "GPU",
+        "files": {
+          "delta-tree.blend": "ef2dda3b31e93b5b9abb0f9041ffeedf370da149726fd27512bb4ee5cdea1685",
+          "delta-tree.glb": "7ef65b23c5c79736efca6fe51a59a64a7465e5ba372942aab2ca4acccfb5f286",
+          "delta-tree-clay.png": "2208c15ecd30b48c72c0873856f055ffbd2a8a710429055a4d7bd8e3c130f6ca",
+          "delta-tree-gallery.png": "8f879e73fb119e112dc8d333612de5239b3df621eefdeb2bfc4ff08d98da32ad",
+          "delta-tree-reverse.png": "fc5f201603d460def52d8deb6da0cb261dcc6a4938cc13aab08167609c8a1a75",
+          "delta-tree-side.png": "331bf3dfe9cd775f0fceeb7c92d87cb4a3ab7143023c4d43a42474c2b0ac5093",
+          "delta-tree-top.png": "3734a1dd7c8ba313e8524ee514fd6474f2d5c2e31549cea4543a91b0da34a850"
+        }
+      },
+      "checks": {
+        "native_dimensions_m": [
+          1280.0,
+          538.224365234375,
+          307.4336700439453
+        ],
+        "interchange_dimensions_m": [
+          1280.0,
+          538.224365234375,
+          307.4336700439453
+        ],
+        "reopened_assemblies": 9,
+        "packed_images_in_scene": 14,
+        "embedded_images_in_glb": 14,
+        "measurements": {
+          "courtyard_depth_below_local_deck_m": [
+            13.95,
+            13.95,
+            13.95,
+            13.95,
+            13.95,
+            13.95,
+            13.95,
+            13.95,
+            13.95,
+            13.95,
+            13.95
+          ],
+          "exhaust_cores_from_stern": [
+            [
+              -604.5,
+              170.2,
+              -64.0
+            ],
+            [
+              -612.2,
+              85.1,
+              -64.0
+            ],
+            [
+              -619.9,
+              0.0,
+              -64.0
+            ],
+            [
+              -612.2,
+              -85.1,
+              -64.0
+            ],
+            [
+              -604.5,
+              -170.2,
+              -64.0
+            ],
+            [
+              -602.5,
+              127.7,
+              1.3
+            ],
+            [
+              -610.2,
+              42.6,
+              1.3
+            ],
+            [
+              -610.2,
+              -42.6,
+              1.3
+            ],
+            [
+              -602.5,
+              -127.7,
+              1.3
+            ],
+            [
+              -600.5,
+              85.1,
+              65.3
+            ],
+            [
+              -608.2,
+              0.0,
+              65.3
+            ],
+            [
+              -600.5,
+              -85.1,
+              65.3
+            ]
+          ]
+        }
+      },
+      "shipped_mesh_sha256": "2206f9a9b96da5f0877153d851225943de3ae5d715a3f3b1a74a33106b3c3b52",
+      "interpretation": "Eleven recessed courtyards follow the selected dorsal guide. The chosen stern elevation supplies the five, four and three drive layout.",
+      "asset_ledger_request": "req_156c53104500e15c9e067498"
+    },
+    "glacier-tongue": {
+      "name": "Glacier Tongue",
+      "original": {
+        "path": "Assets/ShipConcepts/sunburst-r144/41-glacier-tongue.png",
+        "sha256": "827baa1d6127c91fd36b21e0998ad7b013ddd7c8e7b109059bad03c61e86f0d1"
+      },
+      "folder": "Assets/ShipConcepts/hull-review-r174/glacier-tongue",
+      "render_folder": "reports/game-direction/media/hull-review-r174",
+      "model": {
+        "ship": "glacier-tongue",
+        "created_at": "2026-11-25T14:25:55.545117+00:00",
+        "length_m": 1280.0,
+        "beam_m": 582.2576002287487,
+        "height_m": 404.03457789114054,
+        "vertices": 53753,
+        "triangles": 100516,
+        "assemblies": [
+          "Glacier · Cabin lights",
+          "Glacier · Command crown and pressure domes",
+          "Glacier · Observation arch and sensors",
+          "Glacier · Outboard armored blade",
+          "Glacier · Overlapping armor and window reveals",
+          "Glacier · Recessed port hangar and structure",
+          "Glacier · Scalloped upper decks",
+          "Glacier · Sealed far hull and keel",
+          "Glacier · Three enclosed crossings"
+        ],
+        "painted_materials": 12,
+        "camera": [
+          0.94,
+          1.0,
+          0.205
+        ],
+        "roll_degrees": -5.0,
+        "render_device": "GPU",
+        "files": {
+          "glacier-tongue.blend": "7f1da560c013b37c9bd7ea846042705a2f34ec6be9ce895e2ba69b4d1339c33e",
+          "glacier-tongue.glb": "6ef44acf3cae645329871be88b54e77dba526e4a03ad99e91bc2e9f97b77b7b7",
+          "glacier-tongue-clay.png": "590e508d67b16a43ef6e44c40c3e1272c45f2111b64630c6ddbbb70ae17c0000",
+          "glacier-tongue-gallery.png": "395ca77d4b13e95f9e93b707b82e5bec60f942204285bd9c90e1bd559e42ab5c",
+          "glacier-tongue-reverse.png": "24f676052c9032374dfc16113b24eb86d9057d37be6a61b6348655aecb575563",
+          "glacier-tongue-side.png": "d68931f0ac62f0f153fe07bcaa91c13399c3ec31607520df99a704965c7c8057",
+          "glacier-tongue-top.png": "0352277d065c20cd367f3606ffa968a05bdebaaf8a4543673558015a583993a0"
+        }
+      },
+      "checks": {
+        "native_dimensions_m": [
+          1280.0,
+          582.2576141357422,
+          404.0345916748047
+        ],
+        "interchange_dimensions_m": [
+          1280.0,
+          582.2576141357422,
+          404.0345916748047
+        ],
+        "reopened_assemblies": 9,
+        "packed_images_in_scene": 15,
+        "embedded_images_in_glb": 15,
+        "measurements": {
+          "outboard_blade_thickness_at_sample_m": 59.29,
+          "three_crossing_heights_at_midspan_m": [
+            17.28,
+            17.28,
+            17.28
+          ],
+          "clearance_to_overhang_near_dock_m": 108.62
+        }
+      },
+      "shipped_mesh_sha256": "9958876e08481ab6bf2ebf365bd44bbeba862e8daa2fe97676e583ecd1ad7887",
+      "interpretation": "The original three-quarter painting and near-side view take precedence over the overhead blade length. The opposite side is closed.",
+      "asset_ledger_request": "req_0280b0697d82fada79ae88ab"
+    }
+  },
+  "windows_package_matches_round_172": true,
+  "limits": [
+    "Art review only. These models have no new walkable interiors, gameplay sockets or collision.",
+    "Independent views disagree in places. The primary comparison camera is estimated by eye."
+  ],
+  "journal_check": "Both the expedition and separate desktop journal matched before and after the review work.",
+  "browser": {
+    "method": "Isolated headless Chrome with WebGL",
+    "ships": {
+      "delta-tree": {
+        "original_loaded": true,
+        "painted_and_gray": true,
+        "stern_and_reset": true,
+        "drag_rotates": true,
+        "downloaded_model_matches": true,
+        "model_view_pixel_differences": {
+          "gray": 19.96,
+          "stern": 20.75,
+          "drag": 17.47,
+          "reset": 0.0
+        }
+      },
+      "glacier-tongue": {
+        "original_loaded": true,
+        "painted_and_gray": true,
+        "stern_and_reset": true,
+        "drag_rotates": true,
+        "downloaded_model_matches": true,
+        "model_view_pixel_differences": {
+          "gray": 17.85,
+          "stern": 31.73,
+          "drag": 17.51,
+          "reset": 0.0
+        }
+      }
+    }
+  }
+}

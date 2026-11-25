@@ -1,0 +1,191 @@
+{
+  "round": 126,
+  "verified_utc": "2026-11-23T05:20:20.621130+00:00",
+  "engine": "Epic Launcher Unreal 5.8.4 CL 58902052, Win64 Development",
+  "runtime": {
+    "path": ".runtime/mesh-shield-r126/arena/Windows/Aquila/Binaries/Win64/Aquila.exe",
+    "sha256": "208d6031f2daaa34d041ac7810f2584f78df05680c77058f704c60b448b77055"
+  },
+  "scope": "Local simulator-only visual comparison. The match uses its previous oval. Final style and scale await owner preference.",
+  "mesh": "Original static mesh assets and original ship-relative transforms, including hull plates, side sections and turrets. One parent scale of 1.08 about each ship pivot. Both ships tested.",
+  "contact": "The visual contact intersects the scaled box pieces of the current ships. The flare and incoming tracer use that surface. The preview keeps the shot and age available in both shapes while paused.",
+  "headless": {
+    "path": ".runtime/mesh-shield-r126/headless-arena/index.json",
+    "sha256": "a5feda546e8abf7596ff494bf051e1df8aee6d2394c4102aa503e4a49185a1da",
+    "passed": 14,
+    "tests": [
+      "Aquila.Combat.BothShipLoadouts",
+      "Aquila.Combat.FittedShieldGeometry",
+      "Aquila.Combat.FrameRateAndHold",
+      "Aquila.Combat.ImpactSurfacesAndDestruction",
+      "Aquila.Combat.SwitchWithRoundsInFlight",
+      "Aquila.Combat.TravelAndArmor",
+      "Aquila.Expedition.CommandsFailureAndPracticeIsolation",
+      "Aquila.Expedition.CompleteLoopAndUpgrade",
+      "Aquila.Expedition.LegacyMigrationAndValidation",
+      "Aquila.Expedition.ResumeAndRewardTransactions",
+      "Aquila.Expedition.UpgradeImpactAndFrameParity",
+      "Aquila.Navigation.ClearanceAndArrival",
+      "Aquila.Save.InterruptionAndConflict",
+      "Aquila.Save.RoundTripMigrationAndRejection"
+    ]
+  },
+  "packaged": {
+    "bridge": {
+      "path": ".runtime/mesh-shield-r126/check-arena-bridge-051933607227/report/index.json",
+      "sha256": "3c5876908567e1cda8429464aff2bc816ba7f9f00d94f0e24208aa9b8a0f85ce",
+      "passed": 1,
+      "tests": [
+        "Aquila.Input.DesktopCamera"
+      ],
+      "prior_revision_count": 0,
+      "journal_identical": true
+    },
+    "desktop": {
+      "path": ".runtime/mesh-shield-r126/check-arena-desktop-051842257003/report/index.json",
+      "sha256": "2d6d0c2ed3bb4fa835ab221d9d24be1436500712419738abed606af31872456b",
+      "passed": 1,
+      "tests": [
+        "Aquila.Input.DesktopCamera"
+      ],
+      "prior_revision_count": 0,
+      "journal_identical": true
+    },
+    "duel-direct": {
+      "path": ".runtime/mesh-shield-r126/check-arena-duel-direct-051842260493/report/index.json",
+      "sha256": "83ca6243cb49caa5b6ed4a916bf976f729aa69ac70a0114f14c6b558022f03d5",
+      "passed": 1,
+      "tests": [
+        "Aquila.Input.Simulator.Simulator"
+      ],
+      "prior_revision_count": 2,
+      "journal_identical": true
+    },
+    "duel-menu": {
+      "path": ".runtime/mesh-shield-r126/check-arena-duel-menu-051918924227/report/index.json",
+      "sha256": "6948267db59554d2544d5cf0cade18842a6e84ffdbdfe9a56fdea3c32452d2a8",
+      "passed": 1,
+      "tests": [
+        "Aquila.Input.Simulator.Menu"
+      ],
+      "prior_revision_count": 2,
+      "journal_identical": true
+    },
+    "effects": {
+      "path": ".runtime/mesh-shield-r126/check-arena-effects-051842271284/report/index.json",
+      "sha256": "a9fdf54fd543ba49ccc40137f3038f860561864bbc3b8e4f60a6b92a622ba88e",
+      "passed": 1,
+      "tests": [
+        "Aquila.Input.CombatFeedback.BothShips"
+      ],
+      "prior_revision_count": 2,
+      "journal_identical": true
+    },
+    "observer": {
+      "path": ".runtime/mesh-shield-r126/check-arena-observer-051918844988/report/index.json",
+      "sha256": "6895f0ad84a5da01911f554e43637c1f90850f146eca957da428d6d24058791e",
+      "passed": 1,
+      "tests": [
+        "Aquila.Input.Observer.Desktop"
+      ],
+      "prior_revision_count": 0,
+      "journal_identical": true
+    },
+    "restored": {
+      "path": ".runtime/mesh-shield-r126/check-arena-restored-051926548906/report/index.json",
+      "sha256": "2c593b363a9d734c5f916f951169f75dbd2b972d0a799678e0c304f69c1b874c",
+      "passed": 1,
+      "tests": [
+        "Aquila.Input.Observer.Desktop"
+      ],
+      "prior_revision_count": 2,
+      "journal_identical": true
+    },
+    "touch": {
+      "path": ".runtime/mesh-shield-r126/check-arena-touch-051940606460/report/index.json",
+      "sha256": "fcdfdd56c2d4c882fa3431518dcc03eea13957a61e153a804e21e21df9a09cb7",
+      "passed": 1,
+      "tests": [
+        "Aquila.Input.TouchMenu.RevealAndHide"
+      ],
+      "prior_revision_count": 0,
+      "journal_identical": true
+    },
+    "touch-observer": {
+      "path": ".runtime/mesh-shield-r126/check-arena-touch-observer-051947351635/report/index.json",
+      "sha256": "e5f0278d13120c7074d2402bf5591965ac56c3f7908a9dc625916640c9f6db5b",
+      "passed": 1,
+      "tests": [
+        "Aquila.Input.Observer.Touch"
+      ],
+      "prior_revision_count": 0,
+      "journal_identical": true
+    }
+  },
+  "preview_launch_test": {
+    "simulated_seconds_at_first_hit": 4.13,
+    "paused_once": true,
+    "unattended_input": false,
+    "original_revisions_identical": true,
+    "viewport_sha256": "e734eea4acca0dca868a525886326e25140fd95c42889c695d1b93b10da84918"
+  },
+  "owner_preview": {
+    "utc": "2026-11-23T05:20:02.3034392Z",
+    "process_id": 43204,
+    "visible": true,
+    "responding": true,
+    "foreground": true,
+    "first_contact_simulated_seconds": 4.13,
+    "no_synthetic_game_input": true,
+    "shortcut_target_and_original_arguments_verified": true,
+    "desktop_revisions_identical": true
+  },
+  "frames": {
+    "count": 200,
+    "dimensions": [
+      1280,
+      720
+    ],
+    "same_camera_and_simulation_step": true,
+    "media": {
+      "mesh-rest": {
+        "path": "reports/game-direction/media/r126-mesh-rest.png",
+        "sha256": "3e4faac096baabf4f355f0a56bafa1f84f548290b6ea455260c1e29ceb063e9f",
+        "source_frame": "quiet-000.png"
+      },
+      "oval-rest": {
+        "path": "reports/game-direction/media/r126-oval-rest.png",
+        "sha256": "b3308fdc6cebabf650d088ebe3496afa56dfd1c68d6b9eca08299f79a5df6e87",
+        "source_frame": "oval-rest.png"
+      },
+      "mesh-hit": {
+        "path": "reports/game-direction/media/r126-mesh-hit.png",
+        "sha256": "7b18c07f21ae1b4797571ac8f605e29d0d47fc59aab3db319f915a3e029727e5",
+        "source_frame": "shield-000.png"
+      },
+      "oval-hit": {
+        "path": "reports/game-direction/media/r126-oval-hit.png",
+        "sha256": "0757f337a51e0465e0132a0e857e116ae287a4b96997080f612e1c58bb95c7b4",
+        "source_frame": "oval-hit.png"
+      }
+    },
+    "comparison": {
+      "rest_pixels_differing_over_10": 15112,
+      "hit_pixels_differing_over_10": 37241,
+      "prior_oval_rim_sample_pixels": 3237,
+      "fraction_with_visible_oval_rim": 0.9997
+    }
+  },
+  "knowledge_hub": {
+    "description": "Authored UE 5.7 catalog entry about batching repeated mesh assets. The local 5.8.4 package verifies the actual trial.",
+    "citation": {
+      "kind": "source",
+      "record_id": "s_d6b64beb4597852b1baa8699c39beb2201239f947a8cc2402f7a86bed5e45e6d",
+      "version_id": "sha256:1e38faaed7738f04b6437a34d1eb22c3c6c2bdea5a9c03839802bda25f73f36f",
+      "mode": "passage",
+      "byte_start": 110098,
+      "byte_end": 112077
+    }
+  },
+  "limits": "Both playable ships use the existing box-built meshes. Local Windows rendering and input checks, without a physical Galaxy run."
+}

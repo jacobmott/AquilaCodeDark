@@ -1,0 +1,122 @@
+{
+  "report_round": 128,
+  "verified_utc": "2026-11-23T06:21:19.189584+00:00",
+  "engine": "Epic Launcher Unreal 5.8.4 CL 58902052, Win64 Development",
+  "runtime": {
+    "path": ".runtime/camera-flight-r128/playtest/Windows/Aquila/Binaries/Win64/Aquila.exe",
+    "sha256": "07f1224a964a4f238aec5841f27f2ecc46f15dfa591ef17c4fbf78484eac6873"
+  },
+  "controls": "W and S follow the sight line, A and D strafe, R and F move vertically. Middle drag pans horizontally. Moving releases the followed ship.",
+  "measured_flight": {
+    "arena-observer": {
+      "vertical_meters_aimed_down": -394.02,
+      "vertical_meters_aimed_up": 239.75,
+      "meters_per_key_step": 640.0
+    },
+    "observer": {
+      "vertical_meters_aimed_down": -394.02,
+      "vertical_meters_aimed_up": 239.75,
+      "meters_per_key_step": 640.0
+    },
+    "restored": {
+      "vertical_meters_aimed_down": -394.02,
+      "vertical_meters_aimed_up": 239.75,
+      "meters_per_key_step": 640.0
+    }
+  },
+  "method": "Routed mouse turns and keyboard presses in disposable games. Measured the eye relative to a known simulation position. Tests checked the complete three-dimensional travel direction against the rendered camera at two pitches.",
+  "preserved_inputs": "Reverse flight retraces the climb and dive. Shift multiplies speed by four. The first movement from ship follow follows the active sight line. The touch observer and bridge controls passed.",
+  "packaged": {
+    "arena-observer": {
+      "test": "Aquila.Input.Observer.Desktop",
+      "report": {
+        "path": ".runtime/camera-flight-r128/check-playtest-arena-observer-062009989921/report/index.json",
+        "sha256": "d39f2dc5423bdeae50fa67d7f71d42c8dfcfc7efaf2e5f7042099d9284aef2d8"
+      },
+      "prior_revisions_intact": true
+    },
+    "bridge": {
+      "test": "Aquila.Input.DesktopCamera",
+      "report": {
+        "path": ".runtime/camera-flight-r128/check-playtest-bridge-062034965611/report/index.json",
+        "sha256": "9b570e0d79161aaf078806ecc5cd0d8b7284eb83e2fe6b621b26e0268596012e"
+      },
+      "prior_revisions_intact": true
+    },
+    "desktop": {
+      "test": "Aquila.Input.DesktopCamera",
+      "report": {
+        "path": ".runtime/camera-flight-r128/check-playtest-desktop-062009988970/report/index.json",
+        "sha256": "0bc8c5a22c8a301011cc941fbd089d142b45e31a5800c57b262f73009be28405"
+      },
+      "prior_revisions_intact": true
+    },
+    "observer": {
+      "test": "Aquila.Input.Observer.Desktop",
+      "report": {
+        "path": ".runtime/camera-flight-r128/check-playtest-observer-062020159715/report/index.json",
+        "sha256": "517a8f74f340554794c8dcdce8866270b8f75b75c0288e6288ad51f2832ddc81"
+      },
+      "prior_revisions_intact": true
+    },
+    "restored": {
+      "test": "Aquila.Input.Observer.Desktop",
+      "report": {
+        "path": ".runtime/camera-flight-r128/check-playtest-restored-062027529256/report/index.json",
+        "sha256": "559bcde5a7bf168d848a5589c48de2f343ae6b640604baadfdcbdd89e924d91f"
+      },
+      "prior_revisions_intact": true
+    },
+    "touch": {
+      "test": "Aquila.Input.TouchMenu.RevealAndHide",
+      "report": {
+        "path": ".runtime/camera-flight-r128/check-playtest-touch-062043014685/report/index.json",
+        "sha256": "51d80db4460e4581664c91143af61a463a32a011254ab4c70ab22d5794945f02"
+      },
+      "prior_revisions_intact": true
+    },
+    "touch-observer": {
+      "test": "Aquila.Input.Observer.Touch",
+      "report": {
+        "path": ".runtime/camera-flight-r128/check-playtest-touch-observer-062051149480/report/index.json",
+        "sha256": "61311e9f44fb253d146c043aac613db065ed25b58c487c447344a36f7b52fe42"
+      },
+      "prior_revisions_intact": true
+    }
+  },
+  "headless": {
+    "passed": 14,
+    "report": {
+      "path": ".runtime/camera-flight-r128/headless/index.json",
+      "sha256": "1073b540d033add9c93140c7e481eaa1d68acb60c6e8acf733c0f6247a0398da"
+    }
+  },
+  "shortcut": {
+    "checked_utc": "2026-11-23T06:21:18.8413389Z",
+    "shortcut": "Aquila Combat Simulator",
+    "target": ".runtime/camera-flight-r128/playtest/Windows/Aquila.exe",
+    "kept_original_arguments": true,
+    "desktop_save_hashes_identical": true,
+    "owner_processes": 0,
+    "owner_input_injected": false
+  },
+  "expedition_tip_and_parent_after_check": "Both hashes matched the pretest check.",
+  "reusable_reference": {
+    "scope": "Authored UE 5.7 catalog entries for camera and pawn input. The local UE 5.8.4 executable provides the flight measurements.",
+    "source": {
+      "query": "UCameraComponent",
+      "outcome": "ok",
+      "title": "Unreal Engine 5.7 documentation: Gameplay Tutorials",
+      "citation": {
+        "kind": "source",
+        "record_id": "s_2052aa3e8b939ae9645994096d5086412b909f3d4a9f7c3b333eee99d2529825",
+        "version_id": "sha256:a88a09f909d2ea389d3640c52cc51d625ab6b1cc1aa150ec58dc72271537af98",
+        "mode": "passage",
+        "byte_start": 12301,
+        "byte_end": 14260
+      },
+      "read_outcome": "ok"
+    }
+  },
+  "limits": "Windows keyboard and mouse checks with a desktop touch preview. No physical phone flight test."
+}

@@ -1,0 +1,254 @@
+{
+  "round": 154,
+  "checked_utc": "2026-11-24T09:53:27.386401+00:00",
+  "scope": "Playable local Windows side-by-side scale trial. Final hull dimensions await owner judgment.",
+  "engine": "Epic Games Launcher Unreal 5.8.4 CL 58902052",
+  "starting_length_m": 1280,
+  "studies": {
+    "1280": {
+      "hull_length_beam_total_height_m": [
+        1280.0,
+        527.32,
+        408.96
+      ],
+      "roof_above_deck_at_shuttle_sill_m": 116.11,
+      "shuttle_length_beam_height_m": [
+        68.0,
+        64.0,
+        16.0
+      ],
+      "airlock_width_height_m": [
+        2.8,
+        3.0
+      ],
+      "corresponding_roof_height_m": 119.89,
+      "corresponding_blade_height_m": -7.44,
+      "clear_approach_rays": 85,
+      "total_rays": 85,
+      "measured_walk_to_lobby_m": 39.0,
+      "sill_drop_m": 2.0
+    },
+    "640": {
+      "hull_length_beam_total_height_m": [
+        640.0,
+        263.66,
+        204.48
+      ],
+      "roof_above_deck_at_shuttle_sill_m": 58.72,
+      "shuttle_length_beam_height_m": [
+        68.0,
+        64.0,
+        16.0
+      ],
+      "airlock_width_height_m": [
+        2.8,
+        3.0
+      ],
+      "corresponding_roof_height_m": 59.94,
+      "corresponding_blade_height_m": -3.72,
+      "clear_approach_rays": 85,
+      "total_rays": 85,
+      "measured_walk_to_lobby_m": 39.0,
+      "sill_drop_m": 2.0
+    }
+  },
+  "switch_key": "B",
+  "standing_capsule_height_m": 1.8,
+  "ramp_rise_run_m": [
+    2,
+    11
+  ],
+  "comparison_checks": [
+    "Same actor transform, aim, eye position, field of view and route progress on foot",
+    "Both hulls captured at the same ramp start looking forward and at pitch 24 degrees, yaw -118 degrees",
+    "Fixed berth camera remains beside Peregrine",
+    "Whole-hull orbit adjusts its distance with the hull",
+    "Uniform cooked mesh bounds and collision scaling",
+    "Fixed shuttle dimensions measured from six visible parts",
+    "Physical doorway clearance in both sizes",
+    "Pier supports reconnect to hull spine",
+    "Two complete walks and sidewall stops",
+    "Size survives ramp reset. New session opens at 1,280 m.",
+    "Direct shortcut and main menu entry"
+  ],
+  "full_shuttle_box_check": {
+    "method": "Separating-axis tests against all 5,596 Blender triangles in each hull, holding Peregrine at 68 x 64 x 16 m and varying the length of the clear approach.",
+    "results": {
+      "640": {
+        "shuttle_sweep_intersections": [],
+        "first_y_m": 170,
+        "last_y_m": 27,
+        "shuttle_width_height_m": [
+          64,
+          16
+        ],
+        "positive_controls": {
+          "raised": [
+            "Overhanging main vault",
+            "Overlapping armor band",
+            "Overlapping armor band.001"
+          ],
+          "lowered": [
+            "Calved outer blade"
+          ],
+          "widened": [
+            "Calved outer blade",
+            "Enclosed crossing0.001",
+            "Enclosed crossing1.001"
+          ]
+        }
+      },
+      "1280": {
+        "shuttle_sweep_intersections": [],
+        "first_y_m": 340,
+        "last_y_m": 27,
+        "shuttle_width_height_m": [
+          64,
+          16
+        ],
+        "positive_controls": {
+          "raised": [
+            "Overhanging main vault",
+            "Overlapping armor band",
+            "Overlapping armor band.001"
+          ],
+          "lowered": [
+            "Calved outer blade"
+          ],
+          "widened": [
+            "Calved outer blade",
+            "Enclosed crossing0.001",
+            "Enclosed crossing1.001"
+          ]
+        }
+      }
+    }
+  },
+  "packaged_tests": [
+    {
+      "suite": "Aquila.Input.Boarding",
+      "passed": 1,
+      "failed": 0,
+      "report_sha256": "631e3b21bcd429f9b566828c908761dcb6463fc1d1726c13428672de0a36a47f",
+      "prior_fixture_revisions_intact": true
+    },
+    {
+      "suite": "Aquila.Input.Simulator",
+      "passed": 1,
+      "failed": 0,
+      "report_sha256": "ddc5ff66055f4274a2219d88d2561145dcfee042ad1bfdd1c3fa385468acfa9b",
+      "prior_fixture_revisions_intact": true
+    },
+    {
+      "suite": "Aquila.Input.Observer",
+      "passed": 1,
+      "failed": 0,
+      "report_sha256": "58337321dfbb69ea1f6f9a3c473555df87e2304b8b42f909417dd879e9d767d5",
+      "prior_fixture_revisions_intact": true
+    }
+  ],
+  "simulation_save_groups": {
+    "passed": 20,
+    "failed": 0,
+    "warnings": 0
+  },
+  "frames": {
+    "size": [
+      1440,
+      810
+    ],
+    "source": "Rendered packaged Windows game, isolated journal.",
+    "files": {
+      "1280-airlock.png": {
+        "sha256": "85abc86b821c249ef83bfb2b672ca0bebba2839aca9ee30b12aad12fdbc5f4be",
+        "shown_on_report": false
+      },
+      "1280-berth.png": {
+        "sha256": "e394ef0394b70833dd45a522a2ae836220a59d9b7ba57f375f010efe50365c74",
+        "shown_on_report": true
+      },
+      "1280-canopy.png": {
+        "sha256": "3001d0f5c11a762ab55fe6044ce51a749cbd1e4eac77cf965940b8b92b1d8793",
+        "shown_on_report": true
+      },
+      "1280-deck.png": {
+        "sha256": "4015d30c4ebaf883d58253ae38f3a83409da89710df8187787025c341743fb94",
+        "shown_on_report": false
+      },
+      "1280-exterior.png": {
+        "sha256": "7d47eb4fd1ca66f293e565be0521c430d7df32cec10bce9921b45dcadb3aecdb",
+        "shown_on_report": true
+      },
+      "1280-lobby.png": {
+        "sha256": "7ad3a92e7d4f5d28702a1ef56c5ab995263fec36094c185d2140eec054dd76f5",
+        "shown_on_report": false
+      },
+      "1280-ramp.png": {
+        "sha256": "4881e64b2bd865cf773c3320d4e5e33bc521ac09778b0794aca0ecf78db6a539",
+        "shown_on_report": true
+      },
+      "640-airlock.png": {
+        "sha256": "1b94b72c6be08df593955f9d16ef73315a51e0227e8331f75c8b9cc42fdf512f",
+        "shown_on_report": false
+      },
+      "640-berth.png": {
+        "sha256": "2a043c88f42a56e43f01b4eb28c9d82865dfaeb178fed889a597302fc47f29c4",
+        "shown_on_report": true
+      },
+      "640-canopy.png": {
+        "sha256": "e16dc7bfcecbf2395df69791adafaf5cb712b216832d7ee3c9705b6396042fb0",
+        "shown_on_report": true
+      },
+      "640-deck.png": {
+        "sha256": "cf7d34efff8f9e83f0f0fd2a8f953d49867182f23feb4fbcf410fc43e93dc60c",
+        "shown_on_report": false
+      },
+      "640-exterior.png": {
+        "sha256": "26716bc7820916106cedcc76d8bbb44b8f12b71ef65bb83a3ca35147ee23b328",
+        "shown_on_report": true
+      },
+      "640-lobby.png": {
+        "sha256": "ede38327d8b587a91bd5ed7287d0dae16f39605d2d29ed8eb29cac575c78cc64",
+        "shown_on_report": false
+      },
+      "640-ramp.png": {
+        "sha256": "22f8801ed807e6bdf31687efac91c76d5631bf6fbfb7a279d931665e057908b7",
+        "shown_on_report": true
+      }
+    }
+  },
+  "owner_launch": {
+    "checked_utc": "2026-11-24T09:52:49.4752277Z",
+    "shortcut": "Aquila Boarding Test",
+    "target": ".runtime/glacier-scale-r154/playtest/Windows/Aquila.exe",
+    "starting_length_m": 1280,
+    "window": "Aquila (64-bit Development PCD3D_SM5) ",
+    "responsive": true,
+    "boarding_ready": true,
+    "combat_shortcut_identical": true,
+    "input_injected": false,
+    "match_loaded": false
+  },
+  "journals": {
+    "portable_entry_inventory_identical": true,
+    "inventory_fields": [
+      "revision name",
+      "byte length",
+      "modification time"
+    ],
+    "count": 151681,
+    "tip_revision": 151681,
+    "parent_revision": 151680,
+    "portable_tip_sha256": "f52f3ea0d9bfa957aced3415d6ce677b495ef598fa7d1020f39c4414882e303b",
+    "portable_parent_sha256": "8dc85d4ba7e4d4adc0a19fd2e11c2d22a8ada62a42d7d6cdae5258490e9bf43f",
+    "desktop_revision_hashes_identical": true,
+    "expedition_phase": "Failed",
+    "helm": "Hold"
+  },
+  "game_executable_sha256": "b485113b68c3178b153b05fd53b5e7eb5126a05ed964e2100a1736abf585440a",
+  "report": {
+    "round": 154,
+    "served_comparison_frames_verified_by_sha256": 8,
+    "paseo_snapshot_verified_round_title_and_both_size_choices": true
+  }
+}

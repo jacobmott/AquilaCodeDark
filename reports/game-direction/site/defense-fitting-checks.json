@@ -1,0 +1,269 @@
+{
+  "round": 134,
+  "verified_utc": "2026-11-24T01:47:25.405953+00:00",
+  "engine": "Epic Launcher Unreal 5.8.4 CL 58902052",
+  "scope": "Local Windows Combat Simulator. Galaxy hardware, player feedback and match acquisition remain open.",
+  "art": {
+    "source": "Six project-authored meshes built by the native content commandlet. Each hull uses its sample material on five major surfaces and the same model on 21 deck tiles. Shield hardware shares its selection model.",
+    "source_mesh_sha256": {
+      "SM_LightPlate": "972bf058a6fa024651bad249718e68461ad6c93cb4b8faaf8e55e9ef4d0759e5",
+      "SM_ReinforcedPlate": "4b89e830c480c73c0a0cdfec6e6b0b9139712726da286d6f3e14bc2faca2b9b9",
+      "SM_PrismPlate": "3977e059c7f596e06e623c165fe9c33b307b3b8c86c21e2a361f4f84019cac9e",
+      "SM_ShieldEmitter": "1f5aab7a67687e56c95a3c7e82e93264cdbad27948d09077f25b1ee3d2a4569a",
+      "SM_ReserveCapacitor": "02c7e9f29612044e27539070bf4e7b279c2525162a991e52cff8e13c18285176",
+      "SM_EmptyShieldSocket": "55904c84985754360b1066fe3b2cc6edf2a5517dd1349e793b479d7d039f2f9a"
+    }
+  },
+  "rules": [
+    "Each ship may equip a standard shield and one optional Reserve Capacitor. Selecting the empty socket removes both.",
+    "A shield hit that drains the first bank adds 100 points exactly once per duel. Excess damage consumes the new bank, then armor and hull.",
+    "Bypassing rounds do not use either bank. A destroyed hull is never revived. Replay rearms the equipment."
+  ],
+  "fitting_checks": [
+    "Physical clicks on the projected models and hull ports. All three armor finishes match the actual ship geometry and materials.",
+    "Defense selection hides the weapon gallery. Shield, optional capacitor, removal, cancel, start, replay and independent equipment on both ships.",
+    "Natural fire at 1x and 8x, with the starting shield set to one cannon hit. Checked 100 charge, active HUD, spent cell, second depletion and hull damage.",
+    "Headless exact depletion, overflow, both banks breached by one hit, two impacts in one step, independent sides, bypass, absent shield and stock shield."
+  ],
+  "headless": {
+    "passed": 18,
+    "report_sha256": "cf1d483a269208487fa8455f65d1e9971bb5bec4bbfc46c4ac81dd096ef051aa"
+  },
+  "packaged": {
+    "duel-direct": {
+      "mode": "Simulator",
+      "suite": "Aquila.Input.Simulator",
+      "passed": 1,
+      "report_sha256": "ab520d0a0bebcc0aa804805d2bb03c100a28ccc7925286c26a066caae10500cd",
+      "prior_revisions_intact": true,
+      "journal_identical": true,
+      "resolution": [
+        1280,
+        720
+      ]
+    },
+    "duel-menu": {
+      "mode": "Menu",
+      "suite": "Aquila.Input.Simulator",
+      "passed": 1,
+      "report_sha256": "c86ba3a3d1a011f170554407207646433ac66d72d953076b5cb485d3f5c43ed6",
+      "prior_revisions_intact": true,
+      "journal_identical": true,
+      "resolution": [
+        1280,
+        720
+      ]
+    },
+    "fitting-compact": {
+      "mode": "Simulator",
+      "suite": "Aquila.Input.Simulator",
+      "passed": 1,
+      "report_sha256": "1ee3428b2041049447dcca286cd21e62ba7604ad2b72c180aa71c28bb673a5aa",
+      "prior_revisions_intact": true,
+      "journal_identical": true,
+      "resolution": [
+        960,
+        540
+      ]
+    },
+    "fitting-tall": {
+      "mode": "Simulator",
+      "suite": "Aquila.Input.Simulator",
+      "passed": 1,
+      "report_sha256": "3f6ab12a31db5afac7582adf942145bcac745742992fde96a7eb9af70472acbd",
+      "prior_revisions_intact": true,
+      "journal_identical": true,
+      "resolution": [
+        1024,
+        768
+      ]
+    },
+    "fitting-wide": {
+      "mode": "Simulator",
+      "suite": "Aquila.Input.Simulator",
+      "passed": 1,
+      "report_sha256": "a82984a5500f52692f2d2a0ebc7fc758641dd478f9c04ecc5486ce3ca37ac96d",
+      "prior_revisions_intact": true,
+      "journal_identical": true,
+      "resolution": [
+        1920,
+        800
+      ]
+    },
+    "arena-observer": {
+      "mode": "Simulator",
+      "suite": "Aquila.Input.Observer",
+      "passed": 1,
+      "report_sha256": "92d77f85b37e13ade577d17d3a69098318094a07b231ccf60313d0960f944f46",
+      "prior_revisions_intact": true,
+      "journal_identical": true,
+      "resolution": [
+        1280,
+        720
+      ]
+    },
+    "desktop": {
+      "mode": "Match",
+      "suite": "Aquila.Input.DesktopCamera",
+      "passed": 1,
+      "report_sha256": "9dd0393346148e8c1c1200d63afac93383fdd4ff8885332fab0281b14d08b1a8",
+      "prior_revisions_intact": true,
+      "journal_identical": true,
+      "resolution": [
+        1280,
+        720
+      ]
+    },
+    "observer": {
+      "mode": "Match",
+      "suite": "Aquila.Input.Observer",
+      "passed": 1,
+      "report_sha256": "9e3ebeaa6113fb0d5021a6f9336865e9b4140379ae2ea0239a2bb3c047e35a9e",
+      "prior_revisions_intact": true,
+      "journal_identical": true,
+      "resolution": [
+        1280,
+        720
+      ]
+    },
+    "restored": {
+      "mode": "Match",
+      "suite": "Aquila.Input.Observer",
+      "passed": 1,
+      "report_sha256": "7ccfba74028817ce4910d86d5d2a559db36b1b3b9a132e4c0984140a308bbcab",
+      "prior_revisions_intact": true,
+      "journal_identical": true,
+      "resolution": [
+        1280,
+        720
+      ]
+    },
+    "bridge": {
+      "mode": "Match",
+      "suite": "Aquila.Input.DesktopCamera",
+      "passed": 1,
+      "report_sha256": "7cadc6ad44fc63dd58bd290c773fb86454ef83f6226e63a01236235841334527",
+      "prior_revisions_intact": true,
+      "journal_identical": true,
+      "resolution": [
+        1280,
+        720
+      ]
+    },
+    "touch": {
+      "mode": "Match",
+      "suite": "Aquila.Input.TouchMenu",
+      "passed": 1,
+      "report_sha256": "a1650cb1836075e5a71f46a5c5f58acfdd86c9cbde426f8f82f930f9cda0074b",
+      "prior_revisions_intact": true,
+      "journal_identical": true,
+      "resolution": [
+        960,
+        540
+      ]
+    },
+    "touch-observer": {
+      "mode": "Match",
+      "suite": "Aquila.Input.Observer",
+      "passed": 1,
+      "report_sha256": "5b6ee5bb2acf7aa987b4bb7f4ebcc9d2cd72774c0be025075700e5060f74d487",
+      "prior_revisions_intact": true,
+      "journal_identical": true,
+      "resolution": [
+        960,
+        540
+      ]
+    },
+    "effects": {
+      "mode": "Simulator",
+      "suite": "Aquila.Input.CombatFeedback",
+      "passed": 1,
+      "report_sha256": "7561fb5e8ed2a55b9d0ced80d586efcecf7cb0955a51d6c901485760dfb644c4",
+      "prior_revisions_intact": true,
+      "journal_identical": true,
+      "resolution": [
+        1280,
+        720
+      ]
+    }
+  },
+  "package": {
+    "executable": ".runtime/defense-fitting-r134/final/Windows/Aquila/Binaries/Win64/Aquila.exe",
+    "sha256": "0f0e86bdd2af3e8e0fb825e6f0e3fe3d3b73da6b4dd75bcccafd270dde83ffae",
+    "full_cook_log_sha256": "0c08afcf609f503957747dbea814553c8392d1a475005b5629d6ae6ddf7b236d"
+  },
+  "catalog": {
+    "scope": "Permitted Unreal 5.7 material-instance discovery index. Local builds and packaged tests establish the 5.8.4 runtime behavior.",
+    "citation": {
+      "byte_end": 41129,
+      "record_id": "s_38d3a0791d8804e824ff1f8376e79735dc26147e7e5759a70dc4c1ad166c7a39",
+      "mode": "passage",
+      "version_id": "sha256:81ec7afeaa0bbf799c84c887601c9e9276e76477175189ee4234827acbb0da9e",
+      "byte_start": 39210,
+      "kind": "source"
+    }
+  },
+  "media": {
+    "r134-light.png": {
+      "sha256": "e5e8234eae5d3e7c40dae2e645a2453bc36c4772a170ac290971abecf89eea98",
+      "size": [
+        1280,
+        720
+      ],
+      "source": "Unaltered Windows game capture."
+    },
+    "r134-reinforced.png": {
+      "sha256": "f7e01b8dbebf977eccb61bba3664773bf114929eb36ea4fb8b607d3234f5be22",
+      "size": [
+        1280,
+        720
+      ],
+      "source": "Unaltered Windows game capture."
+    },
+    "r134-prism.png": {
+      "sha256": "bcb0d21d3a21bbbb6e60672620acd01a3687a5f1b5ece7b29dc0650b83677e6b",
+      "size": [
+        1280,
+        720
+      ],
+      "source": "Unaltered Windows game capture."
+    },
+    "r134-shield.png": {
+      "sha256": "beb41a4893cbc7abf7237e0f1e7d5436e11a7cd81fbba8dc3dc49a6e8eabc5b3",
+      "size": [
+        1280,
+        720
+      ],
+      "source": "Unaltered Windows game capture."
+    },
+    "r134-spent.png": {
+      "sha256": "56d1b50e72a62cfa9e27a97e54d5f6b5e2ff78d8db4e87c34a01147b054bcd58",
+      "size": [
+        1280,
+        720
+      ],
+      "source": "Unaltered Windows game capture."
+    }
+  },
+  "shortcut": {
+    "checked_utc": "2026-11-24T01:47:24.9805967Z",
+    "shortcut": "Aquila Combat Simulator",
+    "target": ".runtime/defense-fitting-r134/final/Windows/Aquila.exe",
+    "kept_original_arguments": true,
+    "desktop_save_hashes_identical": true,
+    "owner_processes": 0,
+    "owner_input_injected": false
+  },
+  "journals": {
+    "before_utc": "2026-11-24T01:31:49.945264+00:00",
+    "after_utc": "2026-11-24T01:47:23.731786+00:00",
+    "sequence": 151681,
+    "parent": 151680,
+    "phase": "Failed",
+    "helm": "Hold",
+    "tip_sha256": "f52f3ea0d9bfa957aced3415d6ce677b495ef598fa7d1020f39c4414882e303b",
+    "parent_sha256": "8dc85d4ba7e4d4adc0a19fd2e11c2d22a8ada62a42d7d6cdae5258490e9bf43f",
+    "desktop_revision_count": 1,
+    "all_hashes_identical": true
+  }
+}

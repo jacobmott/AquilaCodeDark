@@ -1,6 +1,8 @@
 """Local Aquila direction and implementation report; prior rounds remain intact."""
 import importlib.util
 import json
+import shutil
+import subprocess
 import sys
 from html import escape
 from pathlib import Path
@@ -18,6 +20,1792 @@ def table(headers, rows):
     return ("<table><thead><tr>" + "".join(f"<th>{x}</th>" for x in headers)
             + "</tr></thead><tbody>" + "".join("<tr>" + "".join(f"<td>{x}</td>" for x in row)
                                                 + "</tr>" for row in rows) + "</tbody></table>")
+
+
+def ship_concept_gallery(out, catalog, round_number, keep_question=None):
+    display_media = HERE / "media/ship-collection-r144"
+    jumps = []
+    cards = []
+    for item in catalog["items"]:
+        number = item["number"]
+        label = f'{number:02} · {item["name"]}'
+        anchor = f"aquila-r{round_number}-ship-{number:02}"
+        if (number - 1) % 10 == 0:
+            jumps.append(f'<a class="qref" href="#{anchor}">{number:02}–{number+9:02}</a>')
+        name = item["filename"]
+        original = ROOT / "Assets/ShipConcepts" / item["folder"] / name
+        output_name = ("r143-" if number <= 3 else "r144-") + name
+        if original.is_file():
+            full = page.copy_media(original, out, name=output_name)
+        elif (out / "media" / output_name).is_file():
+            full = "media/" + output_name
+        else:
+            cards.append(f'<figure id="{anchor}"><figcaption>{escape(label)}. Original unavailable in this checkout.</figcaption></figure>')
+            continue
+        preview = display_media / f"{number:02}.webp"
+        src = page.copy_media(preview, out, name=f"r144-preview-{number:02}.webp") if preview.is_file() else full
+        alt = escape(label + ". " + item["description"], quote=True)
+        keep = decide.pick(keep_question, f"{number:02}", label, mode="multi", text=f"Keep {number:02}") if keep_question else ""
+        cards.append(
+            f'<figure id="{anchor}"><img loading="lazy" decoding="async" src="{escape(src)}" alt="{alt}">'
+            f'<figcaption><strong>{escape(label)}</strong> · <a href="{escape(full)}" target="_blank" rel="noopener" '
+            f'aria-label="Open the original PNG of {escape(item["name"])}">Original PNG</a></figcaption>{keep}</figure>'
+        )
+    return ('<nav class="qrefs" aria-label="Jump to ship number"><span class="qrefhead">Jump to</span>'
+               + " ".join(jumps) + '</nav><div class="grid thumbs">' + "".join(cards) + "</div>")
+
+
+def ship_collection_round(out, catalog):
+    qid = "aquila-direction-r144-favorites"
+    display_media = HERE / "media/ship-collection-r144"
+    collection = decide.recap(
+        "All 60 ships are ready. The 57 new designs cost 42.75 credits, bringing the collection to 45 credits.",
+        [
+            ("Gallery", "Each ship has a number, a full-size view and a box for your shortlist."),
+            ("Settings", "GPT Image 2.6 Sunburst generated each original at 1K low quality."),
+            ("Variety", "The new hulls explore eleven kinds of structure, including folds, branching arms, shells and suspended spans."),
+            ("Budget", "The first three cost 2.25 credits. Higgsfield recorded 57 further charges at 0.75 credits each."),
+            ("Originals", "All 60 are square PNGs measuring 1024 × 1024 pixels."),
+        ],
+        {
+            "did": "Used your submitted choice to finish the collection at 60.",
+            "why": "Different hull shapes give you more choices for Resolute, Sentinel and the rest of the fleet.",
+            "working": "All 60 jobs finished. Each original has a saved prompt, settings and provider record.",
+            "not_working": "Playable ship models and walkable interiors still need their own design work.",
+            "next": "Keep any hulls you want to revisit. You can also describe what you like about them.",
+        },
+    )
+    overview_source = display_media / "all-sixty.jpg"
+    overview_html = '<p><a href="#q-aquila-direction-r144-favorites">Browse and shortlist ships</a></p>'
+    if overview_source.is_file():
+        overview = page.copy_media(overview_source, out, name="r144-all-sixty.jpg")
+        overview_html += page.figure(overview, "All 60 hulls", " Numbers match the individual gallery entries.")
+    collection += decide.info_thread(
+        "aquila-direction-r144-overview", "The collection includes the three trial ships and 57 new hulls.",
+        body_html=overview_html, short="60 ships at a glance",
+    )
+    gallery = ship_concept_gallery(out, catalog, 144, keep_question=qid)
+    collection += decide.question(
+        qid, "Which ships would you keep as candidates for Resolute, Sentinel or another vessel?",
+        [], mode="multi", short="Shortlist ship designs",
+        why="Choose as many as you like. Click a hull for a larger view, or use its number in chat.",
+        anchors_html=gallery, follows="aquila-direction-r143-batch",
+    )
+    collection += decide.whats_next(
+        "aquila-direction-r144-next", "The shortlist can guide later discussions about boarding routes, interior spaces and ship roles.",
+        short="Review the collection",
+    )
+    return page.entry(144, "The 60-ship concept gallery", collection, when="2026-11-24")
+
+
+def available_media(out, source, filename):
+    if source.is_file():
+        return page.copy_media(source, out, name=filename)
+    if (out / "media" / filename).is_file():
+        return "media/" + filename
+    return None
+
+
+def research_battleship_models(out, catalog):
+    library = Path("D:/OtherProjects/asset-pipeline/Assets/AssetPipelineLab/Aquila_Research_Battleships/R002")
+    roster = decide.recap(
+        "All 60 are research battleships. Delta Tree and Glacier Tongue are the first two modeled.",
+        [
+            ("Start", "A fresh match gives you one research battleship."),
+            ("Unlocks", "You can discover ships while exploring or unlock them through research. Other routes remain open."),
+            ("Names", "Every hull keeps its gallery name. Ship 41 is listed as Glacier Tongue."),
+            ("Prototype", "Delta Tree takes the player side and Glacier Tongue the opponent side for now."),
+            ("Fitting", "Each exported hull has 30 named mounting points."),
+        ],
+        {
+            "did": "Saved both exterior studies and the full named roster.",
+            "why": "The selected pair tests two different hull shapes from the same fleet.",
+            "working": "Both models have an editable Blender scene, a 3D export and three rendered views.",
+            "not_working": "The new shapes and their walkable interiors still need game integration.",
+            "next": "The starter and each hull’s unlock conditions remain open.",
+        },
+    )
+    models = {item["number"]: item for item in catalog["items"]}
+    for number in catalog["selection"]["model_studies"]:
+        item = models[number]
+        slug = Path(item["filename"]).stem[3:]
+        name = item["name"]
+        folder = library / slug
+        source = ROOT / "Assets/ShipConcepts" / item["folder"] / item["filename"]
+        media = []
+        for file, label in [(source, "Selected concept"), (folder / "bow.png", "Bow view"),
+                            (folder / "top.png", "Top view"), (folder / "stern.png", "Stern view")]:
+            filename = ("r144-" + file.name) if file == source else f"r146-{slug}-{file.name}"
+            url = available_media(out, file, filename)
+            if url:
+                media.append(page.figure(url, f"{name} · {label}"))
+        links = []
+        for suffix, label in [(".blend", "Editable Blender scene"), (".glb", "Download 3D model")]:
+            file = folder / (slug + suffix)
+            filename = "r146-" + file.name
+            url = available_media(out, file, filename)
+            if url:
+                links.append(f'<a href="{url}" download="{file.name}">{label}</a>')
+        body = page.grid(*media) + ("<p>" + " · ".join(links) + "</p>" if links else "")
+        roster += decide.info_thread(
+            f"aquila-direction-r146-{slug}", item["description"], body_html=body, short=f"{number} · {name}",
+        )
+    roster += decide.info_thread(
+        "aquila-direction-r146-roster", "Every numbered hull belongs to the research battleship roster.",
+        body_html='<details id="aquila-research-battleship-roster"><summary>Browse all 60 research battleships</summary>'
+                  + ship_concept_gallery(out, catalog, 146) + '</details>', short="The full roster",
+    )
+    roster += decide.whats_next(
+        "aquila-direction-r146-next", "Both exteriors are ready to inspect beside their original concepts.",
+        short="Review the two models",
+    )
+    return page.entry(146, "The first two research battleships", roster, when="2026-11-24")
+
+
+def textured_battleships(out, proof):
+    library = Path("D:/OtherProjects/asset-pipeline/Assets/AssetPipelineLab/Aquila_Research_Battleships")
+    section = decide.recap(
+        "Asset Pipeline textured Delta Tree and Glacier Tongue.",
+        [
+            ("Delta Tree", "Warm ceramic plates frame bronze rails and lit channel walls."),
+            ("Glacier Tongue", "Blue enamel and satin aluminum wrap around the recessed dock."),
+            ("Finish", "Panel seams, vents and fasteners catch light. Worn paint reveals metal underneath."),
+            ("Lights", "The cabin windows glow amber. The drive optics glow blue-white."),
+            ("Downloads", "Each ship comes with an editable scene, a textured model and its loose texture maps."),
+        ],
+        {
+            "did": "Applied the finishes to both existing hulls.",
+            "why": "The distinct finishes make the armor, machinery and inhabited decks easier to recognize.",
+            "working": "Both exports reopened with their textures and all 30 mounting points.",
+            "not_working": "The Windows simulator still uses its prototype hulls.",
+            "next": "Compare the new finishes with the earlier studies below.",
+        },
+    )
+    for ship in proof["ships"]:
+        name, slug = ship["name"], ship["slug"]
+        folder = library / "R003" / slug
+        primary, secondary = [], []
+        for target, source, filename, label in [
+            (primary, folder / "exchange.png", f"r147-{slug}-exchange.png", "Rendered from the 3D export"),
+            (primary, folder / "detail.png", f"r147-{slug}-detail.png", "Surface detail"),
+            (secondary, folder / "top.png", f"r147-{slug}-top.png", "Top view"),
+            (secondary, folder / "stern.png", f"r147-{slug}-stern.png", "Stern view"),
+            (secondary, library / "R002" / slug / "bow.png", f"r146-{slug}-bow.png", "Earlier finish"),
+        ]:
+            url = available_media(out, source, filename)
+            if url:
+                target.append(page.figure(url, f"{name} · {label}"))
+        downloads = []
+        for suffix, label in [(".blend", "Editable Blender model"), (".glb", "Textured 3D model"),
+                              ("-textures.zip", "Texture maps")]:
+            filename = slug + suffix
+            url = available_media(out, folder / filename, "r147-" + filename)
+            if url:
+                downloads.append(f'<a href="{url}" download="{filename}">{label}</a>')
+        body = "<p>" + " · ".join(downloads) + "</p>" + page.grid(*primary)
+        body += "<details><summary>Other views and earlier finish</summary>" + page.grid(*secondary) + "</details>"
+        section += decide.info_thread(
+            f"aquila-direction-r147-{slug}",
+            f"{name} uses {ship['materials']} materials and {ship['maps']} texture maps in the 3D export.",
+            body_html=body, short=f"{ship['number']} · {name}",
+        )
+    section += decide.whats_next(
+        "aquila-direction-r147-next", "The textured exteriors are ready for art review. Unreal integration remains open.",
+        short="Review the finishes",
+    )
+    return page.entry(147, "Textured research battleships", section, when="2026-11-24")
+
+
+def ship_reference_views(out):
+    section = decide.recap(
+        "Yes. We should have established each ship’s hull depth before building its model.",
+        [
+            ("Originals", "Each ship had one three-quarter concept. I had to guess the shapes hidden behind its upper decks."),
+            ("First two views", "A straight side view sets hull height along the ship. A bow view sets width and curvature."),
+            ("Full sheet", "Show left, right, top, underside, bow and stern at the same scale, without perspective."),
+            ("Alignment", "Use one baseline. Match the docks, deck edges and engine stacks across every view."),
+            ("Asymmetry", "Glacier Tongue’s separate docking plate belongs on one side. Mirroring a side view would lose that distinction."),
+        ],
+        {
+            "did": "Compared both original concepts with the textured models and projected the existing geometry from the side and bow.",
+            "why": "A raised antenna can give a shallow ship plenty of total height. Measure the hull from keel to deck.",
+            "working": "Delta Tree’s branching docks and Glacier Tongue’s overlapping plates remain recognizable.",
+            "not_working": "The earlier renders show dimensions already chosen during modeling. They supply no independent reference for hidden surfaces.",
+            "next": "Use the same original and agreed side profile to guide the remaining views.",
+        },
+    )
+    originals = ROOT / "Assets/ShipConcepts/sunburst-r144"
+    library = Path("D:/OtherProjects/asset-pipeline/Assets/AssetPipelineLab/Aquila_Research_Battleships/R003")
+    comparisons = []
+    for number, slug, name, finding in [
+        (41, "glacier-tongue", "Glacier Tongue", "The concept leaves a tall, sheltered dock above the outboard plate. The model squeezes it into a slot."),
+        (58, "delta-tree", "Delta Tree", "The concept builds height toward its stacked stern drives. The modeled fan carries a much more uniform hull depth."),
+    ]:
+        concept = originals / f"{number}-{slug}.png"
+        comparison = []
+        for path, filename, label in [
+            (concept, "r144-" + concept.name, "Original concept"),
+            (library / slug / "exchange.png", f"r147-{slug}-exchange.png", "Current textured model"),
+        ]:
+            url = available_media(out, path, filename)
+            if url:
+                comparison.append(page.figure(url, f"{name} · {label}"))
+            else:
+                comparison.append(f"<p>{label} unavailable in this checkout.</p>")
+        body = f"<h3>{name}</h3><p>{finding}</p>" + page.grid(*comparison)
+        profile = available_media(out, HERE / "media/ship-profiles-r148" / (slug + ".png"), f"r148-{slug}-profiles.png")
+        if profile:
+            body += page.figure(profile, f"{name} · Side and bow projected from the current model at equal scale.")
+        else:
+            body += "<p>Side and bow projections unavailable in this checkout.</p>"
+        comparisons.append(body)
+    section += decide.info_thread(
+        "aquila-direction-r148-hulls", "Compare each original with the ship built from it.",
+        body_html="".join(comparisons), short="Compare the hulls",
+    )
+    section += decide.whats_next(
+        "aquila-direction-r148-next", "Once the views agree, check a rough hull against them before adding surface detail.",
+        short="Check the rough hull",
+    )
+    return page.entry(148, "Ship height and reference views", section, when="2026-11-24")
+
+
+def ship_modeling_reference_plan(out):
+    section = decide.recap(
+        "I’d start each selected ship with twelve shape views, then add references for the places players can visit.",
+        [
+            ("Six straight views", "Show both sides, top, underside, bow and stern at the same scale."),
+            ("Two angled views", "Look up from the bow and down from the stern on opposite sides."),
+            ("Four sections", "Cut once lengthwise and across the forward hull, main dock and aft drives."),
+            ("Walkable decks", "Follow a person from the shuttle ramp through the airlock to the labs and bridge."),
+            ("Close-ups", "Show moving doors, removable fittings and neighboring materials in even light."),
+        ],
+        {
+            "did": "Wrote a modeling brief with separate prompts for Glacier Tongue’s docking bay and Delta Tree’s stern.",
+            "why": "A section shows how much space sits beneath the armor and which openings reach a deck.",
+            "working": "The existing originals anchor the first side and bow views for each ship.",
+            "not_working": "Hull dimensions, bay clearance and playable floor plans still need to be settled.",
+            "next": "Keep the original and the agreed side profile beside every later request.",
+        },
+    )
+    body = table(
+        ["Ask for", "What it helps settle"],
+        [
+            ["A cross-section through a docking bridge", "Distinguish enclosed passage, solid hull and open vacuum. Show a shuttle at the entrance."],
+            ["A plan per playable deck", "Align stairs, lifts and airlocks. Include an eye-level view from the shuttle ramp."],
+            ["Two states of a fitting", "Show a hangar door open and shut, or the same turret port empty and fitted."],
+            ["A material sheet", "Place armor, glass and bare metal together. Show which surfaces glow when the lights come on."],
+            ["One plate lifted away", "Reveal how it attaches and which compartments sit behind it."],
+        ],
+    )
+    body += "<p>Use a plain background and one full ship per exterior view. Match scale and keep the same landmarks throughout.</p>"
+    body += "<p>Place one shuttle at the dock and one person beside the airlock. Add measured scale marks in Blender.</p>"
+    originals = ROOT / "Assets/ShipConcepts/sunburst-r144"
+    figures = []
+    for filename, name, caption in [
+        ("41-glacier-tongue.png", "Glacier Tongue", "Cut through the enclosed crossing between the deep bay and the outboard plate."),
+        ("58-delta-tree.png", "Delta Tree", "Follow a branch into a round dock. Look astern to see where the stacked drives gain height."),
+    ]:
+        url = available_media(out, originals / filename, "r144-" + filename)
+        if url:
+            figures.append(page.figure(url, name, caption))
+        else:
+            figures.append(f"<p>{name} original unavailable in this checkout. {caption}</p>")
+    body += page.grid(*figures)
+    brief = ROOT / "Docs/Plans/ShipHulls/ModelingReferences.md"
+    (out / "ship-modeling-references.md").write_bytes(brief.read_bytes())
+    body += '<p><a href="ship-modeling-references.md" download>Download the modeling brief and both prompts</a></p>'
+    section += decide.info_thread(
+        "aquila-direction-r149-references", "Choose extra views around what makes each ship different.",
+        body_html=body, short="The reference brief",
+    )
+    section += decide.whats_next(
+        "aquila-direction-r149-next", "Check the rough hull against the side and bow views before adding surface detail.",
+        short="Establish the hull shape",
+    )
+    return page.entry(149, "What Blender needs for each ship", section, when="2026-11-24")
+
+
+def finished_ship_references(out, proof):
+    assets = ROOT / "Assets/ShipConcepts/modeling-references-r150"
+    previews = HERE / "media/ship-views-r150"
+    cost = (f"The full run cost {proof['net_credits']:g} credits after the refund."
+            if proof["net_credits"] is not None else f"Successful jobs were quoted at {proof['successful_quotes']:g} credits.")
+    section = decide.recap(
+        "Delta Tree and Glacier Tongue each have 24 selected images for modeling.",
+        [
+            ("Shape", "Eight exterior views and four sections per ship show the hull from outside and through its decks."),
+            ("Walking aboard", "Three floor plans share a lift and stair. Two eye-level views show the boarding ramp and bridge."),
+            ("Fittings", "Compare the hangar open and shut, then the same turret port empty and fitted."),
+            ("Materials", "Compare lit and unlit samples. A raised armor plate reveals the structure underneath."),
+            ("Generation", f"Higgsfield generated {proof['provider_completed']} images at 1K low quality. {cost}"),
+        ],
+        {
+            "did": "Packed the original concept, selected references, earlier studies and an editable Blender proportion study for each ship.",
+            "why": "Glacier Tongue needs room beneath its docking bridges. Delta Tree gains height at the stacked stern drives.",
+            "working": "Both archives passed file checks. The gray exterior guides share one camera scale across all six straight views.",
+            "not_working": "Final hull dimensions, shuttle clearance and in-game walking routes still need testing.",
+            "next": "Use the side profiles, dock sections and registered deck plans when building the detailed hulls.",
+        },
+    )
+
+    def card(ship, row):
+        slug = ship["slug"]
+        source = assets / slug / row["file"]
+        tag = row["slot"] if row["group"] == "Modeling guides" else source.stem
+        name = f"r150-{slug}-{tag}"
+        full = available_media(out, source, name + ".png")
+        label = escape(row["label"])
+        if not full:
+            return f"<p>{label} unavailable in this checkout.</p>"
+        preview = available_media(out, previews / f"{slug}-{tag}.webp", name + ".webp") or full
+        alt = escape(f"{ship['name']} · {row['label']}", quote=True)
+        return (f'<figure><a href="{full}" target="_blank" rel="noopener"><img src="{preview}" alt="{alt}" '
+                f'loading="lazy" decoding="async"></a><figcaption>{label} · '
+                f'<a href="{full}" target="_blank" rel="noopener">Full size</a></figcaption></figure>')
+
+    downloads, highlights, galleries = [], [], []
+    for ship in proof["ships"]:
+        slug, title = ship["slug"], escape(ship["name"])
+        pack = available_media(out, assets / ship["archive"], "r150-" + ship["archive"])
+        if pack:
+            downloads.append(f'<a href="{pack}" download="{ship["archive"]}">Download {title}</a>')
+        else:
+            downloads.append(f"{title} archive unavailable in this checkout.")
+        lead = "11-dock-section" if slug == "glacier-tongue" else "06-stern"
+        highlights.append(card(ship, next(r for r in ship["views"] if r["slot"] == lead)))
+        html = [f"<h3>{title}</h3>"]
+        original = ROOT / ship["original"]
+        original_url = available_media(out, original, "r144-" + original.name)
+        if original_url:
+            html.append("<details><summary>Original concept</summary>"
+                        + page.figure(original_url, f"{ship['name']} · selected concept") + "</details>")
+        for category, rows in [
+            ("Exterior and hull sections", [r for r in ship["views"] if r["group"] in ("Hull", "Sections")]),
+            ("Deck plans and interior views", [r for r in ship["views"] if r["group"] in ("Decks", "Aboard")]),
+            ("Fittings, armor and materials", [r for r in ship["views"] if r["group"] in ("Fittings", "Surfaces")]),
+            ("Blender guides and floor layouts", ship["guides"]),
+            ("Earlier studies", ship["studies"]),
+        ]:
+            if rows:
+                html.append(f"<details><summary>{category}</summary><div class=\"grid thumbs\">"
+                            + "".join(card(ship, r) for r in rows) + "</div></details>")
+        galleries.append("".join(html))
+    body = "<p>" + " · ".join(downloads) + "</p>" + page.grid(*highlights) + "".join(galleries)
+    section += decide.info_thread(
+        "aquila-direction-r150-packs", "Open a ship’s complete pack or browse its individual images below.",
+        body_html=body, short="Packs and full gallery",
+    )
+    section += decide.whats_next(
+        "aquila-direction-r150-next", "The packs are ready for Asset Pipeline. Start with the docking opening and stern height.",
+        short="Ready for hull modeling",
+    )
+    return page.entry(150, "Blender reference packs for both ships", section, when="2026-11-24")
+
+
+def glacier_boarding_proposal(out):
+    section = decide.recap(
+        "I’d make Glacier Tongue’s docking bay the first part you can walk through.",
+        [
+            ("First ship", "The earlier hull squeezed Glacier Tongue’s open bay into a slot."),
+            ("Scale", "Place the shuttle beneath the armor and a player at the airlock to size the opening."),
+            ("Route", "Build one continuous path from the shuttle ramp, through the airlock, to the lift lobby."),
+            ("Windows test", "Orbit the hull at combat distance, then walk the route with collision enabled."),
+            ("Second ship", "Use the same scale to check Delta Tree’s shallow bow and stacked stern drives."),
+        ],
+        {
+            "did": "Recorded your feedback on the references and proposed a first playable test.",
+            "why": "One docking bay lets us check exterior depth and interior headroom in the same place.",
+            "working": "The ship already has an editable proportion study, dock section and deck plans.",
+            "not_working": "The game still needs a human-scale boarding test for this hull.",
+            "next": "Start with the existing Blender study and carry the rough hull into a small Windows test level.",
+        },
+    )
+    source = ROOT / "Assets/ShipConcepts/modeling-references-r150/glacier-tongue"
+    figures = []
+    for filename, label in [("11-dock-section.png", "Dock section"), ("16-shuttle-ramp.png", "View from the shuttle ramp")]:
+        url = available_media(out, source / filename, "r150-glacier-tongue-" + filename)
+        if url:
+            figures.append(page.figure(url, "Glacier Tongue", " · " + label))
+        else:
+            figures.append(f"<p>{label} unavailable in this checkout.</p>")
+    section += decide.info_thread(
+        "aquila-direction-r151-dock", "The shuttle should clear the roof and bridges with its ramp lined up to the boarding deck.",
+        body_html=page.grid(*figures), short="Shuttle and boarding deck",
+    )
+    section += decide.whats_next(
+        "aquila-direction-r151-next", "Once the bay works at player scale, detail the hull and apply the test to Delta Tree.",
+        short="First playable ship test",
+    )
+    return page.entry(151, "Start with Glacier Tongue’s docking bay", section, when="2026-11-24")
+
+
+def glacier_boarding_walk(out):
+    section = decide.recap(
+        "Glacier Tongue’s port bay is playable on Windows.",
+        [
+            ("Start", "Open Aquila Boarding Test on the desktop. You start on Peregrine’s ramp."),
+            ("Walk", "Follow the deck arrows through Airlock 01 to the two lifts."),
+            ("Outside", "Press Tab to orbit the hull. Press V to frame the shuttle between the enclosed bridges."),
+            ("Scale", "The trial hull measures 640 metres long. Peregrine spans 64 metres from wingtip to wingtip."),
+            ("Controls", "Use WASD and the mouse aboard. R returns to the ramp, and Esc opens the main menu."),
+        ],
+        {
+            "did": "Built one connected route inside the scaled Blender hull.",
+            "why": "A standing player and a parked shuttle give the bay two familiar measures of size.",
+            "working": "The packaged player walked the entire route. The loaded hull cleared the shuttle approach.",
+            "not_working": "The lifts mark the end of this test. Their cars and the remaining decks still need work.",
+            "next": "Try the walk before we settle the ship’s dimensions.",
+        },
+    )
+    source = HERE / "media/glacier-boarding-r152"
+    for key, title, caption, pictures in [
+        ("bay", "See the port bay", "The outboard plate sits below the roof. The shuttle parks between two covered bridges.",
+         [("exterior", "Glacier Tongue at combat distance"), ("berth", "Peregrine under the port overhang")]),
+        ("walk", "Walk from ramp to lifts", "The ramp drops two metres to the boarding deck. Both airlock frames are open.",
+         [("ramp", "From the shuttle sill"), ("deck", "Approaching Airlock 01"), ("airlock", "Inside the airlock"), ("lobby", "Lift lobby")]),
+    ]:
+        figures = []
+        for frame, label in pictures:
+            url = available_media(out, source / (frame + ".png"), "r152-glacier-" + frame + ".png")
+            if url:
+                figures.append(page.figure(url, label, ""))
+        section += decide.info_thread("aquila-direction-r152-" + key, caption, body_html=page.grid(*figures), short=title)
+    section += decide.whats_next(
+        "aquila-direction-r152-next", "Your walk will guide the final bay scale before we test Delta Tree’s bow and stern.",
+        short="Judge the bay scale",
+    )
+    return page.entry(152, "Walk aboard Glacier Tongue", section, when="2026-11-24")
+
+
+def glacier_scale_comparison():
+    section = decide.recap(
+        "Yes. I’d try Glacier Tongue at 1,280 metres. Peregrine would give the larger bay a familiar scale.",
+        [
+            ("Hull", "Double its length, width and height together to keep the profile you liked."),
+            ("Bay", "Raise the overhang and spread the enclosed bridges with the hull."),
+            ("Shuttle", "Peregrine would span about one nineteenth of the battleship’s length."),
+            ("Boarding", "Keep the ramp, crew doors and handrails sized for the people using them."),
+            ("Walk", "Place the shuttle close to the airlock so the larger bay still has a short boarding route."),
+        ],
+        {
+            "did": "Compared the suggested length with the playable ship.",
+            "why": "I’d want the bay to feel like a harbor when you stand on the shuttle ramp.",
+            "working": "The 640-metre ship already has a walkable route to the lifts.",
+            "not_working": "The larger hull’s boarding feel still needs a playtest.",
+            "next": "Compare the same view from Peregrine in both versions.",
+        },
+    )
+    section += decide.info_thread(
+        "aquila-direction-r153-size", "Peregrine gives both hulls the same measuring stick.",
+        body_html=table(["Measure", "Playable", "Proposed"], [
+            ("Glacier Tongue length", "640 m", "1,280 m"),
+            ("Peregrine length", "68 m", "68 m"),
+            ("Hull length in Peregrines", "9.4", "18.8"),
+            ("Crew doorway height", "3 m", "3 m"),
+        ]), short="Built and proposed dimensions",
+    )
+    section += decide.whats_next(
+        "aquila-direction-r153-next", "The telling view is from the ramp, looking past the crew doorway to the roof above it.",
+        short="Judge the height on foot",
+    )
+    return page.entry(153, "Glacier Tongue at 1,280 metres", section, when="2026-11-24")
+
+
+def glacier_size_trial(out):
+    section = decide.recap(
+        "Press B on Peregrine’s ramp to switch between the 1,280 m and 640 m hulls.",
+        [
+            ("Start", "Aquila Boarding Test opens on the larger Glacier Tongue."),
+            ("Compare", "Look toward the roof. Switching keeps your feet, aim and field of view fixed."),
+            ("Shuttle", "Peregrine measures 68 metres in both versions."),
+            ("Boarding", "The same ramp and crew doorway lead to the lift lobby."),
+            ("Outside", "Tab shows the exterior. V moves the camera beside the shuttle."),
+        ],
+        {
+            "did": "Put both hull lengths in one playable Windows test.",
+            "why": "The fixed doorway gives you a familiar height beneath the roof.",
+            "working": "Both walks passed. The hull, its collision and the covered bridges change size together.",
+            "not_working": "Glacier Tongue’s final dimensions still need your judgment.",
+            "next": "Pick the length that feels right from the boarding deck.",
+        },
+    )
+    media = HERE / "media/glacier-scale-r154"
+    def frame(length, view, caption, look=False):
+        name = f"{length}-{view}.png"
+        src = available_media(out, media / name, "r154-glacier-" + name)
+        label = f"{length:,} m"
+        if src:
+            return page.figure(src, label, " · " + caption + ".", look=look)
+        return f"<p>{label} · {caption}. View unavailable in this checkout.</p>"
+
+    qid = "aquila-direction-r154-length"
+    cards = [decide.pick_with(frame(n, "ramp", "From Peregrine’s ramp", True) + " ",
+                              qid, str(n), f"{n:,} metres", mode="single", text=f"Use {n:,} metres") + " "
+             for n in (640, 1280)]
+    section += decide.question(
+        qid, "Which hull length feels right for Glacier Tongue?", [], short="Choose a hull length",
+        why="Both views use the same spot on the ramp.", anchors_html=page.grid(*cards),
+    )
+    views = ""
+    for view, caption in [("canopy", "Looking up from the ramp"), ("berth", "Beside the shuttle"),
+                          ("exterior", "Whole hull in frame")]:
+        views += page.grid(*(frame(n, view, caption) for n in (640, 1280)))
+    section += decide.info_thread(
+        "aquila-direction-r154-bay", "Above the shuttle sill, the roof sits 58.72 or 116.11 metres above the boarding deck.",
+        body_html=views, short="Roof, berth and whole ship",
+    )
+    section += decide.whats_next(
+        "aquila-direction-r154-next", "Your choice sets the hull length for the next modeling pass.",
+        short="Set Glacier Tongue’s size",
+    )
+    return page.entry(154, "Compare Glacier Tongue’s two hull sizes", section, when="2026-11-24")
+
+
+def glacier_landing_platform(out):
+    section = decide.recap(
+        "The landing pad under Peregrine stayed the same size. The roof and bridges moved farther away.",
+        [
+            ("Pad", "The deck under the shuttle is 71 metres wide and 90 metres long in both versions."),
+            ("Shuttle", "Peregrine still spans 64 metres from wingtip to wingtip."),
+            ("Wing room", "Each wingtip sits 3.5 metres inside the edge of the pad."),
+            ("Roof", "At the shuttle ramp, the roof height above the deck rose from 58.72 to 116.11 metres."),
+            ("Bridges", "The bridges on either side of the berth moved apart with the hull."),
+        ],
+        {
+            "did": "Checked which parts around the parked shuttle change size.",
+            "why": "The shuttle fills the same amount of its pad in both versions.",
+            "working": "The larger hull gives the shuttle more room overhead.",
+            "not_working": "The current comparison gives the shuttle no extra parking space.",
+            "next": "The final hull length is still open.",
+        },
+    )
+    owner_view = available_media(out, HERE / "media/r155-peregrine-platform.png", "r155-peregrine-platform.png")
+    detail = (page.figure(owner_view, "Peregrine on the landing pad", " · The pad is the small rectangle beneath the shuttle.", look=True)
+              if owner_view else "<p>The owner's hangar view is unavailable in this checkout.</p>")
+    section += decide.info_thread(
+        "aquila-direction-r155-pad", "I kept the landing pad fixed with Peregrine when I doubled Glacier Tongue’s outer hull.",
+        body_html=detail, short="Your view of the pad",
+    )
+    qid = "aquila-direction-r155-length"
+    cards = []
+    for length in (640, 1280):
+        name = f"{length}-berth.png"
+        src = available_media(out, HERE / "media/glacier-scale-r154" / name, "r154-glacier-" + name)
+        label = f"{length:,} metres"
+        view = page.figure(src, label, " · From beside Peregrine.", look=True) if src else f"<p>{label}. Berth view unavailable in this checkout.</p>"
+        cards.append(decide.pick_with(view + " ", qid, str(length), label, mode="single", text="Use " + label) + " ")
+    section += decide.question(
+        qid, "Which hull length feels right for Glacier Tongue?", [], short="Choose a hull length",
+        why="Both views keep the camera the same distance from Peregrine.", anchors_html=page.grid(*cards),
+        follows="aquila-direction-r154-length",
+    )
+    section += decide.whats_next(
+        "aquila-direction-r155-next", "Both hull lengths remain playable while you compare the hangar.",
+        short="Glacier Tongue’s size",
+    )
+    return page.entry(155, "What grew around Peregrine", section, when="2026-11-24")
+
+
+def glacier_scaled_pad(out, proof):
+    section = decide.recap(
+        "Yes. The landing pad now grows with Glacier Tongue. Peregrine parks on four times as much deck on the larger ship.",
+        [
+            ("Small hull", "The 640-metre hull has a 71 by 90 metre landing pad."),
+            ("Large hull", "The 1,280-metre hull has a 142 by 180 metre landing pad."),
+            ("Wing room", "Clearance beside each wing grows from 3.5 to 39 metres."),
+            ("Entrance", "The deck grows outward from the same crew entrance."),
+            ("Compare", "Press Tab, then V to look across the landing pad. Press B to switch hulls."),
+        ],
+        {
+            "did": "Corrected the landing pad I had kept fixed in the first comparison.",
+            "why": "The pad belongs to the battleship. The parked shuttle gives both decks a familiar scale.",
+            "working": "Both pads support the player across their full width and length.",
+            "not_working": "The final hull length is still open.",
+            "next": "Compare the space between Peregrine’s wings and the edge of each pad.",
+        },
+    )
+    qid = "aquila-direction-r156-length"
+    cards = []
+    for length in (640, 1280):
+        size = proof["hulls"][str(length)]
+        src = available_media(out, HERE / "media/glacier-pad-r156" / f"{length}-berth.png", f"r156-pad-{length}-berth.png")
+        label = f"{length:,} metres"
+        caption = f" · {size['pad_width_m']:g} × {size['pad_length_m']:g} m landing pad."
+        view = page.figure(src, label, caption, look=True) if src else f"<p>{label}{caption} Berth view unavailable in this checkout.</p>"
+        cards.append(decide.pick_with(view + " ", qid, str(length), label, mode="single", text="Use " + label) + " ")
+    section += decide.question(
+        qid, "Which Glacier Tongue hull length feels right with the corrected landing pad?", [], short="Choose a hull length",
+        why="Both views use the same camera position beside Peregrine.", anchors_html=page.grid(*cards),
+        follows="aquila-direction-r155-length",
+    )
+    section += decide.info_thread(
+        "aquila-direction-r156-walk", "The Windows test checked all four deck edges and walked through the airlock on both ships.",
+        body_html="<p>Switching to the smaller ship while standing on the extra deck puts you safely inside its rails.</p>",
+        short="What you can walk on",
+    )
+    section += decide.whats_next(
+        "aquila-direction-r156-next", "The Aquila Boarding Test desktop shortcut opens the corrected comparison.",
+        short="Compare both landing pads",
+    )
+    return page.entry(156, "Glacier Tongue’s landing pad grows with the hull", section, when="2026-11-24")
+
+
+def glacier_approved_hull(out):
+    section = decide.recap(
+        "Glacier Tongue’s approved length is 1,280 metres. Its landing pad is 142 metres wide and 180 metres long.",
+        [
+            ("Hull", "You chose the larger Glacier Tongue in the boarding test."),
+            ("Hangar", "You approved the corrected landing pad."),
+            ("Wing room", "Peregrine has 39 metres of deck beyond each wingtip."),
+            ("Boarding", "The walk from the shuttle ramp to the lifts measures 39 metres."),
+            ("Comparison", "Press B in the boarding test to revisit the 640-metre hull."),
+        ],
+        {
+            "did": "Saved your choice in the ship plan.",
+            "why": "Future models and decks can use the dimensions you approved.",
+            "working": "The Windows boarding test already opens at the chosen size.",
+            "not_working": "The current boarding route ends at the lifts.",
+            "next": "Use the approved dimensions for future Glacier Tongue work.",
+        },
+    )
+    name = "1280-berth.png"
+    src = available_media(out, HERE / "media/glacier-pad-r156" / name, "r156-pad-" + name)
+    view = (page.figure(src, "Peregrine on the approved landing pad", " · 1,280-metre Glacier Tongue.", look=True)
+            if src else "<p>The berth view is unavailable in this checkout.</p>")
+    section += decide.info_thread(
+        "aquila-direction-r157-design", "Your submitted choice sets Glacier Tongue’s design length.",
+        body_html=view, short="The approved hangar",
+    )
+    section += decide.whats_next(
+        "aquila-direction-r157-next", "The hull size decision is complete.",
+        short="Size settled",
+    )
+    return page.entry(157, "Glacier Tongue’s approved size", section, when="2026-11-24")
+
+
+def delta_tree_boarding_proposal(out):
+    section = decide.recap(
+        "I’d make Delta Tree the next ship you can board. Start at one round dock and walk into its first branch.",
+        [
+            ("Hull", "Use the existing rough Blender model."),
+            ("Outside", "From combat distance, check that the shallow bow rises toward the stacked engines at the stern."),
+            ("Dock", "Park the same 68-metre Peregrine at a round outer dock."),
+            ("Inside", "Walk from the shuttle ramp through the airlock to the first branch junction."),
+            ("Scale", "Use Glacier Tongue for comparison while choosing Delta Tree’s own length."),
+        ],
+        {
+            "did": "Checked the side profile and the dock cutaway against the boarding plan.",
+            "why": "The first model lost much of the height difference between bow and stern.",
+            "working": "Delta Tree already has a rough model and drawings of the dock and its connecting passage.",
+            "not_working": "Its hull length and walkable dock still need a Windows playtest.",
+            "next": "Build one dock and check it from Peregrine’s ramp and the combat camera.",
+        },
+    )
+    source = ROOT / "Assets/ShipConcepts/modeling-references-r150/delta-tree"
+    views = []
+    for name, label, caption in [
+        ("01-port.png", "Side profile", "The bow sits low and the drive housings stack at the stern."),
+        ("11-dock-section.png", "Dock cutaway", "A short passage links the round terminal to the inhabited rim."),
+    ]:
+        src = available_media(out, source / name, "r150-delta-tree-" + name)
+        views.append(page.figure(src, label, " · " + caption, look=True) if src else f"<p>{label} unavailable in this checkout.</p>")
+    section += decide.info_thread(
+        "aquila-direction-r158-shape", "These two design references show the exterior and the boarding route.",
+        body_html=page.grid(*views), short="Hull and dock references",
+    )
+    section += decide.question(
+        "aquila-direction-r158-test", "Should I build this Delta Tree boarding test on Windows?",
+        [("build", "Build the Delta Tree test"), ("discuss", "Keep discussing the design")],
+        why="One playable dock lets you judge the ship from outside and at crew height.",
+        short="Start the boarding test",
+    )
+    section += decide.whats_next(
+        "aquila-direction-r158-next", "Once you approve the test, I’d bring the hull into the boarding level and fit Peregrine to the dock.",
+        short="First playable dock",
+    )
+    return page.entry(158, "Delta Tree’s first playable dock", section, when="2026-11-24")
+
+
+def delta_tree_boarding_playtest(out, proof):
+    walk = round(proof["boarding"]["walk_to_junction_m"])
+    section = decide.recap(
+        "You can board Delta Tree on Windows. Walk from Peregrine’s ramp to the first branch junction.",
+        [
+            ("Scale", "Delta Tree’s trial length matches Glacier Tongue’s approved 1,280 metres."),
+            ("Outside", "Press Tab to see the shallow bow and three stacked rows of engines."),
+            ("Berth", "Press V outside to frame Peregrine beside the round arrivals dock."),
+            ("Walk", f"The walk through the airlock to the junction covers about {walk} metres."),
+            ("Compare", "Press N from the exterior view to see Glacier Tongue at the same distance."),
+        ],
+        {
+            "did": "Opened one of the round docking islands on Delta Tree’s original Blender hull.",
+            "why": "Peregrine gives both battleships the same reference for size.",
+            "working": "The full shuttle clears the approach. A standing player can reach both branch doors.",
+            "not_working": "The research and command doors mark the end of this walk.",
+            "next": "Judge the length from the ramp and from outside the ship.",
+        },
+    )
+
+    def view(name, title, caption):
+        filename = "delta-" + name + ".png"
+        src = available_media(out, HERE / "media/delta-boarding-r159" / filename, "r159-" + filename)
+        return page.figure(src, title, " · " + caption, look=True) if src else f"<p>{title} unavailable in this checkout.</p>"
+
+    section += decide.info_thread(
+        "aquila-direction-r159-walk", "Follow the amber floor lights from Peregrine to the airlock.", short="Walk aboard Delta Tree",
+        body_html="<p>Your Windows session switched between the ships and reached Junction 01 before the window closed.</p>" + page.grid(
+            view("berth", "Arrivals 06", "Peregrine rests beside the round terminal."),
+            view("ramp", "At the shuttle hatch", "The ramp faces the crew entrance."),
+            view("rotunda", "Inside the round dock", "The airlock sits across the hall."),
+            view("airlock", "Branch airlock", "Both crew openings measure 2.8 metres wide and 3 metres high."),
+            view("junction", "Junction 01", "Research lies to the left and command to the right."),
+        ),
+    )
+    section += decide.question(
+        "aquila-direction-r159-length", "Does 1,280 metres feel right for Delta Tree after you walk its dock?",
+        [("keep", "Keep 1,280 metres"), ("change", "Try another length")], short="Choose Delta Tree’s size",
+        why="The same shuttle and camera distance let you compare the two hulls.", anchors_html=page.grid(
+            view("exterior", "Delta Tree", "The bow sits low and the stern rises around the engines."),
+            view("glacier-comparison", "Glacier Tongue", "Its overhanging hull frames the recessed shuttle bay."),
+        ),
+    )
+    section += decide.whats_next(
+        "aquila-direction-r159-next", "Your size choice sets the scale for Delta Tree’s later decks.", short="Set the hull length",
+    )
+    return page.entry(159, "Board Delta Tree", section, when="2026-11-24")
+
+
+def delta_tree_approved_hull(out):
+    section = decide.recap(
+        "Delta Tree stays 1,280 metres long. That sets the scale for its hull and future decks.",
+        [
+            ("Choice", "You selected “Keep 1,280 metres” after walking the dock."),
+            ("Comparison", "Glacier Tongue has the same approved length."),
+            ("Shuttle", "Peregrine measures 68 metres from nose to tail on either ship."),
+            ("Boarding", "Delta Tree’s round arrivals dock leads to Junction 01."),
+            ("Display", "The boarding test shows the length beside the ship’s name."),
+        ],
+        {
+            "did": "Recorded your choice in the ship plan.",
+            "why": "Future rooms can use the scale you walked aboard.",
+            "working": "The Windows test reached both branch doors from the shuttle ramp.",
+            "not_working": "The current walk ends at the research and command doors.",
+            "next": "Use the approved hull length for later decks.",
+        },
+    )
+    src = available_media(out, HERE / "media/delta-scale-r160/delta-exterior.png", "r160-delta-exterior.png")
+    view = (page.figure(src, "Delta Tree in the boarding test", " · 1,280 metres from bow to stern.", look=True)
+            if src else "<p>The exterior view is unavailable in this checkout.</p>")
+    section += decide.info_thread(
+        "aquila-direction-r160-hull", "The Windows boarding display now shows Delta Tree at its approved length.",
+        short="Approved hull", body_html=view,
+    )
+    section += decide.whats_next(
+        "aquila-direction-r160-next", "Both research battleships now have a settled hull length.", short="Hull sizes settled",
+    )
+    return page.entry(160, "Delta Tree’s approved length", section, when="2026-11-24")
+
+
+def delta_tree_bridge_proposal(out):
+    section = decide.recap(
+        "I’d build Delta Tree’s bridge next. Walk there from Peregrine and fire one turret at a practice drone.",
+        [
+            ("Route", "Turn right at Junction 01 and ride the lift to the command deck."),
+            ("Windows", "Look across the branching bow and the round docks you passed on arrival."),
+            ("Console", "Select a shielded practice drone at one working tactical station."),
+            ("Shot", "Fire once and watch the drone’s shield flash through the bridge window."),
+            ("Check", "Switch outside and check that the same drone still carries the damage."),
+        ],
+        {
+            "did": "Checked the command deck plan against the end of the current walk.",
+            "why": "The bridge would give you a reason to walk from the shuttle into the ship.",
+            "working": "You can already reach the Command door from Peregrine’s ramp.",
+            "not_working": "The Windows boarding route ends at that door.",
+            "next": "Connect the lift, bridge windows and one turret in the boarding test.",
+        },
+    )
+    folder = ROOT / "Assets/ShipConcepts/modeling-references-r150/delta-tree"
+    views = []
+    for name, label, caption in [
+        ("15-command-deck.png", "Command deck plan", "The lift and passage lead forward to the circular bridge."),
+        ("17-bridge-window.png", "Bridge concept", "The windows overlook the bow and its round docks."),
+    ]:
+        src = available_media(out, folder / name, "r150-delta-tree-" + name)
+        views.append(page.figure(src, label, " · " + caption, look=True) if src else f"<p>{label} unavailable in this checkout.</p>")
+    section += decide.info_thread(
+        "aquila-direction-r161-bridge", "These design references show where the bridge sits and what you could see from it.",
+        short="Route and bridge view", body_html=page.grid(*views),
+    )
+    section += decide.question(
+        "aquila-direction-r161-build", "Should we build Delta Tree’s bridge as the next Windows playtest?",
+        [("bridge", "Build the bridge playtest"), ("discuss", "Discuss another priority")],
+        short="Choose the next playtest", why="One working station would let you command the ship you boarded.",
+    )
+    section += decide.whats_next(
+        "aquila-direction-r161-next", "With your go-ahead, I’d connect the lift first, then test the shot from the bridge.",
+        short="First working bridge station",
+    )
+    return page.entry(161, "Delta Tree’s bridge", section, when="2026-11-24")
+
+
+def delta_tree_bridge_playtest(out, proof):
+    section = decide.recap(
+        "Delta Tree’s bridge is playable. Lock the training drone and watch the ship’s cannon hit its shield.",
+        [
+            ("Board", "From Peregrine, walk straight through Arrivals and the airlock. Turn right at Junction 01."),
+            ("Lift", "Step inside and press F. Walk out onto the command deck when the doors open."),
+            ("Station", "Follow the blue floor lights to the console by the forward windows."),
+            ("Fire", "Press T to lock the training drone. Tap Space to fire one round."),
+            ("Outside", "Press Tab at the station to inspect the drone. Tab again returns you to the same spot."),
+        ],
+        {
+            "did": "Connected the Command branch, lift, circular bridge and one working turret.",
+            "why": "From the bridge, you can watch your own turret fire over the branching bow.",
+            "working": "The first shot lowered the shield to 90%. A second landed outside and left 80% in both views.",
+            "not_working": "You still need to judge how clearly the hit reads from the bridge.",
+            "next": "Try the shot from the forward station.",
+        },
+    )
+
+    def frame(name, title, caption):
+        filename = f"delta-{name}.png"
+        src = available_media(out, HERE / "media/delta-bridge-r162" / filename, "r162-" + filename)
+        return page.figure(src, title, " · " + caption, look=True) if src else f"<p>{title} unavailable in this checkout.</p>"
+
+    docks = proof["bridge"]["visible_dock_samples"]
+    section += decide.info_thread(
+        "aquila-direction-r162-route", "The lift travels 48 metres up. It can take you back to the junction.",
+        short="Walk to the bridge",
+        body_html=page.grid(
+            frame("command-lift", "Command lift", "Step inside before pressing F."),
+            frame("bridge-room", "Command deck", "The forward station is beside the panoramic windows."),
+            frame("bridge-bow", "Bow through the forward glass", f"The station overlooks {docks} of six sampled round docks on the original hull."),
+        ),
+    )
+    section += decide.question(
+        "aquila-direction-r162-visibility", "Could you see the drone’s shield flash clearly from the bridge?",
+        [("clear", "Yes, clear from the bridge"), ("change", "The hit needs work")],
+        short="Judge the shield hit", why="The Windows test measured the shield loss. Your view settles whether the effect reads at this distance.",
+        anchors_html=page.grid(
+            frame("bridge-ready", "Round leaving the barrel", "The muzzle flashes while the drone’s shield still reads 100%."),
+            frame("bridge-hit", "First hit from the bridge", "The cannon round strikes the drone and leaves its shield at 90%."),
+            frame("drone-exterior", "Same hit from outside", "The same drone still shows 90% after the camera switch."),
+            frame("drone-hit", "Second round lands outside", "The shield drops to 80% while you watch from outside."),
+        ),
+    )
+    section += decide.whats_next(
+        "aquila-direction-r162-next", "Your playtest will guide any change to the view or the shield flash.",
+        short="Check the hit from the station",
+    )
+    return page.entry(162, "Fire from Delta Tree’s bridge", section, when="2026-11-24")
+
+
+def boarding_controls_playtest(proof):
+    pace = proof["movement"]["measured_m_per_s"]
+    section = decide.recap(
+        "You now walk five times as fast on both test ships. The mouse turns three times as far.",
+        [
+            ("Walking", "Full walking speed rose from 2.7 to 13.5 metres per second."),
+            ("Stopping", "The player reaches full speed quickly and slows when you release the key."),
+            ("Looking", "The change applies to left, right, up and down."),
+            ("Outside", "The mouse also turns the exterior view three times as far."),
+            ("Playing", "Use the new window named Aquila - Fast Boarding."),
+        ],
+        {
+            "did": "Changed the player controls for the Windows boarding test.",
+            "why": "Crossing a long deck takes less time, and turning needs less mouse travel.",
+            "working": "The faster walker reached the tactical station and returned by lift.",
+            "not_working": "How the mouse feels in your hand still needs your playtest.",
+            "next": "Try a turn while walking from the ramp to the bridge.",
+        },
+    )
+    section += decide.info_thread(
+        "aquila-direction-r163-controls", f"The Windows playtest measured {pace:.1f} metres per second across Delta Tree’s deck.",
+        short="Movement and mouse checks",
+        body_html="<p>Both mouse axes reached triple their previous turn in the cabin and outside.</p>",
+    )
+    section += decide.question(
+        "aquila-direction-r163-visibility", "Could you see the drone’s shield flash clearly from the bridge?",
+        [("clear", "Yes, clear from the bridge"), ("change", "The hit needs work")],
+        follows="aquila-direction-r162-visibility", short="Judge the shield hit",
+        why="The faster walk makes it easier to revisit the tactical station.",
+    )
+    section += decide.whats_next(
+        "aquila-direction-r163-next", "The updated boarding test is ready for you to play.",
+        short="Try the faster controls",
+    )
+    return page.entry(163, "Faster boarding controls", section, when="2026-11-24")
+
+
+def bridge_observer_playtest(out, proof):
+    section = decide.recap(
+        "Walk to Delta Tree’s forward windows and watch its cannon fire. The ship handles the whole exercise.",
+        [
+            ("Bridge", "Walk around while the ship fights."),
+            ("Cannon", "Firing starts while the visitor is still downstairs."),
+            ("Windows", "Rounds cross the bow and flash against the drone’s shield."),
+            ("Drone", "The shield recharges after ten hits, ready for another volley."),
+            ("View", "The windows stay clear of prompts and aiming marks."),
+        ],
+        {
+            "did": "Changed the command bridge into a place to watch combat.",
+            "why": "The earlier exercise made the visitor operate the ship’s gun.",
+            "working": "The cannon fired through a full shield cycle with the visitor standing still.",
+            "not_working": "How clearly the shield flash reads from inside still needs your eye.",
+            "next": "The boarding window opens at the forward glass.",
+        },
+    )
+
+    def frame(name, title, caption):
+        filename = f"delta-{name}.png"
+        src = available_media(out, HERE / "media/bridge-observer-r164" / filename, "r164-" + filename)
+        return page.figure(src, title, " · " + caption, look=True) if src else f"<p>{title} unavailable in this checkout.</p>"
+
+    arrival = proof["walk"]["shots_on_arrival"]
+    section += decide.info_thread(
+        "aquila-direction-r164-visit", f"Delta Tree had already fired {arrival} rounds when the test visitor reached the forward windows.",
+        short="Cannon seen from the bridge",
+        body_html=frame("window-firing", "Cannon firing over the bow", "The visitor can look anywhere as the round travels."),
+    )
+    section += decide.question(
+        "aquila-direction-r164-visibility", "Could you see the drone’s shield flash clearly from inside the bridge?",
+        [("clear", "Yes, clear from inside"), ("change", "The hit needs work")],
+        follows="aquila-direction-r163-visibility", short="View through the glass",
+        why="Both views recorded the same shield hit. The bridge puts the drone farther away.",
+        anchors_html=page.grid(
+            frame("window-hit", "Shield hit through the window", "The cannon lands a round while the visitor watches."),
+            frame("outside-hit", "The drone seen from outside", "Another round strikes the same shield."),
+        ),
+    )
+    section += decide.whats_next(
+        "aquila-direction-r164-next", "The updated game opens at the window. You can watch immediately.",
+        short="Watch from the bridge",
+    )
+    return page.entry(164, "Watch combat from Delta Tree’s bridge", section, when="2026-11-24")
+
+
+def bridge_observer_feedback(feedback):
+    section = decide.recap(
+        "Keep Delta Tree’s bridge as you played it. You can watch the ship fight through the forward windows.",
+        [
+            ("Ship", "Delta Tree handles targeting and firing."),
+            ("Visitor", "You can walk around and look freely."),
+            ("View", "The cannon and the drone are visible from inside."),
+            ("Shield", "The drone recharges between volleys."),
+            ("Playtest", "You accepted the current Windows bridge view."),
+        ],
+        {
+            "did": "Saved your feedback on the bridge.",
+            "why": "You wanted to see combat from inside your ship.",
+            "working": "The visitor can stand at the glass while the ship fights.",
+            "not_working": "You requested no changes to this view.",
+            "next": "Keep this version for future bridge work.",
+        },
+    )
+    section += decide.info_thread(
+        "aquila-direction-r165-feedback", "You accepted the bridge as played.",
+        short="Your playtest feedback", follows="aquila-direction-r164-visibility",
+        body_html=f"<blockquote>{escape(feedback['quote'])}</blockquote>",
+    )
+    section += decide.whats_next(
+        "aquila-direction-r165-next", "The bridge playtest is complete.",
+        short="Playtest complete",
+    )
+    return page.entry(165, "Delta Tree’s bridge view accepted", section, when=feedback["local_date"])
+
+
+def bridge_duel_proposal():
+    section = decide.recap(
+        "I’d watch Delta Tree fight Glacier Tongue from the bridge. This would let you see the other ship shoot back.",
+        [
+            ("Fitting", "Equip both ships in the combat simulator."),
+            ("Bridge", "Watch the duel from Delta Tree’s forward windows."),
+            ("Outgoing fire", "Follow a round from your own turret toward Glacier Tongue."),
+            ("Return fire", "See an incoming round strike your own shield."),
+            ("Outside", "Switch views during a shot and follow it to impact."),
+        ],
+        {
+            "did": "Checked how the bridge exercise and simulator run today.",
+            "why": "A two-sided fight would show whether you can tell who took a hit from inside.",
+            "working": "The bridge overlooks the practice drone. The simulator already runs both ships with your chosen equipment.",
+            "not_working": "The walkable bridge cannot show the simulator duel yet.",
+            "next": "Connect the bridge view to the fight already running in the arena.",
+        },
+    )
+    section += decide.info_thread(
+        "aquila-direction-r166-current", "Both modes already use the same combat rules. Each runs its own fight.",
+        short="What exists today",
+    )
+    section += decide.question(
+        "aquila-direction-r166-bridge-duel", "Should the next Windows playtest put you aboard Delta Tree during its duel with Glacier Tongue?",
+        [("build", "Build the bridge duel"), ("discuss", "Discuss another step")],
+        short="Choose the next playtest", why="This gives the bridge a second ship that can shoot back.",
+    )
+    section += decide.whats_next(
+        "aquila-direction-r166-next", "With your go-ahead, I’d test one incoming shield hit from both views.",
+        short="First duel from inside",
+    )
+    return page.entry(166, "Watch the duel from Delta Tree’s bridge", section, when="2026-11-24")
+
+
+def bridge_duel_playtest(out, proof):
+    section = decide.recap(
+        "Click Start duel aboard to watch Delta Tree fight Glacier Tongue. Both ships fire their fitted guns automatically.",
+        [
+            ("Fitting", "You can change the equipment on either ship before starting."),
+            ("Walk", "You start at Delta Tree’s forward windows and can move around the command deck."),
+            ("Outside", "Press Tab to see the same fight from outside."),
+            ("Return", "Watch from bridge puts you back where you stood."),
+            ("Replay", "If Delta Tree falls, Replay aboard uses your fitted equipment for a fresh duel."),
+        ],
+        {
+            "did": "Connected the walkable command bridge to the combat simulator.",
+            "why": "Both ships can now shoot back while you watch from inside.",
+            "working": "The Windows test followed one incoming round across both views and measured Delta Tree losing shield charge.",
+            "not_working": "The arena still uses prototype exterior hulls.",
+            "next": "See how clearly you can tell which ship took a hit.",
+        },
+    )
+
+    def frame(name, title, caption):
+        src = available_media(out, HERE / "media/bridge-duel-r167" / name, "r167-" + name)
+        return page.figure(src, title, " · " + caption, look=True) if src else f"<p>{title} unavailable in this checkout.</p>"
+
+    section += decide.info_thread(
+        "aquila-direction-r167-play", "The Windows game waits in fitting until you start the duel.",
+        follows="aquila-direction-r166-bridge-duel", short="Play the bridge duel",
+        body_html=page.grid(
+            frame("fitting.png", "Choose either ship’s equipment", "Start duel aboard opens the command deck at normal speed."),
+            frame("bridge-volley.png", "Opening volley", "Both ships fire while the visitor stands at the glass."),
+        ),
+    )
+    hit = proof["tracked_round"]
+    section += decide.question(
+        "aquila-direction-r167-visibility", "Could you tell when Glacier Tongue hit your shield from inside Delta Tree?",
+        [("clear", "Yes, the incoming hit was clear"), ("change", "The incoming hit needs work")],
+        short="Incoming fire from the bridge",
+        why=f"Delta Tree’s shield fell from {hit['shield_before']:g} to {hit['shield_after']:g}. Both views show that hit.",
+        anchors_html=page.grid(
+            frame("bridge-shield.png", "Delta Tree takes a hit", "The light along the window sill flashes cyan when your shield takes damage."),
+            frame("arena-shield.png", "The same moment outside", "The fight was paused for both views."),
+        ),
+    )
+    section += decide.whats_next(
+        "aquila-direction-r167-next", "Your playtest will tell us whether incoming fire needs a clearer effect.",
+        short="Try the return fire",
+    )
+    return page.entry(167, "Watch both ships fight from Delta Tree", section, when=proof["local_date"])
+
+
+def duel_hulls_playtest(out, proof):
+    section = decide.recap(
+        "The duel now uses the two ships you boarded. Each gun sits against its own deck.",
+        [
+            ("Delta Tree", "Look through the forward windows for the bronze branches and round docks."),
+            ("Glacier Tongue", "The open bay and outboard plate are visible from the side."),
+            ("Mounts", "Each ship has 30 gun positions fitted to its own hull."),
+            ("Shields", "The blue shell follows the hull without making a second copy of each gun."),
+            ("Outside", "Press Tab to see both ships in the same fight."),
+        ],
+        {
+            "did": "Replaced both old duel hulls with the ships from the boarding test.",
+            "why": "The old gun positions could leave a turret hanging over empty space.",
+            "working": "Windows checks found solid deck beneath every gun base on both ships.",
+            "not_working": "How the mounts look to you from the bridge is still open.",
+            "next": "Check the guns from the window or fly up to one outside.",
+        },
+    )
+
+    def frame(name, title, caption):
+        src = available_media(out, HERE / "media/duel-hulls-r168" / name, "r168-" + name)
+        return page.figure(src, title, " · " + caption, look=True) if src else f"<p>{title} unavailable in this checkout.</p>"
+
+    section += decide.info_thread(
+        "aquila-direction-r168-hulls", "This playtest opens on Delta Tree’s bridge with Glacier Tongue ahead.",
+        short="Both boarding hulls in combat",
+        body_html=page.grid(
+            frame("bridge-volley.png", "At the forward windows", "The bronze branches below the glass belong to Delta Tree."),
+            frame("arena-shield.png", "Both ships outside", "Glacier Tongue is on the left. Delta Tree is on the right."),
+            frame("delta-fitting.png", "Delta Tree in fitting", "Its ports follow the drives and branching bow."),
+            frame("fitting.png", "Glacier Tongue in fitting", "Its ports follow the curved roof above the open bay."),
+        ),
+    )
+    section += decide.question(
+        "aquila-direction-r168-mounts", "Do the guns look attached to the new ships?",
+        [("seated", "Yes, they look attached"), ("loose", "A gun still looks loose")],
+        why="Each base touches the deck at its center and around its rim.", short="Check the gun mounts",
+        anchors_html=page.grid(
+            frame("delta-mount.png", "Delta Tree’s burst turret", "The two barrels share one base on the sloping bow."),
+            frame("glacier-mount.png", "Glacier Tongue’s kinetic cannon", "The circular foot meets the curved roof."),
+        ),
+    )
+    section += decide.question(
+        "aquila-direction-r168-visibility", "Could you tell when Glacier Tongue hit your shield from inside Delta Tree?",
+        [("clear", "Yes, the incoming hit was clear"), ("change", "The incoming hit needs work")],
+        follows="aquila-direction-r167-visibility", short="Incoming fire from the bridge",
+        why="The window sill and bow light up together when Delta Tree takes a shield hit.",
+        anchors_html=frame("bridge-shield.png", "Shield hit from aboard", "The flash is ahead of the bridge."),
+    )
+    section += decide.whats_next(
+        "aquila-direction-r168-next", "If a gun still looks loose, name the ship and the nearest port.",
+        short="Your view of the mounts",
+    )
+    return page.entry(168, "Delta Tree and Glacier Tongue in the duel", section, when=proof["local_date"])
+
+
+def two_bridge_playtest(out, proof):
+    section = decide.recap(
+        "Press N to jump between Delta Tree and Glacier Tongue. Both crews keep fighting while you walk around.",
+        [
+            ("Switch ships", "N takes you straight to the other bridge."),
+            ("Look outside", "Tab takes you outside and back aboard."),
+            ("Return", "Each bridge remembers where you stood and which way you looked."),
+            ("Incoming fire", "The window sill lights up when the ship you are aboard takes a hit."),
+            ("Ship lost", "If your ship explodes, you return outside and can visit the survivor."),
+        ],
+        {
+            "did": "Added a walkable command bridge to Glacier Tongue and connected both bridges to the same duel.",
+            "why": "You wanted to see the fight through both ships’ windows.",
+            "working": "Shots already in flight keep their positions when you switch ships.",
+            "not_working": "The view from Glacier Tongue still needs your eye.",
+            "next": "Try switching while both ships are firing.",
+        },
+    )
+
+    def frame(name, title, caption):
+        src = available_media(out, HERE / "media/two-bridges-r169" / name, "r169-" + name)
+        return page.figure(src, title, " · " + caption, look=True) if src else f"<p>{title} unavailable in this checkout.</p>"
+
+    section += decide.info_thread(
+        "aquila-direction-r169-bridges", "The playtest starts aboard Delta Tree. Press N for Glacier Tongue’s forward windows.",
+        short="Watch from either ship",
+        body_html=page.grid(
+            frame("delta-window.png", "Aboard Delta Tree", "The bronze branches lie below the glass."),
+            frame("glacier-window.png", "Aboard Glacier Tongue", "The central pane faces Delta Tree across the curved roof."),
+        ),
+    )
+    section += decide.question(
+        "aquila-direction-r169-visibility", "Can you follow the fight from both bridges?",
+        [("both", "Yes, from both"), ("delta", "Delta Tree needs work"), ("glacier", "Glacier Tongue needs work")],
+        short="Views from the two bridges", follows="aquila-direction-r168-visibility",
+        why="The opponent, incoming shots and shield hits should read from inside either ship.",
+        anchors_html=page.grid(
+            frame("glacier-hit.png", "Glacier Tongue takes a hit", "The window sill responds to Glacier Tongue’s shield."),
+            frame("glacier-return.png", "Back at the window", "Returning restores the spot you walked to and the direction you faced."),
+        ),
+    )
+    section += decide.question(
+        "aquila-direction-r169-mounts", "Do the guns look attached to the new ships?",
+        [("seated", "Yes, they look attached"), ("loose", "A gun still looks loose")],
+        follows="aquila-direction-r168-mounts", short="Gun mounts", why="Press Tab to see them from outside.",
+    )
+    section += decide.whats_next(
+        "aquila-direction-r169-next", "Your playtest will tell us whether either bridge needs a clearer view.",
+        short="Try both windows",
+    )
+    return page.entry(169, "Switch bridges during the duel", section, when=proof["local_date"])
+
+
+def two_bridge_feedback(feedback):
+    section = decide.recap(
+        "You tried switching bridges during the duel. We’ll keep it as played.",
+        [
+            ("Delta Tree", "The duel starts at its forward windows."),
+            ("Glacier Tongue", "Press N to cross to its bridge."),
+            ("Fight", "Both crews keep firing during the switch."),
+            ("Return", "Each bridge remembers where you stood."),
+            ("Gun mounts", "Their appearance is still open for feedback."),
+        ],
+        {
+            "did": "Saved your bridge playtest feedback.",
+            "why": "You wanted to watch the same duel from both ships.",
+            "working": "You can move between the two bridges during the fight.",
+            "not_working": "The earlier question about the gun mounts is still open.",
+            "next": "Keep the bridge switch as played.",
+        },
+    )
+    section += decide.info_thread(
+        "aquila-direction-r170-bridges", "You confirmed that switching between bridges works well.",
+        short="Your bridge playtest", follows="aquila-direction-r169-visibility",
+        body_html=f"<blockquote>{escape(feedback['quote'])}</blockquote>",
+    )
+    section += decide.question(
+        "aquila-direction-r170-mounts", "Do the guns look attached to the new ships?",
+        [("seated", "Yes, they look attached"), ("loose", "A gun still looks loose")],
+        short="Gun mounts", follows="aquila-direction-r169-mounts",
+        why="The exterior view shows where each gun meets the deck.",
+    )
+    section += decide.whats_next(
+        "aquila-direction-r170-next", "The bridge playtest is complete.", short="Bridge playtest complete",
+    )
+    return page.entry(170, "Duel bridge switch accepted", section, when=feedback["local_date"])
+
+
+def ship_art_status(out, art, hulls):
+    section = decide.recap(
+        "Neither playable ship has its final art. The earlier exterior models have detailed textures and materials.",
+        [
+            ("Delta Tree", "The earlier model has ceramic plates and bronze rails."),
+            ("Glacier Tongue", "The earlier model has aluminum plates and blue enamel."),
+            ("Windows", "The duel uses the newer hull shapes with basic armor and trim."),
+            ("Interior", "Both bridges and parts of the docking routes are walkable."),
+            ("Still open", "The playable hulls need surface detail. Crew quarters, labs and engineering spaces still need building."),
+        ],
+        {
+            "did": "Checked the earlier textured models against the ships used in the duel.",
+            "why": "The hull shapes changed after the first texture work.",
+            "working": "You can board both ships and watch them fight.",
+            "not_working": "The detailed textures have yet to be fitted to the playable hulls.",
+            "next": "Finishing the ships means detailing their current exteriors and building out their interiors.",
+        },
+    )
+    comparisons = []
+    for ship in art["ships"]:
+        name, slug = ship["name"], ship["slug"]
+        fitting = "r168-delta-fitting.png" if slug == "delta-tree" else "r168-fitting.png"
+        slots = len(hulls[slug]["materials"])
+        views = (
+            (f"r147-{slug}-exchange.png", "Earlier textured exterior", f"{ship['materials']} materials and {ship['maps']} texture maps."),
+            (fitting, "Playable Windows hull", f"{slots} material slots on the hull."),
+        )
+        figures = []
+        for filename, title, caption in views:
+            if (out / "media" / filename).is_file():
+                figures.append(page.figure("media/" + filename, f"{name} · {title}", " · " + caption, look=True))
+            else:
+                figures.append(f"<p>{name} · {title}. {caption} View unavailable in this checkout.</p>")
+        comparisons.append(page.grid(*figures))
+    section += decide.info_thread(
+        "aquila-direction-r171-surfaces", "The panel seams and lit windows belong to the earlier exterior models.",
+        short="Ship finishes side by side", body_html="".join(comparisons),
+    )
+    section += decide.question(
+        "aquila-direction-r171-mounts", "Do the guns look attached to the new ships?",
+        [("seated", "Yes, they look attached"), ("loose", "A gun still looks loose")],
+        follows="aquila-direction-r170-mounts", short="Gun mounts",
+        why="The outside view shows where each gun meets the deck.",
+    )
+    section += decide.whats_next(
+        "aquila-direction-r171-next", "The next art pass would fit the detailed surfaces to the approved hull shapes.",
+        short="Remaining exterior work",
+    )
+    return page.entry(171, "How finished are the two ships?", section, when="2026-11-25")
+
+
+def playable_ship_finishes(out, proof, mount_answer):
+    section = decide.recap(
+        "Both playable ships have their own finishes. Delta Tree wears ivory and bronze. Glacier Tongue wears silver and blue.",
+        [
+            ("Delta Tree", "Warm ceramic panels meet bronze rails and amber windows."),
+            ("Glacier Tongue", "Silver plates overlap blue bands above the recessed dock."),
+            ("Armor", "A fitting sample shows how that armor looks on the ship you selected."),
+            ("Aboard", "The new surfaces continue inside the existing docks and both command bridges."),
+            ("Guns", "You confirmed that the guns look attached."),
+        ],
+        {
+            "did": "Fitted the original painted surfaces to the two ships you fly and board.",
+            "why": "Their approved shapes changed after the first models were textured.",
+            "working": "Both ships show the panel seams, metal finishes and lit windows in the Windows game.",
+            "not_working": "Crew quarters, labs and engineering rooms still need building.",
+            "next": "Open Aquila Combat Simulator and choose Configure ship to compare the finishes.",
+        },
+    )
+    def frame(name, title, caption):
+        src = available_media(out, HERE / "media/ship-finishes-r172" / name, "r172-" + name)
+        return page.figure(src, title, " · " + caption, look=True) if src else f"<p>{title} unavailable in this checkout.</p>"
+
+    section += decide.info_thread(
+        "aquila-direction-r172-finishes", "The finishes appear on the same 1,280 m ships you tested.",
+        short="Both ships in the Windows game", follows="aquila-direction-r171-mounts",
+        body_html=(
+            page.grid(frame("delta-exterior.png", "Delta Tree", "Ivory branches carry bronze rails out to the round docks."),
+                      frame("glacier-exterior.png", "Glacier Tongue", "Silver strakes and blue enamel frame the shuttle bay."))
+            + page.grid(frame("delta-fitting.png", "Delta Tree in fitting", "The gun ports sit across the ceramic fan."),
+                        frame("glacier-fitting.png", "Glacier Tongue in fitting", "The ports follow the curved upper plates."))
+            + page.grid(frame("delta-gun.png", "Delta Tree’s deck", "Ivory panels and bronze rails around the burst turret."),
+                        frame("glacier-gun.png", "Glacier Tongue’s deck", "Silver panel seams meet the gun base."))
+            + page.grid(frame("delta-berth.png", "Delta Tree’s outer dock", "Peregrine rests beside the round arrivals building."),
+                        frame("glacier-berth.png", "Glacier Tongue’s hangar", "Floodlights reveal the panels over Peregrine’s landing pad."))
+            + page.grid(frame("delta-bridge.png", "Delta Tree’s bridge", "Bronze frames surround the forward window."),
+                        frame("glacier-bridge.png", "Glacier Tongue’s bridge", "The curved silver roof lies below the window."))
+            + f"<p>Your gun mount reply</p><blockquote>{escape(mount_answer)}</blockquote>"
+        ),
+    )
+    section += decide.whats_next(
+        "aquila-direction-r172-next", "Choose Armor in fitting to see each sample on the selected hull.",
+        short="Try the finishes",
+    )
+    return page.entry(172, "New finishes on both playable ships", section, when=proof["local_date"])
+
+
+def hull_likeness_review(out, proof):
+    section = decide.recap(
+        "You’re right. I textured the boarding models. Both hulls still miss the structures that define the original ships.",
+        [
+            ("Delta Tree", "Raised branches enclose leaf-shaped hollows in the original deck."),
+            ("Glacier Tongue", "Overlapping armor plates form waves around the original dock."),
+            ("Source", "The game loads the shapes built to test boarding and scale."),
+            ("Comparison", "Each original appears beside the corresponding playable hull in plain gray."),
+            ("Finish checks", "Those checks measured texture coverage and tested the working ships."),
+        ],
+        {
+            "did": "Compared the selected designs with the hull geometry used in Windows.",
+            "why": "You said both ships only resemble their concepts in outline.",
+            "working": "Both models retain their tested size and docking positions.",
+            "not_working": "The decks, engine housings and dock walls need different shapes.",
+            "next": "I recommend reviewing rebuilt hulls against the original artwork before putting them in the game.",
+        },
+    )
+
+    def show(ship, image, title, caption):
+        path = Path(proof["ships"][ship][image]["path"])
+        name = "r172-" + path.name if image == "windows" else "r173-" + path.name
+        src = available_media(out, ROOT / path, name)
+        return page.figure(src, title, " · " + caption) if src else f"<p>{title} unavailable in this checkout.</p>"
+
+    section += decide.info_thread(
+        "aquila-direction-r173-delta", "Delta Tree’s branches should rise out of the deck.",
+        short="Delta Tree", follows="aquila-direction-r172-finishes",
+        body_html=page.grid(
+            show("delta-tree", "original", "Delta Tree · original", "Curved walls surround sunken decks and end at round docks."),
+            show("delta-tree", "clay", "Delta Tree · playable hull", "Straight spokes sit on a solid wedge. The engines are plain cylinders."),
+        ) + "<p>Look behind the bridge. Each original drive has its own housing, collar and nozzle.</p>",
+    )
+    section += decide.info_thread(
+        "aquila-direction-r173-glacier", "Glacier Tongue’s armor should hang over the dock in separate waves.",
+        short="Glacier Tongue",
+        body_html=page.grid(
+            show("glacier-tongue", "original", "Glacier Tongue · original", "Silver plates overlap blue armor. A lit hangar sits deep behind the crossings."),
+            show("glacier-tongue", "clay", "Glacier Tongue · playable hull", "The bands follow one smooth curve. Three thin rods lead to a narrow rail."),
+        ) + "<p>The original outer blade has a deep body and windows of its own.</p>",
+    )
+    section += decide.info_thread(
+        "aquila-direction-r173-windows", "Here is how those shapes look with their materials in Windows.",
+        short="Both playable ships",
+        body_html=page.grid(
+            show("delta-tree", "windows", "Delta Tree · Windows", "Drive cylinders dominate the stern."),
+            show("glacier-tongue", "windows", "Glacier Tongue · Windows", "Long, nearly parallel bands run above the hangar."),
+        ) + "<p>The gray views use the exterior geometry alone. Their camera angles approximate the originals.</p>",
+    )
+    section += decide.question(
+        "aquila-direction-r173-review", "How would you like to review the hull rebuild?",
+        [("models", "Compare models with the originals first"),
+         ("build", "Try a separate playable build"),
+         ("discuss", "Discuss the differences first")],
+        short="Review the rebuild",
+        why="I recommend comparing models first so you can judge both ships before they enter the game.",
+    )
+    section += decide.whats_next(
+        "aquila-direction-r173-next", "Your choice sets where you see the revised hulls first.",
+        short="Next hull review",
+    )
+    return page.entry(173, "Where the playable ships miss the original art", section, when=proof["local_date"])
+
+
+def rebuilt_hulls(out, proof):
+    section = decide.recap(
+        "Both rebuilt hulls are ready to compare with their originals. You can rotate each model or see it in plain gray.",
+        [
+            ("Delta Tree", "Curved walls enclose eleven sunken courtyards ahead of three stacked drive banks."),
+            ("Glacier Tongue", "Separate armor shelves overhang a recessed hangar and three enclosed crossings."),
+            ("Compare", "Each comparison opens with the artwork and model facing the same way."),
+            ("Rotate", "Drag either model to see the stern and underside."),
+            ("Game", "The Windows game still uses the boarding hulls you last played."),
+        ],
+        dict(did="Rebuilt both exteriors as separate 3D models.", why="You wanted to compare their likeness before changing the game.",
+             working="Both exported ships reopen at 1,280 metres long with their paint and materials.",
+             not_working="These review models have no playable interiors, fitted guns or collision.",
+             next="Judge each hull separately and point out any detail that still looks wrong."),
+    )
+    source = HERE / "media/hull-review-r174"
+    viewer_js = source / "viewer.bundle.js"
+    viewer_source = HERE / "hull-review-viewer.mjs"
+    compiler = ROOT / "node_modules/@esbuild/win32-x64/esbuild.exe"
+    if compiler.is_file() and (not viewer_js.is_file() or viewer_js.stat().st_mtime < viewer_source.stat().st_mtime):
+        source.mkdir(parents=True, exist_ok=True)
+        subprocess.run([str(compiler),str(viewer_source),"--bundle","--format=esm","--platform=browser","--target=es2022",
+                        "--minify","--legal-comments=inline","--outfile="+str(viewer_js)], check=True)
+    viewer = available_media(out, viewer_js, "r174-hull-viewer.js")
+    shutil.copyfile(HERE / "hull-review.html", out / "hull-review.html")
+    views = {}
+    for slug, ship in proof["ships"].items():
+        name = ship["name"]
+        orig = ROOT / ship["original"]["path"]
+        images = {"original": available_media(out, orig, "r173-"+orig.name)}
+        for suffix in ("gallery","clay","reverse","side","top"):
+            filename = slug+"-"+suffix+".png"
+            images[suffix] = available_media(out, source / filename, "r174-"+filename)
+        views[slug] = images
+        glb = available_media(out, ROOT / ship["folder"] / (slug+".glb"), "r174-"+slug+".glb")
+        def picture(role, label, caption, look=False):
+            return page.figure(images[role],label," · "+caption,look=look) if images[role] else f"<p>{label} unavailable in this checkout.</p>"
+        delta = slug == "delta-tree"
+        original_caption = "Follow the curved trunk from the bow to the observatory." if delta else "Look at the waves above the hangar opening."
+        model_caption = "Each branch surrounds a lower deck. Armored housings wrap the drives." if delta else "Three enclosed crossings lead to the separate port blade."
+        comparison = page.grid(picture("original",name+" · original artwork",original_caption),
+                               picture("gallery",name+" · rebuilt model",model_caption,True))
+        if viewer and glb:
+            comparison += f'<p><a class="qref" href="hull-review.html?ship={slug}">Rotate {name} beside the original</a></p>'
+        section += decide.question(
+            "aquila-direction-r174-"+slug, f"Does this {name} model match the ship you chose?",
+            [("keep","Keep this exterior"),("revise","Revise this exterior","Which part should change?")],
+            short=name+" likeness", anchors_html=comparison,
+            follows="aquila-direction-r173-review" if delta else "aquila-direction-r173-glacier",
+        )
+    details=""
+    for suffix, label, captions in (
+        ("clay","Plain gray",("The deck hollows and drive housings cast their own shadows.","The waves and hangar opening keep their shape without paint.")),
+        ("reverse","Opposite quarter",("Each nozzle opens into a separate drive.","The far side closes around the keel.")),
+        ("side","Side",("The foredeck rises to the command terraces and stacked stern.","The hangar sits behind the outer blade.")),
+        ("top","Overhead",("The trunk branches around the inset decks.","Three galleries cross the gap on the port side.")),
+    ):
+        row=[]
+        for (slug,ship),caption in zip(proof["ships"].items(),captions):
+            image=views[slug][suffix]
+            label_ship=ship["name"]+" · "+label
+            row.append(page.figure(image,label_ship," · "+caption) if image else f"<p>{label_ship} unavailable in this checkout.</p>")
+        details+=page.grid(*row)
+    details+="<p>Glacier Tongue’s original and overhead study disagree on blade length. I followed the shorter blade in the original.</p>"
+    section += decide.info_thread("aquila-direction-r174-views","Both hulls can be inspected from any side.",
+                                  short="Other angles and plain gray models",body_html=details)
+    section += decide.whats_next("aquila-direction-r174-next","Your feedback on each exterior comes before any game change.",
+                                 short="Review both ships")
+    return page.entry(174,"Rebuilt ships beside the original artwork",section,when=proof["local_date"])
+
+
+def refined_hulls(out, proof):
+    section = decide.recap(
+        "Both ships have another Blender pass. Compare each painting with the previous and revised hulls at the same angle.",
+        [("Delta Tree", "Branch docks project from the deck. The dish and mast sit farther aft."),
+         ("Glacier Tongue", "The blade rises toward the stern. Light reaches the floor inside the open hangar."),
+         ("Compare", "Switch models with the painting beside them. Drag to inspect another angle."),
+         ("Asset Pipeline", "The reusable Blender tools, both ship scripts and a worked guide are saved there."),
+         ("Game", "The playable ships still use the boarding models.")],
+        dict(did="Refined both exteriors and saved the methods for future Blender work.",
+             why="The first models missed recognizable features in your paintings.",
+             working="Both revised exports reopened at 1,280 metres. Their surfaces and materials travel with them.",
+             not_working="Delta Tree’s stern and Glacier Tongue’s bow still differ from their paintings.",
+             next="Use the comparisons to choose which feature deserves the next pass."))
+    cameras={}
+    extras={}
+    captions={
+        "delta-tree":("Notice the dish tilt, branching docks and dark drive housings.",
+                      "The earlier mast sits forward and lower.",
+                      "The mast and tilted dish rise above separate command terraces."),
+        "glacier-tongue":("Follow the blade from its low tip to the stern. Look through the warm hangar.",
+                          "The earlier blade reaches farther forward and the hangar looks shut.",
+                          "Three crossings meet the raised blade. The floor and side walls frame the bay.")}
+    for slug,ship in proof["ships"].items():
+        name=ship["name"]
+        original=ROOT/ship["original"]["path"]
+        renders=ROOT/ship["render_folder"]
+        previous=ROOT/proof["prior_render_folder"]/(slug+"-gallery.png")
+        gallery=renders/(slug+"-gallery.png")
+        def pic(path, public, label, caption, look=False):
+            url=available_media(out,path,public)
+            return page.figure(url,label," · "+caption,look=look) if url else "<p>"+label+" unavailable in this checkout.</p>"
+        comparison=page.grid(pic(original,"r173-"+original.name,name+" · original",captions[slug][0]),
+                             pic(previous,"r174-"+previous.name,name+" · previous model",captions[slug][1]),
+                             pic(gallery,"r175-"+gallery.name,name+" · revised model",captions[slug][2],True))
+        glb=available_media(out,ROOT/ship["folder"]/(slug+".glb"),"r175-"+slug+".glb")
+        if glb:
+            comparison+=f'<p><a class="qref" href="hull-review.html?ship={slug}&amp;round=175">Rotate {name} and switch revisions</a></p>'
+        sheet=available_media(out,ROOT/ship["comparison_sheet"]["path"],"r175-"+slug+"-comparison.png")
+        if sheet:
+            comparison+=f'<p><a href="{sheet}" download>Save all three views of {name}</a></p>'
+        section+=decide.question("aquila-direction-r175-"+slug,f"Which part of {name} should change next?",
+                                 [("refine","Refine a feature","Which feature should change?"),("keep","Keep this exterior")],
+                                 short=name+" comparison",follows="aquila-direction-r174-"+slug,anchors_html=comparison)
+        cameras[slug]=ship["model"]["gallery_view"]
+        extras[slug]={}
+        for key,label in (("clay","Plain gray"),("reverse","Opposite quarter"),("side","Side"),("top","Overhead")):
+            f=renders/(slug+"-"+key+".png")
+            extras[slug][key]=pic(f,"r175-"+f.name,name+" · "+label,"Revised exterior")
+    (out/"media/r175-gallery-views.json").write_text(json.dumps(cameras),encoding="utf-8")
+    details=("<p>Asset Pipeline holds the build scripts, saved cameras, landmark coordinates and a guide for the next artist.</p>"
+             "<p>One camera keeps both versions aligned. The top and side guides constrain depth.</p>"
+             "<p>In the original view, Delta Tree’s mast moved from 115 pixels off its marked position to under one.</p>"
+             "<p>Glacier Tongue’s blade tips moved from 102 and 40 pixels off to under one each.</p>"
+             "<p>These measurements cover those three features. The rest needs your eye.</p>")
+    for key in ("clay","reverse","side","top"):
+        details+=page.grid(*(extras[slug][key] for slug in proof["ships"]))
+    section+=decide.info_thread("aquila-direction-r175-tools","How the models were checked and saved.",
+                                short="Blender tools and other angles",body_html=details)
+    section+=decide.whats_next("aquila-direction-r175-next","Your notes on each ship guide the next geometry pass.",
+                               short="Choose the next correction")
+    return page.entry(175,"Closer matches to the two ship paintings",section,when=proof["local_date"])
+
+
+def stern_and_forward_armor(out, proof):
+    section = decide.recap(
+        "Delta Tree has three stacked banks of drives. Glacier Tongue’s armor now steps over two lit galleries around the bow.",
+        [("Delta Tree", "Pale collars wrap dark drive housings. Their amber rims sit closer to the painting."),
+         ("Glacier Tongue", "The upper plates rise sooner. Windows follow their undersides around the nose."),
+         ("Shape Match", "The character project’s fitting tool worked on Glacier’s armor inside Blender."),
+         ("Compare", "See the details at one angle or rotate each ship beside its painting."),
+         ("Scale", "Both exported ships reopened at 1,280 metres with their materials.")],
+        dict(did="Rebuilt the stern housings and reshaped the forward armor.",
+             why="These features still differed in the previous comparison.",
+             working="The changes bring three drive centers and five armor heights closer to the paintings.",
+             not_working="Delta’s upper drives sit too far inward. Glacier’s nose still looks blunt.",
+             next="The next details to refine are the upper drive spacing and the taper at Glacier’s nose."))
+    captions = {
+        "delta-tree": ("Three stacked drives show on the near side. Look at their pale collars, dark recesses and amber ends.",
+                       "All twelve drives are visible from the stern."),
+        "glacier-tongue": ("Compare the rise of the upper armor and the two rows of windows where the plates overhang.",
+                           "The blade stays separate across the opening to the hangar.")}
+    other_views = []
+    for slug, ship in proof["ships"].items():
+        name = ship["name"]
+        def show(path, public, label, caption, look=False):
+            src = available_media(out, ROOT/path, public)
+            return page.figure(src,label," · "+caption,look=look) if src else f"<p>{label} unavailable in this checkout.</p>"
+        comparison = show(ship["sheets"]["detail"]["path"],f"r176-{slug}-detail.png",name+" · detail",
+                          captions[slug][0],True)
+        comparison += show(ship["sheets"]["full"]["path"],f"r176-{slug}-full.png",name+" · whole ship",
+                           "Painting, previous model and revised model share the same framing.")
+        renders = Path(ship["render_folder"])
+        available_media(out, ROOT/renders/(slug+"-gallery.png"), f"r176-{slug}-gallery.png")
+        glb = available_media(out, ROOT/ship["folder"]/(slug+".glb"), f"r176-{slug}.glb")
+        if glb:
+            comparison += f'<p><a class="qref" href="hull-review.html?ship={slug}&amp;round=176">Rotate {name} and switch revisions</a></p>'
+        detail = "stern" if slug == "delta-tree" else "bow"
+        section += decide.question("aquila-direction-r176-"+slug,f"Does {name}’s {detail} look closer to the painting?",
+                                   [("closer","Yes, closer"),("detail","One detail still differs","Which detail catches your eye?")],
+                                   short=name+" · "+detail,follows="aquila-direction-r175-"+slug,anchors_html=comparison)
+        suffix = "reverse" if slug == "delta-tree" else "clay"
+        label = "opposite quarter" if slug == "delta-tree" else "plain gray"
+        other_views.append(show(renders/(slug+"-"+suffix+".png"),f"r176-{slug}-{suffix}.png",name+" · "+label,captions[slug][1]))
+    details = ("<p>Three near-side drive centers averaged 73 pixels from their painted positions before and 34 after.</p>"
+               "<p>Five armor heights averaged 63 pixels from their painted edges before and 10 after.</p>"
+               "<p>Those five heights were held back from fitting. Both measurements use the same 1,024-pixel gallery view.</p>"
+               "<p>Asset Pipeline now holds the ship scripts, marked points and a guide for repeating the fit.</p>")
+    section += decide.info_thread("aquila-direction-r176-checks","What moved closer to the paintings.",
+                                  short="Geometry checks and other angles",body_html=details+page.grid(*other_views))
+    section += decide.whats_next("aquila-direction-r176-next","The game still uses the playable boarding hulls. Exterior review comes before replacing them.",
+                                 short="Exterior review")
+    return page.entry(176,"Delta Tree’s stern and Glacier Tongue’s forward armor",section,when=proof["local_date"])
+
+
+def continued_hull_studies(out, proof):
+    section=decide.recap(
+        "You marked both ships closer. Delta Tree now has smooth courtyard walls. Glacier Tongue has a sharper bow and a deeper-looking dock.",
+        [("Delta Tree","The dish sits on a shorter support. The drives sit closer together across the stern."),
+         ("Glacier Tongue","The narrow prow carries worn blue plating and two rows of lit windows."),
+         ("Dock","Rounded pressure frames lead into a lit room behind the opening."),
+         ("Asset Pipeline","The guide includes commands, reusable scripts and an example part you can open in Blender."),
+         ("Compare","Rotate either model beside its painting or switch back to the previous version.")],
+        dict(did="Refined both exteriors through several local Blender passes.",
+             why="You asked for continued improvements and methods future modelers can repeat.",
+             working="Both ships reopen at 1,280 metres with their materials.",
+             not_working="Delta’s upper drives still sit inward. Glacier’s armor seams remain more regular than the painted ones.",
+             next="Keep using the original paintings and the saved tools to guide exterior work."))
+    paragraphs=[]
+    for slug,ship in proof["ships"].items():
+        name=ship["name"]
+        def show(which,label,caption,look=False):
+            src=available_media(out,ROOT/ship["sheets"][which]["path"],f"r177-{slug}-{which}.png")
+            return page.figure(src,label," · "+caption,look=look) if src else "<p>"+label+" unavailable in this checkout.</p>"
+        board = show("full",name+" · whole ship","Original painting, previous model and revised model share one camera.")
+        if slug=="delta-tree":
+            board+=show("deck","Branching courtyards","The revised walls follow the curves around the inset decks.",True)
+            board+=page.grid(show("detail","Drive housings","Three near-side exhausts line up more closely with the painting."),
+                             show("observatory","Observatory","The dish keeps its position above a raised command deck."))
+        else:
+            board+=show("detail","Forward armor","The bow tapers below both rows of windows. Blue paint follows the changing plate height.",True)
+            board+=show("berth","Port dock","Three inner frames and lights along the floor give the opening depth.")
+        available_media(out,ROOT/ship["render_folder"]/(slug+"-gallery.png"),f"r177-{slug}-gallery.png")
+        model=available_media(out,ROOT/ship["folder"]/(slug+".glb"),f"r177-{slug}.glb")
+        link=(f'<p><a class="qref" href="hull-review.html?ship={slug}&amp;round=177">Rotate {name} and switch revisions</a></p>'
+              if model else "")
+        paragraphs.append(f'<h3 id="r177-{slug}">{name}</h3>'+link+board)
+    details=("<p>Delta’s three measured outlets averaged 14 pixels from their painted centers, down from 34.</p>"
+             "<p>Glacier’s bow outline averaged 8 pixels from the painting at nine marks excluded from fitting, down from 24.</p>"
+             "<p>Seven marks moved closer. Both ships use the same 1,024-pixel views as before. Five armor edges kept their heights.</p>"
+             "<p>The reusable tools cover tracing recessed panels, fitting an outline and applying paint along curved plating.</p>"
+             "<p>An unrelated access panel reopened in Blender with two joined recesses and a separate slot.</p>")
+    section+=decide.info_thread("aquila-direction-r177-models","The original, previous and revised ships are ready to inspect.",
+                                short="Ship comparisons and reusable methods",body_html="".join(paragraphs)+details)
+    section+=decide.whats_next("aquila-direction-r177-next","Exterior refinement can continue locally. Replacing either playable hull still comes after your review.",
+                               short="Continue local ship work")
+    return page.entry(177,"Closer hulls and reusable Blender techniques",section,when=proof["local_date"])
+
+
+def stern_racks_and_armor_seams(out, proof):
+    section = decide.recap(
+        "Delta Tree’s exhausts now stack in three level rows. Glacier Tongue’s windows taper into curved armor like the painting.",
+        [("Delta Tree", "The mast sits over the middle drive, with the dish offset to one side."),
+         ("Glacier Tongue", "Silver plates sweep over the blue lower hull and cover the ends of the window bands."),
+         ("Dimensions", "Delta grew wider and taller. Both ships still measure 1,280 metres long."),
+         ("Compare", "Rotate each ship beside its painting and switch to the previous model."),
+         ("Asset Pipeline", "Saved the camera setups, shape measurements and a reusable example for matching curved seams.")],
+        dict(did="Refined Delta’s stern through five Blender passes and Glacier’s armor through four.",
+             why="The upper drives sat inward and Glacier’s window bands repeated across solid armor.",
+             working="All twelve exhausts are open. Both ships reopen with their materials.",
+             not_working="Delta’s engine stack sits off-center over the hull. Glacier’s dock underside still differs from its side study.",
+             next="Use the stern and side studies to refine those two areas."))
+    ships = []
+    for slug, ship in proof["ships"].items():
+        name = ship["name"]
+        def show(kind, label, caption, look=False):
+            src = available_media(out, ROOT / ship["sheets"][kind]["path"], f"r178-{slug}-{kind}.png")
+            return page.figure(src, label, " · "+caption, look=look) if src else f"<p>{label} unavailable in this checkout.</p>"
+        board = show("full", name+" · whole ship", "Original painting, previous model and revised model share one framing.")
+        if slug == "delta-tree":
+            board += show("detail", "Upper drives", "Three near-side outlet centers meet their painted positions.", True)
+            board += show("stern", "Straight from behind", "Supporting stern study, previous model and revised model. Both models share one camera.")
+            details = ("<p>The upper housing outline averaged 8.44 pixels from ten painted marks, down from 18.86.</p>"
+                       "<p>Placing the mast over the drives raised the highest point. Width grew from 553 to 595 metres.</p>"
+                       "<p>Total height grew from 356 to 467 metres. The mast base seats against the sloping deck around its full rim.</p>")
+        else:
+            board += show("detail", "Windows and overlapping plates", "The lower window band narrows beneath the silver armor.", True)
+            board += show("side", "From the port side", "Supporting port study, previous model and revised model. Both models share one camera.")
+            details = ("<p>Seventeen marks excluded from fitting measured the window edge and the silver-to-blue seam.</p>"
+                       "<p>Their average gap fell from 33.78 to 0.96 pixels in the original painting.</p>"
+                       "<p>The dock keeps 63.38 metres of clear sightline. Its lower hull still looks heavier than the study.</p>")
+        available_media(out, ROOT / ship["render_folder"] / (slug+"-gallery.png"), f"r178-{slug}-gallery.png")
+        glb = available_media(out, ROOT / ship["folder"] / (slug+".glb"), f"r178-{slug}.glb")
+        link = (f'<p><a class="qref" href="hull-review.html?ship={slug}&amp;round=178">Rotate {name} and switch revisions</a></p>'
+                if glb else "")
+        ships.append(f'<h3 id="r178-{slug}">{name}</h3>'+link+board+details)
+    section += decide.info_thread("aquila-direction-r178-exteriors", "Both revised ships are ready to inspect beside the artwork.",
+                                  short="Compare both ships", body_html="".join(ships))
+    section += decide.whats_next("aquila-direction-r178-next", "Next local targets are Delta’s stern shoulders and the structure beneath Glacier’s dock.",
+                                 short="Stern shoulders and dock supports")
+    return page.entry(178, "Delta Tree’s drives and Glacier Tongue’s armor", section, when=proof["local_date"])
+
+
+def stern_shoulders_and_dock(out, proof):
+    section = decide.recap(
+        "Delta Tree’s stern now wraps around the engines. Glacier Tongue’s dock hangs under the hull with space beside it.",
+        [("Delta Tree", "Two windowed shoulders flank the twelve exhausts, with service pods underneath."),
+         ("Glacier Tongue", "Three enclosed crossings join the hanging berth and the outer blade."),
+         ("Still visible", "Delta’s lower shoulders remain narrower. Glacier’s blade hides part of the aft opening."),
+         ("Compare", "Rotate each model and switch between the two revisions."),
+         ("Asset Pipeline", "Saved the Blender scripts and a working example for checking depth and open space.")],
+        dict(did="Rebuilt the stern shoulders and the structure around the dock.",
+             why="The rear study showed an offset hull. The side study showed daylight beside the berth.",
+             working="All twelve exhausts clear their rims. All three dock crossings join at both ends.",
+             not_working="Five marked gaps behind Glacier’s dock remain hidden by its outer blade.",
+             next="Compare the lower stern curve and the dock lighting with the paintings."))
+    ships = []
+    for slug, ship in proof["ships"].items():
+        name = ship["name"]
+        def figure(kind, title, caption, look=False):
+            src = available_media(out, ROOT / ship["sheets"][kind]["path"], f"r179-{slug}-{kind}.png")
+            return page.figure(src, title, " · "+caption, look=look) if src else f"<p>{title} unavailable in this checkout.</p>"
+        picture = figure("full", name+" · whole ship", "Original artwork, previous model and revised model share the gallery view.")
+        if slug == "delta-tree":
+            picture += figure("stern", "From directly behind", "The bottom middle exhaust sets the center. Exhaust spacing sets the scale.")
+            picture += figure("detail", "Shoulders and service pods", "Two window bands now sit beside the drives. The painted shoulders curve farther underneath.", True)
+            old, new = (ship["metrics"][v]["shoulder_center_offset_mean_m"] for v in ("prior","current"))
+            details = (f"<p>Average offset from the engine centerline fell from {old:.2f} to {new:.2f} metres across nine heights.</p>"
+                       "<p>Moving a mounting rail cleared two lower rims. All 108 checks now reach inside the exhausts.</p>"
+                       "<p>Beam fell from 595 to 584 metres. Overall height fell from 467 to 416 metres.</p>")
+        else:
+            picture += figure("side", "From the port side", "Both models share the study’s scale, bow position and doorway height.")
+            picture += figure("detail", "Dock and crossings", "Open space now separates the berth from the forward hull. The outer blade still rises across the aft opening.", True)
+            details = ("<p>Nine of fourteen marked gaps now show through the whole ship. Previously, every gap was blocked.</p>"
+                       "<p>The other five first meet the blade. Its angle follows the original gallery painting.</p>"
+                       "<p>The doorway has 64.51 metres of clear sightline. Its lighting still looks flatter than the side study.</p>")
+        available_media(out, ROOT / ship["render_folder"] / (slug+"-gallery.png"), f"r179-{slug}-gallery.png")
+        model = available_media(out, ROOT / ship["folder"] / (slug+".glb"), f"r179-{slug}.glb")
+        link = (f'<p><a class="qref" href="hull-review.html?ship={slug}&amp;round=179">Rotate {name} and switch revisions</a></p>'
+                if model else "")
+        ships.append(f'<h3 id="r179-{slug}">{name}</h3>'+link+picture+details)
+    section += decide.info_thread("aquila-direction-r179-exteriors", "Both exteriors reopen at 1,280 metres with their materials.",
+                                  short="Compare both ships", body_html="".join(ships))
+    section += decide.whats_next("aquila-direction-r179-next", "The remaining differences are Delta’s lower shoulder curve and Glacier’s dock lighting.",
+                                 short="Remaining art differences")
+    return page.entry(179, "Delta Tree’s stern and Glacier Tongue’s suspended dock", section, when=proof["local_date"])
+
+
+def material_matching_options(out, proof, receipt):
+    section = decide.recap(
+        "Yes. Compare the actual ship finishes under a moving light, starting with Delta’s ivory deck and Glacier’s amber dock.",
+        [("Shape", "Overlay the artwork and the model from the same angle. Mark where their outlines and openings disagree."),
+         ("Surface detail", "Measure panel spacing, scratches and worn edges in matched close-ups."),
+         ("Materials", "A moving highlight helps distinguish polished bronze, satin paint and scratches painted into a texture."),
+         ("Dock light", "Switch the lamps off and on at fixed exposure. Compare the bright doorway with the floor around it."),
+         ("Research", "One Perplexity prompt asks which tests work when the original lighting is unknown.")],
+        dict(did="Inspected the two exported ships and compared their latest renders with existing material studies.",
+             why="A hull can match the outline while its plating still looks like the wrong material.",
+             working="Both ships already have material samples with the cabin lights on and off.",
+             not_working="One painted view cannot establish exact roughness or lamp power.",
+             next="Start with one finish per ship. Check it under a second light and from an unused angle."))
+    body = []
+    for slug, ship in proof["ships"].items():
+        name = ship["name"]
+        delta = slug == "delta-tree"
+        items = [f"<h3>{name}</h3>"]
+        for kind,title,caption in (
+                ("detail", "Ivory deck and bronze channels" if delta else "Amber dock and surrounding floor",
+                 "Original artwork, previous model and current model share the same crop."),
+                ("samples", name+" material samples",
+                 "Existing finish studies with cabin and drive lights on and off.")):
+            src = available_media(out, ROOT / ship[kind]["path"], f"r180-{slug}-{kind}.png")
+            items.append(page.figure(src, title, " · "+caption, look=kind=="detail") if src
+                         else f"<p>{title} unavailable in this checkout.</p>")
+        if delta:
+            items.append("<p>The upper deck’s painted finish uses one roughness value and a color texture.</p>"
+                         "<p>Angle the light across its panels to see where scratches catch light and where the paint carries them.</p>")
+        else:
+            items.append("<p>The painting shows a bright center with warm light reaching the floor. The current doorway has narrow bright strips.</p>"
+                         "<p>Dock brightness at the 95th percentile measures 0.55 in the painting and 0.21 in the render.</p>"
+                         "<p>Those readings include the opening and nearby structure under each image’s lighting.</p>"
+                         "<p>Compare the lamp, frame and floor separately before changing lamp strength or metal finish.</p>")
+        body.extend(items)
+    body.append("<h3>What to add first</h3>"+table(["Comparison", "What to look for"], [
+        ("Material samples", "Put the ship’s actual finish on a curved plate. Hold the camera and exposure fixed while moving one lamp."),
+        ("Separate views", "Show unlit paint, roughness, surface normals and emitted light separately to locate the cause of a mismatch."),
+        ("Marked areas", "Mask each finish separately. Check hue, highlight width and wear spacing on the same part at the same scale."),
+        ("Second view", "Reserve an angle for the final check. Give the original painting priority when supporting drawings disagree."),
+    ])+"<p>If another reference becomes useful, show the same marked plate under a soft light and a low side light.</p>"
+       +"<p>Include a size marker and a gray patch in both views.</p>"
+       +'<p><a href="https://docs.blender.org/manual/en/5.2/render/layers/passes.html">Blender’s guide to separate render passes</a></p>')
+    section += decide.info_thread("aquila-direction-r180-materials", "The original paint and material studies already support a focused comparison.",
+                                  short="See both ships and proposed tests", body_html="".join(body))
+    link = f'<p><a href="{escape(receipt["url"], quote=True)}">Open the spacecraft materials research prompt</a></p>'
+    section += decide.request("aquila-direction-r180-research", "Please run the saved prompt in Perplexity and save its full answer in Research Console.",
+                              summary="The prompt asks which material cues survive unknown lighting and exposure.",
+                              info=link, short="Run the Perplexity prompt", reply="Has the complete result been saved?")
+    section += decide.whats_next("aquila-direction-r180-next", "Review the returned techniques against the ivory deck and the amber dock.",
+                                 short="Review material research")
+    return page.entry(180, "Matching ship materials to the artwork", section, when=proof["local_date"])
+
+
+def reference_matching_research(receipts):
+    section = decide.recap(
+        "Two new research prompts cover camera matching and hull depth. The earlier prompt covers materials and lighting.",
+        [("Camera", "Find out whether a mismatch comes from the camera angle, the lens or the model."),
+         ("Hull", "Recover a curved stern or open dock that holds up when you move around the ship."),
+         ("Materials", "The earlier prompt covers paint, wear, reflections and emitted light."),
+         ("Order", "The two new prompts can run independently."),
+         ("Review", "Each asks for one practical Blender method and a check that could show it failed.")],
+        dict(did="Added two prompts to the spacecraft research.",
+             why="Changing a hull to match the wrong camera can make its proportions worse.",
+             working="All three prompts read back correctly from Research Console.",
+             not_working="No Perplexity result was saved when these requests were checked.",
+             next="Test the strongest returned techniques against Delta Tree’s stern and Glacier Tongue’s dock."))
+    section += decide.info_thread("aquila-direction-r181-scope", "The new prompts tackle two different decisions an artist faces.",
+        short="Why these two topics", body_html=(
+            "<p>The camera study compares known screenshots with separately drawn views that can disagree.</p>"
+            "<p>The hull study starts with aligned views and asks how to build thickness, recesses and attached supports.</p>"))
+    requests = {job["topic"]: job for job in receipts["requests"]}
+    rows = []
+    for topic, label, purpose in (
+            ("camera", "Camera matching", "Tell a camera error from a hull error before moving vertices."),
+            ("geometry", "Hull reconstruction", "Shape the stern shoulders and open the dock while keeping its crossings attached."),
+            ("materials", "Materials and lighting", "The earlier prompt was already copied. Save its answer here when ready.")):
+        url = escape(requests[topic]["url"], quote=True)
+        rows.append((f'<a href="{url}">{label}</a>', purpose))
+    section += decide.request("aquila-direction-r181-research", "Please run the two new prompts and save each Perplexity answer in its matching request.",
+                              short="Run camera and hull research", info=table(["Research request", "What it covers"], rows),
+                              reply="Which research results have you saved?", follows="aquila-direction-r180-research")
+    section += decide.whats_next("aquila-direction-r181-next", "Review each return as it arrives and identify a small Blender test.",
+                                 short="Review returned techniques", follows="aquila-direction-r180-next")
+    return page.entry(181, "Two more ways to match a ship from pictures", section, when="2026-11-25")
 
 
 def main(output):
@@ -1089,14 +2877,14 @@ def main(output):
         short="Continue the combat discussion", follows="aquila-direction-r23-next")
     rounds = page.entry(24, "Time to change tactics", pace_clarification, when="2026-11-15 UTC") + rounds
     projectiles = decide.recap(
-        "Deliberate battles are settled. Start capable, then grow through better weapons, defenses and evasion. "
+        "Deliberate battles are settled. Start capable, then grow through better weapons and defenses. "
         "Ordinary weapons need visible travel and real chances to miss. "
         "Two basic kinetic turrets and one shield form the starting direction. "
         "The current instant pulse still needs replacement; this round records design only.",
         [
             ("Pace", "Tactical decisions have time to matter; impacts remain fast, explosive and satisfying."),
             ("Travel", "Ordinary weapons are projectiles. Instant long-range attacks belong only in future rare-equipment notes."),
-            ("Growth", "Individual turret upgrades, stronger defenses, countermeasures and automatic evasion support different ship builds."),
+            ("Growth", "Individual turret upgrades, stronger defenses and countermeasures support different ship builds."),
             ("Starter", "Two basic kinetic turrets and one simple shield establish the initial direction."),
             ("Scope", "The thirty-turret example is provisional. Gameplay remains unchanged while we discuss these rules."),
         ],
@@ -1104,7 +2892,7 @@ def main(output):
             "did": "Recorded your projectile combat and progression direction, closing the battle-pace question.",
             "why": "You want tactical battles and a capable starting ship with substantial room to grow.",
             "working": "Existing automatic combat remains available. The new rules distinguish your decisions from my design proposals.",
-            "not_working": "The prototype still uses instant pulse hits. Projectile travel, expanded defenses and automatic evasion remain unbuilt.",
+            "not_working": "The prototype still uses instant pulse hits. Projectile travel and expanded defenses remain unbuilt.",
             "next": "Define the starter encounter before expanding the weapon catalog and upgrade tree.",
         },
     )
@@ -1113,14 +2901,14 @@ def main(output):
         ("Capable starter, substantial growth", "Begin with useful combat systems at their lowest level. Upgrade offense and defense over time."),
         ("Traveling weapons", "No ordinary hitscan or effectively instant long-range attacks. Keep rare superweapons only in future notes, with major cooldowns."),
         ("Simple starting shield", "Absorb a few hits, then fail. Later choices include stronger shields, sustain, multiple shields and special armor."),
-        ("Tank or avoid damage", "Support shieldless armor builds, countermeasures and upgradeable automatic evasion. Exact starter evasion remains open."),
+        ("Defense choices", "Support shieldless armor builds and countermeasures."),
         ("Guidance can fail", "Disruption breaks tracking. Straight flight or the last known position remain possible lost-lock behaviors."),
         ("Individual turret growth", "Start with two basic kinetic turrets, left and right. Around thirty later mounts illustrates growth, not a fixed cap."),
     ])
     projectile_body += "<p>Your year-of-play example describes long-term growth. It does not set a required unlock schedule.</p>"
     projectile_body += table(["My proposed rule", "Why it matters"], [
         ("Resolve damage on arrival", "Automatic aim predicts movement, but a projectile can miss. A moving tracer cannot conceal instant damage."),
-        ("Limit guidance and evasion", "Missiles have finite turning ability. Evasion uses actual ship movement; it never grants guaranteed immunity."),
+        ("Limit guidance", "Missiles have finite turning ability."),
         ("Give mounts real limits", "Tracking, firing arcs and hull obstruction reward positioning. Power, cooling and ammunition constrain powerful loadouts."),
         ("Keep upgrade choices useful", "Separate ship capacity, individual turret development and installed equipment. Stronger equipment still has weaknesses."),
         ("Preserve readable battles", "Late-game defenses and salvo pacing must grow alongside firepower. More turrets must not erase reaction time."),
@@ -1130,7 +2918,7 @@ def main(output):
         ("Heavy kinetic cannons", "Large solid rounds with forceful impacts", "Slow reload and tracking"),
         ("Flak and point defense", "Projectile guns or interceptor missiles defend against incoming threats", "Limited range and saturation"),
         ("Unguided rockets", "Explosive salvos aimed ahead of moving targets", "No course correction"),
-        ("Guided missiles", "Tracking threats with visible travel", "Decoys, jamming, interception and evasion"),
+        ("Guided missiles", "Tracking threats with visible travel", "Decoys, jamming and interception"),
         ("Heavy torpedoes", "Powerful attacks against capital ships", "Slow approach and limited ammunition"),
         ("Disruption rounds", "Delivered payload pressures shields or ship systems", "Specialized effect and limited hull damage"),
         ("Nuclear or siege warheads", "Later large-area attacks and major spectacle", "Scarcity, long reload, interception and dangerous blast proximity"),
@@ -1249,7 +3037,7 @@ def main(output):
             "did": "Replaced instant pulses with the approved two-turret projectile encounter, one shield and blocked versus penetrating hits.",
             "why": "You approved building the first playable version of the agreed combat vision.",
             "working": "Traveling rounds, armor protection, ammunition modes, shared views, pause, recovery, victory and defeat pass local checks.",
-            "not_working": "Missiles, automatic evasion and progression remain future work. Physical phones and long sessions remain untested.",
+            "not_working": "Missiles and progression remain future work. Physical phones and long sessions remain untested.",
             "next": "The local practice encounter is ready. Further combat systems wait for direction; no decision is required now.",
         },
     )
@@ -1282,7 +3070,7 @@ def main(output):
     kinetic_body += "<p>Checks cover delayed hits, armor immunity, movement misses, ammunition changes, walking, pause, recovery, range, victory, defeat and resource reuse.</p>"
     kinetic_body += "<p>Visual pools stay fixed at 160 rounds and 32 impacts. Repeated encounter resets reused geometry and textures.</p>"
     kinetic_body += "<p>One stationary target remains. Collision uses coarse shapes; turret arcs and own-hull obstruction remain unrestricted.</p>"
-    kinetic_body += "<p>Damage stays temporary. Missiles, countermeasures, automatic evasion, progression, sounds and advanced enemy tactics remain future work.</p>"
+    kinetic_body += "<p>Damage stays temporary. Missiles, countermeasures, progression, sounds and advanced enemy tactics remain future work.</p>"
     kinetic_body += "<p>Physical devices, other browser engines, long play and the desktop runtime remain untested. No website deployment occurred.</p>"
     kinetic += decide.info_thread("aquila-direction-r28-info",
         "Two automatic kinetic turrets now fire traveling rounds, with visible shield hits, blocked armor and penetrating damage.",
@@ -1306,7 +3094,7 @@ def main(output):
             "did": "Changed battleship flight to navigation orders while retaining the underlying manual controls.",
             "why": "Your role is to command; the helm handles movement.",
             "working": "Destination travel, range orders, walking, pause, shuttle flight and projectile combat pass local checks.",
-            "not_working": "Navigation remains a prototype; advanced tactics and automatic projectile evasion remain unbuilt.",
+            "not_working": "Navigation remains a prototype; advanced tactics remain unbuilt.",
             "next": "Use navigation orders in the local game. Nothing needs a decision now.",
         },
     )
@@ -1332,7 +3120,7 @@ def main(output):
     helm_body += "<p>Production build, 35 model tests and 36 browser check groups pass. No application errors remain in successful runs.</p>"
     helm_body += "<p>Checks cover hidden inputs, camera chords, navigation, walking, launch, combat, pause, graphics recovery, narrow controls and reload.</p>"
     helm_body += "<p>One test initially looked for console controls while walking. Another run was interrupted by my development reload; corrected reruns passed.</p>"
-    helm_body += "<p>The helm uses prototype routes and coarse planetary clearance. Advanced tactics, projectile-aware evasion and physical-device validation remain open.</p>"
+    helm_body += "<p>The helm uses prototype routes and coarse planetary clearance. Advanced tactics and physical-device validation remain open.</p>"
     helm_body += "<p>No commit, push, deployment, asset transfer or paid generation occurred.</p>"
     helm += decide.info_thread("aquila-direction-r29-info",
         "The battleship now steers and navigates automatically from your orders.",
@@ -4987,6 +6775,948 @@ def main(output):
         short="Restart prompt", follows="aquila-direction-r120-next",
     )
     rounds = page.entry(121, "Windows duel saved and pushed", duel_wrap, when="2026-11-22") + rounds
+    feedback = decide.recap(
+        "A shield briefly lights up where a shot lands. Hull hits throw sparks from the struck plate. "
+        "Either ship can explode in a fireball larger than its hull.",
+        [
+            ("Shield", "A blue wave runs across the round shield and fades."),
+            ("Armor", "A deflected round throws short gold sparks."),
+            ("Hull", "A penetrating round flashes orange against the plate it hits."),
+            ("Defeat", "Fire spreads along the ship before the shockwave and fragments fade."),
+            ("Play", "Double-click Aquila Combat Simulator on your Windows desktop."),
+        ],
+        {
+            "did": "Updated the simulator and expedition with the same shield, armor and destruction effects.",
+            "why": "You can see which defense took the shot and where it landed.",
+            "working": "Both ships exploded in the Windows duel. The shield and hull meters show their remaining percentages.",
+            "not_working": "The new effects still need a physical Galaxy check.",
+            "next": "The desktop shortcut opens the tested build.",
+        },
+    )
+    feedback_body = '<p>Nine packaged Windows checks and twelve simulation and save groups passed.</p>'
+    for name, title, caption in [
+        ("r122-combat-feedback.mp4", "Watch both duels.", "Piercing defeats Sentinel. Standard rounds stop at its armor, and Resolute takes the fatal hit."),
+        ("r122-shield.png", "Shield contact.", "The bright point marks the incoming side. The ripple travels across the shell."),
+        ("r122-hull.png", "Hull contact.", "Sentinel takes a hit on its plating. Resolute’s shield is still absorbing fire."),
+        ("r122-destruction.png", "Sentinel destroyed.", "The shockwave and burning fragments remain visible at eight times normal duel speed."),
+    ]:
+        source = HERE / "media" / name
+        if source.is_file():
+            feedback_body += page.figure(page.copy_media(source, out), title, caption, look=name.endswith(".mp4"))
+    feedback_body += '<p><a href="combat-feedback-checks.json">Windows combat feedback checks</a></p>'
+    feedback += decide.info_thread(
+        "aquila-direction-r122-info", "Shots land on the visible shield or hull.",
+        body_html=feedback_body, short="Combat feedback", follows="aquila-direction-r121-info",
+    )
+    feedback += decide.whats_next(
+        "aquila-direction-r122-next", "Play either loadout from the desktop shortcut. Pause holds the impact in place.",
+        short="Play the updated duel", follows="aquila-direction-r121-next",
+    )
+    rounds = page.entry(122, "Shield strikes, hull hits and ship explosions", feedback, when="2026-11-22") + rounds
+    arena_open = decide.recap(
+        "Aquila opened directly in the Combat Simulator. The arena started with standard rounds.",
+        [
+            ("Window", "Windows brought Aquila to the front."),
+            ("Duel", "Resolute and Sentinel are the two ships."),
+            ("Controls", "Try piercing starts the duel with the other ammunition."),
+            ("Speed", "Click the speed button to watch at normal speed."),
+            ("Save", "The desktop match save kept its original bytes at launch."),
+        ],
+        {
+            "did": "Opened the updated Windows arena from your desktop shortcut.",
+            "why": "You asked to try the new combat effects.",
+            "working": "The game logged the standard duel and its window responded.",
+            "not_working": "No launch issue remained.",
+            "next": "If another app covers the game, choose Aquila with Alt+Tab.",
+        },
+    )
+    arena_open += decide.info_thread(
+        "aquila-direction-r123-info", "The updated arena opened in a visible Windows game window.",
+        short="Arena launch", follows="aquila-direction-r122-info",
+    )
+    arena_open += decide.whats_next(
+        "aquila-direction-r123-next", "Choose Try piercing to see shots reach Sentinel’s hull.",
+        short="Play the duel", follows="aquila-direction-r122-next",
+    )
+    rounds = page.entry(123, "The combat arena is open", arena_open, when="2026-11-22") + rounds
+    armor = decide.recap(
+        "Resolute’s standard rounds drain Sentinel’s shield. When the exposed armor blocks a round, both of Resolute’s turrets stop firing. "
+        "Sentinel keeps firing because its rounds can damage Resolute’s hull.",
+        [
+            ("Shield", "Resolute’s standard rounds can take Sentinel’s shield all the way down."),
+            ("Armor", "Sentinel’s armor can block every standard round that reaches it."),
+            ("Turrets", "Resolute automatically holds fire after its first blocked shot."),
+            ("Return fire", "Sentinel’s shots reach Resolute’s hull once its shield is gone."),
+            ("Replay", "Try piercing restarts both ships with Resolute firing armor-piercing rounds."),
+        ],
+        {
+            "did": "Checked the ammunition used in the duel and the rule that stops Resolute’s guns.",
+            "why": "Losing a shield exposes the armor underneath it.",
+            "working": "Piercing rounds went through Sentinel’s armor and destroyed it in both tested replays.",
+            "not_working": "The armor message explains the blocked hit but leaves the automatic ceasefire unclear.",
+            "next": "Select Try piercing to compare the two outcomes.",
+        },
+    )
+    armor += decide.info_thread(
+        "aquila-direction-r124-info", "The latest duel started with standard rounds.",
+        body_html='<p>In the standard duel, Sentinel finished with zero shield and full hull.</p>'
+                  '<p><a href="combat-feedback-checks.json">Recorded duel outcomes</a></p>',
+        short="Why Resolute stops", follows="aquila-direction-r123-info",
+    )
+    armor += decide.whats_next(
+        "aquila-direction-r124-next", "Select Try piercing to replay the same matchup with ammunition that penetrates Sentinel’s armor.",
+        short="Compare ammunition", follows="aquila-direction-r123-next",
+    )
+    rounds = page.entry(124, "Why Resolute stops firing", armor, when="2026-11-22") + rounds
+    fittings = decide.recap(
+        "Sentinel starts with standard rounds in a kinetic cannon. You can see and change the gear on either ship. "
+        "A powered shield follows the hull, stays faint at rest, and flashes where a shot lands.",
+        [
+            ("Read", "Each ship’s name sits above its weapon, rounds, armor and shield."),
+            ("Fit", "Edit loadouts pauses the fight while you pick equipment for both ships."),
+            ("Compare", "Start duel resets both ships, and Replay duel repeats the same fittings."),
+            ("Shield", "Long hulls get an oval, tall hulls get an upright oval, and equal dimensions give a sphere."),
+            ("Armor", "The panel names either ship that stops firing because its rounds cannot penetrate armor."),
+        ],
+        {
+            "did": "Added equipment choices for both ships and fitted their shields to their hulls.",
+            "why": "Seeing both loadouts explains the matchup and lets you change one item at a time.",
+            "working": "Sentinel’s fitted piercing turrets defeated a reinforced Resolute in the Windows test.",
+            "not_working": "Both playable hulls are long and low. Tall and spherical fits have geometry tests only.",
+            "next": "Open Aquila Combat Simulator from the desktop to try your own pairing.",
+        },
+    )
+    fittings_body = table(
+        ["Starting equipment", "Resolute", "Sentinel"],
+        [("Weapon", "Twin burst turrets", "Kinetic cannon"), ("Rounds", "Standard", "Standard"),
+         ("Armor", "Light plating", "Reinforced armor"), ("Shield", "Energy shield", "Energy shield")],
+    )
+    for name, title, caption in [
+        ("hit", "Sentinel takes a hit.", "The left shield flashes at contact. Resolute’s shield on the right stays faint."),
+        ("quiet", "Both shields at rest.", "A thin blue rim follows each hull while its shield has charge."),
+        ("fitting", "Fitting both ships.", "Here Resolute has piercing rounds and Sentinel has standard rounds."),
+    ]:
+        source = HERE / "media" / ("r125-" + name + ".png")
+        if source.is_file():
+            fittings_body += page.figure(page.copy_media(source, out), title, caption, look=name == "hit")
+        else:
+            fittings_body += "<p>The local view for this comparison is missing.</p>"
+    fittings_body += '<p><a href="arena-loadout-checks.json">Windows tests and saved match checks</a></p>'
+    fittings += decide.info_thread(
+        "aquila-direction-r125-info", "Either ship can fit either battery, round, armor or shield choice.",
+        body_html=fittings_body, short="Both ships’ equipment", follows="aquila-direction-r124-info",
+    )
+    fittings += decide.whats_next(
+        "aquila-direction-r125-next", "Choose Edit loadouts, set both ships’ gear, then choose Start duel.",
+        short="Try a matchup", follows="aquila-direction-r124-next",
+    )
+    rounds = page.entry(125, "Fit both ships and watch their shields", fittings, when="2026-11-22") + rounds
+    mesh_trial = decide.recap(
+        "The arena can use the ship itself as its shield. The copy is 8% larger in every direction. "
+        "Choose Ship mesh or Oval while paused to compare the same hit.",
+        [
+            ("Shape", "The new shield follows the hull plates, side sections and turrets."),
+            ("Scale", "All the parts grow together from the center of the ship."),
+            ("At rest", "A faint blue outline traces the ship’s stepped edges."),
+            ("On impact", "The incoming shot lights the shield on the plate it reaches."),
+            ("Compare", "Switch shapes while paused, then press Resume to watch the ripple move."),
+        ],
+        {
+            "did": "Built a shield from each arena ship’s existing meshes.",
+            "why": "You wanted to try a close copy of the ship’s silhouette.",
+            "working": "The two shield shapes can show the same strike from the same camera.",
+            "not_working": "The lasting shield choice is still open.",
+            "next": "The Windows preview opens on the first shield hit.",
+        },
+    )
+    def shield_view(tag, title, caption, look=False):
+        source = HERE / "media" / ("r126-" + tag + ".png")
+        if source.is_file():
+            return page.figure(page.copy_media(source, out), title, caption, look=look)
+        return "<p>The local shield view is missing.</p>"
+
+    trial_views = table(["Ship mesh", "Oval"], [
+        (shield_view("mesh-hit", "First impact.", "The strike lights Sentinel’s forward plating on the left.", True),
+         shield_view("oval-hit", "Same impact.", "The ripple starts farther from the plating on the oval.")),
+        (shield_view("mesh-rest", "Between hits.", "The faint outline follows each hull’s steps and gaps."),
+         shield_view("oval-rest", "Same ships at rest.", "A smooth rim surrounds the entire ship.")),
+    ])
+    mesh_trial += decide.info_thread(
+        "aquila-direction-r126-info", "Both ships now have a ship-shaped shield to try in the arena.",
+        body_html=trial_views + '<p><a href="mesh-shield-checks.json">Windows comparison and launch checks</a></p>',
+        short="Ship-shaped shield", follows="aquila-direction-r125-info",
+    )
+    mesh_trial += decide.whats_next(
+        "aquila-direction-r126-next", "Choose Ship mesh or Oval on the paused hit. Press Resume to continue fighting.",
+        short="Compare the shields", follows="aquila-direction-r125-next",
+    )
+    rounds = page.entry(126, "Try the ship itself as a shield", mesh_trial, when="2026-11-22") + rounds
+    camera_pivot = decide.recap(
+        "The old arena camera swung around the midpoint between the ships. Free look now turns from where you stand.",
+        [
+            ("Opening view", "Both ships start in view."),
+            ("Free look", "Drag either mouse button to turn in place."),
+            ("Follow", "Click a ship, then drag to orbit it."),
+            ("Release", "Click empty space to keep your viewpoint and look around freely."),
+            ("Move", "Pan across space or scroll to move along your line of sight."),
+        ],
+        {
+            "did": "Changed the free camera pivot in the arena and the match.",
+            "why": "Dragging swung the viewpoint around an invisible point in space.",
+            "working": "The Windows duel turned 90 degrees sideways and 12 degrees upward with zero measured travel.",
+            "not_working": "How the new controls feel during play is still open.",
+            "next": "Try turning while both ships are in view.",
+        },
+    )
+    camera_pivot += decide.info_thread(
+        "aquila-direction-r127-info", "The free camera turns on its own axis. A followed ship stays at the center of its orbit.",
+        body_html='<p><a href="free-camera-checks.json">Windows camera movement checks</a></p>',
+        short="Free camera pivot",
+    )
+    camera_pivot += decide.whats_next(
+        "aquila-direction-r127-next", "Drag in empty space to look around. Click either ship to try the orbit.",
+        short="Try both views",
+    )
+    rounds = page.entry(127, "Turn the free camera in place", camera_pivot, when="2026-11-22") + rounds
+    flight = decide.recap(
+        "Aim up and hold W to climb. Aim down and hold W to dive. S backs up along the same line.",
+        [
+            ("Forward", "W flies toward the center of your view."),
+            ("Backward", "S flies back along that same line."),
+            ("Strafe", "A and D move sideways across your view."),
+            ("Height", "R rises and F lowers you vertically."),
+            ("Speed", "Hold Shift to fly four times faster."),
+        ],
+        {
+            "did": "Forward flight now follows your camera’s pitch and heading.",
+            "why": "Forward used to stay level even when you aimed up or down.",
+            "working": "The Windows duel, fresh match and restored match all passed the climb and dive checks.",
+            "not_working": "Physical phone play remains untested for this change.",
+            "next": "Open Aquila Combat Simulator from the desktop for the updated controls.",
+        },
+    )
+    flight += decide.info_thread(
+        "aquila-direction-r128-info", "The free camera now flies in the direction you are looking.",
+        body_html='<p><a href="camera-flight-checks.json">Windows flight measurements</a></p>',
+        short="Directional flight", follows="aquila-direction-r127-info",
+    )
+    flight += decide.whats_next(
+        "aquila-direction-r128-next", "Aim at either ship and hold W to approach it.",
+        short="Try the flight controls",
+    )
+    rounds = page.entry(128, "Fly where you look", flight, when="2026-11-23") + rounds
+    flight_confirmed = decide.recap(
+        "You tried flying where you look and said it works well. We’ll keep that behavior.",
+        [
+            ("Aim", "Point the camera where you want to go."),
+            ("Approach", "W flies toward that spot."),
+            ("Reverse", "S backs away along the same line."),
+            ("Checks", "The previous Windows build passed climb and dive checks."),
+            ("Playtest", "You confirmed the feel in chat."),
+        ],
+        {
+            "did": "Recorded your feedback on Windows free flight.",
+            "why": "You tried the new movement in the game.",
+            "working": "Flying along the camera’s line of sight feels right to you.",
+            "not_working": "Physical phone play remains untested.",
+            "next": "Keep the current flight behavior.",
+        },
+    )
+    flight_confirmed += decide.info_thread(
+        "aquila-direction-r129-info", "You confirmed the free camera moves the way you wanted.",
+        body_html='<blockquote>Okay, that works well.</blockquote><p><a href="camera-flight-checks.json">Earlier Windows flight checks</a></p>',
+        short="Playtest feedback", follows="aquila-direction-r128-info",
+    )
+    flight_confirmed += decide.whats_next(
+        "aquila-direction-r129-next", "Keep flying where the camera points as the default.",
+        short="Keep directional flight",
+    )
+    rounds = page.entry(129, "Free flight feels right", flight_confirmed, when="2026-11-23") + rounds
+    lab = decide.recap(
+        "Both ships gained two plasma weapons and a new armor choice.",
+        [
+            ("Caster", "Heavy plasma bolts carry more damage per hit."),
+            ("Repeater", "Lighter bolts arrive sooner."),
+            ("Prism", "Prism plating blocks plasma."),
+            ("Kinetic", "Standard rounds still damage prism plating."),
+            ("Shield", "Either payload can drain a shield before reaching armor."),
+        ],
+        {
+            "did": "Added the plasma caster, pulse repeater and prism plating to the Windows lab.",
+            "why": "Compare weapon and armor combinations before acquiring gear.",
+            "working": "Direct plasma hits left exposed prism hull at full strength.",
+            "not_working": "Weapon balance and acquisition remain open.",
+            "next": "Fit a plasma weapon and compare it against light and prism plating.",
+        },
+    )
+    lab += decide.info_thread(
+        "aquila-direction-r130-info", "Prism plating blocks plasma from both weapons.",
+        body_html='<p><a href="combat-lab-checks.json">Windows armor checks</a></p>',
+        short="Weapon comparison", follows="aquila-direction-r125-info",
+    )
+    lab += decide.whats_next(
+        "aquila-direction-r130-next", "Compare the same weapon against a different armor.",
+        short="Try the matchup",
+    )
+    rounds = page.entry(130, "Plasma weapons and prism plating", lab, when="2026-11-23") + rounds
+    earlier = json.loads((ROOT / "Docs/Testing/native-combat-lab.json").read_text(encoding="utf-8"))
+    (out / "combat-lab-checks.json").write_text(json.dumps({key: earlier[key] for key in ("round", "engine", "armor_matrix")},
+        indent=2) + "\n", encoding="utf-8")
+    mounts = decide.recap(
+        "Click a mount on the ship to fit a turret or give it an interception chip.",
+        [
+            ("Mounts", "All 30 positions open, including empty ones."),
+            ("Stock", "Resolute starts with two turrets. Sentinel starts with one."),
+            ("Move", "Choose an empty mount, then click the installed turret you want to move."),
+            ("Defense", "A chip lets any turret shoot incoming kinetic rounds and plasma bolts."),
+            ("Try it", "Open Configure ship in the Windows simulator."),
+        ],
+        {
+            "did": "Built an overhead fitting view using the ship’s own hull.",
+            "why": "Choose exactly where each owned turret goes.",
+            "working": "A chipped pulse repeater intercepted 30 incoming bolts in 60 simulated seconds.",
+            "not_working": "Getting turrets and chips through match progression remains open.",
+            "next": "Select an occupied mount, fit the interception chip, then choose Start duel.",
+        },
+    )
+    mount_body = "<p>Choose Resolute or Sentinel. Click a number to inspect that mount.</p>"
+    mount_body += "<p>Choose Move a turret here, then click the source turret. Its ammunition and chip move with it.</p>"
+    mount_body += "<p>Borrow full lab stock provides 30 turret bodies for the selected ship. Place each body where you want it.</p>"
+    for tag, title, caption in [
+        ("ship-fitting", "Mount 30 selected.", "The pulse repeater and its chip occupy the same physical mount."),
+        ("ship-defense", "Defense after 60 seconds.", "The cyan flash marks an interception. Resolute’s hull stayed at 100%."),
+    ]:
+        source = HERE / "media" / f"r131-{tag}.png"
+        if source.is_file():
+            mount_body += page.figure(page.copy_media(source, out), title, caption, look=tag == "ship-fitting")
+        else:
+            mount_body += "<p>The local ship view is missing.</p>"
+    mount_body += '<p><a href="ship-fitting-checks.json">Windows fitting and interception checks</a></p>'
+    mounts += decide.info_thread(
+        "aquila-direction-r131-info", "Both ships use individual turret mounts and their own stock.",
+        body_html=mount_body, short="Ship fitting", follows="aquila-direction-r125-info",
+    )
+    mounts += decide.whats_next(
+        "aquila-direction-r131-next", "Open Aquila Combat Simulator from your desktop and choose Configure ship.",
+        short="Try ship fitting",
+    )
+    rounds = page.entry(131, "Fit turrets directly on the hull", mounts, when="2026-11-23") + rounds
+    phase = decide.recap(
+        "Phase rounds bypass shields. Surviving turrets can now intercept incoming shots after the opposing ship explodes.",
+        [
+            ("Fit", "Click a burst turret or kinetic cannon on either ship and choose Phase."),
+            ("Shields", "A phase hit damages light or prism plating while the shield stays charged."),
+            ("Armor", "Reinforced armor stops phase rounds. Piercing rounds can damage it after the shield falls."),
+            ("Defense", "Interception chips can shoot down phase rounds too."),
+            ("Last volley", "Shots that reach the survivor before an interception can still deal damage."),
+        ],
+        {
+            "did": "Added a third kinetic ammunition choice and fixed the final volley.",
+            "why": "Destroying either ship had stopped both ships from checking for incoming rounds.",
+            "working": "Resolute caught both remaining rounds at normal speed and eight times speed.",
+            "not_working": "Match acquisition and final damage values remain open.",
+            "next": "For a clear trial, give Sentinel light plating and keep its shield fitted.",
+        },
+    )
+    phase_body = ""
+    for tag, title, caption in [
+        ("phase-fitting", "Choosing ammunition.", "Sentinel’s kinetic cannon has phase rounds fitted on mount 15."),
+        ("phase-impact", "Hull damage through a full shield.", "Sentinel’s hull reads 95.6% with its shield at 100%."),
+        ("last-volley", "Defending after the explosion.", "Resolute fires at a round already in flight when Sentinel was destroyed."),
+    ]:
+        source = HERE / "media" / f"r132-{tag}.png"
+        if source.is_file():
+            phase_body += page.figure(page.copy_media(source, out), title, caption, look=tag == "last-volley")
+    phase_body += '<p><a href="phase-round-checks.json">Windows ammunition and final volley results</a></p>'
+    phase += decide.info_thread(
+        "aquila-direction-r132-info", "The packaged duel reproduced the final volley on both Windows launch routes.",
+        body_html=phase_body, short="Arena results", follows="aquila-direction-r131-info",
+    )
+    phase += decide.whats_next(
+        "aquila-direction-r132-next", "Open Aquila Combat Simulator, choose Configure ship, select a kinetic turret and click Phase.",
+        short="Try phase rounds",
+    )
+    rounds = page.entry(132, "Phase rounds and the final volley", phase, when="2026-11-23") + rounds
+    gallery = decide.recap(
+        "Click a floating turret, then click a ship port. The turret appears there immediately.",
+        [
+            ("Choose", "Each of the four turrets turns in place around the ship."),
+            ("Place", "Click more ports to fit the same model again."),
+            ("Inspect", "Choose Done placing to inspect ports and adjust their ammunition or chips."),
+            ("Stock", "An empty port needs a spare turret. An occupied port reuses its own turret body."),
+            ("Fly", "Start duel carries the fitted models into the fight."),
+        ],
+        {
+            "did": "Replaced the right-hand weapon list with four distinct models in space.",
+            "why": "You can recognize each turret and choose its place directly on the hull.",
+            "working": "Both ships accepted clicks on the models themselves and their physical ports.",
+            "not_working": "This fitting view has been tested on Windows. Physical phone testing remains open.",
+            "next": "Open Configure ship and pick the shape you want to try.",
+        },
+    )
+    fitting_views = ""
+    for name, title, caption in [
+        ("r133-turret-loop.mp4", "Four turrets turning in place.", "Watch the silhouettes change while each turret stays in its own spot."),
+        ("r133-turret-placed.png", "Kinetic cannon on port seven.", "The fitted cannon uses the same model as the floating choice."),
+    ]:
+        source = HERE / "media" / name
+        if source.is_file():
+            fitting_views += page.figure(page.copy_media(source, out), title, caption, look=name.endswith(".mp4"))
+    fitting_views += '<p><a href="turret-gallery-checks.json">Windows model and placement checks</a></p>'
+    gallery += decide.info_thread(
+        "aquila-direction-r133-info", "The fitting view keeps the ship in sight while you choose a turret.",
+        body_html=fitting_views, short="See the fitting view", follows="aquila-direction-r131-info",
+    )
+    gallery += decide.whats_next(
+        "aquila-direction-r133-next", "Open Aquila Combat Simulator from the desktop to use the new fitting view.",
+        short="Try the new controls",
+    )
+    rounds = page.entry(133, "Choose a turret in space", gallery, when="2026-11-23") + rounds
+    defense = decide.recap(
+        "Click Armor to try three finishes on either ship. Click Shield to fit a Reserve Capacitor for one full recharge.",
+        [
+            ("Light plating", "Slim silver plates have smooth faces and two narrow stripes."),
+            ("Reinforced armor", "Dark ribs sit above copper edges."),
+            ("Prism plating", "Violet facets meet at bright seams."),
+            ("Standard shield", "The blue generator shows its powered shell while you fit it."),
+            ("Reserve Capacitor", "The amber cells go dark after they recharge the shield."),
+        ],
+        {
+            "did": "Moved armor and shield choices into space and removed the bottom fitting strip.",
+            "why": "The sample and hull share the same plates, so you can recognize the armor during combat.",
+            "working": "Both Windows ships kept their selected equipment through a duel and replay.",
+            "not_working": "Phone rendering and combat balance still need playtesting.",
+            "next": "Choose Configure ship, select either ship, then click Armor or Shield on its hull.",
+        },
+    )
+    defense_views = ""
+    for filename, title, caption in [
+        ("r134-light.png", "Light plating on Resolute.", "The silver finish covers the fitted ship’s spine and side rails."),
+        ("r134-reinforced.png", "Reinforced armor on the same hull.", "Each plate has three raised ribs and exposed copper edges."),
+        ("r134-prism.png", "Prism plating on the same hull.", "The triangular panels match the floating sample below the ship."),
+        ("r134-shield.png", "A standard shield with its reserve fitted.", "Click the amber module again to remove it. The blue generator stays fitted."),
+        ("r134-spent.png", "Resolute after its first shield depletion.", "Resolute has full shields and a spent reserve. Sentinel still has its own charge."),
+    ]:
+        source = HERE / "media" / filename
+        if source.is_file():
+            defense_views += page.figure(page.copy_media(source, out), title, caption, look=filename == "r134-prism.png")
+    defense_views += '<p>Excess damage from the breaking hit drains the fresh charge first. Phase rounds bypass both banks.</p>'
+    defense_views += '<p><a href="defense-fitting-checks.json">Windows fitting and recharge checks</a></p>'
+    defense += decide.info_thread(
+        "aquila-direction-r134-info", "The armor you pick appears on the ship immediately.",
+        body_html=defense_views, short="See all three finishes", follows="aquila-direction-r133-info",
+    )
+    defense += decide.whats_next(
+        "aquila-direction-r134-next", "Open Aquila Combat Simulator from the Windows desktop to try the fittings.",
+        short="Try the defenses",
+    )
+    rounds = page.entry(134, "Fit armor and shields in space", defense, when="2026-11-23") + rounds
+    preview = decide.recap(
+        "Hover over a turret to see it fire. Click it to keep watching while you change its rounds.",
+        [
+            ("Target", "A small shielded ship with reinforced armor floats above the fitting hull."),
+            ("Standard", "The burst strips the shield, then bounces off the armor."),
+            ("Piercing", "The shield falls first. The next rounds pierce the armor and reduce hull health."),
+            ("Phase", "Violet rounds cross the live shield. Reinforced armor stops them."),
+            ("Description", "Words slide from the gun toward the screen edge. The final phrase holds one second before repeating."),
+        ],
+        {
+            "did": "Added a firing example for every turret using its current rounds and chip.",
+            "why": "You can see where a hit lands before you fit the gun or start a duel.",
+            "working": "Hover, selection, ammunition changes and repeating examples passed on four Windows window sizes.",
+            "not_working": "Phone rendering and human reading speed still await a playtest.",
+            "next": "Open Configure ship and hover over the burst turret.",
+        },
+    )
+    firing_views = ""
+    for filename, title, caption in [
+        ("r135-burst-standard.mp4", "Standard rounds stop on reinforced armor.", "Watch the shield bar empty while the hull stays full. The description finishes and starts again."),
+        ("r135-burst-piercing.mp4", "Piercing rounds reach the hull.", "The cyan rounds hit the exposed plating. The orange hull bar falls."),
+        ("r135-burst-phase.mp4", "Phase rounds cross a powered shield.", "The violet rounds strike the plating inside the blue shell. Both bars stay full."),
+    ]:
+        source = HERE / "media" / filename
+        if source.is_file():
+            firing_views += page.figure(page.copy_media(source,out),title,caption,look=filename=="r135-burst-standard.mp4")
+    firing_views += '<p>The training shield lasts two ordinary hits from the chosen gun. The fitting screen keeps the real fight paused.</p>'
+    firing_views += '<p><a href="firing-preview-checks.json">Windows firing and pointer checks</a></p>'
+    preview += decide.info_thread(
+        "aquila-direction-r135-info","The burst turret fires the rounds you choose for its port.",
+        body_html=firing_views,short="Watch the three rounds",follows="aquila-direction-r134-info",
+    )
+    preview += decide.whats_next(
+        "aquila-direction-r135-next","Open Aquila Combat Simulator from the desktop. Select the burst turret and try each ammunition button.",
+        short="Try the firing preview",
+    )
+    rounds = page.entry(135, "Watch a turret fire before fitting it", preview, when="2026-11-23") + rounds
+    ammo = decide.recap(
+        "Click a floating round below the hull to load it and see the turret fire.",
+        [
+            ("Standard", "A short brass capsule with two amber bands."),
+            ("Piercing", "A long silver dart with swept fins and cyan grooves."),
+            ("Phase", "Three violet shards float inside two open rings."),
+            ("Both ships", "Resolute and Sentinel each keep the rounds you give their guns."),
+            ("Empty ports", "Choose a kinetic turret and a round. The next successful placement uses both choices."),
+        ],
+        {
+            "did": "Added three selectable ammunition models for both ships.",
+            "why": "Each round has its own shape and color before it leaves the gun.",
+            "working": "Model and name clicks passed at four window sizes on Windows.",
+            "not_working": "Phone fitting awaits a device test.",
+            "next": "Open Configure ship and select a burst turret or kinetic cannon.",
+        },
+    )
+    ammo_views = ""
+    for filename, title, caption in [
+        ("r136-round-selection.png", "Three rounds beneath the ship.", "The amber mark shows which round the selected turret carries."),
+        ("r136-round-models.mp4", "One burst turret fires all three rounds.", "Watch the practice target as the selection changes from Standard to Piercing to Phase."),
+    ]:
+        ammo_views += page.figure(page.copy_media(HERE / "media" / filename, out), title, caption, look=filename.endswith(".mp4"))
+    ammo_views += '<p><a href="round-model-checks.json">Windows model and selection checks</a></p>'
+    ammo += decide.info_thread(
+        "aquila-direction-r136-info", "The same round can be picked by its model or its name.",
+        body_html=ammo_views, short="See the ammunition", follows="aquila-direction-r135-info",
+    )
+    ammo += decide.whats_next(
+        "aquila-direction-r136-next", "Open Aquila Combat Simulator from the Windows desktop to try the models.",
+        short="Try the round models",
+    )
+    rounds = page.entry(136, "Choose ammunition by its model", ammo, when="2026-11-23") + rounds
+    clear = decide.recap(
+        "Clear fitting strips the selected ship to a bare hull in one click.",
+        [
+            ("Where", "Choose Resolute or Sentinel. The button sits beside their names."),
+            ("Turrets", "Every turret body goes back into that ship’s stock, ready for new rounds and chips."),
+            ("Defenses", "Armor plates, shield generator and reserve capacitor come off."),
+            ("Cancel", "Discard the draft to restore the current duel."),
+            ("Start duel", "Both ships use their current drafts, even with empty ports."),
+        ],
+        {
+            "did": "Added one action shared by the turret, armor and shield views.",
+            "why": "You can rebuild one ship while keeping the opponent you want to test.",
+            "working": "A fully equipped ship returned all 30 bodies. Refitting and replay passed on Windows.",
+            "not_working": "Physical Galaxy fitting still awaits a device check.",
+            "next": "Open Configure ship from the Windows simulator.",
+        },
+    )
+    clear_views = ""
+    for filename, title, caption in [
+        ("r137-full-fitting.png", "Resolute with all 30 ports filled.", "The upper right shows the ship’s installed guns and spare bodies."),
+        ("r137-clear-fitting.png", "The same hull after one click.", "All 30 bodies are in stock. The exposed hull and empty port markers are visible."),
+    ]:
+        clear_views += page.figure(page.copy_media(HERE / "media" / filename, out), title, caption, look=filename=="r137-clear-fitting.png")
+    clear_views += '<p><a href="clear-fitting-checks.json">Windows reset and inventory checks</a></p>'
+    clear += decide.info_thread(
+        "aquila-direction-r137-info", "Clearing one ship keeps the other ship’s fitting edits.",
+        body_html=clear_views, short="See the cleared hull", follows="aquila-direction-r136-info",
+    )
+    clear += decide.whats_next(
+        "aquila-direction-r137-next", "Select either ship and use Clear fitting when you want to start over.",
+        short="Try a clean build",
+    )
+    rounds = page.entry(137, "Clear a ship for a fresh build", clear, when="2026-11-23") + rounds
+    live = decide.recap(
+        "Clear fitting strips the ship immediately. Cancel closes the screen. Reopen it and the ship is still bare.",
+        [
+            ("Choose a ship", "Clear works on Resolute or Sentinel from any fitting view."),
+            ("Equipment", "Turrets return to stock. Armor, shield, ammunition settings and chips come off."),
+            ("Fight in progress", "Hull damage, elapsed time and rounds already flying carry through."),
+            ("Fight over", "You can clear a destroyed ship and rebuild its fitting."),
+            ("New fight", "Start duel begins a fresh fight with the equipment you picked."),
+        ],
+        {
+            "did": "Fitting changes now take effect when you click.",
+            "why": "You can leave with an empty hull and come back to equip it later.",
+            "working": "Windows checks covered both ships when armed, empty and destroyed.",
+            "not_working": "Physical Galaxy fitting still awaits a device check.",
+            "next": "The Windows desktop shortcut opens this build.",
+        },
+    )
+    live_views = ""
+    for filename, title, caption in [
+        ("r138-after-cancel.png", "Back in the same paused duel.", "Eight rounds stayed in flight at 0.4 seconds. The clock shows whole seconds."),
+        ("r138-reopened.png", "Configure ship reopened.", "Resolute still has zero turrets installed and all 30 bodies in stock."),
+    ]:
+        live_views += page.figure(page.copy_media(HERE / "media" / filename, out), title, caption, look=filename=="r138-reopened.png")
+    live_views += '<p><a href="live-fitting-checks.json">Windows fitting and encounter checks</a></p>'
+    live += decide.info_thread(
+        "aquila-direction-r138-info", "Cancel keeps the ship exactly as you fitted it.",
+        body_html=live_views, short="See the ship after Cancel", follows="aquila-direction-r137-info",
+    )
+    live += decide.whats_next(
+        "aquila-direction-r138-next", "Choose a ship to rebuild whenever you return to the simulator.",
+        short="Return to fitting",
+    )
+    rounds = page.entry(138, "Clear takes effect immediately", live, when="2026-11-23") + rounds
+    hulls = decide.recap(
+        "Two ship prompts are ready for Asset Pipeline. Each has its own Copy button.",
+        [
+            ("Resolute", "Twin open hangars and six round drives give the research carrier its shape."),
+            ("Sentinel", "A blunt hammerhead bow and a deep stern notch distinguish the proposed opposing hull."),
+            ("Equipment", "Both bare hulls leave all 30 ports open for the fitting screen."),
+            ("Scale", "The briefs give the artist the same mount positions the Windows simulator uses."),
+            ("First look", "Compare the shapes at arena distance before judging their surface detail."),
+        ],
+        {
+            "did": "Wrote a separate visual brief and mesh fitting instructions for each ship.",
+            "why": "You should recognize either ship even when both wear the same armor.",
+            "working": "Both prompts include the existing deck layout and removable equipment.",
+            "not_working": "The new shapes still need an actual model review.",
+            "next": "Start with Resolute to see how its hangar openings read from above.",
+        },
+    )
+    prompt_blocks = ""
+    for name in ("Resolute", "Sentinel"):
+        source = ROOT / "Docs/Plans/ShipHulls" / f"{name}.txt"
+        filename = f"{name.lower()}-hull-prompt.txt"
+        prompt = source.read_bytes()
+        (out / filename).write_bytes(prompt)
+        prompt_blocks += page.copy_block(f"{name} prompt", prompt.decode("utf-8").rstrip(), f"r139-{name.lower()}")
+        prompt_blocks += f'<p><a href="{filename}" download>Download the {name} prompt</a></p>'
+    hulls += decide.info_thread(
+        "aquila-direction-r139-info", "Each prompt stands alone when pasted into Asset Pipeline.",
+        body_html=prompt_blocks, short="Copy a ship prompt", follows="aquila-direction-r138-info",
+    )
+    hulls += decide.whats_next(
+        "aquila-direction-r139-next", "Paste the brief for the ship you want to make first.",
+        short="Take a ship to Asset Pipeline",
+    )
+    rounds = page.entry(139, "Two hull designs for Asset Pipeline", hulls, when="2026-11-23") + rounds
+    redesign = decide.recap(
+        "Both first models are exterior studies. Neither brief asked for a walkable interior.",
+        [
+            ("Resolute", "I asked for a split bow, two open hangars, an offset bridge and six drives."),
+            ("Sentinel", "I asked for a hammerhead bow, an amber sensor slit and twin rectangular drives."),
+            ("Shape", "I fixed all 30 turret positions in three straight rows before we discussed the hulls."),
+            ("Inside", "Resolute’s lit hangar bays give the outside depth. Connected rooms and passages are missing from both studies."),
+            ("Current builds", "Asset Pipeline built both hulls in Blender. Both await your review."),
+        ],
+        {
+            "did": "Checked the original requests and both Asset Pipeline build records.",
+            "why": "The turret grid pushed both ships toward the same flat outline.",
+            "working": "Both exterior models have editable source files.",
+            "not_working": "The square shapes miss your direction. The new models have no playable interior.",
+            "next": "Discuss how each ship looks on approach and what you experience when you step aboard.",
+        },
+    )
+    redesign += decide.info_thread(
+        "aquila-direction-r140-info", "The next design needs a hull silhouette and a route you can walk.",
+        body_html=(
+            "<p>For Resolute, plan the bridge, hangar, research area, engineering and quarters together. "
+            "Sentinel needs its own interior layout.</p>"
+            "<p>A bridge window should overlook something you could recognize when flying alongside. "
+            "The 30 mounts can follow the chosen hull.</p>"
+            '<p><a href="resolute-hull-prompt.txt">Original Resolute brief</a> · '
+            '<a href="sentinel-hull-prompt.txt">Original Sentinel brief</a></p>'
+            '<p><a href="http://127.0.0.1:8964/">Resolute exterior review</a> · '
+            '<a href="http://127.0.0.1:8963/">Sentinel exterior review</a></p>'
+        ), short="What the briefs covered",
+    )
+    redesign += decide.question(
+        "aquila-direction-r140-arrival",
+        "When your shuttle approaches Resolute, what shape do you imagine, and where would you like to step aboard?",
+        [], short="Describe arriving at Resolute",
+        why="The approach connects the silhouette you want with the first space you enter.",
+    )
+    redesign += decide.whats_next(
+        "aquila-direction-r140-next", "Replacement briefs wait for your design direction.",
+        short="Discuss the ships",
+    )
+    rounds = page.entry(140, "Design the ships outside and inside", redesign, when="2026-11-23") + rounds
+    concepts = decide.recap(
+        "Resolute and Sentinel are built in space and spend their whole lives there. Their hulls can take any shape.",
+        [
+            ("Scope", "This applies to most large ships. Shuttles can still visit planets."),
+            ("Resolute idea", "An inhabited crescent wraps around an open harbor. You fly through the gap to dock."),
+            ("Inside Resolute", "From your quarters, you can see lights coming on across the opposite arm of your own ship."),
+            ("Sentinel idea", "Three dark fins spiral around a tall tower. Their tips end at different heights."),
+            ("Inside Sentinel", "Ride a glass lift up the tower. The stars disappear and reappear as you pass each fin."),
+        ],
+        {
+            "did": "Recorded the space-only rule and proposed two shapes to discuss.",
+            "why": "An open center or a tall spine can give a ship a view you remember from inside.",
+            "working": "The 30 mount positions can follow whichever hull we choose.",
+            "not_working": "The existing exterior studies still lack walkable rooms.",
+            "next": "Use the ideas you like to develop the ships before writing replacement briefs.",
+        },
+    )
+    concepts += decide.info_thread(
+        "aquila-direction-r141-info", "These are two possible directions for the new ships.",
+        body_html=(
+            "<p>Resolute’s hangars and research labs could open onto one curved promenade. "
+            "The engines sit deep in the outer arc.</p>"
+            "<p>Sentinel’s docking collar could sit at the foot of the tower. "
+            "From above, the ship forms a three-point spiral. From the side, starlight shows between its fins.</p>"
+        ), short="Explore both hulls",
+    )
+    concepts += decide.question(
+        "aquila-direction-r141-concepts", "What would you keep or change about either ship?",
+        [], short="React to the two ideas",
+        why="The open harbor makes Resolute feel like home. The tower gives Sentinel a different presence across the arena.",
+        follows="aquila-direction-r140-arrival",
+    )
+    concepts += decide.whats_next(
+        "aquila-direction-r141-next", "Choose the parts worth exploring before either hull or interior goes into production.",
+        short="Refine the designs",
+    )
+    rounds = page.entry(141, "Ships built in space", concepts, when="2026-11-23") + rounds
+    pricing = decide.recap(
+        "Sixty ship concepts cost 9 credits on hosted Z Image. Three designs on two models would cost 2.70 credits.",
+        [
+            ("Designs", "Change the hull structure each time. Keep the same view, lighting and sense of scale."),
+            ("Lowest hosted quote", "Z Image sets its own resolution and costs 0.15 credits per square image."),
+            ("1K options", "Seedream Flash costs 0.50 credits each. Sunburst at low quality costs 0.75."),
+            ("Local option", "A local model uses GPU time and power. A working Aquila setup still needs verification."),
+            ("Comparison", "Run the same three prompts on Z Image and Sunburst to see which handles stranger hulls."),
+        ],
+        {
+            "did": "Read your concept guide, checked Content Automation’s tools and priced the models on the signed-in account.",
+            "why": "The first pass needs enough detail to tell ship shapes apart at a glance.",
+            "working": "Higgsfield returned square-image prices without creating a job.",
+            "not_working": "We have yet to judge how these models draw the ships. Zero credits spent.",
+            "next": "Choose whether to try three hulls on both models before setting a budget for the larger batch.",
+        },
+    )
+    pricing += decide.info_thread(
+        "aquila-direction-r142-prices", "One square image per prompt gives these full-batch prices.",
+        body_html=(
+            "<table><thead><tr><th>Model</th><th>Resolution</th><th>Credits each</th>"
+            "<th>50 images</th><th>60 images</th></tr></thead><tbody>"
+            "<tr><td>Hosted Z Image</td><td>Provider sets size</td><td>0.15</td><td>7.50</td><td>9</td></tr>"
+            "<tr><td>Seedream 5.0 Flash</td><td>1K</td><td>0.50</td><td>25</td><td>30</td></tr>"
+            "<tr><td>GPT Image 2.6 Sunburst</td><td>1K low</td><td>0.75</td><td>37.50</td><td>45</td></tr>"
+            "<tr><td>GPT Image 2.6 Sunburst</td><td>2K high</td><td>2</td><td>100</td><td>120</td></tr>"
+            "<tr><td>Local Z-Image-Turbo</td><td>1024 × 1024</td><td>0 provider credits</td><td>0</td><td>0</td></tr>"
+            "</tbody></table>"
+            "<p>Content Automation’s Higgsfield nodes in ComfyUI use the same credits as direct calls. "
+            "A local model runs on your graphics card.</p>"
+            "<p>Higgsfield quoted these settings on November 24 UTC. Dollar value depends on your plan or credit pack. "
+            '<a href="https://higgsfield.ai/blog/higgsfield-cli">Cost checks</a> · '
+            '<a href="https://higgsfield.ai/creator-hub/help-center/credits/how-credit-packs-work">Credit packs</a> · '
+            '<a href="https://huggingface.co/Tongyi-MAI/Z-Image-Turbo">Local model guide</a></p>'
+            "<p>Three possible test ships are a hollow geode, a hanging city and a knot of inhabited modules. "
+            "Use the same view and a small shuttle to show scale. Save the prompt for each design.</p>"
+            "<p>The trial covers three distinct hulls. Adding 57 more hulls with Z Image would bring the total to 11.25 credits.</p>"
+        ), short="Compare costs",
+    )
+    pricing += decide.question(
+        "aquila-direction-r142-pilot", "Should I run three ship prompts on both models with a hard cap of 2.70 credits?",
+        [("pilot", "Approve six generations, 2.70 credits"), ("local", "Discuss local setup"), ("discuss", "Keep discussing settings")],
+        short="Choose the first step",
+        why="One attempt per model and hull shows whether the cheaper model follows the shape you asked for.",
+        excerpt=("Three test prompts", "A hollow geode crossed by bridges. A city hanging from a crown of docks. Three inhabited tubes woven into a knot."),
+        follows="aquila-direction-r141-concepts",
+    )
+    pricing += decide.whats_next(
+        "aquila-direction-r142-next", "The first generation waits for your choice. The larger batch has its own budget decision.",
+        short="Pick the starting budget",
+    )
+    rounds = page.entry(142, "What 60 ship concepts would cost", pricing, when="2026-11-23") + rounds
+    trial = decide.recap(
+        "Sunburst drew three ships at 1024 × 1024. The three account charges total 2.25 credits.",
+        [
+            ("Bridge Geode", "Three lit bridges cross a hollow stone-like shell. Stars show through the far opening."),
+            ("Hanging City", "Four terraced towers hang beneath a wide docking ring."),
+            ("Habitat Knot", "Copper, blue and ivory habitat loops cross around a small docking bay."),
+            ("Settings", "All three used GPT Image 2.6 Sunburst at 1K, low quality."),
+            ("Cost", "Higgsfield recorded three matching charges of 0.75 credits."),
+        ],
+        {
+            "did": "Generated the three trial hulls on your chosen model and saved each original.",
+            "why": "The three shapes show how far the same model can stretch a ship’s outline.",
+            "working": "All three jobs finished. The originals are square and open at full resolution.",
+            "not_working": "Walkable interiors still need design work after you choose a hull.",
+            "next": "The three completed hulls count toward the larger collection if you choose to expand it.",
+        },
+    )
+    trial += decide.info_thread(
+        "aquila-direction-r143-info", "Each ship used one prompt and one generation.",
+        body_html=(
+            "<p>Each original has its own saved prompt, provider job and settings. "
+            "The account showed three matching charges within half a second of the job start times.</p>"
+            '<p><a href="#q-aquila-direction-r143-batch">Open the ship gallery</a></p>'
+        ), short="Generation and cost",
+    )
+    trial_figures = []
+    for slug, title, caption in [
+        ("bridge-geode", "Bridge Geode", "Walkways span three levels inside a hollow faceted hull."),
+        ("hanging-city", "Hanging City", "Four hanging neighborhoods share an open docking ring."),
+        ("habitat-knot", "Habitat Knot", "Three window-lined loops weave around a docking bay."),
+    ]:
+        original = ROOT / "Assets" / "ShipConcepts" / "sunburst-r143" / (slug + ".png")
+        if original.is_file():
+            src = page.copy_media(original, out, name=f"r143-{slug}.png")
+            trial_figures.append(page.figure(src, title, caption))
+        else:
+            trial_figures.append(f"<p>{escape(title)}. The original is unavailable in this checkout.</p>")
+    trial += decide.question(
+        "aquila-direction-r143-batch", "Would you like to stop here or expand the collection to 50 or 60 ships?",
+        [("50", "Reach 50, 35.25 more credits"), ("60", "Reach 60, 42.75 more credits"), ("stop", "Keep these three for now")],
+        short="Review the ships",
+        why="Bridge Geode, Hanging City and Habitat Knot count toward either total. New concepts would use the same settings.",
+        anchors_html=page.grid(*trial_figures), follows="aquila-direction-r142-pilot",
+    )
+    trial += decide.whats_next(
+        "aquila-direction-r143-next", "The larger batch waits for your chosen count and budget.",
+        short="Choose the collection size",
+    )
+    rounds = page.entry(143, "Three Sunburst ship concepts", trial, when="2026-11-23") + rounds
+    catalog_path = ROOT / "Docs/Plans/ShipHulls/collection-60.json"
+    if catalog_path.is_file():
+        catalog = json.loads(catalog_path.read_bytes())
+        rounds = ship_collection_round(out, catalog) + rounds
+        if catalog.get("selection", {}).get("retained") == "all":
+            roles = decide.recap(
+                "Yes. Many of these hulls can serve as research battleships. All 60 concepts are kept.",
+                [
+                    ("Role", "Resolute carries a crew, runs research expeditions, launches shuttles and can fight another capital ship."),
+                    ("Scale", "A neighborhood can fill several decks of a ship built for long voyages."),
+                    ("Master brief", "The guide called for long-range research, exploration and heavy combat."),
+                    ("Actual prompts", "All 60 called for inhabited capital ships. The 57 later prompts described research, exploration and self-defense."),
+                    ("Collection", "Every hull keeps its original number. Individual fleet assignments are open."),
+                ],
+                {
+                    "did": "Recorded your choice to keep every hull and checked the wording sent for all 60.",
+                    "why": "Crew quarters and labs help explain the scale of a research battleship.",
+                    "working": "Hanging City shows four inhabited towers joined by a docking ring.",
+                    "not_working": "The art prompts gave combat less emphasis than the game brief.",
+                    "next": "The hulls are available as we discuss the ships and the people who live aboard.",
+                },
+            )
+            roles += decide.info_thread(
+                "aquila-direction-r145-ships", "A research battleship can look like a small city.",
+                body_html=(
+                    "<p>Consider Hanging City, ship 02. Its towers could house the labs and crew quarters. "
+                    "The ring could launch shuttles and carry the ship’s turrets.</p>"
+                    "<details><summary>Browse all 60 kept hulls</summary><div id=\"aquila-kept-ships\">"
+                    + ship_concept_gallery(out, catalog, 145) + "</div></details>"
+                ), short="Ships and their roles",
+            )
+            roles += decide.whats_next(
+                "aquila-direction-r145-next", "Resolute’s research battleship role gives us a reference as we discuss the rest of the fleet.",
+                short="Discuss the fleet",
+            )
+            rounds = page.entry(145, "Research battleships", roles, when="2026-11-24") + rounds
+        if catalog.get("selection", {}).get("model_studies"):
+            rounds = research_battleship_models(out, catalog) + rounds
+    surface_proof = ROOT / "Docs/Testing/research-battleship-materials.json"
+    if surface_proof.is_file():
+        rounds = textured_battleships(out, json.loads(surface_proof.read_bytes())) + rounds
+        rounds = ship_reference_views(out) + rounds
+        rounds = ship_modeling_reference_plan(out) + rounds
+    image_proof = ROOT / "Docs/Testing/research-battleship-reference-images.json"
+    if image_proof.is_file():
+        rounds = finished_ship_references(out, json.loads(image_proof.read_bytes())) + rounds
+        rounds = glacier_boarding_proposal(out) + rounds
+    if (ROOT / "Docs/Testing/native-glacier-boarding.json").is_file():
+        rounds = glacier_boarding_walk(out) + rounds
+        rounds = glacier_scale_comparison() + rounds
+    if (ROOT / "Docs/Testing/native-glacier-scale.json").is_file():
+        rounds = glacier_size_trial(out) + rounds
+        rounds = glacier_landing_platform(out) + rounds
+    pad_proof = ROOT / "Docs/Testing/native-glacier-pad.json"
+    if pad_proof.is_file():
+        rounds = glacier_scaled_pad(out, json.loads(pad_proof.read_bytes())) + rounds
+        size_choice = HERE / "inbox/20261124T235647Z.json"
+        if size_choice.is_file():
+            answers = json.loads(size_choice.read_bytes())["answers"]
+            if any(a["q"] == "aquila-direction-r156-length" and [v["v"] for v in a["values"]] == ["1280"] for a in answers):
+                rounds = glacier_approved_hull(out) + rounds
+                rounds = delta_tree_boarding_proposal(out) + rounds
+    delta_proof = ROOT / "Docs/Testing/native-delta-boarding.json"
+    if delta_proof.is_file():
+        rounds = delta_tree_boarding_playtest(out, json.loads(delta_proof.read_bytes())) + rounds
+        delta_choice = HERE / "inbox/20261125T012507Z.json"
+        if delta_choice.is_file():
+            reply = json.loads(delta_choice.read_bytes())
+            if reply.get("slug") == "aquila-game-direction" and any(
+                answer["q"] == "aquila-direction-r159-length" and [v["v"] for v in answer["values"]] == ["keep"]
+                for answer in reply["answers"]
+            ):
+                rounds = delta_tree_approved_hull(out) + rounds
+                rounds = delta_tree_bridge_proposal(out) + rounds
+    bridge_proof = ROOT / "Docs/Testing/native-delta-bridge.json"
+    bridge_choice = HERE / "inbox/20261125T023749Z.json"
+    if bridge_proof.is_file() and bridge_choice.is_file():
+        reply = json.loads(bridge_choice.read_bytes())
+        if reply.get("slug") == "aquila-game-direction" and any(
+            answer["q"] == "aquila-direction-r161-build" and [value["v"] for value in answer["values"]] == ["bridge"]
+            for answer in reply["answers"]
+        ):
+            rounds = delta_tree_bridge_playtest(out, json.loads(bridge_proof.read_bytes())) + rounds
+    boarding_controls = ROOT / "Docs/Testing/native-boarding-controls.json"
+    if boarding_controls.is_file():
+        rounds = boarding_controls_playtest(json.loads(boarding_controls.read_bytes())) + rounds
+    bridge_observer = ROOT / "Docs/Testing/native-bridge-observer.json"
+    if bridge_observer.is_file():
+        observer_proof = json.loads(bridge_observer.read_bytes())
+        rounds = bridge_observer_playtest(out, observer_proof) + rounds
+        if "owner_playtest" in observer_proof:
+            rounds = bridge_observer_feedback(observer_proof["owner_playtest"]) + rounds
+            rounds = bridge_duel_proposal() + rounds
+    bridge_duel = ROOT / "Docs/Testing/native-bridge-duel.json"
+    if bridge_duel.is_file():
+        rounds = bridge_duel_playtest(out, json.loads(bridge_duel.read_bytes())) + rounds
+    duel_hulls = ROOT / "Docs/Testing/native-duel-hulls.json"
+    if duel_hulls.is_file():
+        rounds = duel_hulls_playtest(out, json.loads(duel_hulls.read_bytes())) + rounds
+    two_bridges = ROOT / "Docs/Testing/native-two-bridges.json"
+    if two_bridges.is_file():
+        bridge_proof = json.loads(two_bridges.read_bytes())
+        rounds = two_bridge_playtest(out, bridge_proof) + rounds
+        if "owner_playtest" in bridge_proof:
+            rounds = two_bridge_feedback(bridge_proof["owner_playtest"]) + rounds
+            if surface_proof.is_file() and duel_hulls.is_file():
+                rounds = ship_art_status(out, json.loads(surface_proof.read_bytes()),
+                                         json.loads(duel_hulls.read_bytes())["hulls"]) + rounds
+    playable_finishes = ROOT / "Docs/Testing/native-ship-finishes.json"
+    mount_submission = HERE / "inbox/20261125T071845Z.json"
+    if playable_finishes.is_file() and mount_submission.is_file():
+        reply = json.loads(mount_submission.read_bytes())
+        for answer in reply["answers"]:
+            if reply["slug"] == "aquila-game-direction" and answer["q"] == "aquila-direction-r171-mounts":
+                if [option["v"] for option in answer["values"]] == ["seated"]:
+                    rounds = playable_ship_finishes(out, json.loads(playable_finishes.read_bytes()), answer["values"][0]["label"]) + rounds
+    likeness = ROOT / "Docs/Testing/native-hull-likeness.json"
+    if likeness.is_file():
+        rounds = hull_likeness_review(out, json.loads(likeness.read_bytes())) + rounds
+    rebuilt = ROOT / "Docs/Testing/research-battleship-hull-review.json"
+    if rebuilt.is_file():
+        rounds = rebuilt_hulls(out, json.loads(rebuilt.read_bytes())) + rounds
+    refined = ROOT / "Docs/Testing/research-battleship-reference-refinement.json"
+    if refined.is_file():
+        rounds = refined_hulls(out, json.loads(refined.read_bytes())) + rounds
+    end_details = ROOT / "Docs/Testing/research-battleship-stern-and-prow.json"
+    if end_details.is_file():
+        rounds = stern_and_forward_armor(out, json.loads(end_details.read_bytes())) + rounds
+    continued = ROOT / "Docs/Testing/research-battleship-registered-profiles.json"
+    if continued.is_file():
+        rounds = continued_hull_studies(out, json.loads(continued.read_bytes())) + rounds
+    surfaces = ROOT / "Docs/Testing/research-battleship-stern-and-armor-seams.json"
+    if surfaces.is_file():
+        rounds = stern_racks_and_armor_seams(out, json.loads(surfaces.read_bytes())) + rounds
+    supports = ROOT / "Docs/Testing/research-battleship-stern-shoulders-and-dock.json"
+    if supports.is_file():
+        rounds = stern_shoulders_and_dock(out, json.loads(supports.read_bytes())) + rounds
+    material_review = ROOT / "Docs/Testing/research-battleship-material-review-baseline.json"
+    material_research = ROOT / "Docs/Research/research-battleship-material-matching-receipt-v1.json"
+    if material_review.is_file() and material_research.is_file():
+        rounds = material_matching_options(out, json.loads(material_review.read_bytes()), json.loads(material_research.read_bytes())) + rounds
+    reference_research = ROOT / "Docs/Research/research-battleship-reference-matching-requests-v1.json"
+    if reference_research.is_file():
+        rounds = reference_matching_research(json.loads(reference_research.read_bytes())) + rounds
+    (out / "live-fitting-checks.json").write_bytes((ROOT / "Docs/Testing/native-live-fitting.json").read_bytes())
+    (out / "clear-fitting-checks.json").write_bytes((ROOT / "Docs/Testing/native-clear-fitting.json").read_bytes())
+    (out / "round-model-checks.json").write_bytes((ROOT / "Docs/Testing/native-round-models.json").read_bytes())
+    (out / "firing-preview-checks.json").write_bytes((ROOT / "Docs/Testing/native-firing-preview.json").read_bytes())
+    (out / "defense-fitting-checks.json").write_bytes((ROOT / "Docs/Testing/native-defense-fitting.json").read_bytes())
+    (out / "turret-gallery-checks.json").write_bytes((ROOT / "Docs/Testing/native-turret-gallery.json").read_bytes())
+    (out / "phase-round-checks.json").write_bytes((ROOT / "Docs/Testing/native-phase-rounds.json").read_bytes())
+    (out / "ship-fitting-checks.json").write_bytes((ROOT / "Docs/Testing/native-ship-fitting.json").read_bytes())
+    (out / "camera-flight-checks.json").write_bytes((ROOT / "Docs/Testing/native-camera-flight.json").read_bytes())
+    (out / "free-camera-checks.json").write_bytes((ROOT / "Docs/Testing/native-free-camera-pivot.json").read_bytes())
+    (out / "mesh-shield-checks.json").write_bytes((ROOT / "Docs/Testing/native-mesh-shield-trial.json").read_bytes())
+    (out / "arena-loadout-checks.json").write_bytes((ROOT / "Docs/Testing/native-arena-loadouts.json").read_bytes())
+    (out / "combat-feedback-checks.json").write_bytes((ROOT / "Docs/Testing/native-combat-feedback.json").read_bytes())
     (out / "combat-simulator-publication.json").write_bytes((ROOT / "Docs/Testing/native-combat-simulator-publication.json").read_bytes())
     (out / "combat-simulator-restart.txt").write_bytes((ROOT / "Docs/Handoffs/PROMPT_2026-11-22_combat-simulator.txt").read_bytes())
     (out / "combat-simulator-checks.json").write_bytes((ROOT / "Docs/Testing/native-combat-simulator.json").read_bytes())
@@ -5026,7 +7756,13 @@ def main(output):
         (ROOT / "Docs/Handoffs/PROMPT_2026-11-15_game-direction.txt", "restart.txt"),
         (ROOT / "Docs/Testing/game-direction-publication.json", "publication.json"),
     ]:
-        (out / name).write_bytes(source.read_bytes())
+        data = source.read_bytes()
+        if name == "handoff.md":
+            # The local archive retains the exact original. This copy follows the owner's current public scope.
+            data = data.replace(b"kinematic navigation, not physical thrust, general tactical planning or projectile-aware evasion",
+                                b"kinematic navigation with provisional route distances")
+            data = data.replace(b"countermeasures, automatic evasion, upgrades", b"countermeasures, upgrades")
+        (out / name).write_bytes(data)
     doc = page.document("Aquila game and website direction", "<main>" + rounds + "</main>", "aquila-game-direction", folder=HERE)
     decide.require_ok(doc, root=out)
     decide.save_questions(doc, folder=HERE)

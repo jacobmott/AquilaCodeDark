@@ -1,0 +1,204 @@
+{
+  "round": 130,
+  "verified_utc": "2026-11-23T06:59:18.447072+00:00",
+  "engine": "Epic Launcher Unreal 5.8.4 CL 58902052, Win64 Development",
+  "executable": {
+    "path": ".runtime/combat-lab-r130/ready/Windows/Aquila/Binaries/Win64/Aquila.exe",
+    "sha256": "6b95fe2116bcef106503c140f19c3a99c70b88ea7b50d231e8dcae76ca9056aa"
+  },
+  "method": "Each run used the normal duel entry, 60 simulated seconds and no shields. Resolute had reinforced armor. Sentinel had a standard kinetic cannon and light plating. Weapon and flight varied as listed. The 30 and 120 FPS simulations agreed. Packaged tests equipped both ships through the rendered controls.",
+  "measurements": [
+    {
+      "weapon": "Plasma caster",
+      "sentinel_flight": "Steady",
+      "hits": 28,
+      "blocked": 0,
+      "misses": 0,
+      "sentinel_hull_percent": 64.72
+    },
+    {
+      "weapon": "Plasma caster",
+      "sentinel_flight": "Weave",
+      "hits": 4,
+      "blocked": 0,
+      "misses": 23,
+      "sentinel_hull_percent": 94.96
+    },
+    {
+      "weapon": "Pulse repeater",
+      "sentinel_flight": "Steady",
+      "hits": 104,
+      "blocked": 0,
+      "misses": 0,
+      "sentinel_hull_percent": 70.88
+    },
+    {
+      "weapon": "Pulse repeater",
+      "sentinel_flight": "Weave",
+      "hits": 37,
+      "blocked": 0,
+      "misses": 67,
+      "sentinel_hull_percent": 89.64
+    }
+  ],
+  "armor_matrix": {
+    "cases": 192,
+    "coverage": "Two firing sides, four weapons, two stored kinetic ammo selections, three armors, shield absent or exhausting mid-hit. Plasma always uses its fixed payload. Repeated blocked hits against bare prism plating left hull at 100%. Standard kinetics damaged the same plating."
+  },
+  "tallies": "A block counts one armor stop, including shield spillover. Other ship contacts are hits. Misses clear a live defender or time out without contact. In-flight shots have no result yet.",
+  "headless": {
+    "passed": 15,
+    "report": {
+      "path": ".runtime/combat-lab-r130/headless/index.json",
+      "sha256": "e7a5b4c6201c26ff6b9293683aff742f99c0c0e4959f9cb47c5543c3c52146ab"
+    }
+  },
+  "packaged": {
+    "arena-observer": {
+      "suite": "Aquila.Input.Observer",
+      "mode": "Simulator",
+      "passed": 1,
+      "fixture_revisions_before": 2,
+      "fixture_revisions_after": 2,
+      "earlier_revisions_intact": true,
+      "sha256": "39ec917bb33ddbe1a1ee5a66f9e20909702cab99b2fce85fa5362c06f6e93fcb"
+    },
+    "duel-direct": {
+      "suite": "Aquila.Input.Simulator",
+      "mode": "Simulator",
+      "passed": 1,
+      "fixture_revisions_before": 2,
+      "fixture_revisions_after": 2,
+      "earlier_revisions_intact": true,
+      "sha256": "387f93f9ea72bf07c96dbdae563e92f70e680a2aaed84d7cac6cc7928eab4035"
+    },
+    "duel-menu": {
+      "suite": "Aquila.Input.Simulator",
+      "mode": "Menu",
+      "passed": 1,
+      "fixture_revisions_before": 2,
+      "fixture_revisions_after": 2,
+      "earlier_revisions_intact": true,
+      "sha256": "ce50c30564fd2cbdb3a611edbb09fc9420c849e4816fa432303227f1a3fd9343"
+    },
+    "desktop": {
+      "suite": "Aquila.Input.DesktopCamera",
+      "mode": "Match",
+      "passed": 1,
+      "fixture_revisions_before": 0,
+      "fixture_revisions_after": 0,
+      "earlier_revisions_intact": true,
+      "sha256": "7add31334d62e30dfda25c79a49c650dbdaa2e30d629e4f6dd24493c9c49b5c7"
+    },
+    "observer": {
+      "suite": "Aquila.Input.Observer",
+      "mode": "Match",
+      "passed": 1,
+      "fixture_revisions_before": 0,
+      "fixture_revisions_after": 0,
+      "earlier_revisions_intact": true,
+      "sha256": "387a9899067029ea5b580763de9a604f188f917245176e5ae170c91c9e2d0ed3"
+    },
+    "restored": {
+      "suite": "Aquila.Input.Observer",
+      "mode": "Match",
+      "passed": 1,
+      "fixture_revisions_before": 2,
+      "fixture_revisions_after": 2,
+      "earlier_revisions_intact": true,
+      "sha256": "39d09bbbcee4fe50e88edb848ce6e3d0d247e5ce606b3a9d63eefc43e2950382"
+    },
+    "bridge": {
+      "suite": "Aquila.Input.DesktopCamera",
+      "mode": "Match",
+      "passed": 1,
+      "fixture_revisions_before": 0,
+      "fixture_revisions_after": 0,
+      "earlier_revisions_intact": true,
+      "sha256": "79116e4604bdd43b59b31635ccf199f2dedd2ceaaabd09049918f4b2f73bae29"
+    },
+    "touch": {
+      "suite": "Aquila.Input.TouchMenu",
+      "mode": "Match",
+      "passed": 1,
+      "fixture_revisions_before": 0,
+      "fixture_revisions_after": 0,
+      "earlier_revisions_intact": true,
+      "sha256": "b6481422f45009a54b9c90db1db40e24fb9a27b1744ac9436887d92c82ace11e"
+    },
+    "touch-observer": {
+      "suite": "Aquila.Input.Observer",
+      "mode": "Match",
+      "passed": 1,
+      "fixture_revisions_before": 0,
+      "fixture_revisions_after": 0,
+      "earlier_revisions_intact": true,
+      "sha256": "914d76d31bf7da03ee3106fef70b8c1b64c1a584e42c905df550794d205249a5"
+    },
+    "effects": {
+      "suite": "Aquila.Input.CombatFeedback",
+      "mode": "Simulator",
+      "passed": 1,
+      "fixture_revisions_before": 2,
+      "fixture_revisions_after": 2,
+      "earlier_revisions_intact": true,
+      "sha256": "cb4c69873633918cd37ce6f7b1d6f9fc8d7d40f7c267f91c290eaf4a8e5c4612"
+    }
+  },
+  "views": {
+    "fittings": {
+      "source": {
+        "path": ".runtime/combat-lab-r130/check-ready-duel-direct-065732016458/frames/fittings.png",
+        "sha256": "27132751693c7c21312e9a6d9d1ad9affcc6199627b85c20cc2363d9e5e49e95"
+      },
+      "report_media": "reports/game-direction/media/r130-fittings.png",
+      "size": [
+        1280,
+        720
+      ]
+    },
+    "weave": {
+      "source": {
+        "path": ".runtime/combat-lab-r130/check-ready-duel-direct-065732016458/frames/weave.png",
+        "sha256": "4814ee7b76c062ecdb971a915bdc0044d35000c866ef596ac9e61f778474fba7"
+      },
+      "report_media": "reports/game-direction/media/r130-weave.png",
+      "size": [
+        1280,
+        720
+      ]
+    }
+  },
+  "shortcut": {
+    "checked_utc": "2026-11-23T06:58:05.5810283Z",
+    "shortcut": "Aquila Combat Simulator",
+    "target": ".runtime/combat-lab-r130/ready/Windows/Aquila.exe",
+    "kept_original_arguments": true,
+    "desktop_save_hashes_identical": true,
+    "owner_processes": 0,
+    "owner_input_injected": false
+  },
+  "journals": {
+    "before_utc": "2026-11-23T06:43:16.600145+00:00",
+    "after_utc": "2026-11-23T06:58:06.623665+00:00",
+    "expedition_revision": 151681,
+    "verified_parent": 151680,
+    "phase": "Failed",
+    "helm": "Hold",
+    "tip_and_parent_hashes_identical": true,
+    "desktop_hashes_identical": true
+  },
+  "knowledge_reference": {
+    "scope": "Authored Unreal 5.7 movement catalog index only. Local 5.8.4 code and packaged measurements establish the trial behavior.",
+    "citation": {
+      "kind": "source",
+      "record_id": "s_078fe99102584de6506d2b010404a8337aaae52ab52315102d87422d3884dba2",
+      "version_id": "sha256:9e971d9b18042e108aeaf0762fb43dad4b3891ae0227c6b0d935052ff0020199",
+      "mode": "passage",
+      "byte_start": 309832,
+      "byte_end": 311879
+    }
+  },
+  "limits": "Windows only. Programmed sideways flight; no incoming-shot detection, player reaction benchmark or physical Galaxy run. Tuning and acquisition rules are open.",
+  "validation_note": "Viewport review caught a clipped counter and fitting hint. The final view shows the full count and aligns both flight controls. The arena camera check now samples the replay opening before either ship moves."
+}

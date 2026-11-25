@@ -1,0 +1,99 @@
+{
+  "round": 164,
+  "owner_direction": "Chat. The bridge visitor watches autonomous combat. Direct gun controls are reserved for hidden special scenarios.",
+  "engine": "Launcher Unreal 5.8.4 CL 58902052",
+  "windows_executable_sha256": "238759f558afb241a3041706377bb6e137f4c663e290b193a8e3ad18d1ed39c1",
+  "packaged_checks": {
+    "watch": {
+      "suite": "Aquila.Input.Boarding.BridgeObserver",
+      "report_sha256": "ccb0bd33e354d797de3801ee00e3da068cddbf3fc8c1d97340389d304a993151",
+      "passed": 1,
+      "rendered_frames": 12,
+      "disposable_journal_unchanged": true
+    },
+    "window": {
+      "suite": "Aquila.Input.Boarding.BridgeObserver",
+      "report_sha256": "78911d726cff07a514bbaa38cf74776a8b34e31e12b342ecbbcd554f8bdf28d7",
+      "passed": 1,
+      "rendered_frames": 3,
+      "disposable_journal_unchanged": true
+    },
+    "bridge": {
+      "suite": "Aquila.Input.Boarding.DeltaBridge",
+      "report_sha256": "544e3a97b20eeaae63d4372a6d597e6f6aacd2c4c391b48c369d6c59a86726f9",
+      "passed": 1,
+      "rendered_frames": 14,
+      "disposable_journal_unchanged": true,
+      "opt_in_launch_argument": "-AquilaManualBridge"
+    }
+  },
+  "desktop": {
+    "checked_utc": "2026-11-25T03:51:24.1757033Z",
+    "title": "Aquila - Command Bridge (64-bit Development PCD3D_SM5) ",
+    "responding": true,
+    "old_windows_closed": 1,
+    "starting_ship": "Delta Tree",
+    "starting_location": "forward bridge windows",
+    "target": ".runtime/bridge-observer-r164/release/Windows/Aquila.exe",
+    "desktop_shortcut": "Aquila Boarding Test",
+    "default_shortcut_ship": "Glacier Tongue",
+    "shortcut_arguments_preserved": true,
+    "combat_shortcut_preserved": true,
+    "input_injected": false,
+    "match_loaded": false
+  },
+  "journals": {
+    "tip": 151681,
+    "parent": 151680,
+    "count": 151681,
+    "phase": "Failed",
+    "helm": "Hold",
+    "before_prelaunch_after_identical": true
+  },
+  "walk": {
+    "shots_on_arrival": 17,
+    "shots_after_recharge": 21,
+    "hits_after_recharge": 21,
+    "shield_after_next_hit": 90,
+    "camera_heading_and_footing_preserved": true,
+    "target_or_trigger_bindings": false,
+    "combat_input_events": 0,
+    "cannon_and_drone_in_view": true,
+    "range_objects_shared_between_views": true
+  },
+  "frames": {
+    "delta-window-firing.png": "4ac61d072e69090b627df06141ac60eceded0e7147f64758980de99b5cd121bb",
+    "delta-window-hit.png": "0765f926b3da71ff89f44460cdb20f043a701887a950a0953762b16f660748c1",
+    "delta-outside-hit.png": "b4929e5274872a51c8d56af1598088d6aeab1e22c0cc8e74ff9cba8cb805ade3"
+  },
+  "window_entry": {
+    "shots_on_arrival": 5,
+    "shots_after_recharge": 11,
+    "hits_after_recharge": 11,
+    "shield_after_next_hit": 90,
+    "camera_heading_and_footing_preserved": true,
+    "target_or_trigger_bindings": false,
+    "combat_input_events": 0,
+    "cannon_and_drone_in_view": true,
+    "range_objects_shared_between_views": true,
+    "launch_arguments": [
+      "-AquilaMode=Boarding",
+      "-AquilaBoardingShip=DeltaTree",
+      "-AquilaBoardingStart=Bridge"
+    ]
+  },
+  "checked_utc": "2026-11-25T03:52:55.794703+00:00",
+  "report": {
+    "round": 164,
+    "served_html_and_three_frames_matched_build": true,
+    "workspace_snapshot_verified": true,
+    "carried_question": "aquila-direction-r163-visibility"
+  },
+  "owner_playtest": {
+    "round": 165,
+    "source": "chat",
+    "local_date": "2026-11-24",
+    "quote": "Yep, I think that's good.",
+    "scope": "Delta Tree's current Windows bridge view with automatic cannon fire."
+  }
+}

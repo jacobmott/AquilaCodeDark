@@ -91,7 +91,7 @@
           <span>↗</span>
         </button>
         <button class="text-link" (click)="meetBattleship()">
-          Meet Resolute <span>→</span>
+          Meet Delta Tree <span>→</span>
         </button>
       </div>
       <div class="home-note">
@@ -339,7 +339,7 @@
           <h1>
             {{
               state.inspecting
-                ? "Alongside Resolute"
+                ? "Alongside Delta Tree"
                 : state.surface
                 ? state.nearest.name
                 : selected.name
@@ -422,7 +422,7 @@
             {{
               state.inspecting
                 ? state.sortie
-                  ? "Explore around Resolute. Guided return brings you back aboard."
+                  ? "Explore around Delta Tree. Guided return brings you back aboard."
                   : "Fly around the hull and into the open hangar galleries."
                 : state.surface
                 ? selected.capital
@@ -578,7 +578,7 @@
       </ng-container>
       <ng-container *ngIf="state.interior as interior">
         <div class="aboard-heading">
-          <span class="eyebrow">Resolute / Life aboard</span>
+          <span class="eyebrow">Delta Tree / Life aboard</span>
           <h1>
             {{
               interior.mode === "helm"
@@ -636,7 +636,7 @@
           </p>
           <ng-container *ngIf="interior.mode === 'tactical'">
             <p>
-              Deploy Sentinel for a practice encounter. Weapons acquire, aim and
+              Deploy Glacier Tongue for a practice encounter. Weapons acquire, aim and
               fire automatically. Set the firing mode from this console.
             </p>
             <button
@@ -738,10 +738,10 @@
           ><span
             >{{
               marker.offscreen
-                ? "Sentinel · outside view"
+                ? "Glacier Tongue · outside view"
                 : combat.locked
-                ? "SENTINEL / AUTO TRACK"
-                : "SENTINEL"
+                ? "GLACIER TONGUE / AUTO TRACK"
+                : "GLACIER TONGUE"
             }}<small>{{ range(combat.range) }}</small></span
           >
         </div>
@@ -769,8 +769,8 @@
               combat.status === "victory"
                 ? "Target disabled."
                 : combat.status === "defeat"
-                ? "Resolute disabled."
-                : "Sentinel"
+                ? "Delta Tree disabled."
+                : "Glacier Tongue"
             }}
           </h2>
           <p class="combat-range">
@@ -779,14 +779,14 @@
           </p>
           <div class="combat-health">
             <div>
-              <strong>Resolute</strong>
+              <strong>Delta Tree</strong>
               <label
                 >Shield <b>{{ combat.shield }}%</b></label
               >
               <div
                 class="health-track"
                 role="meter"
-                aria-label="Resolute shield"
+                aria-label="Delta Tree shield"
                 aria-valuemin="0"
                 aria-valuemax="100"
                 [attr.aria-valuenow]="combat.shield"
@@ -799,7 +799,7 @@
               <div
                 class="health-track hull"
                 role="meter"
-                aria-label="Resolute hull"
+                aria-label="Delta Tree hull"
                 aria-valuemin="0"
                 aria-valuemax="100"
                 [attr.aria-valuenow]="combat.hull"
@@ -808,14 +808,14 @@
               </div>
             </div>
             <div>
-              <strong>Sentinel</strong>
+              <strong>Glacier Tongue</strong>
               <label
                 >Shield <b>{{ combat.targetShield }}%</b></label
               >
               <div
                 class="health-track target"
                 role="meter"
-                aria-label="Sentinel shield"
+                aria-label="Glacier Tongue shield"
                 aria-valuemin="0"
                 aria-valuemax="100"
                 [attr.aria-valuenow]="combat.targetShield"
@@ -828,7 +828,7 @@
               <div
                 class="health-track hull"
                 role="meter"
-                aria-label="Sentinel hull"
+                aria-label="Glacier Tongue hull"
                 aria-valuemin="0"
                 aria-valuemax="100"
                 [attr.aria-valuenow]="combat.targetHull"
@@ -1113,7 +1113,7 @@
       thrust to slow down. Hold Shift for fast cruise in open space; speed
       reduces near worlds.
     </p>
-    <p>Take a shuttle down to a planet. Resolute remains in orbit.</p>
+    <p>Take a shuttle down to a planet. Delta Tree remains in orbit.</p>
     <p>
       Aboard: WASD walks, mouse or arrows look, Shift runs, and F uses a nearby
       station. C opens the exterior view. Escape releases the mouse and pauses.

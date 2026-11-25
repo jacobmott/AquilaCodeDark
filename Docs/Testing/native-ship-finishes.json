@@ -1,0 +1,349 @@
+{
+  "round": 172,
+  "local_date": "2026-11-25",
+  "verified_utc": "2026-11-25T07:55:00.246702+00:00",
+  "engine": "Epic Launcher Unreal Engine 5.8.4 CL 58902052. Win64 Development, D3D12.",
+  "request": "Texture the approved playable hulls. Owner accepted the gun mounts in the report.",
+  "inbox": "reports/game-direction/inbox/20261125T071845Z.json",
+  "local_only": true,
+  "provider_credits": 0,
+  "surfaces": {
+    "delta-tree": {
+      "length_m": 1280,
+      "source_owner": "Asset Pipeline, Aquila research battleships R003",
+      "source_zip_sha256": "528fc71a0f9d0290b4b64552326fe97b3e06450af77158fb5205e9bb7f8020da",
+      "original_map_sha256": {
+        "beacon-color.png": "e9cc0f7459457ce0cfcd7faca31ca12ec34d7110cd1a92d141cb20992373a64f",
+        "beacon-orm.png": "f168b1ac3c2ad253ae7d4e4fe228b7e9bc98269b795e206282ff8e64be8e775e",
+        "bronze-color.png": "39e5c68d63026e7be3d9b6657347cec532bde7c1f3bdd0911d4c4e30faa6be7a",
+        "bronze-orm.png": "f427f49e0e75e5670de4e1b038a6ad94be27a1cb4a638a622d8a8964d1c62a02",
+        "cabin-color.png": "eb8e6b9e9bfb648db07179fc31d947bbde684ae4cd280c70af65e2ede44cf330",
+        "cabin-orm.png": "f0906d3f32d78dcdea6a6a47bd1b369f53a428fd77d8118d2ebe56a7e774799c",
+        "graphite-color.png": "be3eae712f255ea2e89d8bbb878caf590a987c9af0176135d7c73b3a018477fd",
+        "graphite-orm.png": "4cec5c589027be6c25e9477eb792c74b995196de969b526565c1297b88c4bbb2",
+        "ivory-color.png": "34d52645da4fa375ed680f4bf3bbf5c816ff0b7575eb1590384155599f49dbdb",
+        "ivory-orm.png": "25718a51a9a91e21c15889a4cb3fb1c5512bd90aac75388d111119fcf9b1ff78",
+        "joint-color.png": "8302ef78ddc4480ddf7ee1ea01863886b5d6276e98a5827b2eb37a7219f72d84",
+        "joint-orm.png": "91d401776d435972a356160924fa7168de3b015715437168e29006025c4172f4",
+        "limestone-color.png": "cff0b6bd31da2239711970ca30ea558126c9c3fcded1d5d04567ffed86dbdcbe",
+        "limestone-orm.png": "c983e98ef31a85450e5fe1293c1bc769549c4c2bfd0762046de52293599915af",
+        "optic-emission.png": "3a8226fc508670f4a8d98ee3b177048c93fe153d0ca442de58e7f6999eddcac0",
+        "optic-normal.png": "133d91b45dbb9a3b8816816c7f1ef69d67b45ef034365189567439f1368d7b20",
+        "plate-normal.png": "2f17207dd790dab49a8e2cda67c9024d6e2f63d5f0090a094cc73ecd3be1fe0f",
+        "service-normal.png": "2c1db0bb0c3135f1f726375fa211918653e7b989a3926af1daa0cfaf2125c013",
+        "silver-color.png": "610cc05afb95ee5a977bd7e8d8204df34e6b98295be0fa72b97d45a0acb6994a",
+        "silver-orm.png": "f6d0d4e875e6adcb85e1b6fa9743c7b53d620ed66fca8cac989f87f9bff34305",
+        "trim-normal.png": "6e73683cbbfc70025b1c057e77da11da3859b8ea7436d21adb7c55dd86ef57b5",
+        "window-emission.png": "726a71718966eaa53c4662ee1363b6f0479d50dbbc6aa92db8ff9a77a5127bae",
+        "window-normal.png": "c64344622c855898ab97a7331de4f8c723f263db9fdaac8986349ff5db10addc"
+      },
+      "material_slots": [
+        "Armor",
+        "Exhaust",
+        "Hardware",
+        "Island",
+        "Silver",
+        "Spine",
+        "Trim",
+        "Windows"
+      ],
+      "playable_triangles": 10364,
+      "boarding_obj_sha256": "2206f9a9b96da5f0877153d851225943de3ae5d715a3f3b1a74a33106b3c3b52",
+      "geometry_and_existing_sockets_match_round_168": true
+    },
+    "glacier-tongue": {
+      "length_m": 1280,
+      "source_owner": "Asset Pipeline, Aquila research battleships R003",
+      "source_zip_sha256": "7fc8545c876f586a4a7a3e7c4fc3de8b36fe86fdf359a1b53c143d7409aaa3a1",
+      "original_map_sha256": {
+        "blue-strake-color.png": "ccbadd0d365533ab992ad341f83b18e068bc6056a5b19eef11a69ff9d01dba73",
+        "blue-strake-orm.png": "c3d2416a1ee2f827b81b2c1a6ee80c61d67b9387203c7970607157a85280b38a",
+        "cabin-color.png": "7e7804dc2f8f93c7fb20b24d09e427a8bf22c67cb6d2935f6aee8357d7951114",
+        "cabin-orm.png": "47c4acd3a6b2be0eef2004b8b88ac6bd6f6f9d09685069dcc4fd69eda2c6552a",
+        "frost-color.png": "995b28e5f356a5958eb0cbcd49251c3fc4e1046e020697e792f128567d546a3c",
+        "frost-orm.png": "da47dc36b0c1c65a32044e73ecb9fb61e27387cfe5d3b0d2221fb9beed7e32b9",
+        "graphite-color.png": "ec255e79dd7ab08edb6fc7202a716652e382e16c448522ad829075c2d2fcd79a",
+        "graphite-orm.png": "fe9d40c712a505c5bd32b8071b7e989b105d348581eaf127c90efe5670bc8f55",
+        "pewter-color.png": "693f3e555559c119d866724db0e68b990fb55a587b9980bd62ead71950883d71",
+        "pewter-orm.png": "188ab8641ad3fa265f51db7acbac68b702a6d12dc5c2e7fcfcabf05bcf911141",
+        "plate-normal.png": "89c7aea63dd0bb57382c96beceb653bb38e39ddb795bf9c49d1997a0509e1c4c",
+        "service-normal.png": "f92e06b40d78c1cbcb979a0a72516400614f86354023647759c32ce7a7ef5a90",
+        "shadow-color.png": "3d13900484e99d4e367295877a68d429db192734d248506c5bd8631c4c1bada7",
+        "shadow-orm.png": "a62639a5413aa8c0455737d2931716ac4c8f7ab3d025c3af89c53c76aa51223f",
+        "silver-strake-color.png": "a1f644d9789c7e264fe6b2526da93f9af78166e59b0c0f8775663f36e799a916",
+        "silver-strake-orm.png": "3ede0cfa79c0d0920696770572cae590f4d419787cd895a4f8982adee6014831",
+        "strake-normal.png": "1949520c2d7d31a71401559d0e2147f073491a26bdd6897f8cfc45ec7481a201",
+        "window-emission.png": "eb3a907e05283f8aa6a5a89b56dceb0c1461072cbc1734eccfd07e52fc8f56ab",
+        "window-normal.png": "9c341612720a85515a43e4322ed6fa3e60936dfdb817d0262fabcb5086dcfc2e"
+      },
+      "material_slots": [
+        "Armor",
+        "Band",
+        "Hardware",
+        "Island",
+        "Spine",
+        "Trim",
+        "Windows"
+      ],
+      "playable_triangles": 5596,
+      "boarding_obj_sha256": "9958876e08481ab6bf2ebf365bd44bbeba862e8daa2fe97676e583ecd1ad7887",
+      "geometry_and_existing_sockets_match_round_168": true
+    }
+  },
+  "material_inputs": [
+    "sRGB base color",
+    "DirectX-converted tangent normal",
+    "packed red occlusion, green roughness, blue metallic",
+    "sRGB emission on windows and Delta drive optics"
+  ],
+  "shared_use": [
+    "duel and fitting hulls",
+    "standalone boarding exteriors",
+    "built docking routes and command rooms",
+    "fitted armor and gallery samples",
+    "turret bodies and fittings"
+  ],
+  "interiors_open": [
+    "crew quarters",
+    "labs",
+    "engineering rooms"
+  ],
+  "lighting": "Low-resolution HDR environment supplies broad reflections. Silver and blue topcoats retain the painted metal and roughness. Hangar floods light Glacier’s canopy from the ramp. Room boxes use spans in metres.",
+  "packaged_files_sha256": {
+    "Binaries/Win64/Aquila.exe": "6ce6072bf3452dace6fe83618c776ae209952b65ed24f8332d8e59a8117ef5ca",
+    "Content/Paks/Aquila-Windows.pak": "7a557c883faa487f24a7a311e15dc70152b68c589c0eb9152c89c9ed6fa5b41c",
+    "Content/Paks/Aquila-Windows.ucas": "87c7b77ab230f5107c1f12a8dbeac3de2ed4d03edd4de202b63f991e9cd5fcd2",
+    "Content/Paks/Aquila-Windows.utoc": "98a72d524b68f48bd8eaf21e11107e294a8ea9a477c11dbf4abf956d6eb81ba6"
+  },
+  "windows_shortcuts": [
+    {
+      "name": "Aquila Combat Simulator",
+      "mode": "Simulator",
+      "arguments_preserved": true,
+      "previous_package": "two-bridges-r169",
+      "target": ".runtime/ship-finishes-r172/release/Windows/Aquila.exe"
+    },
+    {
+      "name": "Aquila Boarding Test",
+      "mode": "Boarding",
+      "arguments_preserved": true,
+      "previous_package": "bridge-observer-r164",
+      "target": ".runtime/ship-finishes-r172/release/Windows/Aquila.exe"
+    }
+  ],
+  "editor": {
+    "passed": 22,
+    "failed": 0,
+    "with_warnings": 0,
+    "coverage": [
+      "Delta: 8 textured material sections, 10364 mapped triangles of 10364 nondegenerate faces.",
+      "Glacier: 7 textured material sections, 5596 mapped triangles of 5596 nondegenerate faces."
+    ],
+    "prepared_offline_from_existing_textures": true
+  },
+  "findings_resolved": [
+    "Replay used to compare both ships against the last hidden armor sample. The check now compares each fitted hull with its own finish and checks the visible gallery sample.",
+    "On an immediate ship switch, the miniature arena hull could display low-resolution maps. The Windows close view now requests the selected hull’s full maps.",
+    "The darker underside failed the boarding canopy visibility check. Two hangar floodlights reveal the roof at the shuttle ramp. The original visibility threshold remains in place."
+  ],
+  "windows_checks": [
+    {
+      "mode": "Simulator",
+      "suite": "Aquila.Input.DuelBridge.Window",
+      "exit": 0,
+      "passed": 1,
+      "failed": 0,
+      "errors": [],
+      "measurements": [
+        "Delta and Glacier hulls: 60 seats, 480 rim probes, largest signed foot gap -0.735 arena units.",
+        "Delta duel bridge: incoming round 9, contact 10, shield 100.000 to 99.650, paused 6.367 s, window 616.9 482.0 in 1440 by 810."
+      ],
+      "prior_intact": true,
+      "journal_identical": true,
+      "match_started": false
+    },
+    {
+      "mode": "Simulator",
+      "suite": "Aquila.Input.DuelBridges.Switch",
+      "exit": 0,
+      "passed": 1,
+      "failed": 0,
+      "errors": [],
+      "measurements": [
+        "Glacier bridge: opponent at 640.0 360.1 of 1280 x 720; crown registration 0.000 cm.",
+        "Glacier shield contact 9 at 6.217 s; shield 98.110; 19 airborne rounds."
+      ],
+      "prior_intact": true,
+      "journal_identical": true,
+      "match_started": false
+    },
+    {
+      "mode": "Menu",
+      "suite": "Aquila.Input.Simulator",
+      "exit": 0,
+      "passed": 1,
+      "failed": 0,
+      "errors": [],
+      "measurements": [],
+      "prior_intact": true,
+      "journal_identical": true,
+      "match_started": true
+    },
+    {
+      "mode": "Simulator",
+      "suite": "Aquila.Input.Observer",
+      "exit": 0,
+      "passed": 1,
+      "failed": 0,
+      "errors": [],
+      "measurements": [],
+      "prior_intact": true,
+      "journal_identical": true,
+      "match_started": false
+    },
+    {
+      "mode": "Simulator",
+      "suite": "Aquila.Input.DuelBridge.Direct",
+      "exit": 0,
+      "passed": 1,
+      "failed": 0,
+      "errors": [],
+      "measurements": [],
+      "prior_intact": true,
+      "journal_identical": true,
+      "match_started": false
+    },
+    {
+      "mode": "Boarding",
+      "suite": "Aquila.Input.Boarding",
+      "exit": 0,
+      "passed": 1,
+      "failed": 0,
+      "errors": [],
+      "measurements": [
+        "Landing pad at 1280 m: width 142.00 m, length 180.00 m, side clearances 39.00 and 39.00 m.",
+        "Comparison: 1280 m hull; XYZ 1280.00 527.32 408.96 m; roof at same ramp 116.11 m; shuttle 68.00 64.00 16.00 m; doorway 2.80 x 3.00 m.",
+        "Cooked surfaces at 1280 m, roof 119.89 m, blade -7.44 m. Approach clear 85/85.",
+        "Continuous ramp to lobby at 1280 m: travel 39.03 m, sill drop 2.00 m.",
+        "Landing pad at 640 m: width 71.00 m, length 90.00 m, side clearances 3.50 and 3.50 m.",
+        "Comparison: 640 m hull; XYZ 640.00 263.66 204.48 m; roof at same ramp 58.72 m; shuttle 68.00 64.00 16.00 m; doorway 2.80 x 3.00 m.",
+        "Cooked surfaces at 640 m, roof 59.94 m, blade -3.72 m. Approach clear 85/85.",
+        "Continuous ramp to lobby at 640 m: travel 39.01 m, sill drop 2.00 m."
+      ],
+      "prior_intact": true,
+      "journal_identical": true,
+      "match_started": false
+    },
+    {
+      "mode": "Boarding",
+      "suite": "Aquila.Input.Boarding.BridgeObserver",
+      "exit": 0,
+      "passed": 1,
+      "failed": 0,
+      "errors": [],
+      "measurements": [
+        "Delta hull 1280.00 m, sampled forebody 98.82 m thick, stern 259.32 m thick, drive tiers 3.",
+        "Delta rendered hull side margins 21.67 and 16.88 percent.",
+        "Delta and Glacier exterior orbits 940.00 and 940.00 m.",
+        "Delta ramp to first junction 99.12 m; drop 2.00 m.",
+        "Delta bridge watch: 17 shots on arrival, 21 shots and 21 contacts after recharge, shield 90. No targeting or firing input."
+      ],
+      "prior_intact": true,
+      "journal_identical": true,
+      "match_started": false
+    },
+    {
+      "mode": "Simulator",
+      "suite": "Aquila.Input.CombatFeedback.BothShips",
+      "exit": 0,
+      "passed": 1,
+      "failed": 0,
+      "errors": [],
+      "measurements": [],
+      "prior_intact": true,
+      "journal_identical": true,
+      "match_started": false
+    }
+  ],
+  "real_journals": {
+    "before_after_identical": true,
+    "live_count": 151681,
+    "live_inventory": "1ac8f2ed95baab6e94035c163d63a423fb7ff197d0a8a9fda8d8baa6cb4eca6d",
+    "revision": 151681,
+    "parent": 151680,
+    "linked": true,
+    "tip_sha256": "f52f3ea0d9bfa957aced3415d6ce677b495ef598fa7d1020f39c4414882e303b",
+    "parent_sha256": "8dc85d4ba7e4d4adc0a19fd2e11c2d22a8ada62a42d7d6cdae5258490e9bf43f",
+    "phase": 6,
+    "helm": 0,
+    "desktop": {
+      "AC55FDEC-47AC-AEB5-78F6-8B998E45A5C3.json": "a9ba65631bc184c83269f33c41bd4e84562158e87e7b2bff0a40fbf8b06d16cc"
+    }
+  },
+  "frames": {
+    "delta-fitting.png": {
+      "sha256": "b5599e10d90821297967c4f323d5b8a1966ba2850f3da198058e2f4102b83872",
+      "source": "Aquila.Input.DuelBridge.Window",
+      "capture": "delta-fitting.png"
+    },
+    "glacier-fitting.png": {
+      "sha256": "fc519c06b36597f923835a97ae28cc23f8d0b714d60f21d756352beef61d9cae",
+      "source": "Aquila.Input.DuelBridge.Window",
+      "capture": "fitting.png"
+    },
+    "delta-exterior.png": {
+      "sha256": "f0213a955cb28c2697cb3fd81079ea766fa7f2d399c45d386f7715798d64d052",
+      "source": "Aquila.Input.Boarding.BridgeObserver",
+      "capture": "delta-exterior.png"
+    },
+    "glacier-exterior.png": {
+      "sha256": "55f7b4e3266d09f1cb61fa7019934728ae9b4de903d6475caa697bc3554bcb1a",
+      "source": "Aquila.Input.Boarding",
+      "capture": "1280-exterior.png"
+    },
+    "delta-bridge.png": {
+      "sha256": "5cdaa15469ff9a5331629857ac5f90495d69640e2322d67939165b0a14b13ae8",
+      "source": "Aquila.Input.DuelBridges.Switch",
+      "capture": "delta-window.png"
+    },
+    "glacier-bridge.png": {
+      "sha256": "f5726bb509761ddf52977b4059d9afed2d12ac76b8c1f0067828efde4a1ac899",
+      "source": "Aquila.Input.DuelBridges.Switch",
+      "capture": "glacier-return.png"
+    },
+    "delta-gun.png": {
+      "sha256": "4a27dca354ecdf1818588144cd75a70a453e60ac83977a1f45b9e07bd5ecef41",
+      "source": "Aquila.Input.DuelBridge.Window",
+      "capture": "delta-mount.png"
+    },
+    "glacier-gun.png": {
+      "sha256": "f8d14d69288049c8cb6dc977665749cca8fe423d6c6cc86607f3b12599b44dd6",
+      "source": "Aquila.Input.DuelBridge.Window",
+      "capture": "glacier-mount.png"
+    },
+    "delta-berth.png": {
+      "sha256": "92851aa99fb0617ba3c561b6fe937fff6ecadbeb383674b3557bc866b328fc92",
+      "source": "Aquila.Input.Boarding.BridgeObserver",
+      "capture": "delta-berth.png"
+    },
+    "glacier-berth.png": {
+      "sha256": "1f016f3a9b23f07bcf12f36c960dc2fc7bfe3d39fd372c17358fc4836eb99a0f",
+      "source": "Aquila.Input.Boarding",
+      "capture": "1280-berth.png"
+    }
+  },
+  "knowledge_index": {
+    "title": "Physically Based Materials in Unreal Engine",
+    "entry": "UE 5.7 1.6.8.2, pp. 8175–8196",
+    "scope": "Discovery index only. Unreal 5.8.4 checks above establish game behavior.",
+    "citation": {
+      "byte_end": 139549,
+      "byte_start": 137525,
+      "content_sha256": "dd867f43d68965272503e5c6a9ebb2f0404b0eeacc2105f85dc74706f506d316",
+      "kind": "source",
+      "passage_sha256": "1fc38429e7a9022a122fae1b799b728b9e3dd2ff4732ad2f814724f0aa315da2",
+      "record_id": "s_8850a9940ac286a2f2848a01b3232a1c6d562707bb0b39ee41a249693bd19b66",
+      "version_id": "sha256:dd867f43d68965272503e5c6a9ebb2f0404b0eeacc2105f85dc74706f506d316"
+    }
+  }
+}

@@ -6,10 +6,18 @@
 #include "Engine/World.h"
 #include "GameFramework/PlayerController.h"
 
-float AAquilaFlightPawn::TargetHeading() const
+FRotator AAquilaFlightPawn::ObserverRotation() const
 {
-    if (CameraTarget == EAquilaCameraTarget::Resolute) return FMath::RadiansToDegrees(Game()->Campaign.Heading);
-    return CameraTarget == EAquilaCameraTarget::Sentinel ? 180.f : 0.f;
+    double Yaw = OrbitYaw;
+    if (CameraTarget == EAquilaCameraTarget::Resolute) Yaw += FMath::RadiansToDegrees(Game()->Campaign.Heading);
+    else if (CameraTarget == EAquilaCameraTarget::Sentinel) Yaw += 180.;
+    return FRotator(-OrbitPitch, Yaw, 0);
+}
+
+void AAquilaFlightPawn::FrameFreeView(FVector Point)
+{
+    CameraTarget = EAquilaCameraTarget::Free;
+    ObserverOrigin = Point - ObserverRotation().Vector() * (OrbitDistance / ExteriorScale);
 }
 
 void AAquilaFlightPawn::Follow(EAquilaCameraTarget Target)
@@ -18,7 +26,9 @@ void AAquilaFlightPawn::Follow(EAquilaCameraTarget Target)
     const auto& C = Game()->Campaign;
     if (Target == EAquilaCameraTarget::Sentinel && (!C.bBattle || C.EnemyHull <= 0)) return;
     CameraTarget = Target;
-    ObserverFocus = Target == EAquilaCameraTarget::Resolute ? C.ShipPosition : C.EnemyPosition;
+    if (Game()->Session() == EAquilaSession::Simulator && !Game()->bFittingOpen)
+        bFitEnemy = Target == EAquilaCameraTarget::Sentinel;
+    ObserverOrigin = Target == EAquilaCameraTarget::Resolute ? C.ShipPosition : C.EnemyPosition;
     OrbitYaw = 20;
     OrbitPitch = 23;
     OrbitDistance = 2200;
@@ -28,16 +38,16 @@ void AAquilaFlightPawn::Follow(EAquilaCameraTarget Target)
 void AAquilaFlightPawn::ReleaseFollow()
 {
     if (CameraTarget == EAquilaCameraTarget::Free) return;
-    OrbitYaw = FRotator::NormalizeAxis(OrbitYaw + TargetHeading());
-    CameraTarget = EAquilaCameraTarget::Free;
+    OrbitYaw = FRotator::NormalizeAxis(ObserverRotation().Yaw);
+    FrameFreeView(ObserverOrigin);
     bTouchRotate = false;
 }
 
-void AAquilaFlightPawn::PanObserver(FVector Direction, double RenderDistance)
+void AAquilaFlightPawn::MoveObserver(FVector WorldDirection, double RenderDistance)
 {
-    if (Direction.IsNearlyZero() || RenderDistance == 0) return;
+    if (WorldDirection.IsNearlyZero() || RenderDistance == 0) return;
     ReleaseFollow();
-    ObserverFocus += FRotator(0, OrbitYaw, 0).RotateVector(Direction) * (RenderDistance / ExteriorScale);
+    ObserverOrigin += WorldDirection * (RenderDistance / ExteriorScale);
 }
 
 void AAquilaFlightPawn::PanByPixels(FVector2D Delta)
@@ -47,12 +57,17 @@ void AAquilaFlightPawn::PanByPixels(FVector2D Delta)
     if (PC) PC->GetViewportSize(Width, Height);
     if (Width <= 0) return;
     const double Span = 2.0 * OrbitDistance * FMath::Tan(FMath::DegreesToRadians(Camera->FieldOfView * 0.5));
-    PanObserver(FVector(Delta.Y, -Delta.X, 0), Span / Width);
+    const FRotator Heading(0, ObserverRotation().Yaw, 0);
+    MoveObserver(Heading.RotateVector(FVector(Delta.Y, -Delta.X, 0)), Span / Width);
 }
 
 void AAquilaFlightPawn::ZoomObserver(float Steps)
 {
-    if (!bBridge) OrbitDistance = FMath::Clamp(OrbitDistance * FMath::Pow(0.8, double(Steps)), 1000., 120000.);
+    if (bBridge) return;
+    const double PreviousDistance = OrbitDistance;
+    OrbitDistance = FMath::Clamp(OrbitDistance * FMath::Pow(0.8, double(Steps)), 1000., 120000.);
+    if (CameraTarget == EAquilaCameraTarget::Free)
+        ObserverOrigin += ObserverRotation().Vector() * ((PreviousDistance - OrbitDistance) / ExteriorScale);
 }
 
 void AAquilaFlightPawn::DragDesktopCamera(FVector2D Delta, FKey Button)
@@ -85,7 +100,8 @@ void AAquilaFlightPawn::PickShip(FVector2D ViewUV)
     if (!PC->DeprojectScreenPositionToWorld(ViewUV.X * Width, ViewUV.Y * Height, Start, Direction)) return;
     // Hulls overlap this query. A planet blocks it. Hidden hulls cannot win a pick.
     TArray<FHitResult> Hits;
-    GetWorld()->LineTraceMultiByChannel(Hits, Start, Start + Direction * 2.e7, ECC_Visibility);
+    GetWorld()->LineTraceMultiByChannel(Hits, Start, Start + Direction * 2.e7, ECC_Visibility,
+        FCollisionQueryParams(SCENE_QUERY_STAT(PickShip),true));
     for (const FHitResult& Hit : Hits)
     {
         const auto* Part = Hit.GetComponent();
@@ -99,10 +115,22 @@ void AAquilaFlightPawn::PickShip(FVector2D ViewUV)
 void AAquilaFlightPawn::UpdateCamera(float Seconds)
 {
     const auto& C = Game()->Campaign;
-    if (CameraTarget == EAquilaCameraTarget::Resolute) ObserverFocus = C.ShipPosition;
+    if (Game()->bFittingOpen)
+    {
+        const FVector Center = ((bFitEnemy ? C.EnemyPosition : C.ShipPosition) - ObserverOrigin) * ExteriorScale;
+        const FRotator View(-86, (bFitEnemy ? 180. : FMath::RadiansToDegrees(C.Heading)) - 90., 0.);
+        int32 Width = 0, Height = 0;
+        if (const auto* PC = Cast<APlayerController>(GetController())) PC->GetViewportSize(Width, Height);
+        // Keep space beside the hull for the four choices on narrower Windows displays.
+        const double AspectMargin = Width > 0 ? FMath::Max(1., (16./9.) * Height / Width) : 1.;
+        const double Distance = 1240. * AspectMargin / FMath::Tan(FMath::DegreesToRadians(Camera->FieldOfView * .5));
+        Camera->SetRelativeLocationAndRotation(Center - View.Vector() * Distance, View);
+        return;
+    }
+    if (CameraTarget == EAquilaCameraTarget::Resolute) ObserverOrigin = C.ShipPosition;
     if (CameraTarget == EAquilaCameraTarget::Sentinel)
     {
-        if (C.bBattle && C.EnemyHull > 0) ObserverFocus = C.EnemyPosition;
+        if (C.bBattle && C.EnemyHull > 0) ObserverOrigin = C.EnemyPosition;
         else ReleaseFollow();
     }
     if (bBridge)
@@ -120,8 +148,9 @@ void AAquilaFlightPawn::UpdateCamera(float Seconds)
             OrbitPitch = FMath::FInterpTo(OrbitPitch, 23.f, Seconds, 3.f);
         }
     }
-    const FRotator Rotation(-OrbitPitch, TargetHeading() + OrbitYaw, 0);
-    Camera->SetRelativeLocationAndRotation(-Rotation.Vector() * OrbitDistance, Rotation);
+    const FRotator Rotation = ObserverRotation();
+    const FVector Offset = CameraTarget == EAquilaCameraTarget::Free ? FVector::ZeroVector : -Rotation.Vector() * OrbitDistance;
+    Camera->SetRelativeLocationAndRotation(Offset, Rotation);
 }
 
 void AAquilaFlightPawn::BeginCameraTouch(ETouchIndex::Type Finger, FVector Position)

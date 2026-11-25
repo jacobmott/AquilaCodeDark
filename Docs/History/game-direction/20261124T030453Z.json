@@ -1,0 +1,8 @@
+{
+  "source": "Docs/Handoffs/HANDOFF_2026-11-15_game-direction.md",
+  "archive": "Docs/History/game-direction/20261124T030453Z.md",
+  "saved_at_utc": "2026-11-24T03:04:53.053204+00:00",
+  "bytes": 8346,
+  "sha256": "52f7d89f23798617682fee92fa023998a3404010e3f223e772e648daa7d84a05",
+  "reason": "Preserve the ammunition fitting checkpoint before recording single-ship fitting resets."
+}

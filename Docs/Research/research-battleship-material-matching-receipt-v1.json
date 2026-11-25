@@ -1,0 +1,13 @@
+{
+  "project": "aquila-code-dark",
+  "id": "3e598ae1e05e4d48aa38438c52ebc298",
+  "external_key": "research-battleship-material-matching-v1:run-1",
+  "title": "Matching painted spacecraft materials in Blender",
+  "prompt_hash": "769a05d24e532cdff8d1c84474634efaf4e1c6ceece97922623871e8a7df654e",
+  "url": "http://127.0.0.1:8776/?project=aquila-code-dark#3e598ae1e05e4d48aa38438c52ebc298",
+  "created": "2026-11-25T22:48:59.038879+00:00",
+  "state": "queued",
+  "latest_version": 0,
+  "prompt_file": "Docs/Research/research-battleship-material-matching-prompt-v1.md",
+  "verification": "Project-bound Research Console returned the exact submitted bytes. Provider run and result are separate."
+}

@@ -1,0 +1,180 @@
+{
+  "round": 159,
+  "checked_utc": "2026-11-25T01:11:00.835306+00:00",
+  "engine": "Launcher Unreal 5.8.4 CL 58902052",
+  "ship": "Delta Tree",
+  "scale_decision": "1,280 m trial. Glacier Tongue’s approved 1,280 m length is the comparison.",
+  "source": {
+    "study": "Assets/ShipConcepts/modeling-references-r150/delta-tree/blender-guides/proportion-study.blend",
+    "study_sha256": "a1ec0ffb52b1d948883e809fa02b75ade1e7d84c2cda8f0f2778d3c7a2c1b26d",
+    "obj_sha256": "8bfb2180b615e9a42470c7152f887139aac51e505f96c0406685449b58d0b47c",
+    "mesh_groups": 70,
+    "triangles": 10176,
+    "trial_length_beam_height_including_mast_m": [
+      1280.0,
+      456.22,
+      375.28
+    ],
+    "original_island": "Round docking island.011",
+    "original_islands": 12,
+    "engine_bodies": 15,
+    "boarding_socket_position_m": [
+      -167.068283,
+      -221.751007,
+      154.216873
+    ],
+    "boarding_socket_yaw_deg": -139.92707282,
+    "recipe_fallback": {
+      "socket_parts_triangle_count_dimensions_match": true,
+      "obj_sha256": "db51961c33a69d76c025cf69a721cdcaaa874ad35a1094fb2d45111ef5e8992f"
+    }
+  },
+  "boarding": {
+    "hull_length_m": 1280.0,
+    "sampled_forward_thickness_m": 98.82,
+    "sampled_stern_thickness_m": 259.32,
+    "sampled_forebody_xy_m": [
+      475,
+      0
+    ],
+    "sampled_stern_xy_m": [
+      -565,
+      3.8
+    ],
+    "engine_tiers_intersected": 3,
+    "full_hull_camera_distance_m": {
+      "Delta Tree": 940.0,
+      "Glacier Tongue": 940.0
+    },
+    "visible_silhouette_side_margins_percent": [
+      21.39,
+      16.88
+    ],
+    "shuttle_length_beam_height_m": [
+      68,
+      64,
+      16
+    ],
+    "standing_capsule_height_diameter_m": [
+      1.8,
+      0.68
+    ],
+    "crew_opening_width_height_m": [
+      2.8,
+      3
+    ],
+    "approach_centerline_y_m": [
+      240,
+      61
+    ],
+    "shuttle_lowered_onto_apron_contact": true,
+    "full_shuttle_envelope_clear": true,
+    "standing_capsule_clears_both_arms": true,
+    "original_hull_underfloor_control": [
+      "Inhabited branch deck",
+      "Raised branch1.011"
+    ],
+    "walk_to_junction_m": 99.11,
+    "sill_drop_m": 2.0,
+    "route": [
+      "Peregrine ramp",
+      "Arrivals 06",
+      "Branch airlock",
+      "Junction 01"
+    ],
+    "walked_branches": [
+      "Research",
+      "Command"
+    ],
+    "current_endpoint": "Closed doors at the ends of both branches"
+  },
+  "verification": "Blender triangle intersections and packaged Windows world sweeps tested the approach. Keyboard input drove the disposable client through the airlock and down both branches.",
+  "packaged_suites": [
+    {
+      "name": "Aquila.Input.Boarding.DeltaDock",
+      "passed": 1,
+      "errors": 0,
+      "prior_fixture_revisions_intact": true,
+      "report_sha256": "31575d5fe78ebf9c0f00310758c14cfa3e43278bd6936c145418f528946f2e51"
+    },
+    {
+      "name": "Aquila.Input.Boarding.Walk",
+      "passed": 1,
+      "errors": 0,
+      "prior_fixture_revisions_intact": true,
+      "report_sha256": "f43a653ea214a28f3e32980254fe104d5d0c45a9a4e880daa34bfd2b23449267"
+    },
+    {
+      "name": "Aquila.Input.Simulator.Menu",
+      "passed": 1,
+      "errors": 0,
+      "prior_fixture_revisions_intact": true,
+      "report_sha256": "fcd4f3ab96e2b980e21f62e9ac99788cd69fc25ecc022a2eb0668c99f1be13b6"
+    },
+    {
+      "name": "Aquila.Input.Observer.Desktop",
+      "passed": 1,
+      "errors": 0,
+      "prior_fixture_revisions_intact": true,
+      "report_sha256": "2be4cd561b65483117bc018eea28e2e0f9b42f473ac83e8826e074c268e1c123"
+    }
+  ],
+  "simulation_save_groups": {
+    "passed": 20,
+    "failed": 0,
+    "warnings": 0,
+    "report_sha256": "c057fff0cc7b113a9fa815ada31a9db8a218e79fa7eb29f9757e9442c95a797b"
+  },
+  "images": {
+    "source": "Packaged Windows client, disposable journal",
+    "dimensions": [
+      1440,
+      810
+    ],
+    "delta_frames": 7,
+    "glacier_frames": 14,
+    "delta_sha256": {
+      "delta-airlock.png": "39028dec0b7bc3dc4189eec4e6c042050dc21957345c1f6f80a062c16e5b7eef",
+      "delta-berth.png": "bae7d6861aec066725f99da27a5b091070951e0af7476b3ff72695608f386b91",
+      "delta-exterior.png": "4d5c2a1e5c2b3443c745d58d622246388236f06127bb7323cf6536365e187e3c",
+      "delta-glacier-comparison.png": "01205ca12c66f0ae39b420175f4d5aa173ecc6547560543e98caf9a23b216942",
+      "delta-junction.png": "fd52e75d684d9571f79e7daadb3e9ee1accaf5a5271dc9bf19c40c2f5ca89c17",
+      "delta-ramp.png": "26c86c3de4ce0235f57c047a96f5642b66082484c937f9478c022054c7479c33",
+      "delta-rotunda.png": "3a07d0a0faaa4e442720d7c5806dbfc3cc1820a5a012b1077df30af43f1cfa42"
+    }
+  },
+  "journals": {
+    "portable_entries": 151681,
+    "revision": 151681,
+    "parent": 151680,
+    "phase": "Failed",
+    "helm": "Hold",
+    "inventory_tip_and_parent_intact": true,
+    "desktop_revision_hashes_intact": true,
+    "identical_after_visible_window_closed": true
+  },
+  "owner_launch": {
+    "checked_utc": "2026-11-25T01:06:45.1872341Z",
+    "shortcut": "Aquila Boarding Test",
+    "target": ".runtime/delta-boarding-r159/playtest/Windows/Aquila.exe",
+    "starting_ship": "Delta Tree",
+    "starting_length_m": 1280,
+    "shortcut_default": "Glacier Tongue",
+    "window": "Aquila (64-bit Development PCD3D_SM5) ",
+    "responsive": true,
+    "boarding_ready": true,
+    "combat_shortcut_identical": true,
+    "input_injected": false,
+    "match_loaded": false,
+    "compared_ships": true,
+    "first_junction_reached_utc": "2026-11-25T01:08:43.301000+00:00",
+    "window_closed_normally_utc": "2026-11-25T01:08:58.881000+00:00",
+    "log_sha256": "78431c9fb9b33ac973b6bb032351cb1ed0a1a7fdffb7db437536d82ccb3e1140"
+  },
+  "executable_sha256": "9b9317bfba82a560827f4eca519fbdccad618b848ed65cec8f1385f7416c710b",
+  "report": {
+    "round": 159,
+    "served_images_checked_by_sha256": 7,
+    "paseo_snapshot_verified_title_question_and_both_choices": true
+  }
+}

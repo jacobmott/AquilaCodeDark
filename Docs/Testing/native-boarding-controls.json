@@ -1,0 +1,98 @@
+{
+  "round": 163,
+  "checked_utc": "2026-11-25T03:16:39.566487+00:00",
+  "owner_direction": "Chat request for 5x walking and 3x mouse sensitivity in the boarding tests.",
+  "engine": "Launcher Unreal 5.8.4 CL 58902052",
+  "windows_executable_sha256": "2c284a5430d09f458f0e3b8868c2eb67ccef467fffcb5533cedfba669a10e2df",
+  "movement": {
+    "previous_m_per_s": 2.7,
+    "target_m_per_s": 13.5,
+    "multiplier": 5,
+    "measured_m_per_s": 13.5,
+    "measured_deck_distance_m": 34.8,
+    "measured_elapsed_s": 2.578,
+    "acceleration_and_braking_multiplier": 5
+  },
+  "mouse": {
+    "on-foot": {
+      "prior_degrees_per_input_unit": 0.28,
+      "current_degrees_per_input_unit": 0.84,
+      "measured_input_xy": [
+        1.531,
+        0.765
+      ],
+      "measured_turn_yaw_pitch_deg": [
+        1.286,
+        0.643
+      ]
+    },
+    "exterior": {
+      "prior_degrees_per_input_unit": 0.35,
+      "current_degrees_per_input_unit": 1.05,
+      "measured_input_xy": [
+        1.307,
+        0.653
+      ],
+      "measured_turn_yaw_pitch_deg": [
+        -1.372,
+        -0.686
+      ]
+    }
+  },
+  "packaged_checks": {
+    "bridge": {
+      "suite": "Aquila.Input.Boarding.DeltaBridge",
+      "passed": 1,
+      "report_sha256": "f2cc66522b0c5ff39a6ff7382454fc988e933803b18a318ffd4caf996b8fdab3",
+      "rendered_frames": 14,
+      "disposable_journal_unchanged": true
+    },
+    "boarding": {
+      "suite": "Aquila.Input.Boarding.Walk",
+      "passed": 1,
+      "report_sha256": "cceb4d74f85793d2a3bb22c7d977d54a1ed1518a5bf23d970d4edfba7641a25e",
+      "rendered_frames": 14,
+      "disposable_journal_unchanged": true
+    },
+    "delta": {
+      "suite": "Aquila.Input.Boarding.DeltaDock",
+      "passed": 1,
+      "report_sha256": "50f013888a5cb02b33c6f5fc707a2add2f02a14e5649c172e62e8c6f0f59b1eb",
+      "rendered_frames": 7,
+      "disposable_journal_unchanged": true
+    }
+  },
+  "desktop": {
+    "checked_utc": "2026-11-25T03:16:30.0273725Z",
+    "title": "Aquila - Fast Boarding (64-bit Development PCD3D_SM5) ",
+    "responding": true,
+    "starting_ship": "Delta Tree",
+    "shortcut": "Aquila Boarding Test",
+    "target": ".runtime/boarding-controls-r163/release/Windows/Aquila.exe",
+    "default_ship": "Glacier Tongue",
+    "shortcut_arguments_preserved": true,
+    "combat_shortcut_preserved": true,
+    "previous_windows_before": 1,
+    "previous_windows_after": 1,
+    "input_injected": false,
+    "match_loaded": false
+  },
+  "journals": {
+    "portable_count": 151681,
+    "tip": 151681,
+    "parent": 151680,
+    "expedition": "Failed",
+    "helm": "Hold",
+    "portable_and_desktop_snapshots_matched": true
+  },
+  "validation_notes": [
+    "The first bridge input replay reached interaction range but waited for a narrower waypoint. The final replay uses the player interaction range.",
+    "One release pass captured dark initial frames while graphics pipelines compiled. The repeat on the same executable verified lit frames, the shot, recharge and return ride."
+  ],
+  "report": {
+    "round": 163,
+    "served_html_matched_build": true,
+    "workspace_snapshot_verified": true,
+    "carried_question": "aquila-direction-r162-visibility"
+  }
+}

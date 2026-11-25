@@ -1,0 +1,8 @@
+{
+  "source": "Docs/Handoffs/HANDOFF_2026-11-15_game-direction.md",
+  "archive": "Docs/History/game-direction/20261125T041220Z.md",
+  "saved_at_utc": "2026-11-25T04:12:20.628917+00:00",
+  "bytes": 9408,
+  "sha256": "d2b83e929906ecc30bf6fcbb3c64c046690ffd8bdb5c676a6881d85ac81e0835",
+  "reason": "Preserve the bridge observer checkpoint before recording owner playtest feedback."
+}

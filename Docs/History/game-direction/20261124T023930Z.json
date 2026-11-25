@@ -1,0 +1,8 @@
+{
+  "source": "Docs/Handoffs/HANDOFF_2026-11-15_game-direction.md",
+  "archive": "Docs/History/game-direction/20261124T023930Z.md",
+  "saved_at_utc": "2026-11-24T02:39:30.944496+00:00",
+  "bytes": 8444,
+  "sha256": "c23519501523f291d10e48b69f784bdae081c55eabd9837aec70cb154b998ae3",
+  "reason": "Preserve the turret firing preview checkpoint before recording the three selectable ammunition models."
+}

@@ -1,7 +1,8 @@
 param(
     [ValidateSet('Check','Build','Prepare','Test','Run','Package')][string]$Action = 'Check',
     [ValidateSet('Win64','Android')][string]$Platform = 'Win64',
-    [ValidateSet('Menu','Match','Simulator')][string]$Mode = 'Menu'
+    [ValidateSet('Menu','Match','Simulator','Boarding')][string]$Mode = 'Menu',
+    [string]$ArchiveDirectory
 )
 $ErrorActionPreference = 'Stop'
 $repoPath = Split-Path $PSScriptRoot -Parent
@@ -57,22 +58,35 @@ switch ($Action) {
         & $commandletPath $projectPath -unattended -NullRHI -nosound '-ExecCmds=Automation RunTests Aquila.' '-TestExit=Automation Test Queue Empty' "-ReportExportPath=$repoPath/.runtime/native-tests" -stdout -FullStdOutLogOutput
     }
     'Prepare' {
+        $blender = Get-Command blender -ErrorAction SilentlyContinue | Select-Object -First 1 -ExpandProperty Source
+        if (!$blender) { $blender = 'C:/Program Files/Blender Foundation/Blender 5.2/blender.exe' }
+        & $blender -b --factory-startup --python-exit-code 1 -P "$PSScriptRoot/glacier-boarding-hull.py" -- "$repoPath/Assets/ShipConcepts/modeling-references-r150/glacier-tongue/blender-guides/proportion-study.blend" "$repoPath/native/Aquila/Saved/Boarding/glacier.obj"
+        if ($LASTEXITCODE -ne 0) { throw 'Glacier Tongue mesh preparation failed.' }
+        & $blender -b --factory-startup --python-exit-code 1 -P "$PSScriptRoot/glacier-boarding-hull.py" -- "$repoPath/Assets/ShipConcepts/modeling-references-r150/delta-tree/blender-guides/proportion-study.blend" "$repoPath/native/Aquila/Saved/Boarding/delta.obj" --ship delta
+        if ($LASTEXITCODE -ne 0) { throw 'Delta Tree mesh preparation failed.' }
         & $commandletPath $projectPath -run=AquilaContent -unattended -NullRHI -stdout -FullStdOutLogOutput
     }
     'Run' {
         & $editorPath $projectPath /Engine/Maps/Entry -game -windowed -ResX=1600 -ResY=900 -NoSplash "-AquilaMode=$Mode"
     }
     'Package' {
-        if (!(Test-Path -LiteralPath "$repoPath/native/Aquila/Content/Foundation/M_Planet.uasset")) {
-            throw 'Generated project content is missing. Run Build, then Prepare, before packaging.'
+        foreach ($asset in 'M_Hull','M_Glow','M_Planet','M_ShieldContact','M_CombatBurst','M_HullShield',
+            'SM_BurstTurret','SM_KineticCannon','SM_PlasmaCaster','SM_PulseRepeater',
+            'SM_LightPlate','SM_ReinforcedPlate','SM_PrismPlate','SM_ShieldEmitter','SM_ReserveCapacitor','SM_EmptyShieldSocket',
+            'SM_StandardRound','SM_PiercingRound','SM_PhaseRound','SM_GlacierBoardingHull','SM_DeltaBoardingHull',
+            'Ships/M_ShipSurface','Ships/MI_DT_Armor','Ships/MI_GT_Armor','Ships/T_SpaceReflection') {
+            if (!(Test-Path -LiteralPath "$repoPath/native/Aquila/Content/Foundation/$asset.uasset")) {
+                throw "Missing $asset. Run Build, then Prepare, before packaging."
+            }
         }
         [string[]]$platformOptions = if ($Platform -eq 'Android') { @('-cookflavor=ASTC') } else { @() }
-        & "$enginePath/Engine/Build/BatchFiles/RunUAT.bat" BuildCookRun "-project=$projectPath" -noP4 "-platform=$Platform" @platformOptions -clientconfig=Development -build -cook -stage -pak -package -archive "-archivedirectory=$repoPath/.runtime/native-package/$Platform" -utf8output
+        if (!$ArchiveDirectory) { $ArchiveDirectory = "$repoPath/.runtime/native-package/$Platform" }
+        & "$enginePath/Engine/Build/BatchFiles/RunUAT.bat" BuildCookRun "-project=$projectPath" -noP4 "-platform=$Platform" @platformOptions -clientconfig=Development -build -cook -stage -pak -package -archive "-archivedirectory=$ArchiveDirectory" -utf8output
     }
 }
 if ($LASTEXITCODE -ne 0) { throw "Native $Action failed: $LASTEXITCODE" }
 if ($Action -eq 'Package' -and $Platform -eq 'Android') {
-    $nativeApkPath = Join-Path $repoPath '.runtime/native-package/Android/Aquila-arm64.apk'
+    $nativeApkPath = Join-Path $ArchiveDirectory 'Aquila-arm64.apk'
     $nativeApkArchive = [IO.Compression.ZipFile]::OpenRead($nativeApkPath)
     try {
         $nativePayload = $nativeApkArchive.GetEntry('assets/main.obb.png')

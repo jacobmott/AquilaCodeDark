@@ -1,0 +1,13 @@
+Design Resolute, the player’s research battleship in Aquila Code Dark. It is a mobile home and carrier built for long voyages.
+
+Give it a broad, split prow and a long central spine. Cut a deep, open hangar gallery into each flank. Set back each gallery roof so a strip of flight deck shows from above. Up close, reveal three widely spaced frames inside each bay and warm work lights along the deck edge. Place a low command island starboard of the spine, with a forward window band. Recess six circular drives into the stern, three across and two high.
+
+Use satin pewter hull panels, charcoal hangar interiors and a faded ochre stripe that stops at each service hatch. Concentrate wear around the bay thresholds. Leave broad, quiet surfaces between them so the ship reads clearly from the arena camera.
+
+Fit the bare hull for a real-time Unreal game. Keep three dorsal rows of ten empty turret mounts, flush with the deck and visible from above. Leave the armor faces swappable. Separate the hull finish, glass and engine lights. Aquila supplies the turrets, armor kits, shield generator, reserve capacitor and shield effect.
+
+For the first review, show the same bare hull from above, from the bow at three quarters, and from astern. Frame one whole ship per view on neutral gray. At 120 pixels long, check the twin deck cutouts from above and the nearest hangar opening in the oblique view.
+
+Mesh handoff for Asset Pipeline
+Use an editable source and an Unreal static mesh export. Center the pivot on the main hull, bow along +X, with +Z up. Resolute’s existing exterior spans about 1,360 × 480 × 128 render centimeters. This represents a 13.6 km vessel in Aquila.
+Match the existing ship-local mount centers in render centimeters. Each row runs from X −380 to +430 in steps of 90. Ports 01–10 use Y −190, Z 80. Ports 11–20 use Y 0, Z 100. Ports 21–30 use Y +190, Z 80. Fit the decks beneath these points and keep the command island clear of them.

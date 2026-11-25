@@ -1,0 +1,173 @@
+{
+  "round": 169,
+  "local_date": "2026-11-25",
+  "checked_utc": "2026-11-25T06:44:32.211398+00:00",
+  "request": "Watch a single duel from both ships. The owner authorized replacing the prior open duel when ready in chat.",
+  "launch": {
+    "checked_utc": "2026-11-25T06:44:09.2216555Z",
+    "window": "Aquila - Bridge Duel (64-bit Development PCD3D_SM5)",
+    "responding": true,
+    "single_window": true,
+    "old_window_closed": true,
+    "entry": "Delta Tree bridge",
+    "mode": "Simulator",
+    "speed": 1,
+    "target": ".runtime/two-bridges-r169/release/Windows/Aquila.exe",
+    "shortcut": "Aquila Combat Simulator",
+    "shortcut_arguments_preserved": true,
+    "input_injected": false,
+    "match_loaded": false,
+    "activated": true
+  },
+  "engine": "Launcher Unreal 5.8.4 CL 58902052, Windows Development, D3D12",
+  "windows_executable_sha256": "2d2fa7ff4b682c2af1b0611d1940e61206790fa8f30f52768800617ed0d0f52c",
+  "controls": {
+    "N": "Switch directly to the other live bridge",
+    "Tab": "Exterior / return to a surviving bridge"
+  },
+  "packaged_checks": {
+    "switch": {
+      "suite": "Aquila.Input.DuelBridges.Switch",
+      "passed": 1,
+      "report_sha256": "712dad4ec2eedc7b5a3da69b283c71ef8008b47560c95477dc9c5c32c8a8501c",
+      "captured_frames": 4,
+      "fixture_unchanged": true,
+      "opened_disposable_match": false,
+      "measurements": [
+        "Glacier bridge: opponent at 640.0 360.1 of 1280 x 720; crown registration 0.000 cm.",
+        "Glacier shield contact 9 at 6.217 s; shield 98.110; 19 airborne rounds.",
+        "Glacier walk: 249.3 cm, grounded 1, start V(X=-19650.00, Y=-2050.05, Z=12693.83), end V(X=-19886.13, Y=-2129.85, Z=12693.83)."
+      ]
+    },
+    "switch-wide": {
+      "suite": "Aquila.Input.DuelBridges.Switch",
+      "passed": 1,
+      "report_sha256": "7f717cebb9517afaba31c1958bb86d6b94fafef82c51c97ded9c149607247fbd",
+      "captured_frames": 4,
+      "fixture_unchanged": true,
+      "opened_disposable_match": false,
+      "measurements": [
+        "Glacier bridge: opponent at 720.0 405.1 of 1440 x 810; crown registration 0.000 cm.",
+        "Glacier shield contact 9 at 6.217 s; shield 98.110; 19 airborne rounds.",
+        "Glacier walk: 223.6 cm, grounded 1, start V(X=-19650.00, Y=-2050.05, Z=12693.83), end V(X=-19861.83, Y=-2121.64, Z=12693.83)."
+      ]
+    },
+    "duel-bridge": {
+      "suite": "Aquila.Input.DuelBridge.Window",
+      "passed": 1,
+      "report_sha256": "20b9df9ce88ee7de6d8511cbdd3519d6d96cea8339796f77f1fc6902eb369604",
+      "captured_frames": 7,
+      "fixture_unchanged": true,
+      "opened_disposable_match": false
+    },
+    "direct": {
+      "suite": "Aquila.Input.DuelBridge.Direct",
+      "passed": 1,
+      "report_sha256": "61dd4063e487ff9a123b4eee8c3724c75af891b9b287551120287269bd3f743b",
+      "captured_frames": 0,
+      "fixture_unchanged": true,
+      "opened_disposable_match": false
+    },
+    "duel-menu": {
+      "suite": "Aquila.Input.Simulator",
+      "passed": 1,
+      "report_sha256": "42eb5579c0cb9abeaa412794212b8643af8e5bdb8a3160e64bdc568b02b92e99",
+      "captured_frames": 0,
+      "fixture_unchanged": true,
+      "opened_disposable_match": true
+    },
+    "contacts": {
+      "suite": "Aquila.Input.CombatFeedback.BothShips",
+      "passed": 1,
+      "report_sha256": "44f454a5de800cc27d2f8f40fde971fa5ecb7a110c10de37967beac3b57c7dde",
+      "captured_frames": 0,
+      "fixture_unchanged": true,
+      "opened_disposable_match": false
+    },
+    "observer": {
+      "suite": "Aquila.Input.Observer",
+      "passed": 1,
+      "report_sha256": "594c3cf56fbc13a6cf177c31036107e7bb9da38f591c17a55263b8ec684f4b38",
+      "captured_frames": 0,
+      "fixture_unchanged": true,
+      "opened_disposable_match": false
+    },
+    "watch": {
+      "suite": "Aquila.Input.Boarding.BridgeObserver",
+      "passed": 1,
+      "report_sha256": "322bd23648ca4959cc92383c32d94b3388c9cb822c266a8e044c3becf489bc1e",
+      "captured_frames": 12,
+      "fixture_unchanged": true,
+      "opened_disposable_match": false
+    }
+  },
+  "glacier_bridge": {
+    "anchor": "CommandBridge",
+    "mesh": "SM_GlacierBoardingHull",
+    "location": "top of the forward observation crown",
+    "anchor_study_metres": [
+      -102.400002,
+      0.0,
+      127.360008
+    ],
+    "scale_of_640m_study": 2,
+    "prior_hull_export_without_new_socket_sha256": "e6633673a5441f82a24d356838b40c26445934cc8bbdcaba4e4f65c371bf8148",
+    "source_only_recipe_matches": true,
+    "reference_images": [
+      "Assets/ShipConcepts/modeling-references-r150/glacier-tongue/17-bridge-window.png",
+      "Assets/ShipConcepts/modeling-references-r150/glacier-tongue/29-deck-3-overhead.png"
+    ]
+  },
+  "editor_checks": {
+    "passed": 20,
+    "report_sha256": "35601b891306cde05b667617e43f65ecf3681dc64c4973543532ccab82d4a7fa"
+  },
+  "frames": {
+    "delta-window.png": "3e2f5d79db4ae2d82f4e5c6c62d7a211b6a7ab33e42ba61a0c56dfddbe0d646a",
+    "glacier-hit.png": "92e7ce9aecd718c8eb6cb41ed325f98d8152b67e9516164dbb14a6b0cff5e152",
+    "glacier-return.png": "9630b3ab4d2049347668639ff82d9c07ccdd3cfcbca843c1a1a8847d2eeb82ec",
+    "glacier-window.png": "8a80665c45247970e4da3105a7d11b7ae5bf23dc136a6594d5af975ff1f48bce"
+  },
+  "behavior": [
+    "The same walking character transfers between ships in one running duel.",
+    "The transfer preserves round IDs, positions, velocities, combat clock, pause, speed and both ships' health.",
+    "Each ship restores its own visitor position and look independently. Tab and the exterior button return to the previous live bridge.",
+    "The visitor can walk on Glacier's floor while the duel is paused. The occupied bridge has the only active deck collision.",
+    "The opponent projects through Glacier's forward pane, with a clear sightline over Glacier's hull.",
+    "Incoming damage to Glacier lights its sill. The same hit assigned to Delta alone leaves Glacier's sill idle.",
+    "After a real round destroys the occupied ship in a disposable client, the exterior opens and the survivor remains visitable."
+  ],
+  "journals": {
+    "live_revisions": 151681,
+    "revision": 151681,
+    "parent": 151680,
+    "phase": "Failed",
+    "helm": "Hold",
+    "before_prelaunch_after_identical": true,
+    "inventory_sha256": "1ac8f2ed95baab6e94035c163d63a423fb7ff197d0a8a9fda8d8baa6cb4eca6d",
+    "tip_sha256": "f52f3ea0d9bfa957aced3415d6ce677b495ef598fa7d1020f39c4414882e303b",
+    "parent_sha256": "8dc85d4ba7e4d4adc0a19fd2e11c2d22a8ada62a42d7d6cdae5258490e9bf43f",
+    "desktop_sha256": [
+      "a9ba65631bc184c83269f33c41bd4e84562158e87e7b2bff0a40fbf8b06d16cc"
+    ]
+  },
+  "knowledge_lookup": {
+    "scope": "UE 5.7 possession tutorial index; actual camera, movement and combat behavior checked in the packaged game.",
+    "citation": {
+      "byte_end": 1982,
+      "byte_start": 0,
+      "content_sha256": "a88a09f909d2ea389d3640c52cc51d625ab6b1cc1aa150ec58dc72271537af98",
+      "kind": "source",
+      "passage_sha256": "af7da7bc0e392b7efd82d7cfe4e347e845f9330a3528624559077d6a13d95939",
+      "record_id": "s_2052aa3e8b939ae9645994096d5086412b909f3d4a9f7c3b333eee99d2529825",
+      "version_id": "sha256:a88a09f909d2ea389d3640c52cc51d625ab6b1cc1aa150ec58dc72271537af98"
+    }
+  },
+  "owner_playtest": {
+    "round": 170,
+    "source": "chat",
+    "local_date": "2026-11-25",
+    "quote": "Yes, that works well.",
+    "scope": "Switching between Delta Tree and Glacier Tongue to watch the same Windows duel."
+  }
+}

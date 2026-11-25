@@ -1,0 +1,125 @@
+{
+  "round": 180,
+  "model_round": 179,
+  "local_date": "2026-11-25",
+  "ships": {
+    "delta-tree": {
+      "name": "Delta Tree",
+      "original": {
+        "path": "Assets/ShipConcepts/sunburst-r144/58-delta-tree.png",
+        "sha256": "6628ed15b22fbf2990729eb8417b9babcb66cc8ebcb5635dad57c8776efeeac3"
+      },
+      "current": {
+        "path": "Assets/ShipConcepts/hull-review-r179/seated-galleries/renders/delta-tree-gallery.png",
+        "sha256": "77471110e040bb86b1468bf6143b7e9413a75335d2566d05308801122c966c82"
+      },
+      "previous": {
+        "path": "Assets/ShipConcepts/hull-review-r178/seated-cradle/renders/delta-tree-gallery.png",
+        "sha256": "8e0cfe25bdc983494b1c30d0b9e82f96af15f0481bb6e9f73adac1b46511a39f"
+      },
+      "crop_original_pixels": [
+        125,
+        383,
+        613,
+        629
+      ],
+      "model": {
+        "path": "Assets/ShipConcepts/hull-review-r179/seated-galleries/delta-tree/delta-tree.glb",
+        "sha256": "7f3a45dfa2b1944ce1ad066c518e460a9a247f1b29862c8c5026b64bd982b9bf"
+      },
+      "lit": {
+        "path": "Assets/ShipConcepts/modeling-references-r150/delta-tree/22-materials-lit.png",
+        "sha256": "d719ec54483e22cf378994921400afdc6fbd35e35d0ce762812eb233adf4ec01"
+      },
+      "unlit": {
+        "path": "Assets/ShipConcepts/modeling-references-r150/delta-tree/23-materials-dark.png",
+        "sha256": "b0fc059ccf024079219a5c6530d430813535cabfe4d6ce8b223fdd83bae4048f"
+      },
+      "detail": {
+        "path": "Assets/ShipConcepts/hull-review-r180/delta-tree-detail.png",
+        "sha256": "98f0b6183ad8cfa5ed1cd5543f6e4446b8e2a286bbee21e83b83b057331063aa"
+      },
+      "samples": {
+        "path": "Assets/ShipConcepts/hull-review-r180/delta-tree-samples.png",
+        "sha256": "055be6089182a2653666d61b5f14e081668448457ada510b1f226792db4359da"
+      },
+      "upper_deck": {
+        "material": "delta-tree · dorsal",
+        "painted_triangles": 5008,
+        "roughness": 0.53,
+        "metallic": 0.28,
+        "has_color_map": true,
+        "has_roughness_map": false,
+        "has_normal_map": false
+      }
+    },
+    "glacier-tongue": {
+      "name": "Glacier Tongue",
+      "original": {
+        "path": "Assets/ShipConcepts/sunburst-r144/41-glacier-tongue.png",
+        "sha256": "827baa1d6127c91fd36b21e0998ad7b013ddd7c8e7b109059bad03c61e86f0d1"
+      },
+      "current": {
+        "path": "Assets/ShipConcepts/hull-review-r179/hanging-berth/renders/glacier-tongue-gallery.png",
+        "sha256": "659100f550255fbbe26b340812673cbd6080632ffb43065b3745ceb7c39df7aa"
+      },
+      "previous": {
+        "path": "Assets/ShipConcepts/hull-review-r178/layered-port/renders/glacier-tongue-gallery.png",
+        "sha256": "a5f9ccb2d975e30cb6d756af03f9f712695c58111b3bc19e42ec46663499c9d1"
+      },
+      "crop_original_pixels": [
+        557,
+        448,
+        754,
+        560
+      ],
+      "model": {
+        "path": "Assets/ShipConcepts/hull-review-r179/hanging-berth/glacier-tongue/glacier-tongue.glb",
+        "sha256": "cc0238e91518a9a78ff0ef5fa0bdbd72a964e919de7e78467cfb92adaa8f8e45"
+      },
+      "lit": {
+        "path": "Assets/ShipConcepts/modeling-references-r150/glacier-tongue/22-materials-lit.png",
+        "sha256": "29a414a575cf2fd416212d5263ed268cf0ba2cbf9def9ccfc72b885b6f5bbe2d"
+      },
+      "unlit": {
+        "path": "Assets/ShipConcepts/modeling-references-r150/glacier-tongue/23-materials-dark.png",
+        "sha256": "f12fe95b27f35997b453a878fb1b68eee39483ebaec22c62a5272f359dc870bc"
+      },
+      "detail": {
+        "path": "Assets/ShipConcepts/hull-review-r180/glacier-tongue-detail.png",
+        "sha256": "8c6d3eab979f104b7ea5d9defac0b4b53c1b0246e984c99c2b92e9ca393bea50"
+      },
+      "samples": {
+        "path": "Assets/ShipConcepts/hull-review-r180/glacier-tongue-samples.png",
+        "sha256": "dd2dab71ab47d6e1ed83e7818786e79ccde6f365f3048008b941003c9ce7430e"
+      },
+      "dock_appearance": {
+        "registered_crop_original_pixels": [
+          604,
+          471,
+          709,
+          542
+        ],
+        "percentiles": {
+          "painting": {
+            "p50": 0.0596,
+            "p95": 0.5547
+          },
+          "previous": {
+            "p50": 0.0286,
+            "p95": 0.3999
+          },
+          "current": {
+            "p50": 0.0255,
+            "p95": 0.2064
+          }
+        },
+        "method": "Relative linearized sRGB display luminance in one matched gallery crop; includes architecture and dark surroundings. Not a measure of lamp output, reflectance or exposure calibration."
+      }
+    }
+  },
+  "owner_feedback": "Both are looking closer, stated in chat. The owner asked for more precise geometry, texture and material comparisons.",
+  "local_scope": "Inspected saved model exports, concept material boards and existing renders. No revised ship or controlled relighting test in this round.",
+  "proposed_first_trial": "Compare the actual finishes on curved and flat samples under fixed soft light and a moving side light. Check the same finish on its hull.",
+  "research_receipt": "Docs/Research/research-battleship-material-matching-receipt-v1.json"
+}

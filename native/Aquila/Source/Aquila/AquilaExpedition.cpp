@@ -27,6 +27,7 @@ bool FAquilaCampaign::StartExpedition()
         SignalPosition.Z = ShipPosition.Z;
     }
     Expedition = EAquilaExpedition::Travel;
+    ++EncounterGeneration;
     ExpeditionSeconds = SurveySeconds = RecoverySeconds = 0;
     Shield = Hull = 100;
     bBattle = bArmorBlocked = bHoldFire = false;
@@ -79,7 +80,7 @@ bool FAquilaCampaign::UpgradePortTurret()
 
 void FAquilaCampaign::BeginExpeditionBattle()
 {
-    const bool bSelectedPiercing = bPiercing;
+    const bool bSelectedPiercing = Loadout.Resolute.bPiercing;
     Expedition = EAquilaExpedition::Battle;
     BeginEncounter();
     SetPiercing(bSelectedPiercing);

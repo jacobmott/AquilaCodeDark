@@ -1,0 +1,230 @@
+{
+  "round": 168,
+  "local_date": "2026-11-25",
+  "checked_utc": "2026-11-25T06:21:18.371084+00:00",
+  "direction": "Owner reported old duel hulls and floating guns in chat after the round 167 playtest.",
+  "last_report_submission": "reports/game-direction/inbox/20261125T052555Z.json",
+  "engine": "Launcher Unreal 5.8.4 CL 58902052, Windows Development, D3D12",
+  "windows_executable_sha256": "32f67feb52005975a2dbe935de1792b0cd840fc83d92aa3e70d9fa9d25aeeeb8",
+  "launch": {
+    "checked_utc": "2026-11-25T06:16:07.7248008Z",
+    "window": "Aquila - Bridge Duel (64-bit Development PCD3D_SM5)",
+    "responding": true,
+    "visible_windows_before": 0,
+    "mode": "Simulator",
+    "entry": "Delta Tree bridge",
+    "speed": 1,
+    "target": ".runtime/hull-duel-r168/release/Windows/Aquila.exe",
+    "shortcuts": [
+      "Aquila Combat Simulator"
+    ],
+    "shortcut_modes_preserved": true,
+    "input_injected": false,
+    "match_loaded": false
+  },
+  "hulls": {
+    "delta-tree": {
+      "mesh": "SM_DeltaBoardingHull",
+      "length_m": 1280,
+      "source": "Assets/ShipConcepts/modeling-references-r150/delta-tree/blender-guides/proportion-study.blend",
+      "source_sha256": "a1ec0ffb52b1d948883e809fa02b75ade1e7d84c2cda8f0f2778d3c7a2c1b26d",
+      "baseline_comparison": "Boarding export without the new socket comments matches the round 162 bridge export byte for byte.",
+      "export_sha256": "2206f9a9b96da5f0877153d851225943de3ae5d715a3f3b1a74a33106b3c3b52",
+      "export_without_surface_comments_sha256": "a53ddaa3ee81b1c1da990bae2decc3244fe6cd034e7f634c9979e1877361f389",
+      "groups": 70,
+      "triangles": 10364,
+      "materials": [
+        "Armor",
+        "Exhaust",
+        "Spine",
+        "Trim"
+      ],
+      "gun_sockets": 30,
+      "utility_sockets": [
+        "Armor",
+        "Shield",
+        "Reserve"
+      ],
+      "source_only_recipe_matches_all_33_poses": true
+    },
+    "glacier-tongue": {
+      "mesh": "SM_GlacierBoardingHull",
+      "length_m": 1280,
+      "source": "Assets/ShipConcepts/modeling-references-r150/glacier-tongue/blender-guides/proportion-study.blend",
+      "source_sha256": "3dcd1e6b22c23749721666c859116f2f6159f84da09bcf4f42934ae5646c7dc5",
+      "baseline_comparison": "All material-tagged triangles and vertex coordinates match the archived round 152 boarding recipe.",
+      "export_sha256": "e6633673a5441f82a24d356838b40c26445934cc8bbdcaba4e4f65c371bf8148",
+      "export_without_surface_comments_sha256": "1bd93e5cd05e285dd71ae37d043fa00c4697c216e286f53eb5ea60f48e85b56d",
+      "groups": 17,
+      "triangles": 5596,
+      "materials": [
+        "Armor",
+        "Spine",
+        "Trim"
+      ],
+      "gun_sockets": 30,
+      "utility_sockets": [
+        "Armor",
+        "Shield",
+        "Reserve"
+      ],
+      "source_only_recipe_matches_all_33_poses": true
+    }
+  },
+  "packaged_checks": {
+    "duel-bridge": {
+      "suite": "Aquila.Input.DuelBridge.Window",
+      "passed": 1,
+      "report_sha256": "fb101e90b6611fcb06708cd966707eea7623abba986816e8d47913b09556a5b2",
+      "disposable_journal_identical": true,
+      "opened_disposable_match": false,
+      "captured_frames": 7,
+      "resolution": [
+        1280,
+        720
+      ]
+    },
+    "duel-wide": {
+      "suite": "Aquila.Input.DuelBridge.Window",
+      "passed": 1,
+      "report_sha256": "e1ae7d19adfaa54c425c1507c03d78f24ab0a4f54f07c0211b93fe8974215baa",
+      "disposable_journal_identical": true,
+      "opened_disposable_match": false,
+      "captured_frames": 7,
+      "resolution": [
+        1440,
+        810
+      ]
+    },
+    "direct": {
+      "suite": "Aquila.Input.DuelBridge.Direct",
+      "passed": 1,
+      "report_sha256": "0b8cc655a7d0d13537d8a419218e7bf3c7cd3b809ddacea28ad3c99ca2c4669a",
+      "disposable_journal_identical": true,
+      "opened_disposable_match": false,
+      "captured_frames": 0
+    },
+    "contacts": {
+      "suite": "Aquila.Input.CombatFeedback.BothShips",
+      "passed": 1,
+      "report_sha256": "9c89dffa071df0a4aa5332ca514d862ee8b684f356f2e3ef27f0a70f4f73ce07",
+      "disposable_journal_identical": true,
+      "opened_disposable_match": false,
+      "captured_frames": 0
+    },
+    "duel-menu": {
+      "suite": "Aquila.Input.Simulator.Menu",
+      "passed": 1,
+      "report_sha256": "e346f037b306e7fcee6e594214fbbc7f630504acf59766b3a26840dbc9377a9b",
+      "disposable_journal_identical": true,
+      "opened_disposable_match": true,
+      "captured_frames": 0
+    },
+    "observer": {
+      "suite": "Aquila.Input.Observer.Desktop",
+      "passed": 1,
+      "report_sha256": "f6fb6be799ee94f4611b9aaa694a5b35e00b482a4ba393eb104629b039049819",
+      "disposable_journal_identical": true,
+      "opened_disposable_match": false,
+      "captured_frames": 0
+    },
+    "watch": {
+      "suite": "Aquila.Input.Boarding.BridgeObserver",
+      "passed": 1,
+      "report_sha256": "8f34e03c0a0200e6706e6732240a93ff7b06c59134f08c48c3858327c60fabbb",
+      "disposable_journal_identical": true,
+      "opened_disposable_match": false,
+      "captured_frames": 12
+    }
+  },
+  "geometry_scope": "Existing playable scale studies. Both are 1,280 m long in the bridge frame.",
+  "provider_generation": false,
+  "editor_checks": {
+    "passed": 20,
+    "report_sha256": "b3547c11dd8e91420ee384ade32d00dfab93b9a5db5fadd57a6a201312181289",
+    "suites": [
+      "Aquila.Combat.BothShipLoadouts",
+      "Aquila.Combat.FittedShieldGeometry",
+      "Aquila.Combat.FittingPreview",
+      "Aquila.Combat.FrameRateAndHold",
+      "Aquila.Combat.ImpactSurfacesAndDestruction",
+      "Aquila.Combat.InterceptionAfterDestruction",
+      "Aquila.Combat.LiveFitting",
+      "Aquila.Combat.MountInventoryAndInterception",
+      "Aquila.Combat.PhaseRounds",
+      "Aquila.Combat.ReserveCapacitor",
+      "Aquila.Combat.SwitchWithRoundsInFlight",
+      "Aquila.Combat.TravelAndArmor",
+      "Aquila.Expedition.CommandsFailureAndPracticeIsolation",
+      "Aquila.Expedition.CompleteLoopAndUpgrade",
+      "Aquila.Expedition.LegacyMigrationAndValidation",
+      "Aquila.Expedition.ResumeAndRewardTransactions",
+      "Aquila.Expedition.UpgradeImpactAndFrameParity",
+      "Aquila.Navigation.ClearanceAndArrival",
+      "Aquila.Save.InterruptionAndConflict",
+      "Aquila.Save.RoundTripMigrationAndRejection"
+    ]
+  },
+  "mounts": {
+    "center_socket_triangle_checks": 60,
+    "gun_foot_rim_checks": 480,
+    "greatest_signed_base_gap_arena_units": -0.735,
+    "above_deck_is_positive": true,
+    "command_deck_to_boarding_dock_tolerance_cm": 2,
+    "shield_geometry": "One hull skin at 108%; no fitted gun copies."
+  },
+  "tracked_round": {
+    "id": 9,
+    "incoming_from": "Glacier Tongue",
+    "ammunition": "Piercing",
+    "target": "Delta Tree",
+    "impact_serial": 10,
+    "shield_before": 100.0,
+    "shield_after": 99.65,
+    "paused_seconds": 6.367,
+    "bridge_contact_pixel": [
+      548.4,
+      428.4
+    ],
+    "same_round_clock_and_shield_in_both_views": true,
+    "replay_retains_both_fittings": true,
+    "test_fit": "Piercing chosen in the disposable test. The live launch uses starter equipment."
+  },
+  "frames": {
+    "arena-shield.png": "80cbd77f22558a14bebd4be81179e9a19e61fc45728ece117a518b3677eea52d",
+    "bridge-shield.png": "dc66a92f0d3714733e240cd013f9e330802cce818a3c65259fa644d3026d2210",
+    "bridge-volley.png": "c03bb3a8746ce41b245bf5ae3b9cd1171ac3aef5c714757527400d6a9501559f",
+    "delta-fitting.png": "cd964405b7e07f80a05a6408bf9e1483572a97b4364a51236c4a72b22de95439",
+    "delta-mount.png": "c556da7d071afd8d3498f486e315294e8baf88f9656198a5c0734f7ac48b3a6f",
+    "fitting.png": "bc049f116a1bf673d89c18f5079900057517dfcc786aa5fc410d667775c08a93",
+    "glacier-mount.png": "679981213d33e76c76acd94aa7019132d72300fbe28fbe30c310c6a591aa2752"
+  },
+  "visual_review": "Inspected seven 1280 by 720 frames. Delta Tree shows bronze branches and stacked drives. Glacier Tongue shows the roof and open side bay. The shielded turret close-ups show one gun, with its foot meeting the deck. A bridge window post can cover part of the distant ship as the visitor moves.",
+  "journals": {
+    "revision": 151681,
+    "parent": 151680,
+    "revisions": 151681,
+    "phase": "Failed",
+    "helm": "Hold",
+    "before_prelaunch_after_identical": true,
+    "inventory_sha256": "1ac8f2ed95baab6e94035c163d63a423fb7ff197d0a8a9fda8d8baa6cb4eca6d",
+    "tip_sha256": "f52f3ea0d9bfa957aced3415d6ce677b495ef598fa7d1020f39c4414882e303b",
+    "parent_sha256": "8dc85d4ba7e4d4adc0a19fd2e11c2d22a8ada62a42d7d6cdae5258490e9bf43f",
+    "desktop_revisions": 1,
+    "desktop_sha256": [
+      "a9ba65631bc184c83269f33c41bd4e84562158e87e7b2bff0a40fbf8b06d16cc"
+    ]
+  },
+  "knowledge_lookup": {
+    "scope": "Unreal 5.7 authored index on mesh sockets; packaged 5.8.4 checks establish actual behavior.",
+    "citation": {
+      "byte_end": 77783,
+      "byte_start": 75851,
+      "content_sha256": "1e38faaed7738f04b6437a34d1eb22c3c6c2bdea5a9c03839802bda25f73f36f",
+      "kind": "source",
+      "passage_sha256": "f934f7afd9fbbcc5e1ad268b23b6cf51905359a310613f80704beb2a1b4622a5",
+      "record_id": "s_d6b64beb4597852b1baa8699c39beb2201239f947a8cc2402f7a86bed5e45e6d",
+      "version_id": "sha256:1e38faaed7738f04b6437a34d1eb22c3c6c2bdea5a9c03839802bda25f73f36f"
+    }
+  }
+}

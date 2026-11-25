@@ -1,0 +1,8 @@
+{
+  "source": "Docs/Handoffs/HANDOFF_2026-11-15_game-direction.md",
+  "archive": "Docs/History/game-direction/20261124T102529Z.md",
+  "saved_at_utc": "2026-11-24T10:25:29.793670+00:00",
+  "bytes": 9238,
+  "sha256": "1536a026d86d52b7b29197b0ec290039b93a4601b1c7b78b6918293351df8fd5",
+  "reason": "Preserve the fixed landing pad inspection before recording the corrected playable pad."
+}

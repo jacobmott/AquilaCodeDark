@@ -1,0 +1,13 @@
+Design Sentinel, the opposing ship in Aquila Code Dark’s combat simulator. Its bare hull should look heavy even with every piece of equipment removed.
+
+Give it a wide, blunt hammerhead bow with clipped corners. Carry the weight low in two deep cheek castings. Undercut their leading edges and recess one narrow amber sensor slit beneath the brow. From above, the shoulders step inward toward the stern. Cut a deep, square-ended notch between two squat rectangular drives. The broad bow and forked stern should make its heading clear in silhouette.
+
+Use graphite cast metal, medium-gray ceramic cheek faces and pale worn bevels. Put the fine detail inside the stern notch, where a few heat-stained ribs catch the light. Keep the brow and top deck quiet. Reserve the brightest amber for the sensor slit.
+
+Fit the bare hull for a real-time Unreal game. Keep three dorsal rows of ten empty turret mounts, flush with the deck and visible from above. Leave the armor faces swappable. Separate the hull finish, sensor glass and engine lights. Aquila supplies the turrets, armor kits, shield generator, reserve capacitor and shield effect.
+
+For the first review, show the same bare hull from above, from the bow at three quarters, and from astern. Frame one whole ship per view on neutral gray. Let light catch the cheek bevels while the sensor recess stays dark. Check whether the bow and stern notch read in silhouette at 120 pixels.
+
+Mesh handoff for Asset Pipeline
+Use an editable source and an Unreal static mesh export. Center the pivot on the main hull, bow along +X, with +Z up. Use the existing 1,360 cm arena hull length as a fitting reference. Keep deck beneath all three rows. Start the stern notch aft of the rearmost mounts.
+Match the existing ship-local mount centers in render centimeters. Each row runs from X −380 to +430 in steps of 90. Ports 01–10 use Y −190, Z 80. Ports 11–20 use Y 0, Z 100. Ports 21–30 use Y +190, Z 80. Keep both cheek castings below the outer mounts.

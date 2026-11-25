@@ -1,0 +1,176 @@
+{
+  "round": 146,
+  "verified_utc": "2026-11-24T06:55:16.582410+00:00",
+  "scope": "Local Blender 5.2 exterior studies and prototype display names. Walkable interiors, unlock systems and new meshes in Unreal remain open.",
+  "provider_credits": 0,
+  "catalog": {
+    "role": "research battleship",
+    "count": 60,
+    "source_png_hashes_over_http": 60,
+    "starter_assigned": false,
+    "final_files_in_asset_ledger_by_hash": 10
+  },
+  "models": [
+    {
+      "number": 58,
+      "name": "Delta Tree",
+      "groups": 6,
+      "mounts": 30,
+      "triangles": 154034,
+      "dimensions_m": [
+        12.87,
+        4.179,
+        2.683
+      ],
+      "reference": "58-delta-tree.png",
+      "source_sha256": "6628ed15b22fbf2990729eb8417b9babcb66cc8ebcb5635dad57c8776efeeac3",
+      "checked_files": [
+        {
+          "file": "delta-tree.blend",
+          "sha256": "f5b099966f531b7bff1fafcdb02611ac6a8ead4031d5604cd2d5ed19d707e21b"
+        },
+        {
+          "file": "delta-tree.glb",
+          "sha256": "9dff5c47288f9fd77edf2e3ee3782a8cbacfb52b9338c767ecf940c23d669e1a"
+        },
+        {
+          "file": "bow.png",
+          "sha256": "974447ec2d5e328d9fa256a165c12fbaf49dafe0a63f3d5706ac3006f227ed06"
+        },
+        {
+          "file": "top.png",
+          "sha256": "a87afc0ded15b0913ae107aa6439a1b947d9b714e629be1f23e384c9228457d3"
+        },
+        {
+          "file": "stern.png",
+          "sha256": "8c30317b5b099163e1a006abb86524f1267e971295a5e052a6805851d85b5876"
+        }
+      ]
+    },
+    {
+      "number": 41,
+      "name": "Glacier Tongue",
+      "groups": 6,
+      "mounts": 30,
+      "triangles": 60268,
+      "dimensions_m": [
+        12.91,
+        4.452,
+        2.82
+      ],
+      "reference": "41-glacier-tongue.png",
+      "source_sha256": "827baa1d6127c91fd36b21e0998ad7b013ddd7c8e7b109059bad03c61e86f0d1",
+      "checked_files": [
+        {
+          "file": "glacier-tongue.blend",
+          "sha256": "83b8fa1da181d1b828243cf99bded7596aa7aa150f4a22b910f6e207dedd4b36"
+        },
+        {
+          "file": "glacier-tongue.glb",
+          "sha256": "20ea0cf152002fc03099c370dbe6686380a9ba30918bfcba2fa3150dc989eefe"
+        },
+        {
+          "file": "bow.png",
+          "sha256": "7c6df135fd5cea41fdc7d341e95991a250634e9c9c7eff0f431118ff1bbb95c7"
+        },
+        {
+          "file": "top.png",
+          "sha256": "5139a3f156bc0320788b6815f47a053f7fbb3d4ce46c815bc124b4db8e27ceb0"
+        },
+        {
+          "file": "stern.png",
+          "sha256": "59e49eeeed1b1522452d991e5fe388dc17c455be50ea5ab9e3c92c84c4cf7be3"
+        }
+      ]
+    }
+  ],
+  "runtime": {
+    "engine": "Launcher Unreal 5.8.4 CL 58902052",
+    "headless_groups": 20,
+    "packaged_checks": [
+      {
+        "name": "fitting-wide",
+        "passed": 1,
+        "report_sha256": "9de4cd0f3291d4756ecaf992c1fa99dd6dbe5bdea2d86bbb49d2a917fbbfe2df"
+      },
+      {
+        "name": "fitting-compact",
+        "passed": 1,
+        "report_sha256": "b997fdcfef07baa7581635daad487c91e81ca9e5a561b317e687d939c0056d89"
+      },
+      {
+        "name": "fitting-tall",
+        "passed": 1,
+        "report_sha256": "2ac1ca6dfb694a5e9d162b644aea19aea4daafeffdc24571656de3c1568e4f49"
+      },
+      {
+        "name": "desktop",
+        "passed": 1,
+        "report_sha256": "0d5d9eacfb4289d21b19bbc8b326d2bc8341ffc4fe556aada4c4833c76344732"
+      },
+      {
+        "name": "observer",
+        "passed": 1,
+        "report_sha256": "f23828d2b16f015d5c29d74c387594ac65f1350ba6d438fa5b66fd347a65a450"
+      },
+      {
+        "name": "restored",
+        "passed": 1,
+        "report_sha256": "a0a88d62d8445761004def6c29c50c1585d0ae5322f3e6f292fcd93bbac76e67"
+      },
+      {
+        "name": "bridge",
+        "passed": 1,
+        "report_sha256": "3ec4cea988c8aa92151d72105f9deb05d0b313373a17c4aaea24f1de5154a6a4"
+      },
+      {
+        "name": "touch",
+        "passed": 1,
+        "report_sha256": "bcd98994a69fb13066aaa554ae6f2ea0cd240676b0860fa98ab94f7331227898"
+      },
+      {
+        "name": "touch-observer",
+        "passed": 1,
+        "report_sha256": "784cb62b9276679e8a3a4ccaedf32e3860f11f4bc99d1d1617a8d30a1c128429"
+      },
+      {
+        "name": "duel-direct",
+        "passed": 1,
+        "report_sha256": "793cefe501767b497acd6f982d84d6258e305c2e640fe494ba6b81b9b53c5964"
+      },
+      {
+        "name": "duel-menu",
+        "passed": 1,
+        "report_sha256": "69916a63fc1ef93ff9cad16b07ff5cb30ca5613d4cf583aeba6c2379a464f975"
+      },
+      {
+        "name": "arena-observer",
+        "passed": 1,
+        "report_sha256": "44949d6049dccca16b7987a7857a9d70cedda7fc7677fe22e2809978c3b0aa4d"
+      },
+      {
+        "name": "effects",
+        "passed": 1,
+        "report_sha256": "f92ea8e8cddac190288d9619332848b85cd7b57f227ac0db63391584e54f78ae"
+      }
+    ],
+    "angular_development_build": true,
+    "desktop_shortcut": {
+      "checked_utc": "2026-11-24T06:54:13.0864357Z",
+      "shortcut": "Aquila Combat Simulator",
+      "target": ".runtime/research-battleships-r146/final/Windows/Aquila.exe",
+      "kept_original_arguments": true,
+      "desktop_save_hashes_identical": true,
+      "owner_processes": 0,
+      "owner_input_injected": false
+    },
+    "expedition_revision": 151681,
+    "expedition_parent": 151680,
+    "expedition_and_desktop_journals_preserved": true
+  },
+  "limits": [
+    "Unseen hull surfaces were interpreted from a single original per ship.",
+    "The model guides have not been bound to working game ports.",
+    "Interior routes are design notes."
+  ]
+}

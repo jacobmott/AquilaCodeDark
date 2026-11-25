@@ -1,0 +1,280 @@
+{
+  "round": 136,
+  "verified_utc": "2026-11-24T02:56:33.910780+00:00",
+  "engine": "Epic Launcher Unreal 5.8.4 CL 58902052",
+  "scope": "Local Windows Combat Simulator fitting. Phone rendering and input await a physical device check.",
+  "models": {
+    "Standard": "Compact brass casing with two amber bands.",
+    "Piercing": "Long silver dart with swept fins and cyan channels.",
+    "Phase": "Three separated violet shards inside two open rings."
+  },
+  "fitting_checks": [
+    "Three distinct native meshes load with matching tracer-color accents and no gameplay collision.",
+    "Three models roll around fixed centers under the hull. Packaged pointer tests project each center to its selector within two pixels.",
+    "Measured rendered pixels between each round and its caption on four Windows window sizes.",
+    "Clicking a model or label changes the active turret and its firing example. Hovering a round preserves the draft.",
+    "The other mounted gun and opposing ship keep their payloads. A prospective round follows the next successful placement.",
+    "An empty port with no selected gun, plasma selection and defense fitting hide the kinetic ammunition row.",
+    "Three real firing cycles preserve shield depletion, reinforced armor contact and Phase bypass. Cancel restores the exact paused duel."
+  ],
+  "headless": {
+    "passed": 19,
+    "report_sha256": "1338ec1d0a49f578eb953e0d4d4f32f32b87325a7c096476cfb54c89f5e1ec03"
+  },
+  "packaged": {
+    "duel-direct": {
+      "mode": "Simulator",
+      "suite": "Aquila.Input.Simulator",
+      "passed": 1,
+      "report_sha256": "198e6b998488e6417fdbaf597bfe304323d5abcc879c956d031555804a010698",
+      "prior_revisions_intact": true,
+      "journal_identical": true,
+      "resolution": [
+        1280,
+        720
+      ],
+      "rendered_gap_between_round_and_name_px": {
+        "Standard": 13,
+        "Piercing": 27,
+        "Phase": 15
+      }
+    },
+    "duel-menu": {
+      "mode": "Menu",
+      "suite": "Aquila.Input.Simulator",
+      "passed": 1,
+      "report_sha256": "c79d77a32b39b0cbe9feabfe2e5eb6518b390db3b1ad3f8d4f3752cbc312a81c",
+      "prior_revisions_intact": true,
+      "journal_identical": true,
+      "resolution": [
+        1280,
+        720
+      ]
+    },
+    "fitting-compact": {
+      "mode": "Simulator",
+      "suite": "Aquila.Input.Simulator",
+      "passed": 1,
+      "report_sha256": "12871fea75772e1aab357f51d43fd2ff4d05b45b31e5202821bd701005ac339c",
+      "prior_revisions_intact": true,
+      "journal_identical": true,
+      "resolution": [
+        960,
+        540
+      ],
+      "rendered_gap_between_round_and_name_px": {
+        "Standard": 9,
+        "Piercing": 19,
+        "Phase": 11
+      }
+    },
+    "fitting-tall": {
+      "mode": "Simulator",
+      "suite": "Aquila.Input.Simulator",
+      "passed": 1,
+      "report_sha256": "febf413250045848fba351f0c40ca7d94cb91dbdd186a5e961ab080be352b5c1",
+      "prior_revisions_intact": true,
+      "journal_identical": true,
+      "resolution": [
+        1024,
+        768
+      ],
+      "rendered_gap_between_round_and_name_px": {
+        "Standard": 23,
+        "Piercing": 34,
+        "Phase": 25
+      }
+    },
+    "fitting-wide": {
+      "mode": "Simulator",
+      "suite": "Aquila.Input.Simulator",
+      "passed": 1,
+      "report_sha256": "b4bb8c1edcbf02af52fb687587ce120cc475782b781bcb7d3df2aa253e1a4c91",
+      "prior_revisions_intact": true,
+      "journal_identical": true,
+      "resolution": [
+        1920,
+        800
+      ],
+      "rendered_gap_between_round_and_name_px": {
+        "Standard": 15,
+        "Piercing": 30,
+        "Phase": 17
+      }
+    },
+    "arena-observer": {
+      "mode": "Simulator",
+      "suite": "Aquila.Input.Observer",
+      "passed": 1,
+      "report_sha256": "14b8694d84190a5a7c21367c5ba5d3d655c49517b681115b78f2e32f3d614363",
+      "prior_revisions_intact": true,
+      "journal_identical": true,
+      "resolution": [
+        1280,
+        720
+      ]
+    },
+    "desktop": {
+      "mode": "Match",
+      "suite": "Aquila.Input.DesktopCamera",
+      "passed": 1,
+      "report_sha256": "270b26951a8dfd89ea635ad2661c67586bcdc49ac0819a69a1a909901519fc9e",
+      "prior_revisions_intact": true,
+      "journal_identical": true,
+      "resolution": [
+        1280,
+        720
+      ]
+    },
+    "observer": {
+      "mode": "Match",
+      "suite": "Aquila.Input.Observer",
+      "passed": 1,
+      "report_sha256": "9491b2d66bd511cb139abec1d174c2b4d0ddd7b477e82823423c2c77c4f586a7",
+      "prior_revisions_intact": true,
+      "journal_identical": true,
+      "resolution": [
+        1280,
+        720
+      ]
+    },
+    "restored": {
+      "mode": "Match",
+      "suite": "Aquila.Input.Observer",
+      "passed": 1,
+      "report_sha256": "33cd5baa76d4f843fc2d8d22afe08c1e94136f05210eca7fdae90ac6f6fa19a1",
+      "prior_revisions_intact": true,
+      "journal_identical": true,
+      "resolution": [
+        1280,
+        720
+      ]
+    },
+    "bridge": {
+      "mode": "Match",
+      "suite": "Aquila.Input.DesktopCamera",
+      "passed": 1,
+      "report_sha256": "01cdd8cb6e486ab9e00861c3db67ecf01c6d9bd81a908e791c4db231239de270",
+      "prior_revisions_intact": true,
+      "journal_identical": true,
+      "resolution": [
+        1280,
+        720
+      ]
+    },
+    "touch": {
+      "mode": "Match",
+      "suite": "Aquila.Input.TouchMenu",
+      "passed": 1,
+      "report_sha256": "ce1bb580eb363464e5dc2e0b37aed75ab2ebc01f19fcf4b0f5d8021c87793f46",
+      "prior_revisions_intact": true,
+      "journal_identical": true,
+      "resolution": [
+        960,
+        540
+      ]
+    },
+    "touch-observer": {
+      "mode": "Match",
+      "suite": "Aquila.Input.Observer",
+      "passed": 1,
+      "report_sha256": "46fecf9ce7070346dd98c93df327c28f680a638407d37e4881214b6331581add",
+      "prior_revisions_intact": true,
+      "journal_identical": true,
+      "resolution": [
+        960,
+        540
+      ]
+    },
+    "effects": {
+      "mode": "Simulator",
+      "suite": "Aquila.Input.CombatFeedback",
+      "passed": 1,
+      "report_sha256": "0c59f603b6d79bf0f19b8c6f154fcc846a0dc0241afe298b16a21a4c340fd16b",
+      "prior_revisions_intact": true,
+      "journal_identical": true,
+      "resolution": [
+        1280,
+        720
+      ]
+    }
+  },
+  "package": {
+    "executable": ".runtime/round-models-r136/final/Windows/Aquila/Binaries/Win64/Aquila.exe",
+    "sha256": "3b67ea2c97ac11702ffb1f9201bbbc8d5506a4ebf1eac392951752dbf0b72620",
+    "prepare_log_sha256": "1b3883db0f44c0068e39a446eb27229001fa93c27df5508c55bedb431969894f",
+    "full_cook_log_sha256": "3f07f47d51d099650e4e035263b0a6ab163b13198f13c36e92e813fa906e5775",
+    "prepared_meshes": {
+      "SM_StandardRound": {
+        "bytes": 19129,
+        "sha256": "e289a851ae485890b5f5708ade7113a3ece612c3892d07cb5f5ba08d86cccaa5"
+      },
+      "SM_PiercingRound": {
+        "bytes": 17122,
+        "sha256": "0a45d141edae62c065a77b5cb1888da2e8be0a3d49f11bfb2756545c8d29d1b8"
+      },
+      "SM_PhaseRound": {
+        "bytes": 21464,
+        "sha256": "ac944ae3b9e504dedf8710861c2c8afb8d176c2756cc183402f5ff0d28e03801"
+      }
+    }
+  },
+  "catalog": {
+    "scope": "Permitted Unreal 5.7 material-slot catalog entry. Source and packaged rendering tested on 5.8.4.",
+    "citation": {
+      "kind": "source",
+      "mode": "passage",
+      "version_id": "sha256:1e38faaed7738f04b6437a34d1eb22c3c6c2bdea5a9c03839802bda25f73f36f",
+      "byte_end": 129415,
+      "record_id": "s_d6b64beb4597852b1baa8699c39beb2201239f947a8cc2402f7a86bed5e45e6d",
+      "byte_start": 127434
+    }
+  },
+  "media": {
+    "r136-round-selection.png": {
+      "sha256": "051433ab752122ccbf41671c3ce17199c21288d69aaac5e65e6e9f661f2aca87",
+      "size": [
+        1280,
+        720
+      ],
+      "source": "Unmodified packaged fitting screen with Phase selected."
+    },
+    "r136-round-models.mp4": {
+      "sha256": "a1a07169732336cab2dbb2c3a53f30722967aacdd5c911a092dfed07d6a19b6a",
+      "size": [
+        1280,
+        720
+      ],
+      "frames": 175,
+      "fps": 20,
+      "seconds": 8.75,
+      "frames_by_payload": {
+        "Standard": 62,
+        "Piercing": 62,
+        "Phase": 51
+      },
+      "source": "Three successive firing cycles recorded from the packaged fitting screen."
+    }
+  },
+  "shortcut": {
+    "checked_utc": "2026-11-24T02:56:32.5364933Z",
+    "shortcut": "Aquila Combat Simulator",
+    "target": ".runtime/round-models-r136/final/Windows/Aquila.exe",
+    "kept_original_arguments": true,
+    "desktop_save_hashes_identical": true,
+    "owner_processes": 0,
+    "owner_input_injected": false
+  },
+  "journals": {
+    "before_utc": "2026-11-24T02:31:25.487066+00:00",
+    "after_utc": "2026-11-24T02:56:30.433244+00:00",
+    "sequence": 151681,
+    "parent": 151680,
+    "phase": "Failed",
+    "helm": "Hold",
+    "tip_sha256": "f52f3ea0d9bfa957aced3415d6ce677b495ef598fa7d1020f39c4414882e303b",
+    "parent_sha256": "8dc85d4ba7e4d4adc0a19fd2e11c2d22a8ada62a42d7d6cdae5258490e9bf43f",
+    "desktop_revision_count": 1,
+    "all_hashes_identical": true
+  }
+}

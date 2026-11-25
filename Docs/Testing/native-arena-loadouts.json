@@ -1,0 +1,215 @@
+{
+  "round": 125,
+  "verified_utc": "2026-11-23T04:45:35.828954+00:00",
+  "engine": "Epic Launcher Unreal 5.8.4 CL 58902052. Local Windows Development package.",
+  "launcher": {
+    "path": ".runtime/arena-loadouts-r125/playtest/Windows/Aquila.exe",
+    "sha256": "b4ff849eeca265764669f570a56d9f64907a26a48319e6dbf72e2856427aade9"
+  },
+  "runtime": {
+    "path": ".runtime/arena-loadouts-r125/playtest/Windows/Aquila/Binaries/Win64/Aquila.exe",
+    "sha256": "a73db450044c7485fef5fa8191c5924cc3a1404457a0cb49658f7bd9255ea42b"
+  },
+  "headless": {
+    "path": ".runtime/arena-loadouts-r125/headless-final/index.json",
+    "sha256": "30c0c16b80205999aa89fb43137a7feaedbf88a3b18b047b31e6f282c9589a75",
+    "passed": 14,
+    "tests": [
+      "Aquila.Combat.BothShipLoadouts",
+      "Aquila.Combat.FittedShieldGeometry",
+      "Aquila.Combat.FrameRateAndHold",
+      "Aquila.Combat.ImpactSurfacesAndDestruction",
+      "Aquila.Combat.SwitchWithRoundsInFlight",
+      "Aquila.Combat.TravelAndArmor",
+      "Aquila.Expedition.CommandsFailureAndPracticeIsolation",
+      "Aquila.Expedition.CompleteLoopAndUpgrade",
+      "Aquila.Expedition.LegacyMigrationAndValidation",
+      "Aquila.Expedition.ResumeAndRewardTransactions",
+      "Aquila.Expedition.UpgradeImpactAndFrameParity",
+      "Aquila.Navigation.ClearanceAndArrival",
+      "Aquila.Save.InterruptionAndConflict",
+      "Aquila.Save.RoundTripMigrationAndRejection"
+    ]
+  },
+  "packaged": {
+    "bridge": {
+      "path": ".runtime/arena-loadouts-r125/check-playtest-bridge-044442617428/report/index.json",
+      "sha256": "90c6cf7bf7e86141a177a1fe3b368c91b6031a1384502a57aeca5981d110e112",
+      "passed": 1,
+      "tests": [
+        "Aquila.Input.DesktopCamera"
+      ],
+      "prior_revision_count": 0,
+      "final_revision_count": 0,
+      "journal_identical": true
+    },
+    "desktop": {
+      "path": ".runtime/arena-loadouts-r125/check-playtest-desktop-044421797315/report/index.json",
+      "sha256": "b07116c2fe312bacb072a1d20fcbb2e94ceb43ba1b200c6de95a0c08c2a73e63",
+      "passed": 1,
+      "tests": [
+        "Aquila.Input.DesktopCamera"
+      ],
+      "prior_revision_count": 0,
+      "final_revision_count": 0,
+      "journal_identical": true
+    },
+    "duel-direct": {
+      "path": ".runtime/arena-loadouts-r125/check-playtest-duel-direct-044355796580/report/index.json",
+      "sha256": "c3a4ab9f8a22133a3ec8ce02228cb46a3dbf4bac53c4560fb8103f322115f440",
+      "passed": 1,
+      "tests": [
+        "Aquila.Input.Simulator.Simulator"
+      ],
+      "prior_revision_count": 2,
+      "final_revision_count": 2,
+      "journal_identical": true
+    },
+    "duel-menu": {
+      "path": ".runtime/arena-loadouts-r125/check-playtest-duel-menu-044414115644/report/index.json",
+      "sha256": "d4500a929857e5b43df3d53a5d8530ce11be937f51afdfc26b367f255b15898a",
+      "passed": 1,
+      "tests": [
+        "Aquila.Input.Simulator.Menu"
+      ],
+      "prior_revision_count": 2,
+      "final_revision_count": 2,
+      "journal_identical": true
+    },
+    "effects": {
+      "path": ".runtime/arena-loadouts-r125/check-playtest-effects-044355813254/report/index.json",
+      "sha256": "8cc1d13d45cf4ff1111567daef4a48b720e513beae6f74197dc128948cf0b7b9",
+      "passed": 1,
+      "tests": [
+        "Aquila.Input.CombatFeedback.BothShips"
+      ],
+      "prior_revision_count": 2,
+      "final_revision_count": 2,
+      "journal_identical": true
+    },
+    "observer": {
+      "path": ".runtime/arena-loadouts-r125/check-playtest-observer-044428806419/report/index.json",
+      "sha256": "e5f08b2f6313bd5ace9050d35b630a8786703a7e599da4ab318955cd018d8a86",
+      "passed": 1,
+      "tests": [
+        "Aquila.Input.Observer.Desktop"
+      ],
+      "prior_revision_count": 0,
+      "final_revision_count": 0,
+      "journal_identical": true
+    },
+    "restored": {
+      "path": ".runtime/arena-loadouts-r125/check-playtest-restored-044435740707/report/index.json",
+      "sha256": "5919d7b10b114a973ca6224e51dc3feeccaaddc0413a5a8c229b933092c0496d",
+      "passed": 1,
+      "tests": [
+        "Aquila.Input.Observer.Desktop"
+      ],
+      "prior_revision_count": 2,
+      "final_revision_count": 2,
+      "journal_identical": true
+    },
+    "touch": {
+      "path": ".runtime/arena-loadouts-r125/check-playtest-touch-044449443474/report/index.json",
+      "sha256": "5a7ecc6958cecc059a8c63d36b97966cb1b59a257e2bf2296ac40b773b79dd68",
+      "passed": 1,
+      "tests": [
+        "Aquila.Input.TouchMenu.RevealAndHide"
+      ],
+      "prior_revision_count": 0,
+      "final_revision_count": 0,
+      "journal_identical": true
+    },
+    "touch-observer": {
+      "path": ".runtime/arena-loadouts-r125/check-playtest-touch-observer-044456351816/report/index.json",
+      "sha256": "ba4f345683f934ad92b1e433e92996c62a2e1f195ec8118c0711c622ee812cb8",
+      "passed": 1,
+      "tests": [
+        "Aquila.Input.Observer.Touch"
+      ],
+      "prior_revision_count": 0,
+      "final_revision_count": 0,
+      "journal_identical": true
+    }
+  },
+  "loadout_rules": {
+    "defaults": {
+      "Resolute": [
+        "Twin burst turrets",
+        "Standard rounds",
+        "Light plating",
+        "Energy shield"
+      ],
+      "Sentinel": [
+        "Kinetic cannon",
+        "Standard rounds",
+        "Reinforced armor",
+        "Energy shield"
+      ]
+    },
+    "coverage": "32 firing cases cover both shooters, both batteries, both rounds, both armor choices and shield overflow or bare hull. Two reinforced ships with standard rounds reached a stalemate.",
+    "packaged_input": "The direct simulator and menu paths used real Slate pointer routing in offscreen test processes. Both fitted ships switched all four slots. A canceled edit kept a paused fight. An open editor held a running fight. Replay restored the chosen fittings.",
+    "outcomes": "The stock standard and piercing trials matched the expedition every frame. With batteries exchanged and shields removed, Sentinel used piercing rounds to defeat reinforced Resolute."
+  },
+  "shield_display": {
+    "actual_ships": "Both existing blockouts have long, low hulls. The renderer fits each hull separately. Scaled test geometry also covered a tall hull and equal dimensions.",
+    "contact": "The incoming line meets the drawn ellipsoid. Flight visuals project to the same surface. The simulation retains its swept spherical contacts.",
+    "frame_counts": {
+      "fitting": 1,
+      "quiet": 1,
+      "shield": 24,
+      "hull": 24,
+      "armor": 24,
+      "sentinel": 62,
+      "resolute": 62
+    },
+    "dimensions": [
+      1280,
+      720
+    ],
+    "media": {
+      "quiet": {
+        "path": "reports/game-direction/media/r125-quiet.png",
+        "sha256": "b5bc90ff2e68ae558c9e095af6995e25689ae94eb7e398a62d42fd037aeeef62",
+        "frame": "quiet-000.png"
+      },
+      "hit": {
+        "path": "reports/game-direction/media/r125-hit.png",
+        "sha256": "4bdc9561bbbe2776f8edb3ef46ec2bb82922b78b6fd9770a162a2f3e8f629e44",
+        "frame": "shield-001.png"
+      },
+      "fitting": {
+        "path": "reports/game-direction/media/r125-fitting.png",
+        "sha256": "82b3558356bfb7a14d90ff59d363199e4a2f708ab0818d9a3adfe41a49d26984",
+        "frame": "fitting-000.png"
+      }
+    },
+    "comparison": {
+      "source": {
+        "path": ".runtime/combat-visuals-r122/check-delivery-effects-040906509956/frames/quiet-000.png",
+        "sha256": "753e3969eeac2c989946f48214da414bb91aa6fbd917b3447a8b836af3aaf17c"
+      },
+      "rows_checked": 510,
+      "idle_rim_pixels_over_prior_space": 4391,
+      "idle_rim_blue_98th_percentile_8bit": 36,
+      "bright_hit_pixels_over_prior_space": 432
+    }
+  },
+  "desktop_shortcut": {
+    "name": "Aquila Combat Simulator",
+    "target_verified": true,
+    "arguments_preserved": true,
+    "same_desktop_revisions": true,
+    "owner_game_input": false,
+    "observed_utc": "2026-11-23T04:45:30.1480494Z"
+  },
+  "expedition_read_only": {
+    "verified_utc": "2026-11-23T04:39:52.642010+00:00",
+    "sequence": 151681,
+    "sha256": "f52f3ea0d9bfa957aced3415d6ce677b495ef598fa7d1020f39c4414882e303b",
+    "parent_matches": true,
+    "phase_value": 6,
+    "order_value": 0
+  },
+  "limits": "Local Windows game and offscreen viewport. Identical proportions for the two present ship blockouts. Physical Galaxy rendering, further hulls and acquisition information remain open."
+}

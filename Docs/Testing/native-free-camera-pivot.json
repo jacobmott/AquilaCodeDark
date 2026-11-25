@@ -1,0 +1,216 @@
+{
+  "report_round": 127,
+  "verified_utc": "2026-11-23T05:56:52.490950+00:00",
+  "engine": "Epic Launcher Unreal 5.8.4 CL 58902052, Win64 Development",
+  "previous": "Free rotation kept a point in space fixed. In the arena its opening position was the midpoint between the ships.",
+  "behavior": "Free yaw and pitch rotate about the eye. A followed ship is the orbit center. Release preserves the current pose. The wheel moves the free eye along its sight line.",
+  "package": {
+    "path": ".runtime/free-camera-r127/playtest/Windows/Aquila/Binaries/Win64/Aquila.exe",
+    "sha256": "65ff806760833a3aef4187b5f70d89fd26a235325d85151f015c6efae34c5480"
+  },
+  "headless": {
+    "succeeded": 14,
+    "path": ".runtime/free-camera-r127/headless/index.json",
+    "sha256": "ba0d75c15dce92d788ef220545c8a41de4a5b9762e34020523b84bc5e41494e6"
+  },
+  "packaged": {
+    "arena-observer": {
+      "path": ".runtime/free-camera-r127/check-playtest-arena-observer-054805591903/report/index.json",
+      "sha256": "291524bf940b41391c4ee9efa31d9947c5dd7c92956d956e7d392aa115f1b601",
+      "test": "Aquila.Input.Observer.Desktop",
+      "old_save_revisions": 2,
+      "previous_save_hashes_intact": true
+    },
+    "bridge": {
+      "path": ".runtime/free-camera-r127/check-playtest-bridge-055051013099/report/index.json",
+      "sha256": "c920b2b144d92cc6736ee6e698f61fd50da788236c89a6081ac13835a4b5196c",
+      "test": "Aquila.Input.DesktopCamera",
+      "old_save_revisions": 0,
+      "previous_save_hashes_intact": true
+    },
+    "desktop": {
+      "path": ".runtime/free-camera-r127/check-playtest-desktop-054805124635/report/index.json",
+      "sha256": "e074acb939bdef83b4f47698f74412f69ee03b2f859adfcd731ca89aee45d2d2",
+      "test": "Aquila.Input.DesktopCamera",
+      "old_save_revisions": 0,
+      "previous_save_hashes_intact": true
+    },
+    "duel-direct": {
+      "path": ".runtime/free-camera-r127/check-playtest-duel-direct-054805591911/report/index.json",
+      "sha256": "c60c67b21e70b79d675873108b75164ca68a057349d6a1f12c5c72ccc7ca2016",
+      "test": "Aquila.Input.Simulator.Simulator",
+      "old_save_revisions": 2,
+      "previous_save_hashes_intact": true
+    },
+    "duel-menu": {
+      "path": ".runtime/free-camera-r127/check-playtest-duel-menu-055034110774/report/index.json",
+      "sha256": "5e1fe0ddcd4947a1d404cf40e5e0956e976d3d94beeb3988cb02c3dfa181e8da",
+      "test": "Aquila.Input.Simulator.Menu",
+      "old_save_revisions": 2,
+      "previous_save_hashes_intact": true
+    },
+    "effects": {
+      "path": ".runtime/free-camera-r127/check-playtest-effects-055130705354/report/index.json",
+      "sha256": "aa8c411638bfb0baa8385c434fd48987a9ee86075c0dc3f72e1bd9c3adc42f85",
+      "test": "Aquila.Input.CombatFeedback.BothShips",
+      "old_save_revisions": 2,
+      "previous_save_hashes_intact": true
+    },
+    "observer": {
+      "path": ".runtime/free-camera-r127/check-playtest-observer-054959493595/report/index.json",
+      "sha256": "a15422052572772f7cb100daa95c4f4d285062f9c79da6a83e656383ba6f3689",
+      "test": "Aquila.Input.Observer.Desktop",
+      "old_save_revisions": 0,
+      "previous_save_hashes_intact": true
+    },
+    "restored": {
+      "path": ".runtime/free-camera-r127/check-playtest-restored-055042656489/report/index.json",
+      "sha256": "e026765431d0dbae8c5e3b4bff089797aede59a26d8e11e8e051d50deaef0371",
+      "test": "Aquila.Input.Observer.Desktop",
+      "old_save_revisions": 2,
+      "previous_save_hashes_intact": true
+    },
+    "touch": {
+      "path": ".runtime/free-camera-r127/check-playtest-touch-055059442927/report/index.json",
+      "sha256": "53a864fe39098ef5e854ce7fa311159d6b0bfcccf0cd5633bd48be085ee16ccb",
+      "test": "Aquila.Input.TouchMenu.RevealAndHide",
+      "old_save_revisions": 0,
+      "previous_save_hashes_intact": true
+    },
+    "touch-observer": {
+      "path": ".runtime/free-camera-r127/check-playtest-touch-observer-055108370656/report/index.json",
+      "sha256": "5457164a5e338b0392e19701415093b661e88e57d555bb61bca50c62aebf1da7",
+      "test": "Aquila.Input.Observer.Touch",
+      "old_save_revisions": 0,
+      "previous_save_hashes_intact": true
+    }
+  },
+  "measured_motion": {
+    "arena-observer": {
+      "yaw_degrees": 90.0,
+      "pitch_degrees": 12.0,
+      "eye_travel_meters": 0.0
+    },
+    "observer": {
+      "yaw_degrees": 90.0,
+      "pitch_degrees": 12.0,
+      "eye_travel_meters": 0.0
+    },
+    "restored": {
+      "yaw_degrees": 90.0,
+      "pitch_degrees": 12.0,
+      "eye_travel_meters": 0.0
+    }
+  },
+  "camera_test_method": "Routed mouse drags in disposable Windows instances. Reconstructed the eye in simulation meters from the known ship position and the rendered eye-to-ship offset. Tested both mouse buttons, follow radius, detach, bridge controls and wheel travel.",
+  "comparison": {
+    "frame_count": 200,
+    "prior_round": 126,
+    "scene_top_rows": 510,
+    "matched_views": {
+      "quiet-000.png": {
+        "current": {
+          "path": ".runtime/free-camera-r127/check-playtest-effects-055130705354/frames/quiet-000.png",
+          "sha256": "140eb266c461a0e0c5a0a333d135700aa24ab502977348ad13fcd265f88045bc"
+        },
+        "reference": {
+          "path": ".runtime/mesh-shield-r126/check-arena-effects-051842271284/frames/quiet-000.png",
+          "sha256": "3e4faac096baabf4f355f0a56bafa1f84f548290b6ea455260c1e29ceb063e9f"
+        },
+        "fraction_matching_within_eight_rgb_levels": 0.999884
+      },
+      "shield-000.png": {
+        "current": {
+          "path": ".runtime/free-camera-r127/check-playtest-effects-055130705354/frames/shield-000.png",
+          "sha256": "c65e7c9ec195e414bbd131cdec89fef5dc47c09ac055014f708856c78aaf35f5"
+        },
+        "reference": {
+          "path": ".runtime/mesh-shield-r126/check-arena-effects-051842271284/frames/shield-000.png",
+          "sha256": "7b18c07f21ae1b4797571ac8f605e29d0d47fc59aab3db319f915a3e029727e5"
+        },
+        "fraction_matching_within_eight_rgb_levels": 0.999874
+      },
+      "oval-rest.png": {
+        "current": {
+          "path": ".runtime/free-camera-r127/check-playtest-effects-055130705354/frames/oval-rest.png",
+          "sha256": "9f2c58059d5824ff86e82cd5e9f269619f4a4308aabfa9368a92d3c1788747a1"
+        },
+        "reference": {
+          "path": ".runtime/mesh-shield-r126/check-arena-effects-051842271284/frames/oval-rest.png",
+          "sha256": "b3308fdc6cebabf650d088ebe3496afa56dfd1c68d6b9eca08299f79a5df6e87"
+        },
+        "fraction_matching_within_eight_rgb_levels": 0.999801
+      },
+      "oval-hit.png": {
+        "current": {
+          "path": ".runtime/free-camera-r127/check-playtest-effects-055130705354/frames/oval-hit.png",
+          "sha256": "a8108d240cf09e3b8dfe3512db3cde608dd86df9b06bf7a75fc76f699e8ba2fe"
+        },
+        "reference": {
+          "path": ".runtime/mesh-shield-r126/check-arena-effects-051842271284/frames/oval-hit.png",
+          "sha256": "0757f337a51e0465e0132a0e857e116ae287a4b96997080f612e1c58bb95c7b4"
+        },
+        "fraction_matching_within_eight_rgb_levels": 0.999861
+      }
+    }
+  },
+  "earlier_test_attempts": [
+    {
+      "name": "effects",
+      "errors": [
+        [
+          "Aquila.Input.CombatFeedback.BothShips",
+          "Timed out waiting for the shield surface to render."
+        ]
+      ],
+      "report": {
+        "path": ".runtime/free-camera-r127/check-playtest-effects-054805606085/report/index.json",
+        "sha256": "955c859bcbc411d87b8e95a100c0e90a7abcfb7dac87b64ec15bd06018bcf2e9"
+      }
+    }
+  ],
+  "direct_arena": {
+    "first_hit_seconds": 4.13,
+    "render": {
+      "path": ".runtime/free-camera-r127/preview/preview.png",
+      "sha256": "d75ac9bfc70ec5083cd0d6c6786fade0e52e433c42f34f3a440528723a491095"
+    },
+    "identical_disposable_revisions": 2,
+    "injected_input": false,
+    "first_preview_shutdown": "Requested a normal exit after capture. Its offscreen renderer was stopped during graphics shutdown.",
+    "solo_repeat": {
+      "normal_process_exit": true,
+      "verified": {
+        "path": ".runtime/free-camera-r127/preview-alone/summary.json",
+        "sha256": "683dc89a23f959ce91f9866cefb0467b526521eac546e484e242ce7dadca73a1"
+      },
+      "render": {
+        "path": ".runtime/free-camera-r127/preview-alone/preview.png",
+        "sha256": "6ddc32fe68857dba2ab700c8db00286900c14189f0e948b25bb49446e94a8664"
+      }
+    }
+  },
+  "shortcut": {
+    "checked_utc": "2026-11-23T05:53:08.5906881Z",
+    "shortcut": "Aquila Combat Simulator",
+    "target": ".runtime/free-camera-r127/playtest/Windows/Aquila.exe",
+    "kept_original_arguments": true,
+    "desktop_save_hashes_identical": true,
+    "owner_processes": 0,
+    "owner_input_injected": false
+  },
+  "prior_journals": {
+    "utc": "2026-11-23T05:43:01.985076+00:00",
+    "sequence": 151681,
+    "parent": 151680,
+    "linked": true,
+    "phase": 6,
+    "helm": 0,
+    "tip_sha256": "f52f3ea0d9bfa957aced3415d6ce677b495ef598fa7d1020f39c4414882e303b",
+    "parent_sha256": "8dc85d4ba7e4d4adc0a19fd2e11c2d22a8ada62a42d7d6cdae5258490e9bf43f",
+    "desktop": {
+      "AC55FDEC-47AC-AEB5-78F6-8B998E45A5C3.json": "a9ba65631bc184c83269f33c41bd4e84562158e87e7b2bff0a40fbf8b06d16cc"
+    }
+  },
+  "scope": "Local Windows test. Touch checks used desktop emulation. No physical Galaxy test."
+}

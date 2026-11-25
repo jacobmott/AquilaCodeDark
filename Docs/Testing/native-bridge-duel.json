@@ -1,0 +1,141 @@
+{
+  "round": 167,
+  "local_date": "2026-11-24",
+  "checked_utc": "2026-11-25T05:47:53.905743+00:00",
+  "approval": "reports/game-direction/inbox/20261125T052555Z.json",
+  "engine": "Launcher Unreal 5.8.4 CL 58902052",
+  "windows_executable_sha256": "4c123cc22e32e9e2d30c6c276b86c33f8f75745f53e6192aefd6e3085020aabc",
+  "launch": {
+    "checked_utc": "2026-11-25T05:47:00.7706322Z",
+    "window": "Aquila - Bridge Duel (64-bit Development PCD3D_SM5)",
+    "responding": true,
+    "visible_windows_before": 0,
+    "mode": "Simulator",
+    "entry": "Fitting",
+    "start": "Start duel aboard",
+    "target": ".runtime/bridge-duel-r167/release/Windows/Aquila.exe",
+    "shortcuts": [
+      "Aquila Combat Simulator"
+    ],
+    "shortcut_modes_preserved": true,
+    "input_injected": false,
+    "match_loaded": false
+  },
+  "packaged_checks": {
+    "duel-bridge": {
+      "suite": "Aquila.Input.DuelBridge.Window",
+      "report_sha256": "1cad5e5f5a9a92c28792c23075dc13a5276ea88f25b55c04ac71e0e14bad7049",
+      "passed": 1,
+      "rendered_frames": 4,
+      "disposable_journal_identical": true,
+      "opened_disposable_match": false,
+      "resolution": [
+        1280,
+        720
+      ]
+    },
+    "duel-wide": {
+      "suite": "Aquila.Input.DuelBridge.Window",
+      "report_sha256": "5b6e9c2c03fd393d0281a1312392e112e45db65deab6493648941dcaf1573ac4",
+      "passed": 1,
+      "rendered_frames": 4,
+      "disposable_journal_identical": true,
+      "opened_disposable_match": false,
+      "resolution": [
+        1440,
+        810
+      ]
+    },
+    "duel-menu": {
+      "suite": "Aquila.Input.Simulator.Menu",
+      "report_sha256": "6a0c3e1beb3bd6ef7164bddb450940ed64d2b55ad66aaab55603cb72630d0db4",
+      "passed": 1,
+      "rendered_frames": 0,
+      "disposable_journal_identical": true,
+      "opened_disposable_match": true
+    },
+    "observer": {
+      "suite": "Aquila.Input.Observer.Desktop",
+      "report_sha256": "d80c57408ea5a5138ebb8bd2c2a318b249699df95617e62fab5ce048f638d917",
+      "passed": 1,
+      "rendered_frames": 0,
+      "disposable_journal_identical": true,
+      "opened_disposable_match": false
+    },
+    "watch": {
+      "suite": "Aquila.Input.Boarding.BridgeObserver",
+      "report_sha256": "d29e4030b8c65fd6a1e26df3393f0cc47f2406a7172c6573d3e0a66f58c0da01",
+      "passed": 1,
+      "rendered_frames": 12,
+      "disposable_journal_identical": true,
+      "opened_disposable_match": false
+    }
+  },
+  "journals": {
+    "revision": 151681,
+    "parent": 151680,
+    "revisions": 151681,
+    "phase": "Failed",
+    "helm": "Hold",
+    "before_prelaunch_after_identical": true,
+    "inventory_sha256": "1ac8f2ed95baab6e94035c163d63a423fb7ff197d0a8a9fda8d8baa6cb4eca6d",
+    "tip_sha256": "f52f3ea0d9bfa957aced3415d6ce677b495ef598fa7d1020f39c4414882e303b",
+    "parent_sha256": "8dc85d4ba7e4d4adc0a19fd2e11c2d22a8ada62a42d7d6cdae5258490e9bf43f",
+    "desktop_revisions": 1,
+    "desktop_sha256": [
+      "a9ba65631bc184c83269f33c41bd4e84562158e87e7b2bff0a40fbf8b06d16cc"
+    ]
+  },
+  "editor_checks": {
+    "passed": 20,
+    "report_sha256": "a1f587b595a48b2653efe90b79632c2cc4383de886e660c00380cd642f199d81",
+    "suites": [
+      "Aquila.Combat.BothShipLoadouts",
+      "Aquila.Combat.FittedShieldGeometry",
+      "Aquila.Combat.FittingPreview",
+      "Aquila.Combat.FrameRateAndHold",
+      "Aquila.Combat.ImpactSurfacesAndDestruction",
+      "Aquila.Combat.InterceptionAfterDestruction",
+      "Aquila.Combat.LiveFitting",
+      "Aquila.Combat.MountInventoryAndInterception",
+      "Aquila.Combat.PhaseRounds",
+      "Aquila.Combat.ReserveCapacitor",
+      "Aquila.Combat.SwitchWithRoundsInFlight",
+      "Aquila.Combat.TravelAndArmor",
+      "Aquila.Expedition.CommandsFailureAndPracticeIsolation",
+      "Aquila.Expedition.CompleteLoopAndUpgrade",
+      "Aquila.Expedition.LegacyMigrationAndValidation",
+      "Aquila.Expedition.ResumeAndRewardTransactions",
+      "Aquila.Expedition.UpgradeImpactAndFrameParity",
+      "Aquila.Navigation.ClearanceAndArrival",
+      "Aquila.Save.InterruptionAndConflict",
+      "Aquila.Save.RoundTripMigrationAndRejection"
+    ]
+  },
+  "tracked_round": {
+    "id": 9,
+    "incoming_from": "Glacier Tongue",
+    "ammunition": "Piercing",
+    "target": "Delta Tree",
+    "impact_serial": 10,
+    "shield_before": 100.0,
+    "shield_after": 99.65,
+    "paused_battle_seconds": 6.317,
+    "contact_pixel_at_bridge": [
+      490.5,
+      389.2
+    ],
+    "round_id_position_clock_unchanged_on_exit": true,
+    "same_paused_hit_and_shield_on_reentry": true,
+    "returned_footing_and_heading": true,
+    "no_weapon_input": true,
+    "fresh_replay_with_both_fittings": true
+  },
+  "frames": {
+    "arena-shield.png": "acb55f0ed0acb326ddf3ee809b12626524f27958fe021dc81949de2a815c00d8",
+    "bridge-shield.png": "55a71329bb06419fa09b42c5099b34b5188d7e34bb5e80068ca13974e8159ebc",
+    "bridge-volley.png": "760df54a0b3919b95fe0e4cebbc56d3450d4efa4d49d63b4ac1d4dd0295e0f68",
+    "fitting.png": "d52c381d781ee6bf4a9f8462053638e4907fa17cd29731ab0327c8ceae575d5b"
+  },
+  "visual_review": "Fitting and exterior controls fit the 1280 by 720 window. The glazing overlooks the bow and fitted turrets. The window sill brightens on Delta Tree’s shield hit. Some contacts can fall behind the hull or a window post."
+}

@@ -1,0 +1,43 @@
+// The direction of each recent strike is packed with its remaining presentation time.
+float3 n = normalize(SpherePosition);
+float3 axes = max(Axes, 0.001);
+float3 normal = normalize(n / axes);
+float3 view = normalize(Eye - n * axes);
+float rim = pow(1 - saturate(abs(dot(normal, view))), 3.2);
+// Faint cell edges are energized locally as the wave crosses the surface.
+struct ShieldGrid
+{
+    float edges(float2 uv)
+    {
+        float2 spacing = float2(1, 1.732);
+        float2 a = (frac(uv / spacing + 0.5) - 0.5) * spacing;
+        float2 b = (frac(uv / spacing) - 0.5) * spacing;
+        float2 cell = abs(dot(a,a) < dot(b,b) ? a : b);
+        return smoothstep(0.45, 0.49, max(cell.x, dot(cell, float2(0.5,0.866))));
+    }
+};
+ShieldGrid grid;
+float3 weight = pow(abs(n), 6);
+weight /= max(0.001, weight.x + weight.y + weight.z);
+float cells = dot(weight, float3(grid.edges(n.zy*13), grid.edges(n.xz*13), grid.edges(n.xy*13)));
+float3 strikes[3] = { HitA, HitB, HitC };
+// A thin, cool rim reads against space while the hull stays visible through the powered shield.
+float3 light = float3(0.035, 0.22, 0.44) * (0.0025 + 0.055 * rim) * IdleGain;
+for (int i = 0; i < 3; ++i)
+{
+    float magnitude = length(strikes[i]);
+    if (magnitude <= 1) continue;
+    float age = saturate(2 - magnitude);
+    float fade = 1 - smoothstep(0.20, 1, age);
+    float d = length(n - strikes[i] / magnitude);
+    float wave = 0.04 + age * 1.55;
+    float front = exp(-44 * abs(d - wave));
+    float wake = exp(-33 * abs(d - max(0, wave - 0.16)));
+    float hot = exp(-24 * d * d - 6 * age);
+    float wash = exp(-4 * d * d) * (1 - age);
+    float3 surface = float3(0.012, 0.25, 0.92) * (0.007 + 0.91 * rim + 0.18 * wash);
+    surface += float3(0.05, 0.9, 1.55) * (front + 0.20 * wake + cells * (0.30 * wash + 0.19 * front));
+    surface += float3(0.85, 1.5, 2.0) * hot;
+    light = max(light, surface * fade);
+}
+return light;

@@ -277,7 +277,7 @@ export class PracticeBattle {
   reason(frame: CombatFrame): string {
     if (this.status === 'victory') return 'Target disabled. Practice complete.';
     if (this.status === 'defeat')
-      return 'Resolute disabled. Reset to try again.';
+      return 'Delta Tree disabled. Reset to try again.';
     if (this.mode === 'hold')
       return 'Holding new shots. Rounds already in flight continue.';
     if (this.range(frame) > PRACTICE_RANGE) return 'Target beyond 60 km range.';

@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hull review · Aquila</title>
+  <style>
+    :root{color-scheme:dark;font-family:"Segoe UI",system-ui,sans-serif;color:#e8edf0;background:#10171c}
+    *{box-sizing:border-box}body{margin:0}main{max-width:1800px;margin:auto;padding:clamp(14px,3vw,46px)}
+    a{color:#b0dfe3;text-underline-offset:.22em}header,nav,.tools,.ship-nav{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+    header{justify-content:space-between;margin:22px 0 20px}h1{font-size:clamp(24px,4vw,48px);font-weight:560;letter-spacing:-.035em;margin:0}
+    .ship-nav a,button{font:inherit;font-size:14px;background:#19232c;color:#e0ebee;border:1px solid #405463;border-radius:6px;padding:8px 13px;text-decoration:none;cursor:pointer}
+    .ship-nav a[aria-current="page"],button[aria-pressed="true"]{background:#c5e8e7;color:#112829;border-color:#c5e8e7}
+    button:focus-visible,a:focus-visible,canvas:focus-visible{outline:3px solid #9ddeda;outline-offset:3px}
+    .comparison{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(10px,1.2vw,20px)}
+    figure{margin:0;border:1px solid #32414c;border-radius:9px;overflow:hidden;background:#0b1118}
+    figcaption{padding:10px 14px;background:#1b252e;font-size:14px;font-weight:600}
+    .frame{aspect-ratio:1;position:relative;overflow:hidden}
+    .frame img,.frame canvas{display:block;width:100%;height:100%;object-fit:contain;position:absolute;inset:0}
+    canvas{touch-action:none;cursor:grab}canvas:active{cursor:grabbing}
+    .tools{margin:14px 0;justify-content:space-between}.tools div{display:flex;flex-wrap:wrap;gap:7px}
+    #help{font-size:14px;color:#bdcbd0;min-height:1.3em} [hidden]{display:none!important}
+    @media(min-width:661px){.comparison{max-width:min(100%,max(630px,calc(200svh - 480px)));margin-inline:auto}}
+    @media(max-width:660px){main{padding:14px}header{margin:15px 0}.comparison{grid-template-columns:1fr}.frame{max-height:60svh}.tools{align-items:flex-start}}
+  </style>
+</head>
+<body>
+  <main>
+    <nav><a href="./">Back to the ship report</a></nav>
+    <header><h1 id="title">Hull review</h1><nav class="ship-nav" aria-label="Ship">
+      <a href="?ship=delta-tree" data-ship="delta-tree">Delta Tree</a>
+      <a href="?ship=glacier-tongue" data-ship="glacier-tongue">Glacier Tongue</a>
+    </nav></header>
+    <div class="tools"><div id="views" role="group" aria-label="Model view">
+      <button id="reset" type="button">Gallery angle</button><button id="stern" type="button">Stern view</button>
+      <button id="clay" type="button" aria-pressed="false">Plain gray</button>
+    </div><a id="revision" hidden></a><a id="download" download>Download 3D model</a></div>
+    <div class="comparison">
+      <figure><figcaption>Original artwork</figcaption><div class="frame"><img id="original" alt="Selected gallery artwork"></div></figure>
+      <figure><figcaption id="model-label">Revised model</figcaption><div class="frame" id="stage">
+        <img id="fallback" alt="Revised hull seen from the gallery angle">
+      </div></figure>
+    </div>
+    <p id="help" role="status">Loading the model…</p>
+  </main>
+  <script type="module" src="media/r174-hull-viewer.js"></script>
+</body>
+</html>

@@ -1,0 +1,237 @@
+{
+  "round": 137,
+  "verified_utc": "2026-11-24T03:13:11.063517+00:00",
+  "engine": "Epic Launcher Unreal 5.8.4 CL 58902052",
+  "scope": "Selected ship in the local Windows Combat Simulator. Physical Galaxy fitting remains untested.",
+  "behavior": "Clear fitting empties all mounts, resets mounted and spare turret bodies, removes plating, shield and reserve, and retains the ship\u2019s inventory size.",
+  "checks": [
+    "Physical button in turret, armor and shield views. Repeated clearing preserves the exact stock count.",
+    "Cleared a fitted thirty-body Resolute and a one-body Sentinel. Each retained five bare hull surfaces and no fitted mesh or visible shield.",
+    "Pinned gun, prospective ammunition and practice target leave after clearing. Clicking an empty port requires a fresh placement choice.",
+    "A returned turret fits with standard rounds and no chip. A shield and capacitor can be mounted on a bare hull. Armor can be fitted again.",
+    "Clearing Sentinel preserves Resolute\u2019s pending armor change and all its guns. Cancel also restores the exact paused duel and gear.",
+    "Start and Replay preserve an unarmed ship. Incoming fire damages its exposed hull. Starting and replaying two empty ships produces no shots.",
+    "Legacy starter configurations retain their stock after repeated clears. Mounted and spare items lose their prior settings."
+  ],
+  "headless": {
+    "passed": 19,
+    "report_sha256": "ab6e2965ba836ea504abf20dedadca6c183ca1bcfc6a03b92897794932964702"
+  },
+  "packaged": {
+    "duel-direct": {
+      "mode": "Simulator",
+      "suite": "Aquila.Input.Simulator",
+      "passed": 1,
+      "report_sha256": "d56d3b51ffeeeac87be520f1428a54afc2d84e2ef4795964c230faa22ddb6735",
+      "prior_revisions_intact": true,
+      "journal_identical": true,
+      "resolution": [
+        1280,
+        720
+      ],
+      "changed_hull_area_pixels": 95747
+    },
+    "duel-menu": {
+      "mode": "Menu",
+      "suite": "Aquila.Input.Simulator",
+      "passed": 1,
+      "report_sha256": "2d4ad0f310706e497ebc54d683a3e82ef6cb1e146707ab2071d6793823f842ac",
+      "prior_revisions_intact": true,
+      "journal_identical": true,
+      "resolution": [
+        1280,
+        720
+      ]
+    },
+    "fitting-compact": {
+      "mode": "Simulator",
+      "suite": "Aquila.Input.Simulator",
+      "passed": 1,
+      "report_sha256": "2abe1e04df9c73465c73deb7d40543ee2799427654a88b3a875015fe6e0e0713",
+      "prior_revisions_intact": true,
+      "journal_identical": true,
+      "resolution": [
+        960,
+        540
+      ],
+      "changed_hull_area_pixels": 53161
+    },
+    "fitting-tall": {
+      "mode": "Simulator",
+      "suite": "Aquila.Input.Simulator",
+      "passed": 1,
+      "report_sha256": "883aa59769a20b1bac5af70e38a33073eb86fea1f4207a2e286bb5a8ccda5d0c",
+      "prior_revisions_intact": true,
+      "journal_identical": true,
+      "resolution": [
+        1024,
+        768
+      ],
+      "changed_hull_area_pixels": 69369
+    },
+    "fitting-wide": {
+      "mode": "Simulator",
+      "suite": "Aquila.Input.Simulator",
+      "passed": 1,
+      "report_sha256": "a00da16cd6076b03f5224b35cc7a104c2b9535cefb94ede72cf1a64e46a1dac4",
+      "prior_revisions_intact": true,
+      "journal_identical": true,
+      "resolution": [
+        1920,
+        800
+      ],
+      "changed_hull_area_pixels": 134505
+    },
+    "arena-observer": {
+      "mode": "Simulator",
+      "suite": "Aquila.Input.Observer",
+      "passed": 1,
+      "report_sha256": "e84018c70758b5ce0494a1d3acdf9af47962d73b501d50b2636742c25dc0500c",
+      "prior_revisions_intact": true,
+      "journal_identical": true,
+      "resolution": [
+        1280,
+        720
+      ]
+    },
+    "desktop": {
+      "mode": "Match",
+      "suite": "Aquila.Input.DesktopCamera",
+      "passed": 1,
+      "report_sha256": "5c48e4c9cf216dcf62a2b671ce064d4faef40bf68e008307bfcf02c44810a9c8",
+      "prior_revisions_intact": true,
+      "journal_identical": true,
+      "resolution": [
+        1280,
+        720
+      ]
+    },
+    "observer": {
+      "mode": "Match",
+      "suite": "Aquila.Input.Observer",
+      "passed": 1,
+      "report_sha256": "356d8e8d96597f3294e769d355e3d7e14a7582edc99655b46069fa34722ae4b7",
+      "prior_revisions_intact": true,
+      "journal_identical": true,
+      "resolution": [
+        1280,
+        720
+      ]
+    },
+    "restored": {
+      "mode": "Match",
+      "suite": "Aquila.Input.Observer",
+      "passed": 1,
+      "report_sha256": "e49aa33ef410ddfeaa4e37217c4aa8b9d9a3af6baba4d7fe3b8efd6f5c375f54",
+      "prior_revisions_intact": true,
+      "journal_identical": true,
+      "resolution": [
+        1280,
+        720
+      ]
+    },
+    "bridge": {
+      "mode": "Match",
+      "suite": "Aquila.Input.DesktopCamera",
+      "passed": 1,
+      "report_sha256": "a71f0e0b6b0eb74e6d54cbd4465471a315763543e8af2100df1cc1e9a0f92255",
+      "prior_revisions_intact": true,
+      "journal_identical": true,
+      "resolution": [
+        1280,
+        720
+      ]
+    },
+    "touch": {
+      "mode": "Match",
+      "suite": "Aquila.Input.TouchMenu",
+      "passed": 1,
+      "report_sha256": "6d5a6644cd48404a7daaff9784db3b607c777fefc76f09affb1f688f565d279a",
+      "prior_revisions_intact": true,
+      "journal_identical": true,
+      "resolution": [
+        960,
+        540
+      ]
+    },
+    "touch-observer": {
+      "mode": "Match",
+      "suite": "Aquila.Input.Observer",
+      "passed": 1,
+      "report_sha256": "f5e93b3c48d56093f7b0981de2c8186fcf04161ceafd56c4462acf69c009af14",
+      "prior_revisions_intact": true,
+      "journal_identical": true,
+      "resolution": [
+        960,
+        540
+      ]
+    },
+    "effects": {
+      "mode": "Simulator",
+      "suite": "Aquila.Input.CombatFeedback",
+      "passed": 1,
+      "report_sha256": "77a8b978c61232caa1408c49d064b269331b54184d11b2175a1150935f2b09d5",
+      "prior_revisions_intact": true,
+      "journal_identical": true,
+      "resolution": [
+        1280,
+        720
+      ]
+    }
+  },
+  "package": {
+    "executable": ".runtime/clear-fitting-r137/final/Windows/Aquila/Binaries/Win64/Aquila.exe",
+    "sha256": "b2cc81ec75e64963fb636a18cb942542c3bba719ec38b93d97d8048cfd73270d",
+    "full_cook_log_sha256": "bdf7d745b763379e5a7479c821e73bb01e359e50b6f3ecd9c94978d8764f2511"
+  },
+  "catalog": {
+    "scope": "Permitted Unreal 5.7 Slate layout and attribute catalog entry. Click routing verified on the installed 5.8.4 package.",
+    "citation": {
+      "kind": "source",
+      "mode": "passage",
+      "record_id": "s_c310e7d3ea6e8c17cc121595d58bd3da161ab56f13b793df0653335950fd2e7c",
+      "version_id": "sha256:4fd7c9fcd6e7f4466e35e6a1300f6a1ed76eff814ad8b3918943d5c10f4d835f",
+      "byte_start": 24203,
+      "byte_end": 26199
+    }
+  },
+  "media": {
+    "r137-full-fitting.png": {
+      "sha256": "74043615d50511757e2bbc84fd71f7e785b2bed4b41eeaf5a9bd72bc10f2fdff",
+      "size": [
+        1280,
+        720
+      ],
+      "source": "Unmodified packaged Windows fitting view."
+    },
+    "r137-clear-fitting.png": {
+      "sha256": "be847c307e14aa3922fac8070d502bbd04d416836b0526dca9eb50c5d9b20191",
+      "size": [
+        1280,
+        720
+      ],
+      "source": "Unmodified packaged Windows fitting view."
+    }
+  },
+  "shortcut": {
+    "checked_utc": "2026-11-24T03:13:10.3854592Z",
+    "shortcut": "Aquila Combat Simulator",
+    "target": ".runtime/clear-fitting-r137/final/Windows/Aquila.exe",
+    "kept_original_arguments": true,
+    "desktop_save_hashes_identical": true,
+    "owner_processes": 0,
+    "owner_input_injected": false
+  },
+  "journals": {
+    "before_utc": "2026-11-24T03:05:03.141847+00:00",
+    "after_utc": "2026-11-24T03:13:07.950536+00:00",
+    "sequence": 151681,
+    "parent": 151680,
+    "phase": "Failed",
+    "helm": "Hold",
+    "tip_sha256": "f52f3ea0d9bfa957aced3415d6ce677b495ef598fa7d1020f39c4414882e303b",
+    "parent_sha256": "8dc85d4ba7e4d4adc0a19fd2e11c2d22a8ada62a42d7d6cdae5258490e9bf43f",
+    "desktop_revision_count": 1,
+    "all_hashes_identical": true
+  }
+}

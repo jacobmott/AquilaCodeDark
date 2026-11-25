@@ -1,0 +1,671 @@
+{
+  "round": 150,
+  "date": "2026-11-24",
+  "provider": "Higgsfield",
+  "model": "GPT Image 2.6 Sunburst",
+  "quality": "low",
+  "resolution": "1K",
+  "dimensions": [
+    1024,
+    688
+  ],
+  "working_length_units": 100,
+  "ships": [
+    {
+      "slug": "delta-tree",
+      "name": "Delta Tree",
+      "number": 58,
+      "original": "Assets/ShipConcepts/sunburst-r144/58-delta-tree.png",
+      "views": [
+        {
+          "slot": "01-port",
+          "file": "01-port.png",
+          "label": "Port profile",
+          "group": "Hull",
+          "sha256": "df50389db222ce4f72ef84666517a1cce1bd0f95eaf5f2d837024cde9553a46c",
+          "pack_path": "01-hull/01-port.png"
+        },
+        {
+          "slot": "02-starboard",
+          "file": "02-starboard.png",
+          "label": "Starboard profile",
+          "group": "Hull",
+          "sha256": "cce19ceb08ded876ce15482742f5a10d82fdf848dd96ce8610d47f2586318e32",
+          "pack_path": "01-hull/02-starboard.png"
+        },
+        {
+          "slot": "03-top",
+          "file": "25-dorsal-recheck.png",
+          "label": "Top plan",
+          "group": "Hull",
+          "sha256": "825853919e11ffe31a48fe08d2fe2347530b3f1dd0b149635d9654398507d900",
+          "pack_path": "01-hull/03-top.png"
+        },
+        {
+          "slot": "04-underside",
+          "file": "04-underside.png",
+          "label": "Underside plan",
+          "group": "Hull",
+          "sha256": "94c7c6a7c8328f63fc7a80d87ab73a1c027353b9d114a8c76ba6ec393b7f3607",
+          "pack_path": "01-hull/04-underside.png"
+        },
+        {
+          "slot": "05-bow",
+          "file": "05-bow.png",
+          "label": "Bow elevation",
+          "group": "Hull",
+          "sha256": "e6bced8dfaf9bf1f2ef8e7ca5099fc9d6adda03eafc41217921f8d03bf099bbd",
+          "pack_path": "01-hull/05-bow.png"
+        },
+        {
+          "slot": "06-stern",
+          "file": "06-stern.png",
+          "label": "Stern elevation",
+          "group": "Hull",
+          "sha256": "9d0d9a1ee7adf6d1ffc65b3d15497118056bc2f7e9560f046fa88e8137ba5a63",
+          "pack_path": "01-hull/06-stern.png"
+        },
+        {
+          "slot": "07-low-bow",
+          "file": "07-low-bow.png",
+          "label": "Low bow three-quarter",
+          "group": "Hull",
+          "sha256": "0e1a741bb088b69f7d482fea0bfa33c68639aaacbba9a7bb3e3979f46beedc4e",
+          "pack_path": "01-hull/07-low-bow.png"
+        },
+        {
+          "slot": "08-high-stern",
+          "file": "08-high-stern.png",
+          "label": "High stern three-quarter",
+          "group": "Hull",
+          "sha256": "0c0d1a352aa19a5d2bc307b321ec11934c703984e7a331296767cc24775f7747",
+          "pack_path": "01-hull/08-high-stern.png"
+        },
+        {
+          "slot": "09-lengthwise",
+          "file": "09-lengthwise.png",
+          "label": "Lengthwise cutaway",
+          "group": "Sections",
+          "sha256": "64575ddf12ea6cf110513269b3cb58263e80eb5bd54aaf25228ccce075f9fd0b",
+          "pack_path": "02-sections/09-lengthwise.png"
+        },
+        {
+          "slot": "10-fore-section",
+          "file": "10-fore-section.png",
+          "label": "Forward cross-section",
+          "group": "Sections",
+          "sha256": "5746c78aa9a4c71b1dcdc6b2264d0389dfd0e37cc991e9a50751d5fce2630951",
+          "pack_path": "02-sections/10-fore-section.png"
+        },
+        {
+          "slot": "11-dock-section",
+          "file": "11-dock-section.png",
+          "label": "Dock cross-section",
+          "group": "Sections",
+          "sha256": "262fe4e302b50cf980e99748f005e6bbf1f4853aa2dab264f11206dd668ca6f3",
+          "pack_path": "02-sections/11-dock-section.png"
+        },
+        {
+          "slot": "12-drive-section",
+          "file": "12-drive-section.png",
+          "label": "Aft drive cross-section",
+          "group": "Sections",
+          "sha256": "d1878b7c3ea520046351ea549e142fc3ee8c8a2695f288883c8b201270a8662f",
+          "pack_path": "02-sections/12-drive-section.png"
+        },
+        {
+          "slot": "13-arrivals-deck",
+          "file": "13-arrivals-deck.png",
+          "label": "Arrivals and engineering deck",
+          "group": "Decks",
+          "sha256": "0b8863568b2fcca3951a3bf1346664f9032657dc7a531a3c0c3708b4078c4b06",
+          "pack_path": "03-deck-plans/13-arrivals-deck.png"
+        },
+        {
+          "slot": "14-research-deck",
+          "file": "14-research-deck.png",
+          "label": "Research and crew deck",
+          "group": "Decks",
+          "sha256": "c23900ba04a9f199f4d2b469669e05b0494ee19220f991fb0a6957961d11858e",
+          "pack_path": "03-deck-plans/14-research-deck.png"
+        },
+        {
+          "slot": "15-command-deck",
+          "file": "15-command-deck.png",
+          "label": "Command deck",
+          "group": "Decks",
+          "sha256": "3fa5ba7e7bdeeef91910edf51d1404aad4fa5906a127e5a74769a505ea16d793",
+          "pack_path": "03-deck-plans/15-command-deck.png"
+        },
+        {
+          "slot": "16-shuttle-ramp",
+          "file": "16-shuttle-ramp.png",
+          "label": "From the shuttle ramp",
+          "group": "Aboard",
+          "sha256": "10a9671a9f10b62ab9a5ff70276cb98a87b814283ddf0c1f6dc633ec031b77cd",
+          "pack_path": "04-aboard/16-shuttle-ramp.png"
+        },
+        {
+          "slot": "17-bridge-window",
+          "file": "17-bridge-window.png",
+          "label": "From the bridge window",
+          "group": "Aboard",
+          "sha256": "c97bd9af96acf668242a6cadc5b9aae96917b9c9d22f934caf9db6249882dc0b",
+          "pack_path": "04-aboard/17-bridge-window.png"
+        },
+        {
+          "slot": "18-door-open",
+          "file": "18-door-open.png",
+          "label": "Hangar door open",
+          "group": "Fittings",
+          "sha256": "0e1786d5094a053a0ca7fb4f44f301fa6cb991f9a4bbb996b1c1a698fb90e8fb",
+          "pack_path": "05-fittings/18-door-open.png"
+        },
+        {
+          "slot": "19-door-shut",
+          "file": "19-door-shut.png",
+          "label": "Hangar door shut",
+          "group": "Fittings",
+          "sha256": "a6612ca3935aa2166eef5c9c476a36ef8048cebbd16e38160e3e6a95f0e5d667",
+          "pack_path": "05-fittings/19-door-shut.png"
+        },
+        {
+          "slot": "20-port-empty",
+          "file": "20-port-empty.png",
+          "label": "Empty turret fitting",
+          "group": "Fittings",
+          "sha256": "ad25073693d2a5b86b990cd742cade9887e19f17286942fc286bec2aa773c23e",
+          "pack_path": "05-fittings/20-port-empty.png"
+        },
+        {
+          "slot": "21-port-fitted",
+          "file": "21-port-fitted.png",
+          "label": "Fitted turret",
+          "group": "Fittings",
+          "sha256": "71bd27916687f612c9f204b0639c16df05c0b785f8cce4c08dd21af7d0b638af",
+          "pack_path": "05-fittings/21-port-fitted.png"
+        },
+        {
+          "slot": "22-materials-lit",
+          "file": "22-materials-lit.png",
+          "label": "Material samples with lights on",
+          "group": "Surfaces",
+          "sha256": "d719ec54483e22cf378994921400afdc6fbd35e35d0ce762812eb233adf4ec01",
+          "pack_path": "06-surfaces/22-materials-lit.png"
+        },
+        {
+          "slot": "23-materials-dark",
+          "file": "23-materials-dark.png",
+          "label": "Material samples with lights off",
+          "group": "Surfaces",
+          "sha256": "b0fc059ccf024079219a5c6530d430813535cabfe4d6ce8b223fdd83bae4048f",
+          "pack_path": "06-surfaces/23-materials-dark.png"
+        },
+        {
+          "slot": "24-lifted-plate",
+          "file": "24-lifted-plate.png",
+          "label": "Raised armor and its supports",
+          "group": "Surfaces",
+          "sha256": "060671180c616c48ead6fc5a85797ff3fc4958c662dbce6a1a606d516bbfd851",
+          "pack_path": "06-surfaces/24-lifted-plate.png"
+        }
+      ],
+      "studies": [
+        {
+          "slot": "03-top",
+          "file": "03-top.png",
+          "label": "Earlier overhead study",
+          "group": "Earlier studies",
+          "sha256": "182206606f524dd42b7f98a7d29b97c3c99f3f0b47181f29fb32aed1ddb2d676",
+          "pack_path": "09-earlier-studies/03-top.png"
+        }
+      ],
+      "guides": [
+        {
+          "slot": "guide-port",
+          "file": "blender-guides/port.png",
+          "label": "Port profile",
+          "group": "Modeling guides",
+          "sha256": "f70bb3531e3610c32c8a97c2193c4010662a8250d48f39fc6e91d4584444823c",
+          "pack_path": "07-modeling-guides/port.png"
+        },
+        {
+          "slot": "guide-starboard",
+          "file": "blender-guides/starboard.png",
+          "label": "Starboard profile",
+          "group": "Modeling guides",
+          "sha256": "78323af8ef0d85494191559d1ba12c0dabe901a2b8058aee91fe71d03a7aecb2",
+          "pack_path": "07-modeling-guides/starboard.png"
+        },
+        {
+          "slot": "guide-top",
+          "file": "blender-guides/top.png",
+          "label": "Top",
+          "group": "Modeling guides",
+          "sha256": "ab6ea97be8409a7ec8044e4fb56e7e3ce85003cd7ebb9333adc294cd320bbd43",
+          "pack_path": "07-modeling-guides/top.png"
+        },
+        {
+          "slot": "guide-underside",
+          "file": "blender-guides/underside.png",
+          "label": "Underside",
+          "group": "Modeling guides",
+          "sha256": "9985446569998754c9ef56b24806e34d9f129c2e4e8f825393bd04e196fca2c7",
+          "pack_path": "07-modeling-guides/underside.png"
+        },
+        {
+          "slot": "guide-bow",
+          "file": "blender-guides/bow.png",
+          "label": "Bow",
+          "group": "Modeling guides",
+          "sha256": "c2ffa408888927bff0843149ffdc652f27ac3017f06783032116953dc5012f6b",
+          "pack_path": "07-modeling-guides/bow.png"
+        },
+        {
+          "slot": "guide-stern",
+          "file": "blender-guides/stern.png",
+          "label": "Stern",
+          "group": "Modeling guides",
+          "sha256": "600849455a8db0dc27e4a4a9a7cec3a9dc7ca6ca8adad5689aa7c156b801c7de",
+          "pack_path": "07-modeling-guides/stern.png"
+        },
+        {
+          "slot": "guide-low",
+          "file": "blender-guides/low.png",
+          "label": "Low bow",
+          "group": "Modeling guides",
+          "sha256": "bbb192e5f691e95096a2e66a91e3d4e68c31dd861afaa3fe17a62f1b6e85965a",
+          "pack_path": "07-modeling-guides/low.png"
+        },
+        {
+          "slot": "guide-high",
+          "file": "blender-guides/high.png",
+          "label": "High stern",
+          "group": "Modeling guides",
+          "sha256": "c95763b2ee8257fd56e144aa610a1e8f568430b18ef6d8f1287d8714a2a23e6d",
+          "pack_path": "07-modeling-guides/high.png"
+        },
+        {
+          "slot": "guide-deck-1-registration",
+          "file": "blender-guides/deck-1-registration.png",
+          "label": "Arrivals and engineering",
+          "group": "Modeling guides",
+          "sha256": "2dbcd1fd85fbc6530aaba19373cdb27578a8173a379087d87dc6add66e5ba5f0",
+          "pack_path": "07-modeling-guides/deck-1-registration.png"
+        },
+        {
+          "slot": "guide-deck-2-registration",
+          "file": "blender-guides/deck-2-registration.png",
+          "label": "Research and crew",
+          "group": "Modeling guides",
+          "sha256": "c45ef15c38a60be25b5a08c890cedd493767cc68b5740b0d51b00a7c5f37bc70",
+          "pack_path": "07-modeling-guides/deck-2-registration.png"
+        },
+        {
+          "slot": "guide-deck-3-registration",
+          "file": "blender-guides/deck-3-registration.png",
+          "label": "Command",
+          "group": "Modeling guides",
+          "sha256": "71c5b31ffb5cc401d33a7d1143def05d7b10678e6abe01d4ef70934c14054f2f",
+          "pack_path": "07-modeling-guides/deck-3-registration.png"
+        },
+        {
+          "slot": "guide-branch-dock-section",
+          "file": "blender-guides/branch-dock-section.png",
+          "label": "Round dock layout",
+          "group": "Modeling guides",
+          "sha256": "0495ad5b9ad2b283d434a50a2a713ea09837f5daead584a482407a4708d5ddd7",
+          "pack_path": "07-modeling-guides/branch-dock-section.png"
+        }
+      ],
+      "archive": "delta-tree-reference-pack.zip",
+      "archive_sha256": "3fedef37401d55c8390e581dd0baba453699300315c6a6c2e20901703522a730",
+      "archive_bytes": 32805927
+    },
+    {
+      "slug": "glacier-tongue",
+      "name": "Glacier Tongue",
+      "number": 41,
+      "original": "Assets/ShipConcepts/sunburst-r144/41-glacier-tongue.png",
+      "views": [
+        {
+          "slot": "01-port",
+          "file": "01-port.png",
+          "label": "Port profile",
+          "group": "Hull",
+          "sha256": "05840ff53ba448fb8962837529acd7574bb217acc846a1e69330fa350aae7cef",
+          "pack_path": "01-hull/01-port.png"
+        },
+        {
+          "slot": "02-starboard",
+          "file": "30-starboard-vault.png",
+          "label": "Starboard profile",
+          "group": "Hull",
+          "sha256": "261d2f694bcee8498ebc6c42dc0d4e1346d4a2694251deba581a475a9ea600a4",
+          "pack_path": "01-hull/02-starboard.png"
+        },
+        {
+          "slot": "03-top",
+          "file": "25-dorsal-recheck.png",
+          "label": "Top plan",
+          "group": "Hull",
+          "sha256": "b64e66136ea09a60f0d7aa5c85f03cc63e3c595e38b6102230dd48141df6875c",
+          "pack_path": "01-hull/03-top.png"
+        },
+        {
+          "slot": "04-underside",
+          "file": "04-underside.png",
+          "label": "Underside plan",
+          "group": "Hull",
+          "sha256": "6224b377747a6146ab8bab1a51eab0b79987a2d891c5f74b085909958362158d",
+          "pack_path": "01-hull/04-underside.png"
+        },
+        {
+          "slot": "05-bow",
+          "file": "05-bow.png",
+          "label": "Bow elevation",
+          "group": "Hull",
+          "sha256": "241e1494855ca705fcb9b766d277efa8e6e71bdcc5f1667f9930fe4bc4817bdf",
+          "pack_path": "01-hull/05-bow.png"
+        },
+        {
+          "slot": "06-stern",
+          "file": "06-stern.png",
+          "label": "Stern elevation",
+          "group": "Hull",
+          "sha256": "cddabedef121113988f2d8d62ccfc6bb931a3a7dc58fc09828ce918c22f121ff",
+          "pack_path": "01-hull/06-stern.png"
+        },
+        {
+          "slot": "07-low-bow",
+          "file": "07-low-bow.png",
+          "label": "Low bow three-quarter",
+          "group": "Hull",
+          "sha256": "9607373037c8dba1768acc034268fd21453c51c7a90d87e8693b7ac9f4d497f0",
+          "pack_path": "01-hull/07-low-bow.png"
+        },
+        {
+          "slot": "08-high-stern",
+          "file": "08-high-stern.png",
+          "label": "High stern three-quarter",
+          "group": "Hull",
+          "sha256": "4a0e1f6bda434b360a64e7b7c1bffee3e89b93277bfc191fbe586eb53297374e",
+          "pack_path": "01-hull/08-high-stern.png"
+        },
+        {
+          "slot": "09-lengthwise",
+          "file": "09-lengthwise.png",
+          "label": "Lengthwise cutaway",
+          "group": "Sections",
+          "sha256": "0c9734097d046f4ff1c73b4f86f205c84bd226d987fa8452c881c5a7567e17d1",
+          "pack_path": "02-sections/09-lengthwise.png"
+        },
+        {
+          "slot": "10-fore-section",
+          "file": "10-fore-section.png",
+          "label": "Forward cross-section",
+          "group": "Sections",
+          "sha256": "56d0775e0ea1a3a5d1ccf6b2a607388d8378810e321171530f78544e1443c0ac",
+          "pack_path": "02-sections/10-fore-section.png"
+        },
+        {
+          "slot": "11-dock-section",
+          "file": "11-dock-section.png",
+          "label": "Dock cross-section",
+          "group": "Sections",
+          "sha256": "f40d0c07cc52319f0cb0172d3842f48fb8c0684e9237bf0ac116d01f4f61d590",
+          "pack_path": "02-sections/11-dock-section.png"
+        },
+        {
+          "slot": "12-drive-section",
+          "file": "12-drive-section.png",
+          "label": "Aft drive cross-section",
+          "group": "Sections",
+          "sha256": "3d99de6a1c8fe0123d634c5303013ecc3af9dbf5e1e1dbcb0e4b33c463b584e6",
+          "pack_path": "02-sections/12-drive-section.png"
+        },
+        {
+          "slot": "13-arrivals-deck",
+          "file": "27-deck-1-overhead.png",
+          "label": "Arrivals and engineering deck",
+          "group": "Decks",
+          "sha256": "c96e6ccb765a6e3bf86f76f11d3ff49ef5c2d1cf69bcf00a49566e28b336b7ac",
+          "pack_path": "03-deck-plans/13-arrivals-deck.png"
+        },
+        {
+          "slot": "14-research-deck",
+          "file": "28-deck-2-overhead.png",
+          "label": "Research and crew deck",
+          "group": "Decks",
+          "sha256": "c650506ca7459a6340ddb6b505fb5c43f7aa6508d15af9d529c6588b3c4aa17d",
+          "pack_path": "03-deck-plans/14-research-deck.png"
+        },
+        {
+          "slot": "15-command-deck",
+          "file": "29-deck-3-overhead.png",
+          "label": "Command deck",
+          "group": "Decks",
+          "sha256": "cd116b1efea48e235373255dd3f9b7599cf46fa93a3b5f8943c056df36ab40b7",
+          "pack_path": "03-deck-plans/15-command-deck.png"
+        },
+        {
+          "slot": "16-shuttle-ramp",
+          "file": "16-shuttle-ramp.png",
+          "label": "From the shuttle ramp",
+          "group": "Aboard",
+          "sha256": "adb95c420a8c909f2865e88454a33f9d3a854d91b38d94a3f78a28771316c05c",
+          "pack_path": "04-aboard/16-shuttle-ramp.png"
+        },
+        {
+          "slot": "17-bridge-window",
+          "file": "17-bridge-window.png",
+          "label": "From the bridge window",
+          "group": "Aboard",
+          "sha256": "201759d61bd5d441de2f96c9227315e6ff78679c7eb6d48eb08e617db883fd4c",
+          "pack_path": "04-aboard/17-bridge-window.png"
+        },
+        {
+          "slot": "18-door-open",
+          "file": "18-door-open.png",
+          "label": "Hangar door open",
+          "group": "Fittings",
+          "sha256": "9a6cf43bfafb2368fed7a01d99f13c22d32d76aeaa536eef70e2dc7e2b463a06",
+          "pack_path": "05-fittings/18-door-open.png"
+        },
+        {
+          "slot": "19-door-shut",
+          "file": "19-door-shut.png",
+          "label": "Hangar door shut",
+          "group": "Fittings",
+          "sha256": "ba9f2ce3904ab674281ba535784354fde5c297839276579c88109a01cd54b565",
+          "pack_path": "05-fittings/19-door-shut.png"
+        },
+        {
+          "slot": "20-port-empty",
+          "file": "20-port-empty.png",
+          "label": "Empty turret fitting",
+          "group": "Fittings",
+          "sha256": "66a03487aa4f15f0fa5be59601c3ea3f5fe863b263bafeea8abe356887d12bab",
+          "pack_path": "05-fittings/20-port-empty.png"
+        },
+        {
+          "slot": "21-port-fitted",
+          "file": "21-port-fitted.png",
+          "label": "Fitted turret",
+          "group": "Fittings",
+          "sha256": "a1250fee5b687928a34fa25bad3defd25d26391ec3ce73236c51cacb6f08a70d",
+          "pack_path": "05-fittings/21-port-fitted.png"
+        },
+        {
+          "slot": "22-materials-lit",
+          "file": "22-materials-lit.png",
+          "label": "Material samples with lights on",
+          "group": "Surfaces",
+          "sha256": "29a414a575cf2fd416212d5263ed268cf0ba2cbf9def9ccfc72b885b6f5bbe2d",
+          "pack_path": "06-surfaces/22-materials-lit.png"
+        },
+        {
+          "slot": "23-materials-dark",
+          "file": "23-materials-dark.png",
+          "label": "Material samples with lights off",
+          "group": "Surfaces",
+          "sha256": "f12fe95b27f35997b453a878fb1b68eee39483ebaec22c62a5272f359dc870bc",
+          "pack_path": "06-surfaces/23-materials-dark.png"
+        },
+        {
+          "slot": "24-lifted-plate",
+          "file": "24-lifted-plate.png",
+          "label": "Raised armor and its supports",
+          "group": "Surfaces",
+          "sha256": "190b9fd762b0f668319fa0180c24277cdf14ab24063efe8cd638493a25710550",
+          "pack_path": "06-surfaces/24-lifted-plate.png"
+        }
+      ],
+      "studies": [
+        {
+          "slot": "02-starboard",
+          "file": "02-starboard.png",
+          "label": "Earlier starboard study",
+          "group": "Earlier studies",
+          "sha256": "b119e566cb48c8735b40cab526ae8e22299784c9385e2ae812f010673845a166",
+          "pack_path": "09-earlier-studies/02-starboard.png"
+        },
+        {
+          "slot": "03-top",
+          "file": "03-top.png",
+          "label": "Earlier overhead study",
+          "group": "Earlier studies",
+          "sha256": "eb28f258c79b4ea2ecd74d342852c2efb67c737d4920d5f2ce379afc5d32cb37",
+          "pack_path": "09-earlier-studies/03-top.png"
+        },
+        {
+          "slot": "13-arrivals-deck",
+          "file": "13-arrivals-deck.png",
+          "label": "Arrivals and engineering deck study",
+          "group": "Earlier studies",
+          "sha256": "5bb5045a8d8c5645a43af9022280dbc38329a4dc0075313855a9407111251655",
+          "pack_path": "09-earlier-studies/13-arrivals-deck.png"
+        },
+        {
+          "slot": "14-research-deck",
+          "file": "14-research-deck.png",
+          "label": "Research and crew deck study",
+          "group": "Earlier studies",
+          "sha256": "a72bcd1ed6ed0d1e6b79e77e4a8c19edc8ca30a38d2aee7a119f5953a9b08208",
+          "pack_path": "09-earlier-studies/14-research-deck.png"
+        },
+        {
+          "slot": "15-command-deck",
+          "file": "15-command-deck.png",
+          "label": "Command deck study",
+          "group": "Earlier studies",
+          "sha256": "17fa8886a9ff2f240f6ac517e3ec78b8361a86a3efed80fd964e41e2cd30e3c8",
+          "pack_path": "09-earlier-studies/15-command-deck.png"
+        }
+      ],
+      "guides": [
+        {
+          "slot": "guide-port",
+          "file": "blender-guides/port.png",
+          "label": "Port profile",
+          "group": "Modeling guides",
+          "sha256": "dade529c6125a7a8d2cd06c799ecada95ec0a1a1264d81ef8191cc111dffc408",
+          "pack_path": "07-modeling-guides/port.png"
+        },
+        {
+          "slot": "guide-starboard",
+          "file": "blender-guides/starboard.png",
+          "label": "Starboard profile",
+          "group": "Modeling guides",
+          "sha256": "657b9991219a018a1373fea21c56ddd0ee8e6426ada4fbd76eb2a62a877a0b75",
+          "pack_path": "07-modeling-guides/starboard.png"
+        },
+        {
+          "slot": "guide-top",
+          "file": "blender-guides/top.png",
+          "label": "Top",
+          "group": "Modeling guides",
+          "sha256": "e6fbfb4f57c6e3f7748135ee03fad55ae068a0c4a72492281cc539846beab722",
+          "pack_path": "07-modeling-guides/top.png"
+        },
+        {
+          "slot": "guide-underside",
+          "file": "blender-guides/underside.png",
+          "label": "Underside",
+          "group": "Modeling guides",
+          "sha256": "c28106d22286c983992d0231f24a5645179f3b1a1c364f330bfd07e61514cbc9",
+          "pack_path": "07-modeling-guides/underside.png"
+        },
+        {
+          "slot": "guide-bow",
+          "file": "blender-guides/bow.png",
+          "label": "Bow",
+          "group": "Modeling guides",
+          "sha256": "9eed47b97f7608a6d61e5832926e08c223a048db38178879e0ec74b762b4c913",
+          "pack_path": "07-modeling-guides/bow.png"
+        },
+        {
+          "slot": "guide-stern",
+          "file": "blender-guides/stern.png",
+          "label": "Stern",
+          "group": "Modeling guides",
+          "sha256": "a0e586bb038aca82ad345ed44aa5f2de331dde498ddcc0d83276d399ed36571f",
+          "pack_path": "07-modeling-guides/stern.png"
+        },
+        {
+          "slot": "guide-low",
+          "file": "blender-guides/low.png",
+          "label": "Low bow",
+          "group": "Modeling guides",
+          "sha256": "d90ac8578c6051e0e802ecb4875cc14c0521a220b8ca7b8a7bbacb6bc9ffa42b",
+          "pack_path": "07-modeling-guides/low.png"
+        },
+        {
+          "slot": "guide-high",
+          "file": "blender-guides/high.png",
+          "label": "High stern",
+          "group": "Modeling guides",
+          "sha256": "6c7b25fb47a722dad18de733a87f631d7962f98d8df2ab221824dff85158ca1b",
+          "pack_path": "07-modeling-guides/high.png"
+        },
+        {
+          "slot": "guide-deck-1-registration",
+          "file": "blender-guides/deck-1-registration.png",
+          "label": "Arrivals and engineering",
+          "group": "Modeling guides",
+          "sha256": "ab51160a957fa5c3df69bbe1e80c9f2f1dd6bc3eaae265cdd1d9ae03231c7e07",
+          "pack_path": "07-modeling-guides/deck-1-registration.png"
+        },
+        {
+          "slot": "guide-deck-2-registration",
+          "file": "blender-guides/deck-2-registration.png",
+          "label": "Research and crew",
+          "group": "Modeling guides",
+          "sha256": "0129f85726ce2221d5fbdd7037188912d9dd052509fff17c140d507f241d8def",
+          "pack_path": "07-modeling-guides/deck-2-registration.png"
+        },
+        {
+          "slot": "guide-deck-3-registration",
+          "file": "blender-guides/deck-3-registration.png",
+          "label": "Command",
+          "group": "Modeling guides",
+          "sha256": "4fd652ef735456bef2b9480d7b46d57c9296b4e07b93c23eaff498a358857d86",
+          "pack_path": "07-modeling-guides/deck-3-registration.png"
+        }
+      ],
+      "archive": "glacier-tongue-reference-pack.zip",
+      "archive_sha256": "c116f2dde923f67ea3a6377ded2b3f09855a29006a05a5401adc5accf6893deb",
+      "archive_bytes": 36187520
+    }
+  ],
+  "provider_completed": 54,
+  "provider_without_image": 1,
+  "matched_debits": 55,
+  "matching_refunds": 1,
+  "successful_quotes": 40.5,
+  "net_credits": 40.5,
+  "billing_basis": "Signed-in transactions matched by model, amounts and creation times. Transactions omit provider job IDs.",
+  "verified_ordered_references": true,
+  "cataloged_provider_images": 54,
+  "verified_at": "2026-11-24T08:36:51.146922+00:00"
+}

@@ -1,0 +1,306 @@
+{
+  "report_round": 122,
+  "verified_utc": "2026-11-23T04:12:32.517645+00:00",
+  "engine": "Epic Launcher Unreal 5.8.4 CL 58902052, Windows Development",
+  "base_commit": "e38dcf21b420622fb14c36601a9462ce2a93752d",
+  "state": "Local Windows build and verified desktop shortcut.",
+  "launcher": {
+    "path": ".runtime/combat-visuals-r122/delivery/Windows/Aquila.exe",
+    "sha256": "b4ff849eeca265764669f570a56d9f64907a26a48319e6dbf72e2856427aade9"
+  },
+  "runtime": {
+    "path": ".runtime/combat-visuals-r122/delivery/Windows/Aquila/Binaries/Win64/Aquila.exe",
+    "sha256": "270d243ca39fd8d3c5665e84abb26b0b980d8d89198db1d5874ceb4d636336db"
+  },
+  "cooked_container": [
+    {
+      "path": ".runtime/combat-visuals-r122/delivery/Windows/Aquila/Content/Paks/Aquila-Windows.ucas",
+      "sha256": "9f85e49f6e8025a77bf352e42c7e87f92f56a7f0d99b29046646a530dce10d77"
+    },
+    {
+      "path": ".runtime/combat-visuals-r122/delivery/Windows/Aquila/Content/Paks/global.ucas",
+      "sha256": "dd01e10375c464d906b199cc00f5a52af2131175eddcdf9f12360a49e079c28f"
+    }
+  ],
+  "source": [
+    {
+      "path": "native/Aquila/Source/Aquila/AquilaCombatVisuals.cpp",
+      "sha256": "d6ed361a047a34e3c10cc264a9dea4e58375203541c74cabb8264278d3e3c22e"
+    },
+    {
+      "path": "native/Aquila/Source/Aquila/AquilaCombatVisualTests.cpp",
+      "sha256": "537c7809907b79a7aba4edf12e214049f096a9971cd0b8374dd9a1fc11e4545a"
+    },
+    {
+      "path": "native/Aquila/Source/Aquila/AquilaExpedition.cpp",
+      "sha256": "ece665626685c4e4bdcc06946562644279db323d7a9eba03c0b88fb84d1416c5"
+    },
+    {
+      "path": "native/Aquila/Source/Aquila/AquilaFlightPawn.cpp",
+      "sha256": "11af2e0e6c285e6fb6256b673d33f9aa69822a6d30f7f9bef0e261ece2afd7f9"
+    },
+    {
+      "path": "native/Aquila/Source/Aquila/AquilaFlightPawn.h",
+      "sha256": "388a2b220eff4679f3db9a05829280771aaa70f045f88cf63bc33b620da5c110"
+    },
+    {
+      "path": "native/Aquila/Source/Aquila/AquilaSimulation.cpp",
+      "sha256": "9aa599030ccafef4113a6429c1dd426fba26f477b081ebd19a32205a271fa203"
+    },
+    {
+      "path": "native/Aquila/Source/Aquila/AquilaSimulation.h",
+      "sha256": "b0ee8f8a2d63c49f77bc899bdb736f5c30b368c09ca3ef4d0528f0a33363aa2f"
+    },
+    {
+      "path": "native/Aquila/Source/Aquila/AquilaSimulatorUI.cpp",
+      "sha256": "5e90221294eef0fa491185b4ee11972d1d6ec48fe7cdcd5425042a12ff57f3d6"
+    },
+    {
+      "path": "native/Aquila/Source/Aquila/AquilaTests.cpp",
+      "sha256": "55980e932f10b8ce2665aa3138d226ad3c7c1edbf2e108f8b9f7be4bb3d8548a"
+    },
+    {
+      "path": "native/Aquila/Source/AquilaTools/AquilaContentCommandlet.cpp",
+      "sha256": "f35345f753dca6d70bc04184cb4f7816f9f3391abae228c7f7959d91af847167"
+    },
+    {
+      "path": "native/Aquila/Shaders/M_ShieldContact.ush",
+      "sha256": "f2ef8021d958ce874138f3cc0ee9bb8c852f98059e2a82bea851fda30f28ae9d"
+    },
+    {
+      "path": "native/Aquila/Shaders/M_CombatBurst.ush",
+      "sha256": "321312399274351c7d7739f352556445e1e8fc5c682dc695a59ab2e593a6292f"
+    },
+    {
+      "path": "scripts/native.ps1",
+      "sha256": "47a769ea19ba32ce737403103fbf5105daf4b798a1d0d79fc8a3e095afd4105b"
+    }
+  ],
+  "headless": {
+    "path": ".runtime/combat-visuals-r122/headless-delivery/index.json",
+    "sha256": "014e16ec683304a1f9230903437c23d945c18778d0a89bc87df87ccb748cea1e",
+    "passed": 12,
+    "failed": 0,
+    "tests": [
+      "Aquila.Combat.FrameRateAndHold",
+      "Aquila.Combat.ImpactSurfacesAndDestruction",
+      "Aquila.Combat.SwitchWithRoundsInFlight",
+      "Aquila.Combat.TravelAndArmor",
+      "Aquila.Expedition.CommandsFailureAndPracticeIsolation",
+      "Aquila.Expedition.CompleteLoopAndUpgrade",
+      "Aquila.Expedition.LegacyMigrationAndValidation",
+      "Aquila.Expedition.ResumeAndRewardTransactions",
+      "Aquila.Expedition.UpgradeImpactAndFrameParity",
+      "Aquila.Navigation.ClearanceAndArrival",
+      "Aquila.Save.InterruptionAndConflict",
+      "Aquila.Save.RoundTripMigrationAndRejection"
+    ]
+  },
+  "packaged": {
+    "bridge": {
+      "path": ".runtime/combat-visuals-r122/check-delivery-bridge-041009024053/report/index.json",
+      "sha256": "24fa29f18c0ee34066bf283aefcdc78fc6f0dee282e8ec1f64b50e4dcd8e2e31",
+      "passed": 1,
+      "failed": 0,
+      "tests": [
+        "Aquila.Input.DesktopCamera"
+      ],
+      "prior_revision_count": 0,
+      "final_revision_count": 0,
+      "prior_revisions_intact": true,
+      "journal_identical": true
+    },
+    "desktop": {
+      "path": ".runtime/combat-visuals-r122/check-delivery-desktop-040946201968/report/index.json",
+      "sha256": "ac82b9ff2ef2dae9dbfe9ab6f25290d216c6cbacc1cb592af9ad96f820f77bfd",
+      "passed": 1,
+      "failed": 0,
+      "tests": [
+        "Aquila.Input.DesktopCamera"
+      ],
+      "prior_revision_count": 0,
+      "final_revision_count": 0,
+      "prior_revisions_intact": true,
+      "journal_identical": true
+    },
+    "duel-direct": {
+      "path": ".runtime/combat-visuals-r122/check-delivery-duel-direct-040929723795/report/index.json",
+      "sha256": "47a46be63ddea35a962b0010e5caca69ce0e2af6e72c59e698ae5648dab90217",
+      "passed": 1,
+      "failed": 0,
+      "tests": [
+        "Aquila.Input.Simulator.Simulator"
+      ],
+      "prior_revision_count": 2,
+      "final_revision_count": 2,
+      "prior_revisions_intact": true,
+      "journal_identical": true
+    },
+    "duel-menu": {
+      "path": ".runtime/combat-visuals-r122/check-delivery-duel-menu-040937374248/report/index.json",
+      "sha256": "28b73f5f3b23523aa08c3d74c075c231495f043ad14966edeb40d6709ce0164b",
+      "passed": 1,
+      "failed": 0,
+      "tests": [
+        "Aquila.Input.Simulator.Menu"
+      ],
+      "prior_revision_count": 2,
+      "final_revision_count": 2,
+      "prior_revisions_intact": true,
+      "journal_identical": true
+    },
+    "effects": {
+      "path": ".runtime/combat-visuals-r122/check-delivery-effects-040906509956/report/index.json",
+      "sha256": "d75d317c3d25f8c5be2cbe3abea1b9fe183f350a3ddccceb9803be5f8321912c",
+      "passed": 1,
+      "failed": 0,
+      "tests": [
+        "Aquila.Input.CombatFeedback.BothShips"
+      ],
+      "prior_revision_count": 2,
+      "final_revision_count": 2,
+      "prior_revisions_intact": true,
+      "journal_identical": true
+    },
+    "observer": {
+      "path": ".runtime/combat-visuals-r122/check-delivery-observer-040954289222/report/index.json",
+      "sha256": "9c942e7fb67b64e3be533e0fc6ce6035b1f1b3c023dec7f0003780a646a83a1d",
+      "passed": 1,
+      "failed": 0,
+      "tests": [
+        "Aquila.Input.Observer.Desktop"
+      ],
+      "prior_revision_count": 0,
+      "final_revision_count": 0,
+      "prior_revisions_intact": true,
+      "journal_identical": true
+    },
+    "restored": {
+      "path": ".runtime/combat-visuals-r122/check-delivery-restored-041001784006/report/index.json",
+      "sha256": "df01086cdc39a23a375ea8a19d074f74a728f7e3c5cdce4b258f911a3c603548",
+      "passed": 1,
+      "failed": 0,
+      "tests": [
+        "Aquila.Input.Observer.Desktop"
+      ],
+      "prior_revision_count": 2,
+      "final_revision_count": 2,
+      "prior_revisions_intact": true,
+      "journal_identical": true
+    },
+    "touch": {
+      "path": ".runtime/combat-visuals-r122/check-delivery-touch-041016727871/report/index.json",
+      "sha256": "b21eb7117d34c4115a799065caf78ee27748b342e8d69a914c508eff1e899e8d",
+      "passed": 1,
+      "failed": 0,
+      "tests": [
+        "Aquila.Input.TouchMenu.RevealAndHide"
+      ],
+      "prior_revision_count": 0,
+      "final_revision_count": 0,
+      "prior_revisions_intact": true,
+      "journal_identical": true
+    },
+    "touch-observer": {
+      "path": ".runtime/combat-visuals-r122/check-delivery-touch-observer-041024230972/report/index.json",
+      "sha256": "4d268b23f1998512d1410ea224f522e55f67d71bc807914ec08b5a4d29b25153",
+      "passed": 1,
+      "failed": 0,
+      "tests": [
+        "Aquila.Input.Observer.Touch"
+      ],
+      "prior_revision_count": 0,
+      "final_revision_count": 0,
+      "prior_revisions_intact": true,
+      "journal_identical": true
+    }
+  },
+  "bridge_defeat_fixture": {
+    "source": "Disposable schema-3 battle save. The bridge loads with one incoming round and one hull point. The normal viewport captures at twelve seconds.",
+    "first_saved_revision": 1,
+    "final_saved_revision": 3,
+    "final_phase": "Failed",
+    "final_hull": 0,
+    "prior_revision_intact": true,
+    "capture": ".runtime/combat-visuals-r122/match-bridge-defeat/scene.png",
+    "sha256": "08c131710d16e4f965c616356fad9017fb7a701cf130ae1ddb9eab2c63b0b3c8"
+  },
+  "duel_outcomes_at_disablement": [
+    "Standard at 696.22 s: Resolute hull 0.00, Sentinel shield 0.00 and hull 100.00.",
+    "Piercing at 220.97 s: Resolute hull 100.00, Sentinel shield 0.00 and hull 0.00.",
+    "Piercing at 220.97 s: Resolute hull 100.00, Sentinel shield 0.00 and hull 0.00."
+  ],
+  "matched_previous_duel_outcomes": true,
+  "visual_checks": [
+    "Idle shield invisible. A shell hit and its blue ripple appear at the incoming side of the visible sphere.",
+    "Hull and armor impacts touch a solid ship plate. Overflow may light both layers. Armor deflections leave the hull intact.",
+    "Resolute and Sentinel disappear into separate one-shot destruction effects. Both remain visible one presentation second after defeat at 8x and fade by 2.55 seconds.",
+    "Pause freezes active effects. Replay brings both ships back and clears the effects. Restoring a destroyed ship from disk does not replay its lethal contact."
+  ],
+  "native_viewport": {
+    "dimensions": [
+      1280,
+      720
+    ],
+    "screenshot_count": 197,
+    "counts": {
+      "quiet": 1,
+      "shield": 24,
+      "hull": 24,
+      "armor": 24,
+      "sentinel": 62,
+      "resolute": 62
+    },
+    "media": {
+      "shield": {
+        "path": "reports/game-direction/media/r122-shield.png",
+        "frame": "shield-010.png",
+        "sha256": "b2006277905e867640ca30cfeb7ad676c2960c20e5016fdb69088457c2e48922"
+      },
+      "hull": {
+        "path": "reports/game-direction/media/r122-hull.png",
+        "frame": "hull-011.png",
+        "sha256": "33b911652d395ecd15b894d3f5412ebec810c9338bbd8c12be2a699c6c525b90"
+      },
+      "destruction": {
+        "path": "reports/game-direction/media/r122-destruction.png",
+        "frame": "sentinel-016.png",
+        "sha256": "d3f4b7070b4b1171090123bad0119e91988e160c2ee2827969c6a8417dbf4b0b"
+      },
+      "clip": {
+        "path": "reports/game-direction/media/r122-combat-feedback.mp4",
+        "sha256": "f65366025b5a35f2420068dc04866a3dbdb9997c78168adf3ddf3fdbc7d11035",
+        "stream": {
+          "codec_name": "h264",
+          "width": 1280,
+          "height": 720,
+          "avg_frame_rate": "24/1",
+          "duration": "8.666667",
+          "nb_frames": "208"
+        },
+        "source": "Native packaged viewport frames. Cuts skip the intervals between contacts. First quiet frame held for half a second."
+      }
+    }
+  },
+  "desktop_shortcut": {
+    "shortcut": "Aquila Combat Simulator",
+    "package": "delivery/Windows/Aquila.exe",
+    "target_and_arguments_read_back": true,
+    "direct_mode": "Simulator",
+    "earlier_match_directory_retained": true,
+    "prior_revision_count": 1,
+    "earlier_saved_revision_hashes_unchanged": true,
+    "observed_utc": "2026-11-23T04:11:48.3281870Z",
+    "owner_game_launched_by_this_update": false
+  },
+  "previous_owner_expedition_read_only": {
+    "revision": 151681,
+    "parent": 151680,
+    "stage": "Failed",
+    "helm": "Hold"
+  },
+  "limits": [
+    "Windows packaged viewport and isolated test saves. Touch regressions used Windows touch preview. Physical Galaxy rendering and sustained GPU performance remain untested.",
+    "The gameplay clip joins native viewport sections. Automation on this package exports JSON. The optional engine HTML template was unavailable."
+  ]
+}

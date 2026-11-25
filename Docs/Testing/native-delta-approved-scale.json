@@ -1,0 +1,44 @@
+{
+  "round": 160,
+  "checked_utc": "2026-11-25T01:31:16.531335+00:00",
+  "design": {
+    "ship": "Delta Tree",
+    "approved_bow_to_stern_m": 1280,
+    "owner_submission": "reports/game-direction/inbox/20261125T012507Z.json",
+    "submitted_at_utc": "20261125T012507Z",
+    "choice": "Keep 1,280 metres"
+  },
+  "windows": {
+    "engine": "Launcher Unreal 5.8.4 CL 58902052",
+    "suite": "Aquila.Input.Boarding.DeltaDock",
+    "passed": 1,
+    "errors": 0,
+    "cooked_hull_length_m": 1280.0,
+    "display": "DELTA TREE / 1,280 m",
+    "seven_frames_captured": true,
+    "disposable_journal_unchanged": true,
+    "test_report_sha256": "4acd94aee914e2d1d11cd58f538d272cbf200f1327a5de002176e416f103600d",
+    "executable_sha256": "b068337d72549d44633ae80a8c7e1fdde7343107296b6a5855b97a77f810abba"
+  },
+  "desktop": {
+    "shortcut": "Aquila Boarding Test",
+    "target": ".runtime/delta-scale-r160/playtest/Windows/Aquila.exe",
+    "default": "Glacier Tongue",
+    "arguments_preserved": true,
+    "combat_shortcut_hash_preserved": true
+  },
+  "journals": {
+    "portable_revisions": 151681,
+    "tip": 151681,
+    "parent": 151680,
+    "state": "Failed",
+    "helm": "Hold",
+    "portable_inventory_tip_parent_and_desktop_hashes_unchanged": true
+  },
+  "report": {
+    "verified_round": 160,
+    "exterior_capture_sha256": "b39b9415d27d6fb9502bb7a49dd9eb810367c78023f650f91af741c746c422be",
+    "served_exterior_matches_native_capture": true,
+    "paseo_snapshot_verified_approved_length": true
+  }
+}

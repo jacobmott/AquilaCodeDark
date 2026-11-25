@@ -145,7 +145,7 @@ export class ShipInterior {
     this.box(g, [8.4, 0.12, 3.2], [0, 1.1, -5.6], this.trim);
     this.sign(
       g,
-      'RESOLUTE / HELM',
+      'DELTA TREE / HELM',
       'NAVIGATION     /     FLIGHT CONTROL',
       2.4,
       [0, 0.6, -4.08],
@@ -189,7 +189,7 @@ export class ShipInterior {
     this.sign(
       g,
       'COMMAND / 01',
-      'RESOLUTE     /     EXPLORATION DIVISION',
+      'DELTA TREE     /     EXPLORATION DIVISION',
       6,
       [0, 5.55, -13.5],
     );
@@ -273,7 +273,7 @@ export class ShipInterior {
     this.sign(
       g,
       'FLIGHT DECK / 02',
-      'STARBOARD GALLERY     /     RESOLUTE',
+      'STARBOARD GALLERY     /     DELTA TREE',
       20,
       [-47.5, 17, 94],
       Math.PI / 2,

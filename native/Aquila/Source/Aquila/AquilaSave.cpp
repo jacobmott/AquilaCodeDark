@@ -70,16 +70,16 @@ FString FAquilaSave::Encode(const FAquilaCampaign& C)
     J->SetNumberField(TEXT("enemyHull"), C.EnemyHull);
     J->SetNumberField(TEXT("battleTime"), C.BattleTime);
     J->SetNumberField(TEXT("stepRemainder"), C.StepRemainder);
-    J->SetNumberField(TEXT("enemyClock"), C.EnemyClock);
+    J->SetNumberField(TEXT("enemyClock"), C.Guns[1].Clock[0]);
     for (int32 I = 0; I < 2; ++I)
     {
-        J->SetNumberField(FString::Printf(TEXT("turretClock%d"), I), C.TurretClock[I]);
-        J->SetNumberField(FString::Printf(TEXT("burstCount%d"), I), C.BurstCount[I]);
+        J->SetNumberField(FString::Printf(TEXT("turretClock%d"), I), C.Guns[0].Clock[I]);
+        J->SetNumberField(FString::Printf(TEXT("burstCount%d"), I), C.Guns[0].Burst[I]);
     }
     J->SetNumberField(TEXT("order"), static_cast<int32>(C.Order));
     J->SetBoolField(TEXT("battle"), C.bBattle);
     J->SetBoolField(TEXT("holdFire"), C.bHoldFire);
-    J->SetBoolField(TEXT("piercing"), C.bPiercing);
+    J->SetBoolField(TEXT("piercing"), C.Loadout.Resolute.bPiercing);
     J->SetBoolField(TEXT("armorBlocked"), C.bArmorBlocked);
     TArray<TSharedPtr<FJsonValue>> Rounds;
     for (const auto& R : C.Rounds)
@@ -89,7 +89,8 @@ FString FAquilaSave::Encode(const FAquilaCampaign& C)
         Shot->SetArrayField(TEXT("velocity"), VectorJson(R.Velocity));
         Shot->SetNumberField(TEXT("age"), R.Age);
         Shot->SetBoolField(TEXT("enemy"), R.bEnemy);
-        Shot->SetBoolField(TEXT("piercing"), R.bPiercing);
+        Shot->SetBoolField(TEXT("piercing"), R.Ammo == EAquilaAmmo::Piercing);
+        if (R.Ammo == EAquilaAmmo::Phase) Shot->SetBoolField(TEXT("phase"), true);
         Shot->SetNumberField(TEXT("damageScale"), R.DamageScale);
         Rounds.Add(MakeShared<FJsonValueObject>(Shot));
     }
@@ -125,7 +126,7 @@ bool FAquilaSave::Decode(const FString& Text, FAquilaCampaign& Out, FString& Err
         || !Number(J, TEXT("battleTime"), C.BattleTime, 0, 1e12)
         || !Integer(J, TEXT("order"), Order, 0, Schema >= 3 ? 5 : 3)
         || !J->TryGetBoolField(TEXT("battle"), C.bBattle) || !J->TryGetBoolField(TEXT("holdFire"), C.bHoldFire)
-        || !J->TryGetBoolField(TEXT("piercing"), C.bPiercing) || !J->TryGetBoolField(TEXT("armorBlocked"), C.bArmorBlocked)) return false;
+        || !J->TryGetBoolField(TEXT("piercing"), C.Loadout.Resolute.bPiercing) || !J->TryGetBoolField(TEXT("armorBlocked"), C.bArmorBlocked)) return false;
     C.Order = static_cast<EAquilaOrder>(Order);
     // Versions 1/2 retain the voyage and combat state, with an unstarted expedition and no invented rewards.
     if (Schema >= 3)
@@ -150,21 +151,25 @@ bool FAquilaSave::Decode(const FString& Text, FAquilaCampaign& Out, FString& Err
     if (Schema >= 2)
     {
         if (!Number(J, TEXT("stepRemainder"), C.StepRemainder, 0, 1.0 / 120.0)
-            || !Number(J, TEXT("enemyClock"), C.EnemyClock, -1e12, 10)) return false;
+            || !Number(J, TEXT("enemyClock"), C.Guns[1].Clock[0], -1e12, 10)) return false;
         for (int32 I = 0; I < 2; ++I)
-            if (!Number(J, *FString::Printf(TEXT("turretClock%d"), I), C.TurretClock[I], -1e12, 10)
-                || !Integer(J, *FString::Printf(TEXT("burstCount%d"), I), C.BurstCount[I], 0, 3)) return false;
+            if (!Number(J, *FString::Printf(TEXT("turretClock%d"), I), C.Guns[0].Clock[I], -1e12, 10)
+                || !Integer(J, *FString::Printf(TEXT("burstCount%d"), I), C.Guns[0].Burst[I], 0, 3)) return false;
         const TArray<TSharedPtr<FJsonValue>>* Shots;
         if (!J->TryGetArrayField(TEXT("rounds"), Shots) || Shots->Num() > FAquilaCampaign::MaxRounds) return false;
         for (const auto& Value : *Shots)
         {
             const TSharedPtr<FJsonObject>* Shot;
             FAquilaRound R;
+            bool bPiercing = false, bPhase = false;
             if (!Value->TryGetObject(Shot) || !Vector(*Shot, TEXT("position"), R.Position)
                 || !Vector(*Shot, TEXT("velocity"), R.Velocity, 100000)
                 || !Number(*Shot, TEXT("age"), R.Age, 0, 20)
                 || !(*Shot)->TryGetBoolField(TEXT("enemy"), R.bEnemy)
-                || !(*Shot)->TryGetBoolField(TEXT("piercing"), R.bPiercing)) return false;
+                || !(*Shot)->TryGetBoolField(TEXT("piercing"), bPiercing)) return false;
+            if ((*Shot)->HasField(TEXT("phase")) && !(*Shot)->TryGetBoolField(TEXT("phase"), bPhase)) return false;
+            if (bPhase && bPiercing) return false;
+            R.Ammo = bPhase ? EAquilaAmmo::Phase : bPiercing ? EAquilaAmmo::Piercing : EAquilaAmmo::Standard;
             if (Schema >= 3 && !Number(*Shot,TEXT("damageScale"),R.DamageScale,0.001,2)) return false;
             C.Rounds.Add(R);
         }

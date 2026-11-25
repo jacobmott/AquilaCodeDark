@@ -2,7 +2,25 @@
 
 Discussion began 2026-11-15 UTC (2026-11-14 local). The owner subsequently approved the shared world and glass interface build.
 
+### Ship art from concept paintings
+
+Round 181. The owner welcomes additional Perplexity requests about matching Blender assets to pictures and can run them independently. Two new requests cover matching the camera before reshaping a mesh and reconstructing editable hull depth, recesses and support contacts. Both distinguish consistent screenshots from independently drawn views. The existing materials prompt was already copied. All three awaited saved results at inspection. [Prompts, direct links and verified receipts](../Docs/Research/research-battleship-reference-matching-requests-v1.json).
+
+Round 180. The owner said the ships look closer, asked how to improve geometry and material comparisons, and offered Perplexity research. The round 179 upper deck uses constant roughness for its painted finish. A fixed crop of Glacier’s dock shows lower display brightness than the original. The proposed first test compares actual finishes under controlled light and isolates dock emission. Both ships already have separate lit and unlit material studies. The focused Perplexity prompt is stored in Aquila’s Research Console. Its result is pending. [Examples and exact inputs](../Docs/Testing/research-battleship-material-review-baseline.json) · [Research prompt and receipt](../Docs/Research/research-battleship-material-matching-receipt-v1.json).
+
+Round 179. The owner approved the stern shoulder and dock corrections in chat. Two inhabited shoulders now flank Delta Tree’s exhausts. Average centering error at nine rear-view heights is 0.59 m, previously 96.48 m. The curve underneath remains narrower than the study. Glacier Tongue’s opened berth has three supported crossings. Nine of fourteen marked gaps show straight through the whole ship. The outer blade, positioned from the gallery painting, obscures five aft samples. Its dock light remains flatter than the side study. Both 1,280 m models are local exterior reviews. Windows uses round 172. [Models and comparisons](../Docs/Plans/ShipHulls/README.md#rebuilt-exteriors-for-review) · [Measurements and provenance](../Docs/Testing/research-battleship-stern-shoulders-and-dock.json) · [Reusable Asset Pipeline methods](<D:/OtherProjects/asset-pipeline/knowledge/blender-reference-modeling.md#replay-the-stern-shoulders-and-suspended-dock>).
+
+Round 178. All three drive tiers and the mast share a physical centerline. Delta Tree measures 1,280 × 595 × 467 m in the exterior study. Its stern shoulders are visibly offset in the straight rear view. Glacier Tongue measures 1,280 × 583 × 398 m. Its port windows taper into solid, overlapping silver and blue plating. The area below the dock remains too heavy. The current Windows builds retain their tested hulls. [Originals, earlier models and revised scenes](../Docs/Plans/ShipHulls/README.md#rebuilt-exteriors-for-review) · [Builds, independent marks, camera and material checks](../Docs/Testing/research-battleship-stern-and-armor-seams.json).
+
+The owner wants successive Blender passes against the selected paintings and wants successful scripts and techniques saved in Asset Pipeline for future models. Aquila keeps its concepts, output scenes and owner feedback. Review an exterior against its original before changing the Windows game. Compare successive models at a fixed gallery camera, then rotate both to check depth. [Asset Pipeline guide and replay commands](<D:/OtherProjects/asset-pipeline/knowledge/blender-reference-modeling.md>) · [Current comparisons](../Docs/Plans/ShipHulls/README.md#rebuilt-exteriors-for-review).
+
+Round 177. The owner marked both round 176 exteriors closer. Continue local refinement while the paintings and checks support a specific improvement. Record successful tools with replay instructions and a worked example in Asset Pipeline. Delta Tree’s courtyards, observatory and engine spacing changed. Glacier Tongue gained a tapered bow, curved window lights and a deeper modeled dock. [Owner’s ratings](../reports/game-direction/inbox/20261125T193707Z.json) · [Reopened models and comparisons](../Docs/Plans/ShipHulls/README.md#rebuilt-exteriors-for-review) · [Portable workflow](<D:/OtherProjects/asset-pipeline/Tools/asset-pipeline/experimental/blender_reference_modeling/README.md>).
+
+Round 176. The owner approved refining Delta Tree’s stern and Glacier Tongue’s forward armor, and mentioned Shape Match as an optional tool. Delta Tree keeps twelve drives in three banks. Glacier’s two lit galleries wrap under its forward plates. The character project’s shared fitting math worked on Glacier’s marked bow in Blender. Both ships still measure 1,280 m. Local feature checks and matched-camera views support continued art review. [Models and original art](../Docs/Plans/ShipHulls/README.md#rebuilt-exteriors-for-review) · [Measurements](../Docs/Testing/research-battleship-stern-and-prow.json).
+
 ## Standalone matches
+
+Current round 146 direction gives each fresh match one homeworld and one research battleship from the 60-hull roster. Exploration and research can unlock more. The earlier prototype names below are historical. The specific starting hull remains open. [Current research battleship roster](../Docs/Plans/ShipHulls/README.md).
 
 2026-11-22, round 115. The player starts a standalone, real-time match against one computer rival. The owner ruled out a story campaign. Beginning with the homeworld and Resolute, the player chooses where to explore, settle and fight. Both sides expand and seek each other across star systems. Their decisions shape the match until one eliminates the other.
 
@@ -24,11 +42,63 @@ The same arena serves development. Start it without generating a universe or loa
 
 The older **Practice** command fights inside the expedition, shares its save path and uses a different damage multiplier. It remains available inside a match. [Encounter code](../native/Aquila/Source/Aquila/AquilaSimulation.cpp) and [game startup and saves](../native/Aquila/Source/Aquila/AquilaGameMode.cpp).
 
+### Ship art briefs for Asset Pipeline
+
+Round 139 supplied the first exterior briefs to the owner. Asset Pipeline built both studies in Blender. The briefs specified the prototype’s three rows of ten mounts and left out walkable rooms. Resolute has visible hangar recesses and an offset bridge. Sentinel has a hammerhead bow and a notched stern. The original brief text records those requests. [Resolute brief](../Docs/Plans/ShipHulls/Resolute.txt) and [Sentinel brief](../Docs/Plans/ShipHulls/Sentinel.txt).
+
+2026-11-23, round 140. The owner rejected the boxy direction and wants to discuss each silhouette and walkable interior together before another brief. Preserve the fitting goal of up to 30 guns. Mount positions can follow the eventual design. Resolute’s bridge, hangar, engineering, research and living areas can use separate human-scale rooms. Connect the player’s route and views to recognizable exterior features. Sentinel’s interior layout is open. Both first studies await review outside the game. [Ship design discussion](../Docs/Plans/ShipHulls/README.md).
+
+Round 141. Resolute, Sentinel and most other large ships are built in space and stay there permanently. Atmospheric flight places no constraint on their silhouettes. Planetary shuttles handle surface visits. An open harbor for Resolute and a spiral tower for Sentinel are two possible designs, each with a corresponding route aboard. The owner has selected neither. [Space-built ships](../Docs/Plans/ShipHulls/README.md#ships-built-in-space).
+
+Round 142. The owner wants 50–60 varied ship concepts and a model and resolution discussion before generation. A distinct structure per prompt and consistent framing will help compare silhouettes. The plan records signed-in quotes for two resolutions, a local GPU option and a proposed six-image comparison capped at 2.70 credits. No image jobs or spending were authorized this round. [Concept exploration and image budget](../Docs/Plans/ShipHulls/README.md#concept-exploration-and-image-budget).
+
+Round 143. The owner chose GPT Image 2.6 Sunburst at 1K low quality. The three trial designs each produced a 1024 × 1024 PNG. Three matching account charges total 2.25 credits. Bridge Geode, Hanging City and Habitat Knot are in the local gallery. Either proposed collection size includes these three. The larger batch and hull assignments remain open. [Three Sunburst concepts](../Docs/Plans/ShipHulls/README.md#three-sunburst-concepts).
+
+Round 144. The submitted choice was 60 total. All 57 additional Sunburst concepts finished at the selected settings for 42.75 credits. The 60 originals cost 45 credits combined. The gallery keeps their numbers stable and supports a multi-ship shortlist. Each original is linked to its actual prompt, settings and provider record, with all 60 visible in Asset Ledger. The shortlist and walkable layouts are open. [The 60-ship collection](../Docs/Plans/ShipHulls/README.md#the-60-ship-collection).
+
+Round 145. The owner kept all 60 hulls. Many fit the research battleship role, which brings research, a home for the crew, shuttle operations and combat together. A city-like silhouette fits that role. The guide called for heavy combat, while the 57 expansion prompts described research, exploration and self-defense. Individual roles and fittings are still open. [Research battleships](../Docs/Plans/ShipHulls/README.md#research-battleships).
+
+Round 146. All 60 hulls are obtainable research battleships. They keep their generated names. A fresh match gives the player one. Additional hulls can be discovered while exploring or unlocked through research. Other routes, individual unlock conditions and the starting hull remain open. Delta Tree (58) and Glacier Tongue (41) are the first two selected for 3D work. Their temporary prototype sides follow the owner's listed order. [Roster and selected models](../Docs/Plans/ShipHulls/README.md#the-first-two-model-studies).
+
+Round 172. The owner confirmed the mounted guns look attached. The Windows ships use the earlier Asset Pipeline textures on their approved 1,280 m hulls. Delta Tree keeps ivory ceramic and bronze. Glacier Tongue keeps silver strakes and blue enamel. Armor choices tint each hull’s own panel work. Both bridges and existing dock interiors share the ship finishes. Crew quarters, labs and engineering rooms remain planned. [Playable ships](../Docs/Plans/ShipHulls/README.md#textured-exteriors) and [Windows checks](../Docs/Testing/native-ship-finishes.json).
+
+Round 173. The owner said both playable exteriors resemble the original images only in their broad outlines. The Windows build sources both boarding proportion studies. Delta Tree’s branch walls, recessed decks and shrouded drives need modeling. Glacier Tongue’s overlapping waves, recessed hangar walls and outboard blade need modeling. Refer to the selected gallery designs and their supporting views for the rebuild. [Art comparison](../Docs/Plans/ShipHulls/README.md#likeness-to-the-chosen-ships).
+
+Round 174. The owner chose to review both revised models beside the original artwork before changing the game. The separate editable exteriors and 3D exports measure 1,280 m. Review each ship independently in color or gray. The original gallery controls disagreements between the independently generated views, including Glacier Tongue’s blade length. The Windows game still uses its tested boarding geometry. [Rebuilt exteriors and review](../Docs/Plans/ShipHulls/README.md#rebuilt-exteriors-for-review).
+
+Round 148. The owner questioned the ships’ height. Each study used one angled concept. Glacier Tongue’s modeled dock loses much of the opening shown in its original. Side and bow references followed by a matched six-view sheet are proposed. Exact dimensions remain open. [Hull proportions and reference views](../Docs/Plans/ShipHulls/README.md#hull-proportions-and-reference-views).
+
+Round 149. Each hull selected for modeling gets whatever references help establish its shape and playable spaces. The proposed twelve shape views include six straight exteriors, two angled views and four sections. Add detail around each ship’s distinctive structures, deck routes and surface finishes. The first briefs address Glacier Tongue’s open docking bay and Delta Tree’s branching decks and tall drives. [Modeling references and prompts](../Docs/Plans/ShipHulls/ModelingReferences.md).
+
+Round 150. Delta Tree and Glacier Tongue each have 24 selected reference images, original art and registered Blender guides. Each has three proposed playable decks. The front and side art sets proportions. Eight gray projections per ship show the same rough model. Asset Ledger contains all 54 successful provider images, including six earlier studies. Net spend was 40.5 credits after one refund. Hull scale and walkable clearance remain open. [Reference packs](../Docs/Plans/ShipHulls/README.md#completed-reference-packs) and [verification](../Docs/Testing/research-battleship-reference-images.json).
+
+Round 151. The owner liked both reference sets. A player-scale test of Glacier Tongue’s bay and boarding route is the recommended next step. The shuttle should clear the crossings and its ramp should meet a walkable deck. The proposed milestone awaits direction. [First boarding test](../Docs/Plans/ShipHulls/README.md#proposed-first-boarding-test).
+
+Round 157. Glacier Tongue’s approved hull is **1,280 m** long. Its landing pad is **142 m wide and 180 m long**. Peregrine spans 64 m, leaving 39 m from either wingtip to the pad edge. The 640 m hull remains a boarding-test comparison. [Owner’s selection](../reports/game-direction/inbox/20261124T235647Z.json) and [boarding scale](../Docs/Plans/ShipHulls/README.md#glacier-tongue-boarding-scale).
+
+Round 160. Delta Tree’s approved hull length is also **1,280 m**. Future hull and deck work uses the scale the owner walked from Peregrine to Junction 01. [Owner’s selection](../reports/game-direction/inbox/20261125T012507Z.json) and [Delta Tree’s boarding scale](../Docs/Plans/ShipHulls/README.md#delta-tree-boarding-scale).
+
+Round 164. The owner wants to watch combat from inside the command center. The ship handles targeting and firing while the player walks and looks around. In Delta Tree’s boarding test, the forward windows overlook a cannon firing at a rechargeable practice drone. Direct weapon controls belong in hidden special scenarios. [Bridge visit](../native/Aquila/README.md#delta-tree-command-bridge).
+
+Round 165. The owner accepted Delta Tree’s Windows bridge as played. Keep automatic cannon fire visible from inside the ship while the visitor walks and looks freely. [Playtest feedback](../Docs/Testing/native-bridge-observer.json).
+
+Round 167. The owner chose a two-sided simulator duel watched from aboard Delta Tree. The visitor can fit either ship, watch both crews fight and step outside during a shot. The arena and bridge share one fight. [Owner’s choice](../reports/game-direction/inbox/20261125T052555Z.json) and [playtest controls](../native/Aquila/README.md#combat-simulator-on-windows).
+
+Round 168. The owner wants the new ships throughout the duel. Use the same Delta Tree and Glacier Tongue hulls they boarded. Seat the fitted guns across their bases. Keep the floating equipment choices in the fitter. [Windows hull and mount checks](../Docs/Testing/native-duel-hulls.json).
+
+Rounds 169–170. The owner playtested switching between Delta Tree and Glacier Tongue and accepted watching the same duel from either bridge. Ship changes preserve time, rounds in flight, loadouts and each bridge’s last viewpoint. Both crews stay autonomous. [Windows checks and owner feedback](../Docs/Testing/native-two-bridges.json).
+
 ### First playable Windows duel
 
 Round 119. Opening Combat Simulator starts Resolute against Sentinel without loading a match. A player can switch ammunition or replay the same loadout. Each attempt begins with the same ships, range, shield and hull values, turret clocks and empty projectile list. Both ammunition types are available in the match's Tactical panel. The duel uses the expedition battle entry and the same fixed-step combat. The 8× option runs those steps faster. Standard rounds exhaust Sentinel's shield and stop at its armor. Piercing rounds reach its hull. [Windows controls and direct launch](../native/Aquila/README.md#combat-simulator-on-windows).
 
 This first build has one ship pairing and two ammunition choices. Swappable armor, further ships and weapons, and a catalog explaining their acquisition remain open.
+
+### Fitting both sides
+
+Round 131. The Windows combat lab fits each ship directly on its hull. Thirty selectable mounts share that ship’s finite inventory. The starter Resolute owns two burst turrets and Sentinel owns one cannon. A turret can move with its ammunition and enhancement intact. The interception chip gives any of the four guns an additional defensive target. Both opponents are independently editable. [Ship fitting](../native/Aquila/README.md#combat-simulator-on-windows).
+
+Round 125. The owner wants to see what Sentinel fires and equip both ships before comparing outcomes. The arena displays each current weapon, ammunition, armor and shield. Either side can use twin burst turrets or a kinetic cannon, standard or piercing rounds, light or reinforced armor, and an energy shield or an empty slot. Editing holds the fight. Starting resets both sides. Replay keeps their fittings. More ships, equipment and acquisition information remain open. [Windows controls](../native/Aquila/README.md#combat-simulator-on-windows).
 
 ## One computer rival
 
@@ -394,7 +464,7 @@ Owner selects deliberate battles and describes a capable starter battleship that
 Available weapons must use meaningful projectile travel. Instant or effectively instant long-range attacks leave the available design.
 Such weapons remain future notes only: exceptionally rare, with long cooldowns. This supersedes the earlier beam-family proposal.
 One simple starter shield can grow into stronger or multiple shields, sustain systems, or a shieldless special-armor build.
-Guided projectiles can lose lock to countermeasures; automatic evasion becomes another upgrade path with details still open.
+Guided projectiles can lose lock to countermeasures.
 Starting examples: two basic kinetic turrets, left and right. Long-term example: around thirty independently upgraded mounts.
 The count, mount map and year-long progression example are not fixed balance commitments.
 Updated [combat design](combat-design.md) separates owner requirements from proposed weapon families, guidance rules and capacity tradeoffs.
@@ -422,7 +492,7 @@ Exact balance, discovery, effects and progression details remain open. Report ro
 Owner authorizes round 27's milestone. Two automatic kinetic turrets replace the instant pulse; enemy shots also travel before dealing damage.
 Standard practice rounds drain shields but cause zero hull damage against reinforced armor. Confirmed blockage stops ineffective new launches.
 Piercing practice rounds demonstrate compatible damage. Station/exterior ammunition modes require no manual aim or target lock.
-Both sides have one simple shield; no regeneration, upgrade ownership, ammunition economy or automatic evasion is implemented.
+Both sides have one simple shield; regeneration, upgrade ownership and the ammunition economy remain open.
 Muzzle flashes/recoil, separated tracer streams, shield ripples, sparks and hull impacts show firing and outcomes across camera views.
 Fixed simulation steps, swept planet/body contacts and bounded pools preserve delayed damage and support misses when the ship moves.
 Build, 30 model tests, six safety tests and nine focused browser groups pass. Source hashes and limits: [projectile verification](../Docs/Testing/projectile-combat-verification.json).
@@ -436,7 +506,7 @@ The player commands destinations and movement intent. Direct capital keyboard/mo
 The first local helm supports Approach orbit/Atlas, Hold position, Keep combat range and Withdraw.
 The 35 km standoff and 85 km withdrawal are provisional practice distances. Weapon modes remain independent.
 Orders continue while walking aboard. Pause/settings suspend them; launching a shuttle stops the capital first.
-Neither general tactical planning nor automatic projectile evasion is implemented by this change.
+General tactical planning remains open.
 Details: [architecture](architecture.md). Evidence: [automatic helm](../Docs/Testing/automatic-helm-verification.json).
 Report round 29 records the change. No commit, push, deployment, transfer, paid generation or research submission is authorized.
 

@@ -1,0 +1,512 @@
+{
+  "collection": "Sunburst capital ship concept collection",
+  "first_round": 143,
+  "completion_round": 144,
+  "provider": "Higgsfield",
+  "model": "GPT Image 2.6 Sunburst",
+  "resolution": "1K",
+  "quality": "low",
+  "size": [
+    1024,
+    1024
+  ],
+  "trial_credits": 2.25,
+  "additional_credits": 42.75,
+  "selection": {
+    "retained": "all",
+    "count": 60,
+    "source": "Owner chat, round 145",
+    "model_studies": [58, 41]
+  },
+  "roster": {
+    "role": "research battleship",
+    "hull_name": "name",
+    "starting_hull_count": 1,
+    "starting_hull_number": null,
+    "unlock_examples": ["exploration discovery", "research"],
+    "unlock_methods_exhaustive": false,
+    "source": "Owner chat, round 146"
+  },
+  "items": [
+    {
+      "number": 1,
+      "name": "Bridge Geode",
+      "folder": "sunburst-r143",
+      "filename": "bridge-geode.png",
+      "sha256": "dbe49735432f5d4a2958c48a43449a06d466e08bc37d485fc61d5ea9c00a9dce",
+      "description": "Three lit bridges cross an open, faceted shell."
+    },
+    {
+      "number": 2,
+      "name": "Hanging City",
+      "folder": "sunburst-r143",
+      "filename": "hanging-city.png",
+      "sha256": "3a54cb0647b74eb005ea59cdcb1cd27c175b822e1b8c727992f7df7c7f579598",
+      "description": "Four terraced towers hang beneath a docking ring."
+    },
+    {
+      "number": 3,
+      "name": "Habitat Knot",
+      "folder": "sunburst-r143",
+      "filename": "habitat-knot.png",
+      "sha256": "5dc895cb5e5855d1ff84a0f8659db8c119ad5cba4f5bdc1013cb69b277020e1f",
+      "description": "Copper, ivory and blue habitat loops interlock."
+    },
+    {
+      "number": 4,
+      "name": "Hollow Dice",
+      "folder": "sunburst-r144",
+      "filename": "04-hollow-dice.png",
+      "sha256": "ace5a16fce4399f0f18a049401f5f0258985d0229cea65744d5f2df9054538aa",
+      "description": "Round openings pierce three faces of a blue cube."
+    },
+    {
+      "number": 5,
+      "name": "Current Seam",
+      "folder": "sunburst-r144",
+      "filename": "05-current-seam.png",
+      "sha256": "b687ac8846d74e641e0d1dc3acd62ab49d3e0f944f6eee951a079312bfb2111d",
+      "description": "Two sweeping white crests curve over recessed docks."
+    },
+    {
+      "number": 6,
+      "name": "Dandelion Array",
+      "folder": "sunburst-r144",
+      "filename": "06-dandelion-array.png",
+      "sha256": "40cafcf840fa3b0f57df1648be8ec1494db9ddae21c00c471bffa7d1b5c8b2d6",
+      "description": "Long spars end in flared observation decks."
+    },
+    {
+      "number": 7,
+      "name": "Long Counterweight",
+      "folder": "sunburst-r144",
+      "filename": "07-long-counterweight.png",
+      "sha256": "9f085550fe1f469fd4d727024a82ed4a1ffcd5f2b0deb5411dad47646e186fc9",
+      "description": "A thin boom balances a large drum against a small pod."
+    },
+    {
+      "number": 8,
+      "name": "Wedge Exchange",
+      "folder": "sunburst-r144",
+      "filename": "08-wedge-exchange.png",
+      "sha256": "12da3a8885e76c268cf6df8aa9c0930ce78f57c751f55a68ab03efef5a292eae",
+      "description": "Pale wedge-shaped hulls interlock around a dark harbor."
+    },
+    {
+      "number": 9,
+      "name": "Salt Crystal",
+      "folder": "sunburst-r144",
+      "filename": "09-salt-crystal.png",
+      "sha256": "bc05c7416dfba01f9b4fa9814e310182d385e0381a37ca87ff4717275f52cede",
+      "description": "Blue crystalline wedges project from a compact core."
+    },
+    {
+      "number": 10,
+      "name": "Cauliflower City",
+      "folder": "sunburst-r144",
+      "filename": "10-cauliflower-city.png",
+      "sha256": "fa6adeaebe068dbef34a44f97a3c8720a538bc7ed8d716d0458e068b2bfc69a4",
+      "description": "Blue habitat domes cluster at one end of a bent arm."
+    },
+    {
+      "number": 11,
+      "name": "Double Horizon",
+      "folder": "sunburst-r144",
+      "filename": "11-double-horizon.png",
+      "sha256": "d5bd287107156a2cacc3544d4ad27cddb90ecb5cc57021a5aa7449d8cf247f6d",
+      "description": "A flat disk meets a tall upright lens at its edge."
+    },
+    {
+      "number": 12,
+      "name": "Twinned Valves",
+      "folder": "sunburst-r144",
+      "filename": "12-twinned-valves.png",
+      "sha256": "5fef86e2b1327cfd78d796d14c6977cafd7d7fad391c9ac60175698388d6358d",
+      "description": "Two ridged shells open around a glowing docking throat."
+    },
+    {
+      "number": 13,
+      "name": "Inverted Cradle",
+      "folder": "sunburst-r144",
+      "filename": "13-inverted-cradle.png",
+      "sha256": "06cfdec0b1761fc47fdd16d8acffed0d0cf59f9f9e07bbcf91f54f03dc3b1e1b",
+      "description": "Two tall curved uprights cradle a low stack of decks."
+    },
+    {
+      "number": 14,
+      "name": "Concertina",
+      "folder": "sunburst-r144",
+      "filename": "14-concertina.png",
+      "sha256": "8e2602f7b6bde185853752baae6301b7077dcae6603319a7bcf222c952e3e5a2",
+      "description": "Pale diagonal braces fold around tiered, lit decks."
+    },
+    {
+      "number": 15,
+      "name": "Cantilever Rooms",
+      "folder": "sunburst-r144",
+      "filename": "15-cantilever-rooms.png",
+      "sha256": "0716025bb3d1983d39655bdb9ee2dab52cc3c7aa2628ff8127f41aff5edd3479",
+      "description": "Five glass-ended rooms project from an L-shaped hull."
+    },
+    {
+      "number": 16,
+      "name": "Paper Nautilus",
+      "folder": "sunburst-r144",
+      "filename": "16-paper-nautilus.png",
+      "sha256": "5918411fa6d2111c305e2bc8e1f34c7c5b4fe0d4a30d7a6913497aa62d3024d4",
+      "description": "An open coil of pleated plates ends in a docking tongue."
+    },
+    {
+      "number": 17,
+      "name": "Sun Dial",
+      "folder": "sunburst-r144",
+      "filename": "17-sun-dial.png",
+      "sha256": "7c566fa0eba3873325d766bc9f0980bcb88a2a33a0c073c57a1bafbbbab909cd",
+      "description": "A tall red fin rises over a shallow circular dish."
+    },
+    {
+      "number": 18,
+      "name": "Moon Chain",
+      "folder": "sunburst-r144",
+      "filename": "18-moon-chain.png",
+      "sha256": "210e3e563d4beb3ab8e8dad11d6622ba15bf03facdef9d4f06adf1171b8407e8",
+      "description": "A curved chain of spheres shrinks toward one end."
+    },
+    {
+      "number": 19,
+      "name": "Manifold Conch",
+      "folder": "sunburst-r144",
+      "filename": "19-manifold-conch.png",
+      "sha256": "68909661d6a18e76f6e513e9f95b45fcf5b9c317b0d9a1e6a251aaf6c5b0a036",
+      "description": "A ribbed conical shell spirals toward a scalloped hangar."
+    },
+    {
+      "number": 20,
+      "name": "Corkscrew Steps",
+      "folder": "sunburst-r144",
+      "filename": "20-corkscrew-steps.png",
+      "sha256": "f3fb3bf50134658ef707c973e6ef65df67c5c61317bfb2728c2dd885b90662b6",
+      "description": "Open decks climb in a spiral beside a curved outer spine."
+    },
+    {
+      "number": 21,
+      "name": "Fracture Harbor",
+      "folder": "sunburst-r144",
+      "filename": "21-fracture-harbor.png",
+      "sha256": "3303782b6b1ea2f3ffa55869386e14211acbebc7dc05296ffaad55183d00126a",
+      "description": "Two toothed hull halves flank a bright zigzag harbor."
+    },
+    {
+      "number": 22,
+      "name": "Inward Cathedral",
+      "folder": "sunburst-r144",
+      "filename": "22-inward-cathedral.png",
+      "sha256": "a9339445ff00c23514970bb9b6d640a4a9a5517e223f79ccc9277fc14cff8c35",
+      "description": "Repeated tall arches enclose a line of glowing halls."
+    },
+    {
+      "number": 23,
+      "name": "Tilted Observatory",
+      "folder": "sunburst-r144",
+      "filename": "23-tilted-observatory.png",
+      "sha256": "3a2e1f36dd951696b8eaacfcfdc3266fde9425bd38ddbe92eb5767b444ddc20a",
+      "description": "Four lens-shaped decks tilt from one side of a spindle."
+    },
+    {
+      "number": 24,
+      "name": "Tension Field",
+      "folder": "sunburst-r144",
+      "filename": "24-tension-field.png",
+      "sha256": "b53031e062fb078c320f1f1984a5f4d8fc5baf8dc3aa0763de07a2bf962d195c",
+      "description": "Slender trusses suspend a central station between outer pods."
+    },
+    {
+      "number": 25,
+      "name": "Split Loom",
+      "folder": "sunburst-r144",
+      "filename": "25-split-loom.png",
+      "sha256": "89d26efe6b634e98788786f9067a5f9205b3c6211b246d5e401d2ffc5689f0e8",
+      "description": "Bulbous pods join hollow green branches around open space."
+    },
+    {
+      "number": 26,
+      "name": "Porcelain Ear",
+      "folder": "sunburst-r144",
+      "filename": "26-porcelain-ear.png",
+      "sha256": "1d0660cf7d3f0df2972c8ce787e7d5b1c8c62b0af80f2712ec57374479bd277e",
+      "description": "A smooth, lopsided bowl curves around an interior court."
+    },
+    {
+      "number": 27,
+      "name": "Needle District",
+      "folder": "sunburst-r144",
+      "filename": "27-needle-district.png",
+      "sha256": "cb85045ddd76aef23bfc08309fe5c15a1f638173511219a79bdf41b2d69a99a8",
+      "description": "Towers of unequal height rise from one flat platform."
+    },
+    {
+      "number": 28,
+      "name": "Double Eddy",
+      "folder": "sunburst-r144",
+      "filename": "28-double-eddy.png",
+      "sha256": "87ea8248ea48a0e2122b63be349d7d11c59adb3af505b5b3b3374b236708901e",
+      "description": "A thin red S curls into two open eddies."
+    },
+    {
+      "number": 29,
+      "name": "Winter Orchard",
+      "folder": "sunburst-r144",
+      "filename": "29-winter-orchard.png",
+      "sha256": "eeb96378c448bbaf6b194fa4ea1d54c20cb68544b896b2ec9fb371826f9c5e61",
+      "description": "Two crooked branches carry glowing clusters of chambers."
+    },
+    {
+      "number": 30,
+      "name": "Crosswind Harp",
+      "folder": "sunburst-r144",
+      "filename": "30-crosswind-harp.png",
+      "sha256": "dc6cf34f6a1c23949d2434f8ca43352535bd0810b5dd72c040c1beb264914a5a",
+      "description": "Tapering crossbars span a broad triangular frame."
+    },
+    {
+      "number": 31,
+      "name": "Plateau Steps",
+      "folder": "sunburst-r144",
+      "filename": "31-plateau-steps.png",
+      "sha256": "1d23b492578329e54ade199002bd430d078e18c0d376aa9232b179ef8af5b2aa",
+      "description": "Five broad terraces climb the side of a dark wedge."
+    },
+    {
+      "number": 32,
+      "name": "Offset Keys",
+      "folder": "sunburst-r144",
+      "filename": "32-offset-keys.png",
+      "sha256": "31bfe6a826530c9082fed65d5508c3f38e133128f91b400e6f7441c3e1e5ad35",
+      "description": "Squared beams cross around a recessed central atrium."
+    },
+    {
+      "number": 33,
+      "name": "Pillar of Rain",
+      "folder": "sunburst-r144",
+      "filename": "33-pillar-of-rain.png",
+      "sha256": "053cc284fd258e9699a380390a73b414298fdde95aa658223401d232b54659e2",
+      "description": "Thin, lit shafts hang from the belly of a domed canopy."
+    },
+    {
+      "number": 34,
+      "name": "Unbound Atlas",
+      "folder": "sunburst-r144",
+      "filename": "34-unbound-atlas.png",
+      "sha256": "9cae5805658f8fe9bae8d9769e6f70b80ddac374bf04b02bb9b2047917b61ef7",
+      "description": "Six blade-like inhabited decks fan from a common hinge."
+    },
+    {
+      "number": 35,
+      "name": "Island Republic",
+      "folder": "sunburst-r144",
+      "filename": "35-island-republic.png",
+      "sha256": "3f48a0e80f51027232d8a62e0261b44bcf56e874e9375e2a3d25ee4f13246372",
+      "description": "Short transit tubes link five low island-shaped habitats."
+    },
+    {
+      "number": 36,
+      "name": "Broken Wheelhouse",
+      "folder": "sunburst-r144",
+      "filename": "36-broken-wheelhouse.png",
+      "sha256": "b7438a29e19289d3535f9c0a59b48e2dbff2e5f380e8c25adf7252412e522245",
+      "description": "An open green wheel curves around a spoke and an outlying pod."
+    },
+    {
+      "number": 37,
+      "name": "Suspended Mesa",
+      "folder": "sunburst-r144",
+      "filename": "37-suspended-mesa.png",
+      "sha256": "40b9a7a5c2776f28aa2f7a8876d0a1963448f010cea88cc2d80d891444a2a0ab",
+      "description": "A broad upper shelf balances on an offset stepped lower hull."
+    },
+    {
+      "number": 38,
+      "name": "Root Crown",
+      "folder": "sunburst-r144",
+      "filename": "38-root-crown.png",
+      "sha256": "b7004ae68f4d876a5328f2cead31d7b52e10443a3900f8dade38a5d72347433c",
+      "description": "Rounded blue habitats rise above a tangle of branching piers."
+    },
+    {
+      "number": 39,
+      "name": "Aperture House",
+      "folder": "sunburst-r144",
+      "filename": "39-aperture-house.png",
+      "sha256": "e9efd986c3ea7bb2121a747faedff4f287ed6f7bddb80534068a2a73527758f2",
+      "description": "Overlapping curved white plates form an open iris."
+    },
+    {
+      "number": 40,
+      "name": "Inhabited Viaduct",
+      "folder": "sunburst-r144",
+      "filename": "40-inhabited-viaduct.png",
+      "sha256": "e6f7c84295a88b847ec7d59005fbb7d279354f77c35bf4878eaba775738f077f",
+      "description": "A row of tapering arches leads to a cluster of blue engines."
+    },
+    {
+      "number": 41,
+      "name": "Glacier Tongue",
+      "folder": "sunburst-r144",
+      "filename": "41-glacier-tongue.png",
+      "sha256": "827baa1d6127c91fd36b21e0998ad7b013ddd7c8e7b109059bad03c61e86f0d1",
+      "description": "Undulating plates overhang a dark, lit docking recess."
+    },
+    {
+      "number": 42,
+      "name": "Basalt Choir",
+      "folder": "sunburst-r144",
+      "filename": "42-basalt-choir.png",
+      "sha256": "c4af0e0eb914c2950a541052dfa989b1a19c281392902c8fdba2acde94a0e5b8",
+      "description": "Stepped hexagonal columns form a rising city of uneven roofs."
+    },
+    {
+      "number": 43,
+      "name": "Threefold Gate",
+      "folder": "sunburst-r144",
+      "filename": "43-threefold-gate.png",
+      "sha256": "ea832fac01eee573cd9c3fb10e6304f75b33a26e23581d3ef944a86a8d9780ec",
+      "description": "Three connected slab walls enclose a single ovoid habitat."
+    },
+    {
+      "number": 44,
+      "name": "Gimbal City",
+      "folder": "sunburst-r144",
+      "filename": "44-gimbal-city.png",
+      "sha256": "7fafed1c71c5af9fea5fa63904dfc73a4bc6ad5f98c9c2fd35b508ba2d8983e8",
+      "description": "An offset habitat sits inside intersecting gimbal rings."
+    },
+    {
+      "number": 45,
+      "name": "Quiet Bell",
+      "folder": "sunburst-r144",
+      "filename": "45-quiet-bell.png",
+      "sha256": "59d213d555c9d27df14e62b4ca89f227a0bc1821580d77876e3117bc27884eab",
+      "description": "A copper bell surrounds a cylinder protruding past the rim."
+    },
+    {
+      "number": 46,
+      "name": "Drum Circle",
+      "folder": "sunburst-r144",
+      "filename": "46-drum-circle.png",
+      "sha256": "080c91d3d84134718c35ab6a4aae57f31e9c47ce33911fc7ca7cfb5d46f0c8f5",
+      "description": "Large cylindrical modules point outward from a central yard."
+    },
+    {
+      "number": 47,
+      "name": "Umbel Caravan",
+      "folder": "sunburst-r144",
+      "filename": "47-umbel-caravan.png",
+      "sha256": "d9d41207a96f7f658cd2047043f7d226ccd5740d7a2d92f8822a04336bf81252",
+      "description": "A long red stalk connects a bulbous habitat to a spray of shallow cups."
+    },
+    {
+      "number": 48,
+      "name": "Kiln Bloom",
+      "folder": "sunburst-r144",
+      "filename": "48-kiln-bloom.png",
+      "sha256": "5ec0e500cc7120c2fb4da1c80433041a95c3288f07028bf0952278154ba48be8",
+      "description": "White ceramic petals curl open around a warm central dome."
+    },
+    {
+      "number": 49,
+      "name": "Whale Fall",
+      "folder": "sunburst-r144",
+      "filename": "49-whale-fall.png",
+      "sha256": "16e30a96bafee5ce83ac8c03a3c4e9317b85f0b0ad9dbdd72ec924ab0aeb5aa9",
+      "description": "Slender ribs curve inward from an armored crescent spine."
+    },
+    {
+      "number": 50,
+      "name": "Bellows Gate",
+      "folder": "sunburst-r144",
+      "filename": "50-bellows-gate.png",
+      "sha256": "ca33660184f7ea97745d0a34f68b6bc43173e7c7c1df0dc52c9a7bf6be70075d",
+      "description": "Two open frames join at a twisted, pleated corner."
+    },
+    {
+      "number": 51,
+      "name": "Reed Vessel",
+      "folder": "sunburst-r144",
+      "filename": "51-reed-vessel.png",
+      "sha256": "bb534bb8f3426f4d6cc2c139fee055ad54b6bfcf9aeee0298a7a766ce306d341",
+      "description": "Long, lit tubes fan out from a single narrow junction."
+    },
+    {
+      "number": 52,
+      "name": "Horseshoe Pair",
+      "folder": "sunburst-r144",
+      "filename": "52-horseshoe-pair.png",
+      "sha256": "cfc0a2eeda53566c901d695d97e9c87592ed38cdb3fce5bb4f6dbb64d02e21a0",
+      "description": "Two open arcs meet at a hinge in perpendicular planes."
+    },
+    {
+      "number": 53,
+      "name": "Split Level",
+      "folder": "sunburst-r144",
+      "filename": "53-split-level.png",
+      "sha256": "f17486286ced569e41599eb880f6a47cba7fb3b669f3db9f8ba3bb7afb559f65",
+      "description": "Five round habitats step diagonally up a side truss."
+    },
+    {
+      "number": 54,
+      "name": "Tidal Pearl",
+      "folder": "sunburst-r144",
+      "filename": "54-tidal-pearl.png",
+      "sha256": "d2b27535c70da2ae8ee67a8a97979999fe724c4cefe226c03fb85a46c75c94ca",
+      "description": "Two large globes share a small elevated observation pod."
+    },
+    {
+      "number": 55,
+      "name": "Broken Egg",
+      "folder": "sunburst-r144",
+      "filename": "55-broken-egg.png",
+      "sha256": "62b91026a79b75c50d966048f142a16c2c6e17d33b863188af3832a71a1d0fe8",
+      "description": "A diagonal opening reveals glowing decks inside a sleek ovoid shell."
+    },
+    {
+      "number": 56,
+      "name": "Spindle Crown",
+      "folder": "sunburst-r144",
+      "filename": "56-spindle-crown.png",
+      "sha256": "ccff01194bab96ebfd6820373b5bc6dddadb0b1d9392d4a974215dc2ed56aeb4",
+      "description": "A slender tower pierces the edge of a broad ring."
+    },
+    {
+      "number": 57,
+      "name": "Tunnel Mountain",
+      "folder": "sunburst-r144",
+      "filename": "57-tunnel-mountain.png",
+      "sha256": "59e1becc769bf13a400ba2c5ef1405c99b6023013f46de8b2c7b0ecca2dc2ded",
+      "description": "An illuminated route zigzags around a pierced metallic mountain."
+    },
+    {
+      "number": 58,
+      "name": "Delta Tree",
+      "folder": "sunburst-r144",
+      "filename": "58-delta-tree.png",
+      "sha256": "6628ed15b22fbf2990729eb8417b9babcb66cc8ebcb5635dad57c8776efeeac3",
+      "description": "Branching channels cross a broad deck ahead of a bank of engines."
+    },
+    {
+      "number": 59,
+      "name": "Tide Clock",
+      "folder": "sunburst-r144",
+      "filename": "59-tide-clock.png",
+      "sha256": "0bdc16f7dfa0a982301a27467d4ccf6bab200c633098e110fff9eae7a7929caa",
+      "description": "Five broad curved vanes spiral around an open hub."
+    },
+    {
+      "number": 60,
+      "name": "Gravity Well",
+      "folder": "sunburst-r144",
+      "filename": "60-gravity-well.png",
+      "sha256": "283d31bb444e960aa249b30ea3fc23429bc7062e6137f1e6b4d0f22b6fa54759",
+      "description": "Successively smaller tiers hang beneath a wide ring."
+    }
+  ]
+}

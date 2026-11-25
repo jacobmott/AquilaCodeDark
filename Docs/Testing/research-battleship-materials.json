@@ -1,0 +1,71 @@
+{
+  "round": 147,
+  "verified_utc": "2026-11-24T07:29:12.724978+00:00",
+  "stage": "Textured exterior assets in Asset Pipeline; Windows hull integration remains open.",
+  "tools": "Local OpenCV, NumPy and Blender 5.2.0 LTS",
+  "provider_credits": 0,
+  "ships": [
+    {
+      "number": 58,
+      "name": "Delta Tree",
+      "slug": "delta-tree",
+      "materials": 12,
+      "maps": 33,
+      "emissive_materials": 3,
+      "hero_resolution": [
+        2048,
+        1024
+      ],
+      "mesh_groups": 6,
+      "mount_guides": 30,
+      "triangles": 154034,
+      "clean_import_mean_absolute_rgb_error_out_of_255": 0.0127,
+      "review_pixels": [
+        1440,
+        946
+      ],
+      "r002_original_files_verified": 5,
+      "files": {
+        "delta-tree.blend": "48d363b6cdd16e1b321263a79436241897630fad8ee6e235ec27fc9bf567f96b",
+        "delta-tree.glb": "82e876d06a07e8ede73801130abdb0745d9a330edcab87c50b34ed66891dec83",
+        "delta-tree-textures.zip": "528fc71a0f9d0290b4b64552326fe97b3e06450af77158fb5205e9bb7f8020da",
+        "exchange.png": "16217ca89c0260c7ed3023241db71750f91e4e216ab65bca919c718b6cef3664",
+        "detail.png": "642fed8020194122c018a2bd9eaa5a06f7f108bebdd16ccde9129768746f0017",
+        "top.png": "b000c38caae1b9e49637909e945dcb62960f6c5a27d5c45a1a42c3d57ccbd6cc",
+        "stern.png": "54d8634c34cf1cbdb2836fc12c49f596fc0bf3e8b3a0cf17f92466cb8b7f95e3",
+        "bow.png": "6cd2dae99585928c06fa869f2339b78b9f4f6fef0d3774a69866e44268101d9e"
+      }
+    },
+    {
+      "number": 41,
+      "name": "Glacier Tongue",
+      "slug": "glacier-tongue",
+      "materials": 13,
+      "maps": 34,
+      "emissive_materials": 2,
+      "hero_resolution": [
+        2048,
+        1024
+      ],
+      "mesh_groups": 6,
+      "mount_guides": 30,
+      "triangles": 60268,
+      "clean_import_mean_absolute_rgb_error_out_of_255": 0.0141,
+      "review_pixels": [
+        1440,
+        946
+      ],
+      "r002_original_files_verified": 5,
+      "files": {
+        "glacier-tongue.blend": "386bc423b559009c6f60ce911817ee0d5ffc3349d9742727f156b91b0f5a00f9",
+        "glacier-tongue.glb": "b93ae797f33bfc26a12cc3e6853c1ed4a7aaeae7dff1223861a30f941a31eb4f",
+        "glacier-tongue-textures.zip": "7fc8545c876f586a4a7a3e7c4fc3de8b36fe86fdf359a1b53c143d7409aaa3a1",
+        "exchange.png": "14961928cde9c5d5d3dc30f93f1f515a091f78c05399b72d4693fd4c7f23c5a3",
+        "detail.png": "96e940b06cea4366de7d850ff55e671c1004bc3188522f10954bab6171da34df",
+        "top.png": "b0344d9bd61502181d39d19e24434d488f75506b8a166367249cce0031df2300",
+        "stern.png": "8351f3bbb85ced7de2d09287e9d838a63fe02345490548af2495f12dd821f8e1",
+        "bow.png": "64f195fa481304b65c6e866ffcd0cc69dab12b12a49e17e4093e8fce0ba9e96f"
+      }
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "source": "Docs/Handoffs/HANDOFF_2026-11-15_game-direction.md",
+  "archive": "Docs/History/game-direction/20261125T151936Z.md",
+  "saved_at_utc": "2026-11-25T15:19:36.556251+00:00",
+  "bytes": 9160,
+  "sha256": "742d9f2dbb02ad371f7cb989404122db9345a339186339d15343ec1222ead125",
+  "reason": "Preserve the first rebuilt pair before the reusable Asset Pipeline workflow and second exterior review."
+}

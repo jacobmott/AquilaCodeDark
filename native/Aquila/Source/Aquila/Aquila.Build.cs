@@ -8,5 +8,7 @@ public class Aquila : ModuleRules
         PublicDependencyModuleNames.AddRange(new string[] {
             "Core", "CoreUObject", "Engine", "InputCore", "Json", "Slate", "SlateCore"
         });
+        if (Target.Platform == UnrealTargetPlatform.Win64 && Target.Configuration != UnrealTargetConfiguration.Shipping)
+            PrivateDependencyModuleNames.Add("ImageCore");
     }
 }

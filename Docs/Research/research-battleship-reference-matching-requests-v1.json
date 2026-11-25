@@ -1,0 +1,48 @@
+{
+  "round": 181,
+  "recorded_utc": "2026-11-25 23:00:07 UTC",
+  "project": "aquila-code-dark",
+  "scope": "The owner invited additional Perplexity requests for matching Blender assets to screenshots or pictures. The owner operates Perplexity and saves each return in its matching request.",
+  "verification": "Each project-bound Research Console prompt was retrieved and hashed. A copied prompt does not establish provider execution.",
+  "requests": [
+    {
+      "topic": "materials",
+      "id": "3e598ae1e05e4d48aa38438c52ebc298",
+      "project": "aquila-code-dark",
+      "external_key": "research-battleship-material-matching-v1:run-1",
+      "title": "Matching painted spacecraft materials in Blender",
+      "state": "copied",
+      "created": "2026-11-25T16:48:59.038879-06:00",
+      "latest_version": 0,
+      "url": "http://127.0.0.1:8776/?project=aquila-code-dark#3e598ae1e05e4d48aa38438c52ebc298",
+      "prompt_hash": "769a05d24e532cdff8d1c84474634efaf4e1c6ceece97922623871e8a7df654e",
+      "prompt_file": "Docs/Research/research-battleship-material-matching-prompt-v1.md"
+    },
+    {
+      "topic": "camera",
+      "id": "629f66eb205049889648cc8466ffd508",
+      "project": "aquila-code-dark",
+      "external_key": "research-battleship-camera-registration-v1:run-1",
+      "title": "Matching a Blender camera to screenshots and conflicting concept views",
+      "state": "queued",
+      "created": "2026-11-25T16:59:40.033255-06:00",
+      "latest_version": 0,
+      "url": "http://127.0.0.1:8776/?project=aquila-code-dark#629f66eb205049889648cc8466ffd508",
+      "prompt_hash": "4a77d0761600d5d22479601c740d7f92a31243599ea2518953034605dedc816a",
+      "prompt_file": "Docs/Research/research-battleship-camera-registration-prompt-v1.md"
+    },
+    {
+      "topic": "geometry",
+      "id": "d7914814e5f9481195e703c94518e404",
+      "project": "aquila-code-dark",
+      "external_key": "research-battleship-hull-reconstruction-v1:run-1",
+      "title": "Rebuilding editable hard-surface hulls from silhouettes, sections and openings",
+      "state": "queued",
+      "created": "2026-11-25T16:59:41.126046-06:00",
+      "latest_version": 0,
+      "url": "http://127.0.0.1:8776/?project=aquila-code-dark#d7914814e5f9481195e703c94518e404",
+      "prompt_hash": "74e747a528ea3b25f2ebc7e97f87e42c07959c740d5102119a273cd451722536",
+      "prompt_file": "Docs/Research/research-battleship-hull-reconstruction-prompt-v1.md"
+    }
+  ]
+}

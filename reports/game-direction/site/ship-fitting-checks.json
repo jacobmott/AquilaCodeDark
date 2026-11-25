@@ -1,0 +1,174 @@
+{
+  "round": 131,
+  "verified_utc": "2026-11-23T07:38:15.457349+00:00",
+  "engine": "Epic Launcher Unreal 5.8.4 CL 58902052, Win64 Development",
+  "runtime": {
+    "path": ".runtime/ship-fitting-r131/ready/Windows/Aquila/Binaries/Win64/Aquila.exe",
+    "sha256": "3f52d2b3f7966875a3a3f70d6888118bb09f197ea163764ca5246f79a2db36fa"
+  },
+  "interface": "An overhead view of the rendered ship. Thirty projected points plus armor and shield parts are selectable. Starter stocks are separate for each opponent. A turret item retains its chip and rounds when moved. Borrowing lab stock raises the selected ship’s total to thirty.",
+  "normal_entry_checks": [
+    "Selected all thirty physical pins in the packaged window with starter stock exhausted.",
+    "Cancelled a move without affecting the active duel.",
+    "Moved a chipped turret from mount 7 to mount 30 and equipped a pulse repeater.",
+    "Changed shield, armor, and the other ship’s weapon.",
+    "Replayed the same items with fresh counters.",
+    "Installed guns at all thirty mounts through the fitting view; the other ship kept its own stock.",
+    "Restored the existing disposable match through the main menu."
+  ],
+  "combat_test": {
+    "simulated_seconds": 60,
+    "resolute": "Burst turret and pulse repeater with interception chip at mount 30, reinforced armor, shield off. Both items were previously fitted with piercing kinetic ammunition. The repeater fires fixed plasma.",
+    "sentinel": "One plasma caster, reinforced armor, shield off.",
+    "incoming_projectiles_intercepted": 30,
+    "resolute_hull_percent": 100.0,
+    "sentinel_hull_percent": 56.32,
+    "reproduced_in": "Direct mode and menu entry in two separate packaged processes."
+  },
+  "simulation_coverage": [
+    "Both defending sides, four turret types and two incoming payload families. A bare turret, a chipped turret and different frame rates were compared.",
+    "Defensive shots travel. Two chips cannot claim one shot. A threat that arrives first still damages the ship.",
+    "Mixed mounts retain their own ammo, hit rules and firing clocks. All thirty guns can launch from distinct physical positions."
+  ],
+  "headless": {
+    "passed": 15,
+    "report": {
+      "path": ".runtime/ship-fitting-r131/headless/index.json",
+      "sha256": "1616391842a24f131a10bb4f09c87c66206fc8ca6e8c3198ff9c44a707cedf1a"
+    }
+  },
+  "packaged": {
+    "duel-direct": {
+      "suite": "Aquila.Input.Simulator",
+      "mode": "Simulator",
+      "passed": 1,
+      "report_sha256": "768ca576dbbf0ac88683c5ded8062893c0732b5c229351ea920a0e5c6314d563",
+      "prior_revision_count": 2,
+      "final_revision_count": 2,
+      "prior_revisions_intact": true
+    },
+    "duel-menu": {
+      "suite": "Aquila.Input.Simulator",
+      "mode": "Menu",
+      "passed": 1,
+      "report_sha256": "2cb372031b346f17dd7777a24a065e9199ae0fcf8d49f3448e7828157db33f6c",
+      "prior_revision_count": 2,
+      "final_revision_count": 2,
+      "prior_revisions_intact": true
+    },
+    "arena-observer": {
+      "suite": "Aquila.Input.Observer",
+      "mode": "Simulator",
+      "passed": 1,
+      "report_sha256": "aea1e737c460f4d25c8be0164d736913b4b6e6e7ee7fcd3ed73b14649d5969d7",
+      "prior_revision_count": 2,
+      "final_revision_count": 2,
+      "prior_revisions_intact": true
+    },
+    "desktop": {
+      "suite": "Aquila.Input.DesktopCamera",
+      "mode": "Match",
+      "passed": 1,
+      "report_sha256": "2889e633a253d8427da7bc789ca3d66af49130c68561d97c0c3ae8cf0db4e2be",
+      "prior_revision_count": 0,
+      "final_revision_count": 0,
+      "prior_revisions_intact": true
+    },
+    "observer": {
+      "suite": "Aquila.Input.Observer",
+      "mode": "Match",
+      "passed": 1,
+      "report_sha256": "0e3ab7d7082b82c2510d074db23f548bc9644ac432412d886789a1605c407c26",
+      "prior_revision_count": 0,
+      "final_revision_count": 0,
+      "prior_revisions_intact": true
+    },
+    "restored": {
+      "suite": "Aquila.Input.Observer",
+      "mode": "Match",
+      "passed": 1,
+      "report_sha256": "a92e8c8147b795c215fc9a20aaf0ad060d2f0515f441c1f4c7ce59a29684e96d",
+      "prior_revision_count": 2,
+      "final_revision_count": 2,
+      "prior_revisions_intact": true
+    },
+    "bridge": {
+      "suite": "Aquila.Input.DesktopCamera",
+      "mode": "Match",
+      "passed": 1,
+      "report_sha256": "59c4ef92fe42be286336c5212307c603ea6625f11332bfc78e4a0092cde6f755",
+      "prior_revision_count": 0,
+      "final_revision_count": 0,
+      "prior_revisions_intact": true
+    },
+    "touch": {
+      "suite": "Aquila.Input.TouchMenu",
+      "mode": "Match",
+      "passed": 1,
+      "report_sha256": "08bc38e4747beb7ecd8a21afa9b3bbd726697e2d2764e555effccc61b7888110",
+      "prior_revision_count": 0,
+      "final_revision_count": 0,
+      "prior_revisions_intact": true
+    },
+    "touch-observer": {
+      "suite": "Aquila.Input.Observer",
+      "mode": "Match",
+      "passed": 1,
+      "report_sha256": "cdcf606b3d9f67d09a7242febbd85a045ad95e6ce550408bca29e340ecd590fb",
+      "prior_revision_count": 0,
+      "final_revision_count": 0,
+      "prior_revisions_intact": true
+    },
+    "effects": {
+      "suite": "Aquila.Input.CombatFeedback",
+      "mode": "Simulator",
+      "passed": 1,
+      "report_sha256": "d532b626461354c860e2d30166ecfc389b0ff6ab749e1726bbe7ccb90a3e60a8",
+      "prior_revision_count": 2,
+      "final_revision_count": 2,
+      "prior_revisions_intact": true
+    }
+  },
+  "views": {
+    "ship-fitting": {
+      "width": 1280,
+      "height": 720,
+      "sha256": "c2fde38e3ee0957922d2ee146ace3d9942fb3c5862dd7bd2f63a64472e4f49e7"
+    },
+    "ship-defense": {
+      "width": 1280,
+      "height": 720,
+      "sha256": "6a3a799afa3edeaf25e2409d8576447f059984412478bfb537777adad12bd238"
+    }
+  },
+  "desktop": {
+    "checked_utc": "2026-11-23T07:36:58.8387841Z",
+    "shortcut": "Aquila Combat Simulator",
+    "target": ".runtime/ship-fitting-r131/ready/Windows/Aquila.exe",
+    "kept_original_arguments": true,
+    "desktop_save_hashes_identical": true,
+    "owner_processes": 0,
+    "owner_input_injected": false
+  },
+  "journals": {
+    "before": "2026-11-23T07:17:38.737049+00:00",
+    "after": "2026-11-23T07:36:59.764793+00:00",
+    "sequence": 151681,
+    "verified_parent": 151680,
+    "expedition": "Failed",
+    "helm": "Hold",
+    "same_tip_parent_and_desktop_hashes": true
+  },
+  "knowledge_reference": {
+    "scope": "Authored Unreal 5.7 Slate catalog entry; behavior was checked with installed 5.8.4.",
+    "citation": {
+      "kind": "source",
+      "record_id": "s_c310e7d3ea6e8c17cc121595d58bd3da161ab56f13b793df0653335950fd2e7c",
+      "version_id": "sha256:4fd7c9fcd6e7f4466e35e6a1300f6a1ed76eff814ad8b3918943d5c10f4d835f",
+      "mode": "passage",
+      "byte_start": 25943,
+      "byte_end": 27878
+    }
+  },
+  "limits": "Local Windows lab only. Match acquisitions, progression costs, final balance and physical Galaxy behavior remain open."
+}

@@ -1,0 +1,8 @@
+{
+  "source": "Docs/Handoffs/HANDOFF_2026-11-15_game-direction.md",
+  "archive": "Docs/History/game-direction/20261124T032630Z.md",
+  "saved_at_utc": "2026-11-24T03:26:30.221077+00:00",
+  "bytes": 8820,
+  "sha256": "7e8a4b164ad825d06e9cff305fcf0c2e0c2986505067a99101177ad06048b84f",
+  "reason": "Preserve the previous clear behavior before recording the corrected immediate action and fitting exit."
+}

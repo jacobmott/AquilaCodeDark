@@ -1,0 +1,8 @@
+{
+  "source": "Docs/Handoffs/HANDOFF_2026-11-15_game-direction.md",
+  "archive": "Docs/History/game-direction/20261123T040413Z.md",
+  "saved_at_utc": "2026-11-23T04:04:13.613927+00:00",
+  "bytes": 5480,
+  "sha256": "dc034379f91d752739103f16352cd1faecf2c67e136a01fb33e467b98d4562e7",
+  "reason": "Keep the verified round 121 simulator checkpoint before recording native combat damage feedback."
+}

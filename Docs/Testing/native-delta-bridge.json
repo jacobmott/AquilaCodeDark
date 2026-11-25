@@ -1,0 +1,125 @@
+{
+  "round": 162,
+  "checked_utc": "2026-11-25T03:03:40.165642+00:00",
+  "selection": "reports/game-direction/inbox/20261125T023749Z.json",
+  "engine": "Launcher Unreal 5.8.4 CL 58902052",
+  "source": {
+    "ship": "Delta Tree",
+    "length_m": 1280,
+    "blender_study_sha256": "a1ec0ffb52b1d948883e809fa02b75ade1e7d84c2cda8f0f2778d3c7a2c1b26d",
+    "boarding_export_sha256": "a53ddaa3ee81b1c1da990bae2decc3244fe6cd034e7f634c9979e1877361f389",
+    "cooked_windows_executable_sha256": "0ac8cbd575c98a3575776645d1f77fb82fed6901c99c32a4a23f728d7799ed12"
+  },
+  "bridge": {
+    "continuous_route": "Peregrine, Arrivals 06, branch airlock, Junction 01, Command lift, command deck, tactical station",
+    "lift_rise_m": 48,
+    "nominal_ride_seconds": 8,
+    "rode_both_directions": true,
+    "visible_dock_samples": 5,
+    "tested_original_dock_samples": 6,
+    "transparent_pane_blocks_player": true,
+    "weapon": "Kinetic cannon, standard round",
+    "shield_start": 100,
+    "after_first_hit_inside": 90,
+    "same_shield_after_switch": 90,
+    "after_second_hit_outside": 80,
+    "same_shield_after_return": 80,
+    "shots_to_empty_shield": 10,
+    "station_recharge": 100,
+    "fire_requires_station_and_lock": true,
+    "cooldown_seconds": 1.2,
+    "restored_walking_pose": true,
+    "ramp_reset_restores_whole_hull_orbit": true,
+    "windows_measurements": [
+      "Delta hull 1280.00 m, sampled forebody 98.82 m thick, stern 259.32 m thick, drive tiers 3.",
+      "Delta rendered hull side margins 21.39 and 16.88 percent.",
+      "Delta and Glacier exterior orbits 940.00 and 940.00 m.",
+      "Delta ramp to first junction 99.10 m; drop 2.00 m.",
+      "Delta tactical sightlines reach 5 of six sampled original round docks.",
+      "Delta bridge: 48 m lift, two manual rounds, shield 100 to 90 to 80 across both cameras."
+    ]
+  },
+  "checks": {
+    "packaged": {
+      "bridge": {
+        "suite": "Aquila.Input.Boarding.DeltaBridge",
+        "passed": 1,
+        "test_report_sha256": "7c0a264bf628c914dec364243911de7fe474814bd3a63d8027e9aa3e7b780152",
+        "fixture_prior_intact": true
+      },
+      "delta": {
+        "suite": "Aquila.Input.Boarding.DeltaDock",
+        "passed": 1,
+        "test_report_sha256": "7a3ef9ddc2a5c9510c56fdf7cd995db0af5ddd45d617ad36d5d1cc82b614504b",
+        "fixture_prior_intact": true
+      },
+      "boarding": {
+        "suite": "Aquila.Input.Boarding",
+        "passed": 1,
+        "test_report_sha256": "f34be0541f2ff3597089d5650be92d5e543a82b654c84a1010cc9ae86e5da6d0",
+        "fixture_prior_intact": true
+      },
+      "duel-menu": {
+        "suite": "Aquila.Input.Simulator",
+        "passed": 1,
+        "test_report_sha256": "68b7288b52de0a7783ccbc27ba98edb413ce0a17fb20451a5ee85e02e2101d22",
+        "fixture_prior_intact": true
+      },
+      "observer": {
+        "suite": "Aquila.Input.Observer",
+        "passed": 1,
+        "test_report_sha256": "70cbbf20d932a5541100907104f2577a498f5a46e143d45e7952ba94039a5d46",
+        "fixture_prior_intact": true
+      }
+    },
+    "simulation_save_groups_passed": 20,
+    "simulation_report_sha256": "569637cfa8c08fae2d64841a80ccf07e1c409a2f3a19a53e4787e65b2029ab80",
+    "boarding_fixture_identical": true,
+    "rendered_frames_in_bridge_run": 14,
+    "frame_size": [
+      1440,
+      810
+    ]
+  },
+  "frames": {
+    "delta-command-lift.png": "0d076e58e987e3212509de0951d7feda43d1f2f5b6cc30e8a81c032f6bd28b07",
+    "delta-bridge-room.png": "1fdfdba953bf65da16d62155bbed5117b0555675a019de8bbfbbd7c1f128374b",
+    "delta-bridge-bow.png": "82ae5e7c1a4d8308e589ff3d07440e192b2502a71257710adff37221f1f23be1",
+    "delta-bridge-ready.png": "7ed7280b90098c418ce4847491ad2e6ebcf26c006fd5369fd7e4b3780ececcd5",
+    "delta-bridge-hit.png": "67f70531fb120975cc3ad4d0bd0d6e1bd5dcb03ce2eb21d93ce839d7492935c6",
+    "delta-drone-exterior.png": "4cf484ccb2097d6e257623c5ef0771554c4a4ad5dc7029e7d0d7a67d0c3d8837",
+    "delta-drone-hit.png": "4cfdfd95de878784c065559a731b007f9c7b36688ef059ca42e027f571899b94"
+  },
+  "desktop": {
+    "checked_utc": "2026-11-25T03:03:29.1224371Z",
+    "shortcut": "Aquila Boarding Test",
+    "target": ".runtime/delta-bridge-r162/playtest/Windows/Aquila.exe",
+    "starting_ship": "Delta Tree",
+    "starting_length_m": 1280,
+    "shortcut_default": "Glacier Tongue",
+    "responsive": true,
+    "boarding_ready": true,
+    "combat_shortcut_identical": true,
+    "input_injected": false,
+    "match_loaded": false
+  },
+  "journals": {
+    "portable_count": 151681,
+    "tip": 151681,
+    "parent": 151680,
+    "expedition": "Failed",
+    "helm": "Hold",
+    "prelaunch_and_after_match_before": true,
+    "inventory_sha256": "1ac8f2ed95baab6e94035c163d63a423fb7ff197d0a8a9fda8d8baa6cb4eca6d",
+    "tip_sha256": "f52f3ea0d9bfa957aced3415d6ce677b495ef598fa7d1020f39c4414882e303b",
+    "parent_sha256": "8dc85d4ba7e4d4adc0a19fd2e11c2d22a8ada62a42d7d6cdae5258490e9bf43f",
+    "desktop_files_hashed": 1
+  },
+  "open": "Owner feedback on the view and the shield flash. Windows boarding exercise only.",
+  "report": {
+    "round": 162,
+    "matching_native_captures": 7,
+    "live_question": "aquila-direction-r162-visibility",
+    "workspace_tab_snapshot_verified": true
+  }
+}

@@ -97,7 +97,7 @@ export const FLEET: readonly Vessel[] = [
   },
   {
     id: 'resolute',
-    name: 'Resolute',
+    name: 'Delta Tree',
     role: 'Research battleship',
     description:
       'An armored home for the long voyage. Twin hangar galleries, a raised command island and six main drives.',

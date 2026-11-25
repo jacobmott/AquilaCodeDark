@@ -1,5 +1,29 @@
 # Lessons
 
+## 2026-11-25 [M] Inspect the material assigned to the visible surface
+
+Delta Tree’s export includes roughness and normal textures on several materials. Its painted upper deck uses one constant roughness and no normal texture. Inspecting textures across the whole asset would miss that distinction. On Glacier, fixed-crop brightness identified a darker dock. The crop includes geometry and reflected light, so its brightness alone cannot determine lamp power. [Material assignment and measured crop](Docs/Testing/research-battleship-material-review-baseline.json).
+
+## 2026-11-25 [M] Check the full width of an opening and the supports beside it
+
+The centers of Delta Tree’s twelve exhausts all looked open. A ring of samples around each center found a mounting rail across two lower rims. On Glacier Tongue, probing the complete model identified the blade as the first obstruction at five marked gaps. Checking intersections at each end also found a detached crossing that looked connected in the gallery view. [Model, artwork and physical checks](Docs/Testing/research-battleship-stern-shoulders-and-dock.json).
+
+## 2026-11-25 [M] Inspect ship geometry from the stern as well as the gallery
+
+Three drive outlets could meet their painted centers while their racks sloped across the stern. Setting lateral mounting planes let all three rows share one axis and stay level. A straight rear view also exposed the remaining offset between the stack and pressure hull. Keep secondary cameras with the original art and give the owner both angles. [Matched renders and reopened geometry](Docs/Testing/research-battleship-stern-and-armor-seams.json).
+
+## 2026-11-25 [M] Check the far bank when aligning the near bank
+
+Matching Delta Tree’s three near-side exhausts too closely from the gallery camera raised the far drives above the mast. The stern study constrained the bank spacing. That kept the skyline credible while bringing the visible outlets closer. [Model comparisons and measurements](Docs/Testing/research-battleship-registered-profiles.json).
+
+## 2026-11-25 [M] Keep some painted features out of the hull fit
+
+Thirteen painted corners guided Glacier Tongue’s bow. Five separate edge heights, checked in the same gallery camera, averaged 62.57 pixels from the painting before and 9.61 after. That check exposed a real change in the mesh while leaving taper, depth and finish to visual review. [Checks and original art](Docs/Testing/research-battleship-stern-and-prow.json).
+
+## 2026-11-25 [M] Compare ship features at the same camera
+
+Reframing each revision hid errors in the mast and port blade. Saving the earlier Blender camera made both errors measurable. A line through the rebuilt hangar also confirmed real depth behind its lights. [Aquila measurements](Docs/Testing/research-battleship-reference-refinement.json) · [Reusable Blender methods in Asset Pipeline](<D:/OtherProjects/asset-pipeline/knowledge/blender-reference-modeling.md>).
+
 ## 2026-11-18 [M] D&B chat could collect details without forwarding a request
 
 D&B’s website agent acknowledged the contact details, then said it could not forward an email or trigger a reply.
@@ -114,7 +138,7 @@ Evidence: `Docs/Testing/walk-camera-verification.json`.
 
 ## 2026-11-15 [M]: Projectile hits need arrival-time defense checks
 
-Traveling visuals alone do not create evasion. Resolve swept contact against current bodies and planets, then inspect the defense layer.
+Resolve swept contact against current bodies and planets, then inspect the defense layer.
 Shield overflow must check armor; failed penetration must not become minimum hull damage. Existing rounds retain their launch ammunition.
 Keep simulation cadence independent of visual quality; graphics changes must not erase flying rounds or alter their damage.
 Evidence: `scripts/tests/combat-model.test.mjs` and `Docs/Testing/projectile-combat-verification.json`.
@@ -253,3 +277,113 @@ A packaged bridge regression caught the pointer inheriting menu visibility on a 
 ## 2026-11-22 [M]: Verify the shortcut on the Windows desktop
 
 The duel link in chat failed for the owner. A shortcut on the Windows desktop opened the packaged game directly. The game log recorded a standard duel and Windows reported a responsive window. Use the desktop shortcut for this playtest. [Direct launch and controls](native/Aquila/README.md#combat-simulator-on-windows).
+
+## 2026-11-22 [M]: Keep impact position and display time separate
+
+The damage sphere sits inside the drawn hull. Carry the incoming line into the struck ship's frame and intersect the visible shell or plating. Age the effects in presentation seconds so an 8× duel still shows the blast. Packaged frames checked contact position, pause, replay and both defeats. [Windows combat feedback](Docs/Testing/native-combat-feedback.json).
+
+## 2026-11-22 [J]: Show both sides of an arena matchup
+
+The owner could see Resolute stop firing but could not see Sentinel’s rounds or explain the difference. Show each ship’s fitted gear beside its meters. State which battery stopped and which armor blocked it. Give each ship independent fitting controls so a player can repeat the duel after changing one item. [Simulator design](knowledge/game-direction.md#fitting-both-sides).
+
+## 2026-11-22 [M]: Check a visual switch against the rendered frame
+
+The oval button and component visibility both reported success while the rim disappeared on screen. Keeping the powered oval registered and switching its material opacity restored its rim. Check against the previous working view at the same camera and simulation time. [Windows shield comparison](Docs/Testing/native-mesh-shield-trial.json).
+
+## 2026-11-22 [M]: Measure the camera eye in simulation space
+
+A constant distance from an orbit center can pass a camera test while the camera travels around the scene. Reconstruct the eye from a ship’s known simulation position and the rendered camera-to-ship offset. Check both orientation and travel during a drag and when releasing follow. [Windows free-camera measurements](Docs/Testing/native-free-camera-pivot.json).
+
+## 2026-11-23 [M] Compare resolved shots across different firing rates
+
+The faster plasma weapon missed more often by raw count because it fired more shots. It also landed a larger share. Hold the target course, armor and trial duration fixed. Compare hits against all resolved shots and count armor blocks separately. Projectiles still in flight have no outcome yet. [Windows lab measurements](Docs/Testing/native-combat-lab.json).
+
+## 2026-11-23 [J] Keep turret ownership separate from mount capacity
+
+An empty mount remains inspectable after all owned turrets are fitted. Move the actual item with its chip and ammunition. Both opponents need independent inventories. [Ship fitting checks](Docs/Testing/native-ship-fitting.json).
+
+## 2026-11-23 [M] Keep defenses active until the final volley resolves
+
+An opposing ship can die before its last rounds enter interception range. Keep ticking each surviving turret’s cooldown and checking incoming rounds. Test a real kill with hostile shots still unclaimed and a control where the shot reaches the survivor. [Final volley checks](Docs/Testing/native-phase-rounds.json).
+
+## 2026-11-23 [M] Test the floating model itself
+
+Click the projected center of each model and the physical port in a packaged game. A caption click alone cannot prove either target lines up with the 3D view. Centering rotation on the mesh bounds keeps asymmetric turrets over their hit areas. [Windows placement checks](Docs/Testing/native-turret-gallery.json).
+
+### 2026-11-23 [M] Test shield depletion with the live damage scale
+
+The standard cannon’s base damage is 10. The current duel applies the expedition scale of 0.035, so one live hit removes 0.35 shield. Starting the packaged trial at one scaled hit produced an exact refill to 100 at both speeds. A separate simulation check drives larger hits through both banks and into the hull. [Reserve Capacitor checks](Docs/Testing/native-defense-fitting.json).
+
+### 2026-11-23 [M] Verify both contact surfaces in a miniature firing range
+
+Map the projectile’s shield entry and hull entry to their respective visible surfaces. A phase round can then be seen inside the charged shell before it deflects. In the Windows fitting preview, a short hold on depletion also makes the later armor impact readable. The independent combat world supplies the hits, shield charge and hull health. [Packaged firing examples](Docs/Testing/native-firing-preview.json).
+
+### 2026-11-23 [M] Measure the gap under a rotating fitting model
+
+Check the visible silhouette against its caption at the smallest window size. A rotated mesh can have empty bounding-box corners below its last visible pixel. The three ammunition models had 9 to 34 pixels of clear space above their names across four packaged Windows views. [Ammunition fitting checks](Docs/Testing/native-round-models.json).
+
+### 2026-11-23 [M] Keep the inventory when clearing a fitting
+
+A ship without an initialized turret rack receives starter guns when a duel starts. Keep its rack and reset each body to an unassigned spare. Resolute returned all 30 bodies to stock, and replay left both cleared ships unarmed. [Windows reset checks](Docs/Testing/native-clear-fitting.json).
+
+### 2026-11-23 [M] Apply fitting changes inside the current duel
+
+Clear must update the ship’s equipment and live shield charge together. A turret held by the previous armor needs to try the new defenses. The simulation checks cover both ships, including a wounded hull, a spent reserve and a round fired before clearing. [Live fitting checks](Docs/Testing/native-live-fitting.json).
+
+### 2026-11-23 [M] Fixed mount positions shaped both first hulls
+
+Both first briefs prescribed the same three straight rows of turret sockets. Both exterior studies came back with broad, stepped decks dominated by those rows. The owner wanted to discuss the outlines and walkable spaces first. Preserve the fitting capacity while developing each ship’s silhouette and deck plan. [Ship design discussion](Docs/Plans/ShipHulls/README.md).
+
+### 2026-11-24 [M] Keep the concept seed and the image job ID
+
+The design seed records how the ship prompt was assembled. Sunburst exposes no image seed in its current model settings. The exact prompt, provider job ID and original file hash identify the image a player picked from the numbered gallery. [Ship collection](Docs/Plans/ShipHulls/README.md#the-60-ship-collection).
+
+### 2026-11-24 [M] — Verify a textured exterior from the standalone export
+
+Fresh Blender scenes loaded both portable models with their maps embedded. The unpacked map files matched the embedded bytes. Rendering with the same lights and camera checked the exported finish against the editable scene. [Ship material checks](Docs/Testing/research-battleship-materials.json).
+
+### 2026-11-24 [M] Check the height of the docking bay itself
+
+Glacier Tongue’s arch gives the model height while the dock beneath the plates reads as a slot. Rendered angles all inherit that geometry. Compare the bay opening and hull thickness with design references before detailing a revised model. [Hull profile comparison](Docs/Plans/ShipHulls/README.md#hull-proportions-and-reference-views).
+
+### 2026-11-24 [M] Give overhead art a registered camera and floor plan
+
+Glacier Tongue’s first overhead study still showed the side of its docking bay. A true overhead Blender guide corrected the camera. The three first deck studies also inherited exterior details. A flat routing diagram for each deck fixed the orientation and preserved shared access points in the reference set. Use the registered diagrams when placing the lift and stair. [Reference packs and earlier studies](Docs/Plans/ShipHulls/README.md#completed-reference-packs).
+
+### 2026-11-24 [M] Verify the boarding world in the rendered frame
+
+The first packaged walk passed through both doorways while its hull and deck rendered black. Movable runtime mesh components and lights restored the scene. The Windows boarding check now inspects the middle of each saved frame, away from the HUD, alongside its collision and input checks. [Boarding evidence](Docs/Testing/native-glacier-boarding.json).
+
+### 2026-11-24 [M] Compare ship size from a fixed berth
+
+The whole-ship orbit fits either silhouette in the frame. At the fixed shuttle sill, the deck-to-roof height measured 58.72 m and 116.11 m. At corresponding hull positions, the roof height doubled exactly within measurement precision. Keep the player, doorway, shuttle and camera fixed for an on-foot size comparison. [Windows size trial](Docs/Testing/native-glacier-scale.json).
+
+The roof passed that check even when the landing pad still left 3.5 m beside each wing on both hulls. Measuring the slab’s four collision edges caught the missing scale change. The corrected larger pad leaves 39 m beside each wing. [Windows pad comparison](Docs/Testing/native-glacier-pad.json).
+
+### 2026-11-24 [M] Check the entire shuttle approach
+
+On Delta Tree, a box containing Peregrine’s wings, hull and tail cleared the approach to its parked position. Lowering that box onto the apron registered contact. Keeping the dock, nearby hull and fittings in both checks tests clearance against the same world the player sees. [Packaged boarding checks](Docs/Testing/native-delta-boarding.json).
+
+### 2026-11-24 [M] Check a shield hit from the player's eye
+
+A shield impact projected inside Delta Tree’s window while the roof still hid part of the flash. Moving the bridge to the tower’s forward edge exposed the bow. A light on the sill now follows damage to the visitor’s ship. Compare the quiet window and the hit from the same standing position. [Windows bridge duel](Docs/Testing/native-bridge-duel.json).
+
+### 2026-11-25 [M] Check the gun base with the shield on
+
+Trace the center and rim of each gun base against the rendered hull. Check the same mount up close with a powered shield. Scaling a gun with the entire shield drew a second barrel above a seated cannon. Using only the hull for the shield removed that copy. [Packaged checks and views](Docs/Testing/native-duel-hulls.json).
+
+### 2026-11-25 [M] Check bridge transfers with rounds in flight
+
+Pause during a volley and switch bridges. Compare round IDs, positions and velocities before advancing the clock. Then walk several steps, turn, and make the round trip. This checked the same fight from both sides and exposed each bridge’s saved footing and view to a separate test. [Packaged two-bridge checks](Docs/Testing/native-two-bridges.json).
+
+### 2026-11-25 [M] Check texture coverage on the playable mesh
+
+The early exterior models had packed textures while the playable hulls assigned one texture coordinate to every corner. Checking texture area per face now covers all 10,364 Delta Tree triangles and all 5,596 Glacier Tongue triangles. Compare fitted armor to the sample for that ship. Each hull uses its own painted panels under the armor tint. [Surface checks](Docs/Testing/native-ship-finishes.json).
+
+### 2026-11-25 [M] Compare the mesh the game actually loads with the selected artwork
+
+Both Windows hull exports matched the boarding proportion studies byte for byte against the finish receipt. Rendering that geometry in gray beside each gallery original exposed straight spokes in place of Delta Tree’s curved branch walls and a thin rail in place of Glacier Tongue’s deep blade. The prior texture and boarding checks did not measure those features. [Compared sources and views](Docs/Testing/native-hull-likeness.json).
+
+### 2026-11-25 [M] Check the review geometry after removing the paint
+
+Each revised ship reopened from its self-contained 3D export at 1,280 m. Rays through Delta Tree’s modeled deck found eleven recessed courtyards. Separate rays through Glacier Tongue found all three crossing roofs and floors. A painted view, gray view and free orbit let the owner judge likeness separately. [Geometry and interchange checks](Docs/Testing/research-battleship-hull-review.json).

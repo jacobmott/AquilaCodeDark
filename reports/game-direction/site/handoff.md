@@ -37,7 +37,7 @@ Pause, settings, focus/visibility loss and graphics recovery freeze progress; re
 Hangar launch stops the capital before transferring control. Reload restores position/orientation with no stale order.
 Ship changes, reset and terminal combat outcomes cancel movement. New destinations end temporary practice.
 Routes use six-second eased motion and swept planetary clearance. Heading changes are bounded to 0.45 radians/second.
-This is kinematic navigation, not physical thrust, general tactical planning or projectile-aware evasion.
+This is kinematic navigation with provisional route distances.
 
 Two automatic turrets fire visible kinetic bursts with recoil, flashes and contact effects. Enemy rounds also travel before dealing damage.
 Both sides have one shield; rounds can hit planets or miss moving ships. Defense resolves at swept contact.
@@ -49,7 +49,7 @@ One stationary target and coarse contacts; mount arcs and own-hull obstruction r
 
 Current details: [architecture](../../knowledge/architecture.md), [development](../../knowledge/development.md),
 [combat design](../../knowledge/combat-design.md) and [game direction](../../knowledge/game-direction.md).
-Missiles, countermeasures, automatic evasion, upgrades, crew, engineering, quarters, ground activities, economy, multiplayer and finished art remain future work.
+Missiles, countermeasures, upgrades, crew, engineering, quarters, ground activities, economy, multiplayer and finished art remain future work.
 
 ## Verification and limits
 

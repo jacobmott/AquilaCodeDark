@@ -168,6 +168,787 @@
    "state": "open",
    "answer": null,
    "page": "Aquila game and website direction"
+  },
+  {
+   "id": "aquila-direction-r140-arrival",
+   "short": "Describe arriving at Resolute",
+   "ask": "When your shuttle approaches Resolute, what shape do you imagine, and where would you like to step aboard?",
+   "why": "The approach connects the silhouette you want with the first space you enter.",
+   "options": [],
+   "state": "open",
+   "answer": null,
+   "page": "Aquila game and website direction"
+  },
+  {
+   "id": "aquila-direction-r141-concepts",
+   "short": "React to the two ideas",
+   "ask": "What would you keep or change about either ship? from round 140",
+   "why": "The open harbor makes Resolute feel like home. The tower gives Sentinel a different presence across the arena.",
+   "options": [],
+   "state": "open",
+   "answer": null,
+   "page": "Aquila game and website direction"
+  },
+  {
+   "id": "aquila-direction-r142-pilot",
+   "short": "Choose the first step",
+   "ask": "Should I run three ship prompts on both models with a hard cap of 2.70 credits? from round 140",
+   "why": "One attempt per model and hull shows whether the cheaper model follows the shape you asked for.",
+   "options": [
+    {
+     "v": "pilot",
+     "label": "Approve six generations, 2.70 credits"
+    },
+    {
+     "v": "local",
+     "label": "Discuss local setup"
+    },
+    {
+     "v": "discuss",
+     "label": "Keep discussing settings"
+    }
+   ],
+   "state": "open",
+   "answer": null,
+   "page": "Aquila game and website direction"
+  },
+  {
+   "id": "aquila-direction-r143-batch",
+   "short": "Review the ships",
+   "ask": "Would you like to stop here or expand the collection to 50 or 60 ships? from round 140",
+   "why": "Bridge Geode, Hanging City and Habitat Knot count toward either total. New concepts would use the same settings.",
+   "options": [
+    {
+     "v": "50",
+     "label": "Reach 50, 35.25 more credits"
+    },
+    {
+     "v": "60",
+     "label": "Reach 60, 42.75 more credits"
+    },
+    {
+     "v": "stop",
+     "label": "Keep these three for now"
+    }
+   ],
+   "state": "open",
+   "answer": null,
+   "page": "Aquila game and website direction"
+  },
+  {
+   "id": "aquila-direction-r144-favorites",
+   "short": "Shortlist ship designs",
+   "ask": "Which ships would you keep as candidates for Resolute, Sentinel or another vessel? from round 140",
+   "why": "Choose as many as you like. Click a hull for a larger view, or use its number in chat.",
+   "options": [
+    {
+     "v": "01",
+     "label": "01 · Bridge Geode"
+    },
+    {
+     "v": "02",
+     "label": "02 · Hanging City"
+    },
+    {
+     "v": "03",
+     "label": "03 · Habitat Knot"
+    },
+    {
+     "v": "04",
+     "label": "04 · Hollow Dice"
+    },
+    {
+     "v": "05",
+     "label": "05 · Current Seam"
+    },
+    {
+     "v": "06",
+     "label": "06 · Dandelion Array"
+    },
+    {
+     "v": "07",
+     "label": "07 · Long Counterweight"
+    },
+    {
+     "v": "08",
+     "label": "08 · Wedge Exchange"
+    },
+    {
+     "v": "09",
+     "label": "09 · Salt Crystal"
+    },
+    {
+     "v": "10",
+     "label": "10 · Cauliflower City"
+    },
+    {
+     "v": "11",
+     "label": "11 · Double Horizon"
+    },
+    {
+     "v": "12",
+     "label": "12 · Twinned Valves"
+    },
+    {
+     "v": "13",
+     "label": "13 · Inverted Cradle"
+    },
+    {
+     "v": "14",
+     "label": "14 · Concertina"
+    },
+    {
+     "v": "15",
+     "label": "15 · Cantilever Rooms"
+    },
+    {
+     "v": "16",
+     "label": "16 · Paper Nautilus"
+    },
+    {
+     "v": "17",
+     "label": "17 · Sun Dial"
+    },
+    {
+     "v": "18",
+     "label": "18 · Moon Chain"
+    },
+    {
+     "v": "19",
+     "label": "19 · Manifold Conch"
+    },
+    {
+     "v": "20",
+     "label": "20 · Corkscrew Steps"
+    },
+    {
+     "v": "21",
+     "label": "21 · Fracture Harbor"
+    },
+    {
+     "v": "22",
+     "label": "22 · Inward Cathedral"
+    },
+    {
+     "v": "23",
+     "label": "23 · Tilted Observatory"
+    },
+    {
+     "v": "24",
+     "label": "24 · Tension Field"
+    },
+    {
+     "v": "25",
+     "label": "25 · Split Loom"
+    },
+    {
+     "v": "26",
+     "label": "26 · Porcelain Ear"
+    },
+    {
+     "v": "27",
+     "label": "27 · Needle District"
+    },
+    {
+     "v": "28",
+     "label": "28 · Double Eddy"
+    },
+    {
+     "v": "29",
+     "label": "29 · Winter Orchard"
+    },
+    {
+     "v": "30",
+     "label": "30 · Crosswind Harp"
+    },
+    {
+     "v": "31",
+     "label": "31 · Plateau Steps"
+    },
+    {
+     "v": "32",
+     "label": "32 · Offset Keys"
+    },
+    {
+     "v": "33",
+     "label": "33 · Pillar of Rain"
+    },
+    {
+     "v": "34",
+     "label": "34 · Unbound Atlas"
+    },
+    {
+     "v": "35",
+     "label": "35 · Island Republic"
+    },
+    {
+     "v": "36",
+     "label": "36 · Broken Wheelhouse"
+    },
+    {
+     "v": "37",
+     "label": "37 · Suspended Mesa"
+    },
+    {
+     "v": "38",
+     "label": "38 · Root Crown"
+    },
+    {
+     "v": "39",
+     "label": "39 · Aperture House"
+    },
+    {
+     "v": "40",
+     "label": "40 · Inhabited Viaduct"
+    },
+    {
+     "v": "41",
+     "label": "41 · Glacier Tongue"
+    },
+    {
+     "v": "42",
+     "label": "42 · Basalt Choir"
+    },
+    {
+     "v": "43",
+     "label": "43 · Threefold Gate"
+    },
+    {
+     "v": "44",
+     "label": "44 · Gimbal City"
+    },
+    {
+     "v": "45",
+     "label": "45 · Quiet Bell"
+    },
+    {
+     "v": "46",
+     "label": "46 · Drum Circle"
+    },
+    {
+     "v": "47",
+     "label": "47 · Umbel Caravan"
+    },
+    {
+     "v": "48",
+     "label": "48 · Kiln Bloom"
+    },
+    {
+     "v": "49",
+     "label": "49 · Whale Fall"
+    },
+    {
+     "v": "50",
+     "label": "50 · Bellows Gate"
+    },
+    {
+     "v": "51",
+     "label": "51 · Reed Vessel"
+    },
+    {
+     "v": "52",
+     "label": "52 · Horseshoe Pair"
+    },
+    {
+     "v": "53",
+     "label": "53 · Split Level"
+    },
+    {
+     "v": "54",
+     "label": "54 · Tidal Pearl"
+    },
+    {
+     "v": "55",
+     "label": "55 · Broken Egg"
+    },
+    {
+     "v": "56",
+     "label": "56 · Spindle Crown"
+    },
+    {
+     "v": "57",
+     "label": "57 · Tunnel Mountain"
+    },
+    {
+     "v": "58",
+     "label": "58 · Delta Tree"
+    },
+    {
+     "v": "59",
+     "label": "59 · Tide Clock"
+    },
+    {
+     "v": "60",
+     "label": "60 · Gravity Well"
+    }
+   ],
+   "state": "open",
+   "answer": null,
+   "page": "Aquila game and website direction"
+  },
+  {
+   "id": "aquila-direction-r154-length",
+   "short": "Choose a hull length",
+   "ask": "Which hull length feels right for Glacier Tongue?",
+   "why": "Both views use the same spot on the ramp.",
+   "options": [
+    {
+     "v": "640",
+     "label": "640 metres"
+    },
+    {
+     "v": "1280",
+     "label": "1,280 metres"
+    }
+   ],
+   "state": "open",
+   "answer": null,
+   "page": "Aquila game and website direction"
+  },
+  {
+   "id": "aquila-direction-r155-length",
+   "short": "Choose a hull length",
+   "ask": "Which hull length feels right for Glacier Tongue? from round 154",
+   "why": "Both views keep the camera the same distance from Peregrine.",
+   "options": [
+    {
+     "v": "640",
+     "label": "640 metres"
+    },
+    {
+     "v": "1280",
+     "label": "1,280 metres"
+    }
+   ],
+   "state": "open",
+   "answer": null,
+   "page": "Aquila game and website direction"
+  },
+  {
+   "id": "aquila-direction-r156-length",
+   "short": "Choose a hull length",
+   "ask": "Which Glacier Tongue hull length feels right with the corrected landing pad? from round 154",
+   "why": "Both views use the same camera position beside Peregrine.",
+   "options": [
+    {
+     "v": "640",
+     "label": "640 metres"
+    },
+    {
+     "v": "1280",
+     "label": "1,280 metres"
+    }
+   ],
+   "state": "open",
+   "answer": null,
+   "page": "Aquila game and website direction"
+  },
+  {
+   "id": "aquila-direction-r158-test",
+   "short": "Start the boarding test",
+   "ask": "Should I build this Delta Tree boarding test on Windows?",
+   "why": "One playable dock lets you judge the ship from outside and at crew height.",
+   "options": [
+    {
+     "v": "build",
+     "label": "Build the Delta Tree test"
+    },
+    {
+     "v": "discuss",
+     "label": "Keep discussing the design"
+    }
+   ],
+   "state": "open",
+   "answer": null,
+   "page": "Aquila game and website direction"
+  },
+  {
+   "id": "aquila-direction-r159-length",
+   "short": "Choose Delta Tree’s size",
+   "ask": "Does 1,280 metres feel right for Delta Tree after you walk its dock?",
+   "why": "The same shuttle and camera distance let you compare the two hulls.",
+   "options": [
+    {
+     "v": "keep",
+     "label": "Keep 1,280 metres"
+    },
+    {
+     "v": "change",
+     "label": "Try another length"
+    }
+   ],
+   "state": "open",
+   "answer": null,
+   "page": "Aquila game and website direction"
+  },
+  {
+   "id": "aquila-direction-r161-build",
+   "short": "Choose the next playtest",
+   "ask": "Should we build Delta Tree’s bridge as the next Windows playtest?",
+   "why": "One working station would let you command the ship you boarded.",
+   "options": [
+    {
+     "v": "bridge",
+     "label": "Build the bridge playtest"
+    },
+    {
+     "v": "discuss",
+     "label": "Discuss another priority"
+    }
+   ],
+   "state": "open",
+   "answer": null,
+   "page": "Aquila game and website direction"
+  },
+  {
+   "id": "aquila-direction-r162-visibility",
+   "short": "Judge the shield hit",
+   "ask": "Could you see the drone’s shield flash clearly from the bridge?",
+   "why": "The Windows test measured the shield loss. Your view settles whether the effect reads at this distance.",
+   "options": [
+    {
+     "v": "clear",
+     "label": "Yes, clear from the bridge"
+    },
+    {
+     "v": "change",
+     "label": "The hit needs work"
+    }
+   ],
+   "state": "open",
+   "answer": null,
+   "page": "Aquila game and website direction"
+  },
+  {
+   "id": "aquila-direction-r163-visibility",
+   "short": "Judge the shield hit",
+   "ask": "Could you see the drone’s shield flash clearly from the bridge? from round 162",
+   "why": "The faster walk makes it easier to revisit the tactical station.",
+   "options": [
+    {
+     "v": "clear",
+     "label": "Yes, clear from the bridge"
+    },
+    {
+     "v": "change",
+     "label": "The hit needs work"
+    }
+   ],
+   "state": "open",
+   "answer": null,
+   "page": "Aquila game and website direction"
+  },
+  {
+   "id": "aquila-direction-r164-visibility",
+   "short": "View through the glass",
+   "ask": "Could you see the drone’s shield flash clearly from inside the bridge? from round 162",
+   "why": "Both views recorded the same shield hit. The bridge puts the drone farther away.",
+   "options": [
+    {
+     "v": "clear",
+     "label": "Yes, clear from inside"
+    },
+    {
+     "v": "change",
+     "label": "The hit needs work"
+    }
+   ],
+   "state": "open",
+   "answer": null,
+   "page": "Aquila game and website direction"
+  },
+  {
+   "id": "aquila-direction-r166-bridge-duel",
+   "short": "Choose the next playtest",
+   "ask": "Should the next Windows playtest put you aboard Delta Tree during its duel with Glacier Tongue?",
+   "why": "This gives the bridge a second ship that can shoot back.",
+   "options": [
+    {
+     "v": "build",
+     "label": "Build the bridge duel"
+    },
+    {
+     "v": "discuss",
+     "label": "Discuss another step"
+    }
+   ],
+   "state": "open",
+   "answer": null,
+   "page": "Aquila game and website direction"
+  },
+  {
+   "id": "aquila-direction-r167-visibility",
+   "short": "Incoming fire from the bridge",
+   "ask": "Could you tell when Glacier Tongue hit your shield from inside Delta Tree?",
+   "why": "Delta Tree’s shield fell from 100 to 99.65. Both views show that hit.",
+   "options": [
+    {
+     "v": "clear",
+     "label": "Yes, the incoming hit was clear"
+    },
+    {
+     "v": "change",
+     "label": "The incoming hit needs work"
+    }
+   ],
+   "state": "open",
+   "answer": null,
+   "page": "Aquila game and website direction"
+  },
+  {
+   "id": "aquila-direction-r168-mounts",
+   "short": "Check the gun mounts",
+   "ask": "Do the guns look attached to the new ships?",
+   "why": "Each base touches the deck at its center and around its rim.",
+   "options": [
+    {
+     "v": "seated",
+     "label": "Yes, they look attached"
+    },
+    {
+     "v": "loose",
+     "label": "A gun still looks loose"
+    }
+   ],
+   "state": "open",
+   "answer": null,
+   "page": "Aquila game and website direction"
+  },
+  {
+   "id": "aquila-direction-r168-visibility",
+   "short": "Incoming fire from the bridge",
+   "ask": "Could you tell when Glacier Tongue hit your shield from inside Delta Tree? from round 167",
+   "why": "The window sill and bow light up together when Delta Tree takes a shield hit.",
+   "options": [
+    {
+     "v": "clear",
+     "label": "Yes, the incoming hit was clear"
+    },
+    {
+     "v": "change",
+     "label": "The incoming hit needs work"
+    }
+   ],
+   "state": "open",
+   "answer": null,
+   "page": "Aquila game and website direction"
+  },
+  {
+   "id": "aquila-direction-r169-visibility",
+   "short": "Views from the two bridges",
+   "ask": "Can you follow the fight from both bridges? from round 167",
+   "why": "The opponent, incoming shots and shield hits should read from inside either ship.",
+   "options": [
+    {
+     "v": "both",
+     "label": "Yes, from both"
+    },
+    {
+     "v": "delta",
+     "label": "Delta Tree needs work"
+    },
+    {
+     "v": "glacier",
+     "label": "Glacier Tongue needs work"
+    }
+   ],
+   "state": "open",
+   "answer": null,
+   "page": "Aquila game and website direction"
+  },
+  {
+   "id": "aquila-direction-r169-mounts",
+   "short": "Gun mounts",
+   "ask": "Do the guns look attached to the new ships? from round 168",
+   "why": "Press Tab to see them from outside.",
+   "options": [
+    {
+     "v": "seated",
+     "label": "Yes, they look attached"
+    },
+    {
+     "v": "loose",
+     "label": "A gun still looks loose"
+    }
+   ],
+   "state": "open",
+   "answer": null,
+   "page": "Aquila game and website direction"
+  },
+  {
+   "id": "aquila-direction-r170-mounts",
+   "short": "Gun mounts",
+   "ask": "Do the guns look attached to the new ships? from round 168",
+   "why": "The exterior view shows where each gun meets the deck.",
+   "options": [
+    {
+     "v": "seated",
+     "label": "Yes, they look attached"
+    },
+    {
+     "v": "loose",
+     "label": "A gun still looks loose"
+    }
+   ],
+   "state": "open",
+   "answer": null,
+   "page": "Aquila game and website direction"
+  },
+  {
+   "id": "aquila-direction-r171-mounts",
+   "short": "Gun mounts",
+   "ask": "Do the guns look attached to the new ships? from round 168",
+   "why": "The outside view shows where each gun meets the deck.",
+   "options": [
+    {
+     "v": "seated",
+     "label": "Yes, they look attached"
+    },
+    {
+     "v": "loose",
+     "label": "A gun still looks loose"
+    }
+   ],
+   "state": "open",
+   "answer": null,
+   "page": "Aquila game and website direction"
+  },
+  {
+   "id": "aquila-direction-r173-review",
+   "short": "Review the rebuild",
+   "ask": "How would you like to review the hull rebuild?",
+   "why": "I recommend comparing models first so you can judge both ships before they enter the game.",
+   "options": [
+    {
+     "v": "models",
+     "label": "Compare models with the originals first"
+    },
+    {
+     "v": "build",
+     "label": "Try a separate playable build"
+    },
+    {
+     "v": "discuss",
+     "label": "Discuss the differences first"
+    }
+   ],
+   "state": "open",
+   "answer": null,
+   "page": "Aquila game and website direction"
+  },
+  {
+   "id": "aquila-direction-r174-delta-tree",
+   "short": "Delta Tree likeness",
+   "ask": "Does this Delta Tree model match the ship you chose? from round 173",
+   "why": null,
+   "options": [
+    {
+     "v": "keep",
+     "label": "Keep this exterior"
+    },
+    {
+     "v": "revise",
+     "label": "Revise this exterior"
+    }
+   ],
+   "state": "open",
+   "answer": null,
+   "page": "Aquila game and website direction"
+  },
+  {
+   "id": "aquila-direction-r174-glacier-tongue",
+   "short": "Glacier Tongue likeness",
+   "ask": "Does this Glacier Tongue model match the ship you chose? from round 173",
+   "why": null,
+   "options": [
+    {
+     "v": "keep",
+     "label": "Keep this exterior"
+    },
+    {
+     "v": "revise",
+     "label": "Revise this exterior"
+    }
+   ],
+   "state": "open",
+   "answer": null,
+   "page": "Aquila game and website direction"
+  },
+  {
+   "id": "aquila-direction-r175-delta-tree",
+   "short": "Delta Tree comparison",
+   "ask": "Which part of Delta Tree should change next? from round 173",
+   "why": null,
+   "options": [
+    {
+     "v": "refine",
+     "label": "Refine a feature"
+    },
+    {
+     "v": "keep",
+     "label": "Keep this exterior"
+    }
+   ],
+   "state": "open",
+   "answer": null,
+   "page": "Aquila game and website direction"
+  },
+  {
+   "id": "aquila-direction-r175-glacier-tongue",
+   "short": "Glacier Tongue comparison",
+   "ask": "Which part of Glacier Tongue should change next? from round 173",
+   "why": null,
+   "options": [
+    {
+     "v": "refine",
+     "label": "Refine a feature"
+    },
+    {
+     "v": "keep",
+     "label": "Keep this exterior"
+    }
+   ],
+   "state": "open",
+   "answer": null,
+   "page": "Aquila game and website direction"
+  },
+  {
+   "id": "aquila-direction-r176-delta-tree",
+   "short": "Delta Tree · stern",
+   "ask": "Does Delta Tree’s stern look closer to the painting? from round 173",
+   "why": null,
+   "options": [
+    {
+     "v": "closer",
+     "label": "Yes, closer"
+    },
+    {
+     "v": "detail",
+     "label": "One detail still differs"
+    }
+   ],
+   "state": "open",
+   "answer": null,
+   "page": "Aquila game and website direction"
+  },
+  {
+   "id": "aquila-direction-r176-glacier-tongue",
+   "short": "Glacier Tongue · bow",
+   "ask": "Does Glacier Tongue’s bow look closer to the painting? from round 173",
+   "why": null,
+   "options": [
+    {
+     "v": "closer",
+     "label": "Yes, closer"
+    },
+    {
+     "v": "detail",
+     "label": "One detail still differs"
+    }
+   ],
+   "state": "open",
+   "answer": null,
+   "page": "Aquila game and website direction"
   }
  ]
 }

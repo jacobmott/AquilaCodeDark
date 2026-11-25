@@ -1,0 +1,180 @@
+{
+  "round": 152,
+  "checked_utc": "2026-11-24T09:20:58.562593+00:00",
+  "engine": "Epic Games Launcher Unreal Engine 5.8.4, CL 58902052",
+  "platform": "Windows 64-bit Development, D3D12",
+  "scope": "Local playable boarding blockout. Final scale and human feel are open. Airlock frames are open and lift doors mark the end of the walk.",
+  "provider_credits": 0,
+  "source": {
+    "blender": "5.2.0 LTS",
+    "study": "Assets/ShipConcepts/modeling-references-r150/glacier-tongue/blender-guides/proportion-study.blend",
+    "study_sha256": "3dcd1e6b22c23749721666c859116f2f6159f84da09bcf4f42934ae5646c7dc5",
+    "scaled_copy": "Assets/ShipConcepts/glacier-boarding-r152/glacier-tongue-scale.blend",
+    "scaled_copy_sha256": "b62579bb9807bddea066f784fb37cc07a2e13f25b25b76922990f3899499e97e",
+    "hull_parts": 17,
+    "vertices": 2830,
+    "triangles": 5596,
+    "source_recipe_same_vertex_positions_and_triangle_membership": true
+  },
+  "dimensions_m": {
+    "hull_length": 640,
+    "study_unit": 6.4,
+    "shuttle_length_beam_height": [
+      68,
+      64,
+      16
+    ],
+    "player_height": 1.8,
+    "nominal_standing_eye_height": 1.64,
+    "player_capsule_radius": 0.34,
+    "ramp_run_rise": [
+      11,
+      2
+    ],
+    "airlock_width_height": [
+      2.8,
+      3.0
+    ],
+    "cooked_roof_above_deck_at_x0_y40": 59.94,
+    "cooked_blade_top_at_x0_y113": -3.72,
+    "walk_to_lobby_sample": 39.0
+  },
+  "clearance": {
+    "axis": "Port approach, from 170 m out to shuttle sill at 27 m",
+    "shuttle_envelope_m": [
+      68,
+      64,
+      16
+    ],
+    "test": "All study triangles tested against the full swept shuttle box, using separating axes.",
+    "swept_box_hits": [],
+    "raised_box_positive_control": [
+      "Overhanging main vault",
+      "Overlapping armor band",
+      "Overlapping armor band.001"
+    ],
+    "lowered_box_positive_control": [
+      "Calved outer blade"
+    ],
+    "widened_box_positive_control": [
+      "Calved outer blade",
+      "Enclosed crossing0.001",
+      "Enclosed crossing1.001"
+    ]
+  },
+  "rendered_approach_rays_clear": 85,
+  "simulation_save_groups": {
+    "passed": 20,
+    "failed": 0,
+    "warnings": 0
+  },
+  "packaged_tests": [
+    {
+      "name": "Aquila.Input.Boarding",
+      "outcome": "passed",
+      "evidence_sha256": "ef251445460e40619a132475287b4316ff2719ccb6bc1b5a38791032bb9c9d5d",
+      "fixture_history_preserved": true,
+      "fixture_identical": true
+    },
+    {
+      "name": "Aquila.Input.Simulator",
+      "outcome": "passed",
+      "evidence_sha256": "bfc71d9f2d9e8c5a1c32410908e289b66407cd24ec4df75277df887649ec0e54",
+      "fixture_history_preserved": true,
+      "fixture_identical": true
+    },
+    {
+      "name": "Aquila.Input.Observer",
+      "outcome": "passed",
+      "evidence_sha256": "ece0ea7b2784429cee4b1bc4e2c9e83bdb1181f5ef4b8ffc832b2d67d8ed6500",
+      "fixture_history_preserved": true,
+      "fixture_identical": true
+    }
+  ],
+  "boarding_checks": [
+    "Direct entry",
+    "Mounted shuttle hatch",
+    "Walking capsule on sloped ramp and flat deck",
+    "Both doorways",
+    "Continuous entry into lift lobby",
+    "Side wall collision",
+    "Mouse look on foot",
+    "Mouse orbit around berth",
+    "Zoom",
+    "Whole ship and berth presets",
+    "Tab preserves footing",
+    "R resets route",
+    "Esc exits to menu",
+    "Clicking menu button reenters boarding",
+    "Geometry visible in six rendered views"
+  ],
+  "captures": {
+    "size": [
+      1440,
+      810
+    ],
+    "frames": {
+      "exterior": {
+        "file": "exterior.png",
+        "sha256": "5e2bc6a333408ee9988b010cf9a4f50511c365c3e1d0a38d72f8dafc50395e62",
+        "central_visible_fraction": 0.4062
+      },
+      "berth": {
+        "file": "berth.png",
+        "sha256": "b71905c3adde0cc5506913da76c82042d984e71e8b194a69ccbafe039c722651",
+        "central_visible_fraction": 0.4316
+      },
+      "ramp": {
+        "file": "ramp.png",
+        "sha256": "8954c4798753d47feb3867d79222cc5f3c792602d31ed9fbc58d8fbce3d11fcc",
+        "central_visible_fraction": 0.6635
+      },
+      "deck": {
+        "file": "deck.png",
+        "sha256": "e4993bf7b415d507a51cba30d1ab16d9858f0e0c1f882c59153929595812e7a1",
+        "central_visible_fraction": 0.9765
+      },
+      "airlock": {
+        "file": "airlock.png",
+        "sha256": "42c49036f8913e00ccfb1a56a6ca7d4efe0cf1e56ade225b66f7fb85957b6719",
+        "central_visible_fraction": 0.9142
+      },
+      "lobby": {
+        "file": "lobby.png",
+        "sha256": "3fca0889abbfe2fb1190787de15a48993e895d9c0b2013fad066ba8e9b545610",
+        "central_visible_fraction": 0.7626
+      }
+    },
+    "measurement": "Central 60% in both axes. Visible fraction counts grayscale pixels at least 25 of 255; human review checked composition."
+  },
+  "owner_journals": {
+    "inventory_and_tip_checks_identical": true,
+    "inventory_fields": [
+      "name",
+      "byte length",
+      "modification time"
+    ],
+    "portable_revision_count": 151681,
+    "portable_revision": 151681,
+    "portable_parent": 151680,
+    "portable_state": "Failed",
+    "helm": "Hold",
+    "portable_tip_sha256": "f52f3ea0d9bfa957aced3415d6ce677b495ef598fa7d1020f39c4414882e303b",
+    "portable_parent_sha256": "8dc85d4ba7e4d4adc0a19fd2e11c2d22a8ada62a42d7d6cdae5258490e9bf43f",
+    "desktop_revisions_sha256": {
+      "AC55FDEC-47AC-AEB5-78F6-8B998E45A5C3.json": "a9ba65631bc184c83269f33c41bd4e84562158e87e7b2bff0a40fbf8b06d16cc"
+    }
+  },
+  "owner_launch": {
+    "checked_utc": "2026-11-24T09:20:25.4346343Z",
+    "shortcut": "Aquila Boarding Test",
+    "target": ".runtime/glacier-boarding-r152/playtest/Windows/Aquila.exe",
+    "window": "Aquila (64-bit Development PCD3D_SM5) ",
+    "responsive": true,
+    "boarding_ready": true,
+    "combat_shortcut_identical": true,
+    "input_injected": false,
+    "match_loaded": false
+  },
+  "package_executable_sha256": "f19b871c23e39ec9e2e6fd9fbb0fc8f49989f11146538e8233c85f41340d6a27"
+}

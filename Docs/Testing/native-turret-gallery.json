@@ -1,0 +1,243 @@
+{
+  "round": 133,
+  "verified_utc": "2026-11-24T01:13:45.455078+00:00",
+  "engine": "Launcher Unreal 5.8.4 CL 58902052",
+  "scope": "Local Windows Combat Simulator and regression checks. Physical phone testing remains open.",
+  "art": {
+    "source": "Four project-authored static meshes built by the native content commandlet. The preview, mounted turret and ship-shaped shield share the same mesh asset.",
+    "local_asset_sha256": {
+      "SM_BurstTurret": "66b9cb2d0f93170e2e7ff40b22f5e2ccf41badfd10d7428e037dee16e0396b90",
+      "SM_KineticCannon": "f9fc8a69fe6bccf84c36200e8dd3b3ed6f736e17d5d23959978c71cf0d5e867f",
+      "SM_PlasmaCaster": "55a1aa39d4a67ba9054a43ba5098df01782ab2fe02ef85c5939484509e39d0df",
+      "SM_PulseRepeater": "335606bbe1804ab3fbc62962707caa0a672c6bc3b7c59622801f5b6616a25106"
+    }
+  },
+  "fitting_checks": [
+    "Four distinct mesh assets visible while editing. Each turns about its own visual center. Compared before and after rotation within 0.01 render units. The simulation clock stayed fixed.",
+    "Physical pointer clicks hit the projected centers of the four 3D models within two pixels of their intended screen anchors.",
+    "Picking a turret alone leaves all equipment intact. One click on an occupied port changes the draft immediately. The fitted mesh matches the selected preview.",
+    "Selection persists while filling successive ports. The selected model, Done placing, and a ship change release the fitting tool.",
+    "Empty ports stay inspectable when no spare is owned. Moving an item preserves its chip. Borrowed stock fills all 30 positions on one ship.",
+    "Both opponents equip different models. Cancel restores the previous duel. Start duel and Replay use the chosen equipment. The models disappear from the scene after fitting."
+  ],
+  "headless": {
+    "passed": 17,
+    "report_sha256": "7ee94ea135f0dac5d5bdcc60a662122bcfc05c78865481a4bc0acfd5be4e2513"
+  },
+  "packaged": {
+    "duel-direct": {
+      "mode": "Simulator",
+      "suite": "Aquila.Input.Simulator",
+      "passed": 1,
+      "report_sha256": "b0d0e0c2180cf5a26511b4b6cf10fcbb544d2d959953d746643293b756ab634e",
+      "prior_revisions_intact": true,
+      "journal_identical": true,
+      "resolution": [
+        1280,
+        720
+      ]
+    },
+    "duel-menu": {
+      "mode": "Menu",
+      "suite": "Aquila.Input.Simulator",
+      "passed": 1,
+      "report_sha256": "b8aea29cbe84c3d5115ae740ef008528cf0c42aae35563317d471c65ba9afdb2",
+      "prior_revisions_intact": true,
+      "journal_identical": true,
+      "resolution": [
+        1280,
+        720
+      ]
+    },
+    "fitting-compact": {
+      "mode": "Simulator",
+      "suite": "Aquila.Input.Simulator",
+      "passed": 1,
+      "report_sha256": "3507dac49b053c48251c07bfd5e9f66bb1a272e0940c81c0e0b49afaebed15fb",
+      "prior_revisions_intact": true,
+      "journal_identical": true,
+      "resolution": [
+        960,
+        540
+      ]
+    },
+    "fitting-tall": {
+      "mode": "Simulator",
+      "suite": "Aquila.Input.Simulator",
+      "passed": 1,
+      "report_sha256": "8255ca9c44693ded5432a349aaf37c07be7ed1db7e8f66803fc2c0ef1f073ded",
+      "prior_revisions_intact": true,
+      "journal_identical": true,
+      "resolution": [
+        1024,
+        768
+      ]
+    },
+    "fitting-wide": {
+      "mode": "Simulator",
+      "suite": "Aquila.Input.Simulator",
+      "passed": 1,
+      "report_sha256": "ec0fb27a64db30637a29bd881bee4ce5a8faa37e04257afa5cb3ce90a48d126d",
+      "prior_revisions_intact": true,
+      "journal_identical": true,
+      "resolution": [
+        1920,
+        800
+      ]
+    },
+    "arena-observer": {
+      "mode": "Simulator",
+      "suite": "Aquila.Input.Observer",
+      "passed": 1,
+      "report_sha256": "8a608a48ea54fb49a2bcc7ba5e3c896d6ca50dcc17f68070f2691b2df7f06f55",
+      "prior_revisions_intact": true,
+      "journal_identical": true,
+      "resolution": [
+        1280,
+        720
+      ]
+    },
+    "desktop": {
+      "mode": "Match",
+      "suite": "Aquila.Input.DesktopCamera",
+      "passed": 1,
+      "report_sha256": "4f7851364b655518e39daae0ec428550bc9527ee3dd34bd37fe675fdd7e696a8",
+      "prior_revisions_intact": true,
+      "journal_identical": true,
+      "resolution": [
+        1280,
+        720
+      ]
+    },
+    "observer": {
+      "mode": "Match",
+      "suite": "Aquila.Input.Observer",
+      "passed": 1,
+      "report_sha256": "576175428fb24e5aecb5125cdd4c1f49207f8e48ecbaf85a38037eed9c9518bc",
+      "prior_revisions_intact": true,
+      "journal_identical": true,
+      "resolution": [
+        1280,
+        720
+      ]
+    },
+    "restored": {
+      "mode": "Match",
+      "suite": "Aquila.Input.Observer",
+      "passed": 1,
+      "report_sha256": "327279870b36e8dbb8443830456f2c2724d44670dd2426e17266b3b4da82022f",
+      "prior_revisions_intact": true,
+      "journal_identical": true,
+      "resolution": [
+        1280,
+        720
+      ]
+    },
+    "bridge": {
+      "mode": "Match",
+      "suite": "Aquila.Input.DesktopCamera",
+      "passed": 1,
+      "report_sha256": "bf6d4ada884d81bdc17200aa3a3609dd21dcafe5e92daecb589598cf46e3ad81",
+      "prior_revisions_intact": true,
+      "journal_identical": true,
+      "resolution": [
+        1280,
+        720
+      ]
+    },
+    "touch": {
+      "mode": "Match",
+      "suite": "Aquila.Input.TouchMenu",
+      "passed": 1,
+      "report_sha256": "56ae73d5c5697588d511001241d50cd9cfb72a2a50aa197f0b7121bcc412cebb",
+      "prior_revisions_intact": true,
+      "journal_identical": true,
+      "resolution": [
+        960,
+        540
+      ]
+    },
+    "touch-observer": {
+      "mode": "Match",
+      "suite": "Aquila.Input.Observer",
+      "passed": 1,
+      "report_sha256": "7c14ef65104c0a58ab97b06c20e6bf00aa73d27149467410c6558802b7fe3f27",
+      "prior_revisions_intact": true,
+      "journal_identical": true,
+      "resolution": [
+        960,
+        540
+      ]
+    },
+    "effects": {
+      "mode": "Simulator",
+      "suite": "Aquila.Input.CombatFeedback",
+      "passed": 1,
+      "report_sha256": "10b44f242d1c8d08ad9f35657f916e238f6a5a60cc479dd8284c27010d62a4f1",
+      "prior_revisions_intact": true,
+      "journal_identical": true,
+      "resolution": [
+        1280,
+        720
+      ]
+    }
+  },
+  "catalog": {
+    "scope": "The permitted Unreal 5.7 passage concerns glTF export. Runtime evidence comes from the installed engine and packaged Aquila tests.",
+    "citation": {
+      "kind": "source",
+      "record_id": "s_d6b64beb4597852b1baa8699c39beb2201239f947a8cc2402f7a86bed5e45e6d",
+      "version_id": "sha256:1e38faaed7738f04b6437a34d1eb22c3c6c2bdea5a9c03839802bda25f73f36f",
+      "mode": "passage",
+      "byte_start": 6885,
+      "byte_end": 8829
+    }
+  },
+  "package": {
+    "executable": ".runtime/turret-gallery-r133/final/Windows/Aquila/Binaries/Win64/Aquila.exe",
+    "sha256": "4c622a9deac29cd7f0e4ecd42ddcc3f8e7287cf3a5b9c10a4749046606fb1068",
+    "cook_log_sha256": "28ddac2edfe901a780e4691a8c514066f2b716ec66cff8a97266e3ad7485401a",
+    "final_build_log_sha256": "e9d410a28a5233155aef7951d80abf04158abd7fd5024a90673fd55e2aee33ad"
+  },
+  "media": {
+    "clip": {
+      "sha256": "38836a4d33d5b82633270571bdc5e6f74aac7c734244f4ecd155b77f8ef29f44",
+      "frames": 60,
+      "fps": 12,
+      "seconds": 5,
+      "size": [
+        1280,
+        720
+      ],
+      "source": "Direct captures of the packaged fitting view."
+    },
+    "placement": {
+      "sha256": "35a9d73d7b94d5533d9a0f756813457ad6c6597b53712c3cb67bbd734a4db0f6",
+      "size": [
+        1280,
+        720
+      ]
+    }
+  },
+  "shortcut": {
+    "checked_utc": "2026-11-24T01:13:42.4645998Z",
+    "shortcut": "Aquila Combat Simulator",
+    "target": ".runtime/turret-gallery-r133/final/Windows/Aquila.exe",
+    "kept_original_arguments": true,
+    "desktop_save_hashes_identical": true,
+    "owner_processes": 2,
+    "owner_input_injected": false
+  },
+  "journals": {
+    "before_utc": "2026-11-24T00:48:27.194553+00:00",
+    "after_utc": "2026-11-24T01:13:44.976619+00:00",
+    "sequence": 151681,
+    "parent": 151680,
+    "phase": "Failed",
+    "helm": "Hold",
+    "tip_sha256": "f52f3ea0d9bfa957aced3415d6ce677b495ef598fa7d1020f39c4414882e303b",
+    "parent_sha256": "8dc85d4ba7e4d4adc0a19fd2e11c2d22a8ada62a42d7d6cdae5258490e9bf43f",
+    "desktop_revision_count": 1,
+    "all_hashes_identical": true
+  }
+}

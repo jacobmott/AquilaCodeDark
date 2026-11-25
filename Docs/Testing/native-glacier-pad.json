@@ -1,0 +1,122 @@
+{
+  "round": 156,
+  "checked_utc": "2026-11-24T10:29:50.395355+00:00",
+  "engine": "Launcher Unreal 5.8.4 CL 58902052",
+  "hulls": {
+    "1280": {
+      "pad_width_m": 142.0,
+      "pad_length_m": 180.0,
+      "pad_area_m2": 25560.0,
+      "wingtip_clearances_m": [
+        39.0,
+        39.0
+      ],
+      "roof_above_deck_at_shuttle_sill_m": 116.11,
+      "shuttle_length_beam_height_m": [
+        68.0,
+        64.0,
+        16.0
+      ],
+      "airlock_width_height_m": [
+        2.8,
+        3.0
+      ],
+      "walk_to_lobby_m": 39.0,
+      "sill_drop_m": 2.0
+    },
+    "640": {
+      "pad_width_m": 71.0,
+      "pad_length_m": 90.0,
+      "pad_area_m2": 6390.0,
+      "wingtip_clearances_m": [
+        3.5,
+        3.5
+      ],
+      "roof_above_deck_at_shuttle_sill_m": 58.72,
+      "shuttle_length_beam_height_m": [
+        68.0,
+        64.0,
+        16.0
+      ],
+      "airlock_width_height_m": [
+        2.8,
+        3.0
+      ],
+      "walk_to_lobby_m": 39.0,
+      "sill_drop_m": 2.0
+    }
+  },
+  "measurement": "Packaged Windows game. Four horizontal collision traces locate the slab edges. Six rendered shuttle landmarks locate its wings and extremities.",
+  "checks": [
+    "Upper surface and two negative perimeter probes in each size",
+    "Walker grounded on the larger outer corner and placed inside the smaller rails on shrink",
+    "Fixed camera beside Peregrine in both berth frames",
+    "Full ramp-to-lift routes, including physical doorways, in both sizes",
+    "Both menu and shortcut entry exercised",
+    "Ship length remains selectable with B"
+  ],
+  "packaged_suites": [
+    {
+      "name": "Aquila.Input.Boarding",
+      "passed": 1,
+      "errors": 0,
+      "report_sha256": "8d4a87cc6dc7f15afb4b16fa17762f87416c43bcac23869904d7316090a00b45"
+    },
+    {
+      "name": "Aquila.Input.Simulator",
+      "passed": 1,
+      "errors": 0,
+      "report_sha256": "ae36f68f15ccaacd378c258e7b9f595f2427bec201399bc0135a0e1bb74068ed"
+    },
+    {
+      "name": "Aquila.Input.Observer",
+      "passed": 1,
+      "errors": 0,
+      "report_sha256": "cbe82dbb2ce473fda42354e4109655bff18b48ee67e47e158bbe2b295c461af1"
+    }
+  ],
+  "simulation_save_groups": {
+    "passed": 20,
+    "failed": 0,
+    "warnings": 0
+  },
+  "images": {
+    "reporter": "Packaged Windows client with a disposable journal",
+    "resolution": [
+      1440,
+      810
+    ],
+    "captured_frames": 14,
+    "served_comparisons": {
+      "640-berth.png": "bf9107cd13762525d04add158a567428dd97b81048eedf418d1c4e9d800946e7",
+      "1280-berth.png": "abbb337653bfce14a3d364f0b899d10fc17ca8ffc6234481b3b9cc1cca0ecd3f"
+    }
+  },
+  "owner_launch": {
+    "checked_utc": "2026-11-24T10:29:31.9359003Z",
+    "shortcut": "Aquila Boarding Test",
+    "target": ".runtime/glacier-pad-r156/playtest/Windows/Aquila.exe",
+    "starting_length_m": 1280,
+    "window": "Aquila (64-bit Development PCD3D_SM5) ",
+    "responsive": true,
+    "boarding_ready": true,
+    "combat_shortcut_identical": true,
+    "input_injected": false,
+    "match_loaded": false
+  },
+  "journals": {
+    "portable_entries": 151681,
+    "revision": 151681,
+    "parent": 151680,
+    "phase": "Failed",
+    "helm": "Hold",
+    "untouched_inventory_and_tip_parent_hashes": true,
+    "desktop_revision_hashes_identical": true
+  },
+  "executable_sha256": "1bedb28817e772c0815ea6381c0e67482bc333dd13481fddf41cf949eecbd173",
+  "report": {
+    "round": 156,
+    "served_berth_images_verified_by_sha256": 2,
+    "paseo_snapshot_verified_title_and_both_choices": true
+  }
+}

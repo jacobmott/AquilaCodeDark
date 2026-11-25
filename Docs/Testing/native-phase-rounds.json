@@ -1,0 +1,218 @@
+{
+  "round": 132,
+  "verified_utc": "2026-11-23T08:14:15.446398+00:00",
+  "scope": "Local Windows Combat Simulator. Balance and match acquisition remain open.",
+  "engine": "Launcher Unreal 5.8.4 CL 58902052",
+  "package": {
+    "game": ".runtime/phase-rounds-r132/ready/Windows/Aquila/Binaries/Win64/Aquila.exe",
+    "sha256": "264a9bdd2203f0dc7eb48252fe64ac5c184c39563073a3e9445e5b9b5250e675",
+    "build_log_sha256": "70cb7f5b8b8dd07706a655c25e7103d67c8ae8d11cee2e49dbdeeefc82596676"
+  },
+  "ammunition": "Burst turret and kinetic cannon accept Standard, Piercing and Phase. Fixed plasma payloads keep their existing shield interaction.",
+  "phase_checks": [
+    "Both firing sides, light, prism and reinforced armor, full shields, direct hits and shield-only grazes.",
+    "Controlled burst hit: shield 100, compatible hull 100 to 94. Reinforced armor kept hull at 100.",
+    "A phase armor block leaves a neighboring standard turret available to attack the shield. The contact is on the hull and emits no shield flash.",
+    "Legacy standard and piercing in-flight payloads and an optional phase payload survive journal encoding."
+  ],
+  "defense_checks": [
+    "Both survivors, source inside and outside ship-attack range, ready and cooling chips, and no-chip controls.",
+    "Controlled final phase round: a ready chip preserved 100 hull. Without a chip, or with a long remaining cooldown, hull fell to 90.",
+    "Two chips made only one claim. No fresh offensive volleys were fired after the kill.",
+    "The timed packaged trial started Sentinel at 0.1 hull. Both batteries fired their own rounds. Newly acquired round IDs were observed after destruction."
+  ],
+  "packaged_trials": {
+    "duel-direct": {
+      "sentinel_shield": 100.0,
+      "sentinel_hull": 95.59,
+      "last_volley": {
+        "1x": {
+          "unclaimed_at_destruction": 2,
+          "new_interceptions_after_destruction": 2,
+          "resolute_hull": 100.0
+        },
+        "8x": {
+          "unclaimed_at_destruction": 2,
+          "new_interceptions_after_destruction": 2,
+          "resolute_hull": 100.0
+        }
+      }
+    },
+    "duel-menu": {
+      "sentinel_shield": 100.0,
+      "sentinel_hull": 95.59,
+      "last_volley": {
+        "1x": {
+          "unclaimed_at_destruction": 2,
+          "new_interceptions_after_destruction": 2,
+          "resolute_hull": 100.0
+        },
+        "8x": {
+          "unclaimed_at_destruction": 2,
+          "new_interceptions_after_destruction": 2,
+          "resolute_hull": 100.0
+        }
+      }
+    }
+  },
+  "headless": {
+    "passed": 17,
+    "report_sha256": "fafaca960c224b368009b8ba3f42927e4f4d9297f3d31a07efb55ef94c1a1691"
+  },
+  "windows_groups": {
+    "duel-direct": {
+      "suite": "Aquila.Input.Simulator",
+      "mode": "Simulator",
+      "passed": 1,
+      "report_sha256": "d9a7a5658c0773186bb7948206f30556a97b8aed943235a361b33f59f4313529",
+      "prior_revision_count": 2,
+      "final_revision_count": 2,
+      "prior_revisions_intact": true,
+      "journal_identical": true
+    },
+    "duel-menu": {
+      "suite": "Aquila.Input.Simulator",
+      "mode": "Menu",
+      "passed": 1,
+      "report_sha256": "c002e864ae8584aeecd5b84c6b865d1a9570015875abb86e95fac7c1e74956c4",
+      "prior_revision_count": 2,
+      "final_revision_count": 2,
+      "prior_revisions_intact": true,
+      "journal_identical": true
+    },
+    "arena-observer": {
+      "suite": "Aquila.Input.Observer",
+      "mode": "Simulator",
+      "passed": 1,
+      "report_sha256": "eeca1e2da64257966853ae2b860cd1643ca9d1bfde5f73c3a9069dc9c50c7b4a",
+      "prior_revision_count": 2,
+      "final_revision_count": 2,
+      "prior_revisions_intact": true,
+      "journal_identical": true
+    },
+    "desktop": {
+      "suite": "Aquila.Input.DesktopCamera",
+      "mode": "Match",
+      "passed": 1,
+      "report_sha256": "aba62a9352de78be3986c7ecc450027be03dd412fe4746bd8ec59c46ed517c8f",
+      "prior_revision_count": 0,
+      "final_revision_count": 0,
+      "prior_revisions_intact": true,
+      "journal_identical": true
+    },
+    "observer": {
+      "suite": "Aquila.Input.Observer",
+      "mode": "Match",
+      "passed": 1,
+      "report_sha256": "a71e2bd51a1fc14e2d0915fe4c413cd91c6981c3955d43bfe41bc44a8019d550",
+      "prior_revision_count": 0,
+      "final_revision_count": 0,
+      "prior_revisions_intact": true,
+      "journal_identical": true
+    },
+    "restored": {
+      "suite": "Aquila.Input.Observer",
+      "mode": "Match",
+      "passed": 1,
+      "report_sha256": "60c57acec340712880390a658590c171aef4c1ec10b60d430edd7140de5c2178",
+      "prior_revision_count": 2,
+      "final_revision_count": 2,
+      "prior_revisions_intact": true,
+      "journal_identical": true
+    },
+    "bridge": {
+      "suite": "Aquila.Input.DesktopCamera",
+      "mode": "Match",
+      "passed": 1,
+      "report_sha256": "062532ab409cdfc59f2bd2a091e31c5efa25761615e8b0d94d56453940bf16a7",
+      "prior_revision_count": 0,
+      "final_revision_count": 0,
+      "prior_revisions_intact": true,
+      "journal_identical": true
+    },
+    "touch": {
+      "suite": "Aquila.Input.TouchMenu",
+      "mode": "Match",
+      "passed": 1,
+      "report_sha256": "eb432aea94105ac05fe409cc0fd769b4b88ea384be84ef10687bbc238d7716ac",
+      "prior_revision_count": 0,
+      "final_revision_count": 0,
+      "prior_revisions_intact": true,
+      "journal_identical": true
+    },
+    "touch-observer": {
+      "suite": "Aquila.Input.Observer",
+      "mode": "Match",
+      "passed": 1,
+      "report_sha256": "3923dacd98347e29019500e7d1431fbd4fd9c5c611113d7b59b90956a1219338",
+      "prior_revision_count": 0,
+      "final_revision_count": 0,
+      "prior_revisions_intact": true,
+      "journal_identical": true
+    },
+    "effects": {
+      "suite": "Aquila.Input.CombatFeedback",
+      "mode": "Simulator",
+      "passed": 1,
+      "report_sha256": "415231812be2c8df745a54104afd0fea87a198a401c085c96ca0c9534502ead3",
+      "prior_revision_count": 2,
+      "final_revision_count": 2,
+      "prior_revisions_intact": true,
+      "journal_identical": true
+    }
+  },
+  "views": {
+    "phase-fitting": {
+      "pixels": [
+        1280,
+        720
+      ],
+      "sha256": "28749d551607534c9f86c726e01248cbcd0a0602799c4c495e7e7d8067a293d1"
+    },
+    "phase-impact": {
+      "pixels": [
+        1280,
+        720
+      ],
+      "sha256": "c69a56f1e8bab21a29e32beb6c7e77cfc271dc72054a46a403d793cd1752448a"
+    },
+    "last-volley": {
+      "pixels": [
+        1280,
+        720
+      ],
+      "sha256": "b567084ae36600970732dc1030d268bd4a9c62232c8d39a507d5659034c3b64c"
+    }
+  },
+  "shortcut": {
+    "checked_utc": "2026-11-23T08:14:14.0607164Z",
+    "shortcut": "Aquila Combat Simulator",
+    "target": ".runtime/phase-rounds-r132/ready/Windows/Aquila.exe",
+    "kept_original_arguments": true,
+    "desktop_save_hashes_identical": true,
+    "owner_processes": 0,
+    "owner_input_injected": false
+  },
+  "ui_reference": {
+    "scope": "The permitted Unreal 5.7 Slate passage describes widget clipping. The local tests cover the installed Unreal 5.8.4 build.",
+    "citation": {
+      "kind": "source",
+      "record_id": "s_c310e7d3ea6e8c17cc121595d58bd3da161ab56f13b793df0653335950fd2e7c",
+      "version_id": "sha256:4fd7c9fcd6e7f4466e35e6a1300f6a1ed76eff814ad8b3918943d5c10f4d835f",
+      "byte_start": 25943,
+      "byte_end": 27878
+    }
+  },
+  "saves": {
+    "before_utc": "2026-11-23T07:56:53.343470+00:00",
+    "after_utc": "2026-11-23T08:14:15.154604+00:00",
+    "expedition_sequence": 151681,
+    "parent": 151680,
+    "phase": "Failed",
+    "helm": "Hold",
+    "tip_sha256": "f52f3ea0d9bfa957aced3415d6ce677b495ef598fa7d1020f39c4414882e303b",
+    "parent_sha256": "8dc85d4ba7e4d4adc0a19fd2e11c2d22a8ada62a42d7d6cdae5258490e9bf43f",
+    "desktop_revisions_checked": 1,
+    "identical_hashes": true
+  }
+}

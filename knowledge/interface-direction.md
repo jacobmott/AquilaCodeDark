@@ -11,11 +11,35 @@ The owner wants the ship and space clear by default. Open one command panel on d
 Any future always-visible indicator needs a specific player need. Windows uses **H** in flight and on the bridge.
 Touch uses two fingers to reveal the controls and **Hide menu** to dismiss them. [Native play controls](../native/Aquila/README.md#play).
 
+## Boarding playtest controls, 2026-11-24
+
+The command bridge is a place to watch the ship fight. Entering the room leaves walking and looking under the visitor’s control. The ship selects its target and fires independently. Keep the windows clear of controls, target markers and firing prompts. [Delta Tree bridge](../native/Aquila/README.md#delta-tree-command-bridge).
+
+The owner requested five times the player’s walking speed and three times the mouse sensitivity during boarding playtests. Both hulls use 13.5 m/s for walking. The same mouse movement produces three times the turn on foot and in exterior orbit. Acceleration and braking scale with walking speed for short moves near doors and stations. [Boarding controls](../native/Aquila/README.md#glacier-tongue-boarding-test).
+
 ## Native observer decision, 2026-11-22
 
 The main view is an RTS observer. The player can look around space independently while the flagship navigates and fights automatically. Clicking a visible ship opts into following it. Panning or clicking empty space returns to free observation. The first-person bridge remains aboard Resolute. In the Windows prototype, ship orders always address Resolute through the command panel. [Native controls](../native/Aquila/README.md#play).
 
+Free look turns around the observer’s own position. The match initially frames Resolute and the arena initially frames the midpoint between ships. Those opening views set the initial aim. Following a ship puts the orbit center on that ship. Releasing follow keeps the current position and heading.
+
+Forward and backward flight follow the camera’s pitch and heading. Aim at a ship above or below you and hold **W** to fly toward it. **S** backs away along the same line.
+
+On November 23, 2026, the owner said “Okay, that works well” after trying this Windows free-camera movement. [Windows flight checks](../Docs/Testing/native-camera-flight.json).
+
 For fleet play, the owner wants to jump between a traveling ship and an inhabited planet. Looking home gives access to what that world can build while the ship continues its orders. [Homeworld and fleet exploration](game-direction.md#homeworld-and-fleet-exploration).
+
+## Windows turret fitting
+
+Four turret models float around the selected ship. They rotate in place while the fight waits. Click a model, then a port to install that weapon. The same model appears on the hull. The choice stays active until the player finishes placing or switches ships. Every empty port can still be inspected when inventory runs out. [Fitting controls](../native/Aquila/README.md#combat-simulator-on-windows).
+
+Click **Armor** or **Shield** on the hull to switch the floating models. Armor samples use the same geometry and finishes as the ship’s deck plates. The hull changes while the player compares samples. The shield fitting view shows its powered shell and fitted hardware. Returning to a turret port restores the weapon choices. Port actions sit beside the ship. **Start duel** and **Cancel** sit above it.
+
+The owner accepted the armor and shield fitting view. Hovering a turret demonstrates its configured fire on a small shielded, reinforced ship above the hull. Clicking pins the example. Another hover temporarily takes precedence. Changing ammunition restarts the preview with that payload. A clipped ribbon moves readable phrases outward from the turret and pauses on its last phrase for one second. The target, readout and ribbon accept no pointer input. [Windows firing previews](../Docs/Testing/native-firing-preview.json).
+
+The lower ammunition row shows three rotating 3D rounds when fitting a burst turret or kinetic cannon. Standard has a brass casing, Piercing has a long pointed silver tip, and Phase has violet shards suspended inside two rings. Clicking a round or its name updates the firing example and sets the payload for the matching turret or next placement. Each ship and port keeps its own loadout. [Windows ammunition models](../Docs/Testing/native-round-models.json).
+
+**Clear fitting** sits beside the ship tabs. It immediately strips the selected hull from any fitting view and releases the current placement or move. The same ship and part stay selected, ready to rebuild. **Cancel** only closes fitting. Reopening returns to that ship unless the player has since selected another ship in the arena. **Start duel** begins a fresh fight. [Windows reset checks](../Docs/Testing/native-live-fitting.json).
 
 ## Owner's reference
 

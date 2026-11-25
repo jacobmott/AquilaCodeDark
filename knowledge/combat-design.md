@@ -9,8 +9,9 @@
 - The player commands the battleship through decisions; its helm steers and navigates automatically.
   Manual capital controls remain in source but are hidden and gated. This supersedes the earlier manual-override proposal.
 - Deliberate battles leave time for tactics and strategy. Impacts should feel fast, explosive and visually satisfying.
+- A powered shield stays faintly visible. Its rounded shell follows the ship’s proportions. A hit brightens the point of contact. Mark hull hits on the struck plate. A destroyed ship ends in a large explosion. The owner refined the shield direction during the Windows duel on November 22.
 - The starting research battleship is capable, but begins at its lowest offensive and defensive level.
-- Ordinary available weapons must be projectiles with meaningful travel time. Shots can miss, be evaded or face suitable defenses.
+- Ordinary available weapons must be projectiles with meaningful travel time. Shots can miss or face suitable defenses.
 - Remove hitscan and effectively instantaneous long-range attacks from the available combat design.
   The current pulse lance does not fit. Retain such weapons only as future, exceptionally rare equipment with major cooldowns.
 - Capital ships should expect to take hits. The starter has one simple energy shield that absorbs a few hits before failing.
@@ -19,7 +20,6 @@
   Reactive armor and shieldless builds are explicit future directions; their damage rules remain open.
 - Guidance can be disrupted. A missile that loses lock should no longer perfectly follow the target.
   Owner examples: continue straight or travel toward the last known position; exact behavior remains undecided.
-- Automatic evasion is a future upgrade path, alongside automatic weapons. Starter evasion capability is not settled.
 - Individual physical turret mounts have a finite maximum. Each turret can have its own levels and upgrades.
 - Starting direction: two basic kinetic turrets, one left and one right.
   Mature-ship example: around thirty turrets on top. These examples are not a finalized mount map, numeric cap or grind schedule.
@@ -40,23 +40,49 @@ Specific formulas, thresholds, art, discovery rules and upgrade costs remain ope
 This confirmation settles the design vision, not a new playtest or a request to implement every progression system now.
 The earlier beam-family proposal and unanswered pace choice are superseded by this direction.
 
+## Native combat feedback
+
+**Ship fitting and projectile defense, round 131.** Both Windows arena ships have 30 selectable mounts. Turret ownership and mount capacity are independent. A turret item carries its weapon, kinetic ammunition selection and optional chip. Moving it between mounts preserves the whole item. Spare lab stock can bring either side to 30 guns. This loan applies to the duel. Acquisition, progression and chip scarcity remain open.
+
+Round 133 changes how players place a weapon. Choose its rotating model in space, then click a port on the hull. The chosen model fits immediately and stays selected for further placements. Inventory rules still apply to every port. [Fitting view](interface-direction.md#windows-turret-fitting).
+
+**Clearing one ship, rounds 137–138.** Clear immediately returns all turret bodies to that ship’s stock, including borrowed bodies. Their ammunition and chip settings reset. Armor, shield and reserve come off. Incoming rounds can damage the exposed hull. Cancel closes fitting at the same point in the fight. Existing damage, airborne rounds and spent reserve charges belong to that encounter. Both ships may start a fresh duel with empty mounts. [Live fitting checks](../Docs/Testing/native-live-fitting.json).
+
+**Reserve Capacitor, round 134.** Either simulator ship can add this enhancement to its standard shield. The first hit that depletes a charged shield restores 100 shield points. Excess damage from that hit consumes the new charge before reaching armor. A second depletion leaves the shield empty. Phase rounds skip both banks. Removing the generator also removes the capacitor. Replaying a duel rearms each installed capacitor. Match acquisition and balance remain open. [Windows defense checks](../Docs/Testing/native-defense-fitting.json).
+
+**Fitting range, round 135.** Each firing sample runs a disposable duel using the selected weapon, payload and chip. A short training shield makes the sequence readable. Standard fire exposes reinforced armor and bounces. Piercing fire exposes it and damages the hull. Phase rounds fly through the active shield before deflecting. Plasma damages reinforced armor. A chipped sample also intercepts an incoming practice shot. The original fight, inventories and journals have their own state. [Fitting controls](../native/Aquila/README.md#combat-simulator-on-windows).
+
+A chipped turret prioritizes incoming kinetic or plasma projectiles before its regular ship attack. Two turrets cannot claim the same shot. The defensive shot travels, and only a completed interception removes its marked projectile. A projectile that reaches a ship first resolves its normal damage. Different weapons and armor stop rules are independent per turret. [Windows lab checks](../Docs/Testing/native-ship-fitting.json).
+
+**Phase rounds and the final volley, round 132.** Either arena ship can fit phase rounds on a burst turret or kinetic cannon. They pass through the shield without draining it or causing a shield flare. A hit on light or prism plating damages the hull. Reinforced armor stops phase rounds in this trial. A round that crosses only the shield and misses the hull does no damage. A chip can intercept phase rounds in flight.
+
+Destroying a ship stops new attacks against it. Its incoming rounds remain live. Each surviving chipped turret keeps its own cooldown and can acquire those rounds after the explosion. A late round can still decide the duel. [Windows test results](../Docs/Testing/native-phase-rounds.json).
+
+Light plating accepts every payload. Reinforced armor blocks standard kinetic rounds and takes 75% of piercing damage. Prism plating stops both plasma weapons and takes kinetic damage. Shields absorb every payload first. These values are provisional.
+
+**Hull-shaped shield trial, round 126.** The owner asked to try a slightly enlarged copy of the ship as its shield. The Windows arena offers **Ship mesh** and **Oval** on the live duel panel. Ship mesh follows the actual plates, turrets and gaps between the side sections. The test uses one uniform scale of 1.08 about the ship’s pivot. Switching while paused shows exactly the same strike on either surface. Both keep faint idle light and brighten at contact. The expedition uses the fitted oval pending the owner’s comparison. [Windows trial](../Docs/Testing/native-mesh-shield-trial.json).
+
+The oval fits around the hull and turrets. An elongated hull gets a long oval, a tall hull gets an upright oval, and equal dimensions give a sphere. Both shield styles send a ripple from the point of contact. Depletion lets the last ripple fade. A shieldless ship has a bare hull. Gold sparks mark an armor deflection. A penetrating round heats the struck plate and throws orange fragments. One shot can exhaust the shield and damage the hull.
+
+At zero hull the ship disappears into an expanding fireball. Smaller blasts run along its length, followed by a shockwave and cooling fragments. Effects use real elapsed play time at both duel speeds. Pause holds them in place. Replay clears them. [Windows controls](../native/Aquila/README.md#combat-simulator-on-windows) and [packaged visual checks](../Docs/Testing/native-combat-feedback.json).
+
 ## First implemented projectile encounter
 
 Owner's "Yes, that sounds good. Proceed" authorizes round 27's starter encounter. The local implementation replaces instantaneous hits on both sides.
 Two automatic kinetic turrets visibly launch traveling rounds with muzzle flash/recoil. Contact resolves shield, armor and hull damage.
 Standard rounds drain Sentinel's shield but fail against its reinforced armor. The ship stops new ineffective launches after a blocked hit.
 Practice ammunition can switch to piercing rounds, which damage the armored hull. No manual target lock or trigger is required.
-Already launched rounds keep their trajectory and ammunition; Hold fire blocks new launches only. Moving ships can evade incoming trajectories.
+Already launched rounds keep their trajectory and ammunition; Hold fire blocks new launches only.
 Both sides have one simple shield. Shields do not recharge; ammo is unlimited within this temporary practice exercise.
 Prototype ammunition choices are test loadouts, not a progression system or approval of exact starter inventory.
 Fixed steps, swept collision, bounded reusable projectile/effect pools and quality-independent combat support the first slice.
-Specific values are implementation choices, not final balance. Missiles, automatic evasion, counters and the upgrade tree remain future work.
+Specific values are implementation choices, not final balance. Missiles, counters and the upgrade tree remain future work.
 See [architecture](architecture.md) and [verification](../Docs/Testing/projectile-combat-verification.json).
 
 Round 29: owner reports that projectiles and the existing prototype work well. This is owner playtest acceptance of the preceding encounter.
 Owner also requests automated battleship movement driven by decisions, retaining but hiding manual controls.
 First helm orders cover destinations, holding position, maintaining 35 km combat distance and withdrawing to 85 km.
-Those distances are provisional practice behavior. They do not implement threat-aware evasion or broader enemy tactics.
+Those distances are provisional practice behavior. Broader enemy tactics remain open.
 Weapons remain independently automatic; a navigation order does not change the firing mode.
 
 ## Recommended combat rules
@@ -69,16 +95,15 @@ These are proposals supporting the owner's direction, not additional approved me
 2. **Guidance has limits.** Give missiles finite speed, turning ability, seeker range and lifetime.
    Proposed lost-lock baseline: keep the last flight direction without further target updates.
    Last-known-position flight and later reacquisition can be explicit seeker variants; never silently grant perfect tracking.
-3. **Avoidance obeys the ship.** Evasion upgrades improve threat detection, planning and maneuver timing within actual thrust and turning limits.
-   They do not grant invulnerability or an abstract dodge roll. A massive hull will still take hits.
-   Movement follows player orders through the automatic helm. Any later evasion priority must coexist with explicit hold/withdraw orders.
+3. **Helm orders guide the ship.** Explicit hold, range and withdrawal orders govern movement.
+
 4. **Weapons need roles, costs and counters.** Define suitable targets, travel behavior, mounting limits and a weakness for every family.
    Higher levels improve capability without removing every counter. Even fast kinetic weapons must preserve useful travel at engagement range.
 5. **Turrets respect their mounts.** Tracking speed, firing arcs and hull obstruction shape positioning.
    Mixed loadouts should be useful. Heavy offensive mounts, small defensive guns and launchers need not share identical requirements.
 6. **Automation distributes effort.** Defensive weapons choose incoming threats; offensive weapons choose appropriate hostile ships.
    Account for shots already in flight to limit waste. Hold fire stops new launches; existing projectiles continue.
-7. **Defense offers different builds.** Keep the starter shield simple. Later shield sustain, armor, interception and evasion offer competing strengths.
+7. **Defense offers different builds.** Keep the starter shield simple. Later shield sustain, armor and interception offer competing strengths.
    Shields-first damage is the prototype baseline; exact armor, bypass, splash and subsystem rules require discussion.
 8. **Both sides share rules.** Enemies use the same physical and equipment limits.
    Bridge/exterior views and graphics quality must not alter simulation outcomes.
@@ -93,7 +118,7 @@ Owner accepts these families as a starting direction. Detailed fictional roles, 
 | Heavy kinetic cannons | Fewer, larger solid projectiles with forceful shield and armor impacts | Slow reload and tracking; maneuver between shots |
 | Flak / point defense | Small rounds or timed bursts against incoming missiles and light craft | Short range, limited coverage and saturation |
 | Unguided rockets | Explosive salvos aimed at predicted positions or an area | No course correction; escape the salvo's path |
-| Guided missiles | Traveling threats that adjust course within seeker and turning limits | Decoys, jamming, interception and evasion |
+| Guided missiles | Traveling threats that adjust course within seeker and turning limits | Decoys, jamming and interception |
 | Heavy torpedoes | Large, readable capital-ship threats with powerful impacts | Slow approach, limited ammunition and interception |
 | Disruption rounds | Delivered payload temporarily pressures shields, sensors or other systems | Specialized effect, limited hull damage and recovery time |
 | Nuclear / siege warheads | Later large projectile payloads with major spectacle and a broad danger area | Scarcity, long reload, interception and unsafe blast proximity |
@@ -157,7 +182,7 @@ Separate three understandable upgrade tracks:
 
 - **Ship capacity:** available mounts, reactor output, cooling, ammunition storage and defense support.
 - **Turret development:** each mount's tracking, reliability, reload and handling of compatible weapon classes.
-- **Installed equipment:** actual weapon, payload, shield, armor, countermeasure and evasion choices.
+- **Installed equipment:** actual weapon, payload, shield, armor, and countermeasure choices.
 
 Weapon upgrades can increase damage or cadence, but also open specialized roles. Turret levels and weapon selection remain distinct choices.
 Capacity creates loadout tradeoffs: thirty mounts should not imply thirty strongest guns firing without limits.
@@ -171,10 +196,10 @@ No fixed damage, projectile speeds, shield counts, unlock levels, acquisition co
 ## Next discussion after the first slice
 
 The approved two-turret practice encounter now demonstrates shield failure, blocked hits and piercing rounds.
-A basic incoming missile could then prove guidance loss, interception or evasion in a separate small step.
+A basic incoming missile could then prove guidance loss or interception in a separate small step.
 That follow-on remains a proposal, not work performed or authorization to build the entire system.
 
-Open choices: tuning the first defense matchup and feedback; starter recharge and evasion;
+Open choices: tuning the first defense matchup and feedback; starter shield recharge;
 mount compatibility and ultimate cap; missile lost-lock/reacquisition behavior;
 shield versus armor tradeoffs; ammunition and heat complexity; combat/cruise interaction; friendly fire and splash;
 repair, persistent damage, defeat/ship loss, research and acquisition.

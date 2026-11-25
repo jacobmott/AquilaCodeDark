@@ -1,0 +1,72 @@
+{
+  "round": 173,
+  "local_date": "2026-11-25",
+  "inspected_utc": "2026-11-25T08:09:00.881352+00:00",
+  "finding": "Both playable exteriors reproduce broad proportions. The owner rejected their likeness to the original designs.",
+  "sources": {
+    "exporter": "scripts/native.ps1",
+    "pipeline": "scripts/glacier-boarding-hull.py",
+    "blender_sources": "Assets/ShipConcepts/modeling-references-r150/<ship>/blender-guides/proportion-study.blend",
+    "windows_proof": "Docs/Testing/native-ship-finishes.json",
+    "catalog": "Docs/Plans/ShipHulls/collection-60.json"
+  },
+  "comparison": "Studio views use the playable OBJ exterior only. The camera direction approximates the original by eye. Game captures show the additional boarding fixtures and real finishes.",
+  "review": "Proposed: compare revised geometry with the selected original at its three-quarter angle, then check the sides and stern before game integration.",
+  "status": "Original and current geometry compared. No replacement in the playable build.",
+  "ships": {
+    "delta-tree": {
+      "name": "Delta Tree",
+      "original": {
+        "path": "Assets/ShipConcepts/sunburst-r144/58-delta-tree.png",
+        "sha256": "6628ed15b22fbf2990729eb8417b9babcb66cc8ebcb5635dad57c8776efeeac3"
+      },
+      "playable_mesh": {
+        "path": "native/Aquila/Saved/Boarding/delta.obj",
+        "sha256": "2206f9a9b96da5f0877153d851225943de3ae5d715a3f3b1a74a33106b3c3b52"
+      },
+      "windows": {
+        "path": "reports/game-direction/media/ship-finishes-r172/delta-exterior.png",
+        "sha256": "f0213a955cb28c2697cb3fd81079ea766fa7f2d399c45d386f7715798d64d052"
+      },
+      "clay": {
+        "path": "reports/game-direction/media/hull-likeness-r173/delta-clay.png",
+        "sha256": "2a5937f131b31b2799a539c54327db2077230862168606a6427ad9755c0d9a9d"
+      },
+      "camera_direction": [
+        0.92,
+        1.0,
+        0.79
+      ],
+      "in_art": "Curved, raised branch walls enclose deep leaf-shaped recesses. Round docks rise from their tips. A tiered bridge and individually shrouded drives rise behind the fan.",
+      "in_game": "Straight spokes meet small discs on a solid wedge. Several disappear into the deck. Three rows of plain cylinders form the exposed engines.",
+      "first_correction": "Build the negative spaces and curved, widening spine into the deck. Model the drive collars, housings and stepped bridge against the original."
+    },
+    "glacier-tongue": {
+      "name": "Glacier Tongue",
+      "original": {
+        "path": "Assets/ShipConcepts/sunburst-r144/41-glacier-tongue.png",
+        "sha256": "827baa1d6127c91fd36b21e0998ad7b013ddd7c8e7b109059bad03c61e86f0d1"
+      },
+      "playable_mesh": {
+        "path": "native/Aquila/Saved/Boarding/glacier.obj",
+        "sha256": "9958876e08481ab6bf2ebf365bd44bbeba862e8daa2fe97676e583ecd1ad7887"
+      },
+      "windows": {
+        "path": "reports/game-direction/media/ship-finishes-r172/glacier-exterior.png",
+        "sha256": "55f7b4e3266d09f1cb61fa7019934728ae9b4de903d6475caa697bc3554bcb1a"
+      },
+      "clay": {
+        "path": "reports/game-direction/media/hull-likeness-r173/glacier-clay.png",
+        "sha256": "e5327e7762252ebca1fa9fcbb93729b24e8f46c705e3e89786e3c25fb1343c4d"
+      },
+      "camera_direction": [
+        0.59,
+        1.0,
+        0.28
+      ],
+      "in_art": "Silver plates overlap in separate waves over blue armor. A recessed hangar and crossing galleries sit under the hull beside a deep outboard blade.",
+      "in_game": "Most plate edges follow the same smooth curve. Narrow rods connect a thin rail. The side lacks the stepped walls and mechanical depth around the hangar.",
+      "first_correction": "Model the wave and overhang of each armor tier, the framed bay behind it, and the broad blade with enclosed crossings."
+    }
+  }
+}

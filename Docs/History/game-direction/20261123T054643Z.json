@@ -1,0 +1,8 @@
+{
+  "source": "Docs/Handoffs/HANDOFF_2026-11-15_game-direction.md",
+  "archive": "Docs/History/game-direction/20261123T054643Z.md",
+  "saved_at_utc": "2026-11-23T05:46:43.596413+00:00",
+  "bytes": 7105,
+  "sha256": "235f7bd622868106ff408a12cb678a0a151c5a36ae79b437bef34b878954a74b",
+  "reason": "Preserve the ship-mesh shield trial checkpoint before the free-camera pivot change."
+}

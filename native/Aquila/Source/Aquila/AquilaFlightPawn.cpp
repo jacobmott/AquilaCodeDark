@@ -1,14 +1,18 @@
 #include "AquilaFlightPawn.h"
+#include "AquilaBoarding.h"
+#include "AquilaBoardingBay.h"
 #include "AquilaGameMode.h"
 #include "SAquilaMouseLook.h"
 #include "Camera/CameraComponent.h"
 #include "Components/InputComponent.h"
 #include "Components/StaticMeshComponent.h"
 #include "Components/InstancedStaticMeshComponent.h"
+#include "ContentStreaming.h"
 #include "Components/DirectionalLightComponent.h"
 #include "Engine/DirectionalLight.h"
 #include "Engine/GameViewportClient.h"
 #include "Engine/Engine.h"
+#include "Engine/StaticMesh.h"
 #include "Engine/World.h"
 #include "Framework/Application/SlateApplication.h"
 #include "GameFramework/PlayerController.h"
@@ -111,9 +115,11 @@ UStaticMeshComponent* AAquilaFlightPawn::Shape(USceneComponent* Parent, const TC
     auto* Mesh = NewObject<UStaticMeshComponent>(this);
     Mesh->SetupAttachment(Parent);
     Mesh->SetStaticMesh(LoadObject<UStaticMesh>(nullptr, MeshPath));
-    Mesh->SetMaterial(0, Materials[Material]);
+    Mesh->SetMaterial(0,Parent==RoomRoot && Material<2 ?
+        AquilaHulls::Surface(false,Material==0 ? TEXT("Island") : TEXT("Hardware")) : Materials[Material].Get());
     if (Parent == ShipRoot || Parent == EnemyRoot)
     {
+        HullParts[Parent == EnemyRoot ? 1 : 0].Emplace(Position - Size * 0.5, Position + Size * 0.5);
         Mesh->SetCollisionResponseToAllChannels(ECR_Ignore);
         Mesh->SetCollisionResponseToChannel(ECC_Visibility, ECR_Overlap);
         Mesh->SetGenerateOverlapEvents(false);
@@ -127,36 +133,37 @@ UStaticMeshComponent* AAquilaFlightPawn::Shape(USceneComponent* Parent, const TC
     return Mesh;
 }
 
-UInstancedStaticMeshComponent* AAquilaFlightPawn::Instances(int32 Material)
+UInstancedStaticMeshComponent* AAquilaFlightPawn::Instances(UMaterialInterface* Material, const TCHAR* MeshPath)
 {
     auto* Mesh = NewObject<UInstancedStaticMeshComponent>(this);
     Mesh->SetupAttachment(RootComponent);
-    Mesh->SetStaticMesh(LoadObject<UStaticMesh>(nullptr, Sphere));
-    Mesh->SetMaterial(0, Materials[Material]);
+    Mesh->SetStaticMesh(LoadObject<UStaticMesh>(nullptr, MeshPath));
+    Mesh->SetMaterial(0, Material);
     Mesh->SetCollisionEnabled(ECollisionEnabled::NoCollision);
     Mesh->SetCastShadow(false);
     Mesh->RegisterComponent();
     return Mesh;
 }
 
-void AAquilaFlightPawn::BuildShip(USceneComponent* Parent, bool bEnemy)
+UStaticMeshComponent* AAquilaFlightPawn::BuildShip(USceneComponent* Parent, bool bEnemy)
 {
-    const int32 Hull = bEnemy ? 1 : 0;
-    Shape(Parent, Cube, FVector::ZeroVector, FVector(1360, 180, 52), Hull);
-    Shape(Parent, Cube, FVector(-80, 0, 38), FVector(760, 150, 30), 1);
-    Shape(Parent, Cube, FVector(-280, 0, 70), FVector(110, 90, 38), Hull);
-    Shape(Parent, Cube, FVector(-220, 0, 76), FVector(4, 75, 12), 2);
-    for (int32 Side : {-1, 1})
+    const bool bFlight=Parent==ShipRoot || Parent==EnemyRoot;
+    auto* Hull=NewObject<UStaticMeshComponent>(this);
+    Hull->SetupAttachment(Parent);
+    Hull->SetStaticMesh(AquilaHulls::LoadMesh(bEnemy));
+    Hull->SetRelativeTransform(AquilaHulls::Layout(bEnemy).MeshToShip);
+    Hull->SetGenerateOverlapEvents(false);
+    Hull->SetCollisionResponseToAllChannels(ECR_Ignore);
+    Hull->SetCollisionResponseToChannel(ECC_Visibility,ECR_Overlap);
+    Hull->SetCollisionEnabled(bFlight ? ECollisionEnabled::QueryOnly : ECollisionEnabled::NoCollision);
+    Hull->SetCastShadow(false);
+    Hull->RegisterComponent();
+    if (bFlight)
     {
-        Shape(Parent, Cube, FVector(-60, Side * 175, 0), FVector(1020, 130, 76), Hull);
-        Shape(Parent, Cube, FVector(-60, Side * 243, 0), FVector(760, 3, 12), 2);
-        for (int32 I = 0; I < 7; ++I)
-            Shape(Parent, Cube, FVector(-460 + I * 145, Side * 175, 42), FVector(112, 110, 8), 1);
-        Shape(Parent, Cube, FVector(-580, Side * 175, 0), FVector(6, 90, 45), 2);
-        Shape(Parent, Cube, FVector(160, Side * 190, 80), FVector(70, 70, 25), Hull);
-        Shape(Parent, Cube, FVector(220, Side * 190, 85), FVector(100, 8, 8), 1);
-        Shape(Parent, Cube, FVector(-260, Side * 100, 0), FVector(80, 90, 35), 1);
+        HullBodies[int32(bEnemy)]=Hull;
+        HullParts[int32(bEnemy)].Add(Hull->GetStaticMesh()->GetBoundingBox().TransformBy(Hull->GetRelativeTransform()));
     }
+    return Hull;
 }
 
 void AAquilaFlightPawn::BuildRoom()
@@ -176,9 +183,57 @@ void AAquilaFlightPawn::BuildRoom()
     Shape(RoomRoot, Cube, FVector(-400, 0, 50), FVector(200, 180, 100), 0);
 }
 
+void AAquilaFlightPawn::RefreshHardpoints(const FAquilaDuelLoadout& Fittings)
+{
+    for (int32 Side = 0; Side < 2; ++Side)
+    {
+        const auto& Fit = Fittings.ForShip(Side != 0);
+        uint8 Desired[FAquilaTurret::MountCount] = {};
+        const int32 Count = Fit.Rack ? Fit.Rack->Stock.Num() : Fit.StarterCount();
+        for (int32 I = 0; I < Count; ++I)
+        {
+            const auto T = Fit.Rack ? Fit.Rack->Stock[I] : Fit.Starter(I);
+            if (T.Mount != INDEX_NONE) Desired[T.Mount] = 1 + uint8(T.Weapon) + (T.bIntercept ? 4 : 0);
+        }
+        auto& Current = MountedStyles[Side];
+        const int32 Defense = int32(Fit.Armor) | (Fit.bShield ? 4 : 0) | (Fit.bReserveCapacitor ? 8 : 0);
+        if (MountedDefense[Side] == Defense && Current.Num() == UE_ARRAY_COUNT(Desired) &&
+            !FMemory::Memcmp(Current.GetData(), Desired, sizeof(Desired))) continue;
+        MountedDefense[Side] = Defense;
+        Current.Reset();
+        Current.Append(Desired, UE_ARRAY_COUNT(Desired));
+        auto* Root = (Side ? EnemyRoot : ShipRoot).Get();
+        const auto Old = Root->GetAttachChildren();
+        for (USceneComponent* Part : Old)
+            if (Part->ComponentHasTag(TEXT("FittedTurret")) || Part->ComponentHasTag(TEXT("FittedDefense"))) Part->DestroyComponent();
+        HullParts[Side].SetNum(BaseHullParts[Side]);
+        FitDefenseModels(Side, Fit);
+        for (int32 I = 0; I < Count; ++I)
+        {
+            const auto T = Fit.Rack ? Fit.Rack->Stock[I] : Fit.Starter(I);
+            if (T.Mount == INDEX_NONE) continue;
+            auto* Model = TurretModel(Root, T.Weapon, T.bIntercept);
+            Model->SetRelativeTransform(T.MountedPose(Side!=0));
+            Model->ComponentTags.Add(TEXT("FittedTurret"));
+            Model->ComponentTags.Add(AquilaHulls::GunSocket(T.Mount));
+            HullParts[Side].Add(Model->GetStaticMesh()->GetBoundingBox().TransformBy(Model->GetRelativeTransform()));
+        }
+        if (ShieldShells[Side])
+        {
+            const auto Shell = FAquilaShieldEnvelope::Fit(HullParts[Side]);
+            ShieldEnvelopes[Side] = Shell;
+            ShieldShells[Side]->SetRelativeScale3D(Shell.Radii / 50.);
+            const FVector Axes = Shell.Radii / Shell.Radii.GetMax();
+            ShieldMaterials[Side]->SetVectorParameterValue(TEXT("Axes"), FLinearColor(Axes.X, Axes.Y, Axes.Z, 1));
+            if (HullShieldMaterials[Side]) HullShieldMaterials[Side]->SetScalarParameterValue(TEXT("Reach"), Shell.Radii.GetMax());
+        }
+    }
+}
+
 void AAquilaFlightPawn::BeginPlay()
 {
     Super::BeginPlay();
+    if (Game()) AddTickPrerequisiteActor(Game());
     UMaterialInterface* Hull = LoadObject<UMaterialInterface>(nullptr, TEXT("/Game/Foundation/M_Hull.M_Hull"));
     UMaterialInterface* Glow = LoadObject<UMaterialInterface>(nullptr, TEXT("/Game/Foundation/M_Glow.M_Glow"));
     if (!Hull || !Glow)
@@ -187,7 +242,7 @@ void AAquilaFlightPawn::BeginPlay()
         Hull = Glow = LoadObject<UMaterialInterface>(nullptr, TEXT("/Engine/BasicShapes/BasicShapeMaterial.BasicShapeMaterial"));
     }
     const FLinearColor Colors[] = {FLinearColor(0.24f,0.32f,0.4f), FLinearColor(0.06f,0.1f,0.15f), FLinearColor(0.04f,0.65f,0.85f),
-        FLinearColor(1,0.63f,0.16f), FLinearColor(1,0.13f,0.25f), FLinearColor(0.21f,0.08f,0.7f), FLinearColor(0.035f,0.12f,0.21f), FLinearColor(0.38f,0.56f,0.8f)};
+        FLinearColor(1,0.63f,0.16f), FLinearColor(1,0.13f,0.25f), FLinearColor(2.8f,0.72f,0.13f), FLinearColor(0.035f,0.12f,0.21f), FLinearColor(0.38f,0.56f,0.8f)};
     for (int32 I = 0; I < 8; ++I)
     {
         auto* M = UMaterialInstanceDynamic::Create((I >= 2 && I != 6) ? Glow : Hull, this);
@@ -195,13 +250,19 @@ void AAquilaFlightPawn::BeginPlay()
         M->SetScalarParameterValue(TEXT("Glow"), I == 7 ? 1.0 : 2.0);
         Materials.Add(M);
     }
+    LoadTurretModels(Glow);
     BuildShip(ShipRoot, false);
     BuildShip(EnemyRoot, true);
-    PortUpgradeGlow = Shape(ShipRoot,Cube,FVector(160,-190,96),FVector(48,55,5),2);
-    FriendlyRounds = Instances(3);
-    HostileRounds = Instances(4);
-    Impacts = Instances(5);
-    Stars = Instances(7);
+    const FTransform Upgrade=FAquilaTurret{6,EAquilaWeapon::TwinTurrets}.MountedPose(false);
+    PortUpgradeGlow = Shape(ShipRoot,Cube,Upgrade.TransformPosition(FVector(-23,0,26)),FVector(4,6,1),2);
+    PortUpgradeGlow->SetRelativeRotation(Upgrade.GetRotation());
+    for (int32 I = 0; I < 2; ++I) BaseHullParts[I] = HullParts[I].Num();
+    RefreshHardpoints(Game()->Campaign.Loadout);
+    FriendlyRounds = Instances(Materials[3], Sphere);
+    HostileRounds = Instances(Materials[4], Sphere);
+    DefensiveBolts = Instances(Materials[2], Sphere);
+    BuildCombatVisuals();
+    Stars = Instances(Materials[7], Sphere);
     FRandomStream Random(7142);
     for (int32 I = 0; I < 360; ++I)
     {
@@ -227,6 +288,7 @@ void AAquilaFlightPawn::BeginPlay()
         PC->SetInputMode(Input);
     }
     BuildOverlay();
+    bStartAboard=Game() && Game()->Session()==EAquilaSession::Simulator && FParse::Param(FCommandLine::Get(),TEXT("AquilaDuelAboard"));
     FString Demo;
     if (FParse::Value(FCommandLine::Get(), TEXT("AquilaDemo="), Demo))
     {
@@ -240,6 +302,11 @@ void AAquilaFlightPawn::BeginPlay()
 
 void AAquilaFlightPawn::ToggleBridge()
 {
+    if (Game() && Game()->Session()==EAquilaSession::Simulator)
+    {
+        EnterDuelBridge();
+        return;
+    }
     if (!Game() || Game()->Session() != EAquilaSession::Match) return;
     TouchWalk = FVector2D::ZeroVector;
     bTouching = false;
@@ -269,7 +336,17 @@ void AAquilaFlightPawn::BuildMatchScene()
 
 void AAquilaFlightPawn::ResetSessionView()
 {
+    LastDuelViewFrame=MAX_uint64;
+    bOnGlacier=false;
+    for (auto& Footing : DuelFooting) Footing.Reset();
+    for (auto& Deck : DuelDecks)
+        if (Deck) { Deck->Destroy(); Deck=nullptr; }
+    Bursts.Reset();
+    SeenImpact = 0;
     bBridge = bCommandsVisible = bObserverPlaced = bTouching = false;
+    PlacementWeapon.Reset();
+    bFitEnemy = false;
+    bMoveHere = false;
     CameraTarget = EAquilaCameraTarget::Free;
     OrbitDistance = 4800;
     OrbitPitch = 38;
@@ -284,21 +361,47 @@ void AAquilaFlightPawn::ResetSessionView()
     if (FSlateApplication::IsInitialized()) FSlateApplication::Get().SetUserFocusToGameViewport(0);
 }
 
-void AAquilaFlightPawn::RenderCampaign()
+void AAquilaFlightPawn::RenderCampaign(float Seconds)
 {
     auto* G = Game();
     if (!G) return;
     const auto& C = G->Campaign;
-    const FVector Origin = bBridge ? C.ShipPosition : ObserverFocus;
+    if (bBridge && C.Hull <= 0 && C.Impacts.ContainsByPredicate([this](const FAquilaImpact& Hit)
+        { return Hit.Serial > SeenImpact && Hit.bDestroyed && !Hit.bTargetEnemy; }))
+    {
+        ToggleBridge();
+        OrbitDistance = 3300;
+        FrameFreeView(C.ShipPosition);
+        UpdateCamera(0);
+    }
+    const FVector Origin = DuelVisitor && bOnGlacier ? C.EnemyPosition : (bBridge || DuelVisitor ? C.ShipPosition : ObserverOrigin);
     const bool bMatch = G->Session() == EAquilaSession::Match;
+    const bool bSimulator = G->Session() == EAquilaSession::Simulator;
+    const bool bFitting = G->bFittingOpen;
+    RefreshHardpoints(C.Loadout);
+#if PLATFORM_WINDOWS
+    // The arena uses a miniature hull. Fitting and the human-scale bridge both need its close-up maps.
+    const int32 CloseShip=bFitting ? int32(bFitEnemy) : DuelVisitor ? int32(bOnGlacier) : INDEX_NONE;
+    for (int32 Side=0; Side<2; ++Side)
+    {
+        auto* Hull=HullBodies[Side].Get();
+        const bool bClose=Side==CloseShip;
+        if (Hull->IsMipStreamingForced()==bClose) continue;
+        Hull->bForceMipStreaming=bClose;
+        IStreamingManager::Get().NotifyPrimitiveUpdated(Hull);
+        if (bClose) Hull->PrestreamTextures(3.f,false);
+    }
+#endif
+    if (bSimulator && !HullShieldRoots[0]) BuildHullShields();
+    const bool bMeshShield = bSimulator && bDuelMeshShield && HullShieldRoots[0];
     if (bMatch && !Planet) BuildMatchScene();
     SignalRoot->SetVisibility(bMatch && C.ExpeditionActive(),true);
     SignalRoot->SetRelativeLocation(((C.Expedition == EAquilaExpedition::Salvage ? C.EnemyPosition : C.SignalPosition) - Origin) * ExteriorScale);
-    ShipRoot->SetVisibility(!bBridge, true);
+    ShipRoot->SetVisibility(bFitting ? !bFitEnemy : !bBridge && C.Hull > 0, true);
     ShipRoot->SetRelativeLocation((C.ShipPosition - Origin) * ExteriorScale);
-    PortUpgradeGlow->SetVisibility(C.PortTurretLevel > 0 && !bBridge);
+    PortUpgradeGlow->SetVisibility(C.PortTurretLevel > 0 && !bBridge && C.Hull > 0);
     RoomRoot->SetVisibility(bBridge, true);
-    EnemyRoot->SetVisibility(C.bBattle && C.EnemyHull > 0, true);
+    EnemyRoot->SetVisibility(bFitting ? bFitEnemy : C.bBattle && C.EnemyHull > 0, true);
     ShipRoot->SetRelativeRotation(FRotator(0, FMath::RadiansToDegrees(C.Heading), 0));
     EnemyRoot->SetRelativeLocation((C.EnemyPosition - Origin) * ExteriorScale);
     EnemyRoot->SetRelativeRotation(FRotator(0, 180, 0));
@@ -306,59 +409,105 @@ void AAquilaFlightPawn::RenderCampaign()
     Stars->SetRelativeLocation(Camera->GetRelativeLocation());
     FriendlyRounds->ClearInstances();
     HostileRounds->ClearInstances();
-    Impacts->ClearInstances();
+    DefensiveBolts->ClearInstances();
+    UpdateTurretPreviews(bFitting, Seconds);
+    for (int32 Side = 0; Side < 2; ++Side)
+        if (auto* Cell = MountedReserve[Side].Get())
+        {
+            const int32 Slot = Cell->GetMaterialIndex(TEXT("Emitter"));
+            auto* Light = !bFitting && C.DuelStats && C.DuelStats->bReserveSpent[Side] ?
+                Materials[1].Get() : DefenseLights[int32(EAquilaDefense::ReserveCapacitor)].Get();
+            if (Cell->GetMaterial(Slot) != Light) Cell->SetMaterial(Slot, Light);
+        }
+    for (auto* Effect : {BurstSprites.Get(), HotFragments.Get()}) if (Effect) Effect->SetVisibility(!bFitting);
+    if (bFitting)
+    {
+        const FVector Centers[] = {ShipRoot->GetRelativeLocation(), EnemyRoot->GetRelativeLocation()};
+        const FQuat Rotations[] = {ShipRoot->GetRelativeRotation().Quaternion(), EnemyRoot->GetRelativeRotation().Quaternion()};
+        RenderShieldShells(C, Centers, Rotations, bMeshShield, true);
+        return;
+    }
+    if (C.DuelStats)
+    {
+        for (const auto& Bolt : C.DuelStats->ScreenShots)
+            DefensiveBolts->AddInstance(FTransform((Bolt.Position - Bolt.Origin).Rotation(),
+                (Bolt.Position - Origin) * ExteriorScale, FVector(.95, .22, .22)));
+        for (const auto& Flash : C.DuelStats->Flashes)
+        {
+            const FVector Point = (Flash.Position - Origin) * ExteriorScale;
+            const double Fade = 1. - Flash.Age / .8;
+            DefensiveBolts->AddInstance(FTransform(FQuat::Identity, Point, FVector(1.6, .16, .16) * Fade));
+            DefensiveBolts->AddInstance(FTransform(FQuat::Identity, Point, FVector(.16, .16, 1.3) * Fade));
+        }
+    }
     for (const auto& R : C.Rounds)
     {
-        const FTransform Transform(R.Velocity.Rotation(), (R.Position - Origin) * ExteriorScale, FVector(0.6,0.055,0.055));
+        const auto Weapon = R.Turret == INDEX_NONE ? C.Loadout.ForShip(R.bEnemy).Weapon : R.Weapon;
+        FVector Size(0.6, 0.055, 0.055);
+        if (Weapon == EAquilaWeapon::PlasmaCaster) Size = FVector(0.55, 0.38, 0.38);
+        if (Weapon == EAquilaWeapon::PulseRepeater) Size = FVector(0.95, 0.14, 0.14);
+        const FTransform Transform(R.Velocity.Rotation(), RenderRoundPosition(C, R, Origin, bMeshShield), Size);
         (R.bEnemy ? HostileRounds : FriendlyRounds)->AddInstance(Transform);
     }
-    for (const auto& Hit : C.Impacts)
-    {
-        const double Size = (Hit.bShield ? 1.5 : 0.5) * (1 + Hit.Age * 4);
-        Impacts->AddInstance(FTransform(FRotator::ZeroRotator, (Hit.Position - Origin) * ExteriorScale, FVector(Size,Size,0.12)));
-    }
+    RenderCombatVisuals(C, Origin, (G->bPaused || G->bFittingOpen) ? 0.f : Seconds, bMeshShield);
 }
 
 void AAquilaFlightPawn::Tick(float Seconds)
 {
     Super::Tick(Seconds);
+    if (DuelVisitor)
+    {
+        RenderDuelBridge(Seconds);
+        return;
+    }
     auto* G = Game();
     auto* PC = Cast<APlayerController>(GetController());
     if (!G || !PC) return;
+    if (bStartAboard)
+    {
+        bStartAboard=false;
+        StartDuelAboard();
+        return;
+    }
     // A restored campaign can arrive after the pawn's BeginPlay. Seed the observer only from the ready world.
     if (!bObserverPlaced && G->HasActorBegunPlay())
     {
-        ObserverFocus = G->Campaign.ShipPosition;
+        FVector FramingPoint = G->Campaign.ShipPosition;
         OrbitYaw = FRotator::NormalizeAxis(32.f + FMath::RadiansToDegrees(G->Campaign.Heading));
         if (G->Session() == EAquilaSession::Menu)
         {
-            ObserverFocus += FVector(6500, 0, 0);
+            FramingPoint += FVector(6500, 0, 0);
             OrbitDistance = 2900;
             OrbitYaw = 110;
             OrbitPitch = 23;
         }
         else if (G->Session() == EAquilaSession::Simulator)
         {
-            ObserverFocus = (G->Campaign.ShipPosition + G->Campaign.EnemyPosition) * 0.5;
+            FramingPoint = (G->Campaign.ShipPosition + G->Campaign.EnemyPosition) * 0.5;
             OrbitYaw = 100;
         }
+        FrameFreeView(FramingPoint);
         bObserverPlaced = true;
         UpdateCursor();
     }
     AliveTime += Seconds;
     if (PC->WasInputKeyJustPressed(EKeys::Escape)) G->Command(8);
-    if (PC->WasInputKeyJustPressed(EKeys::C)) ToggleBridge();
+    if (PC->WasInputKeyJustPressed(EKeys::C) ||
+        (G->Session()==EAquilaSession::Simulator && PC->WasInputKeyJustPressed(EKeys::Tab))) ToggleBridge();
+    if (G->Session()==EAquilaSession::Simulator && PC->WasInputKeyJustPressed(EKeys::N)) SwitchDuelShip();
+    if (DuelVisitor) return;
     if (PC->WasInputKeyJustPressed(EKeys::E) && CommandEnabled(11)) G->Command(11);
     if (PC->WasInputKeyJustPressed(EKeys::U) && CommandEnabled(12)) G->Command(12);
     if (bTouchLayout) UpdateTouchCamera(PC);
     if (PC->WasInputKeyJustPressed(EKeys::Home) && !bBridge && G->Session() != EAquilaSession::Menu) Follow(EAquilaCameraTarget::Resolute);
     const double Forward = int32(PC->IsInputKeyDown(EKeys::W)) - int32(PC->IsInputKeyDown(EKeys::S));
     const double Side = int32(PC->IsInputKeyDown(EKeys::D)) - int32(PC->IsInputKeyDown(EKeys::A));
-    if (!bBridge && G->Session() != EAquilaSession::Menu)
+    if (!bBridge && G->Session() != EAquilaSession::Menu && !G->bFittingOpen)
     {
         const double Up = int32(PC->IsInputKeyDown(EKeys::R)) - int32(PC->IsInputKeyDown(EKeys::F));
         const double Speed = PC->IsInputKeyDown(EKeys::LeftShift) || PC->IsInputKeyDown(EKeys::RightShift) ? 4.0 : 1.0;
-        PanObserver(FVector(Forward, Side, Up).GetClampedToMaxSize(1), OrbitDistance * 0.8 * Speed * FMath::Min(Seconds, 0.1f));
+        const FVector Flight = ObserverRotation().RotateVector(FVector(Forward, Side, 0)) + FVector::UpVector * Up;
+        MoveObserver(Flight.GetClampedToMaxSize(1), OrbitDistance * 0.8 * Speed * FMath::Min(Seconds, 0.1f));
     }
     else if (bBridge && !G->bPaused)
     {
@@ -375,7 +524,7 @@ void AAquilaFlightPawn::Tick(float Seconds)
     }
     else TouchWalk = FVector2D::ZeroVector;
     UpdateCamera(Seconds);
-    RenderCampaign();
+    RenderCampaign(Seconds);
     FString Capture;
     if (!bCaptured && AliveTime > 12 && FParse::Value(FCommandLine::Get(), TEXT("AquilaCapture="), Capture))
     {
@@ -446,9 +595,9 @@ void AAquilaFlightPawn::BuildOverlay()
             const auto* G = Game();
             if (!G) return FText::GetEmpty();
             const auto& C = G->Campaign;
-            const TCHAR* Ammo = C.bPiercing ? TEXT("Piercing rounds") : TEXT("Standard rounds");
+            const TCHAR* Ammo = C.Loadout.Resolute.bPiercing ? TEXT("Piercing rounds") : TEXT("Standard rounds");
             if (!C.bBattle) return FText::FromString(Ammo);
-            return FText::FromString(FString::Printf(TEXT("%s  |  Sentinel shield %.0f / hull %.0f  |  %d in flight"),
+            return FText::FromString(FString::Printf(TEXT("%s  |  Glacier Tongue shield %.0f / hull %.0f  |  %d in flight"),
                 Ammo, C.EnemyShield, C.EnemyHull, C.Rounds.Num()));
         }), 14)]
         + SVerticalBox::Slot().AutoHeight().Padding(0, 10, 0, 0)[SNew(SHorizontalBox)
@@ -459,7 +608,7 @@ void AAquilaFlightPawn::BuildOverlay()
                 return Game() && Game()->Campaign.bHoldFire ? INVTEXT("Resume fire") : INVTEXT("Hold fire");
             }), 5)]]
         + SVerticalBox::Slot().AutoHeight().Padding(0, 5, 0, 0)[Button(TAttribute<FText>::CreateLambda([this]() {
-            return Game() && Game()->Campaign.bPiercing ? INVTEXT("Fit standard rounds") : INVTEXT("Fit piercing rounds");
+            return Game() && Game()->Campaign.Loadout.Resolute.bPiercing ? INVTEXT("Fit standard rounds") : INVTEXT("Fit piercing rounds");
         }), 6)];
     auto View = SNew(SVerticalBox)
         + SVerticalBox::Slot().AutoHeight()[Heading(INVTEXT("Ship controls"))]
@@ -471,7 +620,7 @@ void AAquilaFlightPawn::BuildOverlay()
                 return Game() && Game()->bPaused ? INVTEXT("Resume") : INVTEXT("Pause");
             }), 8)]]
         + SVerticalBox::Slot().AutoHeight().Padding(0, 5, 0, 0)[SNew(SHorizontalBox)
-            + SHorizontalBox::Slot().FillWidth(1).Padding(0, 0, 6, 0)[Button(INVTEXT("Find Resolute"), 13)]
+            + SHorizontalBox::Slot().FillWidth(1).Padding(0, 0, 6, 0)[Button(INVTEXT("Find Delta Tree"), 13)]
             + SHorizontalBox::Slot().FillWidth(1)[Button(INVTEXT("Save voyage"), 9)]];
 
     auto Walk = SNew(SHorizontalBox);
@@ -492,7 +641,7 @@ void AAquilaFlightPawn::BuildOverlay()
         [SNew(SBorder).BorderImage(Solid).BorderBackgroundColor(FLinearColor(0.012f, 0.027f, 0.043f, 0.96f)).Padding(24)
         [SNew(SVerticalBox)
             + SVerticalBox::Slot().AutoHeight()[SNew(SHorizontalBox)
-                + SHorizontalBox::Slot().AutoWidth().VAlign(VAlign_Center)[Text(INVTEXT("Resolute"), 27, "Bold")]
+                + SHorizontalBox::Slot().AutoWidth().VAlign(VAlign_Center)[Text(INVTEXT("Delta Tree"), 27, "Bold")]
                 + SHorizontalBox::Slot().FillWidth(1).VAlign(VAlign_Center).Padding(20, 0)[Text(TAttribute<FText>::CreateLambda([this]() {
                     const auto* G = Game();
                     if (!G) return FText::GetEmpty();
@@ -517,16 +666,16 @@ void AAquilaFlightPawn::BuildOverlay()
             + SVerticalBox::Slot().AutoHeight().Padding(0, 18, 0, 0)[Text(TAttribute<FText>::CreateLambda([this]() {
                 if (bBridge) return INVTEXT("Bridge   ·   WASD walk   ·   Drag to look   ·   C returns to the observer");
                 if (CameraTarget == EAquilaCameraTarget::Free)
-                    return INVTEXT("Free view   ·   WASD pan   ·   R / F rise or lower   ·   Drag to rotate   ·   Wheel zoom   ·   Click a ship to follow");
+                    return INVTEXT("W/S fly where you look   ·   A/D strafe   ·   R/F rise or lower   ·   Drag to look   ·   Wheel zoom   ·   Click a ship to follow");
                 return FText::Format(INVTEXT("Following {0}   ·   Drag to orbit   ·   Wheel zoom   ·   Pan or click empty space to release"),
-                    CameraTarget == EAquilaCameraTarget::Resolute ? INVTEXT("Resolute") : INVTEXT("Sentinel"));
+                    CameraTarget == EAquilaCameraTarget::Resolute ? INVTEXT("Delta Tree") : INVTEXT("Glacier Tongue"));
             }), 14)]
             + SVerticalBox::Slot().AutoHeight().Padding(0, 4, 0, 0)[Text(TAttribute<FText>::CreateLambda([this]() {
                 return FText::FromString(Game() ? Game()->SaveStatus : FString());
             }), 13)]]];
 
     // Only the panel collapses. Open space still receives orbit and bridge look across the viewport.
-    Overlay = SNew(SOverlay).Visibility(EVisibility::SelfHitTestInvisible)
+    Overlay = SNew(SOverlay).Visibility_Lambda([this]() { return DuelVisitor ? EVisibility::Collapsed : EVisibility::SelfHitTestInvisible; })
         + SOverlay::Slot()[SAssignNew(MouseLook, SAquilaMouseLook)
             .Visibility_Lambda([this]() { return Game() && Game()->Session() != EAquilaSession::Menu ? EVisibility::Visible : EVisibility::Collapsed; })
             .OnDrag_UObject(this, &AAquilaFlightPawn::DragDesktopCamera)
@@ -537,7 +686,8 @@ void AAquilaFlightPawn::BuildOverlay()
             [SNew(SBox).WidthOverride(1600).HeightOverride(900).Visibility(EVisibility::SelfHitTestInvisible)
                 .HAlign(HAlign_Center).VAlign(VAlign_Center)[SNew(SBox).WidthOverride(1080)[Panel]]]]
         + SOverlay::Slot().HAlign(HAlign_Left).VAlign(VAlign_Center).Padding(64,0,0,0)[BuildModeMenu()]
-        + SOverlay::Slot().HAlign(HAlign_Center).VAlign(VAlign_Bottom).Padding(12)[BuildDuelPanel()];
+        + SOverlay::Slot().HAlign(HAlign_Center).VAlign(VAlign_Bottom).Padding(12)[BuildDuelPanel()]
+        + SOverlay::Slot()[BuildFittingView()];
     GEngine->GameViewport->AddViewportWidgetContent(Overlay.ToSharedRef(), 10);
 }
 
@@ -565,7 +715,7 @@ void AAquilaFlightPawn::BuildTouchOverlay()
     auto Top = SNew(SHorizontalBox)
         + SHorizontalBox::Slot().FillWidth(1).VAlign(VAlign_Center)
         [SNew(SVerticalBox)
-            + SVerticalBox::Slot().AutoHeight()[Text(Label(TEXT("RESOLUTE")),22)]
+            + SVerticalBox::Slot().AutoHeight()[Text(Label(TEXT("DELTA TREE")),22)]
             + SVerticalBox::Slot().AutoHeight().Padding(0,4,0,0)[Text(TAttribute<FText>::CreateLambda([this]() {
                 if (!Game()) return FText::GetEmpty(); const auto& C = Game()->Campaign;
                 return FText::FromString(FString::Printf(TEXT("Shield %.0f   Hull %.0f   %s"), C.Shield, C.Hull,
@@ -597,7 +747,7 @@ void AAquilaFlightPawn::BuildTouchOverlay()
             return FText::FromString(Game() && Game()->Campaign.bHoldFire ? TEXT("Auto fire") : TEXT("Hold fire"));
         }),5)]
         + SHorizontalBox::Slot().FillWidth(1)[Button(TAttribute<FText>::CreateLambda([this]() {
-            return FText::FromString(Game() && Game()->Campaign.bPiercing ? TEXT("Fit standard") : TEXT("Fit piercing"));
+            return FText::FromString(Game() && Game()->Campaign.Loadout.Resolute.bPiercing ? TEXT("Fit standard") : TEXT("Fit piercing"));
         }),6)];
     auto Voyage = SNew(SHorizontalBox)
         + SHorizontalBox::Slot().FillWidth(1.4f)[Button(TAttribute<FText>::CreateLambda([this]() {
@@ -606,7 +756,7 @@ void AAquilaFlightPawn::BuildTouchOverlay()
         + SHorizontalBox::Slot().FillWidth(1.1f).Padding(6,0)[Button(Label(TEXT("Refit / 100")),12)]
         + SHorizontalBox::Slot().FillWidth(1)[Button(Label(TEXT("Save voyage")),9)];
     auto CameraControls = SNew(SHorizontalBox)
-        + SHorizontalBox::Slot().FillWidth(1)[Button(Label(TEXT("Find Resolute")),13)]
+        + SHorizontalBox::Slot().FillWidth(1)[Button(Label(TEXT("Find Delta Tree")),13)]
         + SHorizontalBox::Slot().FillWidth(1).Padding(6,0)[Button(TAttribute<FText>::CreateLambda([this]() {
             if (CameraTarget != EAquilaCameraTarget::Free) return INVTEXT("Release");
             return bTouchRotate ? INVTEXT("Pan view") : INVTEXT("Rotate view");
@@ -622,7 +772,7 @@ void AAquilaFlightPawn::BuildTouchOverlay()
                 {
                     if (bBridge) return INVTEXT("On the bridge. Drag to look around.");
                     if (CameraTarget == EAquilaCameraTarget::Free)
-                        return bTouchRotate ? INVTEXT("Free view. Drag to rotate. Tap a ship to follow.")
+                        return bTouchRotate ? INVTEXT("Free view. Drag to look around. Tap a ship to follow.")
                                             : INVTEXT("Free view. Drag to pan. Tap a ship to follow.");
                     return INVTEXT("Drag to orbit. Tap empty space to release.");
                 }
@@ -684,6 +834,8 @@ void AAquilaFlightPawn::BuildTouchOverlay()
 
 void AAquilaFlightPawn::EndPlay(const EEndPlayReason::Type Reason)
 {
+    if (IsValid(DuelVisitor)) DuelVisitor->Destroy();
+    for (auto& Deck : DuelDecks) if (IsValid(Deck)) Deck->Destroy();
     if (Overlay && GEngine && GEngine->GameViewport) GEngine->GameViewport->RemoveViewportWidgetContent(Overlay.ToSharedRef());
     Overlay.Reset();
     MouseLook.Reset();

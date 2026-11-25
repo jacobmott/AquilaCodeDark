@@ -1,0 +1,8 @@
+{
+  "source": "Docs/Handoffs/HANDOFF_2026-11-15_game-direction.md",
+  "archive": "Docs/History/game-direction/20261124T071742Z.md",
+  "saved_at_utc": "2026-11-24T07:17:42.860626+00:00",
+  "bytes": 8866,
+  "sha256": "8e5f3df860f68c86e84df481a7f7f2431be3878d936b93bc555720f57840bef2",
+  "reason": "Preserve the untextured model checkpoint before the requested surface finish."
+}
