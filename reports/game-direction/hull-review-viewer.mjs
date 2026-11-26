@@ -14,12 +14,16 @@ const ship = ships[key];
 const element = id => document.getElementById(id);
 const stage = element('stage');
 const requestedRound = params.get('round');
-const revisions = ['174','175','176','177','178','179'];
+const revisions = ['174','175','176','177','178','179','184','185','186','187','192','193','194','195','196','197','198','200'];
 const comparing = revisions.includes(requestedRound);
 const round = comparing ? Number(requestedRound) : 174;
 const requestedPair = params.get('compare');
-const latest = revisions.includes(requestedPair) && Number(requestedPair) === round+1 ? round+1 : Math.max(175,round);
+const index = revisions.indexOf(String(round));
+const next = revisions[index + 1];
+const latest = next && requestedPair === next ? Number(next) : Math.max(175,round);
+const earlier = Number(revisions[revisions.indexOf(String(latest))-1]);
 const previous = comparing && round < latest;
+const matchedFrame = latest >= 193;
 function revisionUrl(shipKey, version) {
   const selection = new URLSearchParams({ship: shipKey, round: String(version)});
   if (version >= 175 && version < latest) selection.set('compare',String(latest));
@@ -32,7 +36,7 @@ element('model-label').textContent = modelLabel;
 if (comparing) {
   for (const link of document.querySelectorAll('[data-ship]')) link.href = revisionUrl(link.dataset.ship,round);
   const other = element('revision');
-  other.href = revisionUrl(key,previous ? latest : latest-1);
+  other.href = revisionUrl(key,previous ? latest : earlier);
   other.textContent = previous ? 'Show revised model' : 'Show previous model';
   other.hidden = false;
 }
@@ -41,7 +45,7 @@ document.title = ship.name + ' · Hull review';
 document.querySelector('[data-ship="' + key + '"]').setAttribute('aria-current', 'page');
 element('original').src = 'media/r173-' + ship.image + '.png';
 element('original').alt = ship.name + ' in the original concept';
-element('fallback').src = prefix + '-gallery.png';
+element('fallback').src = matchedFrame && previous ? 'media/r' + latest + '-' + key + '-earlier-gallery.png' : prefix + '-gallery.png';
 element('fallback').alt = ship.name + ' · ' + modelLabel + ' at the gallery angle';
 element('download').href = glb;
 
@@ -66,7 +70,8 @@ async function startViewer() {
     light.position.set(...position);
     scene.add(light);
   }
-  const camera = new THREE.OrthographicCamera(-1,1,1,-1,1,14000);
+  const fittedLens = latest === 200 && key === 'delta-tree';
+  const camera = fittedLens ? new THREE.PerspectiveCamera(28,1,1,14000) : new THREE.OrthographicCamera(-1,1,1,-1,1,14000);
   const controls = new OrbitControls(camera, renderer.domElement);
   controls.minZoom = .36;
   controls.maxZoom = 20;
@@ -74,7 +79,7 @@ async function startViewer() {
   controls.zoomSpeed = .9;
   const [asset, savedView] = await Promise.all([
     new GLTFLoader().loadAsync(glb),
-    comparing ? fetch('media/r175-gallery-views.json').then(response => {
+    comparing ? fetch(fittedLens ? 'media/r200-perspective.json' : matchedFrame ? 'media/r193-gallery-views.json' : 'media/r175-gallery-views.json').then(response => {
       if (!response.ok) throw new Error('Gallery camera unavailable');
       return response.json();
     }).then(views => views[key]) : null,
@@ -94,14 +99,26 @@ async function startViewer() {
   });
   let framing = null;
   let verticalSpan = 1440;
+  let paintedCenter = false;
   const draw = () => renderer.render(scene,camera);
   controls.addEventListener('change',draw);
   controls.addEventListener('start',() => { framing = null; });
   function resize() {
     const w = Math.max(1,stage.clientWidth), h = Math.max(1,stage.clientHeight);
     renderer.setSize(w,h,false);
-    const half = verticalSpan/2;
-    Object.assign(camera,{left:-half*w/h,right:half*w/h,top:half,bottom:-half});
+    if (fittedLens) {
+      const span = Math.max(1152,1152*h/w);
+      camera.aspect = w/h;
+      camera.fov = THREE.MathUtils.radToDeg(2*Math.atan(span/(2*savedView.focal_px)));
+      camera.clearViewOffset();
+      if (paintedCenter) {
+        const [cx,cy] = savedView.principal_xy;
+        camera.setViewOffset(w,h,(512-cx)*h/span,(512-cy)*h/span,w,h);
+      }
+    } else {
+      const half = verticalSpan/2;
+      Object.assign(camera,{left:-half*w/h,right:half*w/h,top:half,bottom:-half});
+    }
     camera.updateProjectionMatrix();
     draw();
   }
@@ -110,6 +127,18 @@ async function startViewer() {
       const m = savedView.camera_to_world;
       const column = i => new THREE.Vector3(m[0][i],m[2][i],-m[1][i]);
       const dir = column(2).normalize();
+      if (fittedLens) {
+        paintedCenter = true;
+        camera.up.copy(column(1)).normalize();
+        camera.position.copy(column(3));
+        controls.target.set(0,0,0);
+        camera.zoom=1;
+        camera.lookAt(controls.target);
+        controls.update();
+        framing=false;
+        resize();
+        return;
+      }
       const [left,right,bottom,top] = savedView.frame;
       const aspect = stage.clientWidth / Math.max(1,stage.clientHeight);
       verticalSpan = Math.max(top-bottom,(right-left)/aspect);
@@ -138,7 +167,9 @@ async function startViewer() {
     const center = right.multiplyScalar((maxX+minX)/2)
       .addScaledVector(up,(maxY+minY)/2-(stern?0:ship.lift*verticalSpan)).addScaledVector(dir,(maxZ+minZ)/2);
     controls.target.copy(center);
-    camera.position.copy(center).addScaledVector(dir,2400);
+    paintedCenter=false;
+    const distance = fittedLens ? verticalSpan/(2*Math.tan(THREE.MathUtils.degToRad(camera.fov)/2))+(maxZ-minZ)/2 : 2400;
+    camera.position.copy(center).addScaledVector(dir,distance);
     camera.zoom=1;
     camera.lookAt(center);
     controls.update();

@@ -1,16 +1,20 @@
 # Aquila ship art and the Windows Combat Simulator
 
-November 25, 2026, round 182. Both repositories’ main branches contain this session’s work. Aquila game, design and art records reached `9a1ec09`. Asset Pipeline’s ship recipes and Blender tools reached `0cb0368`. This checkpoint follows the game content commit. The [publication record](../Testing/research-battleship-session-publication.json) records both remote checks. [Previous checkpoint](../History/game-direction/20261125T235950Z.md) · [Archive hash](../History/game-direction/20261125T235950Z.json).
+November 26, 2026, round 201. Saved the transferable reference workflow in Asset Pipeline. Earlier wrap pushed `a3992ef` in Aquila and `0cb0368` in Asset Pipeline. Rounds 184–201 are local. [Decisions](../../reports/game-direction/DECISIONS.md) · [Prior publication](../Testing/research-battleship-session-publication.json) · [Previous checkpoint](../History/game-direction/20261126T182339Z.md) · [Archive hash](../History/game-direction/20261126T182339Z.json).
 
 ## Ship art and research
 
+Round 201 added an art-first inventory, a portable Blender checker and an equipment-case example. Its corrected front and top passed nine marked points. Six ship files reproduced 387 earlier ray results. [General guide](<D:/OtherProjects/asset-pipeline/knowledge/reference-shape-review.md>) · [Verification and source identities](../Testing/research-battleship-reference-workflow.json).
+
+Round 200 addresses shapes missed above both ships. Glacier’s roof clears its dome and longitudinal arch in both the painting and sheet. Delta’s perspective comparison keeps the dish centered and the aft outlets full-sized. All eight Glacier and ten Delta overhead checks pass. Glacier’s side-view dish and Delta’s small instruments need refinement. [Local models, lens and errors](../Testing/research-battleship-upper-works.json) · [Repeat the process](<D:/OtherProjects/asset-pipeline/knowledge/asset-turnaround-sheets.md#occluded-parts-and-camera-perspective>).
+
+Two accepted 4K Max sheets returned at 3504 × 2336 and cost 24 credits total. Both ships span 1,280 m. Glacier’s lower armor remains higher than the side drawing. Delta’s plan shows four engine columns and its stern shows two. The current study keeps twelve outlets. [Prior bay and drive checks](../Testing/research-battleship-bay-armor-and-drives.json) · [Earlier shape coverage](../Testing/research-battleship-shape-coverage.json) · [Six-view references](../Plans/ShipHulls/ModelingReferences.md#using-the-two-completed-sheets).
+
 All 60 research battleships keep their gallery names. Start with one and acquire others through exploration, research and other routes. Starter and individual unlocks remain open. Delta Tree and Glacier Tongue each have 24 reference views and three proposed decks. The reference work recorded 54 provider images in Asset Ledger and 40.5 net credits. [Roster and models](../Plans/ShipHulls/README.md#rebuilt-exteriors-for-review) · [Reference receipts](../Testing/research-battleship-reference-images.json).
 
-Both round 179 exteriors reopen at 1,280 m. The owner rated both round 176 ships closer, then said the later refinements looked closer. Review against the original paintings before changing the game. Delta’s paired stern shoulders center on twelve exhausts. The lower shoulder still looks narrow. Glacier’s dock clears nine of fourteen marked sightlines. Its blade hides five. All six crossing ends meet their supports. [Current model checks](../Testing/research-battleship-stern-shoulders-and-dock.json).
+Round 187 holds the earlier detailed ships. Delta Tree’s bronze observatory has a glass front and plated cabin. Thirteen branch walkways and 108 exhaust checks passed there. Glacier’s arch stands above windowed terraces. Its port bay measured 62.14 m deep. Preserve those studies and use the playable clearances when transferring parts. [Earlier upper hulls](../Testing/research-battleship-upper-hulls.json) · [Branch and blade](../Testing/research-battleship-branch-deck-and-blade.json).
 
-The inspected ivory deck has 5,008 triangles using color and constant roughness. The adjacent trim has separate roughness and normal maps. Glacier’s dock lighting still differs from the painting. A moving-light study remains proposed. Asset Pipeline owns the [reusable scripts](<D:/OtherProjects/asset-pipeline/Tools/asset-pipeline/experimental/blender_reference_modeling/README.md>) and [ship recipes](<D:/OtherProjects/asset-pipeline/Docs/Features/AQUILA_RESEARCH_BATTLESHIPS_20261124.md>). Aquila holds the [material baseline](../Testing/research-battleship-material-review-baseline.json). Use the same camera when comparing revisions.
-
-The owner offered Perplexity research on modeling from pictures. The camera registration, editable hull and material requests each showed **copied**, with zero saved results at wrap. Their texts and identifiers are in the [request register](../Research/research-battleship-reference-matching-requests-v1.json). When a return is saved, review it before choosing a Blender trial.
+The owner supplied three complete Perplexity reports. Their console versions matched the original bytes. The camera archives and conversation are [beside the report](../../Assets/Research/research-battleship-camera-registration/). Its separate benchmark used a stand-in. Read the [research review](../Research/research-battleship-reference-matching-review-v1.md) for accepted techniques and limits. [Original requests](../Research/research-battleship-reference-matching-requests-v1.json) · [Verified return inventory](../Research/research-battleship-reference-matching-returns-v1.json).
 
 ## Playable ships
 
@@ -22,26 +26,26 @@ A standalone match starts fresh at one homeworld with one research battleship an
 
 ## Verification and authority
 
-Windows uses launcher Unreal 5.8.4. The earlier native pass covered eight packaged checks and 22 editor groups. During wrap, four packaged files, both current models and their renders matched their recorded hashes. All 60 catalog originals matched. The web build, 35 model tests, six repository safety tests, material sampling and a standalone Blender sightline replay passed. Windows gameplay was not rerun. Game closed. The report and Research Console listened on 8953 and 8776. Port 8964 served another report. Ports 4200, 8952 and 8963 were inactive. [Windows evidence](../Testing/native-ship-finishes.json).
+Windows uses launcher Unreal 5.8.4. Earlier tests covered eight packaged checks and 22 editor groups. Round 200 replays matched all 168 meshes, faces, material slots and UVs. Both new local exports rotated, switched revisions and downloaded. Ten served files matched their hashes. Paseo displayed round 201. Recheck live game and ports on return. [Windows checks](../Testing/native-ship-finishes.json) · [Blender and viewer checks](../Testing/research-battleship-upper-works.json).
 
-Latest real inbox read was [the two likeness ratings](../../reports/game-direction/inbox/20261125T193707Z.json). The expedition remains **Failed**, helm **Hold**, revision 151681, parent 151680. The tip, parent and three desktop journal files matched the round 179 record. Recheck current state before any launch. Preserve journals and launch without injected input.
+Latest real inbox read was [the two round 184 likeness ratings](../../reports/game-direction/inbox/20261126T015539Z.json). At round 182 the expedition showed **Failed**, helm **Hold**, revision 151681, parent 151680. The tip, parent and three desktop journal files matched the round 179 record. Recheck current state before any launch. Preserve journals and launch without injected input.
 
-Project knowledge and lessons through round 181 are in both repositories. The editable Blender scenes, textures, renders, Windows binaries, private inbox and live journals stay on this machine. Other Asset Pipeline work remains local with its owners. This wrap’s commit and push approval is spent. Further publication, transfer, deployment, paid generation, contact, purchase, filing or signup requires fresh approval.
+Aquila holds the local artwork, models, report and checkpoint. Asset Pipeline holds reproducible scripts for the calibrated lens, first-surface sampling and skyline comparison. Asset Ledger captured eight local Blender runs in round 200. Other pipeline tasks have concurrent edits. Media, binaries, inbox and journals stay local. The push and two-sheet generation approvals are spent. New publication, transfer, deployment, paid generation, contact, purchase, filing or signup requires fresh approval.
 
 D&B waits for owner direction. Keep the home address private. Dedicated business address and dependable mail handling are priorities. Northwest leads. Regus Plaza 7000 is a conditional fallback. Four developers publicly list the same Austin suite. Zensoul names Northwest in Wyoming. These examples establish neither private verification nor this LLC’s eligibility. No provider, package or filing date was chosen. D&B supplied no specialist referral or case. Before an owner-requested retry, read the [publishing reference](../../knowledge/publishing-business.md) and [saved message](PROMPT_2026-11-18_dnb-follow-up.txt).
 
 ## Restart
 
-[Copy the restart prompt](PROMPT_2026-11-25_ship-art.txt).
+The [previous wrap prompt](PROMPT_2026-11-25_ship-art.txt) records round 182. The current prompt follows.
 
 ```text
-Aquila Code Dark at D:/OtherProjects/AquilaCodeDark. The Windows duel and both Blender workflows are saved on origin/main.
+Aquila Code Dark at D:/OtherProjects/AquilaCodeDark. The round 172 Windows duel and pre-wrap Blender workflows are on origin/main. Later art work is local.
 Read AGENTS.md, Docs/TaskRoutes.md and Docs/Handoffs/HANDOFF_2026-11-15_game-direction.md in full.
-Report http://127.0.0.1:8953/?agentreport=1&paseoAgent=09c42e01-b201-4b15-8ad9-8a9f4ed3c740 (reports/game-direction/, round 182).
-Last real inbox read: reports/game-direction/inbox/20261125T193707Z.json. Later chat says both hulls look closer.
-1. Review any returned camera, hull or material research. All three prompts were copied; no answers at wrap.
-2. Compare Delta Tree’s lower stern and Glacier Tongue’s dock lighting against the art. Both review ships measure 1,280 m.
-3. Revisit the playable round 172 Windows duel. Round 179 is for comparison before any game replacement. Eight packaged checks and 22 editor groups passed earlier.
+Report http://127.0.0.1:8953/?agentreport=1&paseoAgent=09c42e01-b201-4b15-8ad9-8a9f4ed3c740 (reports/game-direction/, round 201).
+Last real inbox read: reports/game-direction/inbox/20261126T015539Z.json. Both round 184 ships rated closer. New direction came through chat.
+1. All three Perplexity reports were reviewed. The completed local tests and limits are in the linked research review.
+2. Round 201 saved the missing-shape workflow and a working example in Asset Pipeline. The models are from round 200. Glacier’s main dome is visible. Delta’s dish stays centered in the gallery and overhead comparisons. Glacier’s dish profile and Delta’s small instruments remain open. Asset Pipeline holds the reusable workflow. The 24-credit approval is spent.
+3. Windows still uses round 172. Review the exteriors before any game replacement. Earlier tests covered eight packaged checks and 22 editor groups.
 Game closed at wrap. Recheck the expedition save before acting. Defeat, helm on Hold, revision 151681. Keep both journals intact.
 Editable Blender scenes and media stay local. Asset Pipeline holds the reusable scripts. D&B stays paused. The push approval is spent.
 Do not start any of this. Read, say where things stand, then wait.

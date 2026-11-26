@@ -1,0 +1,681 @@
+{
+  "round": 188,
+  "local_date": "2026-11-25",
+  "model": "GPT Image 2.6 Sunburst",
+  "provider": "Higgsfield",
+  "quality": "low",
+  "resolution": "1K",
+  "reference_dimensions": [
+    1024,
+    688
+  ],
+  "source_inventory": {
+    "path": "Docs/Testing/research-battleship-reference-images.json",
+    "sha256": "a6896697f2dc36c630c976a712033edcbf6c3eba54503794e1be72973a24170f"
+  },
+  "last_actual_inbox": {
+    "path": "reports/game-direction/inbox/20261126T015539Z.json",
+    "sha256": "841012451defae3f2e4377f836bc5136a57e7c89cf5fdd3c52fe767e487f993f"
+  },
+  "scope": "Read existing originals, selected and earlier artwork, local generation requests and saved completed-provider receipts. No new jobs or changes to either model.",
+  "verification": "Each ordered provider image ID agrees with the saved request and the individual input receipt. Original art always came first. Each selected PNG matches the completed job hash. Guide files also match archived hashes; the original upload record for Delta’s starboard guide lists the local path and provider ID without a separate byte hash.",
+  "review": "All 48 selected pictures were inspected. The examples compare artwork with artwork. They establish specific agreements and disagreements, not overall accuracy or hidden geometry.",
+  "interpretation": "Use the original for visible features. Use corroborating studies for secondary details and preserve competing interpretations of unseen parts. A layout diagram or shared camera fixes only what it encodes.",
+  "ships": {
+    "delta-tree": {
+      "name": "Delta Tree",
+      "original": {
+        "path": "Assets/ShipConcepts/sunburst-r144/58-delta-tree.png",
+        "sha256": "6628ed15b22fbf2990729eb8417b9babcb66cc8ebcb5635dad57c8776efeeac3"
+      },
+      "selected": 24,
+      "earlier_studies": [
+        "03-top.png"
+      ],
+      "original_first": 24,
+      "also_port": 23,
+      "used_guide": 10,
+      "calls_with_earlier_study": 9,
+      "corroboration": "The original, both side views and the top plan retain a shallow branching bow, round stations and a tall stern. The open and shut hangar studies retain the same cream frame.",
+      "mismatch": "Both stern studies show twelve outlets. The straight view has three tiers of three, four and five. The high rear view stacks four rows of three. The original shows three visible tiers from the side.",
+      "modeling_interpretation": "Preserve three tiers on the visible flank. The hidden outlet spacing is a modeling choice.",
+      "rear_comparison": {
+        "path": "Assets/ShipConcepts/reference-comparisons-r188/delta-tree-stern-studies.png",
+        "sha256": "2ad68f5044df069fca4ad9698de81a3df4b2ece2b03507ef29423bb01eb466d5"
+      },
+      "rear_sources": [
+        {
+          "view": "06-stern",
+          "source": {
+            "path": "Assets/ShipConcepts/modeling-references-r150/delta-tree/06-stern.png",
+            "sha256": "9d0d9a1ee7adf6d1ffc65b3d15497118056bc2f7e9560f046fa88e8137ba5a63"
+          },
+          "crop_ltrb": [
+            128,
+            144,
+            904,
+            624
+          ],
+          "observed": "3, 4 and 5 outlets from top to bottom"
+        },
+        {
+          "view": "08-high-stern",
+          "source": {
+            "path": "Assets/ShipConcepts/modeling-references-r150/delta-tree/08-high-stern.png",
+            "sha256": "0c0d1a352aa19a5d2bc307b321ec11934c703984e7a331296767cc24775f7747"
+          },
+          "crop_ltrb": [
+            0,
+            141,
+            573,
+            680
+          ],
+          "observed": "4 rows of 3 outlets"
+        }
+      ],
+      "selected_inputs": [
+        {
+          "slot": "01-port",
+          "output": "01-port.png",
+          "ordered_input_roles": [
+            "original"
+          ],
+          "earlier_inputs": []
+        },
+        {
+          "slot": "02-starboard",
+          "output": "02-starboard.png",
+          "ordered_input_roles": [
+            "original",
+            "01-port",
+            "03-top",
+            "guide-starboard"
+          ],
+          "earlier_inputs": [
+            "03-top"
+          ]
+        },
+        {
+          "slot": "03-top",
+          "output": "25-dorsal-recheck.png",
+          "ordered_input_roles": [
+            "original",
+            "01-port",
+            "guide-top"
+          ],
+          "earlier_inputs": []
+        },
+        {
+          "slot": "04-underside",
+          "output": "04-underside.png",
+          "ordered_input_roles": [
+            "original",
+            "01-port",
+            "03-top",
+            "guide-underside"
+          ],
+          "earlier_inputs": [
+            "03-top"
+          ]
+        },
+        {
+          "slot": "05-bow",
+          "output": "05-bow.png",
+          "ordered_input_roles": [
+            "original",
+            "01-port"
+          ],
+          "earlier_inputs": []
+        },
+        {
+          "slot": "06-stern",
+          "output": "06-stern.png",
+          "ordered_input_roles": [
+            "original",
+            "01-port",
+            "05-bow",
+            "guide-stern"
+          ],
+          "earlier_inputs": []
+        },
+        {
+          "slot": "07-low-bow",
+          "output": "07-low-bow.png",
+          "ordered_input_roles": [
+            "original",
+            "01-port",
+            "05-bow",
+            "guide-low"
+          ],
+          "earlier_inputs": []
+        },
+        {
+          "slot": "08-high-stern",
+          "output": "08-high-stern.png",
+          "ordered_input_roles": [
+            "original",
+            "01-port",
+            "03-top",
+            "guide-high"
+          ],
+          "earlier_inputs": [
+            "03-top"
+          ]
+        },
+        {
+          "slot": "09-lengthwise",
+          "output": "09-lengthwise.png",
+          "ordered_input_roles": [
+            "original",
+            "01-port",
+            "03-top",
+            "05-bow"
+          ],
+          "earlier_inputs": [
+            "03-top"
+          ]
+        },
+        {
+          "slot": "10-fore-section",
+          "output": "10-fore-section.png",
+          "ordered_input_roles": [
+            "original",
+            "01-port",
+            "05-bow",
+            "03-top"
+          ],
+          "earlier_inputs": [
+            "03-top"
+          ]
+        },
+        {
+          "slot": "11-dock-section",
+          "output": "11-dock-section.png",
+          "ordered_input_roles": [
+            "original",
+            "01-port",
+            "guide-dock-section"
+          ],
+          "earlier_inputs": []
+        },
+        {
+          "slot": "12-drive-section",
+          "output": "12-drive-section.png",
+          "ordered_input_roles": [
+            "original",
+            "01-port",
+            "05-bow",
+            "03-top"
+          ],
+          "earlier_inputs": [
+            "03-top"
+          ]
+        },
+        {
+          "slot": "13-arrivals-deck",
+          "output": "13-arrivals-deck.png",
+          "ordered_input_roles": [
+            "original",
+            "01-port",
+            "11-dock-section",
+            "guide-deck1"
+          ],
+          "earlier_inputs": []
+        },
+        {
+          "slot": "14-research-deck",
+          "output": "14-research-deck.png",
+          "ordered_input_roles": [
+            "original",
+            "01-port",
+            "13-arrivals-deck",
+            "guide-deck2"
+          ],
+          "earlier_inputs": []
+        },
+        {
+          "slot": "15-command-deck",
+          "output": "15-command-deck.png",
+          "ordered_input_roles": [
+            "original",
+            "01-port",
+            "13-arrivals-deck",
+            "guide-deck3"
+          ],
+          "earlier_inputs": []
+        },
+        {
+          "slot": "16-shuttle-ramp",
+          "output": "16-shuttle-ramp.png",
+          "ordered_input_roles": [
+            "original",
+            "01-port",
+            "11-dock-section",
+            "13-arrivals-deck"
+          ],
+          "earlier_inputs": []
+        },
+        {
+          "slot": "17-bridge-window",
+          "output": "17-bridge-window.png",
+          "ordered_input_roles": [
+            "original",
+            "01-port",
+            "03-top",
+            "15-command-deck"
+          ],
+          "earlier_inputs": [
+            "03-top"
+          ]
+        },
+        {
+          "slot": "18-door-open",
+          "output": "18-door-open.png",
+          "ordered_input_roles": [
+            "original",
+            "01-port",
+            "11-dock-section",
+            "13-arrivals-deck"
+          ],
+          "earlier_inputs": []
+        },
+        {
+          "slot": "19-door-shut",
+          "output": "19-door-shut.png",
+          "ordered_input_roles": [
+            "original",
+            "01-port",
+            "18-door-open"
+          ],
+          "earlier_inputs": []
+        },
+        {
+          "slot": "20-port-empty",
+          "output": "20-port-empty.png",
+          "ordered_input_roles": [
+            "original",
+            "01-port",
+            "03-top"
+          ],
+          "earlier_inputs": [
+            "03-top"
+          ]
+        },
+        {
+          "slot": "21-port-fitted",
+          "output": "21-port-fitted.png",
+          "ordered_input_roles": [
+            "original",
+            "01-port",
+            "20-port-empty"
+          ],
+          "earlier_inputs": []
+        },
+        {
+          "slot": "22-materials-lit",
+          "output": "22-materials-lit.png",
+          "ordered_input_roles": [
+            "original",
+            "01-port"
+          ],
+          "earlier_inputs": []
+        },
+        {
+          "slot": "23-materials-dark",
+          "output": "23-materials-dark.png",
+          "ordered_input_roles": [
+            "original",
+            "01-port",
+            "22-materials-lit"
+          ],
+          "earlier_inputs": []
+        },
+        {
+          "slot": "24-lifted-plate",
+          "output": "24-lifted-plate.png",
+          "ordered_input_roles": [
+            "original",
+            "01-port",
+            "11-dock-section",
+            "03-top"
+          ],
+          "earlier_inputs": [
+            "03-top"
+          ]
+        }
+      ]
+    },
+    "glacier-tongue": {
+      "name": "Glacier Tongue",
+      "original": {
+        "path": "Assets/ShipConcepts/sunburst-r144/41-glacier-tongue.png",
+        "sha256": "827baa1d6127c91fd36b21e0998ad7b013ddd7c8e7b109059bad03c61e86f0d1"
+      },
+      "selected": 24,
+      "earlier_studies": [
+        "02-starboard.png",
+        "03-top.png",
+        "13-arrivals-deck.png",
+        "14-research-deck.png",
+        "15-command-deck.png"
+      ],
+      "original_first": 24,
+      "also_port": 23,
+      "used_guide": 8,
+      "calls_with_earlier_study": 12,
+      "corroboration": "The gallery, port study and overhead plan retain the separate port blade. The selected starboard study shows a closed armored flank. The fitted turret and empty mount retain the same blue deck and surrounding fittings.",
+      "mismatch": "The straight rear study shows three illuminated outlets, with a larger central one. The elevated rear study shows five across an exposed engine bay. Neither artwork shows what would hide two of these bright outlets when viewed directly astern.",
+      "modeling_interpretation": "Preserve the asymmetric hull. Leave the exact aft outlet count open. The forward original offers no clear rear count.",
+      "rear_comparison": {
+        "path": "Assets/ShipConcepts/reference-comparisons-r188/glacier-tongue-stern-studies.png",
+        "sha256": "1d4b30bdd5aa6ef6dfca0f35837c064e25fe6165dc2016c818339777abb03b4f"
+      },
+      "rear_sources": [
+        {
+          "view": "06-stern",
+          "source": {
+            "path": "Assets/ShipConcepts/modeling-references-r150/glacier-tongue/06-stern.png",
+            "sha256": "cddabedef121113988f2d8d62ccfc6bb931a3a7dc58fc09828ce918c22f121ff"
+          },
+          "crop_ltrb": [
+            145,
+            380,
+            860,
+            619
+          ],
+          "observed": "3 illuminated outlets"
+        },
+        {
+          "view": "08-high-stern",
+          "source": {
+            "path": "Assets/ShipConcepts/modeling-references-r150/glacier-tongue/08-high-stern.png",
+            "sha256": "4a0e1f6bda434b360a64e7b7c1bffee3e89b93277bfc191fbe586eb53297374e"
+          },
+          "crop_ltrb": [
+            0,
+            374,
+            548,
+            662
+          ],
+          "observed": "5 illuminated outlets"
+        }
+      ],
+      "selected_inputs": [
+        {
+          "slot": "01-port",
+          "output": "01-port.png",
+          "ordered_input_roles": [
+            "original"
+          ],
+          "earlier_inputs": []
+        },
+        {
+          "slot": "02-starboard",
+          "output": "30-starboard-vault.png",
+          "ordered_input_roles": [
+            "original",
+            "01-port",
+            "25-dorsal-recheck",
+            "02-starboard"
+          ],
+          "earlier_inputs": [
+            "02-starboard"
+          ]
+        },
+        {
+          "slot": "03-top",
+          "output": "25-dorsal-recheck.png",
+          "ordered_input_roles": [
+            "original",
+            "01-port",
+            "guide-top"
+          ],
+          "earlier_inputs": []
+        },
+        {
+          "slot": "04-underside",
+          "output": "04-underside.png",
+          "ordered_input_roles": [
+            "original",
+            "01-port",
+            "03-top",
+            "guide-underside"
+          ],
+          "earlier_inputs": [
+            "03-top"
+          ]
+        },
+        {
+          "slot": "05-bow",
+          "output": "05-bow.png",
+          "ordered_input_roles": [
+            "original",
+            "01-port"
+          ],
+          "earlier_inputs": []
+        },
+        {
+          "slot": "06-stern",
+          "output": "06-stern.png",
+          "ordered_input_roles": [
+            "original",
+            "01-port",
+            "05-bow",
+            "guide-stern"
+          ],
+          "earlier_inputs": []
+        },
+        {
+          "slot": "07-low-bow",
+          "output": "07-low-bow.png",
+          "ordered_input_roles": [
+            "original",
+            "01-port",
+            "05-bow",
+            "guide-low"
+          ],
+          "earlier_inputs": []
+        },
+        {
+          "slot": "08-high-stern",
+          "output": "08-high-stern.png",
+          "ordered_input_roles": [
+            "original",
+            "01-port",
+            "03-top",
+            "guide-high"
+          ],
+          "earlier_inputs": [
+            "03-top"
+          ]
+        },
+        {
+          "slot": "09-lengthwise",
+          "output": "09-lengthwise.png",
+          "ordered_input_roles": [
+            "original",
+            "01-port",
+            "03-top",
+            "05-bow"
+          ],
+          "earlier_inputs": [
+            "03-top"
+          ]
+        },
+        {
+          "slot": "10-fore-section",
+          "output": "10-fore-section.png",
+          "ordered_input_roles": [
+            "original",
+            "01-port",
+            "05-bow",
+            "03-top"
+          ],
+          "earlier_inputs": [
+            "03-top"
+          ]
+        },
+        {
+          "slot": "11-dock-section",
+          "output": "11-dock-section.png",
+          "ordered_input_roles": [
+            "original",
+            "01-port",
+            "03-top",
+            "05-bow"
+          ],
+          "earlier_inputs": [
+            "03-top"
+          ]
+        },
+        {
+          "slot": "12-drive-section",
+          "output": "12-drive-section.png",
+          "ordered_input_roles": [
+            "original",
+            "01-port",
+            "05-bow",
+            "03-top"
+          ],
+          "earlier_inputs": [
+            "03-top"
+          ]
+        },
+        {
+          "slot": "13-arrivals-deck",
+          "output": "27-deck-1-overhead.png",
+          "ordered_input_roles": [
+            "original",
+            "01-port",
+            "guide-deck1"
+          ],
+          "earlier_inputs": []
+        },
+        {
+          "slot": "14-research-deck",
+          "output": "28-deck-2-overhead.png",
+          "ordered_input_roles": [
+            "original",
+            "01-port",
+            "guide-deck2"
+          ],
+          "earlier_inputs": []
+        },
+        {
+          "slot": "15-command-deck",
+          "output": "29-deck-3-overhead.png",
+          "ordered_input_roles": [
+            "original",
+            "01-port",
+            "guide-deck3"
+          ],
+          "earlier_inputs": []
+        },
+        {
+          "slot": "16-shuttle-ramp",
+          "output": "16-shuttle-ramp.png",
+          "ordered_input_roles": [
+            "original",
+            "01-port",
+            "11-dock-section",
+            "13-arrivals-deck"
+          ],
+          "earlier_inputs": [
+            "13-arrivals-deck"
+          ]
+        },
+        {
+          "slot": "17-bridge-window",
+          "output": "17-bridge-window.png",
+          "ordered_input_roles": [
+            "original",
+            "01-port",
+            "03-top",
+            "15-command-deck"
+          ],
+          "earlier_inputs": [
+            "03-top",
+            "15-command-deck"
+          ]
+        },
+        {
+          "slot": "18-door-open",
+          "output": "18-door-open.png",
+          "ordered_input_roles": [
+            "original",
+            "01-port",
+            "11-dock-section",
+            "13-arrivals-deck"
+          ],
+          "earlier_inputs": [
+            "13-arrivals-deck"
+          ]
+        },
+        {
+          "slot": "19-door-shut",
+          "output": "19-door-shut.png",
+          "ordered_input_roles": [
+            "original",
+            "01-port",
+            "18-door-open"
+          ],
+          "earlier_inputs": []
+        },
+        {
+          "slot": "20-port-empty",
+          "output": "20-port-empty.png",
+          "ordered_input_roles": [
+            "original",
+            "01-port",
+            "03-top"
+          ],
+          "earlier_inputs": [
+            "03-top"
+          ]
+        },
+        {
+          "slot": "21-port-fitted",
+          "output": "21-port-fitted.png",
+          "ordered_input_roles": [
+            "original",
+            "01-port",
+            "20-port-empty"
+          ],
+          "earlier_inputs": []
+        },
+        {
+          "slot": "22-materials-lit",
+          "output": "22-materials-lit.png",
+          "ordered_input_roles": [
+            "original",
+            "01-port"
+          ],
+          "earlier_inputs": []
+        },
+        {
+          "slot": "23-materials-dark",
+          "output": "23-materials-dark.png",
+          "ordered_input_roles": [
+            "original",
+            "01-port",
+            "22-materials-lit"
+          ],
+          "earlier_inputs": []
+        },
+        {
+          "slot": "24-lifted-plate",
+          "output": "24-lifted-plate.png",
+          "ordered_input_roles": [
+            "original",
+            "01-port",
+            "11-dock-section",
+            "03-top"
+          ],
+          "earlier_inputs": [
+            "03-top"
+          ]
+        }
+      ]
+    }
+  }
+}

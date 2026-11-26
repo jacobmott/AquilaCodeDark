@@ -1,0 +1,3616 @@
+{
+  "round": 197,
+  "local_date": "2026-11-26",
+  "checked_at_utc": "2026-11-26T15:42:30.138713+00:00",
+  "direction": "The owner liked round 196 and asked to continue with the local Blender exteriors.",
+  "scope": "Review the models against the original paintings before any game replacement. Windows uses round 172.",
+  "previous": "Docs/Testing/research-battleship-landings-and-cabin.json",
+  "viewer_cameras": {
+    "glacier-tongue": {
+      "camera_to_world": [
+        [
+          -0.7316070199012756,
+          -0.0767294317483902,
+          0.6773949861526489,
+          1546.19580078125
+        ],
+        [
+          0.6809220910072327,
+          -0.1305113136768341,
+          0.7206331491470337,
+          1669.498291015625
+        ],
+        [
+          0.033113934099674225,
+          0.9884732961654663,
+          0.147729754447937,
+          325.2441101074219
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "image_size": [
+        1152,
+        1152
+      ],
+      "frame": [
+        -585.9308835171079,
+        585.9308835171079,
+        -585.9308835171079,
+        585.9308835171079
+      ],
+      "ortho_scale": 1171.8617670342157,
+      "shift": [
+        0,
+        0
+      ],
+      "sensor_fit": "AUTO",
+      "pixel_aspect": [
+        1.0,
+        1.0
+      ],
+      "clipping": [
+        1.0,
+        20000.0
+      ]
+    },
+    "delta-tree": {
+      "camera_to_world": [
+        [
+          -0.7154670357704163,
+          -0.3454691767692566,
+          0.6072544455528259,
+          1303.698974609375
+        ],
+        [
+          0.6984788775444031,
+          -0.33466291427612305,
+          0.6325567364692688,
+          1450.5413818359375
+        ],
+        [
+          -0.015303298830986023,
+          0.8767279982566833,
+          0.4807431697845459,
+          1080.057373046875
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "image_size": [
+        1152,
+        1152
+      ],
+      "frame": [
+        -629.2893218994141,
+        629.2893218994141,
+        -629.2893218994141,
+        629.2893218994141
+      ],
+      "ortho_scale": 1258.5786437988281,
+      "shift": [
+        0.0,
+        0.0
+      ],
+      "sensor_fit": "AUTO",
+      "pixel_aspect": [
+        1.0,
+        1.0
+      ],
+      "clipping": [
+        1.0,
+        20000.0
+      ]
+    }
+  },
+  "registration": "Each ship uses the unchanged gallery camera, exposure, studio and scale from round 196. Detail views recenter on the painting rectangle and increase sampling.",
+  "lighting": "Both local Cycles studies include 24-sample renders with the key turned 65 degrees and studio lights off. Original lights and exposure are unknown.",
+  "appearance_method": "Display-referred Rec.709-weighted brightness on an 8-bit sRGB raster. Glacier uses 3 by 3 neighborhoods at 16 interior and eight collar marks. Delta uses three curved strips and seven independent columns, 15 pixels wide with 13 vertical offsets. Warm red-minus-blue weights locate each row. No detected row yields no center. Local measurements do not rate whole-ship likeness.",
+  "ships": {
+    "glacier-tongue": {
+      "name": "Glacier Tongue",
+      "sheet": {
+        "path": "Assets/ShipConcepts/turnaround-sheets-r190/glacier-tongue.png",
+        "bytes": 11075015,
+        "sha256": "4baacb3211d8eaa38ca8b4dc687d5e6e4b812aea14b696f92fed7e7d3e10075b"
+      },
+      "original": {
+        "path": "Assets/ShipConcepts/sunburst-r144/41-glacier-tongue.png",
+        "sha256": "827baa1d6127c91fd36b21e0998ad7b013ddd7c8e7b109059bad03c61e86f0d1"
+      },
+      "art_camera": {
+        "path": "Assets/ShipConcepts/hull-refinements-r193/glacier-tongue/current/gallery-camera.json",
+        "sha256": "e836ac63261eb2f86d2e2d1209279794bbaa02f45562bbc9b20fa3d3b29ba2c8"
+      },
+      "render_camera": {
+        "path": "Assets/ShipConcepts/hull-refinements-r193/glacier-tongue/current/gallery-render-camera.json",
+        "sha256": "f4610185e2b6aa40834a2208ec575d194785d9c5b1e0007d1984b9667af4c40c"
+      },
+      "previous_blend": {
+        "path": "Assets/ShipConcepts/landing-studies-r196/glacier-tongue/service-bay/glacier-tongue.blend",
+        "sha256": "4720d4bc619f4a42a370317b48df4fb3a7bc0ee378cf44c17fec1ec5c1d7a0df"
+      },
+      "previous_glb": {
+        "path": "Assets/ShipConcepts/landing-studies-r196/glacier-tongue/service-bay/glacier-tongue.glb",
+        "sha256": "ddedc841ff300180e79c6a1e95b767afa8bdd213f0402892d0fb2f7a0f7ed748"
+      },
+      "scene": {
+        "before": {
+          "count": 26,
+          "mean_abs_px": 0.66,
+          "marks": [
+            {
+              "level": 1,
+              "x": 76,
+              "paint_y": 541,
+              "mesh_y": 541.29,
+              "gap": 0.29
+            },
+            {
+              "level": 1,
+              "x": 115,
+              "paint_y": 529,
+              "mesh_y": 528.56,
+              "gap": 0.44
+            },
+            {
+              "level": 1,
+              "x": 150,
+              "paint_y": 521,
+              "mesh_y": 521.0,
+              "gap": 0.0
+            },
+            {
+              "level": 1,
+              "x": 186,
+              "paint_y": 515,
+              "mesh_y": 515.8,
+              "gap": 0.8
+            },
+            {
+              "level": 1,
+              "x": 226,
+              "paint_y": 509,
+              "mesh_y": 509.14,
+              "gap": 0.14
+            },
+            {
+              "level": 1,
+              "x": 263,
+              "paint_y": 499,
+              "mesh_y": 498.11,
+              "gap": 0.89
+            },
+            {
+              "level": 1,
+              "x": 317,
+              "paint_y": 473,
+              "mesh_y": 471.83,
+              "gap": 1.17
+            },
+            {
+              "level": 1,
+              "x": 362,
+              "paint_y": 435,
+              "mesh_y": 433.46,
+              "gap": 1.54
+            },
+            {
+              "level": 1,
+              "x": 390,
+              "paint_y": 420,
+              "mesh_y": 419.29,
+              "gap": 0.71
+            },
+            {
+              "level": 1,
+              "x": 453,
+              "paint_y": 401,
+              "mesh_y": 399.53,
+              "gap": 1.47
+            },
+            {
+              "level": 1,
+              "x": 485,
+              "paint_y": 388,
+              "mesh_y": 386.01,
+              "gap": 1.99
+            },
+            {
+              "level": 1,
+              "x": 522,
+              "paint_y": 375,
+              "mesh_y": 374.32,
+              "gap": 0.68
+            },
+            {
+              "level": 2,
+              "x": 76,
+              "paint_y": 615,
+              "mesh_y": 615.56,
+              "gap": 0.56
+            },
+            {
+              "level": 2,
+              "x": 115,
+              "paint_y": 603,
+              "mesh_y": 604.08,
+              "gap": 1.08
+            },
+            {
+              "level": 2,
+              "x": 150,
+              "paint_y": 598,
+              "mesh_y": 597.58,
+              "gap": 0.42
+            },
+            {
+              "level": 2,
+              "x": 186,
+              "paint_y": 597,
+              "mesh_y": 597.0,
+              "gap": 0.0
+            },
+            {
+              "level": 2,
+              "x": 226,
+              "paint_y": 598,
+              "mesh_y": 597.88,
+              "gap": 0.12
+            },
+            {
+              "level": 2,
+              "x": 263,
+              "paint_y": 593,
+              "mesh_y": 593.12,
+              "gap": 0.12
+            },
+            {
+              "level": 2,
+              "x": 315,
+              "paint_y": 565,
+              "mesh_y": 563.79,
+              "gap": 1.21
+            },
+            {
+              "level": 2,
+              "x": 337,
+              "paint_y": 530,
+              "mesh_y": 530.93,
+              "gap": 0.93
+            },
+            {
+              "level": 2,
+              "x": 357,
+              "paint_y": 493,
+              "mesh_y": 494.04,
+              "gap": 1.04
+            },
+            {
+              "level": 2,
+              "x": 398,
+              "paint_y": 463,
+              "mesh_y": 463.38,
+              "gap": 0.38
+            },
+            {
+              "level": 2,
+              "x": 452,
+              "paint_y": 463,
+              "mesh_y": 462.66,
+              "gap": 0.34
+            },
+            {
+              "level": 2,
+              "x": 478,
+              "paint_y": 459,
+              "mesh_y": 458.53,
+              "gap": 0.47
+            },
+            {
+              "level": 2,
+              "x": 519,
+              "paint_y": 426,
+              "mesh_y": 426.15,
+              "gap": 0.15
+            },
+            {
+              "level": 2,
+              "x": 560,
+              "paint_y": 401,
+              "mesh_y": 400.89,
+              "gap": 0.11
+            }
+          ]
+        },
+        "after": {
+          "count": 26,
+          "mean_abs_px": 0.66,
+          "marks": [
+            {
+              "level": 1,
+              "x": 76,
+              "paint_y": 541,
+              "mesh_y": 541.29,
+              "gap": 0.29
+            },
+            {
+              "level": 1,
+              "x": 115,
+              "paint_y": 529,
+              "mesh_y": 528.56,
+              "gap": 0.44
+            },
+            {
+              "level": 1,
+              "x": 150,
+              "paint_y": 521,
+              "mesh_y": 521.0,
+              "gap": 0.0
+            },
+            {
+              "level": 1,
+              "x": 186,
+              "paint_y": 515,
+              "mesh_y": 515.8,
+              "gap": 0.8
+            },
+            {
+              "level": 1,
+              "x": 226,
+              "paint_y": 509,
+              "mesh_y": 509.14,
+              "gap": 0.14
+            },
+            {
+              "level": 1,
+              "x": 263,
+              "paint_y": 499,
+              "mesh_y": 498.11,
+              "gap": 0.89
+            },
+            {
+              "level": 1,
+              "x": 317,
+              "paint_y": 473,
+              "mesh_y": 471.83,
+              "gap": 1.17
+            },
+            {
+              "level": 1,
+              "x": 362,
+              "paint_y": 435,
+              "mesh_y": 433.46,
+              "gap": 1.54
+            },
+            {
+              "level": 1,
+              "x": 390,
+              "paint_y": 420,
+              "mesh_y": 419.29,
+              "gap": 0.71
+            },
+            {
+              "level": 1,
+              "x": 453,
+              "paint_y": 401,
+              "mesh_y": 399.53,
+              "gap": 1.47
+            },
+            {
+              "level": 1,
+              "x": 485,
+              "paint_y": 388,
+              "mesh_y": 386.01,
+              "gap": 1.99
+            },
+            {
+              "level": 1,
+              "x": 522,
+              "paint_y": 375,
+              "mesh_y": 374.32,
+              "gap": 0.68
+            },
+            {
+              "level": 2,
+              "x": 76,
+              "paint_y": 615,
+              "mesh_y": 615.56,
+              "gap": 0.56
+            },
+            {
+              "level": 2,
+              "x": 115,
+              "paint_y": 603,
+              "mesh_y": 604.08,
+              "gap": 1.08
+            },
+            {
+              "level": 2,
+              "x": 150,
+              "paint_y": 598,
+              "mesh_y": 597.58,
+              "gap": 0.42
+            },
+            {
+              "level": 2,
+              "x": 186,
+              "paint_y": 597,
+              "mesh_y": 597.0,
+              "gap": 0.0
+            },
+            {
+              "level": 2,
+              "x": 226,
+              "paint_y": 598,
+              "mesh_y": 597.88,
+              "gap": 0.12
+            },
+            {
+              "level": 2,
+              "x": 263,
+              "paint_y": 593,
+              "mesh_y": 593.12,
+              "gap": 0.12
+            },
+            {
+              "level": 2,
+              "x": 315,
+              "paint_y": 565,
+              "mesh_y": 563.79,
+              "gap": 1.21
+            },
+            {
+              "level": 2,
+              "x": 337,
+              "paint_y": 530,
+              "mesh_y": 530.93,
+              "gap": 0.93
+            },
+            {
+              "level": 2,
+              "x": 357,
+              "paint_y": 493,
+              "mesh_y": 494.04,
+              "gap": 1.04
+            },
+            {
+              "level": 2,
+              "x": 398,
+              "paint_y": 463,
+              "mesh_y": 463.38,
+              "gap": 0.38
+            },
+            {
+              "level": 2,
+              "x": 452,
+              "paint_y": 463,
+              "mesh_y": 462.66,
+              "gap": 0.34
+            },
+            {
+              "level": 2,
+              "x": 478,
+              "paint_y": 459,
+              "mesh_y": 458.53,
+              "gap": 0.47
+            },
+            {
+              "level": 2,
+              "x": 519,
+              "paint_y": 426,
+              "mesh_y": 426.15,
+              "gap": 0.15
+            },
+            {
+              "level": 2,
+              "x": 560,
+              "paint_y": 401,
+              "mesh_y": 400.89,
+              "gap": 0.11
+            }
+          ]
+        },
+        "same_unmodified_geometry_materials": [
+          "Aft crossing",
+          "Aft housing 1.1",
+          "Aft housing 1.2",
+          "Aft housing 2.1",
+          "Aft housing 2.2",
+          "Aft housing 2.3",
+          "Aft housing 3.1",
+          "Aft housing 3.2",
+          "Command terrace",
+          "Command terrace.001",
+          "Command terrace.002",
+          "Dish pedestal",
+          "Forward bay · recessed service wall",
+          "Forward bay · service lights",
+          "Forward landing · deck and bay fittings",
+          "Forward landing · guide lights",
+          "Midship crossing",
+          "Open survey arch",
+          "Overlapping foredeck plate 1",
+          "Overlapping foredeck plate 2",
+          "Overlapping foredeck plate 3",
+          "Separate port blade",
+          "Survey dish",
+          "Survey dome 1",
+          "Survey dome 2",
+          "Survey dome 3",
+          "Survey dome 4",
+          "Survey mast",
+          "Upper landing · deck and bay fittings",
+          "Upper landing · guide lights"
+        ],
+        "native_meshes": 35,
+        "dimensions_m": [
+          1280.0,
+          420.2678,
+          418.9156
+        ],
+        "glb_max_vertex_error_m": 0.0,
+        "embedded_images": 28,
+        "packed_native_image_count": 46,
+        "textured_materials_with_normal_and_orm": 15,
+        "native_crossings_touch_hull_and_blade": {
+          "Midship crossing": [
+            true,
+            true
+          ],
+          "Aft crossing": [
+            true,
+            true
+          ]
+        },
+        "exchange_crossings_touch_hull_and_blade": {
+          "Midship crossing": [
+            true,
+            true
+          ],
+          "Aft crossing": [
+            true,
+            true
+          ]
+        },
+        "feature_native": {
+          "painted_surfaces": {
+            "inside": [
+              "Port arrival · recessed service hall",
+              "Port arrival · recessed service hall",
+              "Port arrival · bulkhead lights and approach lamps",
+              "Port arrival · recessed service hall",
+              "Port arrival · recessed service hall",
+              "Port arrival · recessed service hall",
+              "Port arrival · recessed service hall",
+              "Port arrival · recessed service hall",
+              "Port arrival · recessed service hall",
+              "Port arrival · recessed service hall",
+              "Port arrival · recessed service hall",
+              "Port arrival · recessed service hall",
+              "Port arrival · recessed service hall",
+              "Port arrival · recessed service hall",
+              "Port arrival · recessed service hall",
+              "Port arrival · recessed service hall"
+            ],
+            "surround": [
+              "Port arrival · forged collar and shadow lines",
+              "Port arrival · forged collar and shadow lines",
+              "Port arrival · forged collar and shadow lines",
+              "Port arrival · forged collar and shadow lines",
+              "Port arrival · forged collar and shadow lines",
+              "Port arrival · forged collar and shadow lines",
+              "Port arrival · forged collar and shadow lines",
+              "Port arrival · forged collar and shadow lines"
+            ]
+          },
+          "clear_depth_probes": [
+            [
+              0.23,
+              0.23,
+              100.2,
+              "Port arrival · recessed service hall"
+            ],
+            [
+              0.23,
+              0.47,
+              100.2,
+              "Port arrival · recessed service hall"
+            ],
+            [
+              0.23,
+              0.71,
+              100.2,
+              "Port arrival · recessed service hall"
+            ],
+            [
+              0.5,
+              0.23,
+              99.05,
+              "Port arrival · recessed service hall"
+            ],
+            [
+              0.5,
+              0.47,
+              99.05,
+              "Port arrival · recessed service hall"
+            ],
+            [
+              0.5,
+              0.71,
+              99.05,
+              "Port arrival · recessed service hall"
+            ],
+            [
+              0.77,
+              0.23,
+              100.2,
+              "Port arrival · recessed service hall"
+            ],
+            [
+              0.77,
+              0.47,
+              100.2,
+              "Port arrival · recessed service hall"
+            ],
+            [
+              0.77,
+              0.71,
+              100.2,
+              "Port arrival · recessed service hall"
+            ]
+          ],
+          "prior_landings": {
+            "Forward landing": {
+              "tread_hits": 5,
+              "tread_marks": 5,
+              "samples": [
+                {
+                  "pixel": [
+                    389,
+                    593
+                  ],
+                  "surface": "Forward landing · deck and bay fittings",
+                  "match": true
+                },
+                {
+                  "pixel": [
+                    404,
+                    597
+                  ],
+                  "surface": "Forward landing · deck and bay fittings",
+                  "match": true
+                },
+                {
+                  "pixel": [
+                    420,
+                    595
+                  ],
+                  "surface": "Forward landing · deck and bay fittings",
+                  "match": true
+                },
+                {
+                  "pixel": [
+                    430,
+                    601
+                  ],
+                  "surface": "Forward landing · deck and bay fittings",
+                  "match": true
+                },
+                {
+                  "pixel": [
+                    448,
+                    599
+                  ],
+                  "surface": "Forward landing · deck and bay fittings",
+                  "match": true
+                },
+                {
+                  "pixel": [
+                    401,
+                    594
+                  ],
+                  "surface": "Forward landing · deck and bay fittings",
+                  "match": true
+                },
+                {
+                  "pixel": [
+                    415,
+                    595
+                  ],
+                  "surface": "Forward landing · deck and bay fittings",
+                  "match": true
+                },
+                {
+                  "pixel": [
+                    435,
+                    599
+                  ],
+                  "surface": "Forward landing · deck and bay fittings",
+                  "match": true
+                }
+              ],
+              "additional_hits": 3,
+              "additional_marks": 3,
+              "shell_y_at_center_m": 35.248,
+              "deck_meets_shell": true
+            },
+            "Upper landing": {
+              "tread_hits": 5,
+              "tread_marks": 5,
+              "samples": [
+                {
+                  "pixel": [
+                    485,
+                    540
+                  ],
+                  "surface": "Upper landing · deck and bay fittings",
+                  "match": true
+                },
+                {
+                  "pixel": [
+                    508,
+                    545
+                  ],
+                  "surface": "Upper landing · deck and bay fittings",
+                  "match": true
+                },
+                {
+                  "pixel": [
+                    525,
+                    545
+                  ],
+                  "surface": "Upper landing · deck and bay fittings",
+                  "match": true
+                },
+                {
+                  "pixel": [
+                    540,
+                    546
+                  ],
+                  "surface": "Upper landing · deck and bay fittings",
+                  "match": true
+                },
+                {
+                  "pixel": [
+                    553,
+                    549
+                  ],
+                  "surface": "Upper landing · deck and bay fittings",
+                  "match": true
+                },
+                {
+                  "pixel": [
+                    490,
+                    539
+                  ],
+                  "surface": "Upper landing · deck and bay fittings",
+                  "match": true
+                },
+                {
+                  "pixel": [
+                    517,
+                    542
+                  ],
+                  "surface": "Upper landing · deck and bay fittings",
+                  "match": true
+                },
+                {
+                  "pixel": [
+                    548,
+                    547
+                  ],
+                  "surface": "Upper landing · deck and bay fittings",
+                  "match": true
+                }
+              ],
+              "additional_hits": 3,
+              "additional_marks": 3,
+              "shell_y_at_center_m": 25.149,
+              "deck_meets_shell": true
+            }
+          },
+          "side_center_working_px": [
+            423.6,
+            179.1
+          ],
+          "passage_contacts": {
+            "Port arrival · forged collar and shadow lines": true,
+            "Aft crossing": true
+          }
+        },
+        "feature_exchange": {
+          "painted_surfaces": {
+            "inside": [
+              "Port arrival · recessed service hall",
+              "Port arrival · recessed service hall",
+              "Port arrival · bulkhead lights and approach lamps",
+              "Port arrival · recessed service hall",
+              "Port arrival · recessed service hall",
+              "Port arrival · recessed service hall",
+              "Port arrival · recessed service hall",
+              "Port arrival · recessed service hall",
+              "Port arrival · recessed service hall",
+              "Port arrival · recessed service hall",
+              "Port arrival · recessed service hall",
+              "Port arrival · recessed service hall",
+              "Port arrival · recessed service hall",
+              "Port arrival · recessed service hall",
+              "Port arrival · recessed service hall",
+              "Port arrival · recessed service hall"
+            ],
+            "surround": [
+              "Port arrival · forged collar and shadow lines",
+              "Port arrival · forged collar and shadow lines",
+              "Port arrival · forged collar and shadow lines",
+              "Port arrival · forged collar and shadow lines",
+              "Port arrival · forged collar and shadow lines",
+              "Port arrival · forged collar and shadow lines",
+              "Port arrival · forged collar and shadow lines",
+              "Port arrival · forged collar and shadow lines"
+            ]
+          },
+          "clear_depth_probes": [
+            [
+              0.23,
+              0.23,
+              100.2,
+              "Port arrival · recessed service hall"
+            ],
+            [
+              0.23,
+              0.47,
+              100.2,
+              "Port arrival · recessed service hall"
+            ],
+            [
+              0.23,
+              0.71,
+              100.2,
+              "Port arrival · recessed service hall"
+            ],
+            [
+              0.5,
+              0.23,
+              99.05,
+              "Port arrival · recessed service hall"
+            ],
+            [
+              0.5,
+              0.47,
+              99.05,
+              "Port arrival · recessed service hall"
+            ],
+            [
+              0.5,
+              0.71,
+              99.05,
+              "Port arrival · recessed service hall"
+            ],
+            [
+              0.77,
+              0.23,
+              100.2,
+              "Port arrival · recessed service hall"
+            ],
+            [
+              0.77,
+              0.47,
+              100.2,
+              "Port arrival · recessed service hall"
+            ],
+            [
+              0.77,
+              0.71,
+              100.2,
+              "Port arrival · recessed service hall"
+            ]
+          ],
+          "prior_landings": {
+            "Forward landing": {
+              "tread_hits": 5,
+              "tread_marks": 5,
+              "samples": [
+                {
+                  "pixel": [
+                    389,
+                    593
+                  ],
+                  "surface": "Forward landing · deck and bay fittings",
+                  "match": true
+                },
+                {
+                  "pixel": [
+                    404,
+                    597
+                  ],
+                  "surface": "Forward landing · deck and bay fittings",
+                  "match": true
+                },
+                {
+                  "pixel": [
+                    420,
+                    595
+                  ],
+                  "surface": "Forward landing · deck and bay fittings",
+                  "match": true
+                },
+                {
+                  "pixel": [
+                    430,
+                    601
+                  ],
+                  "surface": "Forward landing · deck and bay fittings",
+                  "match": true
+                },
+                {
+                  "pixel": [
+                    448,
+                    599
+                  ],
+                  "surface": "Forward landing · deck and bay fittings",
+                  "match": true
+                },
+                {
+                  "pixel": [
+                    401,
+                    594
+                  ],
+                  "surface": "Forward landing · deck and bay fittings",
+                  "match": true
+                },
+                {
+                  "pixel": [
+                    415,
+                    595
+                  ],
+                  "surface": "Forward landing · deck and bay fittings",
+                  "match": true
+                },
+                {
+                  "pixel": [
+                    435,
+                    599
+                  ],
+                  "surface": "Forward landing · deck and bay fittings",
+                  "match": true
+                }
+              ],
+              "additional_hits": 3,
+              "additional_marks": 3,
+              "shell_y_at_center_m": 35.259,
+              "deck_meets_shell": true
+            },
+            "Upper landing": {
+              "tread_hits": 5,
+              "tread_marks": 5,
+              "samples": [
+                {
+                  "pixel": [
+                    485,
+                    540
+                  ],
+                  "surface": "Upper landing · deck and bay fittings",
+                  "match": true
+                },
+                {
+                  "pixel": [
+                    508,
+                    545
+                  ],
+                  "surface": "Upper landing · deck and bay fittings",
+                  "match": true
+                },
+                {
+                  "pixel": [
+                    525,
+                    545
+                  ],
+                  "surface": "Upper landing · deck and bay fittings",
+                  "match": true
+                },
+                {
+                  "pixel": [
+                    540,
+                    546
+                  ],
+                  "surface": "Upper landing · deck and bay fittings",
+                  "match": true
+                },
+                {
+                  "pixel": [
+                    553,
+                    549
+                  ],
+                  "surface": "Upper landing · deck and bay fittings",
+                  "match": true
+                },
+                {
+                  "pixel": [
+                    490,
+                    539
+                  ],
+                  "surface": "Upper landing · deck and bay fittings",
+                  "match": true
+                },
+                {
+                  "pixel": [
+                    517,
+                    542
+                  ],
+                  "surface": "Upper landing · deck and bay fittings",
+                  "match": true
+                },
+                {
+                  "pixel": [
+                    548,
+                    547
+                  ],
+                  "surface": "Upper landing · deck and bay fittings",
+                  "match": true
+                }
+              ],
+              "additional_hits": 3,
+              "additional_marks": 3,
+              "shell_y_at_center_m": 25.149,
+              "deck_meets_shell": true
+            }
+          },
+          "side_center_working_px": [
+            423.6,
+            179.1
+          ],
+          "passage_contacts": {
+            "Port arrival · forged collar and shadow lines": true,
+            "Aft crossing": true
+          }
+        }
+      },
+      "fit_record": {
+        "path": "Assets/ShipConcepts/door-windows-r197/glacier-tongue/cast/finish.json",
+        "sha256": "efd936c85c027c96ed5dc3358c4f4c48a5c8d2218b6925896adaaf020ee8bfa6"
+      },
+      "lighting_record": {
+        "path": "Assets/ShipConcepts/door-windows-r197/glacier-tongue/cast/light/lighting.json",
+        "sha256": "23b4976440bb20c191b740ee5de1aadfc042fafdd12be483401ab5bc9f1ce44c"
+      },
+      "appearance": {
+        "painting": {
+          "inside_mean": 169.1,
+          "surround_mean": 76.1,
+          "inside_sd": 24.8,
+          "contrast": 92.9
+        },
+        "previous": {
+          "inside_mean": 39.6,
+          "surround_mean": 42.8,
+          "inside_sd": 6.5,
+          "contrast": -3.2
+        },
+        "study": {
+          "inside_mean": 166.1,
+          "surround_mean": 43.7,
+          "inside_sd": 12.1,
+          "contrast": 122.4
+        },
+        "selected": {
+          "inside_mean": 161.3,
+          "surround_mean": 74.8,
+          "inside_sd": 20.0,
+          "contrast": 86.4
+        },
+        "first_collar": {
+          "inside_mean": 163.1,
+          "surround_mean": 99.9,
+          "inside_sd": 15.4,
+          "contrast": 63.2
+        }
+      },
+      "in_memory_recipe_replay": {
+        "native_meshes_with_identical_positions_faces_surface_slots_and_uvs": 35,
+        "close_camera_max_coordinate_error_px": 0.00327,
+        "original_camera_max_coordinate_error_px": 0.0006541
+      },
+      "exchange_finishes": {
+        "graded_exported_base_color_mean_ratio": 0.74,
+        "source_material": "glacier-tongue · pressure.001",
+        "graded_material": "Glacier · arrival collar steel"
+      },
+      "first_trial": {
+        "path": "Assets/ShipConcepts/door-windows-r197/glacier-tongue/study/detail.png",
+        "sha256": "af3c6e19c397f36ced825fc80cd2e7a2b7318106a980da78c4c10e2c06120d73"
+      },
+      "receipts": [
+        {
+          "path": "Assets/ShipConcepts/door-windows-r197/glacier-tongue/cast.ledger-record.json",
+          "sha256": "15f60abe8e3699d3e25840cf708046010eee29e35ad3fc55b4c1571b2717856a"
+        },
+        {
+          "path": "Assets/ShipConcepts/door-windows-r197/glacier-tongue/ceramic.ledger-record.json",
+          "sha256": "2ecb211e9145c1e799839638849bccb52d80c787ccf32ad46494fba72e54945f"
+        },
+        {
+          "path": "Assets/ShipConcepts/door-windows-r197/glacier-tongue/fitted.ledger-record.json",
+          "sha256": "acff611057b427814b2553bdac18d872c6d01649a533eac3c2075f77cc85c50d"
+        },
+        {
+          "path": "Assets/ShipConcepts/door-windows-r197/glacier-tongue/study.ledger-record.json",
+          "sha256": "7b028f015dbc7392a39563d569172caec5a7bec855efcd757e43e5acbfe06bd5"
+        }
+      ],
+      "glb": {
+        "path": "Assets/ShipConcepts/door-windows-r197/glacier-tongue/cast/glacier-tongue.glb",
+        "sha256": "b4bd450d521fdf2766d0203316d904fc83f2745237abe4c848297bece66bf0ab"
+      },
+      "blend": {
+        "path": "Assets/ShipConcepts/door-windows-r197/glacier-tongue/cast/glacier-tongue.blend",
+        "sha256": "64f817bba3cbc9072e3e7f8a6a8eeb1facb77efba6885279d3b99a2e2ef52e27"
+      },
+      "gallery": {
+        "path": "Assets/ShipConcepts/door-windows-r197/glacier-tongue/cast/gallery.png",
+        "sha256": "c13e15e6ca0de71a6a3d1c22b7e2172c0902c2604cb4e0524650fc16a1bb4430"
+      },
+      "base_gallery": {
+        "path": "Assets/ShipConcepts/door-windows-r197/glacier-tongue/cast/before-gallery.png",
+        "sha256": "9a1e48b2d70e5d5b1c3c1d7b0c7051355275642acfa08a4c784c947d996bf3fd"
+      },
+      "board": {
+        "path": "Assets/ShipConcepts/door-windows-r197/glacier-tongue/cast/comparison.webp",
+        "sha256": "0c9340b6cfa289e520f4f07771e0ce63311e90ac5fc10a5bc5baf802e377b5cb"
+      },
+      "renders": [
+        {
+          "path": "Assets/ShipConcepts/door-windows-r197/glacier-tongue/cast/before-port.png",
+          "sha256": "854193555097fa046fa5fcb26d5bb561c01a0d4bcecff91b60f61bd61be9a8e0"
+        },
+        {
+          "path": "Assets/ShipConcepts/door-windows-r197/glacier-tongue/cast/port.png",
+          "sha256": "8a0990e2ecf6fe7fbc3c61569767d709daacacbc73b181ebf3b6b0a1d9c3bcae"
+        },
+        {
+          "path": "Assets/ShipConcepts/door-windows-r197/glacier-tongue/cast/before-top.png",
+          "sha256": "751ba5fb08060c340cc69a8e3c9a99e3ef636f1738bd47da4ca21514cf1bbbfc"
+        },
+        {
+          "path": "Assets/ShipConcepts/door-windows-r197/glacier-tongue/cast/top.png",
+          "sha256": "4a121d3768211942719afe5ba1522e52f5dd1757b6e2c9737f8452fd889cace6"
+        },
+        {
+          "path": "Assets/ShipConcepts/door-windows-r197/glacier-tongue/cast/before-detail.png",
+          "sha256": "408b87179a0316af2af03cc382563f8d8124896d55a0aa13abe601aea2db5b32"
+        },
+        {
+          "path": "Assets/ShipConcepts/door-windows-r197/glacier-tongue/cast/detail.png",
+          "sha256": "342928acaf9d12e12c410457b043172df546601f4f5459693c93660f69d3d437"
+        },
+        {
+          "path": "Assets/ShipConcepts/door-windows-r197/glacier-tongue/cast/light/turned-key.png",
+          "sha256": "b1e83d257555fdd96c9426e5259714d8bb86e4815c1fec6c8eae97282499d9d5"
+        },
+        {
+          "path": "Assets/ShipConcepts/door-windows-r197/glacier-tongue/cast/light/emitters-only.png",
+          "sha256": "24c21046bbcd559e564b065caaf921d52efe99f39503cee603eda763e9497b39"
+        }
+      ],
+      "detail_box_painting_px": [
+        550,
+        450,
+        780,
+        565
+      ],
+      "detail_raster_px": [
+        1150,
+        575
+      ],
+      "geometry": {
+        "mouth_y_m": 125,
+        "rear_y_m": 24,
+        "normal_depth_m": 101,
+        "lip_world": [
+          [
+            -78.2852783203125,
+            125.0001220703125,
+            -27.4202880859375
+          ],
+          [
+            -170.00244140625,
+            125.0,
+            -26.306915283203125
+          ],
+          [
+            -168.5069580078125,
+            124.9998779296875,
+            6.740447998046875
+          ],
+          [
+            -76.696044921875,
+            125.0,
+            7.692596435546875
+          ]
+        ],
+        "shell_stations": [
+          84,
+          99
+        ],
+        "rear_center_world": [
+          -197.10272135416648,
+          23.99999321831597,
+          -12.550534647623696
+        ],
+        "passage_anchors": [
+          [
+            -177.04898681640626,
+            119.99993133544922,
+            -10.244148025512695
+          ],
+          [
+            -313.5298980712891,
+            121.83611111640931,
+            -14.952795843034984
+          ]
+        ]
+      },
+      "first_collar_trial": {
+        "path": "Assets/ShipConcepts/door-windows-r197/glacier-tongue/fitted/detail.png",
+        "sha256": "32892050dac752a33e00d1a509d2af8b254d84c0ef273935092692c098c13f46"
+      },
+      "material_library": {
+        "path": "Assets/ShipConcepts/hull-review-r187/stepped-crown/glacier-tongue/glacier-tongue.blend",
+        "sha256": "15eda4d8adea2a2c79583e9f01bb223d3c734cc453489128c92ca50b6d448406"
+      },
+      "sheet_port_center_px": [
+        405,
+        197
+      ],
+      "limit": "The original gallery controls the entrance outline. Its center comes out aft and above the sheet center. The open hall is an exterior review mesh. Walkable collision and playable routing have not been tested."
+    },
+    "delta-tree": {
+      "name": "Delta Tree",
+      "sheet": {
+        "path": "Assets/ShipConcepts/turnaround-sheets-r190/delta-tree.png",
+        "bytes": 12386600,
+        "sha256": "91e1ba6d9ba572957f166e62ec377d631fecc4b675f5cdb2a64173690e17d87c"
+      },
+      "original": {
+        "path": "Assets/ShipConcepts/sunburst-r144/58-delta-tree.png",
+        "sha256": "6628ed15b22fbf2990729eb8417b9babcb66cc8ebcb5635dad57c8776efeeac3"
+      },
+      "art_camera": {
+        "path": "Assets/ShipConcepts/hull-refinements-r193/delta-tree/open-courtyards/gallery-camera.json",
+        "sha256": "82a3e341902859087092b542541975c41b30344b5f30bdf6ddbf450327bc6a70"
+      },
+      "render_camera": {
+        "path": "Assets/ShipConcepts/hull-refinements-r193/delta-tree/open-courtyards/gallery-render-camera.json",
+        "sha256": "4944e2b7f318f5981b79444dc322c0a3dd8289cd29e7c11c493fccdba90a0c70"
+      },
+      "previous_blend": {
+        "path": "Assets/ShipConcepts/landing-studies-r196/delta-tree/seated/delta-tree.blend",
+        "sha256": "46fa9e444a1979a24b93868eb1dbe1cea62fcd493768278cbcbbca64a9183764"
+      },
+      "previous_glb": {
+        "path": "Assets/ShipConcepts/landing-studies-r196/delta-tree/seated/delta-tree.glb",
+        "sha256": "d02e28044a0568306bc6735aae41c01e589d9d8d29406c6de012fd744dec9d76"
+      },
+      "scene": {
+        "before": {
+          "plan": {
+            "counts": {
+              "Glass": [
+                5,
+                6
+              ],
+              "Roof": [
+                6,
+                6
+              ]
+            },
+            "samples": [
+              [
+                50,
+                451,
+                "Glass",
+                "Forward observatory · glazed vault and plated cabin",
+                "observation_glass",
+                1
+              ],
+              [
+                53,
+                457,
+                "Glass",
+                "Forward observatory · glazed vault and plated cabin",
+                "observation_glass",
+                1
+              ],
+              [
+                55,
+                463,
+                "Glass",
+                "Forward observatory · glazed vault and plated cabin",
+                "observation_glass",
+                1
+              ],
+              [
+                60,
+                449,
+                "Glass",
+                "Forward observatory · glazed vault and plated cabin",
+                "observation_glass",
+                1
+              ],
+              [
+                62,
+                455,
+                "Glass",
+                "Forward observatory · glazed vault and plated cabin",
+                "observation_glass",
+                1
+              ],
+              [
+                64,
+                464,
+                "Glass",
+                "Forward observatory · glazed vault and plated cabin",
+                "bronze_drive",
+                0
+              ],
+              [
+                74,
+                450,
+                "Roof",
+                "Forward observatory · glazed vault and plated cabin",
+                "machined",
+                1
+              ],
+              [
+                77,
+                459,
+                "Roof",
+                "Forward observatory · glazed vault and plated cabin",
+                "machined",
+                1
+              ],
+              [
+                83,
+                446,
+                "Roof",
+                "Forward observatory · glazed vault and plated cabin",
+                "canopy_shell",
+                1
+              ],
+              [
+                88,
+                463,
+                "Roof",
+                "Forward observatory · glazed vault and plated cabin",
+                "machined",
+                1
+              ],
+              [
+                98,
+                453,
+                "Roof",
+                "Forward observatory · glazed vault and plated cabin",
+                "canopy_shell",
+                1
+              ],
+              [
+                102,
+                459,
+                "Roof",
+                "Forward observatory · glazed vault and plated cabin",
+                "case",
+                1
+              ]
+            ]
+          },
+          "port": {
+            "counts": {
+              "Glass": [
+                5,
+                5
+              ],
+              "Roof": [
+                4,
+                5
+              ]
+            },
+            "samples": [
+              [
+                45,
+                175,
+                "Glass",
+                "Forward observatory · glazed vault and plated cabin",
+                "observation_glass",
+                1
+              ],
+              [
+                51,
+                171,
+                "Glass",
+                "Forward observatory · glazed vault and plated cabin",
+                "observation_glass",
+                1
+              ],
+              [
+                55,
+                172,
+                "Glass",
+                "Forward observatory · glazed vault and plated cabin",
+                "observation_glass",
+                1
+              ],
+              [
+                59,
+                164,
+                "Glass",
+                "Forward observatory · glazed vault and plated cabin",
+                "observation_glass",
+                1
+              ],
+              [
+                63,
+                170,
+                "Glass",
+                "Forward observatory · glazed vault and plated cabin",
+                "observation_glass",
+                1
+              ],
+              [
+                73,
+                165,
+                "Roof",
+                "Forward observatory · glazed vault and plated cabin",
+                "observation_glass",
+                0
+              ],
+              [
+                82,
+                164,
+                "Roof",
+                "Forward observatory · glazed vault and plated cabin",
+                "canopy_shell",
+                1
+              ],
+              [
+                90,
+                162,
+                "Roof",
+                "Forward observatory · glazed vault and plated cabin",
+                "canopy_shell",
+                1
+              ],
+              [
+                99,
+                164,
+                "Roof",
+                "Forward observatory · glazed vault and plated cabin",
+                "canopy_shell",
+                1
+              ],
+              [
+                104,
+                165,
+                "Roof",
+                "Forward observatory · glazed vault and plated cabin",
+                "canopy_shell",
+                1
+              ]
+            ]
+          },
+          "painting": {
+            "counts": {
+              "Glass": [
+                5,
+                8
+              ],
+              "Roof": [
+                4,
+                6
+              ]
+            },
+            "samples": [
+              [
+                93,
+                658,
+                "Glass",
+                "Forward observatory · glazed vault and plated cabin",
+                "observation_glass",
+                1
+              ],
+              [
+                102,
+                654,
+                "Glass",
+                "Forward observatory · glazed vault and plated cabin",
+                "observation_glass",
+                1
+              ],
+              [
+                108,
+                664,
+                "Glass",
+                "Forward observatory · glazed vault and plated cabin",
+                "observation_glass",
+                1
+              ],
+              [
+                116,
+                650,
+                "Glass",
+                "Forward observatory · glazed vault and plated cabin",
+                "observation_glass",
+                1
+              ],
+              [
+                125,
+                662,
+                "Glass",
+                "Forward observatory · glazed vault and plated cabin",
+                "bronze_drive",
+                0
+              ],
+              [
+                127,
+                647,
+                "Glass",
+                "Forward observatory · glazed vault and plated cabin",
+                "observation_glass",
+                1
+              ],
+              [
+                136,
+                654,
+                "Glass",
+                "Forward observatory · glazed vault and plated cabin",
+                "bronze_drive",
+                0
+              ],
+              [
+                140,
+                661,
+                "Glass",
+                "Recessed deck between branches",
+                "warm alloy deck plates",
+                0
+              ],
+              [
+                142,
+                631,
+                "Roof",
+                "Forward observatory · glazed vault and plated cabin",
+                "canopy_shell",
+                1
+              ],
+              [
+                151,
+                632,
+                "Roof",
+                "Forward observatory · glazed vault and plated cabin",
+                "machined",
+                1
+              ],
+              [
+                160,
+                635,
+                "Roof",
+                "Forward observatory · glazed vault and plated cabin",
+                "machined",
+                1
+              ],
+              [
+                174,
+                624,
+                "Roof",
+                "Forward observatory · glazed vault and plated cabin",
+                "drive_ceramic",
+                1
+              ],
+              [
+                183,
+                620,
+                "Roof",
+                "Recessed deck between branches",
+                "graphite returns",
+                0
+              ],
+              [
+                191,
+                624,
+                "Roof",
+                "Recessed deck between branches",
+                "graphite returns",
+                0
+              ]
+            ]
+          }
+        },
+        "after": {
+          "plan": {
+            "counts": {
+              "Glass": [
+                5,
+                6
+              ],
+              "Roof": [
+                6,
+                6
+              ]
+            },
+            "samples": [
+              [
+                50,
+                451,
+                "Glass",
+                "Forward observatory · glazed vault and plated cabin",
+                "observation_glass",
+                1
+              ],
+              [
+                53,
+                457,
+                "Glass",
+                "Forward observatory · glazed vault and plated cabin",
+                "observation_glass",
+                1
+              ],
+              [
+                55,
+                463,
+                "Glass",
+                "Forward observatory · glazed vault and plated cabin",
+                "observation_glass",
+                1
+              ],
+              [
+                60,
+                449,
+                "Glass",
+                "Forward observatory · glazed vault and plated cabin",
+                "observation_glass",
+                1
+              ],
+              [
+                62,
+                455,
+                "Glass",
+                "Forward observatory · glazed vault and plated cabin",
+                "observation_glass",
+                1
+              ],
+              [
+                64,
+                464,
+                "Glass",
+                "Forward observatory · glazed vault and plated cabin",
+                "bronze_drive",
+                0
+              ],
+              [
+                74,
+                450,
+                "Roof",
+                "Forward observatory · glazed vault and plated cabin",
+                "machined",
+                1
+              ],
+              [
+                77,
+                459,
+                "Roof",
+                "Forward observatory · glazed vault and plated cabin",
+                "machined",
+                1
+              ],
+              [
+                83,
+                446,
+                "Roof",
+                "Forward observatory · glazed vault and plated cabin",
+                "canopy_shell",
+                1
+              ],
+              [
+                88,
+                463,
+                "Roof",
+                "Forward observatory · glazed vault and plated cabin",
+                "machined",
+                1
+              ],
+              [
+                98,
+                453,
+                "Roof",
+                "Forward observatory · glazed vault and plated cabin",
+                "canopy_shell",
+                1
+              ],
+              [
+                102,
+                459,
+                "Roof",
+                "Forward observatory · glazed vault and plated cabin",
+                "case",
+                1
+              ]
+            ]
+          },
+          "port": {
+            "counts": {
+              "Glass": [
+                5,
+                5
+              ],
+              "Roof": [
+                4,
+                5
+              ]
+            },
+            "samples": [
+              [
+                45,
+                175,
+                "Glass",
+                "Forward observatory · glazed vault and plated cabin",
+                "observation_glass",
+                1
+              ],
+              [
+                51,
+                171,
+                "Glass",
+                "Forward observatory · glazed vault and plated cabin",
+                "observation_glass",
+                1
+              ],
+              [
+                55,
+                172,
+                "Glass",
+                "Forward observatory · glazed vault and plated cabin",
+                "observation_glass",
+                1
+              ],
+              [
+                59,
+                164,
+                "Glass",
+                "Forward observatory · glazed vault and plated cabin",
+                "observation_glass",
+                1
+              ],
+              [
+                63,
+                170,
+                "Glass",
+                "Forward observatory · glazed vault and plated cabin",
+                "observation_glass",
+                1
+              ],
+              [
+                73,
+                165,
+                "Roof",
+                "Forward observatory · glazed vault and plated cabin",
+                "observation_glass",
+                0
+              ],
+              [
+                82,
+                164,
+                "Roof",
+                "Forward observatory · glazed vault and plated cabin",
+                "canopy_shell",
+                1
+              ],
+              [
+                90,
+                162,
+                "Roof",
+                "Forward observatory · glazed vault and plated cabin",
+                "canopy_shell",
+                1
+              ],
+              [
+                99,
+                164,
+                "Roof",
+                "Forward observatory · glazed vault and plated cabin",
+                "canopy_shell",
+                1
+              ],
+              [
+                104,
+                165,
+                "Roof",
+                "Forward observatory · glazed vault and plated cabin",
+                "canopy_shell",
+                1
+              ]
+            ]
+          },
+          "painting": {
+            "counts": {
+              "Glass": [
+                5,
+                8
+              ],
+              "Roof": [
+                4,
+                6
+              ]
+            },
+            "samples": [
+              [
+                93,
+                658,
+                "Glass",
+                "Forward observatory · glazed vault and plated cabin",
+                "observation_glass",
+                1
+              ],
+              [
+                102,
+                654,
+                "Glass",
+                "Forward observatory · glazed vault and plated cabin",
+                "observation_glass",
+                1
+              ],
+              [
+                108,
+                664,
+                "Glass",
+                "Forward observatory · glazed vault and plated cabin",
+                "observation_glass",
+                1
+              ],
+              [
+                116,
+                650,
+                "Glass",
+                "Forward observatory · glazed vault and plated cabin",
+                "observation_glass",
+                1
+              ],
+              [
+                125,
+                662,
+                "Glass",
+                "Forward observatory · glazed vault and plated cabin",
+                "bronze_drive",
+                0
+              ],
+              [
+                127,
+                647,
+                "Glass",
+                "Forward observatory · glazed vault and plated cabin",
+                "observation_glass",
+                1
+              ],
+              [
+                136,
+                654,
+                "Glass",
+                "Forward observatory · glazed vault and plated cabin",
+                "bronze_drive",
+                0
+              ],
+              [
+                140,
+                661,
+                "Glass",
+                "Recessed deck between branches",
+                "warm alloy deck plates",
+                0
+              ],
+              [
+                142,
+                631,
+                "Roof",
+                "Forward observatory · glazed vault and plated cabin",
+                "canopy_shell",
+                1
+              ],
+              [
+                151,
+                632,
+                "Roof",
+                "Forward observatory · glazed vault and plated cabin",
+                "machined",
+                1
+              ],
+              [
+                160,
+                635,
+                "Roof",
+                "Forward observatory · glazed vault and plated cabin",
+                "machined",
+                1
+              ],
+              [
+                174,
+                624,
+                "Roof",
+                "Forward observatory · glazed vault and plated cabin",
+                "drive_ceramic",
+                1
+              ],
+              [
+                183,
+                620,
+                "Roof",
+                "Recessed deck between branches",
+                "graphite returns",
+                0
+              ],
+              [
+                191,
+                624,
+                "Roof",
+                "Recessed deck between branches",
+                "graphite returns",
+                0
+              ]
+            ]
+          }
+        },
+        "same_unmodified_geometry_materials": [
+          "Armored drive sleeve 1.1",
+          "Armored drive sleeve 1.2",
+          "Armored drive sleeve 1.3",
+          "Armored drive sleeve 1.4",
+          "Armored drive sleeve 2.1",
+          "Armored drive sleeve 2.2",
+          "Armored drive sleeve 2.3",
+          "Armored drive sleeve 2.4",
+          "Armored drive sleeve 3.1",
+          "Armored drive sleeve 3.2",
+          "Armored drive sleeve 3.3",
+          "Armored drive sleeve 3.4",
+          "Common aft engine bed",
+          "Dish deck",
+          "Dish deck.001",
+          "Dish deck.002",
+          "Dish deck.003",
+          "Dish deck.004",
+          "Dish pedestal",
+          "Drive cradle and port arrival shoulder",
+          "Drive housing 1.1",
+          "Drive housing 1.2",
+          "Drive housing 1.3",
+          "Drive housing 1.4",
+          "Drive housing 2.1",
+          "Drive housing 2.2",
+          "Drive housing 2.3",
+          "Drive housing 2.4",
+          "Drive housing 3.1",
+          "Drive housing 3.2",
+          "Drive housing 3.3",
+          "Drive housing 3.4",
+          "Forward observatory · cabin lamps",
+          "Forward observatory · glazed vault and plated cabin",
+          "Needle mast",
+          "Observatory roof · aerials and vents",
+          "Observatory sill · fitted pressure skirt",
+          "Open docking frame",
+          "Port branch 1",
+          "Port branch 2",
+          "Port branch 3",
+          "Port branch 4",
+          "Port branch 5",
+          "Port branch 6",
+          "Port courtyard rib 1",
+          "Port courtyard rib 2",
+          "Port courtyard rib 3",
+          "Port courtyard rib 4",
+          "Port courtyard rib 5",
+          "Port courtyard rib 6",
+          "Port courtyard rib 7",
+          "Port courtyard rib 8",
+          "Port courtyard rib 9",
+          "Port station 1",
+          "Port station 2",
+          "Port station 3",
+          "Port station 4",
+          "Port station 5",
+          "Port station 6",
+          "Port station antenna 1",
+          "Port station antenna 2",
+          "Port station antenna 3",
+          "Port station antenna 4",
+          "Port station antenna 5",
+          "Port station antenna 6",
+          "Port station outrigger 1",
+          "Port station outrigger 2",
+          "Port station outrigger 3",
+          "Port station outrigger 4",
+          "Port station outrigger 5",
+          "Port station outrigger 6",
+          "Recessed deck between branches",
+          "Starboard branch 1",
+          "Starboard branch 2",
+          "Starboard branch 3",
+          "Starboard branch 4",
+          "Starboard branch 5",
+          "Starboard branch 6",
+          "Starboard courtyard rib 1",
+          "Starboard courtyard rib 2",
+          "Starboard courtyard rib 3",
+          "Starboard courtyard rib 4",
+          "Starboard courtyard rib 5",
+          "Starboard courtyard rib 6",
+          "Starboard courtyard rib 7",
+          "Starboard courtyard rib 8",
+          "Starboard courtyard rib 9",
+          "Starboard station 1",
+          "Starboard station 2",
+          "Starboard station 3",
+          "Starboard station 4",
+          "Starboard station 5",
+          "Starboard station 6",
+          "Starboard station antenna 1",
+          "Starboard station antenna 2",
+          "Starboard station antenna 3",
+          "Starboard station antenna 4",
+          "Starboard station antenna 5",
+          "Starboard station antenna 6",
+          "Starboard station outrigger 1",
+          "Starboard station outrigger 2",
+          "Starboard station outrigger 3",
+          "Starboard station outrigger 4",
+          "Starboard station outrigger 5",
+          "Starboard station outrigger 6",
+          "Survey dish"
+        ],
+        "native_meshes": 110,
+        "dimensions_m": [
+          1280.0,
+          503.3284,
+          409.0722
+        ],
+        "glb_max_vertex_error_m": 0.0,
+        "embedded_images": 18,
+        "packed_native_image_count": 26,
+        "textured_materials_with_normal_and_orm": 8,
+        "exchange_first_hit_counts": {
+          "plan": {
+            "Glass": [
+              5,
+              6
+            ],
+            "Roof": [
+              6,
+              6
+            ]
+          },
+          "port": {
+            "Glass": [
+              5,
+              5
+            ],
+            "Roof": [
+              4,
+              5
+            ]
+          },
+          "painting": {
+            "Glass": [
+              5,
+              8
+            ],
+            "Roof": [
+              4,
+              6
+            ]
+          }
+        },
+        "feature_native": {
+          "starboard": {
+            "samples": 32,
+            "world_samples": [
+              [
+                617.99267578125,
+                -40.672664642333984,
+                -3.321202516555786
+              ],
+              [
+                510.6679992675781,
+                -87.58489990234375,
+                -15.850959777832031
+              ],
+              [
+                389.2216796875,
+                -128.95230102539062,
+                -15.59420394897461
+              ],
+              [
+                267.77532958984375,
+                -171.26644897460938,
+                9.380939483642578
+              ],
+              [
+                216.84552001953125,
+                -170.70919799804688,
+                -35.373756408691406
+              ],
+              [
+                199.8995361328125,
+                -180.98135375976562,
+                5.907566547393799
+              ],
+              [
+                185.77786254882812,
+                -183.28717041015625,
+                5.8444294929504395
+              ],
+              [
+                171.65618896484375,
+                -186.411865234375,
+                10.388276100158691
+              ],
+              [
+                157.53451538085938,
+                -183.991943359375,
+                -15.36304759979248
+              ],
+              [
+                143.41287231445312,
+                -186.08139038085938,
+                -15.15627384185791
+              ],
+              [
+                129.29119873046875,
+                -188.75222778320312,
+                -10.525348663330078
+              ],
+              [
+                115.16952514648438,
+                -186.45098876953125,
+                -34.36311340332031
+              ],
+              [
+                101.04785919189453,
+                -188.41006469726562,
+                -33.464515686035156
+              ],
+              [
+                86.92619323730469,
+                -190.905029296875,
+                -28.42685317993164
+              ],
+              [
+                69.98019409179688,
+                -199.00869750976562,
+                11.3703031539917
+              ],
+              [
+                55.858524322509766,
+                -199.88058471679688,
+                11.370124816894531
+              ],
+              [
+                41.736854553222656,
+                -201.23138427734375,
+                15.255867004394531
+              ],
+              [
+                27.615188598632812,
+                -201.845947265625,
+                14.809290885925293
+              ],
+              [
+                13.493521690368652,
+                -197.93930053710938,
+                -13.368633270263672
+              ],
+              [
+                -0.6281458735466003,
+                -198.9659423828125,
+                -9.252618789672852
+              ],
+              [
+                -14.749813079833984,
+                -199.03195190429688,
+                -9.451786041259766
+              ],
+              [
+                -28.871479034423828,
+                -194.90020751953125,
+                -35.499671936035156
+              ],
+              [
+                -42.99314498901367,
+                -195.17901611328125,
+                -31.662120819091797
+              ],
+              [
+                -57.11481475830078,
+                -194.69241333007812,
+                -32.29016876220703
+              ],
+              [
+                -74.0608139038086,
+                -199.4207763671875,
+                6.453578948974609
+              ],
+              [
+                -88.18248748779297,
+                -199.20950317382812,
+                10.164835929870605
+              ],
+              [
+                -102.30415344238281,
+                -198.0897216796875,
+                9.719600677490234
+              ],
+              [
+                -116.42581176757812,
+                -193.4403076171875,
+                -16.328330993652344
+              ],
+              [
+                -130.5474853515625,
+                -192.67083740234375,
+                -12.598563194274902
+              ],
+              [
+                -144.66915893554688,
+                -191.7547607421875,
+                -13.233587265014648
+              ],
+              [
+                -158.79083251953125,
+                -188.52328491210938,
+                -39.45781326293945
+              ],
+              [
+                -172.9124755859375,
+                -189.22299194335938,
+                -35.235328674316406
+              ]
+            ],
+            "first_hits_on_glass": 32,
+            "min_seat_m": 0.901,
+            "max_seat_m": 0.927
+          },
+          "port": {
+            "samples": 32,
+            "world_samples": [
+              [
+                617.99267578125,
+                45.886348724365234,
+                0.5186575651168823
+              ],
+              [
+                499.37066650390625,
+                89.02737426757812,
+                -16.630596160888672
+              ],
+              [
+                380.7486572265625,
+                126.87979125976562,
+                5.6254777908325195
+              ],
+              [
+                270.59967041015625,
+                150.71011352539062,
+                -12.261852264404297
+              ],
+              [
+                214.02120971679688,
+                160.64642333984375,
+                -14.87768840789795
+              ],
+              [
+                199.8995361328125,
+                162.42840576171875,
+                -15.586630821228027
+              ],
+              [
+                185.77786254882812,
+                164.5389404296875,
+                -11.493452072143555
+              ],
+              [
+                171.65618896484375,
+                166.04336547851562,
+                -11.245936393737793
+              ],
+              [
+                157.53451538085938,
+                164.45187377929688,
+                -36.32929992675781
+              ],
+              [
+                143.41287231445312,
+                165.95645141601562,
+                -35.83338928222656
+              ],
+              [
+                129.29119873046875,
+                168.13882446289062,
+                -30.907716751098633
+              ],
+              [
+                112.3451919555664,
+                174.9429931640625,
+                8.113997459411621
+              ],
+              [
+                98.22352600097656,
+                177.00711059570312,
+                9.507745742797852
+              ],
+              [
+                84.10186004638672,
+                179.2755126953125,
+                14.99041748046875
+              ],
+              [
+                69.98019409179688,
+                180.38778686523438,
+                15.681052207946777
+              ],
+              [
+                55.858524322509766,
+                177.56808471679688,
+                -12.70647144317627
+              ],
+              [
+                41.736854553222656,
+                177.50717163085938,
+                -12.989381790161133
+              ],
+              [
+                27.615188598632812,
+                177.89593505859375,
+                -8.866934776306152
+              ],
+              [
+                13.493521690368652,
+                177.8331298828125,
+                -9.057883262634277
+              ],
+              [
+                -0.6281458735466003,
+                175.11111450195312,
+                -34.59507369995117
+              ],
+              [
+                -14.749813079833984,
+                175.04745483398438,
+                -35.0137939453125
+              ],
+              [
+                -28.871479034423828,
+                175.19979858398438,
+                -31.188919067382812
+              ],
+              [
+                -45.817481994628906,
+                178.31875610351562,
+                7.943353652954102
+              ],
+              [
+                -59.93914794921875,
+                177.4019775390625,
+                7.192786693572998
+              ],
+              [
+                -74.0608139038086,
+                176.85040283203125,
+                10.764328956604004
+              ],
+              [
+                -88.18248748779297,
+                176.11212158203125,
+                10.164835929870605
+              ],
+              [
+                -102.30415344238281,
+                173.33676147460938,
+                -15.832892417907715
+              ],
+              [
+                -116.42581176757812,
+                172.88619995117188,
+                -16.328332901000977
+              ],
+              [
+                -130.5474853515625,
+                172.7906494140625,
+                -12.598564147949219
+              ],
+              [
+                -144.66915893554688,
+                172.2760009765625,
+                -13.233587265014648
+              ],
+              [
+                -158.79083251953125,
+                169.59603881835938,
+                -39.45781326293945
+              ],
+              [
+                -172.9124755859375,
+                169.30029296875,
+                -35.235328674316406
+              ]
+            ],
+            "first_hits_on_glass": 32,
+            "min_seat_m": 0.901,
+            "max_seat_m": 0.916
+          }
+        },
+        "feature_exchange": {
+          "starboard": {
+            "samples": 32,
+            "world_samples": [
+              [
+                617.99267578125,
+                -40.672664642333984,
+                -3.321202516555786
+              ],
+              [
+                510.6679992675781,
+                -87.58489990234375,
+                -15.850959777832031
+              ],
+              [
+                389.2216796875,
+                -128.95230102539062,
+                -15.59420394897461
+              ],
+              [
+                267.77532958984375,
+                -171.26644897460938,
+                9.380939483642578
+              ],
+              [
+                216.84552001953125,
+                -170.70919799804688,
+                -35.373756408691406
+              ],
+              [
+                199.8995361328125,
+                -180.98135375976562,
+                5.907566547393799
+              ],
+              [
+                185.77786254882812,
+                -183.28717041015625,
+                5.8444294929504395
+              ],
+              [
+                171.65618896484375,
+                -186.411865234375,
+                10.388276100158691
+              ],
+              [
+                157.53451538085938,
+                -183.991943359375,
+                -15.36304759979248
+              ],
+              [
+                143.41287231445312,
+                -186.08139038085938,
+                -15.15627384185791
+              ],
+              [
+                129.29119873046875,
+                -188.75222778320312,
+                -10.525348663330078
+              ],
+              [
+                115.16952514648438,
+                -186.45098876953125,
+                -34.36311340332031
+              ],
+              [
+                101.04785919189453,
+                -188.41006469726562,
+                -33.464515686035156
+              ],
+              [
+                86.92619323730469,
+                -190.905029296875,
+                -28.42685317993164
+              ],
+              [
+                69.98019409179688,
+                -199.00869750976562,
+                11.3703031539917
+              ],
+              [
+                55.858524322509766,
+                -199.88058471679688,
+                11.370124816894531
+              ],
+              [
+                41.736854553222656,
+                -201.23138427734375,
+                15.255867004394531
+              ],
+              [
+                27.615188598632812,
+                -201.845947265625,
+                14.809290885925293
+              ],
+              [
+                13.493521690368652,
+                -197.93930053710938,
+                -13.368633270263672
+              ],
+              [
+                -0.6281458735466003,
+                -198.9659423828125,
+                -9.252618789672852
+              ],
+              [
+                -14.749813079833984,
+                -199.03195190429688,
+                -9.451786041259766
+              ],
+              [
+                -28.871479034423828,
+                -194.90020751953125,
+                -35.499671936035156
+              ],
+              [
+                -42.99314498901367,
+                -195.17901611328125,
+                -31.662120819091797
+              ],
+              [
+                -57.11481475830078,
+                -194.69241333007812,
+                -32.29016876220703
+              ],
+              [
+                -74.0608139038086,
+                -199.4207763671875,
+                6.453578948974609
+              ],
+              [
+                -88.18248748779297,
+                -199.20950317382812,
+                10.164835929870605
+              ],
+              [
+                -102.30415344238281,
+                -198.0897216796875,
+                9.719600677490234
+              ],
+              [
+                -116.42581176757812,
+                -193.4403076171875,
+                -16.328330993652344
+              ],
+              [
+                -130.5474853515625,
+                -192.67083740234375,
+                -12.598563194274902
+              ],
+              [
+                -144.66915893554688,
+                -191.7547607421875,
+                -13.233587265014648
+              ],
+              [
+                -158.79083251953125,
+                -188.52328491210938,
+                -39.45781326293945
+              ],
+              [
+                -172.9124755859375,
+                -189.22299194335938,
+                -35.235328674316406
+              ]
+            ],
+            "first_hits_on_glass": 32,
+            "min_seat_m": 0.909,
+            "max_seat_m": 1.101
+          },
+          "port": {
+            "samples": 32,
+            "world_samples": [
+              [
+                617.99267578125,
+                45.886348724365234,
+                0.5186575651168823
+              ],
+              [
+                499.37066650390625,
+                89.02737426757812,
+                -16.630596160888672
+              ],
+              [
+                380.7486572265625,
+                126.87979125976562,
+                5.6254777908325195
+              ],
+              [
+                270.59967041015625,
+                150.71011352539062,
+                -12.261852264404297
+              ],
+              [
+                214.02120971679688,
+                160.64642333984375,
+                -14.87768840789795
+              ],
+              [
+                199.8995361328125,
+                162.42840576171875,
+                -15.586630821228027
+              ],
+              [
+                185.77786254882812,
+                164.5389404296875,
+                -11.493452072143555
+              ],
+              [
+                171.65618896484375,
+                166.04336547851562,
+                -11.245936393737793
+              ],
+              [
+                157.53451538085938,
+                164.45187377929688,
+                -36.32929992675781
+              ],
+              [
+                143.41287231445312,
+                165.95645141601562,
+                -35.83338928222656
+              ],
+              [
+                129.29119873046875,
+                168.13882446289062,
+                -30.907716751098633
+              ],
+              [
+                112.3451919555664,
+                174.9429931640625,
+                8.113997459411621
+              ],
+              [
+                98.22352600097656,
+                177.00711059570312,
+                9.507745742797852
+              ],
+              [
+                84.10186004638672,
+                179.2755126953125,
+                14.99041748046875
+              ],
+              [
+                69.98019409179688,
+                180.38778686523438,
+                15.681052207946777
+              ],
+              [
+                55.858524322509766,
+                177.56808471679688,
+                -12.70647144317627
+              ],
+              [
+                41.736854553222656,
+                177.50717163085938,
+                -12.989381790161133
+              ],
+              [
+                27.615188598632812,
+                177.89593505859375,
+                -8.866934776306152
+              ],
+              [
+                13.493521690368652,
+                177.8331298828125,
+                -9.057883262634277
+              ],
+              [
+                -0.6281458735466003,
+                175.11111450195312,
+                -34.59507369995117
+              ],
+              [
+                -14.749813079833984,
+                175.04745483398438,
+                -35.0137939453125
+              ],
+              [
+                -28.871479034423828,
+                175.19979858398438,
+                -31.188919067382812
+              ],
+              [
+                -45.817481994628906,
+                178.31875610351562,
+                7.943353652954102
+              ],
+              [
+                -59.93914794921875,
+                177.4019775390625,
+                7.192786693572998
+              ],
+              [
+                -74.0608139038086,
+                176.85040283203125,
+                10.764328956604004
+              ],
+              [
+                -88.18248748779297,
+                176.11212158203125,
+                10.164835929870605
+              ],
+              [
+                -102.30415344238281,
+                173.33676147460938,
+                -15.832892417907715
+              ],
+              [
+                -116.42581176757812,
+                172.88619995117188,
+                -16.328332901000977
+              ],
+              [
+                -130.5474853515625,
+                172.7906494140625,
+                -12.598564147949219
+              ],
+              [
+                -144.66915893554688,
+                172.2760009765625,
+                -13.233587265014648
+              ],
+              [
+                -158.79083251953125,
+                169.59603881835938,
+                -39.45781326293945
+              ],
+              [
+                -172.9124755859375,
+                169.30029296875,
+                -35.235328674316406
+              ]
+            ],
+            "first_hits_on_glass": 32,
+            "min_seat_m": 0.827,
+            "max_seat_m": 0.912
+          }
+        }
+      },
+      "fit_record": {
+        "path": "Assets/ShipConcepts/door-windows-r197/delta-tree/fitted/finish.json",
+        "sha256": "036bf283190faeebcd9610264fb1029d905f7cf9e88e36b71561f077753485cd"
+      },
+      "lighting_record": {
+        "path": "Assets/ShipConcepts/door-windows-r197/delta-tree/fitted/light/lighting.json",
+        "sha256": "93c730f333c426f6620d62ace8c1a272e253a18d839d156c8de7e12e6451bcdd"
+      },
+      "appearance": {
+        "painting": {
+          "spots": [
+            {
+              "x": 445,
+              "center_y": 622.77,
+              "peak_chroma": 37.5,
+              "peak_luma": 87.7
+            },
+            {
+              "x": 445,
+              "center_y": 638.35,
+              "peak_chroma": 44.8,
+              "peak_luma": 104.7
+            },
+            {
+              "x": 445,
+              "center_y": 654.03,
+              "peak_chroma": 45.7,
+              "peak_luma": 97.7
+            },
+            {
+              "x": 465,
+              "center_y": 614.32,
+              "peak_chroma": 44.7,
+              "peak_luma": 98.5
+            },
+            {
+              "x": 465,
+              "center_y": 630.42,
+              "peak_chroma": 62.8,
+              "peak_luma": 119.7
+            },
+            {
+              "x": 465,
+              "center_y": 646.31,
+              "peak_chroma": 49.1,
+              "peak_luma": 110.5
+            },
+            {
+              "x": 510,
+              "center_y": 595.1,
+              "peak_chroma": 40.9,
+              "peak_luma": 93.1
+            },
+            {
+              "x": 510,
+              "center_y": 610.91,
+              "peak_chroma": 53.7,
+              "peak_luma": 112.5
+            },
+            {
+              "x": 510,
+              "center_y": 626.85,
+              "peak_chroma": 46.3,
+              "peak_luma": 92.4
+            },
+            {
+              "x": 555,
+              "center_y": 575.32,
+              "peak_chroma": 38.1,
+              "peak_luma": 91.1
+            },
+            {
+              "x": 555,
+              "center_y": 591.02,
+              "peak_chroma": 49.2,
+              "peak_luma": 111.0
+            },
+            {
+              "x": 555,
+              "center_y": 607.96,
+              "peak_chroma": 56.8,
+              "peak_luma": 115.5
+            },
+            {
+              "x": 603,
+              "center_y": 552.32,
+              "peak_chroma": 39.0,
+              "peak_luma": 98.4
+            },
+            {
+              "x": 603,
+              "center_y": 568.94,
+              "peak_chroma": 45.8,
+              "peak_luma": 113.9
+            },
+            {
+              "x": 603,
+              "center_y": 585.53,
+              "peak_chroma": 52.6,
+              "peak_luma": 113.7
+            },
+            {
+              "x": 650,
+              "center_y": 528.58,
+              "peak_chroma": 47.1,
+              "peak_luma": 107.2
+            },
+            {
+              "x": 650,
+              "center_y": 545.27,
+              "peak_chroma": 43.2,
+              "peak_luma": 113.3
+            },
+            {
+              "x": 650,
+              "center_y": 561.91,
+              "peak_chroma": 45.9,
+              "peak_luma": 109.3
+            },
+            {
+              "x": 663,
+              "center_y": 521.52,
+              "peak_chroma": 45.1,
+              "peak_luma": 110.7
+            },
+            {
+              "x": 663,
+              "center_y": 538.82,
+              "peak_chroma": 45.0,
+              "peak_luma": 108.3
+            },
+            {
+              "x": 663,
+              "center_y": 555.2,
+              "peak_chroma": 42.1,
+              "peak_luma": 99.9
+            }
+          ],
+          "rows_found": 21,
+          "samples": 21,
+          "mean_peak_chroma": 46.4,
+          "mean_peak_luma": 105.2
+        },
+        "previous": {
+          "spots": [
+            {
+              "x": 445,
+              "center_y": null,
+              "peak_chroma": 0.0,
+              "peak_luma": 120.9
+            },
+            {
+              "x": 445,
+              "center_y": null,
+              "peak_chroma": 0.0,
+              "peak_luma": 121.2
+            },
+            {
+              "x": 445,
+              "center_y": null,
+              "peak_chroma": 0.0,
+              "peak_luma": 121.8
+            },
+            {
+              "x": 465,
+              "center_y": null,
+              "peak_chroma": 0.0,
+              "peak_luma": 120.9
+            },
+            {
+              "x": 465,
+              "center_y": null,
+              "peak_chroma": 0.0,
+              "peak_luma": 121.2
+            },
+            {
+              "x": 465,
+              "center_y": null,
+              "peak_chroma": 0.0,
+              "peak_luma": 122.0
+            },
+            {
+              "x": 510,
+              "center_y": null,
+              "peak_chroma": 0.0,
+              "peak_luma": 121.2
+            },
+            {
+              "x": 510,
+              "center_y": null,
+              "peak_chroma": 0.0,
+              "peak_luma": 121.5
+            },
+            {
+              "x": 510,
+              "center_y": null,
+              "peak_chroma": 0.0,
+              "peak_luma": 121.6
+            },
+            {
+              "x": 555,
+              "center_y": null,
+              "peak_chroma": 0.0,
+              "peak_luma": 122.1
+            },
+            {
+              "x": 555,
+              "center_y": null,
+              "peak_chroma": 0.0,
+              "peak_luma": 122.4
+            },
+            {
+              "x": 555,
+              "center_y": null,
+              "peak_chroma": 0.0,
+              "peak_luma": 122.5
+            },
+            {
+              "x": 603,
+              "center_y": null,
+              "peak_chroma": 0.0,
+              "peak_luma": 122.5
+            },
+            {
+              "x": 603,
+              "center_y": null,
+              "peak_chroma": 0.0,
+              "peak_luma": 122.6
+            },
+            {
+              "x": 603,
+              "center_y": null,
+              "peak_chroma": 0.0,
+              "peak_luma": 123.0
+            },
+            {
+              "x": 650,
+              "center_y": null,
+              "peak_chroma": 0.0,
+              "peak_luma": 120.9
+            },
+            {
+              "x": 650,
+              "center_y": null,
+              "peak_chroma": 0.0,
+              "peak_luma": 121.2
+            },
+            {
+              "x": 650,
+              "center_y": null,
+              "peak_chroma": 0.0,
+              "peak_luma": 121.9
+            },
+            {
+              "x": 663,
+              "center_y": null,
+              "peak_chroma": 0.0,
+              "peak_luma": 118.1
+            },
+            {
+              "x": 663,
+              "center_y": null,
+              "peak_chroma": 0.0,
+              "peak_luma": 116.5
+            },
+            {
+              "x": 663,
+              "center_y": null,
+              "peak_chroma": 0.0,
+              "peak_luma": 119.9
+            }
+          ],
+          "rows_found": 0,
+          "samples": 21,
+          "mean_peak_chroma": 0.0,
+          "mean_peak_luma": 121.2,
+          "mean_center_gap_px": null
+        },
+        "study": {
+          "spots": [
+            {
+              "x": 445,
+              "center_y": 621.92,
+              "peak_chroma": 54.8,
+              "peak_luma": 155.4
+            },
+            {
+              "x": 445,
+              "center_y": 638.43,
+              "peak_chroma": 55.7,
+              "peak_luma": 145.1
+            },
+            {
+              "x": 445,
+              "center_y": 653.93,
+              "peak_chroma": 51.0,
+              "peak_luma": 170.9
+            },
+            {
+              "x": 465,
+              "center_y": 614.1,
+              "peak_chroma": 53.9,
+              "peak_luma": 162.1
+            },
+            {
+              "x": 465,
+              "center_y": 629.82,
+              "peak_chroma": 53.2,
+              "peak_luma": 150.3
+            },
+            {
+              "x": 465,
+              "center_y": 645.42,
+              "peak_chroma": 50.7,
+              "peak_luma": 162.6
+            },
+            {
+              "x": 510,
+              "center_y": 594.34,
+              "peak_chroma": 59.1,
+              "peak_luma": 148.0
+            },
+            {
+              "x": 510,
+              "center_y": 610.75,
+              "peak_chroma": 56.8,
+              "peak_luma": 153.8
+            },
+            {
+              "x": 510,
+              "center_y": 625.97,
+              "peak_chroma": 49.9,
+              "peak_luma": 152.4
+            },
+            {
+              "x": 555,
+              "center_y": 572.99,
+              "peak_chroma": 56.9,
+              "peak_luma": 172.5
+            },
+            {
+              "x": 555,
+              "center_y": 590.64,
+              "peak_chroma": 49.3,
+              "peak_luma": 172.0
+            },
+            {
+              "x": 555,
+              "center_y": 606.29,
+              "peak_chroma": 54.3,
+              "peak_luma": 154.5
+            },
+            {
+              "x": 603,
+              "center_y": 550.81,
+              "peak_chroma": 53.3,
+              "peak_luma": 154.2
+            },
+            {
+              "x": 603,
+              "center_y": 567.79,
+              "peak_chroma": 52.3,
+              "peak_luma": 160.1
+            },
+            {
+              "x": 603,
+              "center_y": 583.73,
+              "peak_chroma": 52.1,
+              "peak_luma": 163.3
+            },
+            {
+              "x": 650,
+              "center_y": 528.21,
+              "peak_chroma": 54.3,
+              "peak_luma": 155.7
+            },
+            {
+              "x": 650,
+              "center_y": 544.54,
+              "peak_chroma": 56.3,
+              "peak_luma": 156.4
+            },
+            {
+              "x": 650,
+              "center_y": 561.23,
+              "peak_chroma": 49.2,
+              "peak_luma": 158.8
+            },
+            {
+              "x": 663,
+              "center_y": 521.92,
+              "peak_chroma": 52.9,
+              "peak_luma": 140.6
+            },
+            {
+              "x": 663,
+              "center_y": 538.76,
+              "peak_chroma": 49.5,
+              "peak_luma": 160.2
+            },
+            {
+              "x": 663,
+              "center_y": 554.92,
+              "peak_chroma": 47.7,
+              "peak_luma": 167.1
+            }
+          ],
+          "rows_found": 21,
+          "samples": 21,
+          "mean_peak_chroma": 53.0,
+          "mean_peak_luma": 157.9,
+          "mean_center_gap_px": 0.76
+        },
+        "selected": {
+          "spots": [
+            {
+              "x": 445,
+              "center_y": 621.83,
+              "peak_chroma": 53.3,
+              "peak_luma": 101.3
+            },
+            {
+              "x": 445,
+              "center_y": 638.29,
+              "peak_chroma": 51.0,
+              "peak_luma": 93.8
+            },
+            {
+              "x": 445,
+              "center_y": 654.01,
+              "peak_chroma": 56.2,
+              "peak_luma": 118.0
+            },
+            {
+              "x": 465,
+              "center_y": 613.66,
+              "peak_chroma": 55.6,
+              "peak_luma": 112.3
+            },
+            {
+              "x": 465,
+              "center_y": 629.59,
+              "peak_chroma": 47.4,
+              "peak_luma": 101.5
+            },
+            {
+              "x": 465,
+              "center_y": 645.74,
+              "peak_chroma": 52.6,
+              "peak_luma": 111.7
+            },
+            {
+              "x": 510,
+              "center_y": 593.69,
+              "peak_chroma": 51.4,
+              "peak_luma": 99.5
+            },
+            {
+              "x": 510,
+              "center_y": 610.42,
+              "peak_chroma": 56.2,
+              "peak_luma": 100.7
+            },
+            {
+              "x": 510,
+              "center_y": 626.36,
+              "peak_chroma": 50.8,
+              "peak_luma": 101.1
+            },
+            {
+              "x": 555,
+              "center_y": 573.25,
+              "peak_chroma": 55.3,
+              "peak_luma": 120.6
+            },
+            {
+              "x": 555,
+              "center_y": 590.44,
+              "peak_chroma": 55.7,
+              "peak_luma": 120.4
+            },
+            {
+              "x": 555,
+              "center_y": 606.13,
+              "peak_chroma": 48.5,
+              "peak_luma": 105.5
+            },
+            {
+              "x": 603,
+              "center_y": 551.15,
+              "peak_chroma": 48.2,
+              "peak_luma": 103.1
+            },
+            {
+              "x": 603,
+              "center_y": 567.37,
+              "peak_chroma": 53.1,
+              "peak_luma": 107.6
+            },
+            {
+              "x": 603,
+              "center_y": 583.4,
+              "peak_chroma": 56.0,
+              "peak_luma": 110.6
+            },
+            {
+              "x": 650,
+              "center_y": 527.9,
+              "peak_chroma": 50.0,
+              "peak_luma": 106.3
+            },
+            {
+              "x": 650,
+              "center_y": 544.8,
+              "peak_chroma": 53.3,
+              "peak_luma": 103.6
+            },
+            {
+              "x": 650,
+              "center_y": 560.91,
+              "peak_chroma": 53.0,
+              "peak_luma": 107.7
+            },
+            {
+              "x": 663,
+              "center_y": 521.96,
+              "peak_chroma": 44.3,
+              "peak_luma": 90.4
+            },
+            {
+              "x": 663,
+              "center_y": 539.01,
+              "peak_chroma": 54.3,
+              "peak_luma": 108.7
+            },
+            {
+              "x": 663,
+              "center_y": 554.93,
+              "peak_chroma": 55.6,
+              "peak_luma": 112.6
+            }
+          ],
+          "rows_found": 21,
+          "samples": 21,
+          "mean_peak_chroma": 52.5,
+          "mean_peak_luma": 106.5,
+          "mean_center_gap_px": 0.85
+        }
+      },
+      "in_memory_recipe_replay": {
+        "native_meshes_with_identical_positions_faces_surface_slots_and_uvs": 110,
+        "close_camera_max_coordinate_error_px": 0.000265,
+        "original_camera_max_coordinate_error_px": 8.83e-05
+      },
+      "exchange_finishes": {
+        "exported_pane_emission_factors": {
+          "Delta · passenger dark glass": [
+            0,
+            0,
+            0
+          ],
+          "Delta · passenger shaded amber": [
+            0.034500001996755625,
+            0.015410000663399703,
+            0.0052900001062452795
+          ],
+          "Delta · passenger warm amber": [
+            0.2172500106096269,
+            0.11495000596642502,
+            0.04235000068843364
+          ],
+          "Delta · passenger soft amber": [
+            0.1080000059008599,
+            0.05400000295042995,
+            0.018799999636411657
+          ],
+          "Delta · passenger clear amber": [
+            0.4755999821662904,
+            0.28863999591827394,
+            0.12709999986886977
+          ]
+        }
+      },
+      "first_trial": {
+        "path": "Assets/ShipConcepts/door-windows-r197/delta-tree/study/detail.png",
+        "sha256": "8a6f7a6277879478f4728921da86217cf8d44b6ec75bd79311d791fc47d912b5"
+      },
+      "receipts": [
+        {
+          "path": "Assets/ShipConcepts/door-windows-r197/delta-tree/fitted.ledger-record.json",
+          "sha256": "914196d9655737af858d99b3d626a096c4eabc9350066f3b980c2d5757720c2c"
+        },
+        {
+          "path": "Assets/ShipConcepts/door-windows-r197/delta-tree/study.ledger-record.json",
+          "sha256": "92cd32de55b7a0bcc9a339f9139679ffab7fddd734cd745998f07188ae60b69e"
+        }
+      ],
+      "glb": {
+        "path": "Assets/ShipConcepts/door-windows-r197/delta-tree/fitted/delta-tree.glb",
+        "sha256": "caf42acb0ebb6d4986a1ef42927cb98c3c36f90865cce93c72c5a13d89b863da"
+      },
+      "blend": {
+        "path": "Assets/ShipConcepts/door-windows-r197/delta-tree/fitted/delta-tree.blend",
+        "sha256": "825f3f903da6f6507ba840948b71135ff31a9a9720d41e6eb77d643b777a0ad7"
+      },
+      "gallery": {
+        "path": "Assets/ShipConcepts/door-windows-r197/delta-tree/fitted/gallery.png",
+        "sha256": "7945e2211ced11af307b0bbbd950217da79cdd2d751b10205dbf27891f956433"
+      },
+      "base_gallery": {
+        "path": "Assets/ShipConcepts/door-windows-r197/delta-tree/fitted/before-gallery.png",
+        "sha256": "2bb66ec66d51d03f0800ab94d51ed6623c3a7a0310f7e8eae72ff9bffb1e4a19"
+      },
+      "board": {
+        "path": "Assets/ShipConcepts/door-windows-r197/delta-tree/fitted/comparison.webp",
+        "sha256": "023b12c69f19a89699043015092d2895abbe9e398696b359a3c5d2793c94d42a"
+      },
+      "renders": [
+        {
+          "path": "Assets/ShipConcepts/door-windows-r197/delta-tree/fitted/before-port.png",
+          "sha256": "f5c997fa75c4fae4ef178a07baeb131b0a1d012044e68d8328c7f4f2933ab535"
+        },
+        {
+          "path": "Assets/ShipConcepts/door-windows-r197/delta-tree/fitted/port.png",
+          "sha256": "828d5fb2c3610abf023554b4b3a254c17846d10308cd00587de818424515072e"
+        },
+        {
+          "path": "Assets/ShipConcepts/door-windows-r197/delta-tree/fitted/before-top.png",
+          "sha256": "862511d00e62baf6ed72378205ff27fba8b7d4ed9c3344f065ed1b99992d87fc"
+        },
+        {
+          "path": "Assets/ShipConcepts/door-windows-r197/delta-tree/fitted/top.png",
+          "sha256": "b2eb1c9c0e801d0b90faf49c1b18dea3aa0d15a46149e61b65d5b571a626b1a9"
+        },
+        {
+          "path": "Assets/ShipConcepts/door-windows-r197/delta-tree/fitted/before-detail.png",
+          "sha256": "77051329a13c2fefd1047d591a08771377318dc7ed0551df372aa8a599032130"
+        },
+        {
+          "path": "Assets/ShipConcepts/door-windows-r197/delta-tree/fitted/detail.png",
+          "sha256": "0d3c178b39e1c381446b9c3e34a4b919bedab75873a5019d29e40c828c08e79c"
+        },
+        {
+          "path": "Assets/ShipConcepts/door-windows-r197/delta-tree/fitted/light/turned-key.png",
+          "sha256": "54c3bf5fd2f35c28f3ca511138239b31fdfafddd1dd775071fdb13ed95f06210"
+        },
+        {
+          "path": "Assets/ShipConcepts/door-windows-r197/delta-tree/fitted/light/emitters-only.png",
+          "sha256": "3408c2edfcde26d4677b4d49534b523af7d3eb218f5d2a06755ecb2db27fcaab"
+        }
+      ],
+      "detail_box_painting_px": [
+        370,
+        490,
+        689,
+        688
+      ],
+      "detail_raster_px": [
+        957,
+        594
+      ],
+      "geometry": {
+        "panes_by_deck": {
+          "port": [
+            333,
+            333,
+            282
+          ],
+          "starboard": [
+            333,
+            334,
+            284
+          ]
+        },
+        "window_modules": 281,
+        "dense_start_plan_px": 233.26,
+        "dense_station_end_plan_px": 449,
+        "glazing_offset_m": 0.91,
+        "highest_reveal_offset_m": 1.24
+      },
+      "side_reference_dense_bounds_px": [
+        200,
+        409
+      ],
+      "limit": "The dense rows start and end farther aft than the side sheet. The painting sets the visible port rows. Opposite-side pane occupancy is inferred."
+    }
+  },
+  "asset_ledger": {
+    "expected_local_blender_jobs": 6,
+    "captured": {
+      "aquila-r197-glacier-tongue-cast": "req_15bfdb2e7a46808f32c5b221",
+      "aquila-r197-glacier-tongue-ceramic": "req_99e7028f262e4d54de228f68",
+      "aquila-r197-glacier-tongue-fitted": "req_42975a20f603ef3634911d88",
+      "aquila-r197-delta-tree-fitted": "req_979a3b9dff74c6d1a7f0c16a",
+      "aquila-r197-delta-tree-study": "req_8e11d55ff48242a539285b25",
+      "aquila-r197-glacier-tongue-study": "req_9a8cac8c5be7c9c2a660c6be"
+    },
+    "paid_provider_credits": 0
+  },
+  "asset_pipeline": [
+    {
+      "path": "knowledge/asset-turnaround-sheets.md",
+      "sha256": "a7372fc4f4e6fbd6d2445d0ec399f76c41246472e72c4002f2d200efeaa85589"
+    },
+    {
+      "path": "Tools/asset-pipeline/experimental/blender_reference_modeling/detail_frame.py",
+      "sha256": "eda711b2ef4a6748fc2a7671f2682f03b6f7225311d541de790cb57edab09e4f"
+    },
+    {
+      "path": "Tools/asset-pipeline/experimental/blender_reference_modeling/review_view.py",
+      "sha256": "4a19242cacaaecd0ec8295bc2dd2fa27a453ba9af4fb5e5e5ab2158d2e7b9163"
+    },
+    {
+      "path": "Tools/asset-pipeline/experimental/blender_reference_modeling/warm_window_rows.py",
+      "sha256": "b5ab9342e98039601b7113b1fdc8d78e351bfd86eafaf45954fb87663a5157d4"
+    },
+    {
+      "path": "Tools/asset-pipeline/experimental/blender_reference_modeling/registered_finish.py",
+      "sha256": "862d3435de32b8714ebc1497e8c58d4f31ab56ba4e883578645fd2115d468054"
+    },
+    {
+      "path": "Tools/asset-pipeline/experimental/blender_reference_modeling/rounded_quad.py",
+      "sha256": "90e0e14522baaa8c7ef5e53b942215e198e8159a5bf3fb76b0daa57a063aee33"
+    },
+    {
+      "path": "Tools/asset-pipeline/experimental/aquila_research_battleships/turnaround/feature_finishes.py",
+      "sha256": "0b61748ff7712f02d5b6c0c3a7fff0b85390c27f716784d24e790426b2299697"
+    },
+    {
+      "path": "Tools/asset-pipeline/experimental/aquila_research_battleships/turnaround/glacier_arrival.py",
+      "sha256": "2a315648f547235e0c0a92d2d681346ca2821c02c2aac5c6f1f54b07e191ff89"
+    },
+    {
+      "path": "Tools/asset-pipeline/experimental/aquila_research_battleships/turnaround/delta_window_belts.py",
+      "sha256": "913c92da0347b9b5eabe3eed14d512237fa45e15394feb588895d4c74df5fbff"
+    },
+    {
+      "path": "Tools/asset-pipeline/experimental/aquila_research_battleships/turnaround/dock_window_landmarks.json",
+      "sha256": "4891af776df62e45b6b6a14a84af5ff4009858236fa831fdca75b220cf066da2"
+    },
+    {
+      "path": "Tools/asset-pipeline/experimental/aquila_research_battleships/turnaround/dock_window_checks.py",
+      "sha256": "2dfe05f9dea857f65b0f724665fb0476227cc70cdd037f64e5bdafd2a208d6f9"
+    },
+    {
+      "path": "Tools/asset-pipeline/experimental/aquila_research_battleships/turnaround/turnaround_parts.py",
+      "sha256": "af6669b3eb36762fb413e3aeaa33cee4c8945cd74267fdd18a46de2729529185"
+    },
+    {
+      "path": "Tools/asset-pipeline/experimental/aquila_research_battleships/turnaround/glacier_landings.py",
+      "sha256": "2fba6cf1354bc22d205aa545c6492045d2356c77206bcccff5d29d84104ab1ad"
+    },
+    {
+      "path": "Tools/asset-pipeline/experimental/aquila_research_battleships/turnaround/landing_check.py",
+      "sha256": "dc3ddd0c296db3896657a50a3c2d670e7470802f6bfe19391392ec8f04f10285"
+    },
+    {
+      "path": "Tools/asset-pipeline/experimental/aquila_research_battleships/turnaround/turnaround_traces.json",
+      "sha256": "b4501951c9ce0fe59ca4a7dea3dfaf8a8a69f4d7c9623f5295c0d2a7f082219a"
+    },
+    {
+      "path": "Tools/asset-pipeline/experimental/aquila_research_battleships/reference_hulls/arrival_marks.json",
+      "sha256": "f8bc1933c97dd7d8fd0fb7879d416b8dab59256526fb533203c1ca52a95a791d"
+    }
+  ],
+  "viewer": {
+    "method": "Isolated headless Chrome with WebGL",
+    "ships": {
+      "delta-tree": {
+        "original_loaded": true,
+        "native_and_uniform_clay": true,
+        "stern_and_reset": true,
+        "drag_rotates": true,
+        "downloaded_model_matches": true,
+        "download_sha256": "caf42acb0ebb6d4986a1ef42927cb98c3c36f90865cce93c72c5a13d89b863da",
+        "model_view_pixel_differences": {
+          "gray": 13.64,
+          "stern": 31.78,
+          "drag": 20.72,
+          "reset": 0.0
+        },
+        "switches_between_revisions": true,
+        "previous_to_current_pixel_difference": 3.43
+      },
+      "glacier-tongue": {
+        "original_loaded": true,
+        "native_and_uniform_clay": true,
+        "stern_and_reset": true,
+        "drag_rotates": true,
+        "downloaded_model_matches": true,
+        "download_sha256": "b4bd450d521fdf2766d0203316d904fc83f2745237abe4c848297bece66bf0ab",
+        "model_view_pixel_differences": {
+          "gray": 12.07,
+          "stern": 27.92,
+          "drag": 15.68,
+          "reset": 0.0
+        },
+        "switches_between_revisions": true,
+        "previous_to_current_pixel_difference": 0.75
+      }
+    }
+  },
+  "delivery": {
+    "served_local_report_round": 197,
+    "http_artifacts_matching_sha256": 10,
+    "verified_files": [
+      "r197-glacier-tongue-comparison.webp",
+      "r197-glacier-tongue.blend",
+      "r197-glacier-tongue.glb",
+      "r197-glacier-tongue-gallery.png",
+      "r197-glacier-tongue-earlier-gallery.png",
+      "r197-delta-tree-comparison.webp",
+      "r197-delta-tree.blend",
+      "r197-delta-tree.glb",
+      "r197-delta-tree-gallery.png",
+      "r197-delta-tree-earlier-gallery.png"
+    ],
+    "served_gallery_cameras_match": true,
+    "asset_pipeline_source_hashes_and_guide_links_verified": true,
+    "viewer": "Both models rotate, reset, switch revision and download in isolated headless Chrome.",
+    "paseo_workspace": "The existing workspace report tab displayed round 197, both ship summaries and the comparison thread."
+  }
+}

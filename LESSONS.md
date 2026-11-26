@@ -1,5 +1,57 @@
 # Lessons
 
+## 2026-11-26 [M] Measure a curved armor edge in each source view
+
+Glacier’s first fit brought the bay lip within half a pixel of the original painting but raised it above the side drawing. Folding the edge along the gallery sightline reduced the side discrepancy. The new face angle also darkened the finish under the same studio lights. Check the outline and color again after a depth correction. [Measured views and finishes](Docs/Testing/research-battleship-bay-armor-and-drives.json).
+
+## 2026-11-26 [M] Grade doorway lights and their surround separately
+
+Glacier’s first lit room nearly matched the painted interior brightness while the dark casing exaggerated its contrast. Sampling the collar separately brought its average to 74.8 against 76.1 in the painting. Rays through the opening and along the corridor independently confirmed the modeled depth. [Lighting, gallery marks and clearance probes](Docs/Testing/research-battleship-docking-and-windows.json).
+
+## 2026-11-26 [M] Use the tread and back wall to check a ship landing
+
+The painting gives the lip’s apparent position. The overhead sheet supplies its depth. A side ray checks the actual recess behind the deck. Sampling the entire model distinguishes a tread from its edge and supports. [Forward landing comparison](Docs/Testing/research-battleship-landings-and-cabin.json).
+
+## 2026-11-26 [M] Check a glazed cabin against each reference view
+
+All six overhead roof marks and four of five side roof marks hit Delta’s plated cabin. Only two of six roof marks in the original painting hit it. Retain the fixed gallery while fitting the footprint from the sheet, and record where glass marks encounter metal frames. [Observatory and armor evidence](Docs/Testing/research-battleship-forward-armor-and-observatory.json).
+
+## 2026-11-26 [M] Check lit windows separately from reflective hull plating
+
+With every studio light off, Glacier’s cabin panes remained visible and Delta’s metal seams went dark. Under fixed lighting the silver plates and slate floors moved closer to their reference colors. The glazing still averaged brighter than the painting. [Paired renders and measurements](Docs/Testing/research-battleship-feature-finishes.json).
+
+## 2026-11-26 [M] Check camera tilt before fitting an exposed feature
+
+The bow-only overlay put Glacier’s blade tip above its painted mark. Three fixed hull landmarks corrected the camera roll, scale and position. Four other landmarks moved from 80.75 to 23.92 pixels mean distance. Under the corrected camera the earlier tip sat below the mark. Compare two shapes in one checked camera before moving the mesh. [Frame and blade measurements](Docs/Testing/research-battleship-blade-and-courtyards.json).
+
+## 2026-11-25 [M] Check a second landmark after matching the outline
+
+Glacier’s overhead width reached 32.8% of its length against the sheet’s 33.3%. With the bows aligned in the 1,024 px painting, the model’s blade tip still sat about 46 px forward and 36 px high. Register a known point at fixed scale, then inspect another part before moving surface detail. [Measured landmarks and hulls](Docs/Testing/research-battleship-sheet-blockouts.json) · [Reusable comparison method](<D:/OtherProjects/asset-pipeline/knowledge/asset-turnaround-sheets.md#build-an-exterior-from-two-checked-views>).
+
+## 2026-11-25 [M] Compare beam and handedness within a single generated sheet
+
+The bow panels drew Delta Tree at twice its overhead beam and Glacier Tongue at about 1.5 times. Glacier’s underside kept the blade on the same page edge as its top with both noses pointing left. Calibrate from hull length, use the open bay to check handedness, and preserve original crops beside any corrected working view. [Measured sheets and marked outlines](Docs/Testing/research-battleship-turnarounds.json).
+
+## 2026-11-25 [M] Check the reference pictures against each other
+
+Every selected ship generation received its original. Twenty-one also received a picture later replaced in the pack. Glacier’s two selected stern views show different outlet counts, despite sharing the original and port drawing. Check part counts, spacing and handedness between the pictures before judging the mesh. Trace which earlier picture a later view used when a detail repeats. [Verified inputs and paired artwork](Docs/Testing/research-battleship-reference-consistency.json).
+
+## 2026-11-25 [M] Check visible finishes from the side as well as the original camera
+
+Glacier’s upper windows reached twelve marked spots in the main painting but only four in the port study. Moving their rim along the main camera’s sightline raised the port count to seven while preserving all twelve gallery hits. The overhead view still showed an oversized deck. Use named mesh and material hits to locate occlusion, then inspect the third view for changes in width. [Saved samples and drawings](Docs/Testing/research-battleship-upper-hulls.json).
+
+## 2026-11-25 [M] Preserve the stern width when shortening a side fairing
+
+Moving Delta’s full side fairing aft covered the arrival room. Shortening it from the front kept the doorway clear. Narrowing it also increased mean error against four marked stern widths from 1.97 to 29.42 metres. Restoring its original beam recovered those widths. Measure the profiles that a new change could affect even when they sit outside the main review angle. [Compared geometry and side studies](Docs/Testing/research-battleship-branch-deck-and-blade.json).
+
+## 2026-11-25 [M] Use two views to place a ship entrance
+
+Delta Tree’s first open hatch matched the oblique painting but sat too far forward in the port drawing. Using the bow, stern and doorway station placed it 71.3% aft. Sampling the interior and surrounding frame separately then exposed which hull faces blocked the room. Keep the straight elevation beside the gallery view when judging attached armor. [References, meshes and checked sightlines](Docs/Testing/research-battleship-arrival-portals.json).
+
+## 2026-11-25 [M] Check the report named inside a Perplexity export
+
+The loose camera conversation pointed to a separate full report inside a ZIP. Its three loose figures matched the ZIP members byte for byte. The full report identified its exact console request in the header. For a mixed download, follow the attachment list, preserve relative figure names and compare the console download with the original report bytes. [Verified imports and attachment inventory](Docs/Research/research-battleship-reference-matching-returns-v1.json).
+
 ## 2026-11-25 [M] Inspect the material assigned to the visible surface
 
 Delta Tree’s export includes roughness and normal textures on several materials. Its painted upper deck uses one constant roughness and no normal texture. Inspecting textures across the whole asset would miss that distinction. On Glacier, fixed-crop brightness identified a darker dock. The crop includes geometry and reflected light, so its brightness alone cannot determine lamp power. [Material assignment and measured crop](Docs/Testing/research-battleship-material-review-baseline.json).
@@ -387,3 +439,7 @@ Both Windows hull exports matched the boarding proportion studies byte for byte 
 ### 2026-11-25 [M] Check the review geometry after removing the paint
 
 Each revised ship reopened from its self-contained 3D export at 1,280 m. Rays through Delta Tree’s modeled deck found eleven recessed courtyards. Separate rays through Glacier Tongue found all three crossing roofs and floors. A painted view, gray view and free orbit let the owner judge likeness separately. [Geometry and interchange checks](Docs/Testing/research-battleship-hull-review.json).
+
+### 2026-11-25 [M] A matching highlight can hide a flat wall
+
+Glacier’s uniform dock finish came closest to the painting’s whole-opening highlight. Zooming into the rear wall showed bright, blank panels. Two patterned surfaces improved the interior color and brought back service details. Sampling nearby armor isolated the change to the dock. [Lighting comparisons and measured regions](Docs/Research/research-battleship-reference-matching-review-v1.md#materials).

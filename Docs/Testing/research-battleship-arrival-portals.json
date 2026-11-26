@@ -1,0 +1,1515 @@
+{
+  "round": 185,
+  "comparison_round": 184,
+  "local_date": "2026-11-25",
+  "created_utc": "2026-11-26T02:32:40.432391+00:00",
+  "scope": "Local Blender art comparison. Windows playable hulls remain at round 172.",
+  "owner_reply": {
+    "path": "reports/game-direction/inbox/20261126T015539Z.json",
+    "sha256": "841012451defae3f2e4377f836bc5136a57e7c89cf5fdd3c52fe767e487f993f",
+    "submitted_at": "20261126T015539Z",
+    "values": {
+      "aquila-direction-r184-delta-tree": "Yes, closer",
+      "aquila-direction-r184-glacier-tongue": "Yes, closer"
+    },
+    "chat_direction": "It's closer and it's improvements, but as long as we can keep going and as long as you can keep finding better ways to match up and make sure things are matching and make improvements and iterate, right? Let's just keep going."
+  },
+  "method": "Fixed orthographic gallery cameras. Marked 16 interior pixels and eight on each surround. Sampled the first visible opaque mesh face through the complete assemblies. Several marks guided iterations. Straight port registrations use one uniform scale and translation each. One view cannot verify hidden shapes. The supporting drawings are independent illustrations.",
+  "research": "Docs/Research/research-battleship-reference-matching-review-v1.md",
+  "ships": {
+    "delta-tree": {
+      "name": "Delta Tree",
+      "original": {
+        "path": "Assets/ShipConcepts/sunburst-r144/58-delta-tree.png",
+        "sha256": "6628ed15b22fbf2990729eb8417b9babcb66cc8ebcb5635dad57c8776efeeac3"
+      },
+      "port_drawing": {
+        "path": "Assets/ShipConcepts/modeling-references-r150/delta-tree/01-port.png",
+        "sha256": "df50389db222ce4f72ef84666517a1cce1bd0f95eaf5f2d837024cde9553a46c"
+      },
+      "door_details": [
+        {
+          "path": "Assets/ShipConcepts/modeling-references-r150/delta-tree/11-dock-section.png",
+          "sha256": "262fe4e302b50cf980e99748f005e6bbf1f4853aa2dab264f11206dd668ca6f3"
+        },
+        {
+          "path": "Assets/ShipConcepts/modeling-references-r150/delta-tree/16-shuttle-ramp.png",
+          "sha256": "10a9671a9f10b62ab9a5ff70276cb98a87b814283ddf0c1f6dc633ec031b77cd"
+        },
+        {
+          "path": "Assets/ShipConcepts/modeling-references-r150/delta-tree/18-door-open.png",
+          "sha256": "0e1786d5094a053a0ca7fb4f44f301fa6cb991f9a4bbb996b1c1a698fb90e8fb"
+        }
+      ],
+      "blend": {
+        "path": "Assets/ShipConcepts/hull-review-r185/bronze-floor/delta-tree/delta-tree.blend",
+        "sha256": "38f12a0ca783f17034a278882792142eccb20669444dee83afb062e653b80665"
+      },
+      "glb": {
+        "path": "Assets/ShipConcepts/hull-review-r185/bronze-floor/delta-tree/delta-tree.glb",
+        "sha256": "35b33e7c19ac2bca3d55c208c22d52c9506051e99d8bc8426eabc49b59663ee9"
+      },
+      "gallery": {
+        "path": "Assets/ShipConcepts/hull-review-r185/bronze-floor/renders/delta-tree-gallery.png",
+        "sha256": "130286ee296f6bbc234646e3cc7b12571429b5cc1c21dec32f56988235280519"
+      },
+      "previous_glb": {
+        "path": "Assets/ShipConcepts/hull-review-r184/delta-tree/delta-tree.glb",
+        "sha256": "c3df4e2314a1261d719f0a33cf14a1a60f00a7dcd6809749ecf8305ce79838fb"
+      },
+      "previous_gallery": {
+        "path": "Assets/ShipConcepts/hull-review-r184/renders/delta-tree-gallery.png",
+        "sha256": "af1e3830e4e9755ce20e2d35625dead2289174fd604ad88b40cf4df04e04bc59"
+      },
+      "entrance": {
+        "path": "Assets/ShipConcepts/hull-review-r185/bronze-floor/sheets/delta-tree-entrance.png",
+        "sha256": "8ea4e10d9735357dea403acfb4a7c2645fcaa3c2703508032269e3063deb995e"
+      },
+      "whole": {
+        "path": "Assets/ShipConcepts/hull-review-r185/bronze-floor/sheets/delta-tree-gallery.png",
+        "sha256": "c5072941c5124ad5519244f27e00c5f2bccf5e6a23ed54ad1c925f7694e6906a"
+      },
+      "side": {
+        "path": "Assets/ShipConcepts/hull-review-r185/bronze-floor/sheets/delta-tree-port.png",
+        "sha256": "b30493e41679c5b2911e6ed067fa9eae613f800ccdf6b1f5a2f5e202242cc1e5"
+      },
+      "side_registration": {
+        "path": "Assets/ShipConcepts/hull-review-r185/elevations/delta-tree-alignment.json",
+        "sha256": "5bf9b25603075425a8c4a2bd312ca778de83c28dfa989e4f4bf68e7ce538050c"
+      },
+      "side_raw": {
+        "path": "Assets/ShipConcepts/hull-review-r185/elevations/delta-tree-bronze.png",
+        "sha256": "365153481bbacf6ed2c070001fbe29327e766096191b50b2458c058a8a8a57c6"
+      },
+      "geometry_check": {
+        "path": "Assets/ShipConcepts/hull-review-r185/bronze-floor/delta-tree/geometry-check.json",
+        "sha256": "8a4ed5216f6ef736d2d708668caa91eaa1a4ad96a8338939bfdb1e7c33955599"
+      },
+      "triangles": 149884,
+      "native_m": [
+        1280.0,
+        604.9844360351562,
+        422.30076599121094
+      ],
+      "glb_m": [
+        1280.0,
+        604.9844360351562,
+        422.30076599121094
+      ],
+      "native_packed_maps": 21,
+      "glb_embedded_maps": 21,
+      "gallery_samples": {
+        "inside": {
+          "previous_room_hits": 0,
+          "current_room_hits": 16,
+          "count": 16,
+          "samples": [
+            {
+              "pixel": [
+                778,
+                502
+              ],
+              "prior_mesh": "Delta · Twelve separate drive housings",
+              "prior_material": "delta-tree · metal",
+              "prior_face": 120,
+              "mesh": "Delta · Port arrival chamber",
+              "material": "delta-tree · arrival_bulkhead",
+              "native_face": 28,
+              "glb_face": 301,
+              "world_m": [
+                -301.5404,
+                199.0365,
+                -18.3609
+              ]
+            },
+            {
+              "pixel": [
+                778,
+                514
+              ],
+              "prior_mesh": "Delta · Twelve separate drive housings",
+              "prior_material": "delta-tree · metal",
+              "prior_face": 113,
+              "mesh": "Delta · Port arrival chamber",
+              "material": "delta-tree · arrival_floor",
+              "native_face": 27,
+              "glb_face": 279,
+              "world_m": [
+                -289.5229,
+                211.2243,
+                -23.9267
+              ]
+            },
+            {
+              "pixel": [
+                779,
+                527
+              ],
+              "prior_mesh": "Delta · Twelve separate drive housings",
+              "prior_material": "delta-tree · black",
+              "prior_face": 112,
+              "mesh": "Delta · Port arrival chamber",
+              "material": "delta-tree · arrival_floor",
+              "native_face": 27,
+              "glb_face": 279,
+              "world_m": [
+                -268.6879,
+                234.147,
+                -23.1664
+              ]
+            },
+            {
+              "pixel": [
+                784,
+                498
+              ],
+              "prior_mesh": "Delta · Twelve separate drive housings",
+              "prior_material": "delta-tree · metal",
+              "prior_face": 120,
+              "mesh": "Delta · Port arrival chamber",
+              "material": "delta-tree · arrival_bulkhead",
+              "native_face": 28,
+              "glb_face": 301,
+              "world_m": [
+                -310.7315,
+                199.0365,
+                -16.998
+              ]
+            },
+            {
+              "pixel": [
+                784,
+                510
+              ],
+              "prior_mesh": "Delta · Twelve separate drive housings",
+              "prior_material": "delta-tree · metal",
+              "prior_face": 114,
+              "mesh": "Delta · Port arrival chamber",
+              "material": "delta-tree · arrival_floor",
+              "native_face": 27,
+              "glb_face": 279,
+              "world_m": [
+                -301.8439,
+                207.9642,
+                -25.0417
+              ]
+            },
+            {
+              "pixel": [
+                785,
+                529
+              ],
+              "prior_mesh": "Delta · Twelve separate drive housings",
+              "prior_material": "delta-tree · black",
+              "prior_face": 106,
+              "mesh": "Delta · Port arrival chamber",
+              "material": "delta-tree · arrival_floor",
+              "native_face": 27,
+              "glb_face": 278,
+              "world_m": [
+                -270.9546,
+                241.1947,
+                -23.8617
+              ]
+            },
+            {
+              "pixel": [
+                791,
+                492
+              ],
+              "prior_mesh": "Delta · Twelve separate drive housings",
+              "prior_material": "delta-tree · case",
+              "prior_face": 465,
+              "mesh": "Delta · Port arrival chamber",
+              "material": "delta-tree · arrival_bulkhead",
+              "native_face": 28,
+              "glb_face": 301,
+              "world_m": [
+                -321.4898,
+                199.0365,
+                -13.7605
+              ]
+            },
+            {
+              "pixel": [
+                792,
+                506
+              ],
+              "prior_mesh": "Delta · Twelve separate drive housings",
+              "prior_material": "delta-tree · metal",
+              "prior_face": 114,
+              "mesh": "Delta · Port arrival chamber",
+              "material": "delta-tree · arrival_floor",
+              "native_face": 27,
+              "glb_face": 278,
+              "world_m": [
+                -316.035,
+                205.9104,
+                -26.433
+              ]
+            },
+            {
+              "pixel": [
+                792,
+                521
+              ],
+              "prior_mesh": "Delta · Twelve separate drive housings",
+              "prior_material": "delta-tree · metal",
+              "prior_face": 102,
+              "mesh": "Delta · Port arrival chamber",
+              "material": "delta-tree · arrival_floor",
+              "native_face": 27,
+              "glb_face": 278,
+              "world_m": [
+                -290.9067,
+                231.6729,
+                -25.3893
+              ]
+            },
+            {
+              "pixel": [
+                798,
+                491
+              ],
+              "prior_mesh": "Delta · Twelve separate drive housings",
+              "prior_material": "delta-tree · case",
+              "prior_face": 465,
+              "mesh": "Delta · Port arrival chamber",
+              "material": "delta-tree · machined",
+              "native_face": 315,
+              "glb_face": 771,
+              "world_m": [
+                -327.4279,
+                203.9197,
+                -12.9902
+              ]
+            },
+            {
+              "pixel": [
+                800,
+                506
+              ],
+              "prior_mesh": "Delta · Twelve separate drive housings",
+              "prior_material": "delta-tree · reveal",
+              "prior_face": 1613,
+              "mesh": "Delta · Port arrival chamber",
+              "material": "delta-tree · arrival_liner",
+              "native_face": 2,
+              "glb_face": 4,
+              "world_m": [
+                -319.5374,
+                214.8809,
+                -24.3889
+              ]
+            },
+            {
+              "pixel": [
+                800,
+                519
+              ],
+              "prior_mesh": "Delta · Twelve separate drive housings",
+              "prior_material": "delta-tree · metal",
+              "prior_face": 102,
+              "mesh": "Delta · Port arrival chamber",
+              "material": "delta-tree · arrival_liner",
+              "native_face": 0,
+              "glb_face": 1,
+              "world_m": [
+                -301.734,
+                233.0681,
+                -26.6309
+              ]
+            },
+            {
+              "pixel": [
+                807,
+                487
+              ],
+              "prior_mesh": "Delta · Twelve separate drive housings",
+              "prior_material": "delta-tree · case",
+              "prior_face": 465,
+              "mesh": "Delta · Port arrival chamber",
+              "material": "delta-tree · bronze_drive",
+              "native_face": 119,
+              "glb_face": 375,
+              "world_m": [
+                -314.3573,
+                231.8411,
+                7.8027
+              ]
+            },
+            {
+              "pixel": [
+                808,
+                502
+              ],
+              "prior_mesh": "Delta · Twelve separate drive housings",
+              "prior_material": "delta-tree · reveal",
+              "prior_face": 1613,
+              "mesh": "Delta · Port arrival chamber",
+              "material": "delta-tree · arrival_liner",
+              "native_face": 6,
+              "glb_face": 13,
+              "world_m": [
+                -313.0663,
+                234.3502,
+                -9.4226
+              ]
+            },
+            {
+              "pixel": [
+                809,
+                516
+              ],
+              "prior_mesh": "Delta · Stern shoulders and lower drive cradles",
+              "prior_material": "delta-tree · case",
+              "prior_face": 4570,
+              "mesh": "Delta · Port arrival chamber",
+              "material": "delta-tree · arrival_liner",
+              "native_face": 4,
+              "glb_face": 9,
+              "world_m": [
+                -307.7393,
+                241.0911,
+                -22.1964
+              ]
+            },
+            {
+              "pixel": [
+                811,
+                518
+              ],
+              "prior_mesh": "Delta · Stern shoulders and lower drive cradles",
+              "prior_material": "delta-tree · case",
+              "prior_face": 4570,
+              "mesh": "Delta · Port arrival chamber",
+              "material": "delta-tree · arrival_liner",
+              "native_face": 4,
+              "glb_face": 8,
+              "world_m": [
+                -305.0123,
+                247.0312,
+                -21.3467
+              ]
+            }
+          ]
+        },
+        "surround": {
+          "previous_room_hits": 0,
+          "current_room_hits": 0,
+          "count": 8,
+          "samples": [
+            {
+              "pixel": [
+                766,
+                502
+              ],
+              "prior_mesh": "Delta · Twelve separate drive housings",
+              "prior_material": "delta-tree · metal",
+              "prior_face": 0,
+              "mesh": "Delta · Port arrival casing",
+              "material": "delta-tree · drive_ceramic",
+              "native_face": 160,
+              "glb_face": 913,
+              "world_m": [
+                -234.7978,
+                249.632,
+                27.2519
+              ]
+            },
+            {
+              "pixel": [
+                765,
+                520
+              ],
+              "prior_mesh": "Delta · Twelve separate drive housings",
+              "prior_material": "delta-tree · black",
+              "prior_face": 124,
+              "mesh": "Delta · Port arrival casing",
+              "material": "delta-tree · drive_ceramic",
+              "native_face": 160,
+              "glb_face": 912,
+              "world_m": [
+                -233.5589,
+                248.8498,
+                5.0111
+              ]
+            },
+            {
+              "pixel": [
+                776,
+                480
+              ],
+              "prior_mesh": "Delta · Twelve separate drive housings",
+              "prior_material": "delta-tree · metal",
+              "prior_face": 7,
+              "mesh": "Delta · Port arrival casing",
+              "material": "delta-tree · drive_ceramic",
+              "native_face": 155,
+              "glb_face": 903,
+              "world_m": [
+                -248.7866,
+                251.4395,
+                49.8445
+              ]
+            },
+            {
+              "pixel": [
+                788,
+                476
+              ],
+              "prior_mesh": "Delta · Twelve separate drive housings",
+              "prior_material": "delta-tree · metal",
+              "prior_face": 7,
+              "mesh": "Delta · Port arrival casing",
+              "material": "delta-tree · drive_ceramic",
+              "native_face": 153,
+              "glb_face": 899,
+              "world_m": [
+                -266.7002,
+                251.8176,
+                47.9146
+              ]
+            },
+            {
+              "pixel": [
+                804,
+                468
+              ],
+              "prior_mesh": "Delta · Twelve separate drive housings",
+              "prior_material": "delta-tree · metal",
+              "prior_face": 13,
+              "mesh": "Delta · Port arrival casing",
+              "material": "delta-tree · drive_ceramic",
+              "native_face": 153,
+              "glb_face": 899,
+              "world_m": [
+                -291.7069,
+                251.2264,
+                47.8041
+              ]
+            },
+            {
+              "pixel": [
+                821,
+                484
+              ],
+              "prior_mesh": "Delta · Twelve separate drive housings",
+              "prior_material": "delta-tree · case",
+              "prior_face": 465,
+              "mesh": "Delta · Port arrival casing",
+              "material": "delta-tree · pressure",
+              "native_face": 174,
+              "glb_face": 996,
+              "world_m": [
+                -315.8992,
+                252.4002,
+                18.7814
+              ]
+            },
+            {
+              "pixel": [
+                820,
+                508
+              ],
+              "prior_mesh": "Delta · Stern shoulders and lower drive cradles",
+              "prior_material": "delta-tree · case",
+              "prior_face": 4570,
+              "mesh": "Delta · Port arrival casing",
+              "material": "delta-tree · pressure",
+              "native_face": 174,
+              "glb_face": 997,
+              "world_m": [
+                -312.3367,
+                253.873,
+                -9.1597
+              ]
+            },
+            {
+              "pixel": [
+                785,
+                541
+              ],
+              "prior_mesh": "Delta · Twelve separate drive housings",
+              "prior_material": "delta-tree · black",
+              "prior_face": 106,
+              "mesh": "Delta · Port arrival casing",
+              "material": "delta-tree · drive_ceramic",
+              "native_face": 167,
+              "glb_face": 927,
+              "world_m": [
+                -261.0103,
+                251.2229,
+                -31.0688
+              ]
+            }
+          ]
+        }
+      },
+      "native_and_glb_agree": {
+        "compared": 24,
+        "fields": [
+          "first mesh",
+          "first material",
+          "world position within 0.01 m"
+        ]
+      },
+      "physical_contacts": {
+        "mouth_center_world_m": [
+          -272.1522903442383,
+          250.49244689941406,
+          5.981505393981934
+        ],
+        "station_percent_from_bow": 71.26189768314362,
+        "casing_intersections": {
+          "Pressure hull and keel": 321,
+          "Stern shoulders and lower drive cradles": 493,
+          "Twelve separate drive housings": 891,
+          "Port arrival chamber": 71
+        },
+        "centerline": {
+          "depth_m": 51.48599200799063,
+          "first_mesh": "Delta · Port arrival chamber"
+        }
+      },
+      "room_materials": {
+        "arrival_liner": {
+          "base_color_image": 19,
+          "emission_image": 19,
+          "emissive_factor": [
+            0.18000000715255737,
+            0.18000000715255737,
+            0.18000000715255737
+          ],
+          "images_embedded": true
+        },
+        "arrival_bulkhead": {
+          "base_color_image": 20,
+          "emission_image": 20,
+          "emissive_factor": [
+            0.3499999940395355,
+            0.3499999940395355,
+            0.3499999940395355
+          ],
+          "images_embedded": true
+        }
+      },
+      "light_trial": {
+        "path": "Assets/ShipConcepts/hull-review-r185/bronze-floor/sheets/delta-tree-room-light.png",
+        "sha256": "0b56ce4414bae0e0ce743dddad471045fc1e67c0fc3af52a400bf53432483e1b"
+      },
+      "lighting": {
+        "initial": {
+          "delta-tree · arrival_floor": 0.3700000047683716,
+          "delta-tree · arrival_liner": 0.18000000715255737,
+          "delta-tree · arrival_bulkhead": 0.3499999940395355
+        },
+        "trials": {
+          "floor-only": {
+            "delta-tree · arrival_floor": 0.065
+          },
+          "lower-room": {
+            "delta-tree · arrival_floor": 0.065,
+            "delta-tree · arrival_liner": 0.11,
+            "delta-tree · arrival_bulkhead": 0.21
+          },
+          "dark-floor": {
+            "delta-tree · arrival_floor": 0.025,
+            "delta-tree · arrival_liner": 0.075,
+            "delta-tree · arrival_bulkhead": 0.26
+          }
+        },
+        "selected": "floor-only",
+        "gallery_camera_exposure_fixed": true,
+        "bounds": {
+          "room": [
+            782,
+            493,
+            806,
+            523
+          ],
+          "whole_opening": [
+            760,
+            469,
+            822,
+            542
+          ]
+        },
+        "relative_display_luminance": {
+          "room": {
+            "painting": {
+              "p50": 0.033,
+              "p95": 0.1358
+            },
+            "before_floor_change": {
+              "p50": 0.1081,
+              "p95": 0.1473
+            },
+            "dark-floor": {
+              "p50": 0.0173,
+              "p95": 0.1055
+            },
+            "floor-only": {
+              "p50": 0.0316,
+              "p95": 0.1373
+            },
+            "lower-room": {
+              "p50": 0.025,
+              "p95": 0.0945
+            },
+            "export_build_gallery": {
+              "p50": 0.0316,
+              "p95": 0.1373
+            }
+          },
+          "whole_opening": {
+            "painting": {
+              "p50": 0.0416,
+              "p95": 0.2091
+            },
+            "before_floor_change": {
+              "p50": 0.0679,
+              "p95": 0.1915
+            },
+            "dark-floor": {
+              "p50": 0.0367,
+              "p95": 0.1872
+            },
+            "floor-only": {
+              "p50": 0.0415,
+              "p95": 0.1884
+            },
+            "lower-room": {
+              "p50": 0.0366,
+              "p95": 0.1882
+            },
+            "export_build_gallery": {
+              "p50": 0.0416,
+              "p95": 0.1884
+            }
+          }
+        },
+        "paired_glb_geometry_sha256": "c6d326c5d952c4b32c70cbde1e91d729f506ac4215f557daafaaa1542f612963",
+        "geometry_identity": "Both GLBs have identical node transforms, primitive positions and triangle indices.",
+        "files": {
+          "painting": {
+            "path": "Assets/ShipConcepts/sunburst-r144/58-delta-tree.png",
+            "sha256": "6628ed15b22fbf2990729eb8417b9babcb66cc8ebcb5635dad57c8776efeeac3"
+          },
+          "before_floor_change": {
+            "path": "Assets/ShipConcepts/hull-review-r185/seated-flank/renders/delta-tree-gallery.png",
+            "sha256": "213a9973b6abae2d6d25cf7a3338498b47699e83bca393f5d43f9085e0aa2883"
+          },
+          "dark-floor": {
+            "path": "Assets/ShipConcepts/hull-review-r185/delta-room-light/dark-floor.png",
+            "sha256": "863bae952e371e8ec885869995f5a017aefa401ae2e393485cd5d1a46be1c7f6"
+          },
+          "floor-only": {
+            "path": "Assets/ShipConcepts/hull-review-r185/delta-room-light/floor-only.png",
+            "sha256": "b4facd7b1af203755a6d7171e9a25deff9b7a5b89fee3a1c14038470fdf8ddf0"
+          },
+          "lower-room": {
+            "path": "Assets/ShipConcepts/hull-review-r185/delta-room-light/lower-room.png",
+            "sha256": "e2057a4895d8247e7cc9f47873d35b21079eaf323149f1a84f20686061f00cc3"
+          },
+          "export_build_gallery": {
+            "path": "Assets/ShipConcepts/hull-review-r185/bronze-floor/renders/delta-tree-gallery.png",
+            "sha256": "130286ee296f6bbc234646e3cc7b12571429b5cc1c21dec32f56988235280519"
+          }
+        }
+      },
+      "door_side_art_px": [
+        714,
+        420
+      ],
+      "door_side_prior_px": [
+        568.3,
+        359.29
+      ],
+      "door_side_current_px": [
+        713.55,
+        407.41
+      ],
+      "prior_aperture": {
+        "mouth_center_world_m": [
+          -77.46702861785889,
+          312.31842041015625,
+          70.4829158782959
+        ],
+        "station_percent_from_bow": 56.052111610770226
+      },
+      "art_station_percent": 71.30890052356021,
+      "exhaust_samples_clear": 108,
+      "mast_contacts": 60,
+      "courtyard_count": 11,
+      "rear_shoulder_mean_gap_m": 1.97,
+      "display_luminance": {
+        "opening": {
+          "bounds": [
+            760,
+            469,
+            822,
+            542
+          ],
+          "values": {
+            "art": {
+              "p50": 0.0416,
+              "p95": 0.2091
+            },
+            "previous": {
+              "p50": 0.0343,
+              "p95": 0.188
+            },
+            "selected": {
+              "p50": 0.0416,
+              "p95": 0.1884
+            }
+          }
+        },
+        "chamber": {
+          "bounds": [
+            782,
+            493,
+            806,
+            523
+          ],
+          "values": {
+            "art": {
+              "p50": 0.033,
+              "p95": 0.1358
+            },
+            "previous": {
+              "p50": 0.035,
+              "p95": 0.084
+            },
+            "selected": {
+              "p50": 0.0316,
+              "p95": 0.1373
+            }
+          }
+        }
+      }
+    },
+    "glacier-tongue": {
+      "name": "Glacier Tongue",
+      "original": {
+        "path": "Assets/ShipConcepts/sunburst-r144/41-glacier-tongue.png",
+        "sha256": "827baa1d6127c91fd36b21e0998ad7b013ddd7c8e7b109059bad03c61e86f0d1"
+      },
+      "port_drawing": {
+        "path": "Assets/ShipConcepts/modeling-references-r150/glacier-tongue/01-port.png",
+        "sha256": "05840ff53ba448fb8962837529acd7574bb217acc846a1e69330fa350aae7cef"
+      },
+      "door_details": [
+        {
+          "path": "Assets/ShipConcepts/modeling-references-r150/glacier-tongue/11-dock-section.png",
+          "sha256": "f40d0c07cc52319f0cb0172d3842f48fb8c0684e9237bf0ac116d01f4f61d590"
+        },
+        {
+          "path": "Assets/ShipConcepts/modeling-references-r150/glacier-tongue/16-shuttle-ramp.png",
+          "sha256": "adb95c420a8c909f2865e88454a33f9d3a854d91b38d94a3f78a28771316c05c"
+        },
+        {
+          "path": "Assets/ShipConcepts/modeling-references-r150/glacier-tongue/18-door-open.png",
+          "sha256": "9a6cf43bfafb2368fed7a01d99f13c22d32d76aeaa536eef70e2dc7e2b463a06"
+        }
+      ],
+      "blend": {
+        "path": "Assets/ShipConcepts/hull-review-r185/split-landing/glacier-tongue/glacier-tongue.blend",
+        "sha256": "7edd2ba989ca2134f74236c3b01b9b0ca287ea966b5e315afeea219d876bdd16"
+      },
+      "glb": {
+        "path": "Assets/ShipConcepts/hull-review-r185/split-landing/glacier-tongue/glacier-tongue.glb",
+        "sha256": "cda78937b7fccdc1c140a2b511865e3d500fe2464cb9bb125325c595cbd57dea"
+      },
+      "gallery": {
+        "path": "Assets/ShipConcepts/hull-review-r185/split-landing/renders/glacier-tongue-gallery.png",
+        "sha256": "69a1b36ef349973bcb7f029cba8ae4ac98e8a51f9594598cbc2933b7d0a778c8"
+      },
+      "previous_glb": {
+        "path": "Assets/ShipConcepts/hull-review-r184/service-panels/glacier-tongue/glacier-tongue.glb",
+        "sha256": "2c8073895b31737c675fa6daa895ad77079bd9ece468c19c3daf5d7ba360c598"
+      },
+      "previous_gallery": {
+        "path": "Assets/ShipConcepts/hull-review-r184/service-panels/renders/glacier-tongue-gallery.png",
+        "sha256": "59e4911461b6322f75a84a109549292a4cf531f82902b05edde4913a3a49e59a"
+      },
+      "entrance": {
+        "path": "Assets/ShipConcepts/hull-review-r185/split-landing/sheets/glacier-tongue-entrance.png",
+        "sha256": "4a56df50a33be1914131088055ddda002b229058d5a1ac9e1ed2eb6be3e9c34c"
+      },
+      "whole": {
+        "path": "Assets/ShipConcepts/hull-review-r185/split-landing/sheets/glacier-tongue-gallery.png",
+        "sha256": "ba2bc37a6a6769c1b0ab2cb730e51ab4501796a8de0d6a679c41f6dbf8f371d7"
+      },
+      "side": {
+        "path": "Assets/ShipConcepts/hull-review-r185/split-landing/sheets/glacier-tongue-port.png",
+        "sha256": "c44d4d1a15ff23b2ff20d888e1e889544997390bdaf40c069c03df20da66dafc"
+      },
+      "side_registration": {
+        "path": "Assets/ShipConcepts/hull-review-r185/elevations/glacier-tongue-alignment.json",
+        "sha256": "f5c53137739fbbe69fb3e37e3b57361233bee3d28e8464d997d7873ae9ebf55a"
+      },
+      "side_raw": {
+        "path": "Assets/ShipConcepts/hull-review-r185/elevations/glacier-tongue-split.png",
+        "sha256": "6206cfc1fd8fe8bf89813e07cb258e7ed43412149e7d535c56c484d597c848d5"
+      },
+      "geometry_check": {
+        "path": "Assets/ShipConcepts/hull-review-r185/split-landing/glacier-tongue/geometry-check.json",
+        "sha256": "8c4e05eaf52442419925f48809f4d9e4d6ac6ed6d4365035235787d739c2a613"
+      },
+      "triangles": 122334,
+      "native_m": [
+        1280.0,
+        582.7653045654297,
+        397.8047561645508
+      ],
+      "glb_m": [
+        1280.0,
+        582.7653045654297,
+        397.8047561645508
+      ],
+      "native_packed_maps": 36,
+      "glb_embedded_maps": 36,
+      "gallery_samples": {
+        "inside": {
+          "previous_room_hits": 9,
+          "current_room_hits": 13,
+          "count": 16,
+          "samples": [
+            {
+              "pixel": [
+                638,
+                509
+              ],
+              "prior_mesh": "Glacier · Recessed port hangar and structure",
+              "prior_material": "glacier-tongue · berth_liner",
+              "prior_face": 978,
+              "mesh": "Glacier · Recessed port hangar and structure",
+              "material": "glacier-tongue · berth_liner",
+              "native_face": 706,
+              "glb_face": 2092,
+              "world_m": [
+                -234.475,
+                50.6881,
+                43.0413
+              ]
+            },
+            {
+              "pixel": [
+                638,
+                519
+              ],
+              "prior_mesh": "Glacier · Recessed port hangar and structure",
+              "prior_material": "glacier-tongue · berth_liner",
+              "prior_face": 978,
+              "mesh": "Glacier · Recessed port hangar and structure",
+              "material": "glacier-tongue · berth_liner",
+              "native_face": 706,
+              "glb_face": 2092,
+              "world_m": [
+                -233.1789,
+                50.6881,
+                32.259
+              ]
+            },
+            {
+              "pixel": [
+                643,
+                505
+              ],
+              "prior_mesh": "Glacier · Recessed port hangar and structure",
+              "prior_material": "glacier-tongue · berth_joint",
+              "prior_face": 987,
+              "mesh": "Glacier · Cabin lights",
+              "material": "glacier-tongue · berth_liner",
+              "native_face": 469,
+              "glb_face": 3372,
+              "world_m": [
+                -241.3368,
+                51.8209,
+                46.3511
+              ]
+            },
+            {
+              "pixel": [
+                644,
+                523
+              ],
+              "prior_mesh": "Glacier · Recessed port hangar and structure",
+              "prior_material": "glacier-tongue · berth_joint",
+              "prior_face": 987,
+              "mesh": "Glacier · Recessed port hangar and structure",
+              "material": "glacier-tongue · berth_liner",
+              "native_face": 718,
+              "glb_face": 2104,
+              "world_m": [
+                -241.5501,
+                50.688,
+                26.4636
+              ]
+            },
+            {
+              "pixel": [
+                652,
+                505
+              ],
+              "prior_mesh": "Glacier · Recessed port hangar and structure",
+              "prior_material": "glacier-tongue · berth_joint",
+              "prior_face": 996,
+              "mesh": "Glacier · Recessed port hangar and structure",
+              "material": "glacier-tongue · berth_liner",
+              "native_face": 730,
+              "glb_face": 2117,
+              "world_m": [
+                -255.7357,
+                50.688,
+                43.8953
+              ]
+            },
+            {
+              "pixel": [
+                653,
+                515
+              ],
+              "prior_mesh": "Glacier · Recessed port hangar and structure",
+              "prior_material": "glacier-tongue · berth_joint",
+              "prior_face": 996,
+              "mesh": "Glacier · Cabin lights",
+              "material": "glacier-tongue · berth_diffuser",
+              "native_face": 481,
+              "glb_face": 3588,
+              "world_m": [
+                -254.8562,
+                51.8209,
+                33.0981
+              ]
+            },
+            {
+              "pixel": [
+                655,
+                523
+              ],
+              "prior_mesh": "Glacier · Recessed port hangar and structure",
+              "prior_material": "glacier-tongue · berth_liner",
+              "prior_face": 1002,
+              "mesh": "Glacier · Recessed port hangar and structure",
+              "material": "glacier-tongue · berth_liner",
+              "native_face": 730,
+              "glb_face": 2116,
+              "world_m": [
+                -257.8473,
+                50.688,
+                23.7459
+              ]
+            },
+            {
+              "pixel": [
+                664,
+                504
+              ],
+              "prior_mesh": "Glacier · Recessed port hangar and structure",
+              "prior_material": "glacier-tongue · berth_joint",
+              "prior_face": 790,
+              "mesh": "Glacier · Recessed port hangar and structure",
+              "material": "glacier-tongue · berth_joint",
+              "native_face": 751,
+              "glb_face": 2746,
+              "world_m": [
+                -272.4501,
+                51.9585,
+                42.2692
+              ]
+            },
+            {
+              "pixel": [
+                665,
+                516
+              ],
+              "prior_mesh": "Glacier · Recessed port hangar and structure",
+              "prior_material": "glacier-tongue · berth_joint",
+              "prior_face": 761,
+              "mesh": "Glacier · Recessed port hangar and structure",
+              "material": "glacier-tongue · berth_joint",
+              "native_face": 751,
+              "glb_face": 2746,
+              "world_m": [
+                -272.6532,
+                51.6639,
+                29.0229
+              ]
+            },
+            {
+              "pixel": [
+                675,
+                504
+              ],
+              "prior_mesh": "Glacier · Sealed far hull and keel",
+              "prior_material": "glacier-tongue · metal",
+              "prior_face": 3810,
+              "mesh": "Glacier · Cabin lights",
+              "material": "glacier-tongue · berth_diffuser",
+              "native_face": 541,
+              "glb_face": 3637,
+              "world_m": [
+                -288.8769,
+                51.8209,
+                39.5233
+              ]
+            },
+            {
+              "pixel": [
+                676,
+                515
+              ],
+              "prior_mesh": "Glacier · Sealed far hull and keel",
+              "prior_material": "glacier-tongue · metal",
+              "prior_face": 3810,
+              "mesh": "Glacier · Recessed port hangar and structure",
+              "material": "glacier-tongue · berth_liner",
+              "native_face": 766,
+              "glb_face": 2152,
+              "world_m": [
+                -289.9975,
+                50.6881,
+                27.1834
+              ]
+            },
+            {
+              "pixel": [
+                683,
+                503
+              ],
+              "prior_mesh": "Glacier · Sealed far hull and keel",
+              "prior_material": "glacier-tongue · metal",
+              "prior_face": 3810,
+              "mesh": "Glacier · Cabin lights",
+              "material": "glacier-tongue · berth_diffuser",
+              "native_face": 559,
+              "glb_face": 3661,
+              "world_m": [
+                -300.8591,
+                51.8208,
+                38.625
+              ]
+            },
+            {
+              "pixel": [
+                684,
+                514
+              ],
+              "prior_mesh": "Glacier · Sealed far hull and keel",
+              "prior_material": "glacier-tongue · metal",
+              "prior_face": 3810,
+              "mesh": "Glacier · Recessed port hangar and structure",
+              "material": "glacier-tongue · berth_liner",
+              "native_face": 778,
+              "glb_face": 2164,
+              "world_m": [
+                -301.9796,
+                50.688,
+                26.2851
+              ]
+            },
+            {
+              "pixel": [
+                692,
+                504
+              ],
+              "prior_mesh": "Glacier · Sealed far hull and keel",
+              "prior_material": "glacier-tongue · black",
+              "prior_face": 2990,
+              "mesh": "Glacier · Recessed port hangar and structure",
+              "material": "glacier-tongue · case",
+              "native_face": 661,
+              "glb_face": 2831,
+              "world_m": [
+                -308.085,
+                58.1812,
+                36.6271
+              ]
+            },
+            {
+              "pixel": [
+                694,
+                511
+              ],
+              "prior_mesh": "Glacier · Sealed far hull and keel",
+              "prior_material": "glacier-tongue · metal",
+              "prior_face": 2992,
+              "mesh": "Glacier · Rounded port arrival collar",
+              "material": "glacier-tongue · case",
+              "native_face": 5,
+              "glb_face": 10,
+              "world_m": [
+                -274.0172,
+                96.6107,
+                36.4633
+              ]
+            },
+            {
+              "pixel": [
+                696,
+                518
+              ],
+              "prior_mesh": "Glacier · Sealed far hull and keel",
+              "prior_material": "glacier-tongue · black",
+              "prior_face": 2993,
+              "mesh": "Glacier · Rounded port arrival collar",
+              "material": "glacier-tongue · case",
+              "native_face": 4,
+              "glb_face": 9,
+              "world_m": [
+                -268.9031,
+                104.2382,
+                29.9852
+              ]
+            }
+          ]
+        },
+        "surround": {
+          "previous_room_hits": 2,
+          "current_room_hits": 0,
+          "count": 8,
+          "samples": [
+            {
+              "pixel": [
+                627,
+                508
+              ],
+              "prior_mesh": "Glacier · Recessed port hangar and structure",
+              "prior_material": "glacier-tongue · berth_joint",
+              "prior_face": 963,
+              "mesh": "Glacier · Rounded port arrival collar",
+              "material": "glacier-tongue · machined",
+              "native_face": 125,
+              "glb_face": 357,
+              "world_m": [
+                -142.927,
+                130.88,
+                63.2766
+              ]
+            },
+            {
+              "pixel": [
+                628,
+                523
+              ],
+              "prior_mesh": "Glacier · Recessed port hangar and structure",
+              "prior_material": "glacier-tongue · berth_joint",
+              "prior_face": 963,
+              "mesh": "Glacier · Rounded port arrival collar",
+              "material": "glacier-tongue · machined",
+              "native_face": 126,
+              "glb_face": 358,
+              "world_m": [
+                -142.2581,
+                131.0993,
+                46.9009
+              ]
+            },
+            {
+              "pixel": [
+                638,
+                491
+              ],
+              "prior_mesh": "Glacier · Recessed port hangar and structure",
+              "prior_material": "glacier-tongue · metal",
+              "prior_face": 405,
+              "mesh": "Glacier · Rounded port arrival collar",
+              "material": "glacier-tongue · machined",
+              "native_face": 120,
+              "glb_face": 347,
+              "world_m": [
+                -160.8666,
+                131.4772,
+                79.0113
+              ]
+            },
+            {
+              "pixel": [
+                652,
+                490
+              ],
+              "prior_mesh": "Glacier · Recessed port hangar and structure",
+              "prior_material": "glacier-tongue · case",
+              "prior_face": 857,
+              "mesh": "Glacier · Rounded port arrival collar",
+              "material": "glacier-tongue · case",
+              "native_face": 153,
+              "glb_face": 96,
+              "world_m": [
+                -181.3643,
+                131.8751,
+                76.7122
+              ]
+            },
+            {
+              "pixel": [
+                669,
+                487
+              ],
+              "prior_mesh": "Glacier · Recessed port hangar and structure",
+              "prior_material": "glacier-tongue · case",
+              "prior_face": 852,
+              "mesh": "Glacier · Rounded port arrival collar",
+              "material": "glacier-tongue · machined",
+              "native_face": 118,
+              "glb_face": 343,
+              "world_m": [
+                -207.3551,
+                131.4335,
+                75.6563
+              ]
+            },
+            {
+              "pixel": [
+                685,
+                486
+              ],
+              "prior_mesh": "Glacier · Recessed port hangar and structure",
+              "prior_material": "glacier-tongue · case",
+              "prior_face": 852,
+              "mesh": "Glacier · Rounded port arrival collar",
+              "material": "glacier-tongue · machined",
+              "native_face": 118,
+              "glb_face": 343,
+              "world_m": [
+                -231.1028,
+                131.5263,
+                72.8005
+              ]
+            },
+            {
+              "pixel": [
+                705,
+                502
+              ],
+              "prior_mesh": "Glacier · Recessed port hangar and structure",
+              "prior_material": "glacier-tongue · trim",
+              "prior_face": 454,
+              "mesh": "Glacier · Rounded port arrival collar",
+              "material": "glacier-tongue · case",
+              "native_face": 146,
+              "glb_face": 82,
+              "world_m": [
+                -257.393,
+                132.8746,
+                50.8838
+              ]
+            },
+            {
+              "pixel": [
+                705,
+                517
+              ],
+              "prior_mesh": "Glacier · Three enclosed crossings",
+              "prior_material": "glacier-tongue · metal",
+              "prior_face": 242,
+              "mesh": "Glacier · Rounded port arrival collar",
+              "material": "glacier-tongue · machined",
+              "native_face": 109,
+              "glb_face": 325,
+              "world_m": [
+                -256.6027,
+                131.647,
+                34.4586
+              ]
+            }
+          ]
+        }
+      },
+      "native_and_glb_agree": {
+        "compared": 24,
+        "fields": [
+          "first mesh",
+          "first material",
+          "world position within 0.01 m"
+        ]
+      },
+      "physical_contacts": {
+        "casing_intersections": {
+          "Recessed port hangar and structure": 182,
+          "Sealed far hull and keel": 0,
+          "Three enclosed crossings": 48
+        }
+      },
+      "room_materials": {
+        "berth_liner": {
+          "base_color_image": 0,
+          "emission_image": 0,
+          "emissive_factor": [
+            1,
+            1,
+            1
+          ],
+          "images_embedded": true
+        },
+        "berth_diffuser": {
+          "base_color_image": 1,
+          "emission_image": 1,
+          "emissive_factor": [
+            0.75,
+            0.75,
+            0.75
+          ],
+          "images_embedded": true
+        }
+      },
+      "port_bay_depth_m": 62.14,
+      "crossings": [
+        {
+          "inner": 14,
+          "outer": 3
+        },
+        {
+          "inner": 13,
+          "outer": 8
+        },
+        {
+          "inner": 16,
+          "outer": 10
+        }
+      ],
+      "open_side_rays": 9,
+      "display_luminance": {
+        "opening": {
+          "bounds": [
+            604,
+            471,
+            709,
+            542
+          ],
+          "values": {
+            "art": {
+              "p50": 0.0596,
+              "p95": 0.5547
+            },
+            "previous": {
+              "p50": 0.0369,
+              "p95": 0.5058
+            },
+            "selected": {
+              "p50": 0.0335,
+              "p95": 0.4598
+            }
+          }
+        },
+        "interior": {
+          "bounds": [
+            634,
+            496,
+            670,
+            516
+          ],
+          "values": {
+            "art": {
+              "p50": 0.3194,
+              "p95": 0.6053
+            },
+            "previous": {
+              "p50": 0.4238,
+              "p95": 0.6377
+            },
+            "selected": {
+              "p50": 0.3986,
+              "p95": 0.5453
+            }
+          }
+        },
+        "exterior": {
+          "bounds": [
+            575,
+            456,
+            601,
+            477
+          ],
+          "values": {
+            "art": {
+              "p50": 0.0117,
+              "p95": 0.054
+            },
+            "previous": {
+              "p50": 0.0136,
+              "p95": 0.0638
+            },
+            "selected": {
+              "p50": 0.0137,
+              "p95": 0.063
+            }
+          }
+        }
+      }
+    }
+  },
+  "trials": [
+    "Delta: the first outboard door matched the gallery interior marks but missed the port station. Moving it aft exposed blocking drive shrouds and one long keel end face. Split that face into short strips and seat the passenger flank outside the full room depth.",
+    "Glacier: removing the aft wall uncovered only part of the room. Sweeping the pier and angling the chamber freed the right side. The split two-shoe threshold removed the overhanging tray but the blade and rim still partly mask the bay."
+  ],
+  "remaining": [
+    "Delta: door center still about 13 pixels high in the registered side drawing. The shoulder and cabin windows read differently. The bright streak continues outside toward the illustrated shuttle; its light source is uncertain. The upper branch-deck material still needs work.",
+    "Glacier: three of sixteen interior points still hit the rim or its support. The outboard blade overlaps more of the port elevation than in the side study."
+  ],
+  "browser": {
+    "method": "Isolated headless Chrome with WebGL",
+    "ships": {
+      "delta-tree": {
+        "original_loaded": true,
+        "painted_and_gray": true,
+        "stern_and_reset": true,
+        "drag_rotates": true,
+        "downloaded_model_matches": true,
+        "download_sha256": "35b33e7c19ac2bca3d55c208c22d52c9506051e99d8bc8426eabc49b59663ee9",
+        "model_view_pixel_differences": {
+          "gray": 23.56,
+          "stern": 19.68,
+          "drag": 20.52,
+          "reset": 0.0
+        },
+        "switches_between_revisions": true,
+        "previous_to_current_pixel_difference": 1.17
+      },
+      "glacier-tongue": {
+        "original_loaded": true,
+        "painted_and_gray": true,
+        "stern_and_reset": true,
+        "drag_rotates": true,
+        "downloaded_model_matches": true,
+        "download_sha256": "cda78937b7fccdc1c140a2b511865e3d500fe2464cb9bb125325c595cbd57dea",
+        "model_view_pixel_differences": {
+          "gray": 18.23,
+          "stern": 34.62,
+          "drag": 16.47,
+          "reset": 0.0
+        },
+        "switches_between_revisions": true,
+        "previous_to_current_pixel_difference": 0.52
+      }
+    }
+  },
+  "catalog_entries": {
+    "aquila-arrival-side-delta-tree-bronze-365153481bba": "req_bad85a6e88f8629ebe00f32b",
+    "aquila-arrival-surface-dark-floor-863bae952e37": "req_bc6c05be50c140a9b7e5ae4b",
+    "aquila-code-dark-game-exterior-delta-tree-35b33e7c19ac2b": "req_4346a3cb1713853861ce4dca",
+    "aquila-arrival-surface-lower-room-e2057a4895d8": "req_fa7543a8f8f66f414fbd45e6",
+    "aquila-arrival-surface-floor-only-b4facd7b1af2": "req_fec1d9f4304454e9f7af3258",
+    "aquila-arrival-side-delta-tree-seated-b2af80c54cdb": "req_8e35dd8a906e18bc1c28f9eb",
+    "aquila-code-dark-game-exterior-delta-tree-0cefb3f82e3c7e": "req_4e5d310aca6d6011483019f5",
+    "aquila-arrival-side-delta-tree-flank-bf246b21d4c4": "req_d30cf44f9f028fbd0aa2c09e",
+    "aquila-code-dark-game-exterior-delta-tree-fda1b8747e7a5a": "req_f9cc47667be350207affbfc4",
+    "aquila-arrival-side-glacier-tongue-split-6206cfc1fd8f": "req_ef67024ddca7ed344bc57eb0",
+    "aquila-code-dark-game-exterior-glacier-tongue-cda78937b7fccd": "req_a03a241bf52a89d0e1d15094",
+    "aquila-arrival-side-glacier-tongue-selected-8af99a735704": "req_ad394920566d2d0ca1046345",
+    "aquila-arrival-side-glacier-tongue-before-be2f0a21f0ef": "req_3757eea751e569eb85294d72",
+    "aquila-arrival-side-delta-tree-selected-895c82c23613": "req_caa3e18fd252ec94cc57754f",
+    "aquila-arrival-side-delta-tree-before-63d0469bc09d": "req_ff4eaa213d41f573ca060c98",
+    "aquila-code-dark-game-exterior-glacier-tongue-52be193b1b16f1": "req_1589f342589a0d539cdccd6c",
+    "aquila-code-dark-game-exterior-delta-tree-f78ec83cb63f16": "req_e426ad3262804014ebe4ca5e",
+    "aquila-code-dark-game-exterior-delta-tree-d59aa3b22add89": "req_755fac6c99ca894f7c4f461e",
+    "aquila-code-dark-game-exterior-delta-tree-174b581f625ab9": "req_f3782fb73e23872296ad2b53",
+    "aquila-code-dark-game-exterior-glacier-tongue-389e889bbfb8ef": "req_068514648446db7c77ebf27f",
+    "aquila-code-dark-game-exterior-delta-tree-96cf3acdb307ba": "req_372d239701c5469f618a892e",
+    "aquila-code-dark-game-exterior-glacier-tongue-895d9d919dae30": "req_ca7b04ef0915f0d5cf4e8bce",
+    "aquila-code-dark-game-exterior-delta-tree-e7b270201f07cd": "req_e3bf3f914a06a1391ac9f851"
+  }
+}

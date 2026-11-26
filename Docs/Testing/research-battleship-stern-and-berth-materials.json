@@ -1,0 +1,1087 @@
+{
+  "round": 184,
+  "local_date": "2026-11-25",
+  "created_utc": "2026-11-26T01:37:46.258750+00:00",
+  "comparison_round": 179,
+  "scope": "Two local Blender exterior studies, with the round 172 Windows game retained for play.",
+  "ships": {
+    "delta-tree": {
+      "name": "Delta Tree",
+      "original": {
+        "path": "Assets/ShipConcepts/sunburst-r144/58-delta-tree.png",
+        "sha256": "6628ed15b22fbf2990729eb8417b9babcb66cc8ebcb5635dad57c8776efeeac3"
+      },
+      "blend": {
+        "path": "Assets/ShipConcepts/hull-review-r184/delta-tree/delta-tree.blend",
+        "sha256": "12250362d14bb04253178b5929bffe30d9f22cdb64d067b71dff1bc522e0e8b2"
+      },
+      "glb": {
+        "path": "Assets/ShipConcepts/hull-review-r184/delta-tree/delta-tree.glb",
+        "sha256": "c3df4e2314a1261d719f0a33cf14a1a60f00a7dcd6809749ecf8305ce79838fb"
+      },
+      "gallery": {
+        "path": "Assets/ShipConcepts/hull-review-r184/renders/delta-tree-gallery.png",
+        "sha256": "af1e3830e4e9755ce20e2d35625dead2289174fd604ad88b40cf4df04e04bc59"
+      },
+      "prior_glb": {
+        "path": "Assets/ShipConcepts/hull-review-r179/seated-galleries/delta-tree/delta-tree.glb",
+        "sha256": "7f3a45dfa2b1944ce1ad066c518e460a9a247f1b29862c8c5026b64bd982b9bf"
+      },
+      "geometry_check": {
+        "path": "Assets/ShipConcepts/hull-review-r184/delta-tree/geometry-check.json",
+        "sha256": "a49c41688f104666b81e845d7a6a0b2aaad5ee99738817143d244a8589456cef"
+      },
+      "native_dimensions_m": [
+        1280.0,
+        604.9844360351562,
+        415.63025283813477
+      ],
+      "glb_dimensions_m": [
+        1280.0,
+        604.9844360351562,
+        415.63025283813477
+      ],
+      "packed_images": 19,
+      "glb_images": 19,
+      "triangles": 140762,
+      "whole": {
+        "path": "Assets/ShipConcepts/hull-review-r184/review-sheets/delta-tree-whole.png",
+        "sha256": "4a2bcdae366e63a958a7b8147279340bda49930fa6cc73d2b86e1f4562f178d1"
+      },
+      "stern": {
+        "path": "Assets/ShipConcepts/hull-review-r184/review-sheets/delta-tree-stern.png",
+        "sha256": "6f5fed2182ef67178316cdc1d4e603bebdf26597da81474604a3ab1e5dbf4342"
+      },
+      "outlet_rays_clear": 108,
+      "reference": {
+        "path": "Assets/ShipConcepts/modeling-references-r150/delta-tree/06-stern.png",
+        "sha256": "9d0d9a1ee7adf6d1ffc65b3d15497118056bc2f7e9560f046fa88e8137ba5a63"
+      },
+      "mast_feet_seated": 60,
+      "shoulders": {
+        "existing": {
+          "current": {
+            "mean_m": 0.934,
+            "rows": [
+              {
+                "source_row": 414,
+                "art_edges_m": [
+                  -199.76,
+                  403.28
+                ],
+                "model_edges_m": [
+                  -200.14,
+                  403.01
+                ],
+                "center_offset_m": 0.0,
+                "mean_edge_gap_m": 0.32
+              },
+              {
+                "source_row": 428,
+                "art_edges_m": [
+                  -199.76,
+                  403.28
+                ],
+                "model_edges_m": [
+                  -201.05,
+                  403.93
+                ],
+                "center_offset_m": 0.0,
+                "mean_edge_gap_m": 0.98
+              },
+              {
+                "source_row": 442,
+                "art_edges_m": [
+                  -199.11,
+                  402.63
+                ],
+                "model_edges_m": [
+                  -197.49,
+                  400.36
+                ],
+                "center_offset_m": 0.0,
+                "mean_edge_gap_m": 1.95
+              },
+              {
+                "source_row": 455,
+                "art_edges_m": [
+                  -197.83,
+                  400.71
+                ],
+                "model_edges_m": [
+                  -196.44,
+                  399.32
+                ],
+                "center_offset_m": 0.0,
+                "mean_edge_gap_m": 1.39
+              },
+              {
+                "source_row": 482,
+                "art_edges_m": [
+                  -187.55,
+                  390.43
+                ],
+                "model_edges_m": [
+                  -188.23,
+                  391.11
+                ],
+                "center_offset_m": 0.0,
+                "mean_edge_gap_m": 0.68
+              },
+              {
+                "source_row": 494,
+                "art_edges_m": [
+                  -179.85,
+                  382.73
+                ],
+                "model_edges_m": [
+                  -180.12,
+                  383.0
+                ],
+                "center_offset_m": 0.0,
+                "mean_edge_gap_m": 0.27
+              },
+              {
+                "source_row": 510,
+                "art_edges_m": [
+                  -168.29,
+                  371.81
+                ],
+                "model_edges_m": [
+                  -167.3,
+                  370.18
+                ],
+                "center_offset_m": 0.0,
+                "mean_edge_gap_m": 1.3
+              },
+              {
+                "source_row": 527,
+                "art_edges_m": [
+                  -149.02,
+                  351.9
+                ],
+                "model_edges_m": [
+                  -149.59,
+                  352.47
+                ],
+                "center_offset_m": 0.0,
+                "mean_edge_gap_m": 0.57
+              },
+              {
+                "source_row": 547,
+                "art_edges_m": [
+                  -122.05,
+                  325.57
+                ],
+                "model_edges_m": [
+                  -121.42,
+                  324.3
+                ],
+                "center_offset_m": 0.0,
+                "mean_edge_gap_m": 0.95
+              }
+            ]
+          },
+          "prior": {
+            "mean_m": 30.887,
+            "rows": [
+              {
+                "source_row": 414,
+                "art_edges_m": [
+                  -199.76,
+                  403.28
+                ],
+                "model_edges_m": [
+                  -179.86,
+                  382.74
+                ],
+                "center_offset_m": 0.0,
+                "mean_edge_gap_m": 20.22
+              },
+              {
+                "source_row": 428,
+                "art_edges_m": [
+                  -199.76,
+                  403.28
+                ],
+                "model_edges_m": [
+                  -180.67,
+                  383.55
+                ],
+                "center_offset_m": 0.0,
+                "mean_edge_gap_m": 19.41
+              },
+              {
+                "source_row": 442,
+                "art_edges_m": [
+                  -199.11,
+                  402.63
+                ],
+                "model_edges_m": [
+                  -176.32,
+                  379.19
+                ],
+                "center_offset_m": 0.0,
+                "mean_edge_gap_m": 23.12
+              },
+              {
+                "source_row": 455,
+                "art_edges_m": [
+                  -197.83,
+                  400.71
+                ],
+                "model_edges_m": [
+                  -172.67,
+                  375.54
+                ],
+                "center_offset_m": 0.0,
+                "mean_edge_gap_m": 25.16
+              },
+              {
+                "source_row": 482,
+                "art_edges_m": [
+                  -187.55,
+                  390.43
+                ],
+                "model_edges_m": [
+                  -157.97,
+                  360.84
+                ],
+                "center_offset_m": 0.0,
+                "mean_edge_gap_m": 29.59
+              },
+              {
+                "source_row": 494,
+                "art_edges_m": [
+                  -179.85,
+                  382.73
+                ],
+                "model_edges_m": [
+                  -144.45,
+                  347.32
+                ],
+                "center_offset_m": 0.0,
+                "mean_edge_gap_m": 35.4
+              },
+              {
+                "source_row": 510,
+                "art_edges_m": [
+                  -168.29,
+                  371.81
+                ],
+                "model_edges_m": [
+                  -119.95,
+                  322.82
+                ],
+                "center_offset_m": 0.0,
+                "mean_edge_gap_m": 48.66
+              },
+              {
+                "source_row": 527,
+                "art_edges_m": [
+                  -149.02,
+                  351.9
+                ],
+                "model_edges_m": [
+                  -113.49,
+                  313.92
+                ],
+                "center_offset_m": 1.23,
+                "mean_edge_gap_m": 36.76
+              },
+              {
+                "source_row": 547,
+                "art_edges_m": [
+                  -122.05,
+                  325.57
+                ],
+                "model_edges_m": [
+                  -86.79,
+                  281.5
+                ],
+                "center_offset_m": 4.08,
+                "mean_edge_gap_m": 39.66
+              }
+            ]
+          }
+        },
+        "marked_after_model_freeze": {
+          "current": {
+            "mean_m": 1.97,
+            "rows": [
+              {
+                "source_row": 436,
+                "art_edges_m": [
+                  -200.4,
+                  404.56
+                ],
+                "model_edges_m": [
+                  -198.02,
+                  400.9
+                ],
+                "center_offset_m": 0.0,
+                "mean_edge_gap_m": 3.02
+              },
+              {
+                "source_row": 464,
+                "art_edges_m": [
+                  -196.55,
+                  400.71
+                ],
+                "model_edges_m": [
+                  -194.27,
+                  397.14
+                ],
+                "center_offset_m": 0.0,
+                "mean_edge_gap_m": 2.92
+              },
+              {
+                "source_row": 503,
+                "art_edges_m": [
+                  -174.71,
+                  377.59
+                ],
+                "model_edges_m": [
+                  -173.49,
+                  376.37
+                ],
+                "center_offset_m": 0.0,
+                "mean_edge_gap_m": 1.22
+              },
+              {
+                "source_row": 537,
+                "art_edges_m": [
+                  -136.82,
+                  340.34
+                ],
+                "model_edges_m": [
+                  -136.42,
+                  339.3
+                ],
+                "center_offset_m": 0.0,
+                "mean_edge_gap_m": 0.72
+              }
+            ]
+          },
+          "prior": {
+            "mean_m": 33.752,
+            "rows": [
+              {
+                "source_row": 436,
+                "art_edges_m": [
+                  -200.4,
+                  404.56
+                ],
+                "model_edges_m": [
+                  -178.01,
+                  380.89
+                ],
+                "center_offset_m": 0.0,
+                "mean_edge_gap_m": 23.03
+              },
+              {
+                "source_row": 464,
+                "art_edges_m": [
+                  -196.55,
+                  400.71
+                ],
+                "model_edges_m": [
+                  -168.43,
+                  371.3
+                ],
+                "center_offset_m": 0.0,
+                "mean_edge_gap_m": 28.76
+              },
+              {
+                "source_row": 503,
+                "art_edges_m": [
+                  -174.71,
+                  377.59
+                ],
+                "model_edges_m": [
+                  -133.49,
+                  336.36
+                ],
+                "center_offset_m": 0.0,
+                "mean_edge_gap_m": 41.23
+              },
+              {
+                "source_row": 537,
+                "art_edges_m": [
+                  -136.82,
+                  340.34
+                ],
+                "model_edges_m": [
+                  -105.79,
+                  287.38
+                ],
+                "center_offset_m": 10.64,
+                "mean_edge_gap_m": 41.99
+              }
+            ]
+          }
+        }
+      },
+      "registration": {
+        "transform": {
+          "path": "Assets/ShipConcepts/hull-review-r179/elevations/delta-tree-alignment.json",
+          "sha256": "25915b16a3fe92a394ea2ca8265ebe80d43cbd352be853c3b1898560e683b98b"
+        },
+        "measurement": "Manual center marks on the rear study. The bottom middle center and bottom pitch set the transform. The upper tiers check vertical disagreement.",
+        "checks": [
+          {
+            "art": [
+              282,
+              484
+            ],
+            "model": [
+              280.0,
+              486.0
+            ],
+            "error_px": 2.79
+          },
+          {
+            "art": [
+              397,
+              485
+            ],
+            "model": [
+              396.1,
+              486.0
+            ],
+            "error_px": 1.38
+          },
+          {
+            "art": [
+              512,
+              486
+            ],
+            "model": [
+              512.1,
+              486.0
+            ],
+            "error_px": 0.06
+          },
+          {
+            "art": [
+              628,
+              484
+            ],
+            "model": [
+              628.1,
+              486.0
+            ],
+            "error_px": 2.0
+          },
+          {
+            "art": [
+              742,
+              484
+            ],
+            "model": [
+              744.1,
+              486.0
+            ],
+            "error_px": 2.88
+          },
+          {
+            "art": [
+              339,
+              370
+            ],
+            "model": [
+              338.0,
+              389.6
+            ],
+            "error_px": 19.64
+          },
+          {
+            "art": [
+              450,
+              370
+            ],
+            "model": [
+              454.0,
+              389.6
+            ],
+            "error_px": 20.01
+          },
+          {
+            "art": [
+              574,
+              370
+            ],
+            "model": [
+              570.0,
+              389.6
+            ],
+            "error_px": 20.02
+          },
+          {
+            "art": [
+              687,
+              370
+            ],
+            "model": [
+              686.0,
+              389.6
+            ],
+            "error_px": 19.64
+          },
+          {
+            "art": [
+              392,
+              263
+            ],
+            "model": [
+              396.1,
+              289.3
+            ],
+            "error_px": 26.64
+          },
+          {
+            "art": [
+              512,
+              263
+            ],
+            "model": [
+              512.1,
+              289.3
+            ],
+            "error_px": 26.33
+          },
+          {
+            "art": [
+              632,
+              263
+            ],
+            "model": [
+              628.1,
+              289.3
+            ],
+            "error_px": 26.63
+          }
+        ],
+        "gallery_mast_px": 0.97,
+        "gallery_near_rim_errors_px": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      }
+    },
+    "glacier-tongue": {
+      "name": "Glacier Tongue",
+      "original": {
+        "path": "Assets/ShipConcepts/sunburst-r144/41-glacier-tongue.png",
+        "sha256": "827baa1d6127c91fd36b21e0998ad7b013ddd7c8e7b109059bad03c61e86f0d1"
+      },
+      "blend": {
+        "path": "Assets/ShipConcepts/hull-review-r184/service-panels/glacier-tongue/glacier-tongue.blend",
+        "sha256": "bb0ecc770345880f6b5b246a4d290bf5904a1344bec080e81ded7237241bb557"
+      },
+      "glb": {
+        "path": "Assets/ShipConcepts/hull-review-r184/service-panels/glacier-tongue/glacier-tongue.glb",
+        "sha256": "2c8073895b31737c675fa6daa895ad77079bd9ece468c19c3daf5d7ba360c598"
+      },
+      "gallery": {
+        "path": "Assets/ShipConcepts/hull-review-r184/service-panels/renders/glacier-tongue-gallery.png",
+        "sha256": "59e4911461b6322f75a84a109549292a4cf531f82902b05edde4913a3a49e59a"
+      },
+      "prior_glb": {
+        "path": "Assets/ShipConcepts/hull-review-r179/hanging-berth/glacier-tongue/glacier-tongue.glb",
+        "sha256": "cc0238e91518a9a78ff0ef5fa0bdbd72a964e919de7e78467cfb92adaa8f8e45"
+      },
+      "geometry_check": {
+        "path": "Assets/ShipConcepts/hull-review-r184/service-panels/glacier-tongue/geometry-check.json",
+        "sha256": "1416eab75e56c1807674100affaaaba212521e04c7ceabbea72e42b3b87fc556"
+      },
+      "native_dimensions_m": [
+        1280.0,
+        582.7653045654297,
+        397.8047561645508
+      ],
+      "glb_dimensions_m": [
+        1280.0,
+        582.7653045654297,
+        397.8047561645508
+      ],
+      "packed_images": 36,
+      "glb_images": 36,
+      "triangles": 122030,
+      "whole": {
+        "path": "Assets/ShipConcepts/hull-review-r184/review-sheets/glacier-tongue-whole.png",
+        "sha256": "8e451208815975d184f71eaa7ab7d3c7a942d2a3474425973a5e0f6dd9e75cd0"
+      },
+      "dock": {
+        "path": "Assets/ShipConcepts/hull-review-r184/review-sheets/glacier-tongue-dock.png",
+        "sha256": "2270b5fd47ec08102d039e0663978812e32d9956f0c72521d13d1ea2419d2d12"
+      },
+      "light_sheet": {
+        "path": "Assets/ShipConcepts/hull-review-r184/review-sheets/glacier-tongue-lighting.png",
+        "sha256": "1525404d2bfb8691c09f874d191b8459e988f0f7ca496cbe459a219b509d73f5"
+      },
+      "geometry_digest": {
+        "previous": "03ff4e343e3504797f0b84823c18ca2be3a36207860efd91374cd9853d308f65",
+        "selected": "03ff4e343e3504797f0b84823c18ca2be3a36207860efd91374cd9853d308f65"
+      },
+      "clear_bay_depth_m": 64.51,
+      "crossings": [
+        {
+          "inner": 12,
+          "outer": 3
+        },
+        {
+          "inner": 15,
+          "outer": 8
+        },
+        {
+          "inner": 16,
+          "outer": 10
+        }
+      ],
+      "full_ship_open_rays": 9,
+      "patterned_materials": [
+        {
+          "name": "glacier-tongue · berth_liner",
+          "emissive_texture": 0,
+          "base_color_texture": 1,
+          "emissive_factor": [
+            1,
+            1,
+            1
+          ],
+          "embedded": true
+        },
+        {
+          "name": "glacier-tongue · berth_diffuser",
+          "emissive_texture": 2,
+          "base_color_texture": 3,
+          "emissive_factor": [
+            0.75,
+            0.75,
+            0.75
+          ],
+          "embedded": true
+        }
+      ],
+      "appearance": {
+        "whole_opening": {
+          "box_px": [
+            604,
+            471,
+            709,
+            542
+          ],
+          "readings": {
+            "art": {
+              "p50": 0.0596,
+              "p95": 0.5547,
+              "rgb_in_75th_to_95th_percentile": [
+                177.0,
+                147.0,
+                116.0
+              ]
+            },
+            "previous": {
+              "p50": 0.0255,
+              "p95": 0.2064,
+              "rgb_in_75th_to_95th_percentile": [
+                112.0,
+                95.0,
+                76.0
+              ]
+            },
+            "first_bright_panels": {
+              "p50": 0.0436,
+              "p95": 0.7047,
+              "rgb_in_75th_to_95th_percentile": [
+                216.0,
+                185.0,
+                161.0
+              ]
+            },
+            "uniform_warm_control": {
+              "p50": 0.0408,
+              "p95": 0.561,
+              "rgb_in_75th_to_95th_percentile": [
+                211.0,
+                178.0,
+                152.0
+              ]
+            },
+            "selected": {
+              "p50": 0.0369,
+              "p95": 0.5058,
+              "rgb_in_75th_to_95th_percentile": [
+                195.0,
+                160.0,
+                124.0
+              ]
+            },
+            "previous_emitters-only": {
+              "p50": 0.0013,
+              "p95": 0.1569,
+              "rgb_in_75th_to_95th_percentile": [
+                100.0,
+                76.0,
+                50.0
+              ]
+            },
+            "previous_turned-key": {
+              "p50": 0.0304,
+              "p95": 0.2084,
+              "rgb_in_75th_to_95th_percentile": [
+                117.0,
+                103.0,
+                88.0
+              ]
+            },
+            "selected_emitters-only": {
+              "p50": 0.0096,
+              "p95": 0.4874,
+              "rgb_in_75th_to_95th_percentile": [
+                192.0,
+                155.0,
+                113.0
+              ]
+            },
+            "selected_muted-materials": {
+              "p50": 0.027,
+              "p95": 0.1904,
+              "rgb_in_75th_to_95th_percentile": [
+                121.0,
+                92.0,
+                57.0
+              ]
+            },
+            "selected_turned-key": {
+              "p50": 0.0433,
+              "p95": 0.5063,
+              "rgb_in_75th_to_95th_percentile": [
+                196.0,
+                164.0,
+                126.0
+              ]
+            }
+          }
+        },
+        "interior": {
+          "box_px": [
+            634,
+            496,
+            670,
+            516
+          ],
+          "readings": {
+            "art": {
+              "p50": 0.3194,
+              "p95": 0.6053,
+              "rgb_in_75th_to_95th_percentile": [
+                215.5,
+                186.0,
+                150.5
+              ]
+            },
+            "previous": {
+              "p50": 0.1557,
+              "p95": 0.5871,
+              "rgb_in_75th_to_95th_percentile": [
+                165.0,
+                123.0,
+                83.0
+              ]
+            },
+            "first_bright_panels": {
+              "p50": 0.5751,
+              "p95": 0.7393,
+              "rgb_in_75th_to_95th_percentile": [
+                234.0,
+                219.5,
+                206.0
+              ]
+            },
+            "uniform_warm_control": {
+              "p50": 0.5471,
+              "p95": 0.6671,
+              "rgb_in_75th_to_95th_percentile": [
+                221.0,
+                194.0,
+                173.0
+              ]
+            },
+            "selected": {
+              "p50": 0.4238,
+              "p95": 0.6377,
+              "rgb_in_75th_to_95th_percentile": [
+                215.0,
+                190.0,
+                156.0
+              ]
+            },
+            "previous_emitters-only": {
+              "p50": 0.1183,
+              "p95": 0.5946,
+              "rgb_in_75th_to_95th_percentile": [
+                160.0,
+                116.0,
+                74.0
+              ]
+            },
+            "previous_turned-key": {
+              "p50": 0.1564,
+              "p95": 0.5865,
+              "rgb_in_75th_to_95th_percentile": [
+                165.0,
+                123.0,
+                83.0
+              ]
+            },
+            "selected_emitters-only": {
+              "p50": 0.4036,
+              "p95": 0.6357,
+              "rgb_in_75th_to_95th_percentile": [
+                215.0,
+                186.0,
+                151.0
+              ]
+            },
+            "selected_muted-materials": {
+              "p50": 0.1043,
+              "p95": 0.586,
+              "rgb_in_75th_to_95th_percentile": [
+                170.0,
+                128.0,
+                73.5
+              ]
+            },
+            "selected_turned-key": {
+              "p50": 0.4247,
+              "p95": 0.6393,
+              "rgb_in_75th_to_95th_percentile": [
+                216.0,
+                190.0,
+                156.0
+              ]
+            }
+          }
+        },
+        "exterior_control": {
+          "box_px": [
+            575,
+            456,
+            601,
+            477
+          ],
+          "readings": {
+            "art": {
+              "p50": 0.0117,
+              "p95": 0.054,
+              "rgb_in_75th_to_95th_percentile": [
+                45.0,
+                44.0,
+                47.0
+              ]
+            },
+            "previous": {
+              "p50": 0.0138,
+              "p95": 0.0638,
+              "rgb_in_75th_to_95th_percentile": [
+                67.0,
+                65.0,
+                65.0
+              ]
+            },
+            "first_bright_panels": {
+              "p50": 0.0137,
+              "p95": 0.0638,
+              "rgb_in_75th_to_95th_percentile": [
+                67.0,
+                65.0,
+                65.0
+              ]
+            },
+            "uniform_warm_control": {
+              "p50": 0.0139,
+              "p95": 0.0638,
+              "rgb_in_75th_to_95th_percentile": [
+                67.0,
+                65.0,
+                65.0
+              ]
+            },
+            "selected": {
+              "p50": 0.0136,
+              "p95": 0.0638,
+              "rgb_in_75th_to_95th_percentile": [
+                68.0,
+                65.0,
+                65.0
+              ]
+            },
+            "previous_emitters-only": {
+              "p50": 0.0,
+              "p95": 0.0003,
+              "rgb_in_75th_to_95th_percentile": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "previous_turned-key": {
+              "p50": 0.0142,
+              "p95": 0.0656,
+              "rgb_in_75th_to_95th_percentile": [
+                69.0,
+                69.0,
+                69.0
+              ]
+            },
+            "selected_emitters-only": {
+              "p50": 0.0,
+              "p95": 0.0003,
+              "rgb_in_75th_to_95th_percentile": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "selected_muted-materials": {
+              "p50": 0.0138,
+              "p95": 0.0637,
+              "rgb_in_75th_to_95th_percentile": [
+                67.0,
+                65.0,
+                65.0
+              ]
+            },
+            "selected_turned-key": {
+              "p50": 0.0138,
+              "p95": 0.0653,
+              "rgb_in_75th_to_95th_percentile": [
+                68.0,
+                69.0,
+                69.0
+              ]
+            }
+          }
+        }
+      },
+      "light_files": {
+        "previous_emitters-only": {
+          "path": "Assets/ShipConcepts/hull-review-r184/lighting/r179-isolated/emitters-only.png",
+          "sha256": "5a1ecc2fcf1c2d9bb406d712feebe0b6ddc34552ae6e9d7648cdbc3096164c05"
+        },
+        "previous_turned-key": {
+          "path": "Assets/ShipConcepts/hull-review-r184/lighting/r179-isolated/turned-key.png",
+          "sha256": "ef2e8a4f67f284b60eeabbdf92b8a67aeb6f502857c697237287ff5fe81cb916"
+        },
+        "selected_emitters-only": {
+          "path": "Assets/ShipConcepts/hull-review-r184/lighting/service-panels/emitters-only.png",
+          "sha256": "2b567467aba4377a7fd6fb17c649bcf7c42e8440d3c2091012c9202d2fe4a9ba"
+        },
+        "selected_muted-materials": {
+          "path": "Assets/ShipConcepts/hull-review-r184/lighting/service-panels/muted-materials.png",
+          "sha256": "ea08d36d3111807a1af36a0b66ec8f22bb9d01e562b47295db084bc91d784adc"
+        },
+        "selected_turned-key": {
+          "path": "Assets/ShipConcepts/hull-review-r184/lighting/service-panels/turned-key.png",
+          "sha256": "0bf3cad11eafb9ed8862ccb65eb177ed3a1c859e664b82d9c49cc36c9c97201a"
+        }
+      },
+      "luminosity_method": "Opaque sRGB display frames. Same gallery camera and exposure. Relative display luminance after sRGB linearization. These comparisons do not identify real material constants."
+    }
+  },
+  "research": "Docs/Research/research-battleship-reference-matching-review-v1.md",
+  "remaining": [
+    "Delta: upper exhaust tiers sit low relative to the rear study; near shoulder still masks part of the gallery-side door.",
+    "Glacier: rectangular bay mouth and thin sill differ from the rounded painted arch."
+  ],
+  "browser": {
+    "method": "Isolated headless Chrome with WebGL",
+    "ships": {
+      "delta-tree": {
+        "original_loaded": true,
+        "painted_and_gray": true,
+        "stern_and_reset": true,
+        "drag_rotates": true,
+        "downloaded_model_matches": true,
+        "download_sha256": "c3df4e2314a1261d719f0a33cf14a1a60f00a7dcd6809749ecf8305ce79838fb",
+        "model_view_pixel_differences": {
+          "gray": 23.75,
+          "stern": 19.9,
+          "drag": 20.72,
+          "reset": 0.0
+        },
+        "switches_between_revisions": true,
+        "previous_to_current_pixel_difference": 0.81
+      },
+      "glacier-tongue": {
+        "original_loaded": true,
+        "painted_and_gray": true,
+        "stern_and_reset": true,
+        "drag_rotates": true,
+        "downloaded_model_matches": true,
+        "download_sha256": "2c8073895b31737c675fa6daa895ad77079bd9ece468c19c3daf5d7ba360c598",
+        "model_view_pixel_differences": {
+          "gray": 18.34,
+          "stern": 34.59,
+          "drag": 16.53,
+          "reset": 0.0
+        },
+        "switches_between_revisions": true,
+        "previous_to_current_pixel_difference": 0.14
+      }
+    }
+  },
+  "fallback_cases": [
+    "original",
+    "&round=174",
+    "&round=175",
+    "&round=176",
+    "&round=177",
+    "&round=176&compare=177",
+    "&round=178",
+    "&round=177&compare=178",
+    "&round=179",
+    "&round=178&compare=179",
+    "&round=184",
+    "&round=179&compare=184"
+  ],
+  "research_console": [
+    {
+      "topic": "camera",
+      "id": "629f66eb205049889648cc8466ffd508",
+      "state": "reviewed",
+      "result_version": 1,
+      "reviewed_version": 1
+    },
+    {
+      "topic": "geometry",
+      "id": "d7914814e5f9481195e703c94518e404",
+      "state": "reviewed",
+      "result_version": 1,
+      "reviewed_version": 1
+    },
+    {
+      "topic": "materials",
+      "id": "3e598ae1e05e4d48aa38438c52ebc298",
+      "state": "reviewed",
+      "result_version": 1,
+      "reviewed_version": 1
+    }
+  ],
+  "ledger_source_keys_and_requests": {
+    "aquila-code-dark-game-exterior-delta-tree-c3df4e2314a126": "req_ea72c27be1d8c1ac1751120d",
+    "aquila-code-dark-game-exterior-glacier-tongue-2c8073895b3173": "req_6931593a5239c4c2eb68ecbf",
+    "aquila-code-dark-game-r184-delta-stern-elevation": "req_2d5600200a9057207da9c657",
+    "aquila-code-dark-game-r184-berth-lighting-r179": "req_ef6a29dc1e5fde634952cb63",
+    "aquila-code-dark-game-r184-berth-lighting-r184": "req_a8f688be80e207e55bb36bcd",
+    "aquila-code-dark-game-r184-berth-lighting-r179-isolated": "req_8e229fd8b1259bc2f70cb38a",
+    "aquila-code-dark-game-r184-berth-lighting-r184-isolated": "req_9d7931f3c374923d0e3078fe",
+    "aquila-code-dark-game-r184-berth-lighting-service-panels": "req_c7c134bb586d30c50447ef62",
+    "aquila-code-dark-game-r184-diffuser-strength-trial": "req_f00df32556c204a90bf540f4",
+    "aquila-code-dark-game-r184-pattern-preview": "req_65719701afa9c566614ebb51"
+  },
+  "light_receipt": "Assets/ShipConcepts/hull-review-r184/lighting-and-elevation.ledger-record.json"
+}

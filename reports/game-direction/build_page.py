@@ -326,9 +326,25 @@ def ship_modeling_reference_plan(out):
     return page.entry(149, "What Blender needs for each ship", section, when="2026-11-24")
 
 
+def ship_reference_card(out, ship, row):
+    slug = ship["slug"]
+    source = ROOT / "Assets/ShipConcepts/modeling-references-r150" / slug / row["file"]
+    tag = row["slot"] if row["group"] == "Modeling guides" else source.stem
+    name = f"r150-{slug}-{tag}"
+    full = available_media(out, source, name + ".png")
+    label = escape(row["label"])
+    if not full:
+        return f"<p>{label} unavailable in this checkout.</p>"
+    thumb = HERE / "media/ship-views-r150" / f"{slug}-{tag}.webp"
+    preview = available_media(out, thumb, name + ".webp") or full
+    alt = escape(f"{ship['name']} · {row['label']}", quote=True)
+    return (f'<figure><a href="{full}" target="_blank" rel="noopener"><img src="{preview}" alt="{alt}" '
+            f'loading="lazy" decoding="async"></a><figcaption>{label} · '
+            f'<a href="{full}" target="_blank" rel="noopener">Full size</a></figcaption></figure>')
+
+
 def finished_ship_references(out, proof):
     assets = ROOT / "Assets/ShipConcepts/modeling-references-r150"
-    previews = HERE / "media/ship-views-r150"
     cost = (f"The full run cost {proof['net_credits']:g} credits after the refund."
             if proof["net_credits"] is not None else f"Successful jobs were quoted at {proof['successful_quotes']:g} credits.")
     section = decide.recap(
@@ -349,21 +365,6 @@ def finished_ship_references(out, proof):
         },
     )
 
-    def card(ship, row):
-        slug = ship["slug"]
-        source = assets / slug / row["file"]
-        tag = row["slot"] if row["group"] == "Modeling guides" else source.stem
-        name = f"r150-{slug}-{tag}"
-        full = available_media(out, source, name + ".png")
-        label = escape(row["label"])
-        if not full:
-            return f"<p>{label} unavailable in this checkout.</p>"
-        preview = available_media(out, previews / f"{slug}-{tag}.webp", name + ".webp") or full
-        alt = escape(f"{ship['name']} · {row['label']}", quote=True)
-        return (f'<figure><a href="{full}" target="_blank" rel="noopener"><img src="{preview}" alt="{alt}" '
-                f'loading="lazy" decoding="async"></a><figcaption>{label} · '
-                f'<a href="{full}" target="_blank" rel="noopener">Full size</a></figcaption></figure>')
-
     downloads, highlights, galleries = [], [], []
     for ship in proof["ships"]:
         slug, title = ship["slug"], escape(ship["name"])
@@ -373,7 +374,7 @@ def finished_ship_references(out, proof):
         else:
             downloads.append(f"{title} archive unavailable in this checkout.")
         lead = "11-dock-section" if slug == "glacier-tongue" else "06-stern"
-        highlights.append(card(ship, next(r for r in ship["views"] if r["slot"] == lead)))
+        highlights.append(ship_reference_card(out, ship, next(r for r in ship["views"] if r["slot"] == lead)))
         html = [f"<h3>{title}</h3>"]
         original = ROOT / ship["original"]
         original_url = available_media(out, original, "r144-" + original.name)
@@ -389,7 +390,7 @@ def finished_ship_references(out, proof):
         ]:
             if rows:
                 html.append(f"<details><summary>{category}</summary><div class=\"grid thumbs\">"
-                            + "".join(card(ship, r) for r in rows) + "</div></details>")
+                            + "".join(ship_reference_card(out, ship, r) for r in rows) + "</div></details>")
         galleries.append("".join(html))
     body = "<p>" + " · ".join(downloads) + "</p>" + page.grid(*highlights) + "".join(galleries)
     section += decide.info_thread(
@@ -1841,6 +1842,910 @@ def battleship_session_wrap(proof):
     section += decide.whats_next("aquila-direction-r182-next", "Review a returned technique against Delta’s stern or Glacier’s dock.",
                                  short="Resume after the handoff", follows="aquila-direction-r181-next")
     return page.entry(182, "Game and ship modeling work saved", section, when=proof["local_date"])
+
+
+def ship_research_returns(out, receipt):
+    section = decide.recap(
+        "All three Perplexity reports are in their matching Research Console requests. Each saved copy matches the original.",
+        [("Camera", "The full report was inside the ZIP. The loose conversation points to it."),
+         ("Hulls", "The editable hull report matched the request about silhouettes, sections and openings."),
+         ("Materials", "The paint and lighting report matched the spacecraft materials request."),
+         ("Companions", "The camera figures and pilot scripts are available below."),
+         ("Status", "Each request now holds version one and awaits technical review.")],
+        dict(did="Filed all three reports and preserved their supporting files.",
+             why="The camera download included both a conversation export and a full report.",
+             working="Downloaded each saved answer and compared every byte with its source.",
+             not_working="The research methods still await tests on the two ships.",
+             next="The research is ready to review."))
+    labels = {"camera": "Camera matching", "geometry": "Editable hull construction", "materials": "Materials and lighting"}
+    rows = [(f'<a href="{escape(job["url"], quote=True)}">{escape(labels[job["topic"]])}</a>',
+             str(job["version"]), f'{job["bytes"]:,}') for job in receipt["reports"]]
+    body = table(["Open in Research Console", "Saved version", "Verified bytes"], rows)
+    body += "<p>All three reports cite sources in the text. The console flagged the missing separate sources heading.</p>"
+    downloads = []
+    charts = []
+    titles = {"fig1-focal-ambiguity.png": "Lens ambiguity by field of view",
+              "fig2-benchmark-by-fov.png": "Camera fit by field of view",
+              "fig3-diagnostic-residuals.png": "Direction of the remaining errors"}
+    for entry in receipt["camera_companions"]:
+        path = ROOT / entry["archive"]
+        if path.suffix not in {".png", ".zip"}:
+            continue
+        link = available_media(out, path, "r183-" + path.name.lower().replace(" ", "-"))
+        if path.suffix == ".png":
+            title = titles[path.name]
+            charts.append(page.figure(link, title) if link else f"<p>{title}. Local figure unavailable.</p>")
+        else:
+            label = "Camera report with figures" if path.parent.name == "attachments" else "Camera pilot scripts and results"
+            downloads.append(f'<a href="{escape(link, quote=True)}" download>{label}</a>' if link else f"{label} unavailable locally")
+    body += "<p>" + " · ".join(downloads) + "</p>"
+    body += "<p>Perplexity used a stand-in ship for these plots. The three loose figures match the ZIP copies.</p>"
+    body += page.grid(*charts)
+    section += decide.info_thread("aquila-direction-r183-returns", "The file headers identify all three requests.",
+                                  short="Reports and camera attachments", body_html=body)
+    section += decide.whats_next("aquila-direction-r183-next", "Technical review can start from the saved reports.",
+                                 short="Research ready for review", follows="aquila-direction-r182-next")
+    return page.entry(183, "All three ship research reports are in", section, when=receipt["local_date"])
+
+
+def researched_ship_exteriors(out, proof):
+    section = decide.recap(
+        "Delta Tree’s stern curves under the engines. Glacier Tongue’s dock now glows across its floor and rear wall.",
+        [("Compare", "Each painting sits beside the previous model and the new model."),
+         ("Scale", "Both ships reopen at 1,280 metres. Rotate either ship to see the work from another angle."),
+         ("Camera", "The bottom engine row fixes the rear view’s position and scale."),
+         ("Lighting", "The dock’s warm wall remains visible with the studio lights off."),
+         ("Tools", "Asset Pipeline has the editable recipes, camera checks and a reusable lighting test.")],
+        dict(did="Applied all three research reports to the two Blender ships.",
+             why="The lower stern was narrow. A few bright strips lit Glacier’s otherwise dark dock.",
+             working="The new stern clears every exhaust. Two packed surface maps give the dock its amber panels.",
+             not_working="Delta’s near shoulder still hides part of the side door. Glacier’s entrance still looks square.",
+             next="Review these exteriors against their paintings before replacing either playable ship."))
+    for slug, item in proof["ships"].items():
+        delta = slug == "delta-tree"
+        name = item["name"]
+        feature = "stern" if delta else "dock"
+        def picture(key, title, caption):
+            path = ROOT / item[key]["path"]
+            src = available_media(out, path, f"r184-{path.name}")
+            return page.figure(src, title, " · "+caption, look=True) if src else f"<p>{title} unavailable locally.</p>"
+        body = picture(feature, name+" · "+feature, "Painting, previous model and revised model.")
+        model = available_media(out, ROOT / item["glb"]["path"], f"r184-{slug}.glb")
+        available_media(out, ROOT / item["gallery"]["path"], f"r184-{slug}-gallery.png")
+        if model:
+            body += f'<p><a class="qref" href="hull-review.html?ship={slug}&amp;round=184">Rotate {name} and switch revisions</a></p>'
+        if delta:
+            body += ("<p>Four fresh measurements put the stern edges 1.97 metres from the painted outline on average. Previously, 33.75 metres.</p>"
+                     "<p>All 108 checks reach inside the twelve exhausts.</p>"
+                     "<p>The upper engines still sit lower in the rear view. Their visible rims line up in the gallery painting.</p>")
+        else:
+            body += ("<p>Gold panels break up the rear wall. Muting their light darkens the room while the narrow lamps stay on.</p>"
+                     "<p>The middle of the room remains brighter than the painting. The entrance also needs a deeper curved lip.</p>")
+            body += picture("light_sheet", "The dock under three lighting setups",
+                            "Previous dock above. Revised dock below. The right column uses only light from the ship.")
+        body += picture("whole", name+" · whole ship", "The gallery camera stays fixed across both models.")
+        section += decide.question(f"aquila-direction-r184-{slug}", f"Does {name}’s {feature} look closer to its painting?",
+                                   [("closer","Yes, closer"),("detail","A detail still differs","Which detail stands out?")],
+                                   short=name+" · "+feature, anchors_html=body)
+    section += decide.whats_next("aquila-direction-r184-next",
+                                 "Next details are Delta’s side door and Glacier’s curved entrance. Windows still uses the earlier playable ships.",
+                                 short="Remaining art differences", follows="aquila-direction-r183-next")
+    return page.entry(184, "Fuller stern and a warmer dock", section, when=proof["local_date"])
+
+
+def ship_arrival_doors(out, proof):
+    section = decide.recap(
+        "Delta Tree’s door opens into a bronze room. Glacier Tongue has a curved dock frame and two landing pads.",
+        [("Delta Tree", "The port drawing puts the door about seven tenths of the way from bow to stern."),
+         ("Glacier Tongue", "Moving a wall and a support exposed the gold panels on the right."),
+         ("Compare", "Each detail has its painting, the earlier model and the revised model side by side."),
+         ("Scale", "Both models measure 1,280 metres in Blender and after export."),
+         ("Windows", "The playable duel still uses the earlier ships.")],
+        dict(did="Rebuilt both entrances and traced which surfaces you can see through them.",
+             why="The engine housings hid Delta’s room. A wall covered the right side of Glacier’s dock.",
+             working="The new frames connect to the hulls. Their interiors remain visible when you rotate the ships.",
+             not_working="Delta’s door sits slightly high in the side view. Glacier’s blade covers more of its dock than the drawing.",
+             next="Compare the surface of Delta’s branching deck and the angle of Glacier’s outer blade."))
+    for slug, item in proof["ships"].items():
+        name = item["name"]
+        delta = slug == "delta-tree"
+        def picture(key, title, filename, caption):
+            src = available_media(out, ROOT / item[key]["path"], f"r185-{slug}-{filename}.png")
+            return page.figure(src, title, " · "+caption, look=True) if src else f"<p>{title} unavailable locally.</p>"
+        body = picture("entrance", name+" · entrance", "door-compare", "Painting, earlier model and revised model.")
+        counts = item["gallery_samples"]["inside"]
+        body += (f"<p>At {counts['current_room_hits']} of 16 points inside the painted entrance, you now see the modeled room. "
+                 f"Previously, {counts['previous_room_hits']} of 16.</p>")
+        if delta:
+            body += ("<p>The bronze room extends 51.5 metres behind the opening. All twelve exhausts remain clear.</p>"
+                     "<p>The door now lines up along the hull. Its center still sits about 13 pixels high in the side drawing.</p>")
+            if "light_trial" in item:
+                body += ("<p>Three lighting trials kept the room and camera fixed. Dimming only the bronze floor preserved the small amber lights.</p>"
+                         "<p>The painting also has a bright streak running past the sill toward the shuttle.</p>")
+                body += picture("light_trial", "Bronze floor and cabin lights", "room-light", "Painting, earlier room finish and selected room finish.")
+        else:
+            body += ("<p>Three points near the right edge still meet the frame or its support. All three crossings connect at both ends.</p>"
+                     "<p>The straight side view shows how much of the entrance the outer blade covers.</p>")
+        body += picture("side", name+" · port side", "side-compare", "Both model views share one scale and position against the side drawing.")
+        body += picture("whole", name+" · whole ship", "whole", "Both models use the original gallery camera.")
+        glb = available_media(out, ROOT / item["glb"]["path"], f"r185-{slug}.glb")
+        available_media(out, ROOT / item["gallery"]["path"], f"r185-{slug}-gallery.png")
+        if glb:
+            body += f'<p><a class="qref" href="hull-review.html?ship={slug}&amp;round=185">Rotate {name} and switch models</a></p>'
+        prior_id = "aquila-direction-r184-"+slug
+        section += decide.reply("aquila-direction-r185-"+slug, prior_id, name+" · previous review",
+                                proof["owner_reply"]["values"][prior_id], body, short=name+" · entrance")
+    section += decide.info_thread("aquila-direction-r185-method", "Asset Pipeline now records the face and material behind any marked point.",
+                                  "<p>The native scenes and exported models agreed at all 48 marked positions.</p>"
+                                  "<p>The marks guided the doorway work. The separate side drawings reveal differences the gallery view hides.</p>",
+                                  short="How the openings were checked")
+    section += decide.whats_next("aquila-direction-r185-next",
+                                 "Next details are Delta’s branching deck finish and Glacier’s blade angle in the port drawing.",
+                                 short="Remaining art differences", follows="aquila-direction-r184-next")
+    return page.entry(185, "Two open arrival bays", section, when=proof["local_date"])
+
+
+def ship_branch_deck_and_blade(out, proof):
+    section = decide.recap(
+        "Delta Tree’s branching deck now reaches thirteen stations. Glacier Tongue’s armored blade starts farther forward and turns toward the hull.",
+        [("Delta Tree", "Two more stations fill gaps along the outer branches."),
+         ("Deck finish", "Dark channel beds separate the ceramic walkways from the islands below."),
+         ("Glacier Tongue", "Silver plates wrap the outer flank over a dark blue shell."),
+         ("Side view", "The rebuilt blade covers all nine measured positions in the port drawing."),
+         ("Remaining difference", "Both blade tips still sit lower in the gallery view.")],
+        dict(did="Reshaped both ships against their paintings and checked the models from the side.",
+             why="Several branches ended in the wrong places. The side drawing showed a longer blade.",
+             working="Both arrival rooms remain visible. All three crossings still connect at both ends.",
+             not_working="Delta’s deck still looks more uniform than the painting. Glacier’s gallery tips moved farther from their marks.",
+             next="Compare Delta’s front canopy and Glacier’s upper hull against their paintings and side drawings."))
+    body = ""
+    for slug,item in proof["ships"].items():
+        name = item["name"]
+        body += f"<h3>{name}</h3>"
+        if slug == "delta-tree":
+            fit = item["station_fit"]
+            body += (f"<p>The eleven existing stations averaged {fit['prior_mean_shared_px']} pixels from their painted centers. "
+                     f"They now average {fit['current_mean_shared_px']} pixels.</p>"
+                     "<p>Two new stations bring the total to thirteen. The marked centers guided their placement.</p>"
+                     "<p>One walkway floated above its island. All thirteen now meet both the ship and their own station.</p>"
+                     "<p>The shortened side fairings leave the bronze arrival room visible. All 108 exhaust checks pass.</p>")
+        else:
+            sides = item["blade_fit"]
+            gallery = sides["gallery"]["shared_mean_edge_error_px"]
+            port = sides["side"]["shared_mean_edge_error_px"]
+            body += (f"<p>Average edge error fell from {gallery[0]} to {gallery[1]} pixels across nine gallery positions.</p>"
+                     f"<p>Across eight shared side positions, it fell from {port[0]} to {port[1]} pixels.</p>"
+                     "<p>The earlier blade missed the ninth side position. Its two tips matched the gallery more closely.</p>")
+        for key,title,caption in [
+            ("detail","Branching deck" if slug=="delta-tree" else "Armored blade","Original painting, earlier model and revised model."),
+            ("side","Port side","The straight side drawing has its own proportions. Both models share one registration."),
+            ("whole","Whole ship","Both models use the same gallery camera.")]:
+            src=available_media(out,ROOT/item[key]["path"],f"r186-{slug}-{key}.png")
+            body+=page.figure(src,name+" · "+title," · "+caption,look=(key=="detail")) if src else f"<p>{title} unavailable locally.</p>"
+        glb=available_media(out,ROOT/item["glb"]["path"],f"r186-{slug}.glb")
+        available_media(out,ROOT/item["gallery"]["path"],f"r186-{slug}-gallery.png")
+        if glb:
+            body+=f'<p><a class="qref" href="hull-review.html?ship={slug}&amp;round=186">Rotate {name} and switch models</a></p>'
+    section += decide.info_thread("aquila-direction-r186-ships",
+                                  "Delta’s outer branches and Glacier’s armored blade now follow more of the original drawings.",
+                                  body, short="Compare both ships")
+    section += decide.whats_next("aquila-direction-r186-next",
+                                 "Next are Delta’s forward canopy and Glacier’s upper hull. The playable Windows ships still use round 172.",
+                                 short="Next hull details",follows="aquila-direction-r185-next")
+    return page.entry(186,"Branching deck and swept blade",section,when=proof["local_date"])
+
+
+def ship_upper_hulls(out, proof, references):
+    section = decide.recap(
+        "Yes. Each ship has its original painting and 24 selected reference images.",
+        [("Exterior", "Both sides, bow, stern, top, underside and two angled views show each hull."),
+         ("Inside", "Four sections, three deck plans and two interior views show how the decks could connect."),
+         ("Fittings", "Open and shut doors, turret mounts, armor samples and lighting studies cover the smaller details."),
+         ("Delta Tree", "A bronze glass dome meets an armored cabin built into the foredeck."),
+         ("Glacier Tongue", "Two decks of lit windows wrap beneath the command arch.")],
+        dict(did="Compared the painting, straight port drawing and overhead plan against both models.",
+             why="The side drawing exposed the deck covering Delta’s cabin. Glacier’s near armor hid its upper windows.",
+             working="The saved Blender checks identify which ship part and finish appear at each marked spot.",
+             not_working="The independent drawings disagree on some positions. Glacier’s crown still spreads too far across the overhead plan.",
+             next="Trace the overhead deck edges and check how each change looks from the opposite side."))
+    body = ""
+    for ship in references["ships"]:
+        slug, name = ship["slug"], ship["name"]
+        item = proof["ships"][slug]
+        model = available_media(out, ROOT / item["glb"]["path"], f"r187-{slug}.glb")
+        available_media(out, ROOT / item["gallery"]["path"], f"r187-{slug}-gallery.png")
+        body += f'<h3 id="references-{slug}">{escape(name)}</h3>'
+        if model:
+            body += f'<p><a class="qref" href="hull-review.html?ship={slug}&amp;round=187">Rotate {escape(name)} and switch models</a></p>'
+        original = available_media(out, ROOT / ship["original"], "r144-" + Path(ship["original"]).name)
+        body += f'<details><summary>Browse all 24 selected references and the original painting</summary>'
+        if original:
+            body += page.figure(original, name + " · Original painting")
+        body += '<div class="grid thumbs">' + "".join(ship_reference_card(out, ship, row) for row in ship["views"]) + '</div></details>'
+        for key, title in (("detail", "Original painting and two models"), ("side", "Straight port view"),
+                           ("overhead", "Overhead plan"), ("whole", "Whole ship")):
+            src = available_media(out, ROOT / item[key]["path"], f"r187-{slug}-{key}.png")
+            if src:
+                body += page.figure(src, name + " · " + title, " · Left to right, artwork, previous model, revised model.", look=(key=="detail"))
+        marks = item["surfaces"]
+        if slug=="delta-tree":
+            side = marks["port"]["Cabin roof"]
+            top = marks["overhead"]["Cabin roof"]
+            body += (f"<p>The cabin roof reaches {top['current']} of {top['total']} overhead marks, up from {top['prior']}.</p>"
+                     f"<p>From the side it reaches {side['current']} of {side['total']}, previously {side['prior']}. "
+                     "The dome framing still differs from the artwork.</p>")
+        else:
+            gallery = marks["gallery"]["Cabin windows"]
+            side = marks["port"]["Cabin windows"]
+            body += (f"<p>Upper windows reach {gallery['current']} of {gallery['total']} gallery marks and {side['current']} of {side['total']} side marks.</p>"
+                     "<p>The earlier model missed every window mark in both views. The overhead drawing shows narrower terraces.</p>")
+    body += "<p>These marks guided the edits. They measure the visible finish at those spots only.</p>"
+    section += decide.info_thread("aquila-direction-r187-views", "Browse the reference art, compare the changes and rotate either model.",
+                                  body, short="Reference galleries and models")
+    section += decide.whats_next("aquila-direction-r187-next",
+                                 "Next are Delta’s dome framing and Glacier’s terrace width from above. Windows still uses the round 172 ships.",
+                                 short="Remaining art differences", follows="aquila-direction-r186-next")
+    return page.entry(187, "Reference galleries and upper decks", section, when=proof["local_date"])
+
+
+def ship_reference_consistency(out, proof, packs):
+    ships = proof["ships"]
+    selected = sum(s["selected"] for s in ships.values())
+    guided = sum(s["used_guide"] for s in ships.values())
+    section = decide.recap(
+        f"All {selected} selected images used their ship’s original painting. Some details still disagree.",
+        [("Generation", "Higgsfield drew each reference separately with GPT Image 2.6 Sunburst."),
+         ("First view", "The first port drawing used the original alone. Every other selected image also received that port drawing."),
+         ("Shared guides", f"{guided} requests included a gray Blender view, deck layout or dock diagram."),
+         ("What carries across", "Delta’s branching bow and Glacier’s separate port blade recur across several views."),
+         ("Where it changes", "Both ships’ selected rear studies disagree about the engines.")],
+        dict(did="Checked the actual image inputs, their order and the saved results. Compared all selected pictures.",
+             why="A later view can inherit details invented in an earlier one.",
+             working="The original painting and supporting drawings identify which side carries Glacier’s blade.",
+             not_working="Glacier’s original angle leaves its engine count hidden.",
+             next="Use the original for visible details. Use supporting drawings where they agree. Keep unresolved features marked."))
+    examples = ""
+    for slug in ("glacier-tongue", "delta-tree"):
+        ship = ships[slug]
+        heading = ("Glacier Tongue shows different counts" if slug == "glacier-tongue"
+                   else "Delta Tree keeps the count and changes the stack")
+        examples += f"<h3>{heading}</h3>"
+        src = available_media(out, ROOT / ship["rear_comparison"]["path"], f"r188-{slug}-stern.png")
+        if src:
+            examples += page.figure(src, ship["name"] + " · Rear studies", " · Crops from both selected drawings.", look=True)
+        else:
+            examples += "<p>The comparison is unavailable in this checkout.</p>"
+        examples += ("<p>Both drawings show a central engine. The angled view adds two more illuminated outlets across the bank.</p>"
+                     if slug == "glacier-tongue" else
+                     "<p>Both drawings show twelve. The original painting shows three tiers on the visible flank.</p>")
+    section += decide.info_thread("aquila-direction-r188-sterns",
+                                  "The engine layouts change even when both pictures use the same original ship.",
+                                  examples, short="Compare the rear views")
+
+    earlier = sum(s["calls_with_earlier_study"] for s in ships.values())
+    glacier = next(p for p in packs["ships"] if p["slug"] == "glacier-tongue")
+    old_side = next(row for row in glacier["studies"] if row["file"] == "02-starboard.png")
+    new_side = next(row for row in glacier["views"] if row["slot"] == "02-starboard")
+    body = (f"<p>{earlier} retained images used at least one study later replaced in the reference pack.</p>"
+            "<p>One earlier Glacier view repeated the docking bay on the opposite flank. The correction restored continuous starboard armor.</p>")
+    body += page.grid(ship_reference_card(out, glacier, old_side), ship_reference_card(out, glacier, new_side))
+    for pack in packs["ships"]:
+        slug, name = pack["slug"], escape(pack["name"])
+        original = ROOT / pack["original"]
+        src = available_media(out, original, "r144-" + original.name)
+        body += f"<details><summary>{name} · original and 24 selected references</summary>"
+        body += page.figure(src, name + " · Original painting") if src else "<p>Original unavailable locally.</p>"
+        body += '<div class="grid thumbs">' + "".join(ship_reference_card(out, pack, row) for row in pack["views"]) + "</div></details>"
+    section += decide.info_thread("aquila-direction-r188-inputs",
+                                  "Later generations sometimes inherited an earlier interpretation. The saved inputs show which ones did.",
+                                  body, short="How the pictures were made")
+    section += decide.whats_next("aquila-direction-r188-next",
+                                 "The next model comparison will keep confirmed features and uncertain rear details visible side by side.",
+                                 short="Using these references", follows="aquila-direction-r187-next")
+    return page.entry(188, "Do the ship references agree?", section, when=proof["local_date"])
+
+
+def ship_turnaround_proposal(out, plan):
+    section = decide.recap(
+        "Use one 4K turnaround sheet per ship, with all six views drawn together from its original painting.",
+        [("Source", "Delta Tree and Glacier Tongue each use only their own original painting."),
+         ("Layout", "Two columns and three rows give the long hulls room at a common scale."),
+         ("Views", "Show both sides, top, underside, bow and stern straight on."),
+         ("Detail", "4K applies to the whole sheet. Each long profile can occupy nearly half its width."),
+         ("Consistency", "One drawing can still vary between panels. Check engine tiers, roof positions and which side carries the bay.")],
+        dict(did="Prepared the two prompts and priced both requests on the signed-in account.",
+             why="Drawing all six angles together gives the generator one design to carry across the sheet.",
+             working="GPT Image 2.6 Sunburst supports a 4K still image with one reference.",
+             not_working="Both sheets await generation. The original view hides parts of each stern.",
+             next="After approval, generate one sheet per ship and compare the six views before using them in Blender."))
+    originals = []
+    for ship in plan["ships"].values():
+        original = ROOT / ship["source"]["path"]
+        src = available_media(out, original, "r144-" + original.name)
+        originals.append(page.figure(src, ship["name"] + " · Original painting") if src
+                         else f"<p>{escape(ship['name'])} original unavailable locally.</p>")
+    layout = table(["Left panel", "Right panel"], plan["layout"])
+    guide = escape(plan["public_model_guide"], quote=True)
+    body = (page.grid(*originals) + layout
+            + "<p>Delta’s visible flank shows three engine tiers. Glacier’s blade and docking cavern belong on the port side.</p>"
+            + f'<p><a href="{guide}" target="_blank" rel="noopener">Higgsfield’s model and resolution guide</a></p>')
+    section += decide.info_thread("aquila-direction-r189-layout",
+                                  "Keep the hull scale, orientation and landmark positions consistent across the six panels.",
+                                  body, short="Source paintings and sheet layout")
+
+    qid = "aquila-direction-r189-budget"
+    rows = []
+    for level in ("high", "low", "max"):
+        name = level.capitalize()
+        per_ship = next(iter(plan["ships"].values()))["credits_per_sheet"][level]
+        total = plan["total_for_two_credits"][level]
+        rows.append((name, f"{per_ship:g}", f"{total:g}",
+                     decide.pick(qid, level, f"Approve {name} for {total:g} credits", mode="single", mine=level=="high")))
+    rows.append(("Keep the plan", "0", "0", decide.pick(qid, "hold", "Keep the plan", mode="single")))
+    section += decide.question(qid, "Which quality and total spend do you approve for the two 4K ship sheets?",
+                               [], short="Choose the two-sheet budget",
+                               why="High costs 6.5 credits for both and keeps each sheet at full resolution.",
+                               anchors_html=table(["Quality", "Credits per sheet", "Both sheets", "Choose"], rows))
+    section += decide.whats_next("aquila-direction-r189-next",
+                                 "One generation per ship follows the selected budget. Existing detail studies stay available for close work.",
+                                 short="Generate and check both sheets", follows="aquila-direction-r188-next")
+    return page.entry(189, "Six-view ship turnarounds", section, when=plan["local_date"])
+
+
+def ship_turnaround_results(out, proof):
+    section = decide.recap(
+        "Delta Tree and Glacier Tongue each have six views on one sheet, generated from their original paintings.",
+        [("Quality", "Sunburst Max delivered 3504 × 2336 pixels per sheet at its 4K setting."),
+         ("Cost", "One generation per ship. Two matching 12-credit debits."),
+         ("Delta Tree", "Three engine tiers recur. The stern and top disagree about how many engines span the ship."),
+         ("Glacier Tongue", "The open bay stays on port. The underside needs a vertical flip to put the blade on port."),
+         ("Blender", "Both reference files open on the full sheet. The image menu also holds each separate view.")],
+        dict(did="Compared all twelve panels with the paintings and matched each ship’s length to the existing model.",
+             why="A shared sheet makes conflicting details easier to spot before changing geometry.",
+             working="The side views distinguish each ship’s docking side. Both port and top guides measure 1,280 m in Blender.",
+             not_working="The generator enlarged the end views. Each stern includes details hidden in the original painting.",
+             next="Check Delta’s outer docks and Glacier’s blade spacing against the original paintings."))
+
+    section += decide.info_thread(
+        "aquila-direction-r190-budget", "Your Max selection covered one finished job for each original painting.",
+        "<p>Asset Ledger links each submitted prompt, original painting and delivered sheet.</p>"
+        "<p>The two account debits matched by amount, model and time. The billing rows omit job identifiers.</p>",
+        short="Generation and credits", follows="aquila-direction-r189-budget")
+
+    comparisons = []
+    for slug, ship in proof["ships"].items():
+        name = ship["name"]
+        source = ROOT / ship["source"]["path"]
+        original = available_media(out, source, "r144-" + source.name)
+        full = available_media(out, ROOT / ship["sheet"]["path"], f"r190-{slug}.png")
+        preview = available_media(out, ROOT / ship["thumbnail"]["path"], f"r190-{slug}-preview.webp")
+        blend = available_media(out, ROOT / ship["blender"]["path"], f"r190-{slug}-references.blend")
+        comparison = available_media(out, ROOT / ship["comparison"]["path"], f"r190-{slug}-comparison.webp")
+        body = page.figure(preview, name, " · Six views from one generation.", look=True) if preview else ""
+        links = []
+        if full:
+            links.append(f'<a href="{full}" target="_blank" rel="noopener">Open full-resolution PNG</a>')
+        if blend:
+            links.append(f'<a href="{blend}" download>Download Blender references</a>')
+        body += "<p>" + " · ".join(links) + "</p>"
+        if slug == "delta-tree":
+            body += ("<p>Follow the glazed bow, branching deck and round stations into the stacked rear housings.</p>"
+                     "<p>The top shows four engine tips across. The stern shows two columns of three lit outlets.</p>"
+                     "<p>The bow panel draws the ship at twice the width measured across the top view.</p>")
+        else:
+            body += ("<p>The roof arch, layered blue armor and warm docking bay recur across the visible sides.</p>"
+                     "<p>Both top and underside put the blade below the hull with the bow left.</p>"
+                     "<p>The Blender library includes the original underside and a vertically flipped working copy.</p>"
+                     "<p>The bow appears about 1.5 times wider here than in the top view.</p>"
+                     "<p>Seven rear outlets remain a design proposal. The painting hides the stern.</p>")
+            folder = (ROOT / ship["panel_index"]["path"]).parent
+            original_bottom = available_media(out, folder / "underside.png", "r190-glacier-underside.png")
+            oriented_bottom = available_media(out, folder / "underside-oriented.png", "r190-glacier-underside-oriented.png")
+            if original_bottom and oriented_bottom:
+                body += ("<details><summary>Compare underside orientation</summary>"
+                         + page.grid(page.figure(original_bottom, "Original crop", " · Blade along the lower edge."),
+                                     page.figure(oriented_bottom, "Blender working copy", " · Blade along the upper edge."))
+                         + "</details>")
+        if original:
+            body += "<details><summary>Compare the original painting</summary>" + page.figure(original, name + " · Original painting") + "</details>"
+        section += decide.info_thread("aquila-direction-r190-" + slug, name + " · six-view turnaround",
+                                      body, short=name + " sheet")
+        if comparison:
+            comparisons.append(page.figure(comparison, name, " · Both columns use equal hull lengths."))
+
+    models = (page.grid(*comparisons)
+              + "<p>Delta’s outer docks reach farther on the model. Glacier’s blade angles farther away from the hull.</p>"
+              + "<p>Measured overhead, width is 41% of length on Delta’s sheet and 54% on its model.</p>"
+              + "<p>Glacier measures 33% on the sheet and 51% on the model, including the blade.</p>")
+    section += decide.info_thread("aquila-direction-r190-models", "Both existing Blender hulls appear wider at the same length.",
+                                  models, short="Compare both models")
+    section += decide.whats_next("aquila-direction-r190-next",
+                                 "Trace the docks and blade from the original paintings, then test their spacing against these overhead views.",
+                                 short="Refine docks and blade", follows="aquila-direction-r189-next")
+    return page.entry(190, "The two six-view ship sheets", section, when=proof["local_date"])
+
+
+def ship_turnaround_workflow(out, proof, sheets):
+    section = decide.recap(
+        "I’d rebuild Glacier Tongue’s exterior in a fresh Blender file. Asset Pipeline now has the reusable sheet workflow.",
+        [("One asset", "One original and one generation produce all six views."),
+         ("Saved settings", "The recipe keeps GPT Image 2.6 Sunburst, 4K Max, landscape PNG and one output."),
+         ("Other assets", "Wide and upright layouts cover ships, vehicles, characters and props."),
+         ("First ship", "Glacier’s blade sweeps far outside the hull in the current model."),
+         ("Reuse", "Bring materials and individual parts across once they fit the new outer shape.")],
+        dict(did="Saved the prompt, settings and preparation tool in Asset Pipeline. Compared both current exteriors against the accepted sheets.",
+             why="The largest differences involve width, deck shape and blade placement. They affect the whole silhouette.",
+             working="Two completed ship jobs match the saved settings. The upright layout also produces a complete local request.",
+             not_working="Only the ship layout has provider-rendered examples. The fresh hull still needs a visual comparison.",
+             next="Fit a plain Glacier body and blade to the original painting, side and top views."))
+
+    galleries = []
+    comparisons = []
+    measurements = []
+    for slug, ship in sheets["ships"].items():
+        name = ship["name"]
+        preview = available_media(out, ROOT / ship["thumbnail"]["path"], f"r190-{slug}-preview.webp")
+        full = available_media(out, ROOT / ship["sheet"]["path"], f"r190-{slug}.png")
+        gallery = page.figure(preview, name, " · Six views from one original.") if preview else ""
+        if full:
+            gallery += f'<p><a href="{full}" target="_blank" rel="noopener">{escape(name)} · full sheet</a></p>'
+        galleries.append("<div>" + (gallery or "<p>Sheet unavailable in this checkout.</p>") + "</div>")
+        comparison = available_media(out, ROOT / ship["comparison"]["path"], f"r190-{slug}-comparison.webp")
+        if comparison:
+            comparisons.append(page.figure(comparison, name, " · Port and top at equal lengths."))
+        top = ship["uniform_scale_model_comparisons"]["top"]
+        measurements.append((name, f"{top['model_cross_to_length']:.0%}", f"{top['sheet_cross_to_length']:.0%}"))
+
+    method = (page.grid(*galleries)
+              + "<p>Open the six-view model sheet entry in Asset Pipeline’s task index.</p>"
+              + "<p>Choose the original, record a fixed pose and name a feature unique to one side.</p>"
+              + "<p>The tool saves the exact prompt, original fingerprint and settings. The guide covers quoting, receipts and Blender alignment.</p>"
+              + "<p>Both ship sheets cost 12 credits each at the time. A future job gets its own quote.</p>"
+              + "<p>The saved guide is <code>knowledge/asset-turnaround-sheets.md</code> in Asset Pipeline.</p>")
+    section += decide.info_thread("aquila-direction-r191-workflow", "The same prompt and profile can prepare another ship or an upright asset.",
+                                  method, short="Find the reusable workflow")
+
+    why = (page.grid(*comparisons)
+           + table(["Ship", "Current width as share of length", "Sheet width as share of length"], measurements)
+           + "<p>Glacier’s blade runs nearly parallel to the hull in the new drawing. The model swings it outward.</p>"
+           + "<p>Delta’s round docks should follow the curved branches. Rebuild that fan as one shape.</p>"
+           + "<p>Keep the old scenes, ship scale and tested clearances for hangars, bridges and turret mounts.</p>")
+    section += decide.info_thread("aquila-direction-r191-hulls", "A clean exterior study makes sense for both ships. Start with Glacier Tongue.",
+                                  why, short="Where a fresh hull helps", follows="aquila-direction-r190-models")
+    section += decide.whats_next("aquila-direction-r191-next",
+                                 "Compare the plain Glacier hull from three views before adding surface detail. Rebuild Delta’s fan next.",
+                                 short="Try a plain exterior first", follows="aquila-direction-r190-next")
+    return page.entry(191, "Reusable model sheets and the next hull", section, when=proof["local_date"])
+
+
+def ship_sheet_blockouts(out, proof):
+    section = decide.recap(
+        "Both fresh hulls fit the sheet widths more closely. Asset Pipeline holds the tested Blender workflow.",
+        [("Glacier Tongue", "The blade now runs close beside the hull."),
+         ("Delta Tree", "Twelve curved branches connect the forward deck to its round stations."),
+         ("Same length", "Both ships measure 1,280 m in Blender and their exported models."),
+         ("Reusable steps", "The same section tool also built a four-meter instrument case."),
+         ("Next detail", "Glacier’s blade tip and Delta’s branch roots still need work against the paintings.")],
+        dict(did="Rebuilt both exteriors from the accepted sheets and saved the working scripts in Asset Pipeline.",
+             why="The earlier exteriors spread too far sideways when compared at the same length.",
+             working="Both widths and side heights now sit closer to the source drawings.",
+             not_working="Glacier’s blade begins too far forward in the painted view. Delta’s stern drawings disagree.",
+             next="Correct those local shapes before fitting detailed materials."))
+    body = ""
+    rows = []
+    for slug in ("glacier-tongue", "delta-tree"):
+        ship = proof["ships"][slug]
+        name = ship["name"]
+        prefix = "r192-" + slug
+        board = available_media(out, ROOT / ship["board"]["path"], prefix + "-comparison.webp")
+        model = available_media(out, ROOT / ship["glb"]["path"], prefix + ".glb")
+        native = available_media(out, ROOT / ship["blend"]["path"], prefix + ".blend")
+        available_media(out, ROOT / ship["gallery"]["path"], prefix + "-gallery.png")
+        caption = ("The blade sits closer to the flank. Its tip still sits forward and high."
+                   if slug == "glacier-tongue" else "The branches reach their stations. The roots need more space around the deck wells.")
+        body += f"<h4>{escape(name)}</h4>"
+        if board:
+            body += page.figure(board, name, " · " + caption, look=True)
+        else:
+            body += "<p>The comparison is unavailable in this checkout.</p>"
+        links = []
+        if model:
+            links.append(f'<a class="look" href="hull-review.html?ship={slug}&amp;round=192">Rotate {escape(name)}</a>')
+            links.append(f'<a href="{model}" download>Download 3D model</a>')
+        if native:
+            links.append(f'<a href="{native}" download>Editable Blender scene</a>')
+        if links:
+            body += "<p>" + " · ".join(links) + "</p>"
+        top = ship["comparison"]["top"]
+        rows.append((name, f"{top['earlier_aspect']:.1%}", f"{top['current_aspect']:.1%}", f"{top['sheet_aspect']:.1%}"))
+    body += table(["Width divided by length", "Previous hull", "Fresh exterior", "Sheet"], rows)
+    body += ("<p>Both model columns use the same lighting, gray material and camera angles.</p>"
+             "<p>The original-angle comparisons line up the bows. The side and top views keep equal scale.</p>"
+             "<p>Delta’s top shows four drives across. Its stern shows two. The study uses four.</p>"
+             "<p>The guide saves the two-view measurements, Blender section tool and commands to rebuild either ship.</p>"
+             "<p>Find it in Asset Pipeline under <code>knowledge/asset-turnaround-sheets.md</code>.</p>")
+    section += decide.info_thread("aquila-direction-r192-studies", "Rotate either ship or compare its outline with the original.",
+                                  body, short="Compare both fresh exteriors", follows="aquila-direction-r191-hulls")
+    section += decide.whats_next("aquila-direction-r192-next",
+                                 "Refine Glacier’s blade tip and Delta’s branch roots against the original paintings before fitting the surface materials.",
+                                 short="Refine the blade and branches", follows="aquila-direction-r191-next")
+    return page.entry(192, "Two hulls built from the accepted sheets", section, when=proof["local_date"])
+
+
+def ship_refined_features(out, proof):
+    section = decide.recap(
+        "Glacier’s blade now follows the painting. Delta’s branches curve around open deck wells.",
+        [("Glacier Tongue", "Nine slices across the blade checked both its upper and lower edges."),
+         ("Delta Tree", "Fifteen of sixteen floor marks now reach the recessed deck, up from nine."),
+         ("Connections", "Both Glacier crossings and all twelve Delta branches meet their mounts."),
+         ("Review angle", "Three fixed landmarks registered Glacier’s camera. Four others checked the result."),
+         ("Saved method", "Asset Pipeline holds the marks, scripts and commands to repeat these changes.")],
+        dict(did="Reshaped Glacier’s port blade and rebuilt Delta’s fan around its courtyard openings.",
+             why="The old camera exaggerated some differences. Delta’s thick branch roots covered several marked floor positions.",
+             working="Checks on the reopened Blender ships and their exported models agree.",
+             not_working="The overhead drawing shows a longer Glacier blade. One Delta floor mark lands on a narrow rib.",
+             next="Try the painted finishes on these two parts and compare them under the same light."))
+    (out / "media").mkdir(exist_ok=True)
+    (out / "media/r193-gallery-views.json").write_text(json.dumps(proof["viewer_cameras"]), encoding="utf-8")
+    body = ""
+    for slug in ("glacier-tongue", "delta-tree"):
+        ship = proof["ships"][slug]
+        name = ship["name"]
+        prefix = "r193-" + slug
+        board = available_media(out, ROOT / ship["board"]["path"], prefix + "-comparison.webp")
+        model = available_media(out, ROOT / ship["glb"]["path"], prefix + ".glb")
+        native = available_media(out, ROOT / ship["blend"]["path"], prefix + ".blend")
+        available_media(out, ROOT / ship["gallery"]["path"], prefix + "-gallery.png")
+        available_media(out, ROOT / ship["base_gallery"]["path"], prefix + "-earlier-gallery.png")
+        body += f"<h4>{escape(name)}</h4>"
+        caption = ("Both crossings reach the blade. The middle crossing clears the boarding doorway."
+                   if slug == "glacier-tongue" else "The central fork opens between the branches. Thin ribs cross the lower decks.")
+        if board:
+            body += page.figure(board, name, " · " + caption, look=True)
+        else:
+            body += "<p>The comparison is unavailable in this checkout.</p>"
+        links = []
+        if model:
+            links.extend([f'<a class="look" href="hull-review.html?ship={slug}&amp;round=193">Rotate {escape(name)}</a>',
+                          f'<a href="{model}" download>Download 3D model</a>'])
+        if native:
+            links.append(f'<a href="{native}" download>Editable Blender scene</a>')
+        if links:
+            body += "<p>" + " · ".join(links) + "</p>"
+    blade = proof["ships"]["glacier-tongue"]
+    fan = proof["ships"]["delta-tree"]
+    rows = []
+    for label, ship, key in (("Glacier’s mean blade edge gap",blade,"edge_mae_px"),
+                             ("Delta’s visible courtyard floors",fan,"floor_checks"),
+                             ("Delta’s visible deck and branch marks",fan,"roof_checks")):
+        def measurement(state):
+            value = ship[state][key]
+            return f"{value:.1f} pixels" if key == "edge_mae_px" else f"{value['hits']} of {value['count']}"
+        rows.append((label,measurement("previous_measurements"),measurement("current_measurements")))
+    body += table(["Check", "Previous shape", "Revised shape"],rows)
+    body += ("<p>Both ships measure 1,280 m. Each model pair uses the same cameras, light and scale.</p>"
+             "<p>Glacier’s blade follows the original painting where the side and overhead drawings give different lengths.</p>"
+             "<p>Asset Pipeline’s six-view guide includes the working procedure and build commands.</p>")
+    section += decide.info_thread("aquila-direction-r193-hulls","Compare the revised shapes at the original angle, close up, from port and overhead.",
+                                  body, short="Rotate and compare both ships", follows="aquila-direction-r192-studies")
+    section += decide.whats_next("aquila-direction-r193-next",
+                                 "Fit silver armor and dark glazing to Glacier’s blade. Test Delta’s metal rims against its darker courtyard floors.",
+                                 short="Fit the first surface materials", follows="aquila-direction-r192-next")
+    return page.entry(193, "Glacier’s blade and Delta’s open courtyards",section,when=proof["local_date"])
+
+
+def ship_review_media(out, proof, number, captions):
+    body = ""
+    for slug in ("glacier-tongue", "delta-tree"):
+        ship = proof["ships"][slug]
+        name = ship["name"]
+        prefix = f"r{number}-{slug}"
+        media = {field: available_media(out, ROOT / ship[field]["path"], prefix + suffix)
+                 for field, suffix in (("board","-comparison.webp"),("glb",".glb"),("blend",".blend"),
+                                       ("gallery","-gallery.png"),("base_gallery","-earlier-gallery.png"))}
+        body += f"<h4>{escape(name)}</h4>"
+        if media["board"]:
+            body += page.figure(media["board"], name, " · " + captions[slug], look=True)
+        else:
+            body += "<p>The comparison is unavailable in this checkout.</p>"
+        links = []
+        if media["glb"]:
+            links.extend([f'<a class="look" href="hull-review.html?ship={slug}&amp;round={number}">Rotate {escape(name)}</a>',
+                          f'<a href="{media["glb"]}" download>Download 3D model</a>'])
+        if media["blend"]:
+            links.append(f'<a href="{media["blend"]}" download>Editable Blender scene</a>')
+        if links:
+            body += "<p>" + " · ".join(links) + "</p>"
+    return body
+
+
+def ship_feature_finishes(out, proof):
+    section = decide.recap(
+        "Glacier’s blade has silver armor, dark glazing and warm cabin lights. Delta’s bronze seams run through slate courtyard floors.",
+        [("Glacier Tongue", "Turn the studio lights off and only the amber cabin panes glow."),
+         ("Delta Tree", "The metal rims catch the light while the floors stay dark."),
+         ("Reference", "Glacier’s plating follows the painting. Delta’s courtyard finishes follow the overhead sheet."),
+         ("Glazing", "Glacier’s window belt still looks brighter than the painting at the sampled spots."),
+         ("Review", "Rotate either ship or switch to its previous plain surfaces.")],
+        dict(did="Fitted the first materials to Glacier’s blade and Delta’s courtyard deck.",
+             why="The close views show which surfaces reflect light and which windows produce it.",
+             working="Both editable ships and their downloadable models carry the textures.",
+             not_working="Most of each ship still has plain surfaces.",
+             next="Study Glacier’s layered forward armor and Delta’s bow observatory."))
+    body = ship_review_media(out, proof, 194, {
+        "glacier-tongue":"The silver plates reflect the studio. The amber windows have their own light.",
+        "delta-tree":"Warm metal outlines the branch courts. Bronze seams cross the darker floors."})
+    rows = []
+    for slug, key, label in (("glacier-tongue","silver","Glacier’s silver plates"),
+                             ("glacier-tongue","glazing","Glacier’s window belt"),
+                             ("delta-tree","roof_checks","Delta’s upper deck and branches"),
+                             ("delta-tree","floor_checks","Delta’s courtyard floors")):
+        item = proof["ships"][slug]["appearance"][key]
+        rows.append((label, str(item["n"]), f'{item["before_error"]:.1f}', f'{item["after_error"]:.1f}'))
+    body += "<p>Average brightness gap from the reference at marked spots, on a scale from 0 to 255.</p>"
+    body += table(["Surface","Spots","Plain surface","Fitted material"],rows)
+    body += "<p>Both hulls measure 1,280 m. The editable mesh shapes match the previous round.</p>"
+    section += decide.info_thread("aquila-direction-r194-finishes",
+                                  "Compare each ship against its artwork. The lower row shows how its materials react to light.",
+                                  body, short="Rotate and compare the finishes", follows="aquila-direction-r193-hulls")
+    section += decide.whats_next("aquila-direction-r194-next",
+                                 "Carry Glacier’s finish onto the forward armor. Fit Delta’s bow observatory glass and trim.",
+                                 short="Forward armor and bow observatory", follows="aquila-direction-r193-next")
+    return page.entry(194, "Glacier’s silver blade and Delta’s courtyard finishes", section, when=proof["local_date"])
+
+
+def ship_bow_studies(out, proof):
+    section = decide.recap(
+        "Glacier’s silver plates overlap at the bow. Delta’s observatory has a bronze-framed glass front and a separate roof.",
+        [("Glacier Tongue", "Dark windows follow the curve between plates. Both crossings still meet the outboard blade."),
+         ("Delta Tree", "The side view shows the lit cabin behind the glass. The overhead view shows the oval hatch."),
+         ("Scale", "Both hulls still span 1,280 meters."),
+         ("Compare", "Rotate either ship and switch between revisions from the same angle."),
+         ("Playtest", "These hulls are available in the local viewer. The Windows duel uses round 172.")],
+        dict(did="Shaped Glacier’s forward armor and seated Delta’s observatory on the curved bow deck.",
+             why="The original paintings show a different outline for each overlapping part.",
+             working="Glacier’s seams follow the painting. All five side-view glass marks land on Delta’s panes.",
+             not_working="Delta’s cabin looks short in the painting view. Glacier’s forward landing still looks like a bare bar.",
+             next="Compare Delta’s cabin footprint across views and shape Glacier’s forward bay entrance."))
+    body = ship_review_media(out, proof, 195, {
+        "glacier-tongue":"Follow both window bands around the prow. The silver and blue layers end at different points.",
+        "delta-tree":"Compare the glass dome, the side windows and the bronze hatch rim from above."})
+    seam = proof["ships"]["glacier-tongue"]["scene"]
+    body += (f'<p>Across {seam["after"]["count"]} marks, Glacier’s two armor seams averaged '
+             f'{seam["after"]["mean_abs_px"]:.1f} pixels from the painting, down from {seam["before"]["mean_abs_px"]:.1f}.</p>')
+    profiles = proof["ships"]["delta-tree"]["scene"]["after"]
+    rows = []
+    for key, label in (("plan","Overhead sheet"),("port","Side sheet"),("painting","Original painting")):
+        hits = profiles[key]["counts"]
+        rows.append([label, *[f"{hits[k][0]} of {hits[k][1]}" for k in ("Glass","Roof")]])
+    body += "<p>Delta’s marks count when the first surface matches the art. Metal frames can cover glass marks.</p>"
+    body += table(["View","Glass","Roof"],rows)
+    section += decide.info_thread("aquila-direction-r195-bows",
+                                  "Compare the painting, previous model and revised bow from three angles.",
+                                  body,short="Rotate and compare the bows",follows="aquila-direction-r194-finishes")
+    section += decide.whats_next("aquila-direction-r195-next",
+                                 "Check Delta’s roof against the painting and overhead sheet. Fit Glacier’s landing into the open bay.",
+                                 short="Cabin footprint and bay entrance",follows="aquila-direction-r194-next")
+    return page.entry(195,"Glacier’s forward armor and Delta’s bow observatory",section,when=proof["local_date"])
+
+
+def ship_landing_studies(out, proof):
+    section = decide.recap(
+        "Glacier has two landing decks under its forward armor. Delta’s observatory has a longer roof and three aerials.",
+        [("Glacier Tongue","A recessed service wall joins the two levels. Guide lights mark the approach."),
+         ("Delta Tree","The front sill stayed put while the cabin grew aft."),
+         ("Reference","Delta’s rear sill extends about 21 meters beyond the overhead drawing to better match the painting."),
+         ("Close view","Both comparison boards show new close renders from the original gallery angle."),
+         ("Review","Drag either model to rotate it. Switch revisions to see the previous shape.")],
+        dict(did="Replaced Glacier’s sloping bar with landing decks and widened the rear of Delta’s observatory.",
+             why="The gallery paintings show how the platforms meet the bay and where the glazed cabin ends.",
+             working="Both landings meet the hull. Delta’s roof stays smooth above the dip in its deck.",
+             not_working="Glacier’s main docking frame is still plain. Delta’s roof still misses two marks in the painting.",
+             next="Fit Glacier’s main docking entrance and Delta’s outer hull window belts."))
+    body = ship_review_media(out,proof,196,{
+        "glacier-tongue":"The lower platform sits forward. The upper platform meets the same recessed wall farther aft.",
+        "delta-tree":"Compare the fixed glass front, longer roof, three aerials and fitted base."})
+    landings = proof["ships"]["glacier-tongue"]["landings"]
+    rows = []
+    for name, label in (("Forward landing","Lower forward deck"),("Upper landing","Upper deck")):
+        result = landings["selected"][name]
+        hits = result["tread_hits"]+result["additional_hits"]
+        count = result["tread_marks"]+result["additional_marks"]
+        rows.append((label,f'{landings["depth_increase_m"][name]:.0f} m',f"{hits} of {count}"))
+    body += table(["Glacier landing","Wall moved inward","Painted spots on deck"],rows)
+    body += "<p>Delta’s roof now covers four of six marks in the original painting, up from two.</p>"
+    body += "<p>All five side-view glass marks and six overhead roof marks still hit their intended surfaces.</p>"
+    section += decide.info_thread("aquila-direction-r196-landings",
+                                  "Compare the painting, last model and revised ship from the same angle.",
+                                  body,short="Rotate and compare both ships",follows="aquila-direction-r195-bows")
+    section += decide.whats_next("aquila-direction-r196-next",
+                                 "Fit the illuminated doorway beside Glacier’s platforms. Trace Delta’s outer window rows around its curved hull.",
+                                 short="Docking entrance and hull windows",follows="aquila-direction-r195-next")
+    return page.entry(196,"Glacier’s landing decks and Delta’s observatory roof",section,when=proof["local_date"])
+
+
+def ship_docking_and_windows(out, proof):
+    section = decide.recap(
+        "Glacier’s illuminated docking hall opens onto a glazed passage. Three rows of amber windows follow Delta’s hull.",
+        [("Glacier Tongue","The hall has a split threshold, tiled floor, and lit rear bulkhead."),
+         ("Delta Tree","Sparse bow lights give way to closely spaced windows amidships. Dark dividers separate the decks."),
+         ("References","The gallery painting guided the doorway and window positions. The side drawings place them farther forward."),
+         ("Windows duel","The playable ships use round 172. These 1,280-meter exteriors are available in the local review."),
+         ("Review","Drag either ship to rotate it. Switch revisions to compare from the same angle.")],
+        dict(did="Built both features into the local Blender exteriors.",
+             why="The original paintings distinguish occupied decks from the armor around them.",
+             working="Both downloadable models reopened with their lighting materials and geometry.",
+             not_working="Glacier’s doorway sits higher than the side drawing. Delta’s dense windows extend farther aft.",
+             next="Shape Glacier’s lower armor above the dock and Delta’s stern drive housings."))
+    body = ship_review_media(out,proof,197,{
+        "glacier-tongue":"Compare the doorway, divided threshold, lit room and passage to the aft crossing.",
+        "delta-tree":"Follow the changing window spacing from the bow to the dark shoulder behind the passenger decks."})
+    ice = proof["ships"]["glacier-tongue"]
+    delta = proof["ships"]["delta-tree"]["appearance"]["selected"]
+    probes = ice["scene"]["feature_native"]["clear_depth_probes"]
+    near,far = min(row[2] for row in probes), max(row[2] for row in probes)
+    body += table(["Feature","Measured against the artwork"],[
+        ("Glacier’s entrance","All 16 interior marks land inside the hall. All eight surround marks land on the collar."),
+        ("Glacier’s depth",f"Nine paths reach the rear fittings, {near:.0f} to {far:.0f} meters behind the lip."),
+        ("Delta’s window rows",f'Centers averaged {delta["mean_center_gap_px"]:.2f} pixels from the painting across {delta["samples"]} samples.'),
+        ("Delta’s window brightness","Average peak reached 106.5 on a scale from 0 to 255. The painting measured 105.2.")])
+    section += decide.info_thread("aquila-direction-r197-dock-windows",
+                                  "Compare each original, previous model and revised exterior.",
+                                  body,short="Rotate and compare both ships",follows="aquila-direction-r196-landings")
+    section += decide.whats_next("aquila-direction-r197-next",
+                                 "Trace Glacier’s lower armor above the docking hall. Fit Delta’s drive housings against the stern references.",
+                                 short="Lower armor and stern housings",follows="aquila-direction-r196-next")
+    return page.entry(197,"Glacier’s docking hall and Delta’s passenger windows",section,when=proof["local_date"])
+
+
+def ship_bay_armor_and_drives(out, proof):
+    section = decide.recap(
+        "Glacier’s armor curves above its docking hall. Delta’s twelve stern drives have dark housings, pale collars and glowing rims.",
+        [("Glacier Tongue","Eight silver plates follow the blue armor over the open bay."),
+         ("Delta Tree","Each drive has a recessed outlet, angled bronze vanes and a lit center."),
+         ("Reference difference","Delta’s top drawing shows four columns. Its stern drawing shows two. The model keeps four."),
+         ("Windows duel","The playable ships use round 172. Both revised ships are available in the local viewer."),
+         ("Review","Drag either model to rotate it. Switch revisions to compare from the same angle.")],
+        dict(did="Refined both exteriors against their paintings and six-view sheets.",
+             why="The shape beneath Glacier’s armor and the light inside Delta’s drives become visible as you rotate.",
+             working="Both downloadable models carry their geometry, surface textures and lights.",
+             not_working="Glacier’s armor still sits higher than its side drawing. Delta’s references disagree on its rear layout.",
+             next="Study Glacier’s upper arch and Delta’s survey dish against the original paintings."))
+    body = ship_review_media(out,proof,198,{
+        "glacier-tongue":"Follow the silver plates around the opening and compare their lower edge from the side.",
+        "delta-tree":"Look along the pale collars, then rotate to the stern to see the vanes inside each outlet."})
+    glacier = proof["ships"]["glacier-tongue"]["scene"]
+    delta = proof["ships"]["delta-tree"]
+    lip = glacier["study_native"]
+    old = glacier["previous_lip"]
+    tones = delta["appearance"]
+    body += table(["Feature","What the comparison shows"],[
+        ("Glacier’s painted outline",f'At 17 marks, average error fell from {old["gallery"]["mean_abs_px"]:.2f} to {lip["gallery"]["mean_abs_px"]:.2f} pixels.'),
+        ("Glacier’s side drawing",f'Average error was {old["side"]["mean_abs_px"]:.1f} sheet pixels before reshaping, then 21.8, then {lip["side"]["mean_abs_px"]:.1f} after folding the edge inward.'),
+        ("Delta’s collars",f'Average brightness reached {tones["selected"]["pale"]["level"]:.1f} out of 255. The painting measured {tones["painting"]["pale"]["level"]:.1f}.'),
+        ("Delta’s outlet depth","All 108 paths through the twelve rims reached recessed surfaces in both model formats.")])
+    section += decide.info_thread("aquila-direction-r198-armor-drives",
+                                  "Compare the original art, previous model and revised ship.",
+                                  body,short="Rotate and compare both ships",follows="aquila-direction-r197-dock-windows")
+    section += decide.whats_next("aquila-direction-r198-next",
+                                 "Compare Glacier’s arch supports and Delta’s survey dish with their painted shapes and mountings.",
+                                 short="Upper arch and survey dish",follows="aquila-direction-r197-next")
+    return page.entry(198,"Glacier’s bay armor and Delta’s stern drives",section,when=proof["local_date"])
+
+
+def ship_upper_works(out, proof):
+    (out / "media/r200-perspective.json").write_text(
+        json.dumps({"delta-tree":proof["lens"]["perspective"]["camera"]}),encoding="utf-8")
+    section = decide.recap(
+        "Glacier’s plating hid its main dome. Delta’s earlier camera made its centered dish look too far forward.",
+        [("Glacier Tongue","Five tiled domes rise above the deck. The segmented arch runs lengthwise along the ship."),
+         ("Delta Tree","The dish stays centered above its circular decks. Each drive narrows toward its forward mount."),
+         ("Shape checks","The revised models hit all eight Glacier overhead marks and all ten Delta overhead marks."),
+         ("Still open","Glacier’s dish misses two side marks. Delta’s smaller aerials and two gaps above its engines still differ."),
+         ("Review","Rotate either model. Switch revisions to compare both from the same angle.")],
+        dict(did="Rebuilt both upper decks using the painting, overhead drawing and side drawing.",
+             why="An overall outline can hide a buried dome or a dish shifted sideways.",
+             working="The new checks identify which part blocks each spot and which gaps stay open.",
+             not_working="Some small fittings and roof transitions still differ from the artwork.",
+             next="Refine Glacier’s dish profile and Delta’s small forward instruments using the same three views."))
+    body = ship_review_media(out,proof,200,{
+        "glacier-tongue":"Follow the large dome and both arch feet through the painting, overhead and side views.",
+        "delta-tree":"Check the slanted dish above the circular decks. Both model views use the same perspective camera."})
+    body += "<p>Gold dots mark the painted skyline. Green dots mark the first solid edge in each model.</p>"
+    body += "<p>Brightness changes or stars can shift a painted edge. Only columns with stable readings count.</p>"
+    rows=[]
+    for ship in proof["ships"].values():
+        sky=ship["skyline"]
+        rows.append((ship["name"],str(sky["used"]),f'{sky["before_mean_abs_px"]:.2f} pixels',f'{sky["after_mean_abs_px"]:.2f} pixels'))
+    body += table(["Ship","Measured columns","Earlier average error","Revised average error"],rows)
+    body += "<p>Six ship landmarks set Delta’s camera. The dish and mast were reserved to test that fit.</p>"
+    flat_mast = proof["lens"]["orthographic"]["holdout_errors_px"][1]
+    perspective_mast = proof["lens"]["perspective"]["holdout_errors_px"][1]
+    body += f"<p>The mast tip missed by {flat_mast:.1f} pixels with a parallel projection and {perspective_mast:.1f} pixels with perspective.</p>"
+    body += "<p>A painting-only trial moved Delta’s dish sideways and passed two of ten overhead checks. The selected model passes ten.</p>"
+    section += decide.info_thread("aquila-direction-r200-upper","Compare the upper decks and the sky around them.",
+                                 body,short="Upper decks in three views",follows="aquila-direction-r199-shapes")
+    section += decide.whats_next("aquila-direction-r200-next",
+                                 "Glacier’s side-view dish and Delta’s smaller instruments still need closer fits.",
+                                 short="Side dish and small instruments",follows="aquila-direction-r199-next")
+    return page.entry(200,"The shapes above both ships",section,when=proof["local_date"])
+
+
+def ship_reference_workflow(proof):
+    section = decide.recap(
+        "Asset Pipeline now teaches future sessions how to find missing shapes and check their fixes against the artwork.",
+        [("Start with the art","Trace the outside, then look inside for parts, gaps and overlaps."),
+         ("Find the cause","Check what each marked spot hits first in the complete model."),
+         ("Choose the fix","Add a missing part, adjust a covering plate, correct a finish, or test the camera."),
+         ("Check another angle","Compare the same feature in the painting, overhead drawing and side drawing."),
+         ("Find the guide","Open Find missing or hidden parts in Asset Pipeline’s modeling task index.")],
+        dict(did="Saved a reusable guide, Blender checker and worked example for other assets.",
+             why="A checklist built from the model can leave out a part visible in the artwork.",
+             working="The checker found four distinct faults on a separate equipment case.",
+             not_working="A marked point cannot establish what a reference hides.",
+             next="Future sessions can copy the example marks and replace them with observations from their own artwork."))
+    body = table(["What the case showed","What the checker found","What fixed it"],[
+        ("Indicator hidden from the front","The guard occupied the marked spot.","Lowered the guard."),
+        ("Opening filled in","Front rays hit the guard where the reference showed open space.","Checked the gap again after lowering the guard."),
+        ("Missing latch post","The front and overhead views both lacked the expected post.","Added the post at its marked position."),
+        ("Wrong lens finish","The overhead view reached housing paint on the indicator.","Assigned the amber lens material.")])
+    case = proof["independent_case"]
+    hits = sum(row[0] for row in case["after"].values())
+    possible = sum(row[1] for row in case["after"].values())
+    body += f"<p>After those fixes, {hits} of {possible} marks matched. The hidden rear fastener stayed unresolved.</p>"
+    marks = proof["verification"]["total_marks_per_revision_across_both_ships"]
+    body += f"<p>Across both ships, the editable models and their exports reproduced all {marks} earlier point results, including misses.</p>"
+    body += '<p><a href="#h200">Earlier ship comparisons and rotating models</a></p>'
+    section += decide.info_thread("aquila-direction-r201-method","See how the checker found each fault.",
+                                 body,short="Equipment case and ship checks",follows="aquila-direction-r200-upper")
+    section += decide.whats_next("aquila-direction-r201-next",
+                                 "Glacier’s dish and Delta’s small instruments remain the next ship fittings to review.",
+                                 short="Remaining ship fittings",follows="aquila-direction-r200-next")
+    return page.entry(201,"A reusable check for missing shapes",section,when=proof["local_date"])
+
+
+def ship_shape_coverage(out, proof):
+    section = decide.recap(
+        "Yes. We check each hull’s outline, proportions, openings and individual parts against its artwork. Some shapes still need work.",
+        [("Whole ship", "We compare width from above and height from the side at the same ship length."),
+         ("Glacier Tongue", "We checked the separate side blade, both connecting bridges, and the opening beneath the armor."),
+         ("Delta Tree", "We checked the branching deck, its recessed courtyards, the bow observatory and the twelve engine openings."),
+         ("Still rough", "Glacier’s arch supports and Delta’s dish mount have basic shapes. Their profiles still differ from the paintings."),
+         ("See the geometry", "Open either ship, choose Plain gray and drag to rotate it beside the original.")],
+        dict(did="Checked both current model files and the earlier measurements for individual parts.",
+             why="A ship can have the right overall width while an opening is too high or a fitting tilts incorrectly.",
+             working="Both models contain the main hull forms, including separate parts and open spaces.",
+             not_working="Some upper fittings remain rough. The artwork also leaves parts of each stern uncertain.",
+             next="Compare Glacier’s arch feet and Delta’s dish tilt and pedestal from multiple angles."))
+    body = "<p>Each width and height below is a percentage of that ship’s length. Height includes the tallest fitting.</p>"
+    ships = proof["ships"]
+    body += table(["Ship", "Model width", "Top drawing", "Model height", "Side drawing"], [
+        (ship["name"], f'{ship["width_percent_of_length"]:.1f}%', f'{ship["sheet_width_percent_of_length"]:.1f}%',
+         f'{ship["height_percent_of_length"]:.1f}%', f'{ship["sheet_height_percent_of_length"]:.1f}%')
+        for ship in ships.values()])
+    captions = {
+        "glacier-tongue": "Follow the blade across the bay. Compare the smooth arch with the segmented rim in the painting.",
+        "delta-tree": "Look between the deck branches, then compare the tilt and support beneath the survey dish."}
+    for slug, ship in ships.items():
+        name = ship["name"]
+        gray = available_media(out, ROOT / ship["plain_gray"]["path"], f"r199-{slug}-plain-gray.png")
+        sheet = available_media(out, ROOT / ship["sheet_preview"]["path"], f"r190-{slug}-preview.webp")
+        model = available_media(out, ROOT / ship["glb"]["path"], f'r{proof["model_round"]}-{slug}.glb')
+        body += f"<h4>{escape(name)}</h4>"
+        if gray:
+            body += page.figure(gray, name, " · " + captions[slug], look=True)
+        else:
+            body += "<p>The gray comparison is unavailable in this checkout.</p>"
+        if model:
+            body += f'<p><a class="look" href="hull-review.html?ship={slug}&amp;round={proof["model_round"]}">Rotate {escape(name)}</a></p>'
+        if sheet:
+            body += '<details><summary>Six-view reference sheet</summary>' + page.figure(sheet, name, " · Sides, top, underside, bow and stern.") + '</details>'
+    section += decide.info_thread("aquila-direction-r199-shapes", "See the hull shapes beside the paintings.",
+                                  body, short="Compare the shapes", follows="aquila-direction-r198-armor-drives")
+    section += decide.whats_next("aquila-direction-r199-next",
+                                 "Glacier’s upper arch and Delta’s survey dish are the next shapes to refine.",
+                                 short="Arch supports and survey dish", follows="aquila-direction-r198-next")
+    return page.entry(proof["round"], "Which ship shapes have been checked?", section, when=proof["local_date"])
 
 
 def main(output):
@@ -7745,6 +8650,64 @@ def main(output):
         (out / "battleship-publication.json").write_bytes(wrap_record.read_bytes())
         (out / "battleship-restart.txt").write_bytes((ROOT / wrap["handoff"]["saved_prompt"]).read_bytes())
         rounds = battleship_session_wrap(wrap) + rounds
+    returns = ROOT / "Docs/Research/research-battleship-reference-matching-returns-v1.json"
+    if returns.is_file():
+        rounds = ship_research_returns(out, json.loads(returns.read_bytes())) + rounds
+    researched = ROOT / "Docs/Testing/research-battleship-stern-and-berth-materials.json"
+    if researched.is_file():
+        rounds = researched_ship_exteriors(out, json.loads(researched.read_bytes())) + rounds
+    arrivals = ROOT / "Docs/Testing/research-battleship-arrival-portals.json"
+    if arrivals.is_file():
+        rounds = ship_arrival_doors(out, json.loads(arrivals.read_bytes())) + rounds
+    branches = ROOT / "Docs/Testing/research-battleship-branch-deck-and-blade.json"
+    if branches.is_file():
+        rounds = ship_branch_deck_and_blade(out, json.loads(branches.read_bytes())) + rounds
+    upper = ROOT / "Docs/Testing/research-battleship-upper-hulls.json"
+    if upper.is_file():
+        rounds = ship_upper_hulls(out, json.loads(upper.read_bytes()), json.loads(image_proof.read_bytes())) + rounds
+    consistency = ROOT / "Docs/Testing/research-battleship-reference-consistency.json"
+    if consistency.is_file():
+        rounds = ship_reference_consistency(out, json.loads(consistency.read_bytes()), json.loads(image_proof.read_bytes())) + rounds
+    turnaround = ROOT / "Docs/Plans/ShipHulls/turnaround-sheets.json"
+    if turnaround.is_file():
+        rounds = ship_turnaround_proposal(out, json.loads(turnaround.read_bytes())) + rounds
+    turnaround_check = ROOT / "Docs/Testing/research-battleship-turnarounds.json"
+    if turnaround_check.is_file():
+        rounds = ship_turnaround_results(out, json.loads(turnaround_check.read_bytes())) + rounds
+    sheet_workflow = ROOT / "Docs/Testing/research-battleship-turnaround-workflow.json"
+    if sheet_workflow.is_file() and turnaround_check.is_file():
+        rounds = ship_turnaround_workflow(out, json.loads(sheet_workflow.read_bytes()),
+                                          json.loads(turnaround_check.read_bytes())) + rounds
+    blockouts = ROOT / "Docs/Testing/research-battleship-sheet-blockouts.json"
+    if blockouts.is_file():
+        rounds = ship_sheet_blockouts(out, json.loads(blockouts.read_bytes())) + rounds
+    refinements = ROOT / "Docs/Testing/research-battleship-blade-and-courtyards.json"
+    if refinements.is_file():
+        rounds = ship_refined_features(out, json.loads(refinements.read_bytes())) + rounds
+    finishes = ROOT / "Docs/Testing/research-battleship-feature-finishes.json"
+    if finishes.is_file():
+        rounds = ship_feature_finishes(out, json.loads(finishes.read_bytes())) + rounds
+    bows = ROOT / "Docs/Testing/research-battleship-forward-armor-and-observatory.json"
+    if bows.is_file():
+        rounds = ship_bow_studies(out, json.loads(bows.read_bytes())) + rounds
+    landings = ROOT / "Docs/Testing/research-battleship-landings-and-cabin.json"
+    if landings.is_file():
+        rounds = ship_landing_studies(out, json.loads(landings.read_bytes())) + rounds
+    docking = ROOT / "Docs/Testing/research-battleship-docking-and-windows.json"
+    if docking.is_file():
+        rounds = ship_docking_and_windows(out,json.loads(docking.read_bytes())) + rounds
+    drives = ROOT / "Docs/Testing/research-battleship-bay-armor-and-drives.json"
+    if drives.is_file():
+        rounds = ship_bay_armor_and_drives(out,json.loads(drives.read_bytes())) + rounds
+    coverage = ROOT / "Docs/Testing/research-battleship-shape-coverage.json"
+    if coverage.is_file():
+        rounds = ship_shape_coverage(out, json.loads(coverage.read_bytes())) + rounds
+    upper = ROOT / "Docs/Testing/research-battleship-upper-works.json"
+    if upper.is_file():
+        rounds = ship_upper_works(out,json.loads(upper.read_bytes())) + rounds
+    workflow = ROOT / "Docs/Testing/research-battleship-reference-workflow.json"
+    if workflow.is_file():
+        rounds = ship_reference_workflow(json.loads(workflow.read_bytes())) + rounds
     (out / "live-fitting-checks.json").write_bytes((ROOT / "Docs/Testing/native-live-fitting.json").read_bytes())
     (out / "clear-fitting-checks.json").write_bytes((ROOT / "Docs/Testing/native-clear-fitting.json").read_bytes())
     (out / "round-model-checks.json").write_bytes((ROOT / "Docs/Testing/native-round-models.json").read_bytes())

@@ -1,0 +1,1577 @@
+{
+  "round": 200,
+  "local_date": "2026-11-26",
+  "scope": "Local exterior review after owner identified missed dorsal shapes. Windows retains its separate round 172 build.",
+  "previous": {
+    "path": "Docs/Testing/research-battleship-bay-armor-and-drives.json",
+    "sha256": "4bd1c5326a0a41a0601ca9519ec6a454c89662812177046586fb7f27e2f71d63"
+  },
+  "viewer_cameras": {
+    "glacier-tongue": {
+      "camera_to_world": [
+        [
+          -0.7316070199012756,
+          -0.0767294317483902,
+          0.6773949861526489,
+          1546.19580078125
+        ],
+        [
+          0.6809220910072327,
+          -0.1305113136768341,
+          0.7206331491470337,
+          1669.498291015625
+        ],
+        [
+          0.033113934099674225,
+          0.9884732961654663,
+          0.147729754447937,
+          325.2441101074219
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "image_size": [
+        1152,
+        1152
+      ],
+      "frame": [
+        -585.9308835171079,
+        585.9308835171079,
+        -585.9308835171079,
+        585.9308835171079
+      ],
+      "ortho_scale": 1171.8617670342157,
+      "shift": [
+        0,
+        0
+      ],
+      "sensor_fit": "AUTO",
+      "pixel_aspect": [
+        1.0,
+        1.0
+      ],
+      "clipping": [
+        1.0,
+        20000.0
+      ]
+    },
+    "delta-tree": {
+      "camera_to_world": [
+        [
+          -0.7154670357704163,
+          -0.3454691767692566,
+          0.6072544455528259,
+          1303.698974609375
+        ],
+        [
+          0.6984788775444031,
+          -0.33466291427612305,
+          0.6325567364692688,
+          1450.5413818359375
+        ],
+        [
+          -0.015303298830986023,
+          0.8767279982566833,
+          0.4807431697845459,
+          1080.057373046875
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "image_size": [
+        1152,
+        1152
+      ],
+      "frame": [
+        -629.2893218994141,
+        629.2893218994141,
+        -629.2893218994141,
+        629.2893218994141
+      ],
+      "ortho_scale": 1258.5786437988281,
+      "shift": [
+        0.0,
+        0.0
+      ],
+      "sensor_fit": "AUTO",
+      "pixel_aspect": [
+        1.0,
+        1.0
+      ],
+      "clipping": [
+        1.0,
+        20000.0
+      ]
+    }
+  },
+  "lens": {
+    "fit_order": [
+      "bow tip",
+      "glass crown",
+      "rear hatch",
+      "port doorway",
+      "upper outboard collar",
+      "lower outboard collar"
+    ],
+    "holdout_order": [
+      "dish rim center",
+      "mast tip",
+      "middle outboard collar"
+    ],
+    "existing_holdout_errors_px": [
+      90.56,
+      84.62,
+      36.47
+    ],
+    "orthographic": {
+      "parameters": [
+        -0.180404190278904,
+        0.035787641719194595,
+        0.07027467076023623,
+        483.7967093294549,
+        545.7905439304278,
+        -0.040293744005984164,
+        0.0
+      ],
+      "fit_errors_px": [
+        39.61,
+        7.56,
+        28.95,
+        30.0,
+        9.9,
+        14.65
+      ],
+      "holdout_errors_px": [
+        77.11,
+        72.87,
+        13.07
+      ],
+      "holdout_projected_px": [
+        [
+          514.5191678207043,
+          289.3780020067393
+        ],
+        [
+          592.1339130859508,
+          190.05465155138978
+        ],
+        [
+          995.0934949396741,
+          315.6154446671378
+        ]
+      ]
+    },
+    "perspective": {
+      "parameters": [
+        -0.034376520958392054,
+        -0.014325996502009386,
+        -0.006956301216543327,
+        534.3821014628512,
+        512.2736246931324,
+        -0.13465544403758906,
+        0.00038868713250630907
+      ],
+      "fit_errors_px": [
+        27.77,
+        9.21,
+        22.87,
+        1.81,
+        11.81,
+        9.14
+      ],
+      "holdout_errors_px": [
+        16.65,
+        6.82,
+        2.74
+      ],
+      "holdout_projected_px": [
+        [
+          579.6992420821257,
+          280.42930723916527
+        ],
+        [
+          658.5374481896529,
+          193.16445168819553
+        ],
+        [
+          987.1590159897653,
+          322.51942851188085
+        ]
+      ],
+      "camera": {
+        "camera_to_world": [
+          [
+            -0.7264888325937408,
+            -0.3195565001839639,
+            0.6083564845731195,
+            1565.1572529565149
+          ],
+          [
+            0.6869962420124013,
+            -0.3173713801102065,
+            0.6536907556084223,
+            1681.7916029103735
+          ],
+          [
+            -0.015816177990905404,
+            0.8928377527661525,
+            0.4501008386195486,
+            1158.0029308334324
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "principal_xy": [
+          534.3821014628512,
+          512.2736246931324
+        ],
+        "focal_px": 2248.6389038615457,
+        "image_size": [
+          1024,
+          1024
+        ]
+      }
+    }
+  },
+  "lens_file": {
+    "path": "Assets/ShipConcepts/upper-structures-r200/delta-tree/lens-fit.json",
+    "sha256": "7dcbd48743ad621064d78f19f5eb913ac58bbb8851b8e04c86bd1b8d74f4fc73"
+  },
+  "method": "Matched before/after frame for each ship. Glacier uses the earlier orthographic camera. Delta uses one fitted perspective camera for both versions, including browser comparison. The archived flat-camera renders remain available in the selected folder. Each painting is 1024 square; gallery frames add 64 pixels on all sides. The 3504 × 2336 sheets use a 1440 × 960 tracing grid.",
+  "scope_of_counts": "Feature marks and sky tests cover specified points only. Some informed fitting. The historical glazing marks predate these models. The skyline sampler uses a regular grid and three brightness thresholds. It excludes unstable columns, including fine aerials. The camera fit excludes both the dish and mast. The third held-out mark shares a stack with two training collars. The fitted lens is an approximation.",
+  "research": "The earlier local research recommended separating observed solid, empty and ambiguous regions, testing the first actual surface, and retaining competing camera hypotheses. This pass tested those methods in Blender.",
+  "ships": {
+    "delta-tree": {
+      "name": "Delta Tree",
+      "selected": "registered",
+      "original": {
+        "path": "Assets/ShipConcepts/sunburst-r144/58-delta-tree.png",
+        "sha256": "6628ed15b22fbf2990729eb8417b9babcb66cc8ebcb5635dad57c8776efeeac3"
+      },
+      "sheet": {
+        "path": "Assets/ShipConcepts/turnaround-sheets-r190/delta-tree.png",
+        "bytes": 12386600,
+        "sha256": "91e1ba6d9ba572957f166e62ec377d631fecc4b675f5cdb2a64173690e17d87c"
+      },
+      "art_camera": {
+        "path": "Assets/ShipConcepts/hull-refinements-r193/delta-tree/open-courtyards/gallery-camera.json",
+        "sha256": "82a3e341902859087092b542541975c41b30344b5f30bdf6ddbf450327bc6a70"
+      },
+      "render_camera": {
+        "path": "Assets/ShipConcepts/hull-refinements-r193/delta-tree/open-courtyards/gallery-render-camera.json",
+        "sha256": "4944e2b7f318f5981b79444dc322c0a3dd8289cd29e7c11c493fccdba90a0c70"
+      },
+      "previous_blend": {
+        "path": "Assets/ShipConcepts/armor-drives-r198/delta-tree/tempered/delta-tree.blend",
+        "sha256": "41925f81e1c11dcd82f853285bda0543f6c0dc50ddd199da846e49cccfb9ff35"
+      },
+      "previous_glb": {
+        "path": "Assets/ShipConcepts/armor-drives-r198/delta-tree/tempered/delta-tree.glb",
+        "sha256": "a7b3fc33ea776440e1669140f0f652ee37fc6480f9de158f872e680f0b6076a2"
+      },
+      "glb": {
+        "path": "Assets/ShipConcepts/upper-structures-r200/delta-tree/registered/delta-tree.glb",
+        "sha256": "2db7daa4ddb9bd04afc9b782362959cf4199015098ca72beef5c7292be3985dc"
+      },
+      "blend": {
+        "path": "Assets/ShipConcepts/upper-structures-r200/delta-tree/registered/delta-tree.blend",
+        "sha256": "005441b9a21505c9d3aa50a8473c6f9040e3a0d7c82f3fdfcf01e5a3635a8870"
+      },
+      "board": {
+        "path": "Assets/ShipConcepts/upper-structures-r200/delta-tree/registered/comparison.webp",
+        "sha256": "17538203dd105116d03edde76c13e97b9ecd7a1c0f4e5c8d794c21f33041ce8a"
+      },
+      "fit_record": {
+        "path": "Assets/ShipConcepts/upper-structures-r200/delta-tree/registered/finish.json",
+        "sha256": "a4c332c753f1e8ea4477d500743e3f1ff00c7989c8ba191ce8fe15ce9f2d4a65"
+      },
+      "geometry_file": {
+        "path": "Assets/ShipConcepts/upper-structures-r200/delta-tree/registered/geometry-check.json",
+        "sha256": "36605a7a3118292b7c27c376a18fcdaa987aa66c6ca0dbfc7c45956308fdcd67"
+      },
+      "skyline_file": {
+        "path": "Assets/ShipConcepts/upper-structures-r200/delta-tree/registered/skyline.json",
+        "sha256": "81770dd9bd2dda06553a75f63adc0a01323da3b1ac345242ed6471f92acd3a82"
+      },
+      "gallery": {
+        "path": "Assets/ShipConcepts/upper-structures-r200/delta-tree/registered/lens/revised-gallery.png",
+        "sha256": "b0c1a65cf6a56a986ec8e0f1b3d03d031a962536ca79558d094ca1d81d24face"
+      },
+      "base_gallery": {
+        "path": "Assets/ShipConcepts/upper-structures-r200/delta-tree/registered/lens/earlier-gallery.png",
+        "sha256": "a0107bcdba74272a3f9cecfe9573d068461ecc6dbf5ef9fc625b74df95803863"
+      },
+      "gallery_camera": "Calibrated perspective, both revisions",
+      "skyline": {
+        "sampled": 54,
+        "used": 46,
+        "thresholds": [
+          48,
+          56,
+          64
+        ],
+        "y_range": [
+          80,
+          375
+        ],
+        "before_mean_abs_px": 19.93,
+        "before_median_abs_px": 17.5,
+        "after_mean_abs_px": 12.96,
+        "after_median_abs_px": 10.5
+      },
+      "comparison": {
+        "previous": {
+          "views": {
+            "painting": {
+              "dish face": [
+                0,
+                5
+              ],
+              "dish clearance": [
+                0,
+                5
+              ],
+              "command terraces": [
+                3,
+                7
+              ],
+              "mast": [
+                0,
+                4
+              ],
+              "small instruments": [
+                0,
+                4
+              ],
+              "sky above far drives": [
+                2,
+                12
+              ]
+            },
+            "overhead": {
+              "dish": [
+                3,
+                3
+              ],
+              "command terraces": [
+                5,
+                5
+              ],
+              "mast": [
+                2,
+                2
+              ]
+            },
+            "side": {
+              "dish": [
+                2,
+                3
+              ],
+              "command terraces": [
+                3,
+                3
+              ],
+              "mast": [
+                3,
+                3
+              ]
+            },
+            "calibrated_painting": {
+              "dish face": [
+                5,
+                5
+              ],
+              "dish clearance": [
+                0,
+                5
+              ],
+              "command terraces": [
+                7,
+                7
+              ],
+              "mast": [
+                2,
+                4
+              ],
+              "small instruments": [
+                0,
+                4
+              ],
+              "sky above far drives": [
+                7,
+                12
+              ]
+            }
+          },
+          "dimensions_m": [
+            1280.0,
+            503.3284149169922,
+            409.0721740722656
+          ],
+          "mesh_count": 123,
+          "clear_outlet_rays": 108
+        },
+        "editable": {
+          "views": {
+            "painting": {
+              "dish face": [
+                0,
+                5
+              ],
+              "dish clearance": [
+                2,
+                5
+              ],
+              "command terraces": [
+                3,
+                7
+              ],
+              "mast": [
+                0,
+                4
+              ],
+              "small instruments": [
+                0,
+                4
+              ],
+              "sky above far drives": [
+                4,
+                12
+              ]
+            },
+            "overhead": {
+              "dish": [
+                3,
+                3
+              ],
+              "command terraces": [
+                5,
+                5
+              ],
+              "mast": [
+                2,
+                2
+              ]
+            },
+            "side": {
+              "dish": [
+                3,
+                3
+              ],
+              "command terraces": [
+                3,
+                3
+              ],
+              "mast": [
+                1,
+                3
+              ]
+            },
+            "calibrated_painting": {
+              "dish face": [
+                5,
+                5
+              ],
+              "dish clearance": [
+                5,
+                5
+              ],
+              "command terraces": [
+                7,
+                7
+              ],
+              "mast": [
+                3,
+                4
+              ],
+              "small instruments": [
+                1,
+                4
+              ],
+              "sky above far drives": [
+                10,
+                12
+              ]
+            }
+          },
+          "dimensions_m": [
+            1280.0,
+            503.3284149169922,
+            411.6614685058594
+          ],
+          "mesh_count": 123,
+          "clear_outlet_rays": 108
+        },
+        "exchange": {
+          "views": {
+            "painting": {
+              "dish face": [
+                0,
+                5
+              ],
+              "dish clearance": [
+                2,
+                5
+              ],
+              "command terraces": [
+                3,
+                7
+              ],
+              "mast": [
+                0,
+                4
+              ],
+              "small instruments": [
+                0,
+                4
+              ],
+              "sky above far drives": [
+                4,
+                12
+              ]
+            },
+            "overhead": {
+              "dish": [
+                3,
+                3
+              ],
+              "command terraces": [
+                5,
+                5
+              ],
+              "mast": [
+                2,
+                2
+              ]
+            },
+            "side": {
+              "dish": [
+                3,
+                3
+              ],
+              "command terraces": [
+                3,
+                3
+              ],
+              "mast": [
+                1,
+                3
+              ]
+            },
+            "calibrated_painting": {
+              "dish face": [
+                5,
+                5
+              ],
+              "dish clearance": [
+                5,
+                5
+              ],
+              "command terraces": [
+                7,
+                7
+              ],
+              "mast": [
+                3,
+                4
+              ],
+              "small instruments": [
+                1,
+                4
+              ],
+              "sky above far drives": [
+                10,
+                12
+              ]
+            }
+          },
+          "dimensions_m": [
+            1280.0,
+            503.3284149169922,
+            411.6614685058594
+          ],
+          "mesh_count": 123,
+          "clear_outlet_rays": 108
+        }
+      },
+      "trials": [
+        {
+          "name": "centered",
+          "views": {
+            "painting": {
+              "dish face": [
+                0,
+                5
+              ],
+              "dish clearance": [
+                0,
+                5
+              ],
+              "command terraces": [
+                3,
+                7
+              ],
+              "mast": [
+                0,
+                4
+              ],
+              "small instruments": [
+                0,
+                4
+              ],
+              "sky above far drives": [
+                2,
+                12
+              ]
+            },
+            "overhead": {
+              "dish": [
+                2,
+                3
+              ],
+              "command terraces": [
+                5,
+                5
+              ],
+              "mast": [
+                2,
+                2
+              ]
+            },
+            "side": {
+              "dish": [
+                3,
+                3
+              ],
+              "command terraces": [
+                3,
+                3
+              ],
+              "mast": [
+                2,
+                3
+              ]
+            }
+          },
+          "file": {
+            "path": "Assets/ShipConcepts/upper-structures-r200/delta-tree/centered/geometry-check.json",
+            "sha256": "ffc690081a9a70d0f836696e71b619cd4e2b1429d5d218de6e098922f4e03561"
+          }
+        },
+        {
+          "name": "registered",
+          "views": {
+            "painting": {
+              "dish face": [
+                0,
+                5
+              ],
+              "dish clearance": [
+                2,
+                5
+              ],
+              "command terraces": [
+                3,
+                7
+              ],
+              "mast": [
+                0,
+                4
+              ],
+              "small instruments": [
+                0,
+                4
+              ],
+              "sky above far drives": [
+                4,
+                12
+              ]
+            },
+            "overhead": {
+              "dish": [
+                3,
+                3
+              ],
+              "command terraces": [
+                5,
+                5
+              ],
+              "mast": [
+                2,
+                2
+              ]
+            },
+            "side": {
+              "dish": [
+                3,
+                3
+              ],
+              "command terraces": [
+                3,
+                3
+              ],
+              "mast": [
+                1,
+                3
+              ]
+            }
+          },
+          "file": {
+            "path": "Assets/ShipConcepts/upper-structures-r200/delta-tree/registered/geometry-check.json",
+            "sha256": "36605a7a3118292b7c27c376a18fcdaa987aa66c6ca0dbfc7c45956308fdcd67"
+          }
+        },
+        {
+          "name": "tapered",
+          "views": {
+            "painting": {
+              "dish face": [
+                5,
+                5
+              ],
+              "dish clearance": [
+                4,
+                5
+              ],
+              "command terraces": [
+                7,
+                7
+              ],
+              "mast": [
+                4,
+                4
+              ],
+              "small instruments": [
+                4,
+                4
+              ],
+              "sky above far drives": [
+                12,
+                12
+              ]
+            },
+            "overhead": {
+              "dish": [
+                0,
+                3
+              ],
+              "command terraces": [
+                2,
+                5
+              ],
+              "mast": [
+                0,
+                2
+              ]
+            },
+            "side": {
+              "dish": [
+                0,
+                3
+              ],
+              "command terraces": [
+                1,
+                3
+              ],
+              "mast": [
+                0,
+                3
+              ]
+            }
+          },
+          "file": {
+            "path": "Assets/ShipConcepts/upper-structures-r200/delta-tree/tapered/geometry-check.json",
+            "sha256": "6f93788529ca07f7363f5dc78a81abc4ff2a91b7466d222009728191f0ae20d3"
+          }
+        }
+      ],
+      "receipts": [
+        {
+          "path": "Assets/ShipConcepts/upper-structures-r200/delta-tree/centered-lens.ledger-record.json",
+          "sha256": "61721ae122c531f219b5c80eb935acd2556d1bcc88ec31de4511342073e57154"
+        },
+        {
+          "path": "Assets/ShipConcepts/upper-structures-r200/delta-tree/centered.ledger-record.json",
+          "sha256": "d9d11f8f220191cb0fcc69c5fc24dc01d80a253b8c14f95fae397a513ca5420d"
+        },
+        {
+          "path": "Assets/ShipConcepts/upper-structures-r200/delta-tree/registered-lens.ledger-record.json",
+          "sha256": "5ae252cd34c6b6ca0cfafe5b586d9185be73d272fc326f4452752d3c995a0ac9"
+        },
+        {
+          "path": "Assets/ShipConcepts/upper-structures-r200/delta-tree/registered.ledger-record.json",
+          "sha256": "27a831b78adf24bbb2f37f5f823b2cde1ebd6efcc6ff128fa6af8b569b39d69b"
+        },
+        {
+          "path": "Assets/ShipConcepts/upper-structures-r200/delta-tree/tapered.ledger-record.json",
+          "sha256": "31be12c697e9d1c0626dedcdb2b4ec5d691f0606788520af7df041ab50371a70"
+        }
+      ],
+      "camera_surface_file": {
+        "path": "Assets/ShipConcepts/upper-structures-r200/delta-tree/registered/lens/surface-check.json",
+        "sha256": "c1df9fdf6bf5f78856143e5db487871040d7ebc87a08c69ef60ad70a2c4b57a7"
+      },
+      "self_contained_glb_images": 22,
+      "limit": "The perspective fit does not recover the artist’s lens. Three small instrument samples and two clear-sky samples still miss. The sheet shows six terminals on each side; the painting shows eight far and five near. Stern and overhead references differ in outlet arrangement."
+    },
+    "glacier-tongue": {
+      "name": "Glacier Tongue",
+      "selected": "paired",
+      "original": {
+        "path": "Assets/ShipConcepts/sunburst-r144/41-glacier-tongue.png",
+        "sha256": "827baa1d6127c91fd36b21e0998ad7b013ddd7c8e7b109059bad03c61e86f0d1"
+      },
+      "sheet": {
+        "path": "Assets/ShipConcepts/turnaround-sheets-r190/glacier-tongue.png",
+        "bytes": 11075015,
+        "sha256": "4baacb3211d8eaa38ca8b4dc687d5e6e4b812aea14b696f92fed7e7d3e10075b"
+      },
+      "art_camera": {
+        "path": "Assets/ShipConcepts/hull-refinements-r193/glacier-tongue/current/gallery-camera.json",
+        "sha256": "e836ac63261eb2f86d2e2d1209279794bbaa02f45562bbc9b20fa3d3b29ba2c8"
+      },
+      "render_camera": {
+        "path": "Assets/ShipConcepts/hull-refinements-r193/glacier-tongue/current/gallery-render-camera.json",
+        "sha256": "f4610185e2b6aa40834a2208ec575d194785d9c5b1e0007d1984b9667af4c40c"
+      },
+      "previous_blend": {
+        "path": "Assets/ShipConcepts/armor-drives-r198/glacier-tongue/refit/glacier-tongue.blend",
+        "sha256": "a3f4ba43e8492e0a8612c37187793a125c0915879a481a62225929f5a65325a7"
+      },
+      "previous_glb": {
+        "path": "Assets/ShipConcepts/armor-drives-r198/glacier-tongue/refit/glacier-tongue.glb",
+        "sha256": "f1fc15fc5eba8ca5175536000a1d4e67731efeb865072c864f85904b3ae7fe01"
+      },
+      "glb": {
+        "path": "Assets/ShipConcepts/upper-structures-r200/glacier-tongue/paired/glacier-tongue.glb",
+        "sha256": "b699df184a2386e6bcefc55c9497d62fb18fe9ce68cc554912023787aedb120c"
+      },
+      "blend": {
+        "path": "Assets/ShipConcepts/upper-structures-r200/glacier-tongue/paired/glacier-tongue.blend",
+        "sha256": "4d1f567c61432d70f501924a7bd4205b1871682686a09a3d804c81c96c9ed7b5"
+      },
+      "board": {
+        "path": "Assets/ShipConcepts/upper-structures-r200/glacier-tongue/paired/comparison.webp",
+        "sha256": "b073a2babff036a148dce5dd3c83d60a4f2dfb94ec97a9672e48dda69b079a01"
+      },
+      "fit_record": {
+        "path": "Assets/ShipConcepts/upper-structures-r200/glacier-tongue/paired/finish.json",
+        "sha256": "0d8ebd1bde2b8383bc668d13337cefab318d8174ed9ff816ca8682cd482c5516"
+      },
+      "geometry_file": {
+        "path": "Assets/ShipConcepts/upper-structures-r200/glacier-tongue/paired/geometry-check.json",
+        "sha256": "980108c4a9e443dcd174354742fc95249de7aa14d53213b15e3aa67c91120c14"
+      },
+      "skyline_file": {
+        "path": "Assets/ShipConcepts/upper-structures-r200/glacier-tongue/paired/skyline.json",
+        "sha256": "58217cdeabb0e6d30d3d69b55b85b33e56eca6aaf429d134b021936b6b1313a6"
+      },
+      "gallery": {
+        "path": "Assets/ShipConcepts/upper-structures-r200/glacier-tongue/paired/gallery.png",
+        "sha256": "2eafc98ac12c44f6433af7645a3e951e1a091aafd56f171deeed4fc34d618a05"
+      },
+      "base_gallery": {
+        "path": "Assets/ShipConcepts/upper-structures-r200/glacier-tongue/paired/before-gallery.png",
+        "sha256": "e2d5b7a73f567035ace4f0b5e4465061df7b1045b228936584d66d5d9310c971"
+      },
+      "gallery_camera": "Original frozen orthographic",
+      "skyline": {
+        "sampled": 60,
+        "used": 47,
+        "thresholds": [
+          48,
+          56,
+          64
+        ],
+        "y_range": [
+          194,
+          369
+        ],
+        "before_mean_abs_px": 13.83,
+        "before_median_abs_px": 12.0,
+        "after_mean_abs_px": 5.09,
+        "after_median_abs_px": 3.0
+      },
+      "comparison": {
+        "previous": {
+          "views": {
+            "painting": {
+              "main dome": [
+                1,
+                6
+              ],
+              "smaller domes": [
+                0,
+                5
+              ],
+              "instrument arch": [
+                3,
+                5
+              ],
+              "arch opening": [
+                4,
+                4
+              ],
+              "sky over deck": [
+                4,
+                9
+              ],
+              "stepped mast": [
+                0,
+                3
+              ],
+              "dish": [
+                2,
+                3
+              ],
+              "window deck": [
+                3,
+                5
+              ],
+              "historical cabin belt": [
+                6,
+                12
+              ],
+              "historical roof": [
+                1,
+                8
+              ]
+            },
+            "overhead": {
+              "main dome": [
+                3,
+                3
+              ],
+              "smaller domes": [
+                0,
+                2
+              ],
+              "arch": [
+                3,
+                3
+              ]
+            },
+            "side": {
+              "main dome": [
+                0,
+                3
+              ],
+              "dish": [
+                2,
+                2
+              ]
+            },
+            "window_finish": {
+              "glass": [
+                0,
+                12
+              ]
+            }
+          },
+          "dimensions_m": [
+            1280.0,
+            420.2677764892578,
+            418.9156188964844
+          ],
+          "mesh_count": 44,
+          "bay_lip_mean_error_px": 0.48
+        },
+        "editable": {
+          "views": {
+            "painting": {
+              "main dome": [
+                6,
+                6
+              ],
+              "smaller domes": [
+                5,
+                5
+              ],
+              "instrument arch": [
+                5,
+                5
+              ],
+              "arch opening": [
+                4,
+                4
+              ],
+              "sky over deck": [
+                8,
+                9
+              ],
+              "stepped mast": [
+                3,
+                3
+              ],
+              "dish": [
+                3,
+                3
+              ],
+              "window deck": [
+                5,
+                5
+              ],
+              "historical cabin belt": [
+                10,
+                12
+              ],
+              "historical roof": [
+                8,
+                8
+              ]
+            },
+            "overhead": {
+              "main dome": [
+                3,
+                3
+              ],
+              "smaller domes": [
+                2,
+                2
+              ],
+              "arch": [
+                3,
+                3
+              ]
+            },
+            "side": {
+              "main dome": [
+                3,
+                3
+              ],
+              "dish": [
+                0,
+                2
+              ]
+            },
+            "window_finish": {
+              "glass": [
+                10,
+                12
+              ]
+            }
+          },
+          "dimensions_m": [
+            1280.0,
+            420.2677764892578,
+            411.3545837402344
+          ],
+          "mesh_count": 45,
+          "bay_lip_mean_error_px": 0.48
+        },
+        "exchange": {
+          "views": {
+            "painting": {
+              "main dome": [
+                6,
+                6
+              ],
+              "smaller domes": [
+                5,
+                5
+              ],
+              "instrument arch": [
+                5,
+                5
+              ],
+              "arch opening": [
+                4,
+                4
+              ],
+              "sky over deck": [
+                8,
+                9
+              ],
+              "stepped mast": [
+                3,
+                3
+              ],
+              "dish": [
+                3,
+                3
+              ],
+              "window deck": [
+                5,
+                5
+              ],
+              "historical cabin belt": [
+                10,
+                12
+              ],
+              "historical roof": [
+                8,
+                8
+              ]
+            },
+            "overhead": {
+              "main dome": [
+                3,
+                3
+              ],
+              "smaller domes": [
+                2,
+                2
+              ],
+              "arch": [
+                3,
+                3
+              ]
+            },
+            "side": {
+              "main dome": [
+                3,
+                3
+              ],
+              "dish": [
+                0,
+                2
+              ]
+            },
+            "window_finish": {
+              "glass": [
+                10,
+                12
+              ]
+            }
+          },
+          "dimensions_m": [
+            1280.0,
+            420.2677764892578,
+            411.3545837402344
+          ],
+          "mesh_count": 45
+        }
+      },
+      "trials": [
+        {
+          "name": "cross-section",
+          "views": {
+            "painting": {
+              "main dome": [
+                6,
+                6
+              ],
+              "smaller domes": [
+                5,
+                5
+              ],
+              "instrument arch": [
+                5,
+                5
+              ],
+              "arch opening": [
+                4,
+                4
+              ],
+              "sky over deck": [
+                8,
+                9
+              ],
+              "stepped mast": [
+                3,
+                3
+              ],
+              "dish": [
+                3,
+                3
+              ],
+              "window deck": [
+                5,
+                5
+              ],
+              "historical cabin belt": [
+                10,
+                12
+              ],
+              "historical roof": [
+                5,
+                8
+              ]
+            },
+            "overhead": {
+              "main dome": [
+                3,
+                3
+              ],
+              "smaller domes": [
+                2,
+                2
+              ],
+              "arch": [
+                3,
+                3
+              ]
+            },
+            "side": {
+              "main dome": [
+                3,
+                3
+              ],
+              "dish": [
+                0,
+                2
+              ]
+            },
+            "window_finish": {
+              "glass": [
+                2,
+                12
+              ]
+            }
+          },
+          "file": {
+            "path": "Assets/ShipConcepts/upper-structures-r200/glacier-tongue/cross-section/geometry-check.json",
+            "sha256": "8566a403affa28218bac8f426c39bd7d3ae60ffa4aedc2332d9dea9d5a58b045"
+          }
+        },
+        {
+          "name": "paired",
+          "views": {
+            "painting": {
+              "main dome": [
+                6,
+                6
+              ],
+              "smaller domes": [
+                5,
+                5
+              ],
+              "instrument arch": [
+                5,
+                5
+              ],
+              "arch opening": [
+                4,
+                4
+              ],
+              "sky over deck": [
+                8,
+                9
+              ],
+              "stepped mast": [
+                3,
+                3
+              ],
+              "dish": [
+                3,
+                3
+              ],
+              "window deck": [
+                5,
+                5
+              ],
+              "historical cabin belt": [
+                10,
+                12
+              ],
+              "historical roof": [
+                8,
+                8
+              ]
+            },
+            "overhead": {
+              "main dome": [
+                3,
+                3
+              ],
+              "smaller domes": [
+                2,
+                2
+              ],
+              "arch": [
+                3,
+                3
+              ]
+            },
+            "side": {
+              "main dome": [
+                3,
+                3
+              ],
+              "dish": [
+                0,
+                2
+              ]
+            },
+            "window_finish": {
+              "glass": [
+                10,
+                12
+              ]
+            }
+          },
+          "file": {
+            "path": "Assets/ShipConcepts/upper-structures-r200/glacier-tongue/paired/geometry-check.json",
+            "sha256": "980108c4a9e443dcd174354742fc95249de7aa14d53213b15e3aa67c91120c14"
+          }
+        },
+        {
+          "name": "terraced",
+          "views": {
+            "painting": {
+              "main dome": [
+                6,
+                6
+              ],
+              "smaller domes": [
+                5,
+                5
+              ],
+              "instrument arch": [
+                5,
+                5
+              ],
+              "arch opening": [
+                4,
+                4
+              ],
+              "sky over deck": [
+                8,
+                9
+              ],
+              "stepped mast": [
+                3,
+                3
+              ],
+              "dish": [
+                3,
+                3
+              ],
+              "window deck": [
+                5,
+                5
+              ],
+              "historical cabin belt": [
+                10,
+                12
+              ],
+              "historical roof": [
+                8,
+                8
+              ]
+            },
+            "overhead": {
+              "main dome": [
+                3,
+                3
+              ],
+              "smaller domes": [
+                1,
+                2
+              ],
+              "arch": [
+                1,
+                3
+              ]
+            },
+            "side": {
+              "main dome": [
+                0,
+                3
+              ],
+              "dish": [
+                0,
+                2
+              ]
+            },
+            "window_finish": {
+              "glass": [
+                10,
+                12
+              ]
+            }
+          },
+          "file": {
+            "path": "Assets/ShipConcepts/upper-structures-r200/glacier-tongue/terraced/geometry-check.json",
+            "sha256": "296269957c3f204e21130bc7228e8030657543910b832a745227e3190329b2f6"
+          }
+        }
+      ],
+      "receipts": [
+        {
+          "path": "Assets/ShipConcepts/upper-structures-r200/glacier-tongue/cross-section.ledger-record.json",
+          "sha256": "1568e4646c49aa05a302da8634d7144c0333ce9e7bddbeab80ea4c2d85f24f0c"
+        },
+        {
+          "path": "Assets/ShipConcepts/upper-structures-r200/glacier-tongue/paired.ledger-record.json",
+          "sha256": "be0cd6f077ccc0e67954c17b91cafa948a34f4afedcc25b81b78e05e0b8602f5"
+        },
+        {
+          "path": "Assets/ShipConcepts/upper-structures-r200/glacier-tongue/terraced.ledger-record.json",
+          "sha256": "d6a4a9b641e1ef5ea16147021a72f4b58d2eaecdb26547e7e9de31b4d6f55dac"
+        }
+      ],
+      "self_contained_glb_images": 39,
+      "limit": "The dish misses both reserved side points. Foredeck and dome seating and the visible lower gallery still differ from the painting."
+    }
+  },
+  "asset_pipeline": [
+    {
+      "path": "Tools/asset-pipeline/experimental/blender_reference_modeling/projected_feature.py",
+      "sha256": "147881ffba9a1d4f77ad910a00f5239cedee6f0adc313b100089f0ed0aa5ea9c"
+    },
+    {
+      "path": "Tools/asset-pipeline/experimental/blender_reference_modeling/skyline_columns.py",
+      "sha256": "2c519c00a6276c1bc88fdb080583a01a5ef206e67affb774b0b7f25e41e84b8e"
+    },
+    {
+      "path": "Tools/asset-pipeline/experimental/blender_reference_modeling/fit_gallery_lens.py",
+      "sha256": "601374ef9a956664a84152f0574343df0937a06d107d1b510e7fe0311070e8e0"
+    },
+    {
+      "path": "Tools/asset-pipeline/experimental/blender_reference_modeling/pinhole_review.py",
+      "sha256": "9dbe5bd3af78d515c19739062edbacb9eef0f8cb18ffd773c83eb50a65ec004e"
+    },
+    {
+      "path": "Tools/asset-pipeline/experimental/blender_reference_modeling/visible_surface.py",
+      "sha256": "e78011aec7f38894957d16f54185c8175a79c7f2a314dba684d1135331423c75"
+    },
+    {
+      "path": "Tools/asset-pipeline/experimental/blender_reference_modeling/review_view.py",
+      "sha256": "4a19242cacaaecd0ec8295bc2dd2fa27a453ba9af4fb5e5e5ab2158d2e7b9163"
+    },
+    {
+      "path": "Tools/asset-pipeline/experimental/aquila_research_battleships/turnaround/feature_finishes.py",
+      "sha256": "0201f26f23d0ede275c3b24d88d6ab98a004375700c8d6f0ea4474a2e7225f82"
+    },
+    {
+      "path": "Tools/asset-pipeline/experimental/aquila_research_battleships/turnaround/upper_works.py",
+      "sha256": "d93719d178c498e43d509240bd58295060bdb599224f6d83aaaf504fc281bb2e"
+    },
+    {
+      "path": "Tools/asset-pipeline/experimental/aquila_research_battleships/turnaround/upper_works_checks.py",
+      "sha256": "dd3b9a263a9aed64c806add222c7929c436892be3d9b815d2c81f695b49ce3ab"
+    },
+    {
+      "path": "Tools/asset-pipeline/experimental/aquila_research_battleships/turnaround/upper_works_landmarks.json",
+      "sha256": "d852ec5d38e319204ac7648c454c6ce64fa1eb8fd5be328e6562b83f96bdfc64"
+    },
+    {
+      "path": "Tools/asset-pipeline/experimental/aquila_research_battleships/turnaround/delta_camera_anchors.json",
+      "sha256": "b28baa511cf5041d45555519ff14a0cca6a5dbf11647d8f8d251f52769ce2b00"
+    },
+    {
+      "path": "Tools/asset-pipeline/experimental/aquila_research_battleships/turnaround/compare_delta_lens.py",
+      "sha256": "c15fc8dda088e054c57aa7a6f0c7efb04a9dd0de0a888308ac9bd1b2bab27365"
+    },
+    {
+      "path": "Tools/asset-pipeline/experimental/aquila_research_battleships/turnaround/turnaround_traces.json",
+      "sha256": "b4501951c9ce0fe59ca4a7dea3dfaf8a8a69f4d7c9623f5295c0d2a7f082219a"
+    },
+    {
+      "path": "Tools/asset-pipeline/experimental/aquila_research_battleships/turnaround/turnaround_parts.py",
+      "sha256": "af6669b3eb36762fb413e3aeaa33cee4c8945cd74267fdd18a46de2729529185"
+    },
+    {
+      "path": "Tools/asset-pipeline/experimental/aquila_research_battleships/reference_hulls/command_crown.py",
+      "sha256": "5bb41636a23ba68c2665059dc025de8b01559f6bd128bfb41be9c94fdab2e940"
+    },
+    {
+      "path": "knowledge/asset-turnaround-sheets.md",
+      "sha256": "53dee6fbcb4954a6fbc510916af0917b0730819c5bb5accc66c76c53b38dcdb8"
+    }
+  ],
+  "asset_ledger": {
+    "local_provider": "Blender",
+    "expected": [
+      "aquila-r200-delta-tree-centered",
+      "aquila-r200-delta-tree-centered-lens",
+      "aquila-r200-delta-tree-registered",
+      "aquila-r200-delta-tree-registered-lens",
+      "aquila-r200-delta-tree-tapered",
+      "aquila-r200-glacier-tongue-cross-section",
+      "aquila-r200-glacier-tongue-paired",
+      "aquila-r200-glacier-tongue-terraced"
+    ],
+    "captured": {
+      "aquila-r200-delta-tree-registered-lens": "req_06efc6796e7d1c2c59d9d3ae",
+      "aquila-r200-delta-tree-registered": "req_5aacc2c7e658fe3cc5d80ee4",
+      "aquila-r200-glacier-tongue-paired": "req_23fd6f5448e8d4dfa9dccc1c",
+      "aquila-r200-delta-tree-centered-lens": "req_83a5dd4bb65161885fc096a4",
+      "aquila-r200-delta-tree-centered": "req_c2a23a7a9ee886202ff6cc85",
+      "aquila-r200-glacier-tongue-cross-section": "req_ca96dfb9e0a58a4300fa0261",
+      "aquila-r200-delta-tree-tapered": "req_bed8aaeb34b1066bb76e0eb3",
+      "aquila-r200-glacier-tongue-terraced": "req_db3f72f83bfa709ee8cf663d"
+    },
+    "provider_credits": 0
+  },
+  "replay": {
+    "glacier-tongue": {
+      "identical_meshes": 45,
+      "compared": "Object names, float32 vertex positions, polygon topology, face material slots, material names and all UV loops."
+    },
+    "delta-tree": {
+      "identical_meshes": 123,
+      "compared": "Object names, float32 vertex positions, polygon topology, face material slots, material names and all UV loops."
+    }
+  },
+  "viewer": {
+    "method": "Isolated headless Chrome with WebGL",
+    "ships": {
+      "delta-tree": {
+        "original_loaded": true,
+        "native_and_uniform_clay": true,
+        "stern_and_reset": true,
+        "drag_rotates": true,
+        "downloaded_model_matches": true,
+        "download_sha256": "2db7daa4ddb9bd04afc9b782362959cf4199015098ca72beef5c7292be3985dc",
+        "model_view_pixel_differences": {
+          "gray": 19.54,
+          "stern": 13.38,
+          "drag": 13.16,
+          "reset": 0.0
+        },
+        "switches_between_revisions": true,
+        "previous_to_current_pixel_difference": 3.06
+      },
+      "glacier-tongue": {
+        "original_loaded": true,
+        "native_and_uniform_clay": true,
+        "stern_and_reset": true,
+        "drag_rotates": true,
+        "downloaded_model_matches": true,
+        "download_sha256": "b699df184a2386e6bcefc55c9497d62fb18fe9ce68cc554912023787aedb120c",
+        "model_view_pixel_differences": {
+          "gray": 12.55,
+          "stern": 25.93,
+          "drag": 14.17,
+          "reset": 0.0
+        },
+        "switches_between_revisions": true,
+        "previous_to_current_pixel_difference": 2.38
+      }
+    }
+  },
+  "delivery": {
+    "served_local_report_round": 200,
+    "http_artifacts_matching_sha256": 10,
+    "verified_files": [
+      "r200-delta-tree-comparison.webp",
+      "r200-delta-tree.blend",
+      "r200-delta-tree.glb",
+      "r200-delta-tree-gallery.png",
+      "r200-delta-tree-earlier-gallery.png",
+      "r200-glacier-tongue-comparison.webp",
+      "r200-glacier-tongue.blend",
+      "r200-glacier-tongue.glb",
+      "r200-glacier-tongue-gallery.png",
+      "r200-glacier-tongue-earlier-gallery.png"
+    ],
+    "served_gallery_cameras_match": true,
+    "asset_pipeline_source_hashes_and_guide_links_verified": true,
+    "viewer": "Both models rotate, reset, switch revision and download in isolated headless Chrome.",
+    "paseo_workspace": "The existing workspace report tab displayed round 200, both ship summaries and the comparison thread."
+  }
+}

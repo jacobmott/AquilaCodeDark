@@ -1,0 +1,398 @@
+{
+  "round": 192,
+  "local_date": "2026-11-25",
+  "checked_at_utc": "2026-11-26T05:52:13.719637+00:00",
+  "scope": "Local plain exterior studies. Playable Windows models are round 172.",
+  "owner_direction": "Chat. Proceed with fresh exterior studies and save only demonstrated, reusable work needed to repeat the sheet-to-Blender flow.",
+  "source_sheet_manifest": "Docs/Testing/research-battleship-turnarounds.json",
+  "previous_model_manifest": "Docs/Testing/research-battleship-upper-hulls.json",
+  "asset_pipeline": [
+    {
+      "path": "knowledge/asset-turnaround-sheets.md",
+      "sha256": "cd223cb7bca45d2c079bdd4f45de0156660bb0e33765fed1b8e5a6ecea63a571"
+    },
+    {
+      "path": "Tools/asset-pipeline/experimental/blender_reference_modeling/turnaround_sections.py",
+      "sha256": "d39700a275f569e0bd79eb162ae6895adb9c980175e38efeb06b76a66d2f6d74"
+    },
+    {
+      "path": "Tools/asset-pipeline/experimental/blender_reference_modeling/compare_views.py",
+      "sha256": "d75646e3cdef7ea68037961859139a0ac935a04d666915d86391d564498f4e1f"
+    },
+    {
+      "path": "Tools/asset-pipeline/experimental/aquila_research_battleships/turnaround/turnaround_traces.json",
+      "sha256": "b4501951c9ce0fe59ca4a7dea3dfaf8a8a69f4d7c9623f5295c0d2a7f082219a"
+    },
+    {
+      "path": "Tools/asset-pipeline/experimental/aquila_research_battleships/turnaround/turnaround_geometry.py",
+      "sha256": "8bfd4a2391783e2632ba56a0bc4032673d4efe02498ff5dacb2017b1a920ddf7"
+    },
+    {
+      "path": "Tools/asset-pipeline/experimental/aquila_research_battleships/turnaround/turnaround_blockout.py",
+      "sha256": "5c88d8340c475c0d6aa0d1d9aa51753955ef39cde5afe0455b2a85c735a63984"
+    }
+  ],
+  "measurements": "Each orthographic model uses 1,440 m horizontal framing. Extents include pixels with alpha above 110. Cross span divided by length is compared with the marked sheet outline. The gallery comparison shifts each render to the painted bow using translation alone. Native bounds are measured independently from all mesh vertices after reopening, then checked against a fresh GLB import.",
+  "reusable_check": {
+    "subject": "Instrument case",
+    "dimensions_m": [
+      4.0,
+      1.0,
+      0.6
+    ],
+    "faces": 14,
+    "midpoint_side_px": 90
+  },
+  "ships": {
+    "delta-tree": {
+      "name": "Delta Tree",
+      "sheet": {
+        "path": "Assets/ShipConcepts/turnaround-sheets-r190/delta-tree.png",
+        "bytes": 12386600,
+        "sha256": "91e1ba6d9ba572957f166e62ec377d631fecc4b675f5cdb2a64173690e17d87c"
+      },
+      "original": {
+        "path": "Assets/ShipConcepts/sunburst-r144/58-delta-tree.png",
+        "sha256": "6628ed15b22fbf2990729eb8417b9babcb66cc8ebcb5635dad57c8776efeeac3"
+      },
+      "blend": {
+        "path": "Assets/ShipConcepts/hull-blockouts-r192/delta-tree/current/delta-tree.blend",
+        "sha256": "c45a232f9198cc50f46cd6421649fa04d9848cfb643be2f31b8cb1c9721dbef2"
+      },
+      "glb": {
+        "path": "Assets/ShipConcepts/hull-blockouts-r192/delta-tree/current/delta-tree.glb",
+        "sha256": "1d23fce5f42c913d8328e66363a8e4c6c457003903f96d164af06b9765a85cdf"
+      },
+      "gallery": {
+        "path": "Assets/ShipConcepts/hull-blockouts-r192/delta-tree/current/gallery.png",
+        "sha256": "36516cfe1eb4f9cbb0bb84078fecd98958131690f2778cd36c58c39b903d5442"
+      },
+      "board": {
+        "path": "Assets/ShipConcepts/hull-blockouts-r192/delta-tree/comparison.webp",
+        "sha256": "ba16c70dd4398ccee8f62d04992389e11731dcb7ebe52fbbc993630cea6d8e7b"
+      },
+      "physical_checks": {
+        "native_parts": 88,
+        "packed_images": 8,
+        "native_dimensions_m": [
+          1280.0,
+          503.3284149169922,
+          409.0721740722656
+        ],
+        "fan_branches": 12,
+        "glb_parts": 88,
+        "glb_dimensions_m": [
+          1280.0,
+          503.3284149169922,
+          409.0721740722656
+        ],
+        "max_bounds_difference_m": 0.0
+      },
+      "comparison": {
+        "gallery": {
+          "source_bow_px": [
+            31,
+            705
+          ],
+          "earlier": {
+            "model_bow_px": [
+              33,
+              708
+            ],
+            "translation_px": [
+              -2,
+              -3
+            ]
+          },
+          "current": {
+            "model_bow_px": [
+              23,
+              696
+            ],
+            "translation_px": [
+              8,
+              9
+            ]
+          }
+        },
+        "port": {
+          "earlier_outline_px": [
+            61,
+            85,
+            1039,
+            408
+          ],
+          "current_outline_px": [
+            61,
+            106,
+            1039,
+            419
+          ],
+          "sheet_aspect": 0.3194,
+          "earlier_aspect": 0.33027,
+          "current_aspect": 0.32004
+        },
+        "top": {
+          "earlier_outline_px": [
+            61,
+            193,
+            1039,
+            718
+          ],
+          "current_outline_px": [
+            61,
+            214,
+            1039,
+            599
+          ],
+          "sheet_aspect": 0.4053,
+          "earlier_aspect": 0.53681,
+          "current_aspect": 0.39366
+        }
+      },
+      "repeat_geometry": {
+        "same_part_count_bounds_and_references": true,
+        "source": "Second build from the saved Asset Pipeline recipe."
+      },
+      "current_renders": [
+        {
+          "path": "Assets/ShipConcepts/hull-blockouts-r192/delta-tree/current/gallery.png",
+          "sha256": "36516cfe1eb4f9cbb0bb84078fecd98958131690f2778cd36c58c39b903d5442"
+        },
+        {
+          "path": "Assets/ShipConcepts/hull-blockouts-r192/delta-tree/current/port.png",
+          "sha256": "bd625d5fe6b6577a4496e5653ab4ea5a9275b2d5aa1302ee8f4fbe64c2ddcfa3"
+        },
+        {
+          "path": "Assets/ShipConcepts/hull-blockouts-r192/delta-tree/current/top.png",
+          "sha256": "b5b4e1efc20a44a219adce8332690234a0491901528ddc6dcc89c2cecd241b71"
+        }
+      ],
+      "earlier_renders": [
+        {
+          "path": "Assets/ShipConcepts/hull-blockouts-r192/delta-tree/earlier/previous-gallery.png",
+          "sha256": "218bfbd0a38c0390423cc8f5e9a565fde204d698b925a69253da91dffe257438"
+        },
+        {
+          "path": "Assets/ShipConcepts/hull-blockouts-r192/delta-tree/earlier/previous-port.png",
+          "sha256": "29f47d18823e5d7ad502dc4a29712cbab2a8ad769a12edcbee894682c4403a9c"
+        },
+        {
+          "path": "Assets/ShipConcepts/hull-blockouts-r192/delta-tree/earlier/previous-top.png",
+          "sha256": "c1c906a2c043eccd1da45bf5d19b1066bcd34995d6af47e1d76f50ada1c36d19"
+        }
+      ],
+      "open": "Deck wells, branch roots and engine sleeves need closer spacing checks against the painting. Three engine tiers are visible. The plan suggests four across and the stern suggests two."
+    },
+    "glacier-tongue": {
+      "name": "Glacier Tongue",
+      "sheet": {
+        "path": "Assets/ShipConcepts/turnaround-sheets-r190/glacier-tongue.png",
+        "bytes": 11075015,
+        "sha256": "4baacb3211d8eaa38ca8b4dc687d5e6e4b812aea14b696f92fed7e7d3e10075b"
+      },
+      "original": {
+        "path": "Assets/ShipConcepts/sunburst-r144/41-glacier-tongue.png",
+        "sha256": "827baa1d6127c91fd36b21e0998ad7b013ddd7c8e7b109059bad03c61e86f0d1"
+      },
+      "blend": {
+        "path": "Assets/ShipConcepts/hull-blockouts-r192/glacier-tongue/current/glacier-tongue.blend",
+        "sha256": "8dd8517495c2b13c6063597e7188f460feaef907dc72f15d66b02fd95c3cee27"
+      },
+      "glb": {
+        "path": "Assets/ShipConcepts/hull-blockouts-r192/glacier-tongue/current/glacier-tongue.glb",
+        "sha256": "7fb013320b3cf2d2fad065fced0fe4bb43770f676b2d444a899f1b8c32f76d65"
+      },
+      "gallery": {
+        "path": "Assets/ShipConcepts/hull-blockouts-r192/glacier-tongue/current/gallery.png",
+        "sha256": "a398ac64a636082ce87f6091352658629104dbde436c7f69d6cd2c02abecc6fb"
+      },
+      "board": {
+        "path": "Assets/ShipConcepts/hull-blockouts-r192/glacier-tongue/comparison.webp",
+        "sha256": "4144bcd1e960ead1347e126f88b3b7f165195170397c8c40421b9c28f94eb03d"
+      },
+      "physical_checks": {
+        "native_parts": 27,
+        "packed_images": 9,
+        "native_dimensions_m": [
+          1280.0,
+          420.2698669433594,
+          423.4586639404297
+        ],
+        "blade_tip_gallery_px": [
+          674.3581936986222,
+          706.3047492779639
+        ],
+        "glb_parts": 27,
+        "glb_dimensions_m": [
+          1280.0,
+          420.2698669433594,
+          423.4586639404297
+        ],
+        "max_bounds_difference_m": 0.0
+      },
+      "comparison": {
+        "gallery": {
+          "source_bow_px": [
+            32,
+            630
+          ],
+          "earlier": {
+            "model_bow_px": [
+              38,
+              635
+            ],
+            "translation_px": [
+              -6,
+              -5
+            ]
+          },
+          "current": {
+            "model_bow_px": [
+              38,
+              758
+            ],
+            "translation_px": [
+              -6,
+              -128
+            ]
+          }
+        },
+        "port": {
+          "earlier_outline_px": [
+            61,
+            103,
+            1039,
+            409
+          ],
+          "current_outline_px": [
+            61,
+            149,
+            1039,
+            471
+          ],
+          "sheet_aspect": 0.3381,
+          "earlier_aspect": 0.31288,
+          "current_aspect": 0.32924
+        },
+        "top": {
+          "earlier_outline_px": [
+            61,
+            249,
+            1039,
+            744
+          ],
+          "current_outline_px": [
+            61,
+            268,
+            1039,
+            589
+          ],
+          "sheet_aspect": 0.3327,
+          "earlier_aspect": 0.50613,
+          "current_aspect": 0.32822
+        }
+      },
+      "repeat_geometry": {
+        "same_part_count_bounds_and_references": true,
+        "source": "Second build from the saved Asset Pipeline recipe."
+      },
+      "current_renders": [
+        {
+          "path": "Assets/ShipConcepts/hull-blockouts-r192/glacier-tongue/current/gallery.png",
+          "sha256": "a398ac64a636082ce87f6091352658629104dbde436c7f69d6cd2c02abecc6fb"
+        },
+        {
+          "path": "Assets/ShipConcepts/hull-blockouts-r192/glacier-tongue/current/port.png",
+          "sha256": "f7508bd841bfd00ed2e85ee01ffe0e305be7f06763b58386529c7d724f04fc36"
+        },
+        {
+          "path": "Assets/ShipConcepts/hull-blockouts-r192/glacier-tongue/current/top.png",
+          "sha256": "4153b76bfdb7d2c3badae78cf62a04ee80f2d22a5aca4e23e899e91f5014e271"
+        }
+      ],
+      "earlier_renders": [
+        {
+          "path": "Assets/ShipConcepts/hull-blockouts-r192/glacier-tongue/earlier/previous-gallery.png",
+          "sha256": "736ea30a7ccdfc694fb810f94790add669743ec1318b64e0d50e28fca2cbd477"
+        },
+        {
+          "path": "Assets/ShipConcepts/hull-blockouts-r192/glacier-tongue/earlier/previous-port.png",
+          "sha256": "2a851a08d686f7ad8a7d4abea20d89b5b98e60ef5bcefe2475a1a817ecf4d3ac"
+        },
+        {
+          "path": "Assets/ShipConcepts/hull-blockouts-r192/glacier-tongue/earlier/previous-top.png",
+          "sha256": "b5851173be7c3ce85d1ef8e92b55dd2a98537553514234489e73b7e281f6945f"
+        }
+      ],
+      "blade_review": {
+        "source_tip_px": [
+          714,
+          614
+        ],
+        "model_tip_after_bow_alignment_px": [
+          668.4,
+          578.3
+        ],
+        "remaining_offset_px": [
+          -45.6,
+          -35.7
+        ]
+      },
+      "open": "Blade tip lies forward and high in the bow-aligned gallery comparison. Sheet plan and port view disagree on where the blade begins. Roof bands and bay interior need detail."
+    }
+  },
+  "ledger": {
+    "project": "aquila-code-dark-game",
+    "expected": 4,
+    "captured": {
+      "aquila-exterior-r192-current-delta-tree-36516cfe1eb4": "req_0fc14a270d7c23d39153402e",
+      "aquila-exterior-r192-current-glacier-tongue-a398ac64a636": "req_609911052cdb2b1d42754c9d",
+      "aquila-exterior-r192-earlier-delta-tree-218bfbd0a38c": "req_f56cad4deb39d5f745288cce",
+      "aquila-exterior-r192-earlier-glacier-tongue-736ea30a7ccd": "req_7101d3cd97371a124f5169cd"
+    }
+  },
+  "viewer_checks": {
+    "method": "Isolated headless Chrome with WebGL",
+    "ships": {
+      "delta-tree": {
+        "original_loaded": true,
+        "native_and_uniform_clay": true,
+        "stern_and_reset": true,
+        "drag_rotates": true,
+        "downloaded_model_matches": true,
+        "download_sha256": "1d23fce5f42c913d8328e66363a8e4c6c457003903f96d164af06b9765a85cdf",
+        "model_view_pixel_differences": {
+          "gray": 2.97,
+          "stern": 28.26,
+          "drag": 32.96,
+          "reset": 0.0
+        },
+        "switches_between_revisions": true,
+        "previous_to_current_pixel_difference": 32.2
+      },
+      "glacier-tongue": {
+        "original_loaded": true,
+        "native_and_uniform_clay": true,
+        "stern_and_reset": true,
+        "drag_rotates": true,
+        "downloaded_model_matches": true,
+        "download_sha256": "7fb013320b3cf2d2fad065fced0fe4bb43770f676b2d444a899f1b8c32f76d65",
+        "model_view_pixel_differences": {
+          "gray": 3.24,
+          "stern": 24.89,
+          "drag": 23.7,
+          "reset": 0.0
+        },
+        "switches_between_revisions": true,
+        "previous_to_current_pixel_difference": 33.06
+      }
+    }
+  },
+  "delivery": {
+    "served_local_report_round": 192,
+    "http_artifacts_matching_sha256": 8,
+    "viewer": "Drag, stern, reset, download and both revision switches confirmed for both ships in isolated headless Chrome.",
+    "paseo_workspace": "The launcher served the report. Paseo returned browser_no_host on three list attempts."
+  }
+}

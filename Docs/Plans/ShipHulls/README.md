@@ -11,6 +11,10 @@ All 60 numbered designs are research battleships a player can own. A fresh match
 
 The gallery spells ship 41 **Glacier Tongue**. The prototype uses Delta Tree for the player and Glacier Tongue for the opponent. That temporary pairing leaves the match starter open. Both editable Blender scenes include the original concept. Both 3D exports reopened with 30 mount guides. Playable boarding routes and working gun mounts came later on the revised hulls. [Model studies and source references](<D:/OtherProjects/asset-pipeline/Docs/Features/AQUILA_RESEARCH_BATTLESHIPS_20261124.md>) and [verification](../../Testing/research-battleship-studies.json).
 
+### Six-view sheets for the first two ships
+
+Each ship has one 4K-tier Sunburst sheet from its original painting. The Blender reference files contain the full sheet, individual views and two guides scaled to the 1,280 m hull. The report compares each sheet with the current model at equal length. [Delta Tree](../../../Assets/ShipConcepts/turnaround-sheets-r190/delta-tree.png) · [Glacier Tongue](../../../Assets/ShipConcepts/turnaround-sheets-r190/glacier-tongue.png) · [Blender files and modeling notes](ModelingReferences.md#using-the-two-completed-sheets) · [Compare the models](http://127.0.0.1:8953/#i-aquila-direction-r190-models).
+
 ### Textured exteriors
 
 Asset Pipeline finished the materials on the first two exterior studies, before the hull proportions changed. Delta Tree’s warm ceramic plates meet bronze rails and dark drive housings. Its export uses 12 materials and 33 embedded texture maps. Glacier Tongue’s satin aluminum overlaps blue enamel around the lit dock. Its export uses 13 materials and 34 maps. Both packages include color, normals, packed occlusion/roughness/metallic, and emission. [Surface checks](../../Testing/research-battleship-materials.json) and [local textured assets](<D:/OtherProjects/asset-pipeline/Assets/AssetPipelineLab/Aquila_Research_Battleships/R003/>).
@@ -29,6 +33,44 @@ The owner reviewed the textured Windows ships and found that only their broad sh
 The proposed next review pairs each rebuilt hull with its original from the same direction, then checks the side and stern. Plain gray geometry should show the branches, drive housings, armor overhangs and hangar depth. The scale, shuttle clearance, seated guns and two working bridges remain constraints on a future playable revision.
 
 ### Rebuilt exteriors for review
+
+Round 187. Each ship has its original concept and 24 selected reference images. Eight exterior views cover both sides, top, underside, bow, stern and two oblique angles. Four sections, three deck plans, two interior views and seven fitting or material studies complete each pack. One earlier Delta study and five earlier Glacier studies are also saved. The two paintings, side drawings and top plans guided this round. [Full reference inventory](../../Testing/research-battleship-reference-images.json) · [Browse Delta Tree](http://127.0.0.1:8953/#references-delta-tree) · [Browse Glacier Tongue](http://127.0.0.1:8953/#references-glacier-tongue).
+
+Delta Tree’s forward observatory has a curved bronze glass front, visible consoles, a plated rear cabin and a raised hatch. The side drawing exposed how its earlier roof disappeared into the deck. Glacier Tongue has two tiers of windows beneath its arch, curved frames and faceted pressure domes. Its terraces remain too wide in the overhead view. Both local exterior models measure 1,280 m. [Construction marks, checked finishes and remaining differences](../../Testing/research-battleship-upper-hulls.json) · [Reusable Asset Pipeline method](<D:/OtherProjects/asset-pipeline/knowledge/blender-reference-modeling.md#check-a-finish-across-three-views>).
+
+| Ship | Rotate and compare | Original, previous and revised | Editable scene |
+| --- | --- | --- | --- |
+| Delta Tree | [Rotate Delta Tree](http://127.0.0.1:8953/hull-review.html?ship=delta-tree&round=187) | [Observatory](../../../Assets/ShipConcepts/hull-review-r187/bronze-observatory/sheets/delta-tree-detail.png) · [port](../../../Assets/ShipConcepts/hull-review-r187/bronze-observatory/sheets/delta-tree-port.png) · [overhead](../../../Assets/ShipConcepts/hull-review-r187/bronze-observatory/sheets/delta-tree-overhead.png) | [Delta Tree](../../../Assets/ShipConcepts/hull-review-r187/bronze-observatory/delta-tree/delta-tree.blend) |
+| Glacier Tongue | [Rotate Glacier Tongue](http://127.0.0.1:8953/hull-review.html?ship=glacier-tongue&round=187) | [Command galleries](../../../Assets/ShipConcepts/hull-review-r187/stepped-crown/sheets/glacier-tongue-detail.png) · [port](../../../Assets/ShipConcepts/hull-review-r187/stepped-crown/sheets/glacier-tongue-port.png) · [overhead](../../../Assets/ShipConcepts/hull-review-r187/stepped-crown/sheets/glacier-tongue-overhead.png) | [Glacier Tongue](../../../Assets/ShipConcepts/hull-review-r187/stepped-crown/glacier-tongue/glacier-tongue.blend) |
+
+#### Previous branching deck and swept blade
+
+Round 186. Thirteen circular stations now follow the painted tips of Delta Tree’s branching walkways. Dark channel beds and a paved outer deck separate the ivory branches from the islands. Glacier Tongue’s longer outboard blade carries five silver flank plates over an inhabited blue shell. Both review models measure 1,280 m. Windows uses the round 172 ships. [Geometry, finishes and remaining differences](../../Testing/research-battleship-branch-deck-and-blade.json) · [Asset Pipeline methods](<D:/OtherProjects/asset-pipeline/knowledge/blender-reference-modeling.md#fit-branching-decks-and-swept-armor>).
+
+| Ship | Compare in 3D | Painting and two revisions | Editable scene |
+| --- | --- | --- | --- |
+| Delta Tree | [Rotate and switch models](http://127.0.0.1:8953/hull-review.html?ship=delta-tree&round=186) | [Branching deck](../../../Assets/ShipConcepts/hull-review-r186/rooted-fan/sheets/delta-tree-detail.png) · [port](../../../Assets/ShipConcepts/hull-review-r186/rooted-fan/sheets/delta-tree-port.png) · [whole ship](../../../Assets/ShipConcepts/hull-review-r186/rooted-fan/sheets/delta-tree-whole.png) | [Delta Tree](../../../Assets/ShipConcepts/hull-review-r186/rooted-fan/delta-tree/delta-tree.blend) |
+| Glacier Tongue | [Rotate and switch models](http://127.0.0.1:8953/hull-review.html?ship=glacier-tongue&round=186) | [Blade and crossings](../../../Assets/ShipConcepts/hull-review-r186/pressure-spine/sheets/glacier-tongue-detail.png) · [port](../../../Assets/ShipConcepts/hull-review-r186/pressure-spine/sheets/glacier-tongue-port.png) · [whole ship](../../../Assets/ShipConcepts/hull-review-r186/pressure-spine/sheets/glacier-tongue-whole.png) | [Glacier Tongue](../../../Assets/ShipConcepts/hull-review-r186/pressure-spine/glacier-tongue/glacier-tongue.blend) |
+
+#### Previous arrival bays
+
+Round 185. The owner rated both previous models closer. Delta Tree’s port door has a cream frame and a bronze room with ribs and small amber lamps. The straight side view places it at 71.3% of hull length. Glacier Tongue’s curved arch has a recessed sill, two landing pads and a gold room angled behind the right support. Both ships measure 1,280 m. Windows uses the round 172 exteriors. [Geometry, finish and source measurements](../../Testing/research-battleship-arrival-portals.json) · [Reusable Blender workflow](<D:/OtherProjects/asset-pipeline/knowledge/blender-reference-modeling.md#fit-a-door-in-two-views>).
+
+| Ship | Compare in 3D | Painting and two revisions | Editable scene |
+| --- | --- | --- | --- |
+| Delta Tree | [Rotate and switch models](http://127.0.0.1:8953/hull-review.html?ship=delta-tree&round=185) | [Entrance](../../../Assets/ShipConcepts/hull-review-r185/bronze-floor/sheets/delta-tree-entrance.png) · [port](../../../Assets/ShipConcepts/hull-review-r185/bronze-floor/sheets/delta-tree-port.png) · [room finish](../../../Assets/ShipConcepts/hull-review-r185/bronze-floor/sheets/delta-tree-room-light.png) | [Delta Tree](../../../Assets/ShipConcepts/hull-review-r185/bronze-floor/delta-tree/delta-tree.blend) |
+| Glacier Tongue | [Rotate and switch models](http://127.0.0.1:8953/hull-review.html?ship=glacier-tongue&round=185) | [Entrance](../../../Assets/ShipConcepts/hull-review-r185/split-landing/sheets/glacier-tongue-entrance.png) · [port](../../../Assets/ShipConcepts/hull-review-r185/split-landing/sheets/glacier-tongue-port.png) · [whole ship](../../../Assets/ShipConcepts/hull-review-r185/split-landing/sheets/glacier-tongue-gallery.png) | [Glacier Tongue](../../../Assets/ShipConcepts/hull-review-r185/split-landing/glacier-tongue/glacier-tongue.blend) |
+
+#### Previous stern and dock finishes
+
+Round 184. Delta Tree’s shoulders now curve farther under the exhaust bank. Glacier Tongue’s dock has two patterned amber surfaces and a lit deck inside its dark frame. Both ships measure 1,280 m. The Windows duel uses the earlier playable ships. [Research decisions](../../Research/research-battleship-reference-matching-review-v1.md) · [Model and lighting checks](../../Testing/research-battleship-stern-and-berth-materials.json).
+
+| Ship | Compare in 3D | Artwork and two revisions | Editable scene |
+| --- | --- | --- | --- |
+| Delta Tree | [Rotate and switch revisions](http://127.0.0.1:8953/hull-review.html?ship=delta-tree&round=184) | [Rear study](../../../Assets/ShipConcepts/hull-review-r184/review-sheets/delta-tree-stern.png) · [whole ship](../../../Assets/ShipConcepts/hull-review-r184/review-sheets/delta-tree-whole.png) | [Delta Tree](../../../Assets/ShipConcepts/hull-review-r184/delta-tree/delta-tree.blend) |
+| Glacier Tongue | [Rotate and switch revisions](http://127.0.0.1:8953/hull-review.html?ship=glacier-tongue&round=184) | [Dock detail](../../../Assets/ShipConcepts/hull-review-r184/review-sheets/glacier-tongue-dock.png) · [lighting comparison](../../../Assets/ShipConcepts/hull-review-r184/review-sheets/glacier-tongue-lighting.png) · [whole ship](../../../Assets/ShipConcepts/hull-review-r184/review-sheets/glacier-tongue-whole.png) | [Glacier Tongue](../../../Assets/ShipConcepts/hull-review-r184/service-panels/glacier-tongue/glacier-tongue.blend) |
+
+#### Previous shoulder and dock study
 
 Round 179. Delta Tree’s paired window decks flank the twelve drives. Across nine heights in the rear study, the average shoulder offset from the engine centerline fell from 96.48 to 0.59 m. Its lower shoulders still curve inward sooner than the artwork. Both review ships retain their 1,280 m length. Delta’s beam fell from 595 to 584 m and overall height from 467 to 416 m. All 108 exhaust samples reach inside the rims. All eleven deck recesses and 60 mast footing contacts remain.
 
@@ -93,6 +135,10 @@ Each model study had one three-quarter concept as its design input. The other vi
 For each hull selected for modeling, the owner wants as many reference images as the design needs. The proposed brief starts with twelve views, then covers walkable decks, mechanisms and materials for each ship. [Modeling references and prompts for the first pair](ModelingReferences.md).
 
 ### Completed reference packs
+
+Round 188 checked all 48 selected generation receipts against the actual pictures. The original was the first input every time. The 46 images made after each ship’s first port view also used that side drawing. Eighteen requests included a gray projection, deck layout or dock diagram. Twenty-one used an earlier image subsequently replaced in the selected pack. Compare the source drawings with each other before treating an apparent mismatch as a modeling error. [Inputs for each reference](../../Testing/research-battleship-reference-consistency.json).
+
+Glacier’s port blade and closed starboard armor agree across the selected views. Its stern drawings show either three illuminated outlets or five. The original does not resolve the rear count. Delta’s two rear drawings both have twelve outlets but arrange them in three or four tiers. The visible flank of its original painting supports three tiers. Interior and hidden hardware studies propose additional design details. [Glacier’s rear studies](../../../Assets/ShipConcepts/reference-comparisons-r188/glacier-tongue-stern-studies.png) · [Delta’s rear studies](../../../Assets/ShipConcepts/reference-comparisons-r188/delta-tree-stern-studies.png).
 
 Each pack includes 24 selected images, the original gallery concept, earlier studies, registered floor plans and an editable Blender proportion study. Start with Delta Tree’s stacked drives or Glacier Tongue’s deep docking bay. [Delta Tree reference pack](../../../Assets/ShipConcepts/modeling-references-r150/delta-tree-reference-pack.zip) · [Glacier Tongue reference pack](../../../Assets/ShipConcepts/modeling-references-r150/glacier-tongue-reference-pack.zip) · [browse the gallery](http://127.0.0.1:8953/#i-aquila-direction-r150-packs).
 

@@ -1,0 +1,112 @@
+{
+  "round": 199,
+  "model_round": 198,
+  "local_date": "2026-11-26",
+  "verified_utc": "2026-11-26T17:13:39.055258+00:00",
+  "models_source": "Docs/Testing/research-battleship-bay-armor-and-drives.json",
+  "sheets_source": "Docs/Testing/research-battleship-turnarounds.json",
+  "method": "Read actual positions in the two hash-matched GLBs, in meters. Their mesh nodes are untransformed roots. X is length, Y is total height including fittings, and Z is width. Compare width and total height separately to the top and port drawing at common length. Cross-check named mesh parts and existing close-up checks. The part list is representative and cannot establish completeness.",
+  "screen_source": "Round 198 browser verification captures of each selected model with Plain gray enabled beside the original painting.",
+  "ships": {
+    "glacier-tongue": {
+      "name": "Glacier Tongue",
+      "glb": {
+        "path": "Assets/ShipConcepts/armor-drives-r198/glacier-tongue/refit/glacier-tongue.glb",
+        "sha256": "f1fc15fc5eba8ca5175536000a1d4e67731efeb865072c864f85904b3ae7fe01"
+      },
+      "original": {
+        "path": "Assets/ShipConcepts/sunburst-r144/41-glacier-tongue.png",
+        "sha256": "827baa1d6127c91fd36b21e0998ad7b013ddd7c8e7b109059bad03c61e86f0d1"
+      },
+      "sheet": {
+        "path": "Assets/ShipConcepts/turnaround-sheets-r190/glacier-tongue.png",
+        "bytes": 11075015,
+        "sha256": "4baacb3211d8eaa38ca8b4dc687d5e6e4b812aea14b696f92fed7e7d3e10075b"
+      },
+      "sheet_preview": {
+        "path": "Assets/ShipConcepts/turnaround-sheets-r190/glacier-tongue/sheet-preview.webp",
+        "bytes": 171428,
+        "sha256": "f785b149fcb8afa07e28099832798500be60659339c814dd0368d0c340827ee3"
+      },
+      "plain_gray": {
+        "path": "reports/game-direction/media/shape-review-r199/glacier-tongue-plain-gray.png",
+        "sha256": "373034943b01dc452feb3f3d3339d9284fdf332f66fdcc1ff1b5c1c11ced15f7"
+      },
+      "length_m": 1280.0,
+      "width_m": 420.268,
+      "height_m": 418.916,
+      "width_percent_of_length": 32.83,
+      "sheet_width_percent_of_length": 33.27,
+      "height_percent_of_length": 32.73,
+      "sheet_height_percent_of_length": 33.81,
+      "examples_with_prior_shape_checks": [
+        "Layered shell and recessed port wall",
+        "Separate port blade",
+        "Midship crossing",
+        "Aft crossing",
+        "Port arrival · recessed service hall"
+      ],
+      "present_as_rough_shapes": [
+        "Open survey arch",
+        "Survey mast"
+      ],
+      "limit": "Arch feet and segmented rim still need fitting. The lower armor edge is closer in the gallery than in the side drawing. The original hides the stern, so its seven outlets are inferred from the sheet."
+    },
+    "delta-tree": {
+      "name": "Delta Tree",
+      "glb": {
+        "path": "Assets/ShipConcepts/armor-drives-r198/delta-tree/tempered/delta-tree.glb",
+        "sha256": "a7b3fc33ea776440e1669140f0f652ee37fc6480f9de158f872e680f0b6076a2"
+      },
+      "original": {
+        "path": "Assets/ShipConcepts/sunburst-r144/58-delta-tree.png",
+        "sha256": "6628ed15b22fbf2990729eb8417b9babcb66cc8ebcb5635dad57c8776efeeac3"
+      },
+      "sheet": {
+        "path": "Assets/ShipConcepts/turnaround-sheets-r190/delta-tree.png",
+        "bytes": 12386600,
+        "sha256": "91e1ba6d9ba572957f166e62ec377d631fecc4b675f5cdb2a64173690e17d87c"
+      },
+      "sheet_preview": {
+        "path": "Assets/ShipConcepts/turnaround-sheets-r190/delta-tree/sheet-preview.webp",
+        "bytes": 227572,
+        "sha256": "6f74e59b4f990fbc6f587655d56053307bc39ec553fbe12c315b69033fc0afa0"
+      },
+      "plain_gray": {
+        "path": "reports/game-direction/media/shape-review-r199/delta-tree-plain-gray.png",
+        "sha256": "0299b2fe0231d24031e1909ee6426c214a8c6ae204bab4902207c3cf40da6ff7"
+      },
+      "length_m": 1280.0,
+      "width_m": 503.328,
+      "height_m": 409.072,
+      "width_percent_of_length": 39.32,
+      "sheet_width_percent_of_length": 40.53,
+      "height_percent_of_length": 31.96,
+      "sheet_height_percent_of_length": 31.94,
+      "examples_with_prior_shape_checks": [
+        "Shallow fan pressure hull",
+        "Recessed deck between branches",
+        "Port branch 1",
+        "Starboard branch 1",
+        "Forward observatory · glazed vault and plated cabin",
+        "Drive housing 1.1",
+        "Drive housing 1.2",
+        "Drive housing 1.3",
+        "Drive housing 1.4",
+        "Drive housing 2.1",
+        "Drive housing 2.2",
+        "Drive housing 2.3",
+        "Drive housing 2.4",
+        "Drive housing 3.1",
+        "Drive housing 3.2",
+        "Drive housing 3.3",
+        "Drive housing 3.4"
+      ],
+      "present_as_rough_shapes": [
+        "Survey dish",
+        "Dish pedestal"
+      ],
+      "limit": "Dish tilt and pedestal still differ from the painting. The model follows the top drawing with four drive columns. The stern drawing shows two."
+    }
+  }
+}

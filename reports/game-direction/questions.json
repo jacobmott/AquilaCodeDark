@@ -949,6 +949,71 @@
    "state": "open",
    "answer": null,
    "page": "Aquila game and website direction"
+  },
+  {
+   "id": "aquila-direction-r184-delta-tree",
+   "short": "Delta Tree · stern",
+   "ask": "Does Delta Tree’s stern look closer to its painting?",
+   "why": null,
+   "options": [
+    {
+     "v": "closer",
+     "label": "Yes, closer"
+    },
+    {
+     "v": "detail",
+     "label": "A detail still differs"
+    }
+   ],
+   "state": "open",
+   "answer": null,
+   "page": "Aquila game and website direction"
+  },
+  {
+   "id": "aquila-direction-r184-glacier-tongue",
+   "short": "Glacier Tongue · dock",
+   "ask": "Does Glacier Tongue’s dock look closer to its painting?",
+   "why": null,
+   "options": [
+    {
+     "v": "closer",
+     "label": "Yes, closer"
+    },
+    {
+     "v": "detail",
+     "label": "A detail still differs"
+    }
+   ],
+   "state": "open",
+   "answer": null,
+   "page": "Aquila game and website direction"
+  },
+  {
+   "id": "aquila-direction-r189-budget",
+   "short": "Choose the two-sheet budget",
+   "ask": "Which quality and total spend do you approve for the two 4K ship sheets?",
+   "why": "High costs 6.5 credits for both and keeps each sheet at full resolution.",
+   "options": [
+    {
+     "v": "high",
+     "label": "Approve High for 6.5 credits"
+    },
+    {
+     "v": "low",
+     "label": "Approve Low for 3.5 credits"
+    },
+    {
+     "v": "max",
+     "label": "Approve Max for 24 credits"
+    },
+    {
+     "v": "hold",
+     "label": "Keep the plan"
+    }
+   ],
+   "state": "open",
+   "answer": null,
+   "page": "Aquila game and website direction"
   }
  ]
 }

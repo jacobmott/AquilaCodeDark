@@ -25,6 +25,7 @@ Service health and capture visibility are not proof of a real generation. No syn
 Read [Research Console's guide](<C:/ResearchConsole/AGENT_GUIDE.md>) in full before submitting, discovering or retrieving research.
 From this repo, `py -B C:/ResearchConsole/research.py pending` checks only Aquila's results.
 Retain original research separately from synthesis and record exact reviewed versions. Setup does not submit research.
+For a Perplexity export with attachments, follow the conversation’s reference to the full report. Match its project and request key before saving. Preserve supporting archives and relative figure paths alongside the local report. [Verified ship research intake](../Docs/Research/research-battleship-reference-matching-returns-v1.json).
 
 Before relevant new implementation or research, read [Knowledge Hub's client guide](<C:/KnowledgeHub/Docs/Operations/REPO_CLIENT.md>) in full.
 Codex uses `--provider openai`, direct Claude uses `--provider anthropic`, and Cursor uses `--provider cursor`.

@@ -1,0 +1,70 @@
+{
+  "round": 189,
+  "local_date": "2026-11-25",
+  "quoted_at": "2026-11-26T04:30:36.384165+00:00",
+  "provider": "Higgsfield",
+  "display_model": "GPT Image 2.6 Sunburst",
+  "job_type": "gpt_image_2_6",
+  "public_model_guide": "https://higgsfield.ai/blog/gpt-image-2-6-higgsfield",
+  "status": "Round 189 quote. Max approved in chat and completed in round 190. Two jobs, 24 credits total.",
+  "result": "Docs/Testing/research-battleship-turnarounds.json",
+  "settings": {
+    "resolution": "4k",
+    "aspect_ratio": "3:2",
+    "output_format": "png",
+    "batch_size": 1
+  },
+  "largest_resolution": "4k",
+  "layout": [
+    [
+      "Port",
+      "Starboard"
+    ],
+    [
+      "Top",
+      "Underside"
+    ],
+    [
+      "Bow",
+      "Stern"
+    ]
+  ],
+  "shared_prompt": "Create one professional six-view orthographic model sheet of the exact spacecraft in the single attached concept painting. Treat this as one rigid, inhabited space-built vessel. Plan its fixed three-dimensional shape once and rotate that same vessel through six camera axes. Preserve the original silhouette, handedness, major component count and spacing, material colors, finish, surface wear and window patterns.\nUse a landscape 3:2 canvas. Arrange six uncut full-ship elevations in equal cells, two columns by three rows. Top row: PORT, looking squarely at the left side with the bow pointing left; STARBOARD, the opposite flank with the bow pointing right. Middle row: TOP with the bow left and the port edge down; UNDERSIDE with the bow left and the port edge up. Bottom row: BOW, looking directly at the nose, vessel port on viewer's right; STERN, looking directly at the engines, vessel port on viewer's left. Put a small plain label below each view. Keep long axes horizontal and the model upright. Use parallel projection, one scale throughout, matching centerlines and narrow clear margins. Bow and stern views show the actual beam at that scale.\nUse even neutral studio illumination, restrained lit windows, a matte neutral background and unobstructed outlines. Give the entire canvas to the six views. Where the painting hides a surface, choose a plausible continuation once. Check that the same feature appears at the same station in every view that can see it. Reconcile hull thickness, port and starboard asymmetry, bridges, towers, engine tiers and outlet counts before finishing.",
+  "ships": {
+    "delta-tree": {
+      "name": "Delta Tree",
+      "source": {
+        "path": "Assets/ShipConcepts/sunburst-r144/58-delta-tree.png",
+        "sha256": "6628ed15b22fbf2990729eb8417b9babcb66cc8ebcb5635dad57c8776efeeac3"
+      },
+      "description": "Delta Tree has a shallow, broad forward fan. Warm ivory ceramic branches sweep through graphite recesses to small circular dock islands along the perimeter. Keep the glazed bow observatory, fine amber window belts, the offset dish and the needle mast just ahead of the deep aft bank. The original shows three stacked tiers on the visible engine flank. Carry those tiers and their cylindrical housings around the stern. Keep the front low and the stern tall in every projection.",
+      "prompt_sha256": "1f26e2f48baec0cf34769d6b01390aa849d1b7558ca59210489763ce98a8302f",
+      "credits_per_sheet": {
+        "low": 1.75,
+        "high": 3.25,
+        "max": 12.0
+      }
+    },
+    "glacier-tongue": {
+      "name": "Glacier Tongue",
+      "source": {
+        "path": "Assets/ShipConcepts/sunburst-r144/41-glacier-tongue.png",
+        "sha256": "827baa1d6127c91fd36b21e0998ad7b013ddd7c8e7b109059bad03c61e86f0d1"
+      },
+      "description": "Glacier Tongue has a tapering bow and undulating bands of silver and deep blue armor over a warmly lit docking cavern on the port side. A long, slim outboard blade runs beside this bay. Short enclosed crossings join it to the main hull, leaving genuine open space. The starboard flank carries continuous armor. Preserve that asymmetry when the camera turns. Keep the bright domes, upright survey arch, needle mast and smaller dish over the aft crown. Set one aft engine arrangement consistent with the visible hull and carry it through all views.",
+      "prompt_sha256": "59419dc42039c45fe55392083e4cdd158207491643f1e3529dc85ec33c0ea7c1",
+      "credits_per_sheet": {
+        "low": 1.75,
+        "high": 3.25,
+        "max": 12.0
+      }
+    }
+  },
+  "total_for_two_credits": {
+    "low": 3.5,
+    "high": 6.5,
+    "max": 24.0
+  },
+  "comparison": "Inspect all six actual views. Match silhouettes, hull length, beam and height, named landmarks, engine tier and outlet counts, and Glacier’s port-only blade. Mark unseen design choices. Use the checked sheet alongside the original; retain prior detail and interior references.",
+  "prior_reference_audit": "Docs/Testing/research-battleship-reference-consistency.json"
+}

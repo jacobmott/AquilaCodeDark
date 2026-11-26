@@ -1,0 +1,1807 @@
+{
+  "round": 187,
+  "comparison_round": 186,
+  "local_date": "2026-11-25",
+  "scope": "Local external design studies before choosing a Windows replacement. Playable hulls are round 172.",
+  "owner_direction": "Chat: identify discrepancies independently and improve the method alongside the models. Original paintings and all selected views remain available.",
+  "reference_inventory": {
+    "path": "Docs/Testing/research-battleship-reference-images.json",
+    "sha256": "a6896697f2dc36c630c976a712033edcbf6c3eba54503794e1be72973a24170f"
+  },
+  "last_actual_inbox": {
+    "path": "reports/game-direction/inbox/20261126T015539Z.json",
+    "sha256": "841012451defae3f2e4377f836bc5136a57e7c89cf5fdd3c52fe767e487f993f"
+  },
+  "method": "Gallery painting, straight port drawing and corrected overhead plan constrain construction landmarks. Fixed surface marks classify the first physical mesh and material in the complete saved scene. Native and freshly imported glTF binary checked separately. Marks guided iteration.",
+  "limits": [
+    "The construction anchors are fit estimates, not surveyed final mesh positions. Separate drawings need not describe the same geometry.",
+    "Transparent glass is counted at the first hit. A narrow mullion counts as metal. These labels do not establish brightness, roughness or global visual similarity.",
+    "Delta’s dome framing and Glacier’s terrace width and position still differ across views. Exterior studies do not validate a playable interior."
+  ],
+  "ships": {
+    "delta-tree": {
+      "name": "Delta Tree",
+      "original": {
+        "path": "Assets/ShipConcepts/sunburst-r144/58-delta-tree.png",
+        "sha256": "6628ed15b22fbf2990729eb8417b9babcb66cc8ebcb5635dad57c8776efeeac3"
+      },
+      "selected_views": 24,
+      "earlier_studies": 1,
+      "port_drawing": {
+        "path": "Assets/ShipConcepts/modeling-references-r150/delta-tree/01-port.png",
+        "sha256": "df50389db222ce4f72ef84666517a1cce1bd0f95eaf5f2d837024cde9553a46c"
+      },
+      "dorsal": {
+        "path": "Assets/ShipConcepts/modeling-references-r150/delta-tree/25-dorsal-recheck.png",
+        "sha256": "825853919e11ffe31a48fe08d2fe2347530b3f1dd0b149635d9654398507d900"
+      },
+      "side_registration": {
+        "path": "Assets/ShipConcepts/hull-review-r185/elevations/delta-tree-alignment.json",
+        "sha256": "5bf9b25603075425a8c4a2bd312ca778de83c28dfa989e4f4bf68e7ce538050c"
+      },
+      "blend": {
+        "path": "Assets/ShipConcepts/hull-review-r187/bronze-observatory/delta-tree/delta-tree.blend",
+        "sha256": "42e4dbd9df176cecb4b7ea5c84b4bd1b6dbf6cc4e27f9e7e01c6fc7959d1f9a7"
+      },
+      "glb": {
+        "path": "Assets/ShipConcepts/hull-review-r187/bronze-observatory/delta-tree/delta-tree.glb",
+        "sha256": "ff09eb2d5e01811bc33a60ab19d0802d9e6084994a2aca6fc93120a019b83e46"
+      },
+      "gallery": {
+        "path": "Assets/ShipConcepts/hull-review-r187/bronze-observatory/renders/delta-tree-gallery.png",
+        "sha256": "fbc7e112e60174fb0949266b34d63fc0ad7fa94ad9c93aa10c97ce6a89d8deb0"
+      },
+      "whole": {
+        "path": "Assets/ShipConcepts/hull-review-r187/bronze-observatory/sheets/delta-tree-whole.png",
+        "sha256": "122ae41140985f79eaf1dc97fe3d8cadfcdff58e78b219a09645dbf644d60083"
+      },
+      "detail": {
+        "path": "Assets/ShipConcepts/hull-review-r187/bronze-observatory/sheets/delta-tree-detail.png",
+        "sha256": "42412d344b32349073615e53baef144e81132296bb41882b660e45cc1c21833c"
+      },
+      "side": {
+        "path": "Assets/ShipConcepts/hull-review-r187/bronze-observatory/sheets/delta-tree-port.png",
+        "sha256": "7f5a89475366cff0b30e0eefa107c35a1db540de15a2c506b396938a74a3a1c2"
+      },
+      "overhead": {
+        "path": "Assets/ShipConcepts/hull-review-r187/bronze-observatory/sheets/delta-tree-overhead.png",
+        "sha256": "20d5dc1bc0ccc529fce8ad39f973ddc85490d44ac812f645feded01b2b25e8e3"
+      },
+      "raw_port": {
+        "path": "Assets/ShipConcepts/hull-review-r187/bronze-observatory/angles/delta-tree-port.png",
+        "sha256": "ed0f58649260984f6e2367a148585c0577f1e92d70026fdefa9e06f79be386ee"
+      },
+      "raw_overhead": {
+        "path": "Assets/ShipConcepts/hull-review-r187/bronze-observatory/angles/delta-tree-overhead.png",
+        "sha256": "f6a72d114fc776ab14cecc62894cc94c78161da1965ba85ae89ae62e935efc75"
+      },
+      "previous_glb": {
+        "path": "Assets/ShipConcepts/hull-review-r186/rooted-fan/delta-tree/delta-tree.glb",
+        "sha256": "2c5522ba46f3eace8203c90f20e2dee6aae0c201bcb6d3bee439c8af843729bd"
+      },
+      "manifest": {
+        "path": "Assets/ShipConcepts/hull-review-r187/bronze-observatory/delta-tree/model-review.json",
+        "sha256": "234ded5a06b875be831ebaa847cb633087155f2ca06d6f8cd9037d0c05b09a29"
+      },
+      "geometry_check": {
+        "path": "Assets/ShipConcepts/hull-review-r187/bronze-observatory/delta-tree/geometry-check.json",
+        "sha256": "41709124d2465c9b09d31374ed54f263aaac7677dbe5e2758cc45f9f4dc9c43b"
+      },
+      "native_m": [
+        1280.0,
+        688.51123046875,
+        422.30076599121094
+      ],
+      "glb_m": [
+        1280.0,
+        688.51123046875,
+        422.30076599121094
+      ],
+      "packed_images": 24,
+      "embedded_images": 23,
+      "triangles": 167559,
+      "construction_anchors": {
+        "glass_crown": [
+          {
+            "source": [
+              119,
+              634
+            ],
+            "fit": [
+              108.8,
+              631.5
+            ],
+            "residual_px": 10.53,
+            "first_surface": "Delta · Command terraces and forward canopy / delta-tree · machined"
+          },
+          {
+            "source": [
+              105,
+              347
+            ],
+            "fit": [
+              108.5,
+              351.0
+            ],
+            "residual_px": 5.34,
+            "first_surface": null
+          },
+          {
+            "source": [
+              86,
+              345
+            ],
+            "fit": [
+              106.8,
+              354.8
+            ],
+            "residual_px": 23.01,
+            "first_surface": "Delta · Command terraces and forward canopy / delta-tree · observation_glass"
+          }
+        ],
+        "rear_hatch": [
+          {
+            "source": [
+              184,
+              611
+            ],
+            "fit": [
+              164.4,
+              609.0
+            ],
+            "residual_px": 19.68,
+            "first_surface": "Delta · Command terraces and forward canopy / delta-tree · canopy_shell"
+          },
+          {
+            "source": [
+              145,
+              347
+            ],
+            "fit": [
+              166.3,
+              350.6
+            ],
+            "residual_px": 21.6,
+            "first_surface": null
+          },
+          {
+            "source": [
+              132,
+              343
+            ],
+            "fit": [
+              164.9,
+              360.6
+            ],
+            "residual_px": 37.28,
+            "first_surface": "Delta · Command terraces and forward canopy / delta-tree · canopy_shell"
+          }
+        ]
+      },
+      "surfaces": {
+        "gallery": {
+          "Glass": {
+            "prior": 7,
+            "current": 8,
+            "exported": 8,
+            "total": 8,
+            "samples": [
+              {
+                "pixel": [
+                  93,
+                  658
+                ],
+                "old": true,
+                "current": true,
+                "native_mesh": "Delta · Command terraces and forward canopy",
+                "native_finish": "delta-tree · observation_glass",
+                "glb_mesh": "Delta · Command terraces and forward canopy",
+                "glb_finish": "delta-tree · observation_glass",
+                "exported": true
+              },
+              {
+                "pixel": [
+                  102,
+                  654
+                ],
+                "old": true,
+                "current": true,
+                "native_mesh": "Delta · Command terraces and forward canopy",
+                "native_finish": "delta-tree · observation_glass",
+                "glb_mesh": "Delta · Command terraces and forward canopy",
+                "glb_finish": "delta-tree · observation_glass",
+                "exported": true
+              },
+              {
+                "pixel": [
+                  108,
+                  664
+                ],
+                "old": true,
+                "current": true,
+                "native_mesh": "Delta · Command terraces and forward canopy",
+                "native_finish": "delta-tree · observation_glass",
+                "glb_mesh": "Delta · Command terraces and forward canopy",
+                "glb_finish": "delta-tree · observation_glass",
+                "exported": true
+              },
+              {
+                "pixel": [
+                  116,
+                  650
+                ],
+                "old": true,
+                "current": true,
+                "native_mesh": "Delta · Command terraces and forward canopy",
+                "native_finish": "delta-tree · observation_glass",
+                "glb_mesh": "Delta · Command terraces and forward canopy",
+                "glb_finish": "delta-tree · observation_glass",
+                "exported": true
+              },
+              {
+                "pixel": [
+                  125,
+                  662
+                ],
+                "old": true,
+                "current": true,
+                "native_mesh": "Delta · Command terraces and forward canopy",
+                "native_finish": "delta-tree · observation_glass",
+                "glb_mesh": "Delta · Command terraces and forward canopy",
+                "glb_finish": "delta-tree · observation_glass",
+                "exported": true
+              },
+              {
+                "pixel": [
+                  127,
+                  647
+                ],
+                "old": false,
+                "current": true,
+                "native_mesh": "Delta · Command terraces and forward canopy",
+                "native_finish": "delta-tree · observation_glass",
+                "glb_mesh": "Delta · Command terraces and forward canopy",
+                "glb_finish": "delta-tree · observation_glass",
+                "exported": true
+              },
+              {
+                "pixel": [
+                  136,
+                  654
+                ],
+                "old": true,
+                "current": true,
+                "native_mesh": "Delta · Command terraces and forward canopy",
+                "native_finish": "delta-tree · observation_glass",
+                "glb_mesh": "Delta · Command terraces and forward canopy",
+                "glb_finish": "delta-tree · observation_glass",
+                "exported": true
+              },
+              {
+                "pixel": [
+                  140,
+                  661
+                ],
+                "old": true,
+                "current": true,
+                "native_mesh": "Delta · Command terraces and forward canopy",
+                "native_finish": "delta-tree · observation_glass",
+                "glb_mesh": "Delta · Command terraces and forward canopy",
+                "glb_finish": "delta-tree · observation_glass",
+                "exported": true
+              }
+            ]
+          },
+          "Cabin roof": {
+            "prior": 5,
+            "current": 5,
+            "exported": 5,
+            "total": 6,
+            "samples": [
+              {
+                "pixel": [
+                  142,
+                  631
+                ],
+                "old": true,
+                "current": true,
+                "native_mesh": "Delta · Command terraces and forward canopy",
+                "native_finish": "delta-tree · canopy_shell",
+                "glb_mesh": "Delta · Command terraces and forward canopy",
+                "glb_finish": "delta-tree · canopy_shell",
+                "exported": true
+              },
+              {
+                "pixel": [
+                  151,
+                  632
+                ],
+                "old": true,
+                "current": true,
+                "native_mesh": "Delta · Command terraces and forward canopy",
+                "native_finish": "delta-tree · canopy_shell",
+                "glb_mesh": "Delta · Command terraces and forward canopy",
+                "glb_finish": "delta-tree · canopy_shell",
+                "exported": true
+              },
+              {
+                "pixel": [
+                  160,
+                  635
+                ],
+                "old": true,
+                "current": true,
+                "native_mesh": "Delta · Command terraces and forward canopy",
+                "native_finish": "delta-tree · canopy_shell",
+                "glb_mesh": "Delta · Command terraces and forward canopy",
+                "glb_finish": "delta-tree · canopy_shell",
+                "exported": true
+              },
+              {
+                "pixel": [
+                  174,
+                  624
+                ],
+                "old": true,
+                "current": true,
+                "native_mesh": "Delta · Command terraces and forward canopy",
+                "native_finish": "delta-tree · canopy_shell",
+                "glb_mesh": "Delta · Command terraces and forward canopy",
+                "glb_finish": "delta-tree · canopy_shell",
+                "exported": true
+              },
+              {
+                "pixel": [
+                  183,
+                  620
+                ],
+                "old": true,
+                "current": true,
+                "native_mesh": "Delta · Command terraces and forward canopy",
+                "native_finish": "delta-tree · canopy_shell",
+                "glb_mesh": "Delta · Command terraces and forward canopy",
+                "glb_finish": "delta-tree · canopy_shell",
+                "exported": true
+              },
+              {
+                "pixel": [
+                  191,
+                  624
+                ],
+                "old": false,
+                "current": false,
+                "native_mesh": "Delta · Command terraces and forward canopy",
+                "native_finish": "delta-tree · machined",
+                "glb_mesh": "Delta · Command terraces and forward canopy",
+                "glb_finish": "delta-tree · machined",
+                "exported": false
+              }
+            ]
+          }
+        },
+        "port": {
+          "Glass": {
+            "prior": 2,
+            "current": 7,
+            "exported": 7,
+            "total": 8,
+            "samples": [
+              {
+                "pixel": [
+                  81,
+                  369
+                ],
+                "old": false,
+                "current": true,
+                "native_mesh": "Delta · Command terraces and forward canopy",
+                "native_finish": "delta-tree · observation_glass",
+                "glb_mesh": "Delta · Command terraces and forward canopy",
+                "glb_finish": "delta-tree · observation_glass",
+                "exported": true
+              },
+              {
+                "pixel": [
+                  88,
+                  365
+                ],
+                "old": false,
+                "current": true,
+                "native_mesh": "Delta · Command terraces and forward canopy",
+                "native_finish": "delta-tree · observation_glass",
+                "glb_mesh": "Delta · Command terraces and forward canopy",
+                "glb_finish": "delta-tree · observation_glass",
+                "exported": true
+              },
+              {
+                "pixel": [
+                  93,
+                  362
+                ],
+                "old": false,
+                "current": false,
+                "native_mesh": "Delta · Command terraces and forward canopy",
+                "native_finish": "delta-tree · bronze_drive",
+                "glb_mesh": "Delta · Command terraces and forward canopy",
+                "glb_finish": "delta-tree · bronze_drive",
+                "exported": false
+              },
+              {
+                "pixel": [
+                  100,
+                  357
+                ],
+                "old": false,
+                "current": true,
+                "native_mesh": "Delta · Command terraces and forward canopy",
+                "native_finish": "delta-tree · observation_glass",
+                "glb_mesh": "Delta · Command terraces and forward canopy",
+                "glb_finish": "delta-tree · observation_glass",
+                "exported": true
+              },
+              {
+                "pixel": [
+                  103,
+                  362
+                ],
+                "old": false,
+                "current": true,
+                "native_mesh": "Delta · Command terraces and forward canopy",
+                "native_finish": "delta-tree · observation_glass",
+                "glb_mesh": "Delta · Command terraces and forward canopy",
+                "glb_finish": "delta-tree · observation_glass",
+                "exported": true
+              },
+              {
+                "pixel": [
+                  111,
+                  361
+                ],
+                "old": false,
+                "current": true,
+                "native_mesh": "Delta · Command terraces and forward canopy",
+                "native_finish": "delta-tree · observation_glass",
+                "glb_mesh": "Delta · Command terraces and forward canopy",
+                "glb_finish": "delta-tree · observation_glass",
+                "exported": true
+              },
+              {
+                "pixel": [
+                  117,
+                  366
+                ],
+                "old": true,
+                "current": true,
+                "native_mesh": "Delta · Command terraces and forward canopy",
+                "native_finish": "delta-tree · observation_glass",
+                "glb_mesh": "Delta · Command terraces and forward canopy",
+                "glb_finish": "delta-tree · observation_glass",
+                "exported": true
+              },
+              {
+                "pixel": [
+                  111,
+                  368
+                ],
+                "old": true,
+                "current": true,
+                "native_mesh": "Delta · Command terraces and forward canopy",
+                "native_finish": "delta-tree · observation_glass",
+                "glb_mesh": "Delta · Command terraces and forward canopy",
+                "glb_finish": "delta-tree · observation_glass",
+                "exported": true
+              }
+            ]
+          },
+          "Cabin roof": {
+            "prior": 2,
+            "current": 4,
+            "exported": 4,
+            "total": 6,
+            "samples": [
+              {
+                "pixel": [
+                  125,
+                  354
+                ],
+                "old": false,
+                "current": true,
+                "native_mesh": "Delta · Command terraces and forward canopy",
+                "native_finish": "delta-tree · canopy_shell",
+                "glb_mesh": "Delta · Command terraces and forward canopy",
+                "glb_finish": "delta-tree · canopy_shell",
+                "exported": true
+              },
+              {
+                "pixel": [
+                  133,
+                  354
+                ],
+                "old": true,
+                "current": true,
+                "native_mesh": "Delta · Command terraces and forward canopy",
+                "native_finish": "delta-tree · canopy_shell",
+                "glb_mesh": "Delta · Command terraces and forward canopy",
+                "glb_finish": "delta-tree · canopy_shell",
+                "exported": true
+              },
+              {
+                "pixel": [
+                  140,
+                  355
+                ],
+                "old": false,
+                "current": true,
+                "native_mesh": "Delta · Command terraces and forward canopy",
+                "native_finish": "delta-tree · canopy_shell",
+                "glb_mesh": "Delta · Command terraces and forward canopy",
+                "glb_finish": "delta-tree · canopy_shell",
+                "exported": true
+              },
+              {
+                "pixel": [
+                  151,
+                  354
+                ],
+                "old": true,
+                "current": true,
+                "native_mesh": "Delta · Command terraces and forward canopy",
+                "native_finish": "delta-tree · canopy_shell",
+                "glb_mesh": "Delta · Command terraces and forward canopy",
+                "glb_finish": "delta-tree · canopy_shell",
+                "exported": true
+              },
+              {
+                "pixel": [
+                  160,
+                  355
+                ],
+                "old": false,
+                "current": false,
+                "native_mesh": "Delta · Pressure hull and keel",
+                "native_finish": "delta-tree · ivory",
+                "glb_mesh": "Delta · Pressure hull and keel",
+                "glb_finish": "delta-tree · ivory",
+                "exported": false
+              },
+              {
+                "pixel": [
+                  169,
+                  357
+                ],
+                "old": false,
+                "current": false,
+                "native_mesh": "Delta · Pressure hull and keel",
+                "native_finish": "delta-tree · ivory",
+                "glb_mesh": "Delta · Pressure hull and keel",
+                "glb_finish": "delta-tree · ivory",
+                "exported": false
+              }
+            ]
+          }
+        },
+        "overhead": {
+          "Glass": {
+            "prior": 4,
+            "current": 4,
+            "exported": 4,
+            "total": 8,
+            "samples": [
+              {
+                "pixel": [
+                  69,
+                  337
+                ],
+                "old": false,
+                "current": false,
+                "native_mesh": "Delta · Command terraces and forward canopy",
+                "native_finish": "delta-tree · drive_ceramic",
+                "glb_mesh": "Delta · Command terraces and forward canopy",
+                "glb_finish": "delta-tree · drive_ceramic",
+                "exported": false
+              },
+              {
+                "pixel": [
+                  71,
+                  345
+                ],
+                "old": false,
+                "current": false,
+                "native_mesh": "Delta · Command terraces and forward canopy",
+                "native_finish": "delta-tree · bronze_drive",
+                "glb_mesh": "Delta · Command terraces and forward canopy",
+                "glb_finish": "delta-tree · bronze_drive",
+                "exported": false
+              },
+              {
+                "pixel": [
+                  74,
+                  355
+                ],
+                "old": false,
+                "current": true,
+                "native_mesh": "Delta · Command terraces and forward canopy",
+                "native_finish": "delta-tree · observation_glass",
+                "glb_mesh": "Delta · Command terraces and forward canopy",
+                "glb_finish": "delta-tree · observation_glass",
+                "exported": true
+              },
+              {
+                "pixel": [
+                  78,
+                  333
+                ],
+                "old": false,
+                "current": false,
+                "native_mesh": "Delta · Command terraces and forward canopy",
+                "native_finish": "delta-tree · bronze_drive",
+                "glb_mesh": "Delta · Command terraces and forward canopy",
+                "glb_finish": "delta-tree · bronze_drive",
+                "exported": false
+              },
+              {
+                "pixel": [
+                  85,
+                  343
+                ],
+                "old": true,
+                "current": true,
+                "native_mesh": "Delta · Command terraces and forward canopy",
+                "native_finish": "delta-tree · observation_glass",
+                "glb_mesh": "Delta · Command terraces and forward canopy",
+                "glb_finish": "delta-tree · observation_glass",
+                "exported": true
+              },
+              {
+                "pixel": [
+                  88,
+                  356
+                ],
+                "old": true,
+                "current": false,
+                "native_mesh": "Delta · Command terraces and forward canopy",
+                "native_finish": "delta-tree · machined",
+                "glb_mesh": "Delta · Command terraces and forward canopy",
+                "glb_finish": "delta-tree · machined",
+                "exported": false
+              },
+              {
+                "pixel": [
+                  91,
+                  351
+                ],
+                "old": true,
+                "current": true,
+                "native_mesh": "Delta · Command terraces and forward canopy",
+                "native_finish": "delta-tree · observation_glass",
+                "glb_mesh": "Delta · Command terraces and forward canopy",
+                "glb_finish": "delta-tree · observation_glass",
+                "exported": true
+              },
+              {
+                "pixel": [
+                  96,
+                  337
+                ],
+                "old": true,
+                "current": true,
+                "native_mesh": "Delta · Command terraces and forward canopy",
+                "native_finish": "delta-tree · observation_glass",
+                "glb_mesh": "Delta · Command terraces and forward canopy",
+                "glb_finish": "delta-tree · observation_glass",
+                "exported": true
+              }
+            ]
+          },
+          "Cabin roof": {
+            "prior": 0,
+            "current": 5,
+            "exported": 5,
+            "total": 6,
+            "samples": [
+              {
+                "pixel": [
+                  115,
+                  330
+                ],
+                "old": false,
+                "current": false,
+                "native_mesh": "Delta · Command terraces and forward canopy",
+                "native_finish": "delta-tree · observation_glass",
+                "glb_mesh": "Delta · Command terraces and forward canopy",
+                "glb_finish": "delta-tree · observation_glass",
+                "exported": false
+              },
+              {
+                "pixel": [
+                  123,
+                  333
+                ],
+                "old": false,
+                "current": true,
+                "native_mesh": "Delta · Command terraces and forward canopy",
+                "native_finish": "delta-tree · canopy_shell",
+                "glb_mesh": "Delta · Command terraces and forward canopy",
+                "glb_finish": "delta-tree · canopy_shell",
+                "exported": true
+              },
+              {
+                "pixel": [
+                  132,
+                  337
+                ],
+                "old": false,
+                "current": true,
+                "native_mesh": "Delta · Command terraces and forward canopy",
+                "native_finish": "delta-tree · canopy_shell",
+                "glb_mesh": "Delta · Command terraces and forward canopy",
+                "glb_finish": "delta-tree · canopy_shell",
+                "exported": true
+              },
+              {
+                "pixel": [
+                  142,
+                  334
+                ],
+                "old": false,
+                "current": true,
+                "native_mesh": "Delta · Command terraces and forward canopy",
+                "native_finish": "delta-tree · canopy_shell",
+                "glb_mesh": "Delta · Command terraces and forward canopy",
+                "glb_finish": "delta-tree · canopy_shell",
+                "exported": true
+              },
+              {
+                "pixel": [
+                  151,
+                  338
+                ],
+                "old": false,
+                "current": true,
+                "native_mesh": "Delta · Command terraces and forward canopy",
+                "native_finish": "delta-tree · canopy_shell",
+                "glb_mesh": "Delta · Command terraces and forward canopy",
+                "glb_finish": "delta-tree · canopy_shell",
+                "exported": true
+              },
+              {
+                "pixel": [
+                  152,
+                  351
+                ],
+                "old": false,
+                "current": true,
+                "native_mesh": "Delta · Command terraces and forward canopy",
+                "native_finish": "delta-tree · canopy_shell",
+                "glb_mesh": "Delta · Command terraces and forward canopy",
+                "glb_finish": "delta-tree · canopy_shell",
+                "exported": true
+              }
+            ]
+          }
+        }
+      },
+      "sample_agreement": {
+        "total": 42,
+        "same_class": 42,
+        "same_object_and_material": 42
+      },
+      "walkway_contacts": [
+        {
+          "ship": 21,
+          "platform": 48
+        },
+        {
+          "ship": 34,
+          "platform": 40
+        },
+        {
+          "ship": 42,
+          "platform": 38
+        },
+        {
+          "ship": 52,
+          "platform": 22
+        },
+        {
+          "ship": 45,
+          "platform": 22
+        },
+        {
+          "ship": 51,
+          "platform": 24
+        },
+        {
+          "ship": 36,
+          "platform": 22
+        },
+        {
+          "ship": 37,
+          "platform": 26
+        },
+        {
+          "ship": 50,
+          "platform": 42
+        },
+        {
+          "ship": 76,
+          "platform": 44
+        },
+        {
+          "ship": 37,
+          "platform": 44
+        },
+        {
+          "ship": 31,
+          "platform": 42
+        },
+        {
+          "ship": 52,
+          "platform": 42
+        }
+      ],
+      "exhaust_samples_clear": 108,
+      "trial_counts": {
+        "bronze-vault": {
+          "gallery": {
+            "Glass": 5,
+            "Cabin roof": 6
+          },
+          "port": {
+            "Glass": 3,
+            "Cabin roof": 0
+          },
+          "overhead": {
+            "Glass": 4,
+            "Cabin roof": 0
+          }
+        },
+        "seated-vault": {
+          "gallery": {
+            "Glass": 5,
+            "Cabin roof": 3
+          },
+          "port": {
+            "Glass": 3,
+            "Cabin roof": 0
+          },
+          "overhead": {
+            "Glass": 3,
+            "Cabin roof": 3
+          }
+        },
+        "inlaid-observatory": {
+          "gallery": {
+            "Glass": 4,
+            "Cabin roof": 5
+          },
+          "port": {
+            "Glass": 2,
+            "Cabin roof": 4
+          },
+          "overhead": {
+            "Glass": 4,
+            "Cabin roof": 6
+          }
+        },
+        "bronze-observatory": {
+          "gallery": {
+            "Glass": 8,
+            "Cabin roof": 5
+          },
+          "port": {
+            "Glass": 7,
+            "Cabin roof": 4
+          },
+          "overhead": {
+            "Glass": 4,
+            "Cabin roof": 5
+          }
+        }
+      }
+    },
+    "glacier-tongue": {
+      "name": "Glacier Tongue",
+      "original": {
+        "path": "Assets/ShipConcepts/sunburst-r144/41-glacier-tongue.png",
+        "sha256": "827baa1d6127c91fd36b21e0998ad7b013ddd7c8e7b109059bad03c61e86f0d1"
+      },
+      "selected_views": 24,
+      "earlier_studies": 5,
+      "port_drawing": {
+        "path": "Assets/ShipConcepts/modeling-references-r150/glacier-tongue/01-port.png",
+        "sha256": "05840ff53ba448fb8962837529acd7574bb217acc846a1e69330fa350aae7cef"
+      },
+      "dorsal": {
+        "path": "Assets/ShipConcepts/modeling-references-r150/glacier-tongue/25-dorsal-recheck.png",
+        "sha256": "b64e66136ea09a60f0d7aa5c85f03cc63e3c595e38b6102230dd48141df6875c"
+      },
+      "side_registration": {
+        "path": "Assets/ShipConcepts/hull-review-r185/elevations/glacier-tongue-alignment.json",
+        "sha256": "f5c53137739fbbe69fb3e37e3b57361233bee3d28e8464d997d7873ae9ebf55a"
+      },
+      "blend": {
+        "path": "Assets/ShipConcepts/hull-review-r187/stepped-crown/glacier-tongue/glacier-tongue.blend",
+        "sha256": "15eda4d8adea2a2c79583e9f01bb223d3c734cc453489128c92ca50b6d448406"
+      },
+      "glb": {
+        "path": "Assets/ShipConcepts/hull-review-r187/stepped-crown/glacier-tongue/glacier-tongue.glb",
+        "sha256": "695733ade997b329128c475357ae0393b2a6d92495a97175ba387452faf94316"
+      },
+      "gallery": {
+        "path": "Assets/ShipConcepts/hull-review-r187/stepped-crown/renders/glacier-tongue-gallery.png",
+        "sha256": "76095428bebbd70fe63abf1cc558309ebd224584287d1721b229cae3e3ae70c3"
+      },
+      "whole": {
+        "path": "Assets/ShipConcepts/hull-review-r187/stepped-crown/sheets/glacier-tongue-whole.png",
+        "sha256": "4eec2736c678ba8e6c525124f788cd6b24ec07c5e2d1aaac6593b4e1093f227a"
+      },
+      "detail": {
+        "path": "Assets/ShipConcepts/hull-review-r187/stepped-crown/sheets/glacier-tongue-detail.png",
+        "sha256": "10c6d6f66b7cbe6970fc6f41de62e8bdbfd25e3ff956721df9eda8928bb7c0d9"
+      },
+      "side": {
+        "path": "Assets/ShipConcepts/hull-review-r187/stepped-crown/sheets/glacier-tongue-port.png",
+        "sha256": "0f9f82240308d3be7851e25977826230d6794b97cf62fdce2e47289a30a97625"
+      },
+      "overhead": {
+        "path": "Assets/ShipConcepts/hull-review-r187/stepped-crown/sheets/glacier-tongue-overhead.png",
+        "sha256": "c0e619814ad59f31ffd8fd23a66d4aa3566f28a491c0b2b1124671b587596681"
+      },
+      "raw_port": {
+        "path": "Assets/ShipConcepts/hull-review-r187/stepped-crown/angles/glacier-tongue-port.png",
+        "sha256": "e3df7b55993784f0582ecacb554384527efb543bcd2314f30fd5a2da00ec0501"
+      },
+      "raw_overhead": {
+        "path": "Assets/ShipConcepts/hull-review-r187/stepped-crown/angles/glacier-tongue-overhead.png",
+        "sha256": "ec59201a3f70a19091ddf8d824cafedcadc30a3e252d34175d58a656379014a2"
+      },
+      "previous_glb": {
+        "path": "Assets/ShipConcepts/hull-review-r186/pressure-spine/glacier-tongue/glacier-tongue.glb",
+        "sha256": "3fdd02304692cd399c7e8228fb4d4842edee36ed0c799990a120a0470b896d23"
+      },
+      "manifest": {
+        "path": "Assets/ShipConcepts/hull-review-r187/stepped-crown/glacier-tongue/model-review.json",
+        "sha256": "baca0a96c57f8d45598c332becb19462566688ed8114b9bee97e714299ad5bd6"
+      },
+      "geometry_check": {
+        "path": "Assets/ShipConcepts/hull-review-r187/stepped-crown/glacier-tongue/geometry-check.json",
+        "sha256": "3952d6220d291000346ee0409f45dc0cf12e582e6549f9b23a5c326b24e324a7"
+      },
+      "native_m": [
+        1280.0,
+        647.7870635986328,
+        400.6854934692383
+      ],
+      "glb_m": [
+        1280.0,
+        647.7870635986328,
+        400.6854934692383
+      ],
+      "packed_images": 44,
+      "embedded_images": 44,
+      "triangles": 129664,
+      "construction_anchors": {
+        "dome": [
+          {
+            "source": [
+              554,
+              299
+            ],
+            "fit": [
+              545.0,
+              301.0
+            ],
+            "residual_px": 9.21,
+            "first_surface": "Glacier · Command crown and pressure domes / glacier-tongue · crown_shell"
+          },
+          {
+            "source": [
+              600,
+              230
+            ],
+            "fit": [
+              630.6,
+              219.2
+            ],
+            "residual_px": 32.46,
+            "first_surface": "Glacier · Command crown and pressure domes / glacier-tongue · machined"
+          },
+          {
+            "source": [
+              570,
+              289
+            ],
+            "fit": [
+              629.5,
+              314.4
+            ],
+            "residual_px": 64.66,
+            "first_surface": "Glacier · Command crown and pressure domes / glacier-tongue · crown_shell"
+          }
+        ],
+        "arch": [
+          {
+            "source": [
+              676,
+              240
+            ],
+            "fit": [
+              665.7,
+              240.4
+            ],
+            "residual_px": 10.3,
+            "first_surface": "Glacier · Observation arch and sensors / glacier-tongue · crown_shell"
+          },
+          {
+            "source": [
+              730,
+              187
+            ],
+            "fit": [
+              769.6,
+              192.0
+            ],
+            "residual_px": 39.95,
+            "first_surface": null
+          },
+          {
+            "source": [
+              715,
+              287
+            ],
+            "fit": [
+              772.0,
+              316.4
+            ],
+            "residual_px": 64.09,
+            "first_surface": "Glacier · Command crown and pressure domes / glacier-tongue · crown_shell"
+          }
+        ],
+        "mast": [
+          {
+            "source": [
+              746,
+              211
+            ],
+            "fit": [
+              732.9,
+              210.3
+            ],
+            "residual_px": 13.14,
+            "first_surface": null
+          },
+          {
+            "source": [
+              799,
+              162
+            ],
+            "fit": [
+              847.4,
+              179.9
+            ],
+            "residual_px": 51.64,
+            "first_surface": null
+          },
+          {
+            "source": [
+              779,
+              279
+            ],
+            "fit": [
+              851.7,
+              316.7
+            ],
+            "residual_px": 81.87,
+            "first_surface": "Glacier · Command crown and pressure domes / glacier-tongue · crown_shell"
+          }
+        ],
+        "dish": [
+          {
+            "source": [
+              826,
+              253
+            ],
+            "fit": [
+              812.7,
+              252.3
+            ],
+            "residual_px": 13.28,
+            "first_surface": "Glacier · Observation arch and sensors / glacier-tongue · trim"
+          },
+          {
+            "source": [
+              876,
+              211
+            ],
+            "fit": [
+              930.4,
+              228.6
+            ],
+            "residual_px": 57.15,
+            "first_surface": null
+          },
+          {
+            "source": [
+              871,
+              281
+            ],
+            "fit": [
+              936.7,
+              319.1
+            ],
+            "residual_px": 75.94,
+            "first_surface": "Glacier · Command crown and pressure domes / glacier-tongue · crown_shell"
+          }
+        ]
+      },
+      "surfaces": {
+        "gallery": {
+          "Cabin windows": {
+            "prior": 0,
+            "current": 12,
+            "exported": 12,
+            "total": 12,
+            "samples": [
+              {
+                "pixel": [
+                  713,
+                  305
+                ],
+                "old": false,
+                "current": true,
+                "native_mesh": "Glacier · Command crown and pressure domes",
+                "native_finish": "glacier-tongue · crown_glazing",
+                "glb_mesh": "Glacier · Command crown and pressure domes",
+                "glb_finish": "glacier-tongue · crown_glazing",
+                "exported": true
+              },
+              {
+                "pixel": [
+                  726,
+                  305
+                ],
+                "old": false,
+                "current": true,
+                "native_mesh": "Glacier · Command crown and pressure domes",
+                "native_finish": "glacier-tongue · crown_glazing",
+                "glb_mesh": "Glacier · Command crown and pressure domes",
+                "glb_finish": "glacier-tongue · crown_glazing",
+                "exported": true
+              },
+              {
+                "pixel": [
+                  740,
+                  303
+                ],
+                "old": false,
+                "current": true,
+                "native_mesh": "Glacier · Command crown and pressure domes",
+                "native_finish": "glacier-tongue · crown_glazing",
+                "glb_mesh": "Glacier · Command crown and pressure domes",
+                "glb_finish": "glacier-tongue · crown_glazing",
+                "exported": true
+              },
+              {
+                "pixel": [
+                  757,
+                  304
+                ],
+                "old": false,
+                "current": true,
+                "native_mesh": "Glacier · Command crown and pressure domes",
+                "native_finish": "glacier-tongue · crown_glazing",
+                "glb_mesh": "Glacier · Command crown and pressure domes",
+                "glb_finish": "glacier-tongue · crown_glazing",
+                "exported": true
+              },
+              {
+                "pixel": [
+                  775,
+                  303
+                ],
+                "old": false,
+                "current": true,
+                "native_mesh": "Glacier · Command crown and pressure domes",
+                "native_finish": "glacier-tongue · crown_glazing",
+                "glb_mesh": "Glacier · Command crown and pressure domes",
+                "glb_finish": "glacier-tongue · crown_glazing",
+                "exported": true
+              },
+              {
+                "pixel": [
+                  795,
+                  302
+                ],
+                "old": false,
+                "current": true,
+                "native_mesh": "Glacier · Cabin lights",
+                "native_finish": "glacier-tongue · dim",
+                "glb_mesh": "Glacier · Cabin lights",
+                "glb_finish": "glacier-tongue · dim",
+                "exported": true
+              },
+              {
+                "pixel": [
+                  813,
+                  305
+                ],
+                "old": false,
+                "current": true,
+                "native_mesh": "Glacier · Command crown and pressure domes",
+                "native_finish": "glacier-tongue · crown_glazing",
+                "glb_mesh": "Glacier · Command crown and pressure domes",
+                "glb_finish": "glacier-tongue · crown_glazing",
+                "exported": true
+              },
+              {
+                "pixel": [
+                  832,
+                  306
+                ],
+                "old": false,
+                "current": true,
+                "native_mesh": "Glacier · Command crown and pressure domes",
+                "native_finish": "glacier-tongue · crown_glazing",
+                "glb_mesh": "Glacier · Command crown and pressure domes",
+                "glb_finish": "glacier-tongue · crown_glazing",
+                "exported": true
+              },
+              {
+                "pixel": [
+                  849,
+                  309
+                ],
+                "old": false,
+                "current": true,
+                "native_mesh": "Glacier · Command crown and pressure domes",
+                "native_finish": "glacier-tongue · crown_glazing",
+                "glb_mesh": "Glacier · Command crown and pressure domes",
+                "glb_finish": "glacier-tongue · crown_glazing",
+                "exported": true
+              },
+              {
+                "pixel": [
+                  868,
+                  311
+                ],
+                "old": false,
+                "current": true,
+                "native_mesh": "Glacier · Command crown and pressure domes",
+                "native_finish": "glacier-tongue · crown_glazing",
+                "glb_mesh": "Glacier · Command crown and pressure domes",
+                "glb_finish": "glacier-tongue · crown_glazing",
+                "exported": true
+              },
+              {
+                "pixel": [
+                  881,
+                  314
+                ],
+                "old": false,
+                "current": true,
+                "native_mesh": "Glacier · Command crown and pressure domes",
+                "native_finish": "glacier-tongue · crown_glazing",
+                "glb_mesh": "Glacier · Command crown and pressure domes",
+                "glb_finish": "glacier-tongue · crown_glazing",
+                "exported": true
+              },
+              {
+                "pixel": [
+                  898,
+                  317
+                ],
+                "old": false,
+                "current": true,
+                "native_mesh": "Glacier · Command crown and pressure domes",
+                "native_finish": "glacier-tongue · crown_glazing",
+                "glb_mesh": "Glacier · Command crown and pressure domes",
+                "glb_finish": "glacier-tongue · crown_glazing",
+                "exported": true
+              }
+            ]
+          },
+          "Upper roof": {
+            "prior": 5,
+            "current": 8,
+            "exported": 8,
+            "total": 8,
+            "samples": [
+              {
+                "pixel": [
+                  713,
+                  295
+                ],
+                "old": false,
+                "current": true,
+                "native_mesh": "Glacier · Command crown and pressure domes",
+                "native_finish": "glacier-tongue · crown_shell",
+                "glb_mesh": "Glacier · Command crown and pressure domes",
+                "glb_finish": "glacier-tongue · crown_shell",
+                "exported": true
+              },
+              {
+                "pixel": [
+                  733,
+                  291
+                ],
+                "old": false,
+                "current": true,
+                "native_mesh": "Glacier · Command crown and pressure domes",
+                "native_finish": "glacier-tongue · crown_blue",
+                "glb_mesh": "Glacier · Command crown and pressure domes",
+                "glb_finish": "glacier-tongue · crown_blue",
+                "exported": true
+              },
+              {
+                "pixel": [
+                  757,
+                  288
+                ],
+                "old": true,
+                "current": true,
+                "native_mesh": "Glacier · Command crown and pressure domes",
+                "native_finish": "glacier-tongue · crown_blue",
+                "glb_mesh": "Glacier · Command crown and pressure domes",
+                "glb_finish": "glacier-tongue · crown_blue",
+                "exported": true
+              },
+              {
+                "pixel": [
+                  781,
+                  286
+                ],
+                "old": true,
+                "current": true,
+                "native_mesh": "Glacier · Command crown and pressure domes",
+                "native_finish": "glacier-tongue · crown_shell",
+                "glb_mesh": "Glacier · Command crown and pressure domes",
+                "glb_finish": "glacier-tongue · crown_shell",
+                "exported": true
+              },
+              {
+                "pixel": [
+                  804,
+                  287
+                ],
+                "old": true,
+                "current": true,
+                "native_mesh": "Glacier · Command crown and pressure domes",
+                "native_finish": "glacier-tongue · crown_shell",
+                "glb_mesh": "Glacier · Command crown and pressure domes",
+                "glb_finish": "glacier-tongue · crown_shell",
+                "exported": true
+              },
+              {
+                "pixel": [
+                  828,
+                  289
+                ],
+                "old": true,
+                "current": true,
+                "native_mesh": "Glacier · Command crown and pressure domes",
+                "native_finish": "glacier-tongue · crown_shell",
+                "glb_mesh": "Glacier · Command crown and pressure domes",
+                "glb_finish": "glacier-tongue · crown_shell",
+                "exported": true
+              },
+              {
+                "pixel": [
+                  848,
+                  294
+                ],
+                "old": true,
+                "current": true,
+                "native_mesh": "Glacier · Command crown and pressure domes",
+                "native_finish": "glacier-tongue · crown_shell",
+                "glb_mesh": "Glacier · Command crown and pressure domes",
+                "glb_finish": "glacier-tongue · crown_shell",
+                "exported": true
+              },
+              {
+                "pixel": [
+                  870,
+                  300
+                ],
+                "old": false,
+                "current": true,
+                "native_mesh": "Glacier · Command crown and pressure domes",
+                "native_finish": "glacier-tongue · crown_shell",
+                "glb_mesh": "Glacier · Command crown and pressure domes",
+                "glb_finish": "glacier-tongue · crown_shell",
+                "exported": true
+              }
+            ]
+          }
+        },
+        "port": {
+          "Cabin windows": {
+            "prior": 0,
+            "current": 7,
+            "exported": 7,
+            "total": 12,
+            "samples": [
+              {
+                "pixel": [
+                  728,
+                  245
+                ],
+                "old": false,
+                "current": true,
+                "native_mesh": "Glacier · Command crown and pressure domes",
+                "native_finish": "glacier-tongue · crown_glazing",
+                "glb_mesh": "Glacier · Command crown and pressure domes",
+                "glb_finish": "glacier-tongue · crown_glazing",
+                "exported": true
+              },
+              {
+                "pixel": [
+                  741,
+                  243
+                ],
+                "old": false,
+                "current": false,
+                "native_mesh": "Glacier · Command crown and pressure domes",
+                "native_finish": "glacier-tongue · crown_blue",
+                "glb_mesh": "Glacier · Command crown and pressure domes",
+                "glb_finish": "glacier-tongue · crown_blue",
+                "exported": false
+              },
+              {
+                "pixel": [
+                  757,
+                  244
+                ],
+                "old": false,
+                "current": false,
+                "native_mesh": "Glacier · Command crown and pressure domes",
+                "native_finish": "glacier-tongue · crown_shell",
+                "glb_mesh": "Glacier · Command crown and pressure domes",
+                "glb_finish": "glacier-tongue · crown_shell",
+                "exported": false
+              },
+              {
+                "pixel": [
+                  770,
+                  246
+                ],
+                "old": false,
+                "current": false,
+                "native_mesh": "Glacier · Command crown and pressure domes",
+                "native_finish": "glacier-tongue · crown_blue",
+                "glb_mesh": "Glacier · Command crown and pressure domes",
+                "glb_finish": "glacier-tongue · crown_blue",
+                "exported": false
+              },
+              {
+                "pixel": [
+                  789,
+                  247
+                ],
+                "old": false,
+                "current": false,
+                "native_mesh": "Glacier · Command crown and pressure domes",
+                "native_finish": "glacier-tongue · crown_blue",
+                "glb_mesh": "Glacier · Command crown and pressure domes",
+                "glb_finish": "glacier-tongue · crown_blue",
+                "exported": false
+              },
+              {
+                "pixel": [
+                  804,
+                  248
+                ],
+                "old": false,
+                "current": false,
+                "native_mesh": "Glacier · Command crown and pressure domes",
+                "native_finish": "glacier-tongue · machined",
+                "glb_mesh": "Glacier · Command crown and pressure domes",
+                "glb_finish": "glacier-tongue · machined",
+                "exported": false
+              },
+              {
+                "pixel": [
+                  819,
+                  250
+                ],
+                "old": false,
+                "current": true,
+                "native_mesh": "Glacier · Command crown and pressure domes",
+                "native_finish": "glacier-tongue · crown_glazing",
+                "glb_mesh": "Glacier · Command crown and pressure domes",
+                "glb_finish": "glacier-tongue · crown_glazing",
+                "exported": true
+              },
+              {
+                "pixel": [
+                  835,
+                  253
+                ],
+                "old": false,
+                "current": true,
+                "native_mesh": "Glacier · Command crown and pressure domes",
+                "native_finish": "glacier-tongue · crown_glazing",
+                "glb_mesh": "Glacier · Command crown and pressure domes",
+                "glb_finish": "glacier-tongue · crown_glazing",
+                "exported": true
+              },
+              {
+                "pixel": [
+                  855,
+                  254
+                ],
+                "old": false,
+                "current": true,
+                "native_mesh": "Glacier · Command crown and pressure domes",
+                "native_finish": "glacier-tongue · crown_glazing",
+                "glb_mesh": "Glacier · Command crown and pressure domes",
+                "glb_finish": "glacier-tongue · crown_glazing",
+                "exported": true
+              },
+              {
+                "pixel": [
+                  865,
+                  255
+                ],
+                "old": false,
+                "current": true,
+                "native_mesh": "Glacier · Command crown and pressure domes",
+                "native_finish": "glacier-tongue · crown_glazing",
+                "glb_mesh": "Glacier · Command crown and pressure domes",
+                "glb_finish": "glacier-tongue · crown_glazing",
+                "exported": true
+              },
+              {
+                "pixel": [
+                  881,
+                  259
+                ],
+                "old": false,
+                "current": true,
+                "native_mesh": "Glacier · Command crown and pressure domes",
+                "native_finish": "glacier-tongue · crown_glazing",
+                "glb_mesh": "Glacier · Command crown and pressure domes",
+                "glb_finish": "glacier-tongue · crown_glazing",
+                "exported": true
+              },
+              {
+                "pixel": [
+                  890,
+                  261
+                ],
+                "old": false,
+                "current": true,
+                "native_mesh": "Glacier · Command crown and pressure domes",
+                "native_finish": "glacier-tongue · crown_glazing",
+                "glb_mesh": "Glacier · Command crown and pressure domes",
+                "glb_finish": "glacier-tongue · crown_glazing",
+                "exported": true
+              }
+            ]
+          },
+          "Upper roof": {
+            "prior": 2,
+            "current": 7,
+            "exported": 7,
+            "total": 8,
+            "samples": [
+              {
+                "pixel": [
+                  747,
+                  237
+                ],
+                "old": false,
+                "current": false,
+                "native_mesh": "Glacier · Command crown and pressure domes",
+                "native_finish": "glacier-tongue · crown_glazing",
+                "glb_mesh": "Glacier · Command crown and pressure domes",
+                "glb_finish": "glacier-tongue · crown_glazing",
+                "exported": false
+              },
+              {
+                "pixel": [
+                  763,
+                  233
+                ],
+                "old": false,
+                "current": true,
+                "native_mesh": "Glacier · Command crown and pressure domes",
+                "native_finish": "glacier-tongue · crown_shell",
+                "glb_mesh": "Glacier · Command crown and pressure domes",
+                "glb_finish": "glacier-tongue · crown_shell",
+                "exported": true
+              },
+              {
+                "pixel": [
+                  780,
+                  233
+                ],
+                "old": false,
+                "current": true,
+                "native_mesh": "Glacier · Command crown and pressure domes",
+                "native_finish": "glacier-tongue · crown_blue",
+                "glb_mesh": "Glacier · Command crown and pressure domes",
+                "glb_finish": "glacier-tongue · crown_blue",
+                "exported": true
+              },
+              {
+                "pixel": [
+                  799,
+                  234
+                ],
+                "old": false,
+                "current": true,
+                "native_mesh": "Glacier · Command crown and pressure domes",
+                "native_finish": "glacier-tongue · crown_blue",
+                "glb_mesh": "Glacier · Command crown and pressure domes",
+                "glb_finish": "glacier-tongue · crown_blue",
+                "exported": true
+              },
+              {
+                "pixel": [
+                  814,
+                  238
+                ],
+                "old": true,
+                "current": true,
+                "native_mesh": "Glacier · Command crown and pressure domes",
+                "native_finish": "glacier-tongue · crown_blue",
+                "glb_mesh": "Glacier · Command crown and pressure domes",
+                "glb_finish": "glacier-tongue · crown_blue",
+                "exported": true
+              },
+              {
+                "pixel": [
+                  832,
+                  239
+                ],
+                "old": false,
+                "current": true,
+                "native_mesh": "Glacier · Command crown and pressure domes",
+                "native_finish": "glacier-tongue · crown_blue",
+                "glb_mesh": "Glacier · Command crown and pressure domes",
+                "glb_finish": "glacier-tongue · crown_blue",
+                "exported": true
+              },
+              {
+                "pixel": [
+                  849,
+                  242
+                ],
+                "old": false,
+                "current": true,
+                "native_mesh": "Glacier · Command crown and pressure domes",
+                "native_finish": "glacier-tongue · crown_blue",
+                "glb_mesh": "Glacier · Command crown and pressure domes",
+                "glb_finish": "glacier-tongue · crown_blue",
+                "exported": true
+              },
+              {
+                "pixel": [
+                  868,
+                  246
+                ],
+                "old": true,
+                "current": true,
+                "native_mesh": "Glacier · Command crown and pressure domes",
+                "native_finish": "glacier-tongue · crown_shell",
+                "glb_mesh": "Glacier · Command crown and pressure domes",
+                "glb_finish": "glacier-tongue · crown_shell",
+                "exported": true
+              }
+            ]
+          }
+        }
+      },
+      "sample_agreement": {
+        "total": 40,
+        "same_class": 40,
+        "same_object_and_material": 40
+      },
+      "crossings": [
+        {
+          "inner": 9,
+          "outer": 36
+        },
+        {
+          "inner": 16,
+          "outer": 44
+        },
+        {
+          "inner": 22,
+          "outer": 12
+        }
+      ],
+      "port_bay_depth_m": 62.14,
+      "trial_counts": {
+        "inhabited-crown": {
+          "gallery": {
+            "Cabin windows": 0,
+            "Upper roof": 3
+          },
+          "port": {
+            "Cabin windows": 0,
+            "Upper roof": 4
+          }
+        },
+        "open-galleries": {
+          "gallery": {
+            "Cabin windows": 12,
+            "Upper roof": 8
+          },
+          "port": {
+            "Cabin windows": 4,
+            "Upper roof": 6
+          }
+        },
+        "stepped-crown": {
+          "gallery": {
+            "Cabin windows": 12,
+            "Upper roof": 8
+          },
+          "port": {
+            "Cabin windows": 7,
+            "Upper roof": 7
+          }
+        }
+      }
+    }
+  },
+  "browser": {
+    "method": "Isolated headless Chrome with WebGL",
+    "ships": {
+      "delta-tree": {
+        "original_loaded": true,
+        "painted_and_gray": true,
+        "stern_and_reset": true,
+        "drag_rotates": true,
+        "downloaded_model_matches": true,
+        "download_sha256": "ff09eb2d5e01811bc33a60ab19d0802d9e6084994a2aca6fc93120a019b83e46",
+        "model_view_pixel_differences": {
+          "gray": 24.41,
+          "stern": 18.31,
+          "drag": 20.35,
+          "reset": 0.0
+        },
+        "switches_between_revisions": true,
+        "previous_to_current_pixel_difference": 0.73
+      },
+      "glacier-tongue": {
+        "original_loaded": true,
+        "painted_and_gray": true,
+        "stern_and_reset": true,
+        "drag_rotates": true,
+        "downloaded_model_matches": true,
+        "download_sha256": "695733ade997b329128c475357ae0393b2a6d92495a97175ba387452faf94316",
+        "model_view_pixel_differences": {
+          "gray": 19.09,
+          "stern": 33.27,
+          "drag": 16.65,
+          "reset": 0.0
+        },
+        "switches_between_revisions": true,
+        "previous_to_current_pixel_difference": 2.95
+      }
+    }
+  },
+  "catalog_entries": {
+    "aquila-upper-views-bronze-observatory-delta-tree-port-ed0f586492": "req_bb93142fcc04afb650476ed8",
+    "aquila-upper-views-bronze-observatory-delta-tree-overhead-f6a72d114f": "req_5a2378d36aacc93c9ea9c97a",
+    "aquila-upper-views-stepped-crown-glacier-tongue-port-e3df7b5599": "req_8bd40f6f2cf13629ba8f3910",
+    "aquila-code-dark-game-exterior-delta-tree-ff09eb2d5e0181": "req_5c7347faa0d8ae0388b3f216",
+    "aquila-upper-views-stepped-crown-glacier-tongue-overhead-ec59201a3f": "req_3fa0d8a0e2fa7e6a6cbd4206",
+    "aquila-upper-views-inlaid-observatory-delta-tree-port-aee4f6fe48": "req_84ca1ce078429ddd8dbe927e",
+    "aquila-code-dark-game-exterior-glacier-tongue-695733ade997b3": "req_9d98811baab72adb46bfccdc",
+    "aquila-upper-views-inlaid-observatory-delta-tree-overhead-384392f4dd": "req_871381f9fabd55a6728429a6",
+    "aquila-code-dark-game-exterior-delta-tree-7ba4a13efeb1db": "req_bb0d44a41001e4776eba6f98",
+    "aquila-upper-views-seated-vault-delta-tree-port-fe006679b0": "req_05fc546c6bf6c11314991313",
+    "aquila-upper-views-open-galleries-glacier-tongue-port-c8773e82f6": "req_d982232c6671d6d2aa0504e8",
+    "aquila-upper-views-seated-vault-delta-tree-overhead-712b8230ab": "req_f6b8165b3ddf6b1f3608b582",
+    "aquila-upper-views-open-galleries-glacier-tongue-overhead-332fc3b35a": "req_6480fac341d2f632fe2873de",
+    "aquila-upper-views-baseline-delta-tree-overhead-020f03f91b": "req_0f2eae45f615f47ec8d434a6",
+    "aquila-upper-views-baseline-glacier-tongue-overhead-dea8207aeb": "req_48fb1fdcc12a38d2d38cc4bb",
+    "aquila-code-dark-game-exterior-glacier-tongue-42956deab5a326": "req_e19d36ea41be526b234796f3",
+    "aquila-code-dark-game-exterior-delta-tree-4642a1df764bbd": "req_0d23802a2a5938c6ca1d2715",
+    "aquila-code-dark-game-exterior-glacier-tongue-b6dccb1633787b": "req_b5721767311b85e7b9d852c1",
+    "aquila-code-dark-game-exterior-delta-tree-2e6dce0018d8ab": "req_6ab9f1227ec8bdac23d8cd23"
+  }
+}

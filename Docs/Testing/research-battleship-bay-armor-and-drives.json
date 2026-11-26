@@ -1,0 +1,5287 @@
+{
+  "round": 198,
+  "local_date": "2026-11-26",
+  "checked_at_utc": "2026-11-26T16:28:15.179193+00:00",
+  "direction": "Owner approved continuing the local exterior comparisons in chat after reviewing round 197.",
+  "previous": "Docs/Testing/research-battleship-docking-and-windows.json",
+  "viewer_cameras": {
+    "glacier-tongue": {
+      "camera_to_world": [
+        [
+          -0.7316070199012756,
+          -0.0767294317483902,
+          0.6773949861526489,
+          1546.19580078125
+        ],
+        [
+          0.6809220910072327,
+          -0.1305113136768341,
+          0.7206331491470337,
+          1669.498291015625
+        ],
+        [
+          0.033113934099674225,
+          0.9884732961654663,
+          0.147729754447937,
+          325.2441101074219
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "image_size": [
+        1152,
+        1152
+      ],
+      "frame": [
+        -585.9308835171079,
+        585.9308835171079,
+        -585.9308835171079,
+        585.9308835171079
+      ],
+      "ortho_scale": 1171.8617670342157,
+      "shift": [
+        0,
+        0
+      ],
+      "sensor_fit": "AUTO",
+      "pixel_aspect": [
+        1.0,
+        1.0
+      ],
+      "clipping": [
+        1.0,
+        20000.0
+      ]
+    },
+    "delta-tree": {
+      "camera_to_world": [
+        [
+          -0.7154670357704163,
+          -0.3454691767692566,
+          0.6072544455528259,
+          1303.698974609375
+        ],
+        [
+          0.6984788775444031,
+          -0.33466291427612305,
+          0.6325567364692688,
+          1450.5413818359375
+        ],
+        [
+          -0.015303298830986023,
+          0.8767279982566833,
+          0.4807431697845459,
+          1080.057373046875
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "image_size": [
+        1152,
+        1152
+      ],
+      "frame": [
+        -629.2893218994141,
+        629.2893218994141,
+        -629.2893218994141,
+        629.2893218994141
+      ],
+      "ortho_scale": 1258.5786437988281,
+      "shift": [
+        0.0,
+        0.0
+      ],
+      "sensor_fit": "AUTO",
+      "pixel_aspect": [
+        1.0,
+        1.0
+      ],
+      "clipping": [
+        1.0,
+        20000.0
+      ]
+    }
+  },
+  "ships": {
+    "glacier-tongue": {
+      "name": "Glacier Tongue",
+      "original": {
+        "path": "Assets/ShipConcepts/sunburst-r144/41-glacier-tongue.png",
+        "sha256": "827baa1d6127c91fd36b21e0998ad7b013ddd7c8e7b109059bad03c61e86f0d1"
+      },
+      "sheet": {
+        "path": "Assets/ShipConcepts/turnaround-sheets-r190/glacier-tongue.png",
+        "bytes": 11075015,
+        "sha256": "4baacb3211d8eaa38ca8b4dc687d5e6e4b812aea14b696f92fed7e7d3e10075b"
+      },
+      "art_camera": {
+        "path": "Assets/ShipConcepts/hull-refinements-r193/glacier-tongue/current/gallery-camera.json",
+        "sha256": "e836ac63261eb2f86d2e2d1209279794bbaa02f45562bbc9b20fa3d3b29ba2c8"
+      },
+      "render_camera": {
+        "path": "Assets/ShipConcepts/hull-refinements-r193/glacier-tongue/current/gallery-render-camera.json",
+        "sha256": "f4610185e2b6aa40834a2208ec575d194785d9c5b1e0007d1984b9667af4c40c"
+      },
+      "previous_blend": {
+        "path": "Assets/ShipConcepts/door-windows-r197/glacier-tongue/cast/glacier-tongue.blend",
+        "sha256": "64f817bba3cbc9072e3e7f8a6a8eeb1facb77efba6885279d3b99a2e2ef52e27"
+      },
+      "previous_glb": {
+        "path": "Assets/ShipConcepts/door-windows-r197/glacier-tongue/cast/glacier-tongue.glb",
+        "sha256": "b4bd450d521fdf2766d0203316d904fc83f2745237abe4c848297bece66bf0ab"
+      },
+      "selected": "refit",
+      "scene": {
+        "before": {
+          "count": 26,
+          "mean_abs_px": 0.66,
+          "marks": [
+            {
+              "level": 1,
+              "x": 76,
+              "paint_y": 541,
+              "mesh_y": 541.29,
+              "gap": 0.29
+            },
+            {
+              "level": 1,
+              "x": 115,
+              "paint_y": 529,
+              "mesh_y": 528.56,
+              "gap": 0.44
+            },
+            {
+              "level": 1,
+              "x": 150,
+              "paint_y": 521,
+              "mesh_y": 521.0,
+              "gap": 0.0
+            },
+            {
+              "level": 1,
+              "x": 186,
+              "paint_y": 515,
+              "mesh_y": 515.8,
+              "gap": 0.8
+            },
+            {
+              "level": 1,
+              "x": 226,
+              "paint_y": 509,
+              "mesh_y": 509.14,
+              "gap": 0.14
+            },
+            {
+              "level": 1,
+              "x": 263,
+              "paint_y": 499,
+              "mesh_y": 498.11,
+              "gap": 0.89
+            },
+            {
+              "level": 1,
+              "x": 317,
+              "paint_y": 473,
+              "mesh_y": 471.83,
+              "gap": 1.17
+            },
+            {
+              "level": 1,
+              "x": 362,
+              "paint_y": 435,
+              "mesh_y": 433.46,
+              "gap": 1.54
+            },
+            {
+              "level": 1,
+              "x": 390,
+              "paint_y": 420,
+              "mesh_y": 419.29,
+              "gap": 0.71
+            },
+            {
+              "level": 1,
+              "x": 453,
+              "paint_y": 401,
+              "mesh_y": 399.53,
+              "gap": 1.47
+            },
+            {
+              "level": 1,
+              "x": 485,
+              "paint_y": 388,
+              "mesh_y": 386.01,
+              "gap": 1.99
+            },
+            {
+              "level": 1,
+              "x": 522,
+              "paint_y": 375,
+              "mesh_y": 374.32,
+              "gap": 0.68
+            },
+            {
+              "level": 2,
+              "x": 76,
+              "paint_y": 615,
+              "mesh_y": 615.56,
+              "gap": 0.56
+            },
+            {
+              "level": 2,
+              "x": 115,
+              "paint_y": 603,
+              "mesh_y": 604.08,
+              "gap": 1.08
+            },
+            {
+              "level": 2,
+              "x": 150,
+              "paint_y": 598,
+              "mesh_y": 597.58,
+              "gap": 0.42
+            },
+            {
+              "level": 2,
+              "x": 186,
+              "paint_y": 597,
+              "mesh_y": 597.0,
+              "gap": 0.0
+            },
+            {
+              "level": 2,
+              "x": 226,
+              "paint_y": 598,
+              "mesh_y": 597.88,
+              "gap": 0.12
+            },
+            {
+              "level": 2,
+              "x": 263,
+              "paint_y": 593,
+              "mesh_y": 593.12,
+              "gap": 0.12
+            },
+            {
+              "level": 2,
+              "x": 315,
+              "paint_y": 565,
+              "mesh_y": 563.79,
+              "gap": 1.21
+            },
+            {
+              "level": 2,
+              "x": 337,
+              "paint_y": 530,
+              "mesh_y": 530.93,
+              "gap": 0.93
+            },
+            {
+              "level": 2,
+              "x": 357,
+              "paint_y": 493,
+              "mesh_y": 494.04,
+              "gap": 1.04
+            },
+            {
+              "level": 2,
+              "x": 398,
+              "paint_y": 463,
+              "mesh_y": 463.38,
+              "gap": 0.38
+            },
+            {
+              "level": 2,
+              "x": 452,
+              "paint_y": 463,
+              "mesh_y": 462.66,
+              "gap": 0.34
+            },
+            {
+              "level": 2,
+              "x": 478,
+              "paint_y": 459,
+              "mesh_y": 458.53,
+              "gap": 0.47
+            },
+            {
+              "level": 2,
+              "x": 519,
+              "paint_y": 426,
+              "mesh_y": 426.15,
+              "gap": 0.15
+            },
+            {
+              "level": 2,
+              "x": 560,
+              "paint_y": 401,
+              "mesh_y": 400.89,
+              "gap": 0.11
+            }
+          ]
+        },
+        "after": {
+          "count": 26,
+          "mean_abs_px": 0.66,
+          "marks": [
+            {
+              "level": 1,
+              "x": 76,
+              "paint_y": 541,
+              "mesh_y": 541.29,
+              "gap": 0.29
+            },
+            {
+              "level": 1,
+              "x": 115,
+              "paint_y": 529,
+              "mesh_y": 528.56,
+              "gap": 0.44
+            },
+            {
+              "level": 1,
+              "x": 150,
+              "paint_y": 521,
+              "mesh_y": 521.0,
+              "gap": 0.0
+            },
+            {
+              "level": 1,
+              "x": 186,
+              "paint_y": 515,
+              "mesh_y": 515.8,
+              "gap": 0.8
+            },
+            {
+              "level": 1,
+              "x": 226,
+              "paint_y": 509,
+              "mesh_y": 509.14,
+              "gap": 0.14
+            },
+            {
+              "level": 1,
+              "x": 263,
+              "paint_y": 499,
+              "mesh_y": 498.11,
+              "gap": 0.89
+            },
+            {
+              "level": 1,
+              "x": 317,
+              "paint_y": 473,
+              "mesh_y": 471.83,
+              "gap": 1.17
+            },
+            {
+              "level": 1,
+              "x": 362,
+              "paint_y": 435,
+              "mesh_y": 433.46,
+              "gap": 1.54
+            },
+            {
+              "level": 1,
+              "x": 390,
+              "paint_y": 420,
+              "mesh_y": 419.29,
+              "gap": 0.71
+            },
+            {
+              "level": 1,
+              "x": 453,
+              "paint_y": 401,
+              "mesh_y": 399.53,
+              "gap": 1.47
+            },
+            {
+              "level": 1,
+              "x": 485,
+              "paint_y": 388,
+              "mesh_y": 386.01,
+              "gap": 1.99
+            },
+            {
+              "level": 1,
+              "x": 522,
+              "paint_y": 375,
+              "mesh_y": 374.32,
+              "gap": 0.68
+            },
+            {
+              "level": 2,
+              "x": 76,
+              "paint_y": 615,
+              "mesh_y": 615.56,
+              "gap": 0.56
+            },
+            {
+              "level": 2,
+              "x": 115,
+              "paint_y": 603,
+              "mesh_y": 604.08,
+              "gap": 1.08
+            },
+            {
+              "level": 2,
+              "x": 150,
+              "paint_y": 598,
+              "mesh_y": 597.58,
+              "gap": 0.42
+            },
+            {
+              "level": 2,
+              "x": 186,
+              "paint_y": 597,
+              "mesh_y": 597.0,
+              "gap": 0.0
+            },
+            {
+              "level": 2,
+              "x": 226,
+              "paint_y": 598,
+              "mesh_y": 597.88,
+              "gap": 0.12
+            },
+            {
+              "level": 2,
+              "x": 263,
+              "paint_y": 593,
+              "mesh_y": 593.12,
+              "gap": 0.12
+            },
+            {
+              "level": 2,
+              "x": 315,
+              "paint_y": 565,
+              "mesh_y": 563.79,
+              "gap": 1.21
+            },
+            {
+              "level": 2,
+              "x": 337,
+              "paint_y": 530,
+              "mesh_y": 530.93,
+              "gap": 0.93
+            },
+            {
+              "level": 2,
+              "x": 357,
+              "paint_y": 493,
+              "mesh_y": 494.04,
+              "gap": 1.04
+            },
+            {
+              "level": 2,
+              "x": 398,
+              "paint_y": 463,
+              "mesh_y": 463.38,
+              "gap": 0.38
+            },
+            {
+              "level": 2,
+              "x": 452,
+              "paint_y": 463,
+              "mesh_y": 462.66,
+              "gap": 0.34
+            },
+            {
+              "level": 2,
+              "x": 478,
+              "paint_y": 459,
+              "mesh_y": 458.53,
+              "gap": 0.47
+            },
+            {
+              "level": 2,
+              "x": 519,
+              "paint_y": 426,
+              "mesh_y": 426.15,
+              "gap": 0.15
+            },
+            {
+              "level": 2,
+              "x": 560,
+              "paint_y": 401,
+              "mesh_y": 400.89,
+              "gap": 0.11
+            }
+          ]
+        },
+        "same_unmodified_geometry_materials": [
+          "Aft crossing",
+          "Aft housing 1.1",
+          "Aft housing 1.2",
+          "Aft housing 2.1",
+          "Aft housing 2.2",
+          "Aft housing 2.3",
+          "Aft housing 3.1",
+          "Aft housing 3.2",
+          "Command terrace",
+          "Command terrace.001",
+          "Command terrace.002",
+          "Dish pedestal",
+          "Forward bay · recessed service wall",
+          "Forward bay · service lights",
+          "Forward landing · deck and bay fittings",
+          "Forward landing · guide lights",
+          "Midship crossing",
+          "Open survey arch",
+          "Overlapping foredeck plate 1",
+          "Overlapping foredeck plate 2",
+          "Overlapping foredeck plate 3",
+          "Port arrival · bulkhead lights and approach lamps",
+          "Port arrival · forged collar and shadow lines",
+          "Port arrival · glazed connecting passage",
+          "Port arrival · recessed service hall",
+          "Separate port blade",
+          "Survey dish",
+          "Survey dome 1",
+          "Survey dome 2",
+          "Survey dome 3",
+          "Survey dome 4",
+          "Survey mast",
+          "Upper landing · deck and bay fittings",
+          "Upper landing · guide lights"
+        ],
+        "native_meshes": 44,
+        "dimensions_m": [
+          1280.0,
+          420.2678,
+          418.9156
+        ],
+        "glb_max_vertex_error_m": 0.0,
+        "embedded_images": 32,
+        "packed_native_image_count": 50,
+        "textured_materials_with_normal_and_orm": 16,
+        "native_crossings_touch_hull_and_blade": {
+          "Midship crossing": [
+            true,
+            true
+          ],
+          "Aft crossing": [
+            true,
+            true
+          ]
+        },
+        "exchange_crossings_touch_hull_and_blade": {
+          "Midship crossing": [
+            true,
+            true
+          ],
+          "Aft crossing": [
+            true,
+            true
+          ]
+        },
+        "previous_lip": {
+          "gallery": {
+            "marks": 17,
+            "signed_delta_y_px": [
+              -1.52,
+              12.22,
+              28.18,
+              40.13,
+              45.82,
+              50.95,
+              58.26,
+              60.11,
+              57.83,
+              47.44,
+              35.13,
+              17.19,
+              -3.3,
+              9.75,
+              29.89,
+              37.34,
+              38.32
+            ],
+            "mean_abs_px": 33.73
+          },
+          "side": {
+            "marks": 10,
+            "signed_delta_y_px": [
+              -29.18,
+              -15.92,
+              -2.74,
+              0.27,
+              1.3,
+              3.93,
+              0.82,
+              -2.32,
+              -7.8,
+              1.05
+            ],
+            "mean_abs_px": 6.53
+          }
+        },
+        "study_native": {
+          "gallery": {
+            "marks": 17,
+            "signed_delta_y_px": [
+              -0.32,
+              -0.69,
+              -0.27,
+              -1.09,
+              -0.11,
+              -0.22,
+              0.25,
+              -0.5,
+              -0.88,
+              -0.35,
+              -0.2,
+              -0.04,
+              -0.24,
+              0.8,
+              0.49,
+              0.81,
+              0.92
+            ],
+            "mean_abs_px": 0.48
+          },
+          "side": {
+            "marks": 10,
+            "signed_delta_y_px": [
+              -26.48,
+              -19.09,
+              -9.12,
+              -19.01,
+              -24.02,
+              -26.68,
+              -27.96,
+              -19.69,
+              -1.23,
+              -2.57
+            ],
+            "mean_abs_px": 17.59
+          }
+        },
+        "feature_native": {
+          "painted_surfaces": {
+            "inside": [
+              "Port arrival · recessed service hall",
+              "Port arrival · recessed service hall",
+              "Port arrival · bulkhead lights and approach lamps",
+              "Port arrival · recessed service hall",
+              "Port arrival · recessed service hall",
+              "Port arrival · recessed service hall",
+              "Port arrival · recessed service hall",
+              "Port arrival · recessed service hall",
+              "Port arrival · recessed service hall",
+              "Port arrival · recessed service hall",
+              "Port arrival · recessed service hall",
+              "Port arrival · recessed service hall",
+              "Port arrival · recessed service hall",
+              "Port arrival · recessed service hall",
+              "Port arrival · recessed service hall",
+              "Port arrival · recessed service hall"
+            ],
+            "surround": [
+              "Port arrival · forged collar and shadow lines",
+              "Port arrival · forged collar and shadow lines",
+              "Port arrival · forged collar and shadow lines",
+              "Port arrival · forged collar and shadow lines",
+              "Port arrival · forged collar and shadow lines",
+              "Port arrival · forged collar and shadow lines",
+              "Port arrival · forged collar and shadow lines",
+              "Port arrival · forged collar and shadow lines"
+            ]
+          },
+          "clear_depth_probes": [
+            [
+              0.23,
+              0.23,
+              100.2,
+              "Port arrival · recessed service hall"
+            ],
+            [
+              0.23,
+              0.47,
+              100.2,
+              "Port arrival · recessed service hall"
+            ],
+            [
+              0.23,
+              0.71,
+              100.2,
+              "Port arrival · recessed service hall"
+            ],
+            [
+              0.5,
+              0.23,
+              99.05,
+              "Port arrival · recessed service hall"
+            ],
+            [
+              0.5,
+              0.47,
+              99.05,
+              "Port arrival · recessed service hall"
+            ],
+            [
+              0.5,
+              0.71,
+              99.05,
+              "Port arrival · recessed service hall"
+            ],
+            [
+              0.77,
+              0.23,
+              100.2,
+              "Port arrival · recessed service hall"
+            ],
+            [
+              0.77,
+              0.47,
+              100.2,
+              "Port arrival · recessed service hall"
+            ],
+            [
+              0.77,
+              0.71,
+              100.2,
+              "Port arrival · recessed service hall"
+            ]
+          ],
+          "prior_landings": {
+            "Forward landing": {
+              "tread_hits": 5,
+              "tread_marks": 5,
+              "samples": [
+                {
+                  "pixel": [
+                    389,
+                    593
+                  ],
+                  "surface": "Forward landing · deck and bay fittings",
+                  "match": true
+                },
+                {
+                  "pixel": [
+                    404,
+                    597
+                  ],
+                  "surface": "Forward landing · deck and bay fittings",
+                  "match": true
+                },
+                {
+                  "pixel": [
+                    420,
+                    595
+                  ],
+                  "surface": "Forward landing · deck and bay fittings",
+                  "match": true
+                },
+                {
+                  "pixel": [
+                    430,
+                    601
+                  ],
+                  "surface": "Forward landing · deck and bay fittings",
+                  "match": true
+                },
+                {
+                  "pixel": [
+                    448,
+                    599
+                  ],
+                  "surface": "Forward landing · deck and bay fittings",
+                  "match": true
+                },
+                {
+                  "pixel": [
+                    401,
+                    594
+                  ],
+                  "surface": "Forward landing · deck and bay fittings",
+                  "match": true
+                },
+                {
+                  "pixel": [
+                    415,
+                    595
+                  ],
+                  "surface": "Forward landing · deck and bay fittings",
+                  "match": true
+                },
+                {
+                  "pixel": [
+                    435,
+                    599
+                  ],
+                  "surface": "Forward landing · deck and bay fittings",
+                  "match": true
+                }
+              ],
+              "additional_hits": 3,
+              "additional_marks": 3,
+              "shell_y_at_center_m": 35.248,
+              "deck_meets_shell": true
+            },
+            "Upper landing": {
+              "tread_hits": 5,
+              "tread_marks": 5,
+              "samples": [
+                {
+                  "pixel": [
+                    485,
+                    540
+                  ],
+                  "surface": "Upper landing · deck and bay fittings",
+                  "match": true
+                },
+                {
+                  "pixel": [
+                    508,
+                    545
+                  ],
+                  "surface": "Upper landing · deck and bay fittings",
+                  "match": true
+                },
+                {
+                  "pixel": [
+                    525,
+                    545
+                  ],
+                  "surface": "Upper landing · deck and bay fittings",
+                  "match": true
+                },
+                {
+                  "pixel": [
+                    540,
+                    546
+                  ],
+                  "surface": "Upper landing · deck and bay fittings",
+                  "match": true
+                },
+                {
+                  "pixel": [
+                    553,
+                    549
+                  ],
+                  "surface": "Upper landing · deck and bay fittings",
+                  "match": true
+                },
+                {
+                  "pixel": [
+                    490,
+                    539
+                  ],
+                  "surface": "Upper landing · deck and bay fittings",
+                  "match": true
+                },
+                {
+                  "pixel": [
+                    517,
+                    542
+                  ],
+                  "surface": "Upper landing · deck and bay fittings",
+                  "match": true
+                },
+                {
+                  "pixel": [
+                    548,
+                    547
+                  ],
+                  "surface": "Upper landing · deck and bay fittings",
+                  "match": true
+                }
+              ],
+              "additional_hits": 3,
+              "additional_marks": 3,
+              "shell_y_at_center_m": 25.149,
+              "deck_meets_shell": true
+            }
+          },
+          "side_center_working_px": [
+            423.6,
+            179.1
+          ],
+          "passage_contacts": {
+            "Port arrival · forged collar and shadow lines": true,
+            "Aft crossing": true
+          }
+        },
+        "feature_exchange": {
+          "painted_surfaces": {
+            "inside": [
+              "Port arrival · recessed service hall",
+              "Port arrival · recessed service hall",
+              "Port arrival · bulkhead lights and approach lamps",
+              "Port arrival · recessed service hall",
+              "Port arrival · recessed service hall",
+              "Port arrival · recessed service hall",
+              "Port arrival · recessed service hall",
+              "Port arrival · recessed service hall",
+              "Port arrival · recessed service hall",
+              "Port arrival · recessed service hall",
+              "Port arrival · recessed service hall",
+              "Port arrival · recessed service hall",
+              "Port arrival · recessed service hall",
+              "Port arrival · recessed service hall",
+              "Port arrival · recessed service hall",
+              "Port arrival · recessed service hall"
+            ],
+            "surround": [
+              "Port arrival · forged collar and shadow lines",
+              "Port arrival · forged collar and shadow lines",
+              "Port arrival · forged collar and shadow lines",
+              "Port arrival · forged collar and shadow lines",
+              "Port arrival · forged collar and shadow lines",
+              "Port arrival · forged collar and shadow lines",
+              "Port arrival · forged collar and shadow lines",
+              "Port arrival · forged collar and shadow lines"
+            ]
+          },
+          "clear_depth_probes": [
+            [
+              0.23,
+              0.23,
+              100.2,
+              "Port arrival · recessed service hall"
+            ],
+            [
+              0.23,
+              0.47,
+              100.2,
+              "Port arrival · recessed service hall"
+            ],
+            [
+              0.23,
+              0.71,
+              100.2,
+              "Port arrival · recessed service hall"
+            ],
+            [
+              0.5,
+              0.23,
+              99.05,
+              "Port arrival · recessed service hall"
+            ],
+            [
+              0.5,
+              0.47,
+              99.05,
+              "Port arrival · recessed service hall"
+            ],
+            [
+              0.5,
+              0.71,
+              99.05,
+              "Port arrival · recessed service hall"
+            ],
+            [
+              0.77,
+              0.23,
+              100.2,
+              "Port arrival · recessed service hall"
+            ],
+            [
+              0.77,
+              0.47,
+              100.2,
+              "Port arrival · recessed service hall"
+            ],
+            [
+              0.77,
+              0.71,
+              100.2,
+              "Port arrival · recessed service hall"
+            ]
+          ],
+          "prior_landings": {
+            "Forward landing": {
+              "tread_hits": 5,
+              "tread_marks": 5,
+              "samples": [
+                {
+                  "pixel": [
+                    389,
+                    593
+                  ],
+                  "surface": "Forward landing · deck and bay fittings",
+                  "match": true
+                },
+                {
+                  "pixel": [
+                    404,
+                    597
+                  ],
+                  "surface": "Forward landing · deck and bay fittings",
+                  "match": true
+                },
+                {
+                  "pixel": [
+                    420,
+                    595
+                  ],
+                  "surface": "Forward landing · deck and bay fittings",
+                  "match": true
+                },
+                {
+                  "pixel": [
+                    430,
+                    601
+                  ],
+                  "surface": "Forward landing · deck and bay fittings",
+                  "match": true
+                },
+                {
+                  "pixel": [
+                    448,
+                    599
+                  ],
+                  "surface": "Forward landing · deck and bay fittings",
+                  "match": true
+                },
+                {
+                  "pixel": [
+                    401,
+                    594
+                  ],
+                  "surface": "Forward landing · deck and bay fittings",
+                  "match": true
+                },
+                {
+                  "pixel": [
+                    415,
+                    595
+                  ],
+                  "surface": "Forward landing · deck and bay fittings",
+                  "match": true
+                },
+                {
+                  "pixel": [
+                    435,
+                    599
+                  ],
+                  "surface": "Forward landing · deck and bay fittings",
+                  "match": true
+                }
+              ],
+              "additional_hits": 3,
+              "additional_marks": 3,
+              "shell_y_at_center_m": 35.259,
+              "deck_meets_shell": true
+            },
+            "Upper landing": {
+              "tread_hits": 5,
+              "tread_marks": 5,
+              "samples": [
+                {
+                  "pixel": [
+                    485,
+                    540
+                  ],
+                  "surface": "Upper landing · deck and bay fittings",
+                  "match": true
+                },
+                {
+                  "pixel": [
+                    508,
+                    545
+                  ],
+                  "surface": "Upper landing · deck and bay fittings",
+                  "match": true
+                },
+                {
+                  "pixel": [
+                    525,
+                    545
+                  ],
+                  "surface": "Upper landing · deck and bay fittings",
+                  "match": true
+                },
+                {
+                  "pixel": [
+                    540,
+                    546
+                  ],
+                  "surface": "Upper landing · deck and bay fittings",
+                  "match": true
+                },
+                {
+                  "pixel": [
+                    553,
+                    549
+                  ],
+                  "surface": "Upper landing · deck and bay fittings",
+                  "match": true
+                },
+                {
+                  "pixel": [
+                    490,
+                    539
+                  ],
+                  "surface": "Upper landing · deck and bay fittings",
+                  "match": true
+                },
+                {
+                  "pixel": [
+                    517,
+                    542
+                  ],
+                  "surface": "Upper landing · deck and bay fittings",
+                  "match": true
+                },
+                {
+                  "pixel": [
+                    548,
+                    547
+                  ],
+                  "surface": "Upper landing · deck and bay fittings",
+                  "match": true
+                }
+              ],
+              "additional_hits": 3,
+              "additional_marks": 3,
+              "shell_y_at_center_m": 25.149,
+              "deck_meets_shell": true
+            }
+          },
+          "side_center_working_px": [
+            423.6,
+            179.1
+          ],
+          "passage_contacts": {
+            "Port arrival · forged collar and shadow lines": true,
+            "Aft crossing": true
+          }
+        }
+      },
+      "fit_record": {
+        "path": "Assets/ShipConcepts/armor-drives-r198/glacier-tongue/refit/finish.json",
+        "sha256": "db17bd55c955376d6477e59c3b9d01ea69dc6d4e2e2ac8d5222f8e0570d65e21"
+      },
+      "geometry": {
+        "insert_plates": 8,
+        "retained_pressure_wall_vertices": 280,
+        "port_section_indices": [
+          11,
+          12,
+          13
+        ],
+        "maximum_bay_width_fraction_used": 0.36,
+        "largest_inward_move_m": 35.67
+      },
+      "lighting_record": {
+        "path": "Assets/ShipConcepts/armor-drives-r198/glacier-tongue/refit/light/lighting.json",
+        "sha256": "23b4976440bb20c191b740ee5de1aadfc042fafdd12be483401ab5bc9f1ce44c"
+      },
+      "in_memory_recipe_replay": {
+        "native_meshes_with_identical_positions_faces_surface_slots_and_uvs": 44,
+        "close_camera_max_coordinate_error_px": 0.001991,
+        "original_camera_max_coordinate_error_px": 0.0006638
+      },
+      "appearance": {
+        "painting": {
+          "blue": {
+            "requested": 7,
+            "count": 7,
+            "missing_opaque_patch": [],
+            "rgb": [
+              54.31,
+              68.27,
+              88.95
+            ],
+            "level": 66.8,
+            "levels": [
+              70.33,
+              70.55,
+              68.88,
+              71.37,
+              68.92,
+              62.33,
+              55.2
+            ]
+          },
+          "silver": {
+            "requested": 7,
+            "count": 7,
+            "missing_opaque_patch": [],
+            "rgb": [
+              81.39,
+              84.3,
+              90.64
+            ],
+            "level": 84.14,
+            "levels": [
+              92.27,
+              98.74,
+              89.12,
+              83.17,
+              76.57,
+              82.53,
+              66.57
+            ]
+          }
+        },
+        "previous": {
+          "blue": {
+            "requested": 7,
+            "count": 7,
+            "missing_opaque_patch": [],
+            "rgb": [
+              54.45,
+              61.15,
+              70.47
+            ],
+            "level": 60.4,
+            "levels": [
+              47.88,
+              40.48,
+              46.32,
+              41.83,
+              47.92,
+              100.44,
+              97.91
+            ]
+          },
+          "silver": {
+            "requested": 7,
+            "count": 7,
+            "missing_opaque_patch": [],
+            "rgb": [
+              92.42,
+              95.97,
+              101.61
+            ],
+            "level": 95.62,
+            "levels": [
+              51.71,
+              106.04,
+              105.27,
+              105.35,
+              90.74,
+              102.53,
+              107.69
+            ]
+          }
+        },
+        "first": {
+          "blue": {
+            "requested": 7,
+            "count": 7,
+            "missing_opaque_patch": [],
+            "rgb": [
+              36.38,
+              45.82,
+              60.26
+            ],
+            "level": 44.86,
+            "levels": [
+              45.69,
+              45.19,
+              44.43,
+              44.87,
+              44.58,
+              45.2,
+              44.05
+            ]
+          },
+          "silver": {
+            "requested": 7,
+            "count": 7,
+            "missing_opaque_patch": [],
+            "rgb": [
+              64.02,
+              66.5,
+              70.53
+            ],
+            "level": 66.26,
+            "levels": [
+              70.23,
+              71.25,
+              65.75,
+              65.0,
+              66.04,
+              68.63,
+              56.93
+            ]
+          }
+        },
+        "selected": {
+          "blue": {
+            "requested": 7,
+            "count": 7,
+            "missing_opaque_patch": [],
+            "rgb": [
+              51.26,
+              68.69,
+              89.84
+            ],
+            "level": 66.51,
+            "levels": [
+              70.1,
+              65.14,
+              63.78,
+              65.89,
+              66.75,
+              67.33,
+              66.57
+            ]
+          },
+          "silver": {
+            "requested": 7,
+            "count": 7,
+            "missing_opaque_patch": [],
+            "rgb": [
+              81.47,
+              84.96,
+              91.93
+            ],
+            "level": 84.72,
+            "levels": [
+              86.33,
+              87.52,
+              84.69,
+              84.3,
+              80.95,
+              84.22,
+              85.06
+            ]
+          }
+        },
+        "intermediate": {
+          "blue": {
+            "requested": 7,
+            "count": 7,
+            "missing_opaque_patch": [],
+            "rgb": [
+              48.7,
+              64.94,
+              86.59
+            ],
+            "level": 63.05,
+            "levels": [
+              63.62,
+              62.69,
+              62.31,
+              63.38,
+              63.18,
+              63.91,
+              62.25
+            ]
+          },
+          "silver": {
+            "requested": 7,
+            "count": 7,
+            "missing_opaque_patch": [],
+            "rgb": [
+              83.13,
+              86.19,
+              91.91
+            ],
+            "level": 85.95,
+            "levels": [
+              90.16,
+              91.27,
+              85.53,
+              84.55,
+              86.28,
+              88.92,
+              74.99
+            ]
+          }
+        },
+        "folded_before_regrading": {
+          "blue": {
+            "requested": 7,
+            "count": 7,
+            "missing_opaque_patch": [],
+            "rgb": [
+              43.63,
+              58.65,
+              78.39
+            ],
+            "level": 56.88,
+            "levels": [
+              60.35,
+              55.56,
+              54.19,
+              56.39,
+              57.24,
+              57.46,
+              56.99
+            ]
+          },
+          "silver": {
+            "requested": 7,
+            "count": 7,
+            "missing_opaque_patch": [],
+            "rgb": [
+              72.86,
+              75.85,
+              81.34
+            ],
+            "level": 75.61,
+            "levels": [
+              77.3,
+              78.15,
+              75.78,
+              75.17,
+              72.06,
+              75.09,
+              75.7
+            ]
+          }
+        }
+      },
+      "exchange_finishes": {
+        "verified_exported_map_pixels": {
+          "color": {
+            "image": "bayarmor-color",
+            "exported_sha256": "b02a2b66a49e9c94d166c77237e876bd9688e91a102cef21cb2e1ef33c8c441e",
+            "source_sha256": "b02a2b66a49e9c94d166c77237e876bd9688e91a102cef21cb2e1ef33c8c441e"
+          },
+          "orm": {
+            "image": "bayarmor-orm",
+            "exported_sha256": "f9f96feb2ddd5cb6f9e97577366163a7343d23b8001ff4f11013ee67a06e84ff",
+            "source_sha256": "f9f96feb2ddd5cb6f9e97577366163a7343d23b8001ff4f11013ee67a06e84ff"
+          },
+          "normal": {
+            "image": "bayarmor-normal",
+            "exported_sha256": "449f45dfac998324f64917beedf23dfbc0072afd89f8aafe5d97b4aed45eadd8",
+            "source_sha256": "449f45dfac998324f64917beedf23dfbc0072afd89f8aafe5d97b4aed45eadd8"
+          },
+          "emission": {
+            "image": "bayarmor-emission",
+            "exported_sha256": "c4da53fcda39ea880f17e74d06a37ac496b539928186215a16511d6facce48fd",
+            "source_sha256": "c4da53fcda39ea880f17e74d06a37ac496b539928186215a16511d6facce48fd"
+          }
+        },
+        "normal_strength": 0.5199999809265137
+      },
+      "trials": {
+        "folded": {
+          "path": "Assets/ShipConcepts/armor-drives-r198/glacier-tongue/folded/detail.png",
+          "sha256": "ad361c0a7e91c990cb9a9621ff34d411d9931e4853d6547db64ba54878a941bf"
+        },
+        "graded": {
+          "path": "Assets/ShipConcepts/armor-drives-r198/glacier-tongue/graded/detail.png",
+          "sha256": "6013750724dc12ba34fd2a2c8f9e66196698e6ba762c5834858b775cfcd4f77d"
+        },
+        "refit": {
+          "path": "Assets/ShipConcepts/armor-drives-r198/glacier-tongue/refit/detail.png",
+          "sha256": "6e8cad10c01f3eb230f98b6a379da9da18fa717b8a29fcafb66d3d833fb96ee2"
+        },
+        "sweep": {
+          "path": "Assets/ShipConcepts/armor-drives-r198/glacier-tongue/sweep/detail.png",
+          "sha256": "7f5d32ceb1510f754848af77eaa15b6bb01879ff4d1f4c7f2ba4c2106cfed4cb"
+        }
+      },
+      "receipts": [
+        {
+          "path": "Assets/ShipConcepts/armor-drives-r198/glacier-tongue/folded.ledger-record.json",
+          "sha256": "940ba4aa7064a02f5788e8d055c613ba2bfa0611f8f916846a11500c265aa219"
+        },
+        {
+          "path": "Assets/ShipConcepts/armor-drives-r198/glacier-tongue/graded.ledger-record.json",
+          "sha256": "d33dd75b41c52585d72284fa1809d6f7242777e76ea455a7451fa25f0cd5c7e1"
+        },
+        {
+          "path": "Assets/ShipConcepts/armor-drives-r198/glacier-tongue/refit.ledger-record.json",
+          "sha256": "abedf256a93915dada3dbbe6853377f709798f23425733f7edd2f1fd47153339"
+        },
+        {
+          "path": "Assets/ShipConcepts/armor-drives-r198/glacier-tongue/sweep.ledger-record.json",
+          "sha256": "1e8ef7a05d1cc5627e3552421a9b4a0cc5912a2838cdee7ff1577513f76d7f6c"
+        }
+      ],
+      "glb": {
+        "path": "Assets/ShipConcepts/armor-drives-r198/glacier-tongue/refit/glacier-tongue.glb",
+        "sha256": "f1fc15fc5eba8ca5175536000a1d4e67731efeb865072c864f85904b3ae7fe01"
+      },
+      "blend": {
+        "path": "Assets/ShipConcepts/armor-drives-r198/glacier-tongue/refit/glacier-tongue.blend",
+        "sha256": "a3f4ba43e8492e0a8612c37187793a125c0915879a481a62225929f5a65325a7"
+      },
+      "gallery": {
+        "path": "Assets/ShipConcepts/armor-drives-r198/glacier-tongue/refit/gallery.png",
+        "sha256": "6b0bdd11a8bf4dc57bd8af41ad1fd46ff6cf41774677e59139d32f4ff8dbda7d"
+      },
+      "base_gallery": {
+        "path": "Assets/ShipConcepts/armor-drives-r198/glacier-tongue/refit/before-gallery.png",
+        "sha256": "327de6ba84d1583e4aa6defa08aab42a040671ec45c0da0b348e7bdc9f9ff5df"
+      },
+      "board": {
+        "path": "Assets/ShipConcepts/armor-drives-r198/glacier-tongue/refit/comparison.webp",
+        "sha256": "c9a603f9b6db35384dd5635c0a35329ab76fa683533236fd0cb81b41fbe7aafa"
+      },
+      "renders": [
+        {
+          "path": "Assets/ShipConcepts/armor-drives-r198/glacier-tongue/refit/before-port.png",
+          "sha256": "9c78bf5222aead0b4a605a4191cca5d75e44d22489d8e4d7826b45b1b156c692"
+        },
+        {
+          "path": "Assets/ShipConcepts/armor-drives-r198/glacier-tongue/refit/port.png",
+          "sha256": "0015692dd205c4054416f514901847347e74017fa6e76eb2e2b8992499dc8cd2"
+        },
+        {
+          "path": "Assets/ShipConcepts/armor-drives-r198/glacier-tongue/refit/before-top.png",
+          "sha256": "47a53a254101a10aee68e70929d845d5baac6b2277fdcabca5881eb57739f12e"
+        },
+        {
+          "path": "Assets/ShipConcepts/armor-drives-r198/glacier-tongue/refit/top.png",
+          "sha256": "bdc3b37629a24720201d953a1bd81ffc552cd816d5727d696c463538aa3a6f66"
+        },
+        {
+          "path": "Assets/ShipConcepts/armor-drives-r198/glacier-tongue/refit/before-detail.png",
+          "sha256": "18b9060427e5e37c882bda4084e601c47426391da1a8be468a2d17640ffcba1f"
+        },
+        {
+          "path": "Assets/ShipConcepts/armor-drives-r198/glacier-tongue/refit/detail.png",
+          "sha256": "6e8cad10c01f3eb230f98b6a379da9da18fa717b8a29fcafb66d3d833fb96ee2"
+        },
+        {
+          "path": "Assets/ShipConcepts/armor-drives-r198/glacier-tongue/refit/light/turned-key.png",
+          "sha256": "c99b082aeebd2859dc9cddc7edf2c29c38f0f1bde2481e05a51d0f2c34bdc6fa"
+        },
+        {
+          "path": "Assets/ShipConcepts/armor-drives-r198/glacier-tongue/refit/light/emitters-only.png",
+          "sha256": "078be7af1ec56baa53aae9e56c32dd7c11667500fee75adfc8e1ad169175eea8"
+        }
+      ],
+      "detail_box_painting_px": [
+        503,
+        307,
+        917,
+        488
+      ],
+      "detail_raster_px": [
+        1242,
+        543
+      ],
+      "color_map_inputs": [
+        {
+          "path": "Assets/ShipConcepts/armor-drives-r198/maps-refit/bayarmor-color.png",
+          "sha256": "b02a2b66a49e9c94d166c77237e876bd9688e91a102cef21cb2e1ef33c8c441e"
+        },
+        {
+          "path": "Assets/ShipConcepts/armor-drives-r198/maps-refit/bayarmor-emission.png",
+          "sha256": "c4da53fcda39ea880f17e74d06a37ac496b539928186215a16511d6facce48fd"
+        },
+        {
+          "path": "Assets/ShipConcepts/armor-drives-r198/maps-refit/bayarmor-normal.png",
+          "sha256": "449f45dfac998324f64917beedf23dfbc0072afd89f8aafe5d97b4aed45eadd8"
+        },
+        {
+          "path": "Assets/ShipConcepts/armor-drives-r198/maps-refit/bayarmor-orm.png",
+          "sha256": "f9f96feb2ddd5cb6f9e97577366163a7343d23b8001ff4f11013ee67a06e84ff"
+        }
+      ],
+      "fit_marks": [
+        [
+          520,
+          474
+        ],
+        [
+          568,
+          466
+        ],
+        [
+          597,
+          451
+        ],
+        [
+          620,
+          436
+        ],
+        [
+          640,
+          429
+        ],
+        [
+          674,
+          423
+        ],
+        [
+          703,
+          420
+        ],
+        [
+          727,
+          421
+        ],
+        [
+          755,
+          425
+        ],
+        [
+          782,
+          432
+        ],
+        [
+          802,
+          438
+        ],
+        [
+          819,
+          438
+        ],
+        [
+          835,
+          435
+        ],
+        [
+          848,
+          416
+        ],
+        [
+          856,
+          394
+        ],
+        [
+          887,
+          381
+        ],
+        [
+          920,
+          379
+        ]
+      ],
+      "side_marks": [
+        [
+          295,
+          175
+        ],
+        [
+          330,
+          168
+        ],
+        [
+          365,
+          158
+        ],
+        [
+          398,
+          155
+        ],
+        [
+          430,
+          157
+        ],
+        [
+          461,
+          160
+        ],
+        [
+          494,
+          166
+        ],
+        [
+          520,
+          165
+        ],
+        [
+          541,
+          151
+        ],
+        [
+          565,
+          140
+        ]
+      ],
+      "sample_locations": {
+        "blue": [
+          [
+            557,
+            440
+          ],
+          [
+            583,
+            433
+          ],
+          [
+            621,
+            415
+          ],
+          [
+            651,
+            398
+          ],
+          [
+            674,
+            394
+          ],
+          [
+            714,
+            376
+          ],
+          [
+            753,
+            376
+          ]
+        ],
+        "silver": [
+          [
+            699,
+            412
+          ],
+          [
+            721,
+            408
+          ],
+          [
+            751,
+            408
+          ],
+          [
+            782,
+            411
+          ],
+          [
+            807,
+            400
+          ],
+          [
+            824,
+            390
+          ],
+          [
+            836,
+            411
+          ]
+        ]
+      },
+      "side_fit_first": {
+        "geometry": "Vertical fit at the original longitudinal and lateral stations",
+        "gallery_mean_abs_px": 0.48,
+        "side_mean_abs_px": 21.8
+      },
+      "limit": "The selected lip matches the painted edge more closely than the previous model. It remains higher than the straight side drawing. Those errors use two different pixel scales. The side sheet cannot establish the exact depth of a point under the overhang."
+    },
+    "delta-tree": {
+      "name": "Delta Tree",
+      "original": {
+        "path": "Assets/ShipConcepts/sunburst-r144/58-delta-tree.png",
+        "sha256": "6628ed15b22fbf2990729eb8417b9babcb66cc8ebcb5635dad57c8776efeeac3"
+      },
+      "sheet": {
+        "path": "Assets/ShipConcepts/turnaround-sheets-r190/delta-tree.png",
+        "bytes": 12386600,
+        "sha256": "91e1ba6d9ba572957f166e62ec377d631fecc4b675f5cdb2a64173690e17d87c"
+      },
+      "art_camera": {
+        "path": "Assets/ShipConcepts/hull-refinements-r193/delta-tree/open-courtyards/gallery-camera.json",
+        "sha256": "82a3e341902859087092b542541975c41b30344b5f30bdf6ddbf450327bc6a70"
+      },
+      "render_camera": {
+        "path": "Assets/ShipConcepts/hull-refinements-r193/delta-tree/open-courtyards/gallery-render-camera.json",
+        "sha256": "4944e2b7f318f5981b79444dc322c0a3dd8289cd29e7c11c493fccdba90a0c70"
+      },
+      "previous_blend": {
+        "path": "Assets/ShipConcepts/door-windows-r197/delta-tree/fitted/delta-tree.blend",
+        "sha256": "825f3f903da6f6507ba840948b71135ff31a9a9720d41e6eb77d643b777a0ad7"
+      },
+      "previous_glb": {
+        "path": "Assets/ShipConcepts/door-windows-r197/delta-tree/fitted/delta-tree.glb",
+        "sha256": "caf42acb0ebb6d4986a1ef42927cb98c3c36f90865cce93c72c5a13d89b863da"
+      },
+      "selected": "tempered",
+      "scene": {
+        "before": {
+          "plan": {
+            "counts": {
+              "Glass": [
+                5,
+                6
+              ],
+              "Roof": [
+                6,
+                6
+              ]
+            },
+            "samples": [
+              [
+                50,
+                451,
+                "Glass",
+                "Forward observatory · glazed vault and plated cabin",
+                "observation_glass",
+                1
+              ],
+              [
+                53,
+                457,
+                "Glass",
+                "Forward observatory · glazed vault and plated cabin",
+                "observation_glass",
+                1
+              ],
+              [
+                55,
+                463,
+                "Glass",
+                "Forward observatory · glazed vault and plated cabin",
+                "observation_glass",
+                1
+              ],
+              [
+                60,
+                449,
+                "Glass",
+                "Forward observatory · glazed vault and plated cabin",
+                "observation_glass",
+                1
+              ],
+              [
+                62,
+                455,
+                "Glass",
+                "Forward observatory · glazed vault and plated cabin",
+                "observation_glass",
+                1
+              ],
+              [
+                64,
+                464,
+                "Glass",
+                "Forward observatory · glazed vault and plated cabin",
+                "bronze_drive",
+                0
+              ],
+              [
+                74,
+                450,
+                "Roof",
+                "Forward observatory · glazed vault and plated cabin",
+                "machined",
+                1
+              ],
+              [
+                77,
+                459,
+                "Roof",
+                "Forward observatory · glazed vault and plated cabin",
+                "machined",
+                1
+              ],
+              [
+                83,
+                446,
+                "Roof",
+                "Forward observatory · glazed vault and plated cabin",
+                "canopy_shell",
+                1
+              ],
+              [
+                88,
+                463,
+                "Roof",
+                "Forward observatory · glazed vault and plated cabin",
+                "machined",
+                1
+              ],
+              [
+                98,
+                453,
+                "Roof",
+                "Forward observatory · glazed vault and plated cabin",
+                "canopy_shell",
+                1
+              ],
+              [
+                102,
+                459,
+                "Roof",
+                "Forward observatory · glazed vault and plated cabin",
+                "case",
+                1
+              ]
+            ]
+          },
+          "port": {
+            "counts": {
+              "Glass": [
+                5,
+                5
+              ],
+              "Roof": [
+                4,
+                5
+              ]
+            },
+            "samples": [
+              [
+                45,
+                175,
+                "Glass",
+                "Forward observatory · glazed vault and plated cabin",
+                "observation_glass",
+                1
+              ],
+              [
+                51,
+                171,
+                "Glass",
+                "Forward observatory · glazed vault and plated cabin",
+                "observation_glass",
+                1
+              ],
+              [
+                55,
+                172,
+                "Glass",
+                "Forward observatory · glazed vault and plated cabin",
+                "observation_glass",
+                1
+              ],
+              [
+                59,
+                164,
+                "Glass",
+                "Forward observatory · glazed vault and plated cabin",
+                "observation_glass",
+                1
+              ],
+              [
+                63,
+                170,
+                "Glass",
+                "Forward observatory · glazed vault and plated cabin",
+                "observation_glass",
+                1
+              ],
+              [
+                73,
+                165,
+                "Roof",
+                "Forward observatory · glazed vault and plated cabin",
+                "observation_glass",
+                0
+              ],
+              [
+                82,
+                164,
+                "Roof",
+                "Forward observatory · glazed vault and plated cabin",
+                "canopy_shell",
+                1
+              ],
+              [
+                90,
+                162,
+                "Roof",
+                "Forward observatory · glazed vault and plated cabin",
+                "canopy_shell",
+                1
+              ],
+              [
+                99,
+                164,
+                "Roof",
+                "Forward observatory · glazed vault and plated cabin",
+                "canopy_shell",
+                1
+              ],
+              [
+                104,
+                165,
+                "Roof",
+                "Forward observatory · glazed vault and plated cabin",
+                "canopy_shell",
+                1
+              ]
+            ]
+          },
+          "painting": {
+            "counts": {
+              "Glass": [
+                5,
+                8
+              ],
+              "Roof": [
+                4,
+                6
+              ]
+            },
+            "samples": [
+              [
+                93,
+                658,
+                "Glass",
+                "Forward observatory · glazed vault and plated cabin",
+                "observation_glass",
+                1
+              ],
+              [
+                102,
+                654,
+                "Glass",
+                "Forward observatory · glazed vault and plated cabin",
+                "observation_glass",
+                1
+              ],
+              [
+                108,
+                664,
+                "Glass",
+                "Forward observatory · glazed vault and plated cabin",
+                "observation_glass",
+                1
+              ],
+              [
+                116,
+                650,
+                "Glass",
+                "Forward observatory · glazed vault and plated cabin",
+                "observation_glass",
+                1
+              ],
+              [
+                125,
+                662,
+                "Glass",
+                "Forward observatory · glazed vault and plated cabin",
+                "bronze_drive",
+                0
+              ],
+              [
+                127,
+                647,
+                "Glass",
+                "Forward observatory · glazed vault and plated cabin",
+                "observation_glass",
+                1
+              ],
+              [
+                136,
+                654,
+                "Glass",
+                "Forward observatory · glazed vault and plated cabin",
+                "bronze_drive",
+                0
+              ],
+              [
+                140,
+                661,
+                "Glass",
+                "Recessed deck between branches",
+                "warm alloy deck plates",
+                0
+              ],
+              [
+                142,
+                631,
+                "Roof",
+                "Forward observatory · glazed vault and plated cabin",
+                "canopy_shell",
+                1
+              ],
+              [
+                151,
+                632,
+                "Roof",
+                "Forward observatory · glazed vault and plated cabin",
+                "machined",
+                1
+              ],
+              [
+                160,
+                635,
+                "Roof",
+                "Forward observatory · glazed vault and plated cabin",
+                "machined",
+                1
+              ],
+              [
+                174,
+                624,
+                "Roof",
+                "Forward observatory · glazed vault and plated cabin",
+                "drive_ceramic",
+                1
+              ],
+              [
+                183,
+                620,
+                "Roof",
+                "Recessed deck between branches",
+                "graphite returns",
+                0
+              ],
+              [
+                191,
+                624,
+                "Roof",
+                "Recessed deck between branches",
+                "graphite returns",
+                0
+              ]
+            ]
+          }
+        },
+        "after": {
+          "plan": {
+            "counts": {
+              "Glass": [
+                5,
+                6
+              ],
+              "Roof": [
+                6,
+                6
+              ]
+            },
+            "samples": [
+              [
+                50,
+                451,
+                "Glass",
+                "Forward observatory · glazed vault and plated cabin",
+                "observation_glass",
+                1
+              ],
+              [
+                53,
+                457,
+                "Glass",
+                "Forward observatory · glazed vault and plated cabin",
+                "observation_glass",
+                1
+              ],
+              [
+                55,
+                463,
+                "Glass",
+                "Forward observatory · glazed vault and plated cabin",
+                "observation_glass",
+                1
+              ],
+              [
+                60,
+                449,
+                "Glass",
+                "Forward observatory · glazed vault and plated cabin",
+                "observation_glass",
+                1
+              ],
+              [
+                62,
+                455,
+                "Glass",
+                "Forward observatory · glazed vault and plated cabin",
+                "observation_glass",
+                1
+              ],
+              [
+                64,
+                464,
+                "Glass",
+                "Forward observatory · glazed vault and plated cabin",
+                "bronze_drive",
+                0
+              ],
+              [
+                74,
+                450,
+                "Roof",
+                "Forward observatory · glazed vault and plated cabin",
+                "machined",
+                1
+              ],
+              [
+                77,
+                459,
+                "Roof",
+                "Forward observatory · glazed vault and plated cabin",
+                "machined",
+                1
+              ],
+              [
+                83,
+                446,
+                "Roof",
+                "Forward observatory · glazed vault and plated cabin",
+                "canopy_shell",
+                1
+              ],
+              [
+                88,
+                463,
+                "Roof",
+                "Forward observatory · glazed vault and plated cabin",
+                "machined",
+                1
+              ],
+              [
+                98,
+                453,
+                "Roof",
+                "Forward observatory · glazed vault and plated cabin",
+                "canopy_shell",
+                1
+              ],
+              [
+                102,
+                459,
+                "Roof",
+                "Forward observatory · glazed vault and plated cabin",
+                "case",
+                1
+              ]
+            ]
+          },
+          "port": {
+            "counts": {
+              "Glass": [
+                5,
+                5
+              ],
+              "Roof": [
+                4,
+                5
+              ]
+            },
+            "samples": [
+              [
+                45,
+                175,
+                "Glass",
+                "Forward observatory · glazed vault and plated cabin",
+                "observation_glass",
+                1
+              ],
+              [
+                51,
+                171,
+                "Glass",
+                "Forward observatory · glazed vault and plated cabin",
+                "observation_glass",
+                1
+              ],
+              [
+                55,
+                172,
+                "Glass",
+                "Forward observatory · glazed vault and plated cabin",
+                "observation_glass",
+                1
+              ],
+              [
+                59,
+                164,
+                "Glass",
+                "Forward observatory · glazed vault and plated cabin",
+                "observation_glass",
+                1
+              ],
+              [
+                63,
+                170,
+                "Glass",
+                "Forward observatory · glazed vault and plated cabin",
+                "observation_glass",
+                1
+              ],
+              [
+                73,
+                165,
+                "Roof",
+                "Forward observatory · glazed vault and plated cabin",
+                "observation_glass",
+                0
+              ],
+              [
+                82,
+                164,
+                "Roof",
+                "Forward observatory · glazed vault and plated cabin",
+                "canopy_shell",
+                1
+              ],
+              [
+                90,
+                162,
+                "Roof",
+                "Forward observatory · glazed vault and plated cabin",
+                "canopy_shell",
+                1
+              ],
+              [
+                99,
+                164,
+                "Roof",
+                "Forward observatory · glazed vault and plated cabin",
+                "canopy_shell",
+                1
+              ],
+              [
+                104,
+                165,
+                "Roof",
+                "Forward observatory · glazed vault and plated cabin",
+                "canopy_shell",
+                1
+              ]
+            ]
+          },
+          "painting": {
+            "counts": {
+              "Glass": [
+                5,
+                8
+              ],
+              "Roof": [
+                4,
+                6
+              ]
+            },
+            "samples": [
+              [
+                93,
+                658,
+                "Glass",
+                "Forward observatory · glazed vault and plated cabin",
+                "observation_glass",
+                1
+              ],
+              [
+                102,
+                654,
+                "Glass",
+                "Forward observatory · glazed vault and plated cabin",
+                "observation_glass",
+                1
+              ],
+              [
+                108,
+                664,
+                "Glass",
+                "Forward observatory · glazed vault and plated cabin",
+                "observation_glass",
+                1
+              ],
+              [
+                116,
+                650,
+                "Glass",
+                "Forward observatory · glazed vault and plated cabin",
+                "observation_glass",
+                1
+              ],
+              [
+                125,
+                662,
+                "Glass",
+                "Forward observatory · glazed vault and plated cabin",
+                "bronze_drive",
+                0
+              ],
+              [
+                127,
+                647,
+                "Glass",
+                "Forward observatory · glazed vault and plated cabin",
+                "observation_glass",
+                1
+              ],
+              [
+                136,
+                654,
+                "Glass",
+                "Forward observatory · glazed vault and plated cabin",
+                "bronze_drive",
+                0
+              ],
+              [
+                140,
+                661,
+                "Glass",
+                "Recessed deck between branches",
+                "warm alloy deck plates",
+                0
+              ],
+              [
+                142,
+                631,
+                "Roof",
+                "Forward observatory · glazed vault and plated cabin",
+                "canopy_shell",
+                1
+              ],
+              [
+                151,
+                632,
+                "Roof",
+                "Forward observatory · glazed vault and plated cabin",
+                "machined",
+                1
+              ],
+              [
+                160,
+                635,
+                "Roof",
+                "Forward observatory · glazed vault and plated cabin",
+                "machined",
+                1
+              ],
+              [
+                174,
+                624,
+                "Roof",
+                "Forward observatory · glazed vault and plated cabin",
+                "drive_ceramic",
+                1
+              ],
+              [
+                183,
+                620,
+                "Roof",
+                "Recessed deck between branches",
+                "graphite returns",
+                0
+              ],
+              [
+                191,
+                624,
+                "Roof",
+                "Recessed deck between branches",
+                "graphite returns",
+                0
+              ]
+            ]
+          }
+        },
+        "same_unmodified_geometry_materials": [
+          "Dish deck",
+          "Dish deck.001",
+          "Dish deck.002",
+          "Dish deck.003",
+          "Dish deck.004",
+          "Dish pedestal",
+          "Drive cradle and port arrival shoulder",
+          "Forward observatory · cabin lamps",
+          "Forward observatory · glazed vault and plated cabin",
+          "Needle mast",
+          "Observatory roof · aerials and vents",
+          "Observatory sill · fitted pressure skirt",
+          "Open docking frame",
+          "Passenger decks · headers and divided sills",
+          "Passenger decks · pressure plates and window reveals",
+          "Passenger decks · recessed amber cabin panes",
+          "Port branch 1",
+          "Port branch 2",
+          "Port branch 3",
+          "Port branch 4",
+          "Port branch 5",
+          "Port branch 6",
+          "Port courtyard rib 1",
+          "Port courtyard rib 2",
+          "Port courtyard rib 3",
+          "Port courtyard rib 4",
+          "Port courtyard rib 5",
+          "Port courtyard rib 6",
+          "Port courtyard rib 7",
+          "Port courtyard rib 8",
+          "Port courtyard rib 9",
+          "Port station 1",
+          "Port station 2",
+          "Port station 3",
+          "Port station 4",
+          "Port station 5",
+          "Port station 6",
+          "Port station antenna 1",
+          "Port station antenna 2",
+          "Port station antenna 3",
+          "Port station antenna 4",
+          "Port station antenna 5",
+          "Port station antenna 6",
+          "Port station outrigger 1",
+          "Port station outrigger 2",
+          "Port station outrigger 3",
+          "Port station outrigger 4",
+          "Port station outrigger 5",
+          "Port station outrigger 6",
+          "Recessed deck between branches",
+          "Shallow fan pressure hull",
+          "Starboard branch 1",
+          "Starboard branch 2",
+          "Starboard branch 3",
+          "Starboard branch 4",
+          "Starboard branch 5",
+          "Starboard branch 6",
+          "Starboard courtyard rib 1",
+          "Starboard courtyard rib 2",
+          "Starboard courtyard rib 3",
+          "Starboard courtyard rib 4",
+          "Starboard courtyard rib 5",
+          "Starboard courtyard rib 6",
+          "Starboard courtyard rib 7",
+          "Starboard courtyard rib 8",
+          "Starboard courtyard rib 9",
+          "Starboard station 1",
+          "Starboard station 2",
+          "Starboard station 3",
+          "Starboard station 4",
+          "Starboard station 5",
+          "Starboard station 6",
+          "Starboard station antenna 1",
+          "Starboard station antenna 2",
+          "Starboard station antenna 3",
+          "Starboard station antenna 4",
+          "Starboard station antenna 5",
+          "Starboard station antenna 6",
+          "Starboard station outrigger 1",
+          "Starboard station outrigger 2",
+          "Starboard station outrigger 3",
+          "Starboard station outrigger 4",
+          "Starboard station outrigger 5",
+          "Starboard station outrigger 6",
+          "Survey dish"
+        ],
+        "native_meshes": 123,
+        "dimensions_m": [
+          1280.0,
+          503.3284,
+          409.0722
+        ],
+        "glb_max_vertex_error_m": 0.0,
+        "embedded_images": 22,
+        "packed_native_image_count": 41,
+        "textured_materials_with_normal_and_orm": 13,
+        "exchange_first_hit_counts": {
+          "plan": {
+            "Glass": [
+              5,
+              6
+            ],
+            "Roof": [
+              6,
+              6
+            ]
+          },
+          "port": {
+            "Glass": [
+              5,
+              5
+            ],
+            "Roof": [
+              4,
+              5
+            ]
+          },
+          "painting": {
+            "Glass": [
+              5,
+              8
+            ],
+            "Roof": [
+              4,
+              6
+            ]
+          }
+        },
+        "previous_lip": null,
+        "study_native": {
+          "outlets": [
+            {
+              "tier": 1,
+              "column": 1,
+              "clear_samples": 9,
+              "hits": [
+                [
+                  "Drive lights 1.1",
+                  27.65
+                ],
+                [
+                  "Drive housing 1.1",
+                  18.3
+                ],
+                [
+                  "Drive housing 1.1",
+                  18.11
+                ],
+                [
+                  "Drive housing 1.1",
+                  18.3
+                ],
+                [
+                  "Drive housing 1.1",
+                  15.18
+                ],
+                [
+                  "Drive housing 1.1",
+                  18.3
+                ],
+                [
+                  "Drive housing 1.1",
+                  18.11
+                ],
+                [
+                  "Drive housing 1.1",
+                  14.52
+                ],
+                [
+                  "Drive housing 1.1",
+                  18.11
+                ]
+              ]
+            },
+            {
+              "tier": 1,
+              "column": 2,
+              "clear_samples": 9,
+              "hits": [
+                [
+                  "Drive lights 1.2",
+                  27.65
+                ],
+                [
+                  "Drive housing 1.2",
+                  18.3
+                ],
+                [
+                  "Drive housing 1.2",
+                  18.11
+                ],
+                [
+                  "Drive housing 1.2",
+                  18.3
+                ],
+                [
+                  "Drive housing 1.2",
+                  15.18
+                ],
+                [
+                  "Drive housing 1.2",
+                  18.3
+                ],
+                [
+                  "Drive housing 1.2",
+                  18.11
+                ],
+                [
+                  "Drive housing 1.2",
+                  14.52
+                ],
+                [
+                  "Drive housing 1.2",
+                  18.11
+                ]
+              ]
+            },
+            {
+              "tier": 1,
+              "column": 3,
+              "clear_samples": 9,
+              "hits": [
+                [
+                  "Drive lights 1.3",
+                  27.65
+                ],
+                [
+                  "Drive housing 1.3",
+                  18.3
+                ],
+                [
+                  "Drive housing 1.3",
+                  18.11
+                ],
+                [
+                  "Drive housing 1.3",
+                  18.3
+                ],
+                [
+                  "Drive housing 1.3",
+                  15.18
+                ],
+                [
+                  "Drive housing 1.3",
+                  18.3
+                ],
+                [
+                  "Drive housing 1.3",
+                  18.11
+                ],
+                [
+                  "Drive housing 1.3",
+                  14.52
+                ],
+                [
+                  "Drive housing 1.3",
+                  18.11
+                ]
+              ]
+            },
+            {
+              "tier": 1,
+              "column": 4,
+              "clear_samples": 9,
+              "hits": [
+                [
+                  "Drive lights 1.4",
+                  27.65
+                ],
+                [
+                  "Drive housing 1.4",
+                  18.3
+                ],
+                [
+                  "Drive housing 1.4",
+                  18.11
+                ],
+                [
+                  "Drive housing 1.4",
+                  18.3
+                ],
+                [
+                  "Drive housing 1.4",
+                  15.18
+                ],
+                [
+                  "Drive housing 1.4",
+                  18.3
+                ],
+                [
+                  "Drive housing 1.4",
+                  18.11
+                ],
+                [
+                  "Drive housing 1.4",
+                  14.52
+                ],
+                [
+                  "Drive housing 1.4",
+                  18.11
+                ]
+              ]
+            },
+            {
+              "tier": 2,
+              "column": 1,
+              "clear_samples": 9,
+              "hits": [
+                [
+                  "Drive lights 2.1",
+                  27.65
+                ],
+                [
+                  "Drive housing 2.1",
+                  18.3
+                ],
+                [
+                  "Drive housing 2.1",
+                  18.11
+                ],
+                [
+                  "Drive housing 2.1",
+                  18.3
+                ],
+                [
+                  "Drive housing 2.1",
+                  15.18
+                ],
+                [
+                  "Drive housing 2.1",
+                  18.3
+                ],
+                [
+                  "Drive housing 2.1",
+                  18.11
+                ],
+                [
+                  "Drive housing 2.1",
+                  14.52
+                ],
+                [
+                  "Drive housing 2.1",
+                  18.11
+                ]
+              ]
+            },
+            {
+              "tier": 2,
+              "column": 2,
+              "clear_samples": 9,
+              "hits": [
+                [
+                  "Drive lights 2.2",
+                  27.65
+                ],
+                [
+                  "Drive housing 2.2",
+                  18.3
+                ],
+                [
+                  "Drive housing 2.2",
+                  18.11
+                ],
+                [
+                  "Drive housing 2.2",
+                  18.3
+                ],
+                [
+                  "Drive housing 2.2",
+                  15.18
+                ],
+                [
+                  "Drive housing 2.2",
+                  18.3
+                ],
+                [
+                  "Drive housing 2.2",
+                  18.11
+                ],
+                [
+                  "Drive housing 2.2",
+                  14.52
+                ],
+                [
+                  "Drive housing 2.2",
+                  18.11
+                ]
+              ]
+            },
+            {
+              "tier": 2,
+              "column": 3,
+              "clear_samples": 9,
+              "hits": [
+                [
+                  "Drive lights 2.3",
+                  27.65
+                ],
+                [
+                  "Drive housing 2.3",
+                  18.3
+                ],
+                [
+                  "Drive housing 2.3",
+                  18.11
+                ],
+                [
+                  "Drive housing 2.3",
+                  18.3
+                ],
+                [
+                  "Drive housing 2.3",
+                  15.18
+                ],
+                [
+                  "Drive housing 2.3",
+                  18.3
+                ],
+                [
+                  "Drive housing 2.3",
+                  18.11
+                ],
+                [
+                  "Drive housing 2.3",
+                  14.52
+                ],
+                [
+                  "Drive housing 2.3",
+                  18.11
+                ]
+              ]
+            },
+            {
+              "tier": 2,
+              "column": 4,
+              "clear_samples": 9,
+              "hits": [
+                [
+                  "Drive lights 2.4",
+                  27.65
+                ],
+                [
+                  "Drive housing 2.4",
+                  18.3
+                ],
+                [
+                  "Drive housing 2.4",
+                  18.11
+                ],
+                [
+                  "Drive housing 2.4",
+                  18.3
+                ],
+                [
+                  "Drive housing 2.4",
+                  15.18
+                ],
+                [
+                  "Drive housing 2.4",
+                  18.3
+                ],
+                [
+                  "Drive housing 2.4",
+                  18.11
+                ],
+                [
+                  "Drive housing 2.4",
+                  14.52
+                ],
+                [
+                  "Drive housing 2.4",
+                  18.11
+                ]
+              ]
+            },
+            {
+              "tier": 3,
+              "column": 1,
+              "clear_samples": 9,
+              "hits": [
+                [
+                  "Drive lights 3.1",
+                  27.65
+                ],
+                [
+                  "Drive housing 3.1",
+                  18.3
+                ],
+                [
+                  "Drive housing 3.1",
+                  18.11
+                ],
+                [
+                  "Drive housing 3.1",
+                  18.3
+                ],
+                [
+                  "Drive housing 3.1",
+                  15.14
+                ],
+                [
+                  "Drive housing 3.1",
+                  18.3
+                ],
+                [
+                  "Drive housing 3.1",
+                  18.11
+                ],
+                [
+                  "Drive housing 3.1",
+                  14.48
+                ],
+                [
+                  "Drive housing 3.1",
+                  18.11
+                ]
+              ]
+            },
+            {
+              "tier": 3,
+              "column": 2,
+              "clear_samples": 9,
+              "hits": [
+                [
+                  "Drive lights 3.2",
+                  27.65
+                ],
+                [
+                  "Drive housing 3.2",
+                  18.3
+                ],
+                [
+                  "Drive housing 3.2",
+                  18.11
+                ],
+                [
+                  "Drive housing 3.2",
+                  18.3
+                ],
+                [
+                  "Drive housing 3.2",
+                  15.14
+                ],
+                [
+                  "Drive housing 3.2",
+                  18.3
+                ],
+                [
+                  "Drive housing 3.2",
+                  18.11
+                ],
+                [
+                  "Drive housing 3.2",
+                  14.48
+                ],
+                [
+                  "Drive housing 3.2",
+                  18.11
+                ]
+              ]
+            },
+            {
+              "tier": 3,
+              "column": 3,
+              "clear_samples": 9,
+              "hits": [
+                [
+                  "Drive lights 3.3",
+                  27.65
+                ],
+                [
+                  "Drive housing 3.3",
+                  18.3
+                ],
+                [
+                  "Drive housing 3.3",
+                  18.11
+                ],
+                [
+                  "Drive housing 3.3",
+                  18.3
+                ],
+                [
+                  "Drive housing 3.3",
+                  15.14
+                ],
+                [
+                  "Drive housing 3.3",
+                  18.3
+                ],
+                [
+                  "Drive housing 3.3",
+                  18.11
+                ],
+                [
+                  "Drive housing 3.3",
+                  14.48
+                ],
+                [
+                  "Drive housing 3.3",
+                  18.11
+                ]
+              ]
+            },
+            {
+              "tier": 3,
+              "column": 4,
+              "clear_samples": 9,
+              "hits": [
+                [
+                  "Drive lights 3.4",
+                  27.65
+                ],
+                [
+                  "Drive housing 3.4",
+                  18.3
+                ],
+                [
+                  "Drive housing 3.4",
+                  18.11
+                ],
+                [
+                  "Drive housing 3.4",
+                  18.3
+                ],
+                [
+                  "Drive housing 3.4",
+                  15.14
+                ],
+                [
+                  "Drive housing 3.4",
+                  18.3
+                ],
+                [
+                  "Drive housing 3.4",
+                  18.11
+                ],
+                [
+                  "Drive housing 3.4",
+                  14.48
+                ],
+                [
+                  "Drive housing 3.4",
+                  18.11
+                ]
+              ]
+            }
+          ],
+          "clear_rays": 108,
+          "total_rays": 108,
+          "painted_materials": {
+            "pale": [
+              "Delta stern · machined",
+              "Delta stern · drive_ceramic",
+              "Delta stern · drive_ceramic",
+              "Delta stern · drive_ceramic",
+              "Delta stern · drive_ceramic",
+              "Delta stern · case",
+              "Delta stern · drive_ceramic",
+              "Delta stern · drive_ceramic",
+              "Delta stern · drive_ceramic"
+            ],
+            "dark": [
+              "Delta stern · case",
+              "Delta stern · case",
+              "Delta stern · case",
+              "Delta stern · case",
+              "Delta stern · case",
+              "Delta stern · machined",
+              "Delta stern · case",
+              "Delta stern · case",
+              "Delta stern · case"
+            ],
+            "amber": [
+              "Delta stern · amber_drive",
+              "Delta stern · amber_drive",
+              "Delta stern · amber_drive"
+            ]
+          }
+        },
+        "study_exchange": {
+          "outlets": [
+            {
+              "tier": 1,
+              "column": 1,
+              "clear_samples": 9,
+              "hits": [
+                [
+                  "Drive lights 1.1",
+                  27.65
+                ],
+                [
+                  "Drive housing 1.1",
+                  18.3
+                ],
+                [
+                  "Drive housing 1.1",
+                  18.11
+                ],
+                [
+                  "Drive housing 1.1",
+                  18.3
+                ],
+                [
+                  "Drive housing 1.1",
+                  15.18
+                ],
+                [
+                  "Drive housing 1.1",
+                  18.3
+                ],
+                [
+                  "Drive housing 1.1",
+                  18.11
+                ],
+                [
+                  "Drive housing 1.1",
+                  14.52
+                ],
+                [
+                  "Drive housing 1.1",
+                  18.11
+                ]
+              ]
+            },
+            {
+              "tier": 1,
+              "column": 2,
+              "clear_samples": 9,
+              "hits": [
+                [
+                  "Drive lights 1.2",
+                  27.65
+                ],
+                [
+                  "Drive housing 1.2",
+                  18.3
+                ],
+                [
+                  "Drive housing 1.2",
+                  18.11
+                ],
+                [
+                  "Drive housing 1.2",
+                  18.3
+                ],
+                [
+                  "Drive housing 1.2",
+                  15.18
+                ],
+                [
+                  "Drive housing 1.2",
+                  18.3
+                ],
+                [
+                  "Drive housing 1.2",
+                  18.11
+                ],
+                [
+                  "Drive housing 1.2",
+                  14.52
+                ],
+                [
+                  "Drive housing 1.2",
+                  18.11
+                ]
+              ]
+            },
+            {
+              "tier": 1,
+              "column": 3,
+              "clear_samples": 9,
+              "hits": [
+                [
+                  "Drive lights 1.3",
+                  27.65
+                ],
+                [
+                  "Drive housing 1.3",
+                  18.3
+                ],
+                [
+                  "Drive housing 1.3",
+                  18.11
+                ],
+                [
+                  "Drive housing 1.3",
+                  18.3
+                ],
+                [
+                  "Drive housing 1.3",
+                  15.18
+                ],
+                [
+                  "Drive housing 1.3",
+                  18.3
+                ],
+                [
+                  "Drive housing 1.3",
+                  18.11
+                ],
+                [
+                  "Drive housing 1.3",
+                  14.52
+                ],
+                [
+                  "Drive housing 1.3",
+                  18.11
+                ]
+              ]
+            },
+            {
+              "tier": 1,
+              "column": 4,
+              "clear_samples": 9,
+              "hits": [
+                [
+                  "Drive lights 1.4",
+                  27.65
+                ],
+                [
+                  "Drive housing 1.4",
+                  18.3
+                ],
+                [
+                  "Drive housing 1.4",
+                  18.11
+                ],
+                [
+                  "Drive housing 1.4",
+                  18.3
+                ],
+                [
+                  "Drive housing 1.4",
+                  15.18
+                ],
+                [
+                  "Drive housing 1.4",
+                  18.3
+                ],
+                [
+                  "Drive housing 1.4",
+                  18.11
+                ],
+                [
+                  "Drive housing 1.4",
+                  14.52
+                ],
+                [
+                  "Drive housing 1.4",
+                  18.11
+                ]
+              ]
+            },
+            {
+              "tier": 2,
+              "column": 1,
+              "clear_samples": 9,
+              "hits": [
+                [
+                  "Drive lights 2.1",
+                  27.65
+                ],
+                [
+                  "Drive housing 2.1",
+                  18.3
+                ],
+                [
+                  "Drive housing 2.1",
+                  18.11
+                ],
+                [
+                  "Drive housing 2.1",
+                  18.3
+                ],
+                [
+                  "Drive housing 2.1",
+                  15.18
+                ],
+                [
+                  "Drive housing 2.1",
+                  18.3
+                ],
+                [
+                  "Drive housing 2.1",
+                  18.11
+                ],
+                [
+                  "Drive housing 2.1",
+                  14.52
+                ],
+                [
+                  "Drive housing 2.1",
+                  18.11
+                ]
+              ]
+            },
+            {
+              "tier": 2,
+              "column": 2,
+              "clear_samples": 9,
+              "hits": [
+                [
+                  "Drive lights 2.2",
+                  27.65
+                ],
+                [
+                  "Drive housing 2.2",
+                  18.3
+                ],
+                [
+                  "Drive housing 2.2",
+                  18.11
+                ],
+                [
+                  "Drive housing 2.2",
+                  18.3
+                ],
+                [
+                  "Drive housing 2.2",
+                  15.18
+                ],
+                [
+                  "Drive housing 2.2",
+                  18.3
+                ],
+                [
+                  "Drive housing 2.2",
+                  18.11
+                ],
+                [
+                  "Drive housing 2.2",
+                  14.52
+                ],
+                [
+                  "Drive housing 2.2",
+                  18.11
+                ]
+              ]
+            },
+            {
+              "tier": 2,
+              "column": 3,
+              "clear_samples": 9,
+              "hits": [
+                [
+                  "Drive lights 2.3",
+                  27.65
+                ],
+                [
+                  "Drive housing 2.3",
+                  18.3
+                ],
+                [
+                  "Drive housing 2.3",
+                  18.11
+                ],
+                [
+                  "Drive housing 2.3",
+                  18.3
+                ],
+                [
+                  "Drive housing 2.3",
+                  15.18
+                ],
+                [
+                  "Drive housing 2.3",
+                  18.3
+                ],
+                [
+                  "Drive housing 2.3",
+                  18.11
+                ],
+                [
+                  "Drive housing 2.3",
+                  14.52
+                ],
+                [
+                  "Drive housing 2.3",
+                  18.11
+                ]
+              ]
+            },
+            {
+              "tier": 2,
+              "column": 4,
+              "clear_samples": 9,
+              "hits": [
+                [
+                  "Drive lights 2.4",
+                  27.65
+                ],
+                [
+                  "Drive housing 2.4",
+                  18.3
+                ],
+                [
+                  "Drive housing 2.4",
+                  18.11
+                ],
+                [
+                  "Drive housing 2.4",
+                  18.3
+                ],
+                [
+                  "Drive housing 2.4",
+                  15.18
+                ],
+                [
+                  "Drive housing 2.4",
+                  18.3
+                ],
+                [
+                  "Drive housing 2.4",
+                  18.11
+                ],
+                [
+                  "Drive housing 2.4",
+                  14.52
+                ],
+                [
+                  "Drive housing 2.4",
+                  18.11
+                ]
+              ]
+            },
+            {
+              "tier": 3,
+              "column": 1,
+              "clear_samples": 9,
+              "hits": [
+                [
+                  "Drive lights 3.1",
+                  27.65
+                ],
+                [
+                  "Drive housing 3.1",
+                  18.3
+                ],
+                [
+                  "Drive housing 3.1",
+                  18.11
+                ],
+                [
+                  "Drive housing 3.1",
+                  18.3
+                ],
+                [
+                  "Drive housing 3.1",
+                  15.14
+                ],
+                [
+                  "Drive housing 3.1",
+                  18.3
+                ],
+                [
+                  "Drive housing 3.1",
+                  18.11
+                ],
+                [
+                  "Drive housing 3.1",
+                  14.48
+                ],
+                [
+                  "Drive housing 3.1",
+                  18.11
+                ]
+              ]
+            },
+            {
+              "tier": 3,
+              "column": 2,
+              "clear_samples": 9,
+              "hits": [
+                [
+                  "Drive lights 3.2",
+                  27.65
+                ],
+                [
+                  "Drive housing 3.2",
+                  18.3
+                ],
+                [
+                  "Drive housing 3.2",
+                  18.11
+                ],
+                [
+                  "Drive housing 3.2",
+                  18.3
+                ],
+                [
+                  "Drive housing 3.2",
+                  15.14
+                ],
+                [
+                  "Drive housing 3.2",
+                  18.3
+                ],
+                [
+                  "Drive housing 3.2",
+                  18.11
+                ],
+                [
+                  "Drive housing 3.2",
+                  14.48
+                ],
+                [
+                  "Drive housing 3.2",
+                  18.11
+                ]
+              ]
+            },
+            {
+              "tier": 3,
+              "column": 3,
+              "clear_samples": 9,
+              "hits": [
+                [
+                  "Drive lights 3.3",
+                  27.65
+                ],
+                [
+                  "Drive housing 3.3",
+                  18.3
+                ],
+                [
+                  "Drive housing 3.3",
+                  18.11
+                ],
+                [
+                  "Drive housing 3.3",
+                  18.3
+                ],
+                [
+                  "Drive housing 3.3",
+                  15.14
+                ],
+                [
+                  "Drive housing 3.3",
+                  18.3
+                ],
+                [
+                  "Drive housing 3.3",
+                  18.11
+                ],
+                [
+                  "Drive housing 3.3",
+                  14.48
+                ],
+                [
+                  "Drive housing 3.3",
+                  18.11
+                ]
+              ]
+            },
+            {
+              "tier": 3,
+              "column": 4,
+              "clear_samples": 9,
+              "hits": [
+                [
+                  "Drive lights 3.4",
+                  27.65
+                ],
+                [
+                  "Drive housing 3.4",
+                  18.3
+                ],
+                [
+                  "Drive housing 3.4",
+                  18.11
+                ],
+                [
+                  "Drive housing 3.4",
+                  18.3
+                ],
+                [
+                  "Drive housing 3.4",
+                  15.14
+                ],
+                [
+                  "Drive housing 3.4",
+                  18.3
+                ],
+                [
+                  "Drive housing 3.4",
+                  18.11
+                ],
+                [
+                  "Drive housing 3.4",
+                  14.48
+                ],
+                [
+                  "Drive housing 3.4",
+                  18.11
+                ]
+              ]
+            }
+          ],
+          "clear_rays": 108,
+          "total_rays": 108,
+          "painted_materials": {
+            "pale": [
+              "Delta stern · machined",
+              "Delta stern · drive_ceramic",
+              "Delta stern · drive_ceramic",
+              "Delta stern · drive_ceramic",
+              "Delta stern · drive_ceramic",
+              "Delta stern · case",
+              "Delta stern · drive_ceramic",
+              "Delta stern · drive_ceramic",
+              "Delta stern · drive_ceramic"
+            ],
+            "dark": [
+              "Delta stern · case",
+              "Delta stern · case",
+              "Delta stern · case",
+              "Delta stern · case",
+              "Delta stern · case",
+              "Delta stern · machined",
+              "Delta stern · case",
+              "Delta stern · case",
+              "Delta stern · case"
+            ],
+            "amber": [
+              "Delta stern · amber_drive",
+              "Delta stern · amber_drive",
+              "Delta stern · amber_drive"
+            ]
+          }
+        },
+        "feature_native": {
+          "starboard": {
+            "samples": 32,
+            "world_samples": [
+              [
+                617.99267578125,
+                -40.672664642333984,
+                -3.321202516555786
+              ],
+              [
+                510.6679992675781,
+                -87.58489990234375,
+                -15.850959777832031
+              ],
+              [
+                389.2216796875,
+                -128.95230102539062,
+                -15.59420394897461
+              ],
+              [
+                267.77532958984375,
+                -171.26644897460938,
+                9.380939483642578
+              ],
+              [
+                216.84552001953125,
+                -170.70919799804688,
+                -35.373756408691406
+              ],
+              [
+                199.8995361328125,
+                -180.98135375976562,
+                5.907566547393799
+              ],
+              [
+                185.77786254882812,
+                -183.28717041015625,
+                5.8444294929504395
+              ],
+              [
+                171.65618896484375,
+                -186.411865234375,
+                10.388276100158691
+              ],
+              [
+                157.53451538085938,
+                -183.991943359375,
+                -15.36304759979248
+              ],
+              [
+                143.41287231445312,
+                -186.08139038085938,
+                -15.15627384185791
+              ],
+              [
+                129.29119873046875,
+                -188.75222778320312,
+                -10.525348663330078
+              ],
+              [
+                115.16952514648438,
+                -186.45098876953125,
+                -34.36311340332031
+              ],
+              [
+                101.04785919189453,
+                -188.41006469726562,
+                -33.464515686035156
+              ],
+              [
+                86.92619323730469,
+                -190.905029296875,
+                -28.42685317993164
+              ],
+              [
+                69.98019409179688,
+                -199.00869750976562,
+                11.3703031539917
+              ],
+              [
+                55.858524322509766,
+                -199.88058471679688,
+                11.370124816894531
+              ],
+              [
+                41.736854553222656,
+                -201.23138427734375,
+                15.255867004394531
+              ],
+              [
+                27.615188598632812,
+                -201.845947265625,
+                14.809290885925293
+              ],
+              [
+                13.493521690368652,
+                -197.93930053710938,
+                -13.368633270263672
+              ],
+              [
+                -0.6281458735466003,
+                -198.9659423828125,
+                -9.252618789672852
+              ],
+              [
+                -14.749813079833984,
+                -199.03195190429688,
+                -9.451786041259766
+              ],
+              [
+                -28.871479034423828,
+                -194.90020751953125,
+                -35.499671936035156
+              ],
+              [
+                -42.99314498901367,
+                -195.17901611328125,
+                -31.662120819091797
+              ],
+              [
+                -57.11481475830078,
+                -194.69241333007812,
+                -32.29016876220703
+              ],
+              [
+                -74.0608139038086,
+                -199.4207763671875,
+                6.453578948974609
+              ],
+              [
+                -88.18248748779297,
+                -199.20950317382812,
+                10.164835929870605
+              ],
+              [
+                -102.30415344238281,
+                -198.0897216796875,
+                9.719600677490234
+              ],
+              [
+                -116.42581176757812,
+                -193.4403076171875,
+                -16.328330993652344
+              ],
+              [
+                -130.5474853515625,
+                -192.67083740234375,
+                -12.598563194274902
+              ],
+              [
+                -144.66915893554688,
+                -191.7547607421875,
+                -13.233587265014648
+              ],
+              [
+                -158.79083251953125,
+                -188.52328491210938,
+                -39.45781326293945
+              ],
+              [
+                -172.9124755859375,
+                -189.22299194335938,
+                -35.235328674316406
+              ]
+            ],
+            "first_hits_on_glass": 32,
+            "min_seat_m": 0.901,
+            "max_seat_m": 0.927
+          },
+          "port": {
+            "samples": 32,
+            "world_samples": [
+              [
+                617.99267578125,
+                45.886348724365234,
+                0.5186575651168823
+              ],
+              [
+                499.37066650390625,
+                89.02737426757812,
+                -16.630596160888672
+              ],
+              [
+                380.7486572265625,
+                126.87979125976562,
+                5.6254777908325195
+              ],
+              [
+                270.59967041015625,
+                150.71011352539062,
+                -12.261852264404297
+              ],
+              [
+                214.02120971679688,
+                160.64642333984375,
+                -14.87768840789795
+              ],
+              [
+                199.8995361328125,
+                162.42840576171875,
+                -15.586630821228027
+              ],
+              [
+                185.77786254882812,
+                164.5389404296875,
+                -11.493452072143555
+              ],
+              [
+                171.65618896484375,
+                166.04336547851562,
+                -11.245936393737793
+              ],
+              [
+                157.53451538085938,
+                164.45187377929688,
+                -36.32929992675781
+              ],
+              [
+                143.41287231445312,
+                165.95645141601562,
+                -35.83338928222656
+              ],
+              [
+                129.29119873046875,
+                168.13882446289062,
+                -30.907716751098633
+              ],
+              [
+                112.3451919555664,
+                174.9429931640625,
+                8.113997459411621
+              ],
+              [
+                98.22352600097656,
+                177.00711059570312,
+                9.507745742797852
+              ],
+              [
+                84.10186004638672,
+                179.2755126953125,
+                14.99041748046875
+              ],
+              [
+                69.98019409179688,
+                180.38778686523438,
+                15.681052207946777
+              ],
+              [
+                55.858524322509766,
+                177.56808471679688,
+                -12.70647144317627
+              ],
+              [
+                41.736854553222656,
+                177.50717163085938,
+                -12.989381790161133
+              ],
+              [
+                27.615188598632812,
+                177.89593505859375,
+                -8.866934776306152
+              ],
+              [
+                13.493521690368652,
+                177.8331298828125,
+                -9.057883262634277
+              ],
+              [
+                -0.6281458735466003,
+                175.11111450195312,
+                -34.59507369995117
+              ],
+              [
+                -14.749813079833984,
+                175.04745483398438,
+                -35.0137939453125
+              ],
+              [
+                -28.871479034423828,
+                175.19979858398438,
+                -31.188919067382812
+              ],
+              [
+                -45.817481994628906,
+                178.31875610351562,
+                7.943353652954102
+              ],
+              [
+                -59.93914794921875,
+                177.4019775390625,
+                7.192786693572998
+              ],
+              [
+                -74.0608139038086,
+                176.85040283203125,
+                10.764328956604004
+              ],
+              [
+                -88.18248748779297,
+                176.11212158203125,
+                10.164835929870605
+              ],
+              [
+                -102.30415344238281,
+                173.33676147460938,
+                -15.832892417907715
+              ],
+              [
+                -116.42581176757812,
+                172.88619995117188,
+                -16.328332901000977
+              ],
+              [
+                -130.5474853515625,
+                172.7906494140625,
+                -12.598564147949219
+              ],
+              [
+                -144.66915893554688,
+                172.2760009765625,
+                -13.233587265014648
+              ],
+              [
+                -158.79083251953125,
+                169.59603881835938,
+                -39.45781326293945
+              ],
+              [
+                -172.9124755859375,
+                169.30029296875,
+                -35.235328674316406
+              ]
+            ],
+            "first_hits_on_glass": 32,
+            "min_seat_m": 0.901,
+            "max_seat_m": 0.916
+          }
+        },
+        "feature_exchange": {
+          "starboard": {
+            "samples": 32,
+            "world_samples": [
+              [
+                617.99267578125,
+                -40.672664642333984,
+                -3.321202516555786
+              ],
+              [
+                510.6679992675781,
+                -87.58489990234375,
+                -15.850959777832031
+              ],
+              [
+                389.2216796875,
+                -128.95230102539062,
+                -15.59420394897461
+              ],
+              [
+                267.77532958984375,
+                -171.26644897460938,
+                9.380939483642578
+              ],
+              [
+                216.84552001953125,
+                -170.70919799804688,
+                -35.373756408691406
+              ],
+              [
+                199.8995361328125,
+                -180.98135375976562,
+                5.907566547393799
+              ],
+              [
+                185.77786254882812,
+                -183.28717041015625,
+                5.8444294929504395
+              ],
+              [
+                171.65618896484375,
+                -186.411865234375,
+                10.388276100158691
+              ],
+              [
+                157.53451538085938,
+                -183.991943359375,
+                -15.36304759979248
+              ],
+              [
+                143.41287231445312,
+                -186.08139038085938,
+                -15.15627384185791
+              ],
+              [
+                129.29119873046875,
+                -188.75222778320312,
+                -10.525348663330078
+              ],
+              [
+                115.16952514648438,
+                -186.45098876953125,
+                -34.36311340332031
+              ],
+              [
+                101.04785919189453,
+                -188.41006469726562,
+                -33.464515686035156
+              ],
+              [
+                86.92619323730469,
+                -190.905029296875,
+                -28.42685317993164
+              ],
+              [
+                69.98019409179688,
+                -199.00869750976562,
+                11.3703031539917
+              ],
+              [
+                55.858524322509766,
+                -199.88058471679688,
+                11.370124816894531
+              ],
+              [
+                41.736854553222656,
+                -201.23138427734375,
+                15.255867004394531
+              ],
+              [
+                27.615188598632812,
+                -201.845947265625,
+                14.809290885925293
+              ],
+              [
+                13.493521690368652,
+                -197.93930053710938,
+                -13.368633270263672
+              ],
+              [
+                -0.6281458735466003,
+                -198.9659423828125,
+                -9.252618789672852
+              ],
+              [
+                -14.749813079833984,
+                -199.03195190429688,
+                -9.451786041259766
+              ],
+              [
+                -28.871479034423828,
+                -194.90020751953125,
+                -35.499671936035156
+              ],
+              [
+                -42.99314498901367,
+                -195.17901611328125,
+                -31.662120819091797
+              ],
+              [
+                -57.11481475830078,
+                -194.69241333007812,
+                -32.29016876220703
+              ],
+              [
+                -74.0608139038086,
+                -199.4207763671875,
+                6.453578948974609
+              ],
+              [
+                -88.18248748779297,
+                -199.20950317382812,
+                10.164835929870605
+              ],
+              [
+                -102.30415344238281,
+                -198.0897216796875,
+                9.719600677490234
+              ],
+              [
+                -116.42581176757812,
+                -193.4403076171875,
+                -16.328330993652344
+              ],
+              [
+                -130.5474853515625,
+                -192.67083740234375,
+                -12.598563194274902
+              ],
+              [
+                -144.66915893554688,
+                -191.7547607421875,
+                -13.233587265014648
+              ],
+              [
+                -158.79083251953125,
+                -188.52328491210938,
+                -39.45781326293945
+              ],
+              [
+                -172.9124755859375,
+                -189.22299194335938,
+                -35.235328674316406
+              ]
+            ],
+            "first_hits_on_glass": 32,
+            "min_seat_m": 0.909,
+            "max_seat_m": 1.101
+          },
+          "port": {
+            "samples": 32,
+            "world_samples": [
+              [
+                617.99267578125,
+                45.886348724365234,
+                0.5186575651168823
+              ],
+              [
+                499.37066650390625,
+                89.02737426757812,
+                -16.630596160888672
+              ],
+              [
+                380.7486572265625,
+                126.87979125976562,
+                5.6254777908325195
+              ],
+              [
+                270.59967041015625,
+                150.71011352539062,
+                -12.261852264404297
+              ],
+              [
+                214.02120971679688,
+                160.64642333984375,
+                -14.87768840789795
+              ],
+              [
+                199.8995361328125,
+                162.42840576171875,
+                -15.586630821228027
+              ],
+              [
+                185.77786254882812,
+                164.5389404296875,
+                -11.493452072143555
+              ],
+              [
+                171.65618896484375,
+                166.04336547851562,
+                -11.245936393737793
+              ],
+              [
+                157.53451538085938,
+                164.45187377929688,
+                -36.32929992675781
+              ],
+              [
+                143.41287231445312,
+                165.95645141601562,
+                -35.83338928222656
+              ],
+              [
+                129.29119873046875,
+                168.13882446289062,
+                -30.907716751098633
+              ],
+              [
+                112.3451919555664,
+                174.9429931640625,
+                8.113997459411621
+              ],
+              [
+                98.22352600097656,
+                177.00711059570312,
+                9.507745742797852
+              ],
+              [
+                84.10186004638672,
+                179.2755126953125,
+                14.99041748046875
+              ],
+              [
+                69.98019409179688,
+                180.38778686523438,
+                15.681052207946777
+              ],
+              [
+                55.858524322509766,
+                177.56808471679688,
+                -12.70647144317627
+              ],
+              [
+                41.736854553222656,
+                177.50717163085938,
+                -12.989381790161133
+              ],
+              [
+                27.615188598632812,
+                177.89593505859375,
+                -8.866934776306152
+              ],
+              [
+                13.493521690368652,
+                177.8331298828125,
+                -9.057883262634277
+              ],
+              [
+                -0.6281458735466003,
+                175.11111450195312,
+                -34.59507369995117
+              ],
+              [
+                -14.749813079833984,
+                175.04745483398438,
+                -35.0137939453125
+              ],
+              [
+                -28.871479034423828,
+                175.19979858398438,
+                -31.188919067382812
+              ],
+              [
+                -45.817481994628906,
+                178.31875610351562,
+                7.943353652954102
+              ],
+              [
+                -59.93914794921875,
+                177.4019775390625,
+                7.192786693572998
+              ],
+              [
+                -74.0608139038086,
+                176.85040283203125,
+                10.764328956604004
+              ],
+              [
+                -88.18248748779297,
+                176.11212158203125,
+                10.164835929870605
+              ],
+              [
+                -102.30415344238281,
+                173.33676147460938,
+                -15.832892417907715
+              ],
+              [
+                -116.42581176757812,
+                172.88619995117188,
+                -16.328332901000977
+              ],
+              [
+                -130.5474853515625,
+                172.7906494140625,
+                -12.598564147949219
+              ],
+              [
+                -144.66915893554688,
+                172.2760009765625,
+                -13.233587265014648
+              ],
+              [
+                -158.79083251953125,
+                169.59603881835938,
+                -39.45781326293945
+              ],
+              [
+                -172.9124755859375,
+                169.30029296875,
+                -35.235328674316406
+              ]
+            ],
+            "first_hits_on_glass": 32,
+            "min_seat_m": 0.827,
+            "max_seat_m": 0.912
+          }
+        }
+      },
+      "fit_record": {
+        "path": "Assets/ShipConcepts/armor-drives-r198/delta-tree/tempered/finish.json",
+        "sha256": "dda66846908bf1595aea7876c542cc9340e9f8cb11892dff6aec77b57462f05a"
+      },
+      "geometry": {
+        "racks": [
+          {
+            "port_band_gallery_xy": [
+              985.9999908343872,
+              250.99999585365134
+            ],
+            "sheet_side_elevation_y": 117.17,
+            "reference_side_y": 108
+          },
+          {
+            "port_band_gallery_xy": [
+              985.9998791012025,
+              324.9999063798121
+            ],
+            "sheet_side_elevation_y": 165.32,
+            "reference_side_y": 151
+          },
+          {
+            "port_band_gallery_xy": [
+              985.9998791012025,
+              395.99997643128137
+            ],
+            "sheet_side_elevation_y": 213.83,
+            "reference_side_y": 198
+          }
+        ],
+        "exits": [
+          {
+            "tier": 1,
+            "column": 1,
+            "exit_xyz_m": [
+              -635.95,
+              -126.30339050292969,
+              163.689697265625
+            ],
+            "radius_m": 36
+          },
+          {
+            "tier": 1,
+            "column": 2,
+            "exit_xyz_m": [
+              -637.3,
+              -31.835289001464844,
+              163.689697265625
+            ],
+            "radius_m": 36
+          },
+          {
+            "tier": 1,
+            "column": 3,
+            "exit_xyz_m": [
+              -638.65,
+              62.6328125,
+              163.689697265625
+            ],
+            "radius_m": 36
+          },
+          {
+            "tier": 1,
+            "column": 4,
+            "exit_xyz_m": [
+              -640.0,
+              157.10092163085938,
+              163.689697265625
+            ],
+            "radius_m": 36
+          },
+          {
+            "tier": 2,
+            "column": 1,
+            "exit_xyz_m": [
+              -633.1500000000001,
+              -126.30339050292969,
+              72.9151611328125
+            ],
+            "radius_m": 36
+          },
+          {
+            "tier": 2,
+            "column": 2,
+            "exit_xyz_m": [
+              -634.5,
+              -31.54224395751953,
+              72.9151611328125
+            ],
+            "radius_m": 36
+          },
+          {
+            "tier": 2,
+            "column": 3,
+            "exit_xyz_m": [
+              -635.85,
+              63.218902587890625,
+              72.9151611328125
+            ],
+            "radius_m": 36
+          },
+          {
+            "tier": 2,
+            "column": 4,
+            "exit_xyz_m": [
+              -637.2,
+              157.98007202148438,
+              72.9151611328125
+            ],
+            "radius_m": 36
+          },
+          {
+            "tier": 3,
+            "column": 1,
+            "exit_xyz_m": [
+              -635.95,
+              -126.30339050292969,
+              -18.52294921875
+            ],
+            "radius_m": 35
+          },
+          {
+            "tier": 3,
+            "column": 2,
+            "exit_xyz_m": [
+              -637.3,
+              -32.837730407714844,
+              -18.52294921875
+            ],
+            "radius_m": 35
+          },
+          {
+            "tier": 3,
+            "column": 3,
+            "exit_xyz_m": [
+              -638.65,
+              60.6279296875,
+              -18.52294921875
+            ],
+            "radius_m": 35
+          },
+          {
+            "tier": 3,
+            "column": 4,
+            "exit_xyz_m": [
+              -640.0,
+              154.09359741210938,
+              -18.52294921875
+            ],
+            "radius_m": 35
+          }
+        ],
+        "layout": [
+          3,
+          4
+        ],
+        "material_library": {
+          "path": "Assets/ShipConcepts/hull-review-r187/bronze-observatory/delta-tree/delta-tree.blend",
+          "sha256": "42e4dbd9df176cecb4b7ea5c84b4bd1b6dbf6cc4e27f9e7e01c6fc7959d1f9a7"
+        }
+      },
+      "lighting_record": {
+        "path": "Assets/ShipConcepts/armor-drives-r198/delta-tree/tempered/light/lighting.json",
+        "sha256": "93c730f333c426f6620d62ace8c1a272e253a18d839d156c8de7e12e6451bcdd"
+      },
+      "in_memory_recipe_replay": {
+        "native_meshes_with_identical_positions_faces_surface_slots_and_uvs": 123,
+        "close_camera_max_coordinate_error_px": 0.000592,
+        "original_camera_max_coordinate_error_px": 0.0001481
+      },
+      "appearance": {
+        "painting": {
+          "pale": {
+            "requested": 9,
+            "count": 9,
+            "missing_opaque_patch": [],
+            "rgb": [
+              75.97,
+              69.08,
+              61.6
+            ],
+            "level": 70.0,
+            "levels": [
+              91.55,
+              77.45,
+              75.45,
+              89.36,
+              65.11,
+              69.65,
+              30.84,
+              64.49,
+              66.1
+            ]
+          },
+          "dark": {
+            "requested": 9,
+            "count": 9,
+            "missing_opaque_patch": [],
+            "rgb": [
+              39.1,
+              39.49,
+              39.83
+            ],
+            "level": 39.43,
+            "levels": [
+              26.33,
+              57.57,
+              26.86,
+              39.58,
+              30.59,
+              23.96,
+              37.02,
+              61.27,
+              51.7
+            ]
+          },
+          "amber": {
+            "requested": 3,
+            "count": 3,
+            "missing_opaque_patch": [],
+            "rgb": [
+              120.49,
+              98.84,
+              74.32
+            ],
+            "level": 101.67,
+            "levels": [
+              126.12,
+              105.13,
+              73.77
+            ]
+          }
+        },
+        "previous": {
+          "pale": {
+            "requested": 9,
+            "count": 6,
+            "missing_opaque_patch": [
+              [
+                860,
+                430
+              ],
+              [
+                879,
+                426
+              ],
+              [
+                879,
+                440
+              ]
+            ],
+            "rgb": [
+              114.07,
+              120.87,
+              128.68
+            ],
+            "level": 119.99,
+            "levels": [
+              139.87,
+              123.8,
+              113.84,
+              121.42,
+              117.69,
+              103.29
+            ]
+          },
+          "dark": {
+            "requested": 9,
+            "count": 6,
+            "missing_opaque_patch": [
+              [
+                922,
+                405
+              ],
+              [
+                939,
+                394
+              ],
+              [
+                953,
+                389
+              ]
+            ],
+            "rgb": [
+              93.05,
+              99.82,
+              107.56
+            ],
+            "level": 98.94,
+            "levels": [
+              99.85,
+              119.22,
+              98.05,
+              75.31,
+              110.73,
+              90.48
+            ]
+          },
+          "amber": {
+            "requested": 3,
+            "count": 0,
+            "missing_opaque_patch": [
+              [
+                987,
+                249
+              ],
+              [
+                987,
+                326
+              ],
+              [
+                987,
+                399
+              ]
+            ],
+            "rgb": null,
+            "level": null,
+            "levels": []
+          }
+        },
+        "first": {
+          "pale": {
+            "requested": 9,
+            "count": 9,
+            "missing_opaque_patch": [],
+            "rgb": [
+              93.89,
+              88.83,
+              84.84
+            ],
+            "level": 89.62,
+            "levels": [
+              102.73,
+              108.27,
+              95.08,
+              64.0,
+              85.33,
+              63.33,
+              93.37,
+              102.62,
+              91.81
+            ]
+          },
+          "dark": {
+            "requested": 9,
+            "count": 9,
+            "missing_opaque_patch": [],
+            "rgb": [
+              51.58,
+              53.56,
+              56.05
+            ],
+            "level": 53.32,
+            "levels": [
+              52.62,
+              55.21,
+              41.46,
+              46.83,
+              45.26,
+              66.98,
+              61.41,
+              47.6,
+              62.47
+            ]
+          },
+          "amber": {
+            "requested": 3,
+            "count": 2,
+            "missing_opaque_patch": [
+              [
+                987,
+                399
+              ]
+            ],
+            "rgb": [
+              182.9,
+              148.58,
+              113.24
+            ],
+            "level": 153.32,
+            "levels": [
+              152.7,
+              153.95
+            ]
+          }
+        },
+        "selected": {
+          "pale": {
+            "requested": 9,
+            "count": 9,
+            "missing_opaque_patch": [],
+            "rgb": [
+              74.36,
+              67.14,
+              61.18
+            ],
+            "level": 68.24,
+            "levels": [
+              74.84,
+              83.44,
+              72.76,
+              46.39,
+              67.2,
+              45.83,
+              74.86,
+              78.32,
+              70.55
+            ]
+          },
+          "dark": {
+            "requested": 9,
+            "count": 9,
+            "missing_opaque_patch": [],
+            "rgb": [
+              38.7,
+              39.04,
+              40.02
+            ],
+            "level": 39.04,
+            "levels": [
+              41.23,
+              42.18,
+              30.08,
+              35.97,
+              31.11,
+              46.1,
+              44.73,
+              36.67,
+              43.3
+            ]
+          },
+          "amber": {
+            "requested": 3,
+            "count": 2,
+            "missing_opaque_patch": [
+              [
+                987,
+                399
+              ]
+            ],
+            "rgb": [
+              126.96,
+              92.4,
+              56.68
+            ],
+            "level": 97.17,
+            "levels": [
+              98.03,
+              96.31
+            ]
+          }
+        },
+        "intermediate": {
+          "pale": {
+            "requested": 9,
+            "count": 9,
+            "missing_opaque_patch": [],
+            "rgb": [
+              62.49,
+              55.76,
+              50.99
+            ],
+            "level": 56.85,
+            "levels": [
+              67.55,
+              67.4,
+              58.59,
+              35.87,
+              56.3,
+              41.68,
+              63.89,
+              62.93,
+              57.44
+            ]
+          },
+          "dark": {
+            "requested": 9,
+            "count": 9,
+            "missing_opaque_patch": [],
+            "rgb": [
+              35.22,
+              35.59,
+              36.44
+            ],
+            "level": 35.57,
+            "levels": [
+              38.34,
+              38.89,
+              27.47,
+              33.41,
+              27.66,
+              40.74,
+              40.87,
+              34.16,
+              38.61
+            ]
+          },
+          "amber": {
+            "requested": 3,
+            "count": 2,
+            "missing_opaque_patch": [
+              [
+                987,
+                399
+              ]
+            ],
+            "rgb": [
+              152.94,
+              116.36,
+              76.38
+            ],
+            "level": 121.25,
+            "levels": [
+              121.44,
+              121.06
+            ]
+          }
+        }
+      },
+      "exchange_finishes": {
+        "exported_rgb_channel_ratios_to_first_drive_study": {
+          "drive_ceramic": [
+            0.8,
+            0.751,
+            0.68
+          ],
+          "case": [
+            0.701,
+            0.671,
+            0.63
+          ],
+          "machined": [
+            0.72,
+            0.68,
+            0.64
+          ],
+          "pressure": [
+            0.78,
+            0.73,
+            0.669
+          ]
+        },
+        "amber_emission": [
+          0.16529999883174895,
+          0.07409999635219577,
+          0.018049999547004703
+        ]
+      },
+      "trials": {
+        "graded": {
+          "path": "Assets/ShipConcepts/armor-drives-r198/delta-tree/graded/detail.png",
+          "sha256": "bb46b78134d1e5d726891021a9c995e092626ff282f15b933ffaeec2b5ddeedb"
+        },
+        "sweep": {
+          "path": "Assets/ShipConcepts/armor-drives-r198/delta-tree/sweep/detail.png",
+          "sha256": "4405229c4d6aea142bcb955b8446c2efc47c25aca265c474eadb855afa2de986"
+        },
+        "tempered": {
+          "path": "Assets/ShipConcepts/armor-drives-r198/delta-tree/tempered/detail.png",
+          "sha256": "9fa5c46387e2a1254b3b537ce941ba0fb89fc87f7896e0510012dc60c13ea67f"
+        }
+      },
+      "receipts": [
+        {
+          "path": "Assets/ShipConcepts/armor-drives-r198/delta-tree/graded.ledger-record.json",
+          "sha256": "08a39d335f5d6738ad37c1a402c185b9b71af15bb08bcb2af6f1a3cbd340878f"
+        },
+        {
+          "path": "Assets/ShipConcepts/armor-drives-r198/delta-tree/sweep.ledger-record.json",
+          "sha256": "f64a4634e730f38c91811cb7370125c92ebb1382674880cda1cbb31d7a7fae89"
+        },
+        {
+          "path": "Assets/ShipConcepts/armor-drives-r198/delta-tree/tempered.ledger-record.json",
+          "sha256": "2391d0e3871f5087e49936c7bf8e60c54a4b804a239e7a53cbcb09bb4ce49148"
+        }
+      ],
+      "glb": {
+        "path": "Assets/ShipConcepts/armor-drives-r198/delta-tree/tempered/delta-tree.glb",
+        "sha256": "a7b3fc33ea776440e1669140f0f652ee37fc6480f9de158f872e680f0b6076a2"
+      },
+      "blend": {
+        "path": "Assets/ShipConcepts/armor-drives-r198/delta-tree/tempered/delta-tree.blend",
+        "sha256": "41925f81e1c11dcd82f853285bda0543f6c0dc50ddd199da846e49cccfb9ff35"
+      },
+      "gallery": {
+        "path": "Assets/ShipConcepts/armor-drives-r198/delta-tree/tempered/gallery.png",
+        "sha256": "9b191c5bab9a15b8c106e2dd9ce2d99e575c06fa47d30ffd0ed8cfc70b409c07"
+      },
+      "base_gallery": {
+        "path": "Assets/ShipConcepts/armor-drives-r198/delta-tree/tempered/before-gallery.png",
+        "sha256": "6b2b9058f639fa81e579c744c29dba199cdd60a66c80bee7eaa991f94aa01f47"
+      },
+      "board": {
+        "path": "Assets/ShipConcepts/armor-drives-r198/delta-tree/tempered/comparison.webp",
+        "sha256": "de25b538da191f4ff567680e800b6a0a947f8c20c73e02c7bf2c826d4ff95964"
+      },
+      "renders": [
+        {
+          "path": "Assets/ShipConcepts/armor-drives-r198/delta-tree/tempered/before-port.png",
+          "sha256": "3e2dd90191b7f195ab3375a24405de2792af8d8e9b1af019b934c27f07bb4dbd"
+        },
+        {
+          "path": "Assets/ShipConcepts/armor-drives-r198/delta-tree/tempered/port.png",
+          "sha256": "384ed9c66acf2667e848b4cb487386fd3d636a3357a3551bfb1a9e598410419c"
+        },
+        {
+          "path": "Assets/ShipConcepts/armor-drives-r198/delta-tree/tempered/before-top.png",
+          "sha256": "df3cf44954d2d2bcc11532d345dadaa9bc70814f1adfcf7785330100dd7b691e"
+        },
+        {
+          "path": "Assets/ShipConcepts/armor-drives-r198/delta-tree/tempered/top.png",
+          "sha256": "78e7e56024be13d4ee9a509987e0766166f8a970bdc367a7333e179ba802850d"
+        },
+        {
+          "path": "Assets/ShipConcepts/armor-drives-r198/delta-tree/tempered/before-detail.png",
+          "sha256": "523f9773022f51231ec01f7ca472f355d251effa673d4f662e48aa5658a5aa19"
+        },
+        {
+          "path": "Assets/ShipConcepts/armor-drives-r198/delta-tree/tempered/detail.png",
+          "sha256": "9fa5c46387e2a1254b3b537ce941ba0fb89fc87f7896e0510012dc60c13ea67f"
+        },
+        {
+          "path": "Assets/ShipConcepts/armor-drives-r198/delta-tree/tempered/light/turned-key.png",
+          "sha256": "cfd5ae6db5eb1661e22ebdbde3d05fca053a5ea0e9b8057b645d75076c163647"
+        },
+        {
+          "path": "Assets/ShipConcepts/armor-drives-r198/delta-tree/tempered/light/emitters-only.png",
+          "sha256": "13231c852fbe27a414c8de056caead3a0b80ffeafda7ccdb3e855f0dd6a8d6fc"
+        },
+        {
+          "path": "Assets/ShipConcepts/armor-drives-r198/delta-tree/tempered/before-stern.png",
+          "sha256": "365052fbfcec8551867cbf17945f8a3a2747c31db84e34df3c84debd1a6f2a2e"
+        },
+        {
+          "path": "Assets/ShipConcepts/armor-drives-r198/delta-tree/tempered/stern.png",
+          "sha256": "f9f61463e31b7afbb78ca0f6cf4521013c7a0ad02b7e3b00d877f38e77604092"
+        }
+      ],
+      "detail_box_painting_px": [
+        712,
+        196,
+        1007,
+        456
+      ],
+      "detail_raster_px": [
+        1180,
+        1040
+      ],
+      "sample_locations": {
+        "pale": [
+          [
+            840,
+            278
+          ],
+          [
+            856,
+            281
+          ],
+          [
+            861,
+            290
+          ],
+          [
+            843,
+            360
+          ],
+          [
+            863,
+            366
+          ],
+          [
+            876,
+            356
+          ],
+          [
+            860,
+            430
+          ],
+          [
+            879,
+            426
+          ],
+          [
+            879,
+            440
+          ]
+        ],
+        "dark": [
+          [
+            903,
+            269
+          ],
+          [
+            923,
+            255
+          ],
+          [
+            938,
+            265
+          ],
+          [
+            913,
+            335
+          ],
+          [
+            932,
+            342
+          ],
+          [
+            951,
+            326
+          ],
+          [
+            922,
+            405
+          ],
+          [
+            939,
+            394
+          ],
+          [
+            953,
+            389
+          ]
+        ],
+        "amber": [
+          [
+            987,
+            249
+          ],
+          [
+            987,
+            326
+          ],
+          [
+            987,
+            399
+          ]
+        ]
+      },
+      "rim_control_marks": [
+        [
+          986,
+          251
+        ],
+        [
+          986,
+          325
+        ],
+        [
+          986,
+          396
+        ]
+      ],
+      "donor": {
+        "path": "Assets/ShipConcepts/hull-review-r187/bronze-observatory/delta-tree/delta-tree.blend",
+        "sha256": "42e4dbd9df176cecb4b7ea5c84b4bd1b6dbf6cc4e27f9e7e01c6fc7959d1f9a7"
+      },
+      "limit": "The plan shows four columns and the stern drawing two. Retained three rows of four. Side centers sit 9 to 16 grid pixels below the elevation marks. Two of nine pale painting marks hit dark fittings. The outboard amber points were fitting targets."
+    }
+  },
+  "registration": "Both painting cameras, review cameras and exposures are inherited from round 193. Paintings are 1024 square. Gallery renders add 64 pixels per side. The 3504 × 2336 sheet traces use a 1440 × 960 grid. Orthographic checks use independent length calibration in each view.",
+  "lighting": "Local Blender 5.2.0 LTS, Cycles, 24 samples. Main studio, key rotated 65 degrees, and emitters-only control. The original lighting and exposure are unknown.",
+  "appearance_method": "Means from opaque five-by-five display-referred RGB patches in each fixed gallery. Brightness uses Rec.709 weights on the 8-bit display values. The record identifies marks touching transparent background in each revision. Original and selected counts match for Glacier and Delta’s two main finishes. Only two of three revised amber patches are fully opaque. These patch averages describe marked finishes under this studio.",
+  "scope": "Rotatable local exterior review. The Windows duel uses round 172.",
+  "record_note": "The first Delta run rendered and saved both model formats, then its measurement writer failed to serialize a numeric scalar. The two revised Delta runs wrote complete fit records.",
+  "asset_ledger": {
+    "expected_local_blender_jobs": 7,
+    "captured": {
+      "aquila-r198-glacier-tongue-refit": "req_b1357f33440e84078ce2a860",
+      "aquila-r198-glacier-tongue-folded": "req_ac7c51f71e8e2eeb24178f06",
+      "aquila-r198-delta-tree-tempered": "req_6a30b0664f3a7550291aab8b",
+      "aquila-r198-delta-tree-graded": "req_861d5a3ff81656a5b365b2b4",
+      "aquila-r198-glacier-tongue-graded": "req_5b4167b5a38338d97c4757e0",
+      "aquila-r198-delta-tree-sweep": "req_fa6e5c73be5a372a082a5148",
+      "aquila-r198-glacier-tongue-sweep": "req_dc65c2c4d7ce66eb8c89cc97"
+    },
+    "provider_credits": 0
+  },
+  "asset_pipeline": [
+    {
+      "path": "knowledge/asset-turnaround-sheets.md",
+      "sha256": "676c220e123732474e73c25dd07db47cae64f85820a951c547616be04cc4b0a9"
+    },
+    {
+      "path": "Tools/asset-pipeline/experimental/blender_reference_modeling/detail_frame.py",
+      "sha256": "eda711b2ef4a6748fc2a7671f2682f03b6f7225311d541de790cb57edab09e4f"
+    },
+    {
+      "path": "Tools/asset-pipeline/experimental/blender_reference_modeling/review_view.py",
+      "sha256": "4a19242cacaaecd0ec8295bc2dd2fa27a453ba9af4fb5e5e5ab2158d2e7b9163"
+    },
+    {
+      "path": "Tools/asset-pipeline/experimental/blender_reference_modeling/packed_color_grade.py",
+      "sha256": "f8ed4754b1644565f5dc3876b10e961128561787806f5fbf9b6f30b316f492ae"
+    },
+    {
+      "path": "Tools/asset-pipeline/experimental/aquila_research_battleships/turnaround/feature_finish_maps.py",
+      "sha256": "bfde8b8cebc3c66dd67900436e699a4c13639a3e29b9397078c95f79ceff799c"
+    },
+    {
+      "path": "Tools/asset-pipeline/experimental/blender_reference_modeling/registered_finish.py",
+      "sha256": "862d3435de32b8714ebc1497e8c58d4f31ab56ba4e883578645fd2115d468054"
+    },
+    {
+      "path": "Tools/asset-pipeline/experimental/blender_reference_modeling/layer_registration.py",
+      "sha256": "e217ae2134860fbff7b79445af75e069410a88074a5cdfadec1d573ee37dbc8f"
+    },
+    {
+      "path": "Tools/asset-pipeline/experimental/blender_reference_modeling/turnaround_sections.py",
+      "sha256": "c30e55a68d48b7788bab65927bcb51f34f49fddc2f34d22ef9f7017f421612d7"
+    },
+    {
+      "path": "Tools/asset-pipeline/experimental/blender_reference_modeling/region_luminance.py",
+      "sha256": "42a32d75a356d75c87aba567fc310dff2e85e2812d0cecb392b121d699662bfe"
+    },
+    {
+      "path": "Tools/asset-pipeline/experimental/blender_reference_modeling/registered_color_patches.py",
+      "sha256": "aa79c9caa42b8cef83a41bf619a0c883d9e58e410e6091aa979d815bfd4a3905"
+    },
+    {
+      "path": "Tools/asset-pipeline/experimental/aquila_research_battleships/turnaround/feature_finishes.py",
+      "sha256": "7583aab46a43b494274c56bae8d9b56b401d5dab35b82639497aa510cb798e65"
+    },
+    {
+      "path": "Tools/asset-pipeline/experimental/aquila_research_battleships/turnaround/turnaround_blockout.py",
+      "sha256": "8807b7a5c196bf89fcfe82e2b13d6451deed652e293f451e92ea29ef6f12d9f0"
+    },
+    {
+      "path": "Tools/asset-pipeline/experimental/aquila_research_battleships/turnaround/turnaround_parts.py",
+      "sha256": "af6669b3eb36762fb413e3aeaa33cee4c8945cd74267fdd18a46de2729529185"
+    },
+    {
+      "path": "Tools/asset-pipeline/experimental/aquila_research_battleships/turnaround/turnaround_traces.json",
+      "sha256": "b4501951c9ce0fe59ca4a7dea3dfaf8a8a69f4d7c9623f5295c0d2a7f082219a"
+    },
+    {
+      "path": "Tools/asset-pipeline/experimental/aquila_research_battleships/turnaround/bay_drive_landmarks.json",
+      "sha256": "390c6d8a2a5c8d934099f1c5f91108c49b1debaca756d62717c9c526f904c30c"
+    },
+    {
+      "path": "Tools/asset-pipeline/experimental/aquila_research_battleships/turnaround/bay_armor_maps.py",
+      "sha256": "6ee4b03c5b4466e316ca52260bedf06236b0f9033d670283cdb186f180c00ecb"
+    },
+    {
+      "path": "Tools/asset-pipeline/experimental/aquila_research_battleships/turnaround/glacier_bay_armor.py",
+      "sha256": "d529c388978919662f28eeb3728d73d273136e289989d0141311d059b6b5e5b0"
+    },
+    {
+      "path": "Tools/asset-pipeline/experimental/aquila_research_battleships/turnaround/delta_drive_housings.py",
+      "sha256": "047e24e27dd771de89f24e1724145ff9e1a5a0d817b4c07bb8a4d907bd3a3bab"
+    },
+    {
+      "path": "Tools/asset-pipeline/experimental/aquila_research_battleships/turnaround/bay_drive_checks.py",
+      "sha256": "74f7788c47502c2204fed1924a425386bff8043e33fc4cb05c53427ff7174add"
+    },
+    {
+      "path": "Tools/asset-pipeline/experimental/aquila_research_battleships/turnaround/delta_bow.py",
+      "sha256": "10f57e04af23a099844358a1b2604541601d889ecc4088c9e2142201c85cb218"
+    },
+    {
+      "path": "Tools/asset-pipeline/experimental/aquila_research_battleships/reference_hulls/drive_banks.py",
+      "sha256": "2cfdec9d522f1b4661487139de4c168e1dbfb77940c58ed9bc99c0cff608e68d"
+    }
+  ],
+  "viewer": {
+    "method": "Isolated headless Chrome with WebGL",
+    "ships": {
+      "delta-tree": {
+        "original_loaded": true,
+        "native_and_uniform_clay": true,
+        "stern_and_reset": true,
+        "drag_rotates": true,
+        "downloaded_model_matches": true,
+        "download_sha256": "a7b3fc33ea776440e1669140f0f652ee37fc6480f9de158f872e680f0b6076a2",
+        "model_view_pixel_differences": {
+          "gray": 22.83,
+          "stern": 18.52,
+          "drag": 14.22,
+          "reset": 0.0
+        },
+        "switches_between_revisions": true,
+        "previous_to_current_pixel_difference": 9.69
+      },
+      "glacier-tongue": {
+        "original_loaded": true,
+        "native_and_uniform_clay": true,
+        "stern_and_reset": true,
+        "drag_rotates": true,
+        "downloaded_model_matches": true,
+        "download_sha256": "f1fc15fc5eba8ca5175536000a1d4e67731efeb865072c864f85904b3ae7fe01",
+        "model_view_pixel_differences": {
+          "gray": 12.1,
+          "stern": 27.12,
+          "drag": 14.41,
+          "reset": 0.0
+        },
+        "switches_between_revisions": true,
+        "previous_to_current_pixel_difference": 1.99
+      }
+    }
+  },
+  "delivery": {
+    "served_local_report_round": 198,
+    "http_artifacts_matching_sha256": 10,
+    "verified_files": [
+      "r198-glacier-tongue-comparison.webp",
+      "r198-glacier-tongue.blend",
+      "r198-glacier-tongue.glb",
+      "r198-glacier-tongue-gallery.png",
+      "r198-glacier-tongue-earlier-gallery.png",
+      "r198-delta-tree-comparison.webp",
+      "r198-delta-tree.blend",
+      "r198-delta-tree.glb",
+      "r198-delta-tree-gallery.png",
+      "r198-delta-tree-earlier-gallery.png"
+    ],
+    "served_gallery_cameras_match": true,
+    "asset_pipeline_source_hashes_and_guide_links_verified": true,
+    "viewer": "Both models rotate, reset, switch revision and download in isolated headless Chrome.",
+    "paseo_workspace": "The existing workspace report tab displayed round 198, both ship summaries and the comparison thread."
+  }
+}

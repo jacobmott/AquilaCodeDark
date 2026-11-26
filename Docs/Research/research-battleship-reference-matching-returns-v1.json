@@ -1,0 +1,135 @@
+{
+  "round": 183,
+  "local_date": "2026-11-25",
+  "checked_utc": "2026-11-26T01:17:06.766447+00:00",
+  "project": "aquila-code-dark",
+  "source": "Eight files supplied by the owner from a Perplexity export.",
+  "reports": [
+    {
+      "topic": "camera",
+      "title": "Matching a Blender camera to screenshots and conflicting concept views",
+      "id": "629f66eb205049889648cc8466ffd508",
+      "project": "aquila-code-dark",
+      "key": "research-battleship-camera-registration-v1:run-1",
+      "url": "http://127.0.0.1:8776/?project=aquila-code-dark#629f66eb205049889648cc8466ffd508",
+      "version": 1,
+      "state": "returned",
+      "reviewed_version": null,
+      "filename": "blender-camera-registration-report.md",
+      "source_zip": "Blender Camera Registration Report.zip",
+      "bytes": 38641,
+      "sha256": "ff76d138c71d161cd6405e462eeffe037f2d1e79e71b9190ea7e7f4057569c01",
+      "created": "2026-11-26T01:17:04.638596+00:00",
+      "request_id": "aquila-ship-art-import-camera-ff76d138c71d161cd6405e462eeffe037f2d1e79e71b9190ea7e7f4057569c01",
+      "original_archive": "Assets/Research/research-battleship-camera-registration/result-v0001.md",
+      "routing": "Confirmed from declared project and request key",
+      "format_warnings": [
+        "No Sources, References or Citations heading found."
+      ],
+      "source_links_found": true,
+      "exact_readback": true
+    },
+    {
+      "topic": "geometry",
+      "title": "Rebuilding editable hard-surface hulls from silhouettes, sections and openings",
+      "id": "d7914814e5f9481195e703c94518e404",
+      "project": "aquila-code-dark",
+      "key": "research-battleship-hull-reconstruction-v1:run-1",
+      "url": "http://127.0.0.1:8776/?project=aquila-code-dark#d7914814e5f9481195e703c94518e404",
+      "version": 1,
+      "state": "returned",
+      "reviewed_version": null,
+      "filename": "Rebuilding Editable Hard-Surface Hulls from Silhouettes, Sections and Openings.md",
+      "source_zip": null,
+      "bytes": 36189,
+      "sha256": "9595750f3ae0e38264cb30216c813740913e927b7afed6e979e115387804e901",
+      "created": "2026-11-26T01:17:05.424304+00:00",
+      "request_id": "aquila-ship-art-import-geometry-9595750f3ae0e38264cb30216c813740913e927b7afed6e979e115387804e901",
+      "original_archive": "Assets/Research/research-battleship-hull-reconstruction/result-v0001.md",
+      "routing": "Confirmed from declared project and request key",
+      "format_warnings": [
+        "No Sources, References or Citations heading found."
+      ],
+      "source_links_found": true,
+      "exact_readback": true
+    },
+    {
+      "topic": "materials",
+      "title": "Matching painted spacecraft materials in Blender",
+      "id": "3e598ae1e05e4d48aa38438c52ebc298",
+      "project": "aquila-code-dark",
+      "key": "research-battleship-material-matching-v1:run-1",
+      "url": "http://127.0.0.1:8776/?project=aquila-code-dark#3e598ae1e05e4d48aa38438c52ebc298",
+      "version": 1,
+      "state": "returned",
+      "reviewed_version": null,
+      "filename": "Matching painted spacecraft materials in Blender.md",
+      "source_zip": null,
+      "bytes": 31610,
+      "sha256": "ae850009403aa6b073422d434ee28b2acd445e9e03aedf262f0955bd9d2907ff",
+      "created": "2026-11-26T01:17:06.147487+00:00",
+      "request_id": "aquila-ship-art-import-materials-ae850009403aa6b073422d434ee28b2acd445e9e03aedf262f0955bd9d2907ff",
+      "original_archive": "Assets/Research/research-battleship-material-matching/result-v0001.md",
+      "routing": "Confirmed from declared project and request key",
+      "format_warnings": [
+        "No Sources, References or Citations heading found."
+      ],
+      "source_links_found": true,
+      "exact_readback": true
+    }
+  ],
+  "camera_companions": [
+    {
+      "role": "Original report ZIP with three figures",
+      "source_filename": "Blender Camera Registration Report.zip",
+      "archive": "Assets/Research/research-battleship-camera-registration/attachments/Blender Camera Registration Report.zip",
+      "bytes": 269045,
+      "sha256": "e3936520ca3d1e7170cdebc407a9c0fbaf34fce9fffbbcb0e77b54905614c0f5"
+    },
+    {
+      "role": "Pilot scripts and supplied outputs, using the name cited in the report",
+      "source_filename": "Camera Registration Pilot Scripts.zip",
+      "archive": "Assets/Research/research-battleship-camera-registration/camreg-scripts.zip",
+      "bytes": 31221,
+      "sha256": "3e10a86d5ac20bd963ac3b34eeedcee827a2ff44d4415cce4da49bc84a5931c2"
+    },
+    {
+      "role": "Conversation export summarizing the attached report",
+      "source_filename": "[Deep Research](https___www.perplexity.ai_computer (4).md",
+      "archive": "Assets/Research/research-battleship-camera-registration/attachments/perplexity-camera-export.md",
+      "bytes": 33043,
+      "sha256": "efc73b8dad194a99b24b99714cc401090ea7d0c42ca08ed9c905fc2d57684090"
+    },
+    {
+      "role": "Camera figure, identical to the ZIP member and adjacent to the local report",
+      "source_filename": "fig1-focal-ambiguity.png",
+      "archive": "Assets/Research/research-battleship-camera-registration/fig1-focal-ambiguity.png",
+      "bytes": 129463,
+      "sha256": "d916f7aa535b7fb83ecd83507c329d188f88f401d7cbe4d70189c3f4fad2066b"
+    },
+    {
+      "role": "Camera figure, identical to the ZIP member and adjacent to the local report",
+      "source_filename": "fig2-benchmark-by-fov.png",
+      "archive": "Assets/Research/research-battleship-camera-registration/fig2-benchmark-by-fov.png",
+      "bytes": 51604,
+      "sha256": "a85570f0f57cfce276fabdbe30a7ab76c45aa8cdaf050c9243edffa59f89f81c"
+    },
+    {
+      "role": "Camera figure, identical to the ZIP member and adjacent to the local report",
+      "source_filename": "fig3-diagnostic-residuals.png",
+      "archive": "Assets/Research/research-battleship-camera-registration/fig3-diagnostic-residuals.png",
+      "bytes": 107698,
+      "sha256": "871578b2e2040658839abdc4c11d3256b73aa89a654de60290439a473a86e248"
+    }
+  ],
+  "pilot_zip": {
+    "files": 20,
+    "python_files": 12,
+    "json_files": 7,
+    "text_files": 1,
+    "crc_checked": true,
+    "provider_note": "The private camera truth is omitted by design to keep the benchmark blind."
+  },
+  "completeness": "Three research requests, three full Markdown reports. The separate camera conversation names the attached full report, three figures and scripts. Both ZIPs passed CRC checks. The three loose figures match the report ZIP byte for byte.",
+  "disposition": "Imported and verified by exact readback. All three await technical review. No experiments were run."
+}

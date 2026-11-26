@@ -1,0 +1,620 @@
+{
+  "round": 186,
+  "comparison_round": 185,
+  "local_date": "2026-11-25",
+  "scope": "Local Blender exterior review, compared against the original illustrations. Windows uses round 172.",
+  "owner_direction": "Chat allows substantial local geometry changes when they improve likeness. Continue until the comparisons support replacement in a separate owner decision.",
+  "research": "Docs/Research/research-battleship-reference-matching-review-v1.md",
+  "last_actual_inbox": {
+    "path": "reports/game-direction/inbox/20261126T015539Z.json",
+    "sha256": "841012451defae3f2e4377f836bc5136a57e7c89cf5fdd3c52fe767e487f993f"
+  },
+  "ships": {
+    "delta-tree": {
+      "name": "Delta Tree",
+      "original": {
+        "path": "Assets/ShipConcepts/sunburst-r144/58-delta-tree.png",
+        "sha256": "6628ed15b22fbf2990729eb8417b9babcb66cc8ebcb5635dad57c8776efeeac3"
+      },
+      "port_drawing": {
+        "path": "Assets/ShipConcepts/modeling-references-r150/delta-tree/01-port.png",
+        "sha256": "df50389db222ce4f72ef84666517a1cce1bd0f95eaf5f2d837024cde9553a46c"
+      },
+      "dorsal": {
+        "path": "Assets/ShipConcepts/modeling-references-r150/delta-tree/25-dorsal-recheck.png",
+        "sha256": "825853919e11ffe31a48fe08d2fe2347530b3f1dd0b149635d9654398507d900"
+      },
+      "blend": {
+        "path": "Assets/ShipConcepts/hull-review-r186/rooted-fan/delta-tree/delta-tree.blend",
+        "sha256": "d0963f783147ee3b21264c5b640544ee0bfee00e6019f845b6f2f7b1120362b7"
+      },
+      "glb": {
+        "path": "Assets/ShipConcepts/hull-review-r186/rooted-fan/delta-tree/delta-tree.glb",
+        "sha256": "2c5522ba46f3eace8203c90f20e2dee6aae0c201bcb6d3bee439c8af843729bd"
+      },
+      "gallery": {
+        "path": "Assets/ShipConcepts/hull-review-r186/rooted-fan/renders/delta-tree-gallery.png",
+        "sha256": "ef745105eb0b616d80fb766c3ffc761b4300f5a0221d352980d85a7f9c384438"
+      },
+      "whole": {
+        "path": "Assets/ShipConcepts/hull-review-r186/rooted-fan/sheets/delta-tree-whole.png",
+        "sha256": "a67f1d62b25fcb6de394ec712e609c3de2e746efa70712cb481242137f3d69cb"
+      },
+      "detail": {
+        "path": "Assets/ShipConcepts/hull-review-r186/rooted-fan/sheets/delta-tree-detail.png",
+        "sha256": "c88a7c74c7e5dfebe4050c94eca6ab7745652192586383af173e4ec5910b59bb"
+      },
+      "side": {
+        "path": "Assets/ShipConcepts/hull-review-r186/rooted-fan/sheets/delta-tree-port.png",
+        "sha256": "56e8ebf50d51047d89285825539ae56ad904ba025dcf5500e361e8e112c0f70b"
+      },
+      "side_raw": {
+        "path": "Assets/ShipConcepts/hull-review-r186/rooted-fan/elevations/delta-tree.png",
+        "sha256": "ebd94e0f53beccdfdfad6c923f92c929ed5d1fdef58c58d936ab64e3aac4fd03"
+      },
+      "side_registration": {
+        "path": "Assets/ShipConcepts/hull-review-r185/elevations/delta-tree-alignment.json",
+        "sha256": "5bf9b25603075425a8c4a2bd312ca778de83c28dfa989e4f4bf68e7ce538050c"
+      },
+      "previous_glb": {
+        "path": "Assets/ShipConcepts/hull-review-r185/bronze-floor/delta-tree/delta-tree.glb",
+        "sha256": "35b33e7c19ac2bca3d55c208c22d52c9506051e99d8bc8426eabc49b59663ee9"
+      },
+      "previous_gallery": {
+        "path": "Assets/ShipConcepts/hull-review-r185/bronze-floor/renders/delta-tree-gallery.png",
+        "sha256": "130286ee296f6bbc234646e3cc7b12571429b5cc1c21dec32f56988235280519"
+      },
+      "geometry_check": {
+        "path": "Assets/ShipConcepts/hull-review-r186/rooted-fan/delta-tree/geometry-check.json",
+        "sha256": "d0a9c07afbd5d2b8127dfaa4b66f02c55298096553bb20fae2d5ac8b571c0b8f"
+      },
+      "manifest": {
+        "path": "Assets/ShipConcepts/hull-review-r186/rooted-fan/delta-tree/model-review.json",
+        "sha256": "e9314eeae9973ad0f76201bc0d8092630dbe44b07db05fd5a2aacf430009af5e"
+      },
+      "native_m": [
+        1280.0,
+        688.51123046875,
+        422.30076599121094
+      ],
+      "glb_m": [
+        1280.0,
+        688.51123046875,
+        422.30076599121094
+      ],
+      "native_packed_images": 23,
+      "glb_embedded_images": 22,
+      "triangles": 156059,
+      "arrival_sightlines": {
+        "inside": {
+          "room_hits": 16,
+          "samples": 16,
+          "native_and_glb_agree": true
+        },
+        "surround": {
+          "room_hits": 0,
+          "samples": 8,
+          "native_and_glb_agree": true
+        }
+      },
+      "station_fit": {
+        "gallery_centers": {
+          "current": [
+            [
+              73.81541110501283,
+              633.9924418610995
+            ],
+            [
+              116.58042159636605,
+              569.3835518713672
+            ],
+            [
+              159.3023310117418,
+              524.8537323139135
+            ],
+            [
+              104.00004713743728,
+              479.999835891885
+            ],
+            [
+              187.0000377535956,
+              442.00008161759973
+            ],
+            [
+              180.00000960207055,
+              405.00031490426846
+            ],
+            [
+              279.0000944931034,
+              376.00057437840235
+            ],
+            [
+              327.99995635422476,
+              351.00079107967645
+            ],
+            [
+              335.70007670745,
+              613.7633722471791
+            ],
+            [
+              424.0002915537787,
+              567.0145813988253
+            ],
+            [
+              523.0003371636138,
+              522.0167813641269
+            ],
+            [
+              582.000379281787,
+              487.0155450975428
+            ],
+            [
+              641.3741505713778,
+              452.2110840628543
+            ]
+          ],
+          "prior": [
+            [
+              64.33080005979471,
+              631.714244126097
+            ],
+            [
+              81.90087127878849,
+              592.6054576859665
+            ],
+            [
+              130.83860948924624,
+              535.8095245993045
+            ],
+            [
+              192.31174955181245,
+              486.84473299151415
+            ],
+            [
+              261.7567171393686,
+              433.6242408635753
+            ],
+            [
+              322.4605183590498,
+              384.5744063356207
+            ],
+            [
+              397.0570980578721,
+              353.80034982088864
+            ],
+            [
+              235.65092894576904,
+              655.5740416751685
+            ],
+            [
+              328.8055805488238,
+              625.1464488160537
+            ],
+            [
+              423.5325624761994,
+              592.9778434404219
+            ],
+            [
+              517.7843396776104,
+              551.7296283889581
+            ]
+          ]
+        },
+        "paint": [
+          [
+            74,
+            635
+          ],
+          [
+            116,
+            571
+          ],
+          [
+            159,
+            525
+          ],
+          [
+            104,
+            480
+          ],
+          [
+            187,
+            442
+          ],
+          [
+            180,
+            405
+          ],
+          [
+            279,
+            376
+          ],
+          [
+            328,
+            351
+          ],
+          [
+            335,
+            614
+          ],
+          [
+            424,
+            567
+          ],
+          [
+            523,
+            522
+          ],
+          [
+            582,
+            487
+          ],
+          [
+            648,
+            452
+          ]
+        ],
+        "prior_positions_in_current_order": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          8,
+          9,
+          10,
+          11
+        ],
+        "prior_mean_shared_px": 85.56,
+        "current_mean_shared_px": 0.35,
+        "current_mean_all_px": 0.81,
+        "current_max_px": 6.63,
+        "method": "Native base-drum bounds projected at the fixed camera. Marks guided placement. Prior model lacked the last far and last near station."
+      },
+      "exhaust_samples_clear": 108,
+      "walkway_contacts": [
+        {
+          "ship": 49,
+          "platform": 48
+        },
+        {
+          "ship": 44,
+          "platform": 40
+        },
+        {
+          "ship": 42,
+          "platform": 38
+        },
+        {
+          "ship": 52,
+          "platform": 22
+        },
+        {
+          "ship": 45,
+          "platform": 22
+        },
+        {
+          "ship": 51,
+          "platform": 24
+        },
+        {
+          "ship": 36,
+          "platform": 22
+        },
+        {
+          "ship": 37,
+          "platform": 26
+        },
+        {
+          "ship": 50,
+          "platform": 42
+        },
+        {
+          "ship": 76,
+          "platform": 44
+        },
+        {
+          "ship": 37,
+          "platform": 44
+        },
+        {
+          "ship": 31,
+          "platform": 42
+        },
+        {
+          "ship": 52,
+          "platform": 42
+        }
+      ],
+      "deck_surface": {
+        "mapped_material": "Delta · weathered branch dorsal",
+        "base_color_uv": 0,
+        "roughness_metal_normal_uv": 1,
+        "tiled_detail_m": 49.28,
+        "painted_mesh_faces": 2880,
+        "upside_down_painted_faces": 0,
+        "courtyard_depths_m": [
+          11.71,
+          13.81,
+          13.77,
+          13.78,
+          13.79,
+          13.85,
+          13.79,
+          13.87,
+          13.85,
+          13.85,
+          13.82
+        ]
+      },
+      "stern_reserved_mean_edge_gap_m": {
+        "current": 1.97,
+        "prior": 1.97
+      }
+    },
+    "glacier-tongue": {
+      "name": "Glacier Tongue",
+      "original": {
+        "path": "Assets/ShipConcepts/sunburst-r144/41-glacier-tongue.png",
+        "sha256": "827baa1d6127c91fd36b21e0998ad7b013ddd7c8e7b109059bad03c61e86f0d1"
+      },
+      "port_drawing": {
+        "path": "Assets/ShipConcepts/modeling-references-r150/glacier-tongue/01-port.png",
+        "sha256": "05840ff53ba448fb8962837529acd7574bb217acc846a1e69330fa350aae7cef"
+      },
+      "dorsal": {
+        "path": "Assets/ShipConcepts/modeling-references-r150/glacier-tongue/25-dorsal-recheck.png",
+        "sha256": "b64e66136ea09a60f0d7aa5c85f03cc63e3c595e38b6102230dd48141df6875c"
+      },
+      "blend": {
+        "path": "Assets/ShipConcepts/hull-review-r186/pressure-spine/glacier-tongue/glacier-tongue.blend",
+        "sha256": "d3629bacc81ecf9fd28bca5d7fe98e1db4ba34f3c40e89210600fd5eb921bc2f"
+      },
+      "glb": {
+        "path": "Assets/ShipConcepts/hull-review-r186/pressure-spine/glacier-tongue/glacier-tongue.glb",
+        "sha256": "3fdd02304692cd399c7e8228fb4d4842edee36ed0c799990a120a0470b896d23"
+      },
+      "gallery": {
+        "path": "Assets/ShipConcepts/hull-review-r186/pressure-spine/renders/glacier-tongue-gallery.png",
+        "sha256": "18eb08a87eb2568ae9f8565f23a8c8923f536a0194886be82f9f3338392e96b5"
+      },
+      "whole": {
+        "path": "Assets/ShipConcepts/hull-review-r186/pressure-spine/sheets/glacier-tongue-whole.png",
+        "sha256": "eb527b2b40f7c4df2a1f7ff19848d2bf1a7b898d9c8f1b936cb41d01968a63b4"
+      },
+      "detail": {
+        "path": "Assets/ShipConcepts/hull-review-r186/pressure-spine/sheets/glacier-tongue-detail.png",
+        "sha256": "8f5b8d3c266293c2ba2047fde09ab02ad7016e5c338f7e9f53e5399979b2054a"
+      },
+      "side": {
+        "path": "Assets/ShipConcepts/hull-review-r186/pressure-spine/sheets/glacier-tongue-port.png",
+        "sha256": "636903015c3696b148e4c7c0a7baf2e3a670c3b6e306f17761e642ab108e45c5"
+      },
+      "side_raw": {
+        "path": "Assets/ShipConcepts/hull-review-r186/pressure-spine/elevations/glacier-tongue.png",
+        "sha256": "e8db23cf026f48c7738286e0ff85eee42845f9cf27d2e4f2c645f5d95e4ad1cc"
+      },
+      "side_registration": {
+        "path": "Assets/ShipConcepts/hull-review-r185/elevations/glacier-tongue-alignment.json",
+        "sha256": "f5c53137739fbbe69fb3e37e3b57361233bee3d28e8464d997d7873ae9ebf55a"
+      },
+      "previous_glb": {
+        "path": "Assets/ShipConcepts/hull-review-r185/split-landing/glacier-tongue/glacier-tongue.glb",
+        "sha256": "cda78937b7fccdc1c140a2b511865e3d500fe2464cb9bb125325c595cbd57dea"
+      },
+      "previous_gallery": {
+        "path": "Assets/ShipConcepts/hull-review-r185/split-landing/renders/glacier-tongue-gallery.png",
+        "sha256": "69a1b36ef349973bcb7f029cba8ae4ac98e8a51f9594598cbc2933b7d0a778c8"
+      },
+      "geometry_check": {
+        "path": "Assets/ShipConcepts/hull-review-r186/pressure-spine/glacier-tongue/geometry-check.json",
+        "sha256": "99738ce5df20b2b75b9b86fc16cd6d4f8cd1ed88e8a9e4e77e7fde1d27f7efc2"
+      },
+      "manifest": {
+        "path": "Assets/ShipConcepts/hull-review-r186/pressure-spine/glacier-tongue/model-review.json",
+        "sha256": "92890a30ec495db561aba4cfb9571b825ff6b50603478a8fcfcec18973d33a2c"
+      },
+      "native_m": [
+        1280.0,
+        647.7870635986328,
+        397.8047561645508
+      ],
+      "glb_m": [
+        1280.0,
+        647.7870635986328,
+        397.8047561645508
+      ],
+      "native_packed_images": 38,
+      "glb_embedded_images": 38,
+      "triangles": 125392,
+      "arrival_sightlines": {
+        "inside": {
+          "room_hits": 13,
+          "samples": 16,
+          "native_and_glb_agree": true
+        },
+        "surround": {
+          "room_hits": 0,
+          "samples": 8,
+          "native_and_glb_agree": true
+        }
+      },
+      "blade_fit": {
+        "gallery": {
+          "shared_source_columns": [
+            740,
+            765,
+            791,
+            820,
+            847,
+            874,
+            899,
+            925,
+            953
+          ],
+          "prior_coverage": 9,
+          "current_coverage": 9,
+          "shared_mean_edge_error_px": [
+            17.53,
+            9.58
+          ],
+          "prior_tip_error_px": [
+            0.62,
+            0.66
+          ],
+          "current_tip_error_px": [
+            8.14,
+            16.66
+          ],
+          "current_tips_px": [
+            [
+              711.12,
+              621.61
+            ],
+            [
+              988.92,
+              442.66
+            ]
+          ]
+        },
+        "side": {
+          "shared_source_columns": [
+            576,
+            626,
+            676,
+            723,
+            777,
+            826,
+            873,
+            925
+          ],
+          "prior_coverage": 8,
+          "current_coverage": 9,
+          "shared_mean_edge_error_px": [
+            26.31,
+            10.28
+          ],
+          "prior_tip_error_px": [
+            106.26,
+            45.29
+          ],
+          "current_tip_error_px": [
+            26.77,
+            18.57
+          ],
+          "current_tips_px": [
+            [
+              488.88,
+              447.08
+            ],
+            [
+              982.67,
+              388.02
+            ]
+          ]
+        }
+      },
+      "crossings": [
+        {
+          "inner": 9,
+          "outer": 36
+        },
+        {
+          "inner": 16,
+          "outer": 44
+        },
+        {
+          "inner": 22,
+          "outer": 12
+        }
+      ],
+      "blade_thickness_m": 59.48,
+      "port_bay_depth_m": 62.14,
+      "forward_gaps_clear": 8
+    }
+  },
+  "limits": [
+    "The gallery and port paintings are separate illustrations. Profiles are measured in their registered image pixels, with no claim of a global resemblance percentage.",
+    "Thirteen Delta station centers guided construction. Eighteen blade columns tracked iterations; the shared side score compares eight. Endpoints are reported separately.",
+    "Delta’s tiled promenade still looks more uniform than the painting. Glacier’s two tips remain lower in the gallery. Hidden structures and playable interiors were not verified."
+  ],
+  "trial_folders": [
+    "branch-stations",
+    "crowned-blade",
+    "cut-fan",
+    "flank-plates",
+    "paved-fan",
+    "pressure-spine",
+    "rooted-fan",
+    "seated-fan",
+    "swept-armor",
+    "swept-spine",
+    "two-views"
+  ],
+  "trial_findings": [
+    "Delta: translating the complete fairing masked the bronze room. Shortening it from the bow kept the aft seat clear. Reducing its beam cost 27.45 m across four rear rows. Restoring beam recovered the earlier 1.97 m mean.",
+    "Glacier: a smooth single belt and equal width fractions across the two drawings missed the sweep. A more inward bend shortened the aft crossing. Seating the corridor farther inside a modeled pressure socket preserved all six contact checks.",
+    "One walkway cleared its island by 13.89 m at the root. Seat the lower web at the actual island height and check the arm itself against both ship and station.",
+    "Model checks and comparison sheets reuse the local Blender and elevation outputs."
+  ],
+  "browser": {
+    "method": "Isolated headless Chrome with WebGL",
+    "ships": {
+      "delta-tree": {
+        "original_loaded": true,
+        "painted_and_gray": true,
+        "stern_and_reset": true,
+        "drag_rotates": true,
+        "downloaded_model_matches": true,
+        "download_sha256": "2c5522ba46f3eace8203c90f20e2dee6aae0c201bcb6d3bee439c8af843729bd",
+        "model_view_pixel_differences": {
+          "gray": 24.33,
+          "stern": 18.44,
+          "drag": 20.68,
+          "reset": 0.0
+        },
+        "switches_between_revisions": true,
+        "previous_to_current_pixel_difference": 6.22
+      },
+      "glacier-tongue": {
+        "original_loaded": true,
+        "painted_and_gray": true,
+        "stern_and_reset": true,
+        "drag_rotates": true,
+        "downloaded_model_matches": true,
+        "download_sha256": "3fdd02304692cd399c7e8228fb4d4842edee36ed0c799990a120a0470b896d23",
+        "model_view_pixel_differences": {
+          "gray": 18.53,
+          "stern": 34.64,
+          "drag": 16.47,
+          "reset": 0.0
+        },
+        "switches_between_revisions": true,
+        "previous_to_current_pixel_difference": 1.72
+      }
+    }
+  },
+  "catalog_entries": {
+    "aquila-deck-blade-side-rooted-fan-delta-tree-ebd94e0f53be": "req_9d405c58c586303489540462",
+    "aquila-code-dark-game-exterior-delta-tree-2c5522ba46f3ea": "req_c50e7d3826bf8941f743e470",
+    "aquila-deck-blade-side-seated-fan-delta-tree-2622e909dc7a": "req_1225ad99959de21a191243ec",
+    "aquila-code-dark-game-exterior-delta-tree-c39a633830e622": "req_95ddc8b229309ba5226d453f",
+    "aquila-deck-blade-side-pressure-spine-glacier-tongue-e8db23cf026f": "req_cd786f7ff259308afed3774f",
+    "aquila-code-dark-game-exterior-glacier-tongue-3fdd02304692cd": "req_2230c9c1efc4de8b1623fb94",
+    "aquila-deck-blade-side-flank-plates-glacier-tongue-20c116001831": "req_e0399ffdfb6af34cce725229",
+    "aquila-code-dark-game-exterior-glacier-tongue-652f85d11af76b": "req_ab88b38b24081fa6c2b05e88",
+    "aquila-deck-blade-side-paved-fan-delta-tree-817ad1450611": "req_d44aa97ea71bea51fb648558",
+    "aquila-code-dark-game-exterior-delta-tree-9b9171a255f8a9": "req_e47529c1fc70acca87d0a653",
+    "aquila-deck-blade-side-swept-armor-glacier-tongue-7207f569ff77": "req_2eb6a5193f6e1114cbbd426e",
+    "aquila-code-dark-game-exterior-glacier-tongue-3dd912dd9d11ce": "req_86b4e2fe4dbf460f3040e4a2",
+    "aquila-deck-blade-side-crowned-blade-glacier-tongue-5773da9708f6": "req_34a2662682a2f1dc07913bb4",
+    "aquila-deck-blade-side-branch-stations-delta-tree-23cd1cf1255d": "req_22442f80a3c78e029e47ca5c",
+    "aquila-code-dark-game-exterior-glacier-tongue-4edacb5d4da57a": "req_eef5bb7fad88463e08c4d27e",
+    "aquila-code-dark-game-exterior-delta-tree-7debdedf78dbdc": "req_7e1f42bfcbbcf935e006e56b",
+    "aquila-code-dark-game-exterior-delta-tree-4b93558c51102e": "req_47f167dd8198df292ef93517",
+    "aquila-code-dark-game-exterior-glacier-tongue-6fb704f1701ca5": "req_4f9c11bfacab465461897d15",
+    "aquila-code-dark-game-exterior-glacier-tongue-ffdc4c9a569912": "req_ffc024089d5d56d07f81ad7a"
+  }
+}

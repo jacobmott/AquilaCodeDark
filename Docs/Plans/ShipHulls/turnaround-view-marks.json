@@ -1,0 +1,200 @@
+{
+  "round": 190,
+  "reference_grid": [
+    1440,
+    960
+  ],
+  "ship_length_m": 1280,
+  "coordinate_note": "Box coordinates are pixels on a uniformly reduced copy. Right and bottom edges are exclusive. Map them to the native sheet before cropping. Bounds include visible fittings. A few pixels of uncertainty affect all estimates.",
+  "ships": {
+    "delta-tree": {
+      "name": "Delta Tree",
+      "sheet": "Assets/ShipConcepts/turnaround-sheets-r190/delta-tree.png",
+      "original": "Assets/ShipConcepts/sunburst-r144/58-delta-tree.png",
+      "datums": "The height datum passes through the amber window belt. The lateral datum follows the center of the observatory and dish deck.",
+      "views": {
+        "port": {
+          "crop": [
+            10,
+            10,
+            713,
+            266
+          ],
+          "outline": [
+            17,
+            28,
+            696,
+            245
+          ],
+          "datum_y": 204
+        },
+        "starboard": {
+          "crop": [
+            727,
+            10,
+            1430,
+            266
+          ],
+          "outline": [
+            744,
+            28,
+            1423,
+            245
+          ]
+        },
+        "top": {
+          "crop": [
+            10,
+            311,
+            713,
+            594
+          ],
+          "outline": [
+            17,
+            315,
+            696,
+            590
+          ],
+          "datum_y": 456
+        },
+        "underside": {
+          "crop": [
+            727,
+            311,
+            1430,
+            594
+          ],
+          "outline": [
+            729,
+            337,
+            1413,
+            592
+          ]
+        },
+        "bow": {
+          "crop": [
+            10,
+            636,
+            713,
+            915
+          ],
+          "outline": [
+            81,
+            641,
+            632,
+            904
+          ]
+        },
+        "stern": {
+          "crop": [
+            727,
+            636,
+            1430,
+            915
+          ],
+          "outline": [
+            807,
+            641,
+            1355,
+            904
+          ]
+        }
+      }
+    },
+    "glacier-tongue": {
+      "name": "Glacier Tongue",
+      "sheet": "Assets/ShipConcepts/turnaround-sheets-r190/glacier-tongue.png",
+      "original": "Assets/ShipConcepts/sunburst-r144/41-glacier-tongue.png",
+      "datums": "The height datum crosses the bay mouth. The lateral datum follows the center of the main pressure hull, excluding the port blade.",
+      "views": {
+        "port": {
+          "crop": [
+            12,
+            12,
+            713,
+            269
+          ],
+          "outline": [
+            27,
+            30,
+            692,
+            255
+          ],
+          "datum_y": 174
+        },
+        "starboard": {
+          "crop": [
+            727,
+            12,
+            1427,
+            269
+          ],
+          "outline": [
+            749,
+            30,
+            1415,
+            254
+          ]
+        },
+        "top": {
+          "crop": [
+            12,
+            314,
+            713,
+            574
+          ],
+          "outline": [
+            28,
+            341,
+            695,
+            563
+          ],
+          "datum_y": 438
+        },
+        "underside": {
+          "crop": [
+            727,
+            314,
+            1428,
+            574
+          ],
+          "outline": [
+            742,
+            345,
+            1410,
+            561
+          ],
+          "working_flip_vertical": true
+        },
+        "bow": {
+          "crop": [
+            12,
+            616,
+            713,
+            911
+          ],
+          "outline": [
+            213,
+            619,
+            545,
+            897
+          ]
+        },
+        "stern": {
+          "crop": [
+            727,
+            616,
+            1428,
+            911
+          ],
+          "outline": [
+            893,
+            619,
+            1225,
+            897
+          ]
+        }
+      }
+    }
+  }
+}

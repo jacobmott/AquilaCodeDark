@@ -1,0 +1,47 @@
+{
+  "round": 191,
+  "local_date": "2026-11-25",
+  "checked_at": "2026-11-26T05:20:49.043076+00:00",
+  "owner_feedback": {
+    "channel": "chat",
+    "accepted": "Both six-view sheets look good. Save the method in Asset Pipeline for future ships and other assets. Include 4K Max.",
+    "question": "Would starting the hulls from scratch be smarter than modifying the present geometry?"
+  },
+  "guide": {
+    "repo": "asset-pipeline",
+    "path": "knowledge/asset-turnaround-sheets.md",
+    "sha256": "c80ba908bda8bb0e374f881613db648681beaa853a78fd2b80ab64bbb74ae1b5"
+  },
+  "preset": {
+    "repo": "asset-pipeline",
+    "path": "Docs/Art/TurnaroundSheets/sunburst-4k-max.json",
+    "sha256": "2846b0ca32c78c73f61f1ad8649473ba286273b49c5e748dfba290173f55853a"
+  },
+  "local_request_tool": {
+    "repo": "asset-pipeline",
+    "path": "Tools/asset-pipeline/experimental/blender_reference_modeling/turnaround_request.py",
+    "sha256": "483ee4d530aa28f51804fd0a95cd273f8f5a41190833ea963de68632ea51a6c6"
+  },
+  "prior_evidence": {
+    "path": "Docs/Testing/research-battleship-turnarounds.json",
+    "sha256": "04a828be394b75f618e9346cc47c20470634ca5cda47a00074b6bbaedd1335d7"
+  },
+  "checks": {
+    "ship_packets_replayed_offline": 2,
+    "actual_original_id_hash_and_all_five_profile_settings_match_both_completed_jobs": true,
+    "upright_six_view_packet_prepared_offline": true,
+    "documented_cli_arguments_checked_locally": 15,
+    "provider_jobs_this_round": 0,
+    "credits_used_this_round": 0,
+    "limit": "The upright fixture exercises prompt and settings preparation only. Both production examples were ships."
+  },
+  "blender_advice": {
+    "state": "Recommendation from this session. New geometry has not been built or compared.",
+    "first": "Glacier Tongue",
+    "why": "The round 187 blade angles away from the main hull. The accepted top view draws it close and nearly parallel. Compare the new hull and blade against the original and calibrated port and top views.",
+    "second": "Delta Tree",
+    "delta": "Block in the forward fan and round docks together. Reuse the observatory and drive modules where the original confirms their shape and fit.",
+    "carry_forward": "Keep the 1,280 m length, previous studies, material library, and tested boarding and mount clearances as references. Recheck fit on any replacement.",
+    "comparison": "Judge plain exteriors alongside round 187 using the original painting angle, port and overhead. Keep hidden rear details provisional."
+  }
+}

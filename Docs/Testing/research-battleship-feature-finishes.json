@@ -1,0 +1,1945 @@
+{
+  "round": 194,
+  "local_date": "2026-11-26",
+  "checked_at_utc": "2026-11-26T06:56:36.906257+00:00",
+  "direction": "The owner liked the shape studies and requested continuing the local material work.",
+  "previous": "Docs/Testing/research-battleship-blade-and-courtyards.json",
+  "scope": "The two local review exteriors. No game replacement or paid provider generation.",
+  "method": "Freeze the mesh, camera, exposure and lighting. Compare median encoded sRGB within paired patches. Weight their RGB by 0.2126, 0.7152, 0.0722 on a 0–255 display scale. Average absolute per-mark deviations; these do not measure physical reflectance or the entire ship.",
+  "patch_radius_px": {
+    "glacier-tongue": {
+      "art": 1,
+      "model": 1
+    },
+    "delta-tree": {
+      "art": 2.4,
+      "model": 1.5
+    }
+  },
+  "lighting": "Default studio from the shape record, 24 Cycles samples. The key turns 65 degrees about world Z. The unlit control blacks out the world and disables every scene light.",
+  "viewer_cameras": {
+    "glacier-tongue": {
+      "camera_to_world": [
+        [
+          -0.7316070199012756,
+          -0.0767294317483902,
+          0.6773949861526489,
+          1546.19580078125
+        ],
+        [
+          0.6809220910072327,
+          -0.1305113136768341,
+          0.7206331491470337,
+          1669.498291015625
+        ],
+        [
+          0.033113934099674225,
+          0.9884732961654663,
+          0.147729754447937,
+          325.2441101074219
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "image_size": [
+        1152,
+        1152
+      ],
+      "frame": [
+        -585.9308835171079,
+        585.9308835171079,
+        -585.9308835171079,
+        585.9308835171079
+      ],
+      "ortho_scale": 1171.8617670342157,
+      "shift": [
+        0,
+        0
+      ],
+      "sensor_fit": "AUTO",
+      "pixel_aspect": [
+        1.0,
+        1.0
+      ],
+      "clipping": [
+        1.0,
+        20000.0
+      ]
+    },
+    "delta-tree": {
+      "camera_to_world": [
+        [
+          -0.7154670357704163,
+          -0.3454691767692566,
+          0.6072544455528259,
+          1303.698974609375
+        ],
+        [
+          0.6984788775444031,
+          -0.33466291427612305,
+          0.6325567364692688,
+          1450.5413818359375
+        ],
+        [
+          -0.015303298830986023,
+          0.8767279982566833,
+          0.4807431697845459,
+          1080.057373046875
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "image_size": [
+        1152,
+        1152
+      ],
+      "frame": [
+        -629.2893218994141,
+        629.2893218994141,
+        -629.2893218994141,
+        629.2893218994141
+      ],
+      "ortho_scale": 1258.5786437988281,
+      "shift": [
+        0.0,
+        0.0
+      ],
+      "sensor_fit": "AUTO",
+      "pixel_aspect": [
+        1.0,
+        1.0
+      ],
+      "clipping": [
+        1.0,
+        20000.0
+      ]
+    }
+  },
+  "ships": {
+    "glacier-tongue": {
+      "name": "Glacier Tongue",
+      "original": {
+        "path": "Assets/ShipConcepts/sunburst-r144/41-glacier-tongue.png",
+        "sha256": "827baa1d6127c91fd36b21e0998ad7b013ddd7c8e7b109059bad03c61e86f0d1"
+      },
+      "sheet": {
+        "path": "Assets/ShipConcepts/turnaround-sheets-r190/glacier-tongue.png",
+        "bytes": 11075015,
+        "sha256": "4baacb3211d8eaa38ca8b4dc687d5e6e4b812aea14b696f92fed7e7d3e10075b"
+      },
+      "previous_blend": {
+        "path": "Assets/ShipConcepts/hull-refinements-r193/glacier-tongue/current/glacier-tongue.blend",
+        "sha256": "d36bcd7630c60f0ad75c6f6a8847ab8741bdd001ee0c7808f573fca70985a37d"
+      },
+      "previous_glb": {
+        "path": "Assets/ShipConcepts/hull-refinements-r193/glacier-tongue/current/glacier-tongue.glb",
+        "sha256": "ec5c6682b566d1db5675eb0c48ad639146f4bc7fabd6d8719928316ba7236a1e"
+      },
+      "blend": {
+        "path": "Assets/ShipConcepts/hull-finishes-r194/glacier-tongue/selected/glacier-tongue.blend",
+        "sha256": "bed2ac284780bbe763cf37e70ba0f78fd567fd56577be70b6b17943fe185a2fa"
+      },
+      "glb": {
+        "path": "Assets/ShipConcepts/hull-finishes-r194/glacier-tongue/selected/glacier-tongue.glb",
+        "sha256": "73b861b26d7489af5ca8bded998a966ddc66695b9b1a5f9371711cc2f83e829d"
+      },
+      "board": {
+        "path": "Assets/ShipConcepts/hull-finishes-r194/glacier-tongue/selected/comparison.webp",
+        "sha256": "9866017115ea1b2a87b624f945929752c2fd379ba21c56cabcf03b25f7cac55c"
+      },
+      "gallery": {
+        "path": "Assets/ShipConcepts/hull-finishes-r194/glacier-tongue/selected/gallery.png",
+        "sha256": "90c0d6c0cbb4bccd379e35291efa9140b3cc67a0b531f5cf72b384bb305e10e3"
+      },
+      "base_gallery": {
+        "path": "Assets/ShipConcepts/hull-finishes-r194/glacier-tongue/selected/before-gallery.png",
+        "sha256": "089bee4e1a896537e8582c3630e72338636439c27bff8b33abb6a0f120c28a1d"
+      },
+      "renders": [
+        {
+          "path": "Assets/ShipConcepts/hull-finishes-r194/glacier-tongue/selected/before-top.png",
+          "sha256": "14485a21d7ba7cfe33ce3617b0890583f72b5435f619eed5aa6ac26a9d4bccc2"
+        },
+        {
+          "path": "Assets/ShipConcepts/hull-finishes-r194/glacier-tongue/selected/top.png",
+          "sha256": "285bb8741be750b985f363425f11255ca1bf2a0c6e5cad06ae8ad7b98a73a425"
+        },
+        {
+          "path": "Assets/ShipConcepts/hull-finishes-r194/glacier-tongue/selected/light/turned-key.png",
+          "sha256": "7b53b68905b2a47304625778aa2d83227580c863a7ae20fa079a216751ea2700"
+        },
+        {
+          "path": "Assets/ShipConcepts/hull-finishes-r194/glacier-tongue/selected/light/emitters-only.png",
+          "sha256": "72abf183bd85c70e22e10d2b41580da3441be35fc7780f01e0ebcb829ab89138"
+        }
+      ],
+      "lighting_record": {
+        "path": "Assets/ShipConcepts/hull-finishes-r194/glacier-tongue/selected/light/lighting.json",
+        "sha256": "23b4976440bb20c191b740ee5de1aadfc042fafdd12be483401ab5bc9f1ce44c"
+      },
+      "map_inputs": {
+        "path": "Assets/ShipConcepts/hull-finishes-r194/glacier-tongue/selected-maps/mapping.json",
+        "sha256": "02da6c2816b92e652191a7fa27e88b8133b167c8a82ae8f46c626da4841dcade"
+      },
+      "maps": [
+        {
+          "path": "Assets/ShipConcepts/hull-finishes-r194/glacier-tongue/selected-maps/blade-color.png",
+          "sha256": "6bda5e9e40822355d9c1c569b09faa6c172661d9fbae0ef88a9292373a72dcfe"
+        },
+        {
+          "path": "Assets/ShipConcepts/hull-finishes-r194/glacier-tongue/selected-maps/blade-emission.png",
+          "sha256": "7e4681005311b29cdbe979816a5df60f167b0b27cf03a9e73ab2be68dd725088"
+        },
+        {
+          "path": "Assets/ShipConcepts/hull-finishes-r194/glacier-tongue/selected-maps/blade-normal.png",
+          "sha256": "c075dd2fbd283712e15b5fdeeed2dd33d480d20603f03b656a74dd1c57e83d0c"
+        },
+        {
+          "path": "Assets/ShipConcepts/hull-finishes-r194/glacier-tongue/selected-maps/blade-orm.png",
+          "sha256": "d3873679525cc8255713063ccc6a06ed539f983bc1ecf9c40577b1a8933543df"
+        }
+      ],
+      "map_replay_byte_identical": true,
+      "scene": {
+        "geometry_digest_before_and_after": "006dc589caf3d95ec3445c4d73685e442f729ba1d332ddb460e2376f19f26553",
+        "mesh_objects": 27,
+        "glb_max_nearest_vertex_error_m": 0.0,
+        "embedded_images": 4,
+        "native_packed_surface_maps": [
+          "blade-color.png",
+          "blade-emission.png",
+          "blade-normal.png",
+          "blade-orm.png"
+        ],
+        "textured_primitives_with_normals_uvs_and_tangents": 1,
+        "emissive_materials": [
+          "Glacier · brushed silver, indigo and cabin glazing"
+        ],
+        "dimensions_m": [
+          1280.0,
+          420.2678,
+          415.7594
+        ]
+      },
+      "changed_meshes": [
+        "Aft crossing",
+        "Midship crossing",
+        "Separate port blade"
+      ],
+      "appearance": {
+        "silver": {
+          "n": 8,
+          "reference_luma": 86.2,
+          "before_luma": 125.4,
+          "after_luma": 86.9,
+          "before_error": 39.27,
+          "after_error": 9.02,
+          "marks": [
+            {
+              "reference_xy": [
+                760,
+                574.5028571428571
+              ],
+              "render_xy": [
+                824,
+                638.5028571428571
+              ],
+              "art_rgb": [
+                85.0,
+                87.0,
+                90.0
+              ],
+              "old_rgb": [
+                115.0,
+                122.0,
+                130.0
+              ],
+              "new_rgb": [
+                86.0,
+                89.0,
+                93.0
+              ]
+            },
+            {
+              "reference_xy": [
+                780,
+                561.24
+              ],
+              "render_xy": [
+                844,
+                625.24
+              ],
+              "art_rgb": [
+                91.0,
+                94.0,
+                98.0
+              ],
+              "old_rgb": [
+                118.0,
+                125.0,
+                133.0
+              ],
+              "new_rgb": [
+                71.0,
+                73.0,
+                76.0
+              ]
+            },
+            {
+              "reference_xy": [
+                802,
+                540.5111111111111
+              ],
+              "render_xy": [
+                866,
+                604.5111111111111
+              ],
+              "art_rgb": [
+                100.0,
+                102.0,
+                107.0
+              ],
+              "old_rgb": [
+                112.0,
+                119.0,
+                128.0
+              ],
+              "new_rgb": [
+                89.0,
+                91.0,
+                96.0
+              ]
+            },
+            {
+              "reference_xy": [
+                828,
+                518.5261538461539
+              ],
+              "render_xy": [
+                892,
+                582.5261538461539
+              ],
+              "art_rgb": [
+                89.0,
+                91.0,
+                93.0
+              ],
+              "old_rgb": [
+                115.0,
+                123.0,
+                131.0
+              ],
+              "new_rgb": [
+                87.0,
+                90.0,
+                95.0
+              ]
+            },
+            {
+              "reference_xy": [
+                849,
+                505.19444444444446
+              ],
+              "render_xy": [
+                913,
+                569.1944444444445
+              ],
+              "art_rgb": [
+                83.0,
+                84.0,
+                90.0
+              ],
+              "old_rgb": [
+                114.0,
+                121.0,
+                130.0
+              ],
+              "new_rgb": [
+                82.0,
+                84.0,
+                89.0
+              ]
+            },
+            {
+              "reference_xy": [
+                892,
+                469.1925925925926
+              ],
+              "render_xy": [
+                956,
+                533.1925925925925
+              ],
+              "art_rgb": [
+                87.0,
+                90.0,
+                96.0
+              ],
+              "old_rgb": [
+                131.0,
+                138.0,
+                146.0
+              ],
+              "new_rgb": [
+                92.0,
+                95.0,
+                100.0
+              ]
+            },
+            {
+              "reference_xy": [
+                932,
+                453.3285714285714
+              ],
+              "render_xy": [
+                996,
+                517.3285714285714
+              ],
+              "art_rgb": [
+                79.0,
+                80.0,
+                85.0
+              ],
+              "old_rgb": [
+                131.0,
+                138.0,
+                146.0
+              ],
+              "new_rgb": [
+                88.0,
+                91.0,
+                95.0
+              ]
+            },
+            {
+              "reference_xy": [
+                957,
+                446.15999999999997
+              ],
+              "render_xy": [
+                1021,
+                510.15999999999997
+              ],
+              "art_rgb": [
+                61.0,
+                62.0,
+                65.0
+              ],
+              "old_rgb": [
+                117.0,
+                125.0,
+                133.0
+              ],
+              "new_rgb": [
+                81.0,
+                84.0,
+                89.0
+              ]
+            }
+          ]
+        },
+        "blue": {
+          "n": 8,
+          "reference_luma": 65.7,
+          "before_luma": 149.1,
+          "after_luma": 66.5,
+          "before_error": 83.47,
+          "after_error": 12.84,
+          "marks": [
+            {
+              "reference_xy": [
+                761,
+                562.8857142857142
+              ],
+              "render_xy": [
+                825,
+                626.8857142857142
+              ],
+              "art_rgb": [
+                59.0,
+                69.0,
+                84.0
+              ],
+              "old_rgb": [
+                176.0,
+                176.0,
+                176.0
+              ],
+              "new_rgb": [
+                80.0,
+                89.0,
+                104.0
+              ]
+            },
+            {
+              "reference_xy": [
+                776,
+                550.2857142857142
+              ],
+              "render_xy": [
+                840,
+                614.2857142857142
+              ],
+              "art_rgb": [
+                66.0,
+                81.0,
+                99.0
+              ],
+              "old_rgb": [
+                177.0,
+                176.0,
+                176.0
+              ],
+              "new_rgb": [
+                82.0,
+                93.0,
+                108.0
+              ]
+            },
+            {
+              "reference_xy": [
+                807,
+                521.15
+              ],
+              "render_xy": [
+                871,
+                585.15
+              ],
+              "art_rgb": [
+                66.0,
+                76.0,
+                91.0
+              ],
+              "old_rgb": [
+                176.0,
+                176.0,
+                176.0
+              ],
+              "new_rgb": [
+                88.0,
+                98.0,
+                112.0
+              ]
+            },
+            {
+              "reference_xy": [
+                836,
+                490.56444444444446
+              ],
+              "render_xy": [
+                900,
+                554.5644444444445
+              ],
+              "art_rgb": [
+                68.0,
+                82.0,
+                100.0
+              ],
+              "old_rgb": [
+                171.0,
+                172.0,
+                173.0
+              ],
+              "new_rgb": [
+                49.0,
+                62.0,
+                78.0
+              ]
+            },
+            {
+              "reference_xy": [
+                867,
+                468.7572
+              ],
+              "render_xy": [
+                931,
+                532.7572
+              ],
+              "art_rgb": [
+                64.0,
+                76.0,
+                96.0
+              ],
+              "old_rgb": [
+                169.0,
+                170.0,
+                172.0
+              ],
+              "new_rgb": [
+                50.0,
+                63.0,
+                79.0
+              ]
+            },
+            {
+              "reference_xy": [
+                904,
+                447.74074074074076
+              ],
+              "render_xy": [
+                968,
+                511.74074074074076
+              ],
+              "art_rgb": [
+                50.0,
+                59.0,
+                72.0
+              ],
+              "old_rgb": [
+                149.0,
+                153.0,
+                158.0
+              ],
+              "new_rgb": [
+                42.0,
+                54.0,
+                70.0
+              ]
+            },
+            {
+              "reference_xy": [
+                914,
+                478.8285714285714
+              ],
+              "render_xy": [
+                978,
+                542.8285714285714
+              ],
+              "art_rgb": [
+                42.0,
+                50.0,
+                61.0
+              ],
+              "old_rgb": [
+                83.0,
+                89.0,
+                96.0
+              ],
+              "new_rgb": [
+                34.0,
+                44.0,
+                57.0
+              ]
+            },
+            {
+              "reference_xy": [
+                935,
+                470.78214285714284
+              ],
+              "render_xy": [
+                999,
+                534.7821428571428
+              ],
+              "art_rgb": [
+                34.0,
+                42.0,
+                50.0
+              ],
+              "old_rgb": [
+                77.0,
+                83.0,
+                90.0
+              ],
+              "new_rgb": [
+                31.0,
+                39.0,
+                50.0
+              ]
+            }
+          ]
+        },
+        "glazing": {
+          "n": 8,
+          "reference_luma": 53.5,
+          "before_luma": 118.5,
+          "after_luma": 65.0,
+          "before_error": 64.92,
+          "after_error": 15.91,
+          "marks": [
+            {
+              "reference_xy": [
+                755,
+                595.1742857142857
+              ],
+              "render_xy": [
+                819,
+                659.1742857142857
+              ],
+              "art_rgb": [
+                46.0,
+                47.0,
+                51.0
+              ],
+              "old_rgb": [
+                110.0,
+                118.0,
+                127.0
+              ],
+              "new_rgb": [
+                55.0,
+                59.0,
+                66.0
+              ]
+            },
+            {
+              "reference_xy": [
+                775,
+                581.8285714285714
+              ],
+              "render_xy": [
+                839,
+                645.8285714285714
+              ],
+              "art_rgb": [
+                52.0,
+                49.0,
+                45.0
+              ],
+              "old_rgb": [
+                109.0,
+                117.0,
+                126.0
+              ],
+              "new_rgb": [
+                66.0,
+                70.0,
+                77.0
+              ]
+            },
+            {
+              "reference_xy": [
+                804,
+                564.8755555555556
+              ],
+              "render_xy": [
+                868,
+                628.8755555555556
+              ],
+              "art_rgb": [
+                94.0,
+                83.0,
+                73.0
+              ],
+              "old_rgb": [
+                110.0,
+                118.0,
+                126.0
+              ],
+              "new_rgb": [
+                99.0,
+                89.0,
+                82.0
+              ]
+            },
+            {
+              "reference_xy": [
+                822,
+                550.2276923076923
+              ],
+              "render_xy": [
+                886,
+                614.2276923076923
+              ],
+              "art_rgb": [
+                51.0,
+                44.0,
+                40.0
+              ],
+              "old_rgb": [
+                112.0,
+                120.0,
+                128.0
+              ],
+              "new_rgb": [
+                57.0,
+                61.0,
+                68.0
+              ]
+            },
+            {
+              "reference_xy": [
+                842,
+                533.5933333333334
+              ],
+              "render_xy": [
+                906,
+                597.5933333333334
+              ],
+              "art_rgb": [
+                24.0,
+                24.0,
+                21.0
+              ],
+              "old_rgb": [
+                112.0,
+                120.0,
+                128.0
+              ],
+              "new_rgb": [
+                49.0,
+                51.0,
+                55.0
+              ]
+            },
+            {
+              "reference_xy": [
+                873,
+                518.0104
+              ],
+              "render_xy": [
+                937,
+                582.0104
+              ],
+              "art_rgb": [
+                36.0,
+                39.0,
+                41.0
+              ],
+              "old_rgb": [
+                113.0,
+                120.0,
+                129.0
+              ],
+              "new_rgb": [
+                45.0,
+                49.0,
+                54.0
+              ]
+            },
+            {
+              "reference_xy": [
+                906,
+                499.6777777777778
+              ],
+              "render_xy": [
+                970,
+                563.6777777777778
+              ],
+              "art_rgb": [
+                94.0,
+                97.0,
+                94.0
+              ],
+              "old_rgb": [
+                114.0,
+                121.0,
+                130.0
+              ],
+              "new_rgb": [
+                85.0,
+                77.0,
+                71.0
+              ]
+            },
+            {
+              "reference_xy": [
+                937,
+                484.7142857142857
+              ],
+              "render_xy": [
+                1001,
+                548.7142857142858
+              ],
+              "art_rgb": [
+                48.0,
+                43.0,
+                38.0
+              ],
+              "old_rgb": [
+                114.0,
+                122.0,
+                130.0
+              ],
+              "new_rgb": [
+                59.0,
+                63.0,
+                70.0
+              ]
+            }
+          ]
+        },
+        "unlit": {
+          "pixels_over_50_inside_blade_box": 273,
+          "pixels_over_50_whole_render": 273
+        },
+        "lighting": {
+          "gallery_rgb_mean_absolute_change": 2.531
+        }
+      },
+      "first_trial": {
+        "silver": {
+          "n": 8,
+          "reference_luma": 86.2,
+          "before_luma": 125.4,
+          "after_luma": 70.7,
+          "before_error": 39.27,
+          "after_error": 19.05
+        },
+        "blue": {
+          "n": 8,
+          "reference_luma": 65.7,
+          "before_luma": 149.1,
+          "after_luma": 65.0,
+          "before_error": 83.47,
+          "after_error": 13.7
+        },
+        "glazing": {
+          "n": 8,
+          "reference_luma": 53.5,
+          "before_luma": 118.5,
+          "after_luma": 60.7,
+          "before_error": 64.92,
+          "after_error": 20.81
+        },
+        "unlit": {
+          "pixels_over_50_inside_blade_box": 160,
+          "pixels_over_50_whole_render": 160
+        },
+        "lighting": {
+          "gallery_rgb_mean_absolute_change": 2.524
+        }
+      },
+      "unlit_max_channel": 212,
+      "first_trial_gallery": {
+        "path": "Assets/ShipConcepts/hull-finishes-r194/glacier-tongue/surface/gallery.png",
+        "sha256": "5d61157f73824b5459fc4fd64f44d3fd7027f529536e393ac4933a2c10307615"
+      },
+      "limit": "The eight glazing marks still average 65.0 brightness units against 53.5 in the painting. The hidden blade face uses a physically shaded neutral titanium finish."
+    },
+    "delta-tree": {
+      "name": "Delta Tree",
+      "original": {
+        "path": "Assets/ShipConcepts/sunburst-r144/58-delta-tree.png",
+        "sha256": "6628ed15b22fbf2990729eb8417b9babcb66cc8ebcb5635dad57c8776efeeac3"
+      },
+      "sheet": {
+        "path": "Assets/ShipConcepts/turnaround-sheets-r190/delta-tree.png",
+        "bytes": 12386600,
+        "sha256": "91e1ba6d9ba572957f166e62ec377d631fecc4b675f5cdb2a64173690e17d87c"
+      },
+      "previous_blend": {
+        "path": "Assets/ShipConcepts/hull-refinements-r193/delta-tree/open-courtyards/delta-tree.blend",
+        "sha256": "1edd0eda800cb93247b23a3f9f48b0acdb596b93c3c19acae2282143e95e5f07"
+      },
+      "previous_glb": {
+        "path": "Assets/ShipConcepts/hull-refinements-r193/delta-tree/open-courtyards/delta-tree.glb",
+        "sha256": "68c313fd3cab7eb1b8734353585fc4ed68740627e2ef7a6a667c21ec5279312c"
+      },
+      "blend": {
+        "path": "Assets/ShipConcepts/hull-finishes-r194/delta-tree/selected/delta-tree.blend",
+        "sha256": "e9e0a1d71b19eb5e4b4e87a14c95b6cf0f9f9225898025fbac91b515792a64d9"
+      },
+      "glb": {
+        "path": "Assets/ShipConcepts/hull-finishes-r194/delta-tree/selected/delta-tree.glb",
+        "sha256": "6939a8c4986137a5c3970db309c0093d9bcaf9a1ea89e3dd22c18196cf0e53fa"
+      },
+      "board": {
+        "path": "Assets/ShipConcepts/hull-finishes-r194/delta-tree/selected/comparison.webp",
+        "sha256": "34aa187db77b16911da9b3fc3ed600d08530a016cdb623da2f6764cc4c712b2e"
+      },
+      "gallery": {
+        "path": "Assets/ShipConcepts/hull-finishes-r194/delta-tree/selected/gallery.png",
+        "sha256": "9f2d6acf247e9d536221b48540ea4ecfb0db7e8595afbfc81cc573e46d77f290"
+      },
+      "base_gallery": {
+        "path": "Assets/ShipConcepts/hull-finishes-r194/delta-tree/selected/before-gallery.png",
+        "sha256": "8e6a4bf75e525b211fb06e1c1db218ee7406ab4e33b128648b32d99c7d9f6ee2"
+      },
+      "renders": [
+        {
+          "path": "Assets/ShipConcepts/hull-finishes-r194/delta-tree/selected/before-top.png",
+          "sha256": "7979cd02476e6a42545fe921aabc038fb9bbda354ea08aa28c4023fdafef9536"
+        },
+        {
+          "path": "Assets/ShipConcepts/hull-finishes-r194/delta-tree/selected/top.png",
+          "sha256": "671967fbcc1238effc14a59bfb3f6b44bba06f7862eb697e430abda02f07ae19"
+        },
+        {
+          "path": "Assets/ShipConcepts/hull-finishes-r194/delta-tree/selected/light/turned-key.png",
+          "sha256": "de19332a99fb1b49189a924f92fc52ae378775fdbedbf7d0db69b47a9ad9d3e4"
+        },
+        {
+          "path": "Assets/ShipConcepts/hull-finishes-r194/delta-tree/selected/light/emitters-only.png",
+          "sha256": "4427879fdf1b7b6475e3e8a2d13e62f7137979c99fc0870c0b22b1311057be8b"
+        }
+      ],
+      "lighting_record": {
+        "path": "Assets/ShipConcepts/hull-finishes-r194/delta-tree/selected/light/lighting.json",
+        "sha256": "93c730f333c426f6620d62ace8c1a272e253a18d839d156c8de7e12e6451bcdd"
+      },
+      "map_inputs": {
+        "path": "Assets/ShipConcepts/hull-finishes-r194/delta-tree/selected-maps/mapping.json",
+        "sha256": "e89c43370a25fd94282162a309d20e1210c942e3f0c623fc35f7416779c4d97c"
+      },
+      "maps": [
+        {
+          "path": "Assets/ShipConcepts/hull-finishes-r194/delta-tree/selected-maps/floor-color.png",
+          "sha256": "f93b05b54add20fd12eb2fe3478de7e86bbf29f78c159bfff42a4ca2bd12f407"
+        },
+        {
+          "path": "Assets/ShipConcepts/hull-finishes-r194/delta-tree/selected-maps/floor-normal.png",
+          "sha256": "51388cfcd69d12e9132f530440511602b92a07c2be08d59feac60ca45ae01919"
+        },
+        {
+          "path": "Assets/ShipConcepts/hull-finishes-r194/delta-tree/selected-maps/floor-orm.png",
+          "sha256": "77c82c551f4ea1a04020bc4c31c1d7fb5dbbd9ee069976dfadfffdcdae8fb223"
+        },
+        {
+          "path": "Assets/ShipConcepts/hull-finishes-r194/delta-tree/selected-maps/rims-color.png",
+          "sha256": "508b3bcdf52ac5f96310e15d8a530d62ec96de53bce1d895f53c1bed0de151f4"
+        },
+        {
+          "path": "Assets/ShipConcepts/hull-finishes-r194/delta-tree/selected-maps/rims-normal.png",
+          "sha256": "98a7d8b70d42b58f26e71f232a1f0e209902e4746f6718da3a7b1a78c045c68b"
+        },
+        {
+          "path": "Assets/ShipConcepts/hull-finishes-r194/delta-tree/selected-maps/rims-orm.png",
+          "sha256": "79b0acada1551610ef92ff81eda07d3bfd767f86777dfe4f08cb32c1f1c024bd"
+        }
+      ],
+      "map_replay_byte_identical": true,
+      "scene": {
+        "geometry_digest_before_and_after": "d3ce34ad78b881b9fc5cad60e114af71e1986961d246be72090c9ebb9fc85822",
+        "mesh_objects": 105,
+        "glb_max_nearest_vertex_error_m": 0.0,
+        "embedded_images": 6,
+        "native_packed_surface_maps": [
+          "floor-color.png",
+          "floor-normal.png",
+          "floor-orm.png",
+          "rims-color.png",
+          "rims-normal.png",
+          "rims-orm.png"
+        ],
+        "textured_primitives_with_normals_uvs_and_tangents": 26,
+        "emissive_materials": [],
+        "dimensions_m": [
+          1280.0,
+          503.3284,
+          409.0722
+        ]
+      },
+      "changed_meshes": [
+        "Port branch 1",
+        "Port branch 2",
+        "Port branch 3",
+        "Port branch 4",
+        "Port branch 5",
+        "Port branch 6",
+        "Port courtyard rib 1",
+        "Port courtyard rib 2",
+        "Port courtyard rib 3",
+        "Port courtyard rib 4",
+        "Port courtyard rib 5",
+        "Port courtyard rib 6",
+        "Port courtyard rib 7",
+        "Port courtyard rib 8",
+        "Port courtyard rib 9",
+        "Port station 1",
+        "Port station 2",
+        "Port station 3",
+        "Port station 4",
+        "Port station 5",
+        "Port station 6",
+        "Port station antenna 1",
+        "Port station antenna 2",
+        "Port station antenna 3",
+        "Port station antenna 4",
+        "Port station antenna 5",
+        "Port station antenna 6",
+        "Port station outrigger 1",
+        "Port station outrigger 2",
+        "Port station outrigger 3",
+        "Port station outrigger 4",
+        "Port station outrigger 5",
+        "Port station outrigger 6",
+        "Recessed deck between branches",
+        "Starboard branch 1",
+        "Starboard branch 2",
+        "Starboard branch 3",
+        "Starboard branch 4",
+        "Starboard branch 5",
+        "Starboard branch 6",
+        "Starboard courtyard rib 1",
+        "Starboard courtyard rib 2",
+        "Starboard courtyard rib 3",
+        "Starboard courtyard rib 4",
+        "Starboard courtyard rib 5",
+        "Starboard courtyard rib 6",
+        "Starboard courtyard rib 7",
+        "Starboard courtyard rib 8",
+        "Starboard courtyard rib 9",
+        "Starboard station 1",
+        "Starboard station 2",
+        "Starboard station 3",
+        "Starboard station 4",
+        "Starboard station 5",
+        "Starboard station 6",
+        "Starboard station antenna 1",
+        "Starboard station antenna 2",
+        "Starboard station antenna 3",
+        "Starboard station antenna 4",
+        "Starboard station antenna 5",
+        "Starboard station antenna 6",
+        "Starboard station outrigger 1",
+        "Starboard station outrigger 2",
+        "Starboard station outrigger 3",
+        "Starboard station outrigger 4",
+        "Starboard station outrigger 5",
+        "Starboard station outrigger 6"
+      ],
+      "appearance": {
+        "floor_checks": {
+          "n": 16,
+          "reference_luma": 105.4,
+          "before_luma": 147.6,
+          "after_luma": 105.9,
+          "before_error": 42.2,
+          "after_error": 8.55,
+          "marks": [
+            {
+              "reference_xy": [
+                389.3333333333333,
+                1044.711111111111
+              ],
+              "render_xy": [
+                267.03485517918506,
+                371.59930180548736
+              ],
+              "art_rgb": [
+                118.5,
+                105.5,
+                97.0
+              ],
+              "old_rgb": [
+                139.5,
+                139.0,
+                138.5
+              ],
+              "new_rgb": [
+                100.0,
+                98.5,
+                100.5
+              ]
+            },
+            {
+              "reference_xy": [
+                480.9888888888888,
+                1000.0999999999999
+              ],
+              "render_xy": [
+                321.27584137893416,
+                345.19882179675994
+              ],
+              "art_rgb": [
+                127.0,
+                119.0,
+                110.0
+              ],
+              "old_rgb": [
+                164.0,
+                164.5,
+                166.0
+              ],
+              "new_rgb": [
+                127.5,
+                113.0,
+                97.0
+              ]
+            },
+            {
+              "reference_xy": [
+                572.6444444444444,
+                1008.211111111111
+              ],
+              "render_xy": [
+                375.51682757868326,
+                349.99890907107397
+              ],
+              "art_rgb": [
+                120.5,
+                116.0,
+                116.0
+              ],
+              "old_rgb": [
+                146.0,
+                148.0,
+                149.0
+              ],
+              "new_rgb": [
+                105.5,
+                105.5,
+                110.5
+              ]
+            },
+            {
+              "reference_xy": [
+                609.9555555555555,
+                1052.822222222222
+              ],
+              "render_xy": [
+                397.59722904052796,
+                376.3993890798015
+              ],
+              "art_rgb": [
+                103.0,
+                106.0,
+                110.0
+              ],
+              "old_rgb": [
+                146.0,
+                147.0,
+                148.5
+              ],
+              "new_rgb": [
+                105.5,
+                106.0,
+                109.5
+              ]
+            },
+            {
+              "reference_xy": [
+                747.8444444444444,
+                976.5777777777777
+              ],
+              "render_xy": [
+                479.1987127038674,
+                331.27856870124907
+              ],
+              "art_rgb": [
+                129.0,
+                122.5,
+                121.0
+              ],
+              "old_rgb": [
+                148.0,
+                149.0,
+                150.0
+              ],
+              "new_rgb": [
+                112.0,
+                112.0,
+                116.0
+              ]
+            },
+            {
+              "reference_xy": [
+                764.8777777777779,
+                1028.4888888888888
+              ],
+              "render_xy": [
+                489.278895979927,
+                361.99912725685925
+              ],
+              "art_rgb": [
+                90.0,
+                95.0,
+                99.0
+              ],
+              "old_rgb": [
+                147.0,
+                148.0,
+                149.5
+              ],
+              "new_rgb": [
+                112.0,
+                111.5,
+                115.0
+              ]
+            },
+            {
+              "reference_xy": [
+                785.9666666666666,
+                939.2666666666665
+              ],
+              "render_xy": [
+                501.7591228931435,
+                309.19816723940437
+              ],
+              "art_rgb": [
+                83.0,
+                81.0,
+                77.0
+              ],
+              "old_rgb": [
+                139.0,
+                138.0,
+                137.5
+              ],
+              "new_rgb": [
+                87.0,
+                84.5,
+                86.0
+              ]
+            },
+            {
+              "reference_xy": [
+                808.6777777777777,
+                900.3333333333333
+              ],
+              "render_xy": [
+                515.199367261223,
+                286.15774832269676
+              ],
+              "art_rgb": [
+                100.0,
+                99.0,
+                98.0
+              ],
+              "old_rgb": [
+                147.0,
+                148.0,
+                150.0
+              ],
+              "new_rgb": [
+                105.0,
+                103.5,
+                106.5
+              ]
+            },
+            {
+              "reference_xy": [
+                928.7222222222222,
+                935.211111111111
+              ],
+              "render_xy": [
+                586.2406589210714,
+                306.7981236022473
+              ],
+              "art_rgb": [
+                120.5,
+                111.0,
+                100.5
+              ],
+              "old_rgb": [
+                147.0,
+                147.5,
+                149.0
+              ],
+              "new_rgb": [
+                107.5,
+                107.0,
+                109.5
+              ]
+            },
+            {
+              "reference_xy": [
+                964.4111111111109,
+                953.0555555555555
+              ],
+              "render_xy": [
+                607.3610429280532,
+                317.3583156057383
+              ],
+              "art_rgb": [
+                117.0,
+                111.0,
+                108.0
+              ],
+              "old_rgb": [
+                148.0,
+                149.0,
+                151.0
+              ],
+              "new_rgb": [
+                109.5,
+                109.5,
+                113.0
+              ]
+            },
+            {
+              "reference_xy": [
+                693.4999999999999,
+                1103.1111111111109
+              ],
+              "render_xy": [
+                447.038127965963,
+                406.1599301805487
+              ],
+              "art_rgb": [
+                96.0,
+                80.0,
+                64.5
+              ],
+              "old_rgb": [
+                146.5,
+                147.0,
+                149.0
+              ],
+              "new_rgb": [
+                121.5,
+                114.0,
+                112.5
+              ]
+            },
+            {
+              "reference_xy": [
+                816.7888888888889,
+                1113.6555555555553
+              ],
+              "render_xy": [
+                519.999454535537,
+                412.400043637157
+              ],
+              "art_rgb": [
+                115.0,
+                109.5,
+                107.0
+              ],
+              "old_rgb": [
+                148.0,
+                149.0,
+                150.0
+              ],
+              "new_rgb": [
+                111.0,
+                111.0,
+                113.0
+              ]
+            },
+            {
+              "reference_xy": [
+                489.9111111111111,
+                1210.1777777777777
+              ],
+              "render_xy": [
+                326.55593738067967,
+                469.5210822014946
+              ],
+              "art_rgb": [
+                117.0,
+                103.0,
+                93.0
+              ],
+              "old_rgb": [
+                163.0,
+                163.0,
+                165.0
+              ],
+              "new_rgb": [
+                126.0,
+                111.5,
+                95.0
+              ]
+            },
+            {
+              "reference_xy": [
+                630.2333333333332,
+                1204.5
+              ],
+              "render_xy": [
+                409.5974472263132,
+                466.16102110947475
+              ],
+              "art_rgb": [
+                95.5,
+                82.0,
+                77.5
+              ],
+              "old_rgb": [
+                140.5,
+                140.5,
+                140.5
+              ],
+              "new_rgb": [
+                89.0,
+                88.0,
+                88.5
+              ]
+            },
+            {
+              "reference_xy": [
+                778.6666666666666,
+                1233.6999999999998
+              ],
+              "render_xy": [
+                497.43904434626086,
+                483.44133529700537
+              ],
+              "art_rgb": [
+                113.5,
+                107.5,
+                105.0
+              ],
+              "old_rgb": [
+                147.0,
+                147.0,
+                149.0
+              ],
+              "new_rgb": [
+                104.0,
+                103.0,
+                107.0
+              ]
+            },
+            {
+              "reference_xy": [
+                946.5666666666666,
+                1266.1444444444444
+              ],
+              "render_xy": [
+                596.8008509245623,
+                502.6416843942618
+              ],
+              "art_rgb": [
+                133.0,
+                119.5,
+                114.0
+              ],
+              "old_rgb": [
+                138.0,
+                137.0,
+                137.0
+              ],
+              "new_rgb": [
+                111.5,
+                105.5,
+                103.5
+              ]
+            }
+          ]
+        },
+        "roof_checks": {
+          "n": 12,
+          "reference_luma": 162.7,
+          "before_luma": 187.2,
+          "after_luma": 163.8,
+          "before_error": 24.48,
+          "after_error": 13.75,
+          "marks": [
+            {
+              "reference_xy": [
+                389.3333333333333,
+                1098.2444444444443
+              ],
+              "render_xy": [
+                267.03485517918506,
+                403.2798778159603
+              ],
+              "art_rgb": [
+                188.0,
+                172.5,
+                161.0
+              ],
+              "old_rgb": [
+                182.5,
+                183.5,
+                185.5
+              ],
+              "new_rgb": [
+                162.0,
+                153.0,
+                143.5
+              ]
+            },
+            {
+              "reference_xy": [
+                556.4222222222221,
+                1099.8666666666666
+              ],
+              "render_xy": [
+                365.91665303005504,
+                404.2398952708231
+              ],
+              "art_rgb": [
+                176.0,
+                161.0,
+                151.5
+              ],
+              "old_rgb": [
+                183.0,
+                184.0,
+                186.0
+              ],
+              "new_rgb": [
+                157.5,
+                150.0,
+                142.0
+              ]
+            },
+            {
+              "reference_xy": [
+                673.2222222222221,
+                1063.3666666666666
+              ],
+              "render_xy": [
+                435.03790978017776,
+                382.63950253640974
+              ],
+              "art_rgb": [
+                194.0,
+                178.0,
+                165.0
+              ],
+              "old_rgb": [
+                182.5,
+                183.5,
+                184.0
+              ],
+              "new_rgb": [
+                186.0,
+                178.5,
+                170.0
+              ]
+            },
+            {
+              "reference_xy": [
+                689.4444444444445,
+                1049.5777777777776
+              ],
+              "render_xy": [
+                444.63808432880603,
+                374.4793541700758
+              ],
+              "art_rgb": [
+                193.5,
+                179.0,
+                169.0
+              ],
+              "old_rgb": [
+                184.0,
+                185.0,
+                186.5
+              ],
+              "new_rgb": [
+                186.5,
+                180.0,
+                172.0
+              ]
+            },
+            {
+              "reference_xy": [
+                854.0999999999999,
+                1030.111111111111
+              ],
+              "render_xy": [
+                542.0798559973817,
+                362.959144711722
+              ],
+              "art_rgb": [
+                179.0,
+                165.0,
+                154.5
+              ],
+              "old_rgb": [
+                182.0,
+                183.0,
+                185.0
+              ],
+              "new_rgb": [
+                190.0,
+                182.5,
+                174.0
+              ]
+            },
+            {
+              "reference_xy": [
+                842.7444444444443,
+                952.2444444444443
+              ],
+              "render_xy": [
+                535.359733813342,
+                316.87830687830683
+              ],
+              "art_rgb": [
+                186.5,
+                174.0,
+                163.0
+              ],
+              "old_rgb": [
+                184.0,
+                185.0,
+                186.0
+              ],
+              "new_rgb": [
+                201.5,
+                195.5,
+                188.0
+              ]
+            },
+            {
+              "reference_xy": [
+                652.1333333333333,
+                947.3777777777776
+              ],
+              "render_xy": [
+                422.5576828669612,
+                313.9982545137184
+              ],
+              "art_rgb": [
+                191.0,
+                177.0,
+                165.0
+              ],
+              "old_rgb": [
+                192.0,
+                193.5,
+                195.0
+              ],
+              "new_rgb": [
+                153.0,
+                146.5,
+                138.0
+              ]
+            },
+            {
+              "reference_xy": [
+                529.6555555555555,
+                1008.211111111111
+              ],
+              "render_xy": [
+                350.07636502481864,
+                349.99890907107397
+              ],
+              "art_rgb": [
+                95.5,
+                96.5,
+                101.0
+              ],
+              "old_rgb": [
+                190.5,
+                192.0,
+                194.0
+              ],
+              "new_rgb": [
+                135.0,
+                128.0,
+                118.5
+              ]
+            },
+            {
+              "reference_xy": [
+                433.94444444444434,
+                1039.0333333333333
+              ],
+              "render_xy": [
+                293.4353351879125,
+                368.2392407134675
+              ],
+              "art_rgb": [
+                144.0,
+                133.0,
+                129.0
+              ],
+              "old_rgb": [
+                191.0,
+                193.0,
+                194.0
+              ],
+              "new_rgb": [
+                137.5,
+                131.0,
+                122.5
+              ]
+            },
+            {
+              "reference_xy": [
+                785.9666666666666,
+                1052.011111111111
+              ],
+              "render_xy": [
+                501.7591228931435,
+                375.91938035237
+              ],
+              "art_rgb": [
+                187.0,
+                170.0,
+                159.0
+              ],
+              "old_rgb": [
+                191.5,
+                193.0,
+                194.0
+              ],
+              "new_rgb": [
+                191.0,
+                184.0,
+                176.0
+              ]
+            },
+            {
+              "reference_xy": [
+                725.1333333333333,
+                1135.5555555555554
+              ],
+              "render_xy": [
+                465.75846833578794,
+                425.360279277805
+              ],
+              "art_rgb": [
+                173.0,
+                159.0,
+                147.5
+              ],
+              "old_rgb": [
+                187.0,
+                188.5,
+                190.5
+              ],
+              "new_rgb": [
+                176.0,
+                168.5,
+                160.5
+              ]
+            },
+            {
+              "reference_xy": [
+                539.3888888888888,
+                1198.822222222222
+              ],
+              "render_xy": [
+                355.8364697539955,
+                462.8009600174548
+              ],
+              "art_rgb": [
+                175.0,
+                162.0,
+                153.0
+              ],
+              "old_rgb": [
+                182.5,
+                184.0,
+                185.5
+              ],
+              "new_rgb": [
+                163.5,
+                157.5,
+                150.0
+              ]
+            }
+          ]
+        },
+        "lighting": {
+          "gallery_rgb_mean_absolute_change": 2.974
+        }
+      },
+      "first_trial": {
+        "floor_checks": {
+          "n": 16,
+          "reference_luma": 105.4,
+          "before_luma": 147.6,
+          "after_luma": 105.9,
+          "before_error": 42.2,
+          "after_error": 8.54
+        },
+        "roof_checks": {
+          "n": 12,
+          "reference_luma": 162.7,
+          "before_luma": 187.2,
+          "after_luma": 174.1,
+          "before_error": 24.48,
+          "after_error": 16.31
+        },
+        "lighting": {
+          "gallery_rgb_mean_absolute_change": 2.975
+        }
+      },
+      "unlit_max_channel": 1,
+      "first_trial_gallery": {
+        "path": "Assets/ShipConcepts/hull-finishes-r194/delta-tree/surface/gallery.png",
+        "sha256": "553b46eb88ee5d3952853673addcebc3230f98266ca1f078f77cf98a313d71b5"
+      },
+      "limit": "The floors follow the accepted sheet. The 15 of 16 floor alignment from the prior pass limits boundary agreement, particularly where the narrow port rib crosses a mark."
+    }
+  },
+  "asset_ledger": {
+    "expected_local_blender_jobs": 4,
+    "captured": {
+      "aquila-r194-delta-tree-selected": "req_52cf5e8dbe7f1cadf032d070",
+      "aquila-r194-glacier-tongue-selected": "req_56fbdbdee38c93dd86b15aea",
+      "aquila-r194-delta-tree-surface": "req_c199ce3cda405a3935079762",
+      "aquila-r194-glacier-tongue-surface": "req_47ca1565fae5c9296da9aacd"
+    },
+    "provider_credits": 0
+  },
+  "asset_pipeline": [
+    {
+      "path": "knowledge/asset-turnaround-sheets.md",
+      "sha256": "96394580c6dcca28f025cf06b25025ae6910173a2d6114167f2397ab97b77a9d"
+    },
+    {
+      "path": "Tools/asset-pipeline/experimental/aquila_research_battleships/turnaround/feature_finish_maps.py",
+      "sha256": "bfde8b8cebc3c66dd67900436e699a4c13639a3e29b9397078c95f79ceff799c"
+    },
+    {
+      "path": "Tools/asset-pipeline/experimental/aquila_research_battleships/turnaround/feature_finishes.py",
+      "sha256": "df4cffb40009f10738db01fdda78caf2fb06d7b785e3ce1698b8b2bbb9be9d0e"
+    },
+    {
+      "path": "Tools/asset-pipeline/experimental/blender_reference_modeling/registered_finish.py",
+      "sha256": "862d3435de32b8714ebc1497e8c58d4f31ab56ba4e883578645fd2115d468054"
+    },
+    {
+      "path": "Tools/asset-pipeline/experimental/blender_reference_modeling/region_luminance.py",
+      "sha256": "4ff757f90d2b54d4bc2b8fcde59ad6ced441076704fe5e98a809276188a312a6"
+    },
+    {
+      "path": "Tools/asset-pipeline/experimental/blender_reference_modeling/material_light_test.py",
+      "sha256": "65cbaa32c6e7be1072793428994cc811aec6fb46f8bc9feb28514eb205c06884"
+    }
+  ],
+  "viewer": {
+    "method": "Isolated headless Chrome with WebGL",
+    "ships": {
+      "delta-tree": {
+        "original_loaded": true,
+        "native_and_uniform_clay": true,
+        "stern_and_reset": true,
+        "drag_rotates": true,
+        "downloaded_model_matches": true,
+        "download_sha256": "6939a8c4986137a5c3970db309c0093d9bcaf9a1ea89e3dd22c18196cf0e53fa",
+        "model_view_pixel_differences": {
+          "gray": 10.13,
+          "stern": 34.33,
+          "drag": 22.69,
+          "reset": 0.0
+        },
+        "switches_between_revisions": true,
+        "previous_to_current_pixel_difference": 8.27
+      },
+      "glacier-tongue": {
+        "original_loaded": true,
+        "native_and_uniform_clay": true,
+        "stern_and_reset": true,
+        "drag_rotates": true,
+        "downloaded_model_matches": true,
+        "download_sha256": "73b861b26d7489af5ca8bded998a966ddc66695b9b1a5f9371711cc2f83e829d",
+        "model_view_pixel_differences": {
+          "gray": 3.77,
+          "stern": 29.07,
+          "drag": 19.01,
+          "reset": 0.0
+        },
+        "switches_between_revisions": true,
+        "previous_to_current_pixel_difference": 1.09
+      }
+    }
+  },
+  "delivery": {
+    "served_local_report_round": 194,
+    "http_artifacts_matching_sha256": 10,
+    "verified_files": [
+      "r194-glacier-tongue-comparison.webp",
+      "r194-glacier-tongue.blend",
+      "r194-glacier-tongue.glb",
+      "r194-glacier-tongue-gallery.png",
+      "r194-glacier-tongue-earlier-gallery.png",
+      "r194-delta-tree-comparison.webp",
+      "r194-delta-tree.blend",
+      "r194-delta-tree.glb",
+      "r194-delta-tree-gallery.png",
+      "r194-delta-tree-earlier-gallery.png"
+    ],
+    "served_gallery_cameras_match": true,
+    "asset_pipeline_source_hashes_and_guide_links_verified": true,
+    "viewer": "Both models rotate, reset, switch revision and download in isolated headless Chrome.",
+    "paseo_workspace": "The report is served locally. The workspace browser did not open because Paseo reported no connected automation host."
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "source": "Docs/Handoffs/HANDOFF_2026-11-15_game-direction.md",
+  "archive": "Docs/History/game-direction/20261126T031254Z.md",
+  "saved_at_utc": "2026-11-26T03:12:54.801997+00:00",
+  "bytes": 8532,
+  "sha256": "5df767621d90955bc59eae1a1fc327bb1d7247773e4184a7e6d862c138344cea",
+  "reason": "Preserve the exact round 185 checkpoint before recording the rebuilt branch stations and outer blade."
+}

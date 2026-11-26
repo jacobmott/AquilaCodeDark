@@ -1,0 +1,254 @@
+{
+  "round": 201,
+  "local_date": "2026-11-26",
+  "purpose": "Preserve an asset-independent way to find missing reference shapes, diagnose the first surface and verify a proposed correction.",
+  "method": "Whole evaluated mesh, named first surface, declared background or backing, optional material. Unknown observations stay outside the score. Cameras and marked points are shared between model versions.",
+  "previous_evidence": {
+    "path": "Docs/Testing/research-battleship-upper-works.json",
+    "sha256": "fcc34a47717a57238e1e9d885da1ac77461e342c44a517c327f6a70b33ec0e1c"
+  },
+  "project": "Asset Pipeline",
+  "pipeline_sources": [
+    {
+      "path": "knowledge/reference-shape-review.md",
+      "sha256": "2ad528b753cb1d5c46d911e7c48aed2211eea64df5e23a757295c9d5ac2cc1d4"
+    },
+    {
+      "path": "Tools/asset-pipeline/experimental/blender_reference_modeling/audit_reference_features.py",
+      "sha256": "b397010622d39e61b1938d095c7dc23593a683d1894c9a1de293241ce72507f4"
+    },
+    {
+      "path": "Tools/asset-pipeline/experimental/blender_reference_modeling/example_feature_audit.py",
+      "sha256": "6a94e6a75130e1215e52344aad5936c05c60e68763ce33d0d7cb79307cfc7415"
+    },
+    {
+      "path": "Tools/asset-pipeline/experimental/blender_reference_modeling/examples/case_feature_marks.json",
+      "sha256": "f90e45382f2934e56cff63f0fffa55c7a23ad20cb64dcc2f38d8a26f6fd66465"
+    },
+    {
+      "path": "Tools/asset-pipeline/experimental/blender_reference_modeling/projected_feature.py",
+      "sha256": "147881ffba9a1d4f77ad910a00f5239cedee6f0adc313b100089f0ed0aa5ea9c"
+    },
+    {
+      "path": "Tools/asset-pipeline/experimental/blender_reference_modeling/visible_surface.py",
+      "sha256": "e78011aec7f38894957d16f54185c8175a79c7f2a314dba684d1135331423c75"
+    },
+    {
+      "path": "Tools/asset-pipeline/experimental/blender_reference_modeling/pinhole_review.py",
+      "sha256": "9dbe5bd3af78d515c19739062edbacb9eef0f8cb18ffd773c83eb50a65ec004e"
+    },
+    {
+      "path": "Tools/asset-pipeline/experimental/blender_reference_modeling/review_view.py",
+      "sha256": "4a19242cacaaecd0ec8295bc2dd2fa27a453ba9af4fb5e5e5ab2158d2e7b9163"
+    },
+    {
+      "path": "Tools/asset-pipeline/experimental/blender_reference_modeling/fit_gallery_lens.py",
+      "sha256": "601374ef9a956664a84152f0574343df0937a06d107d1b510e7fe0311070e8e0"
+    },
+    {
+      "path": "Tools/asset-pipeline/experimental/blender_reference_modeling/skyline_columns.py",
+      "sha256": "2c519c00a6276c1bc88fdb080583a01a5ef206e67affb774b0b7f25e41e84b8e"
+    }
+  ],
+  "discovery": [
+    "knowledge/README.md",
+    "knowledge/blender-reference-modeling.md",
+    "Tools/asset-pipeline/experimental/blender_reference_modeling/README.md"
+  ],
+  "independent_case": {
+    "host": "Blender 5.2.0 LTS, fresh offline background scene; no rendered pictures or external job.",
+    "before": {
+      "front": [
+        0,
+        6
+      ],
+      "top": [
+        1,
+        3
+      ]
+    },
+    "after": {
+      "front": [
+        6,
+        6
+      ],
+      "top": [
+        3,
+        3
+      ]
+    },
+    "findings": [
+      "front, indicator: other surface first (hit Guard)",
+      "front, space above guard: gap blocked (hit Guard)",
+      "front, latch post: expected mesh absent or differently named (hit Guard)",
+      "top, indicator: different material (hit Indicator / Housing paint)"
+    ],
+    "corrections": [
+      "Lowered the guard",
+      "Added the missing latch post",
+      "Assigned the amber lens material"
+    ],
+    "unresolved": "rear fastener",
+    "source": "example_feature_audit.py and examples/case_feature_marks.json"
+  },
+  "ships": {
+    "delta-tree": {
+      "camera": "calibrated perspective, orthographic overhead and side",
+      "by_revision": {
+        "previous": {
+          "model": {
+            "path": "Assets/ShipConcepts/armor-drives-r198/delta-tree/tempered/delta-tree.blend",
+            "sha256": "41925f81e1c11dcd82f853285bda0543f6c0dc50ddd199da846e49cccfb9ff35"
+          },
+          "hits_and_total_per_view": {
+            "painting": [
+              21,
+              37
+            ],
+            "side": [
+              8,
+              9
+            ],
+            "overhead": [
+              10,
+              10
+            ]
+          },
+          "all_recorded_first_surfaces_reproduced": 56
+        },
+        "editable": {
+          "model": {
+            "path": "Assets/ShipConcepts/upper-structures-r200/delta-tree/registered/delta-tree.blend",
+            "sha256": "005441b9a21505c9d3aa50a8473c6f9040e3a0d7c82f3fdfcf01e5a3635a8870"
+          },
+          "hits_and_total_per_view": {
+            "painting": [
+              31,
+              37
+            ],
+            "side": [
+              7,
+              9
+            ],
+            "overhead": [
+              10,
+              10
+            ]
+          },
+          "all_recorded_first_surfaces_reproduced": 56
+        },
+        "exchange": {
+          "model": {
+            "path": "Assets/ShipConcepts/upper-structures-r200/delta-tree/registered/delta-tree.glb",
+            "sha256": "2db7daa4ddb9bd04afc9b782362959cf4199015098ca72beef5c7292be3985dc"
+          },
+          "hits_and_total_per_view": {
+            "painting": [
+              31,
+              37
+            ],
+            "side": [
+              7,
+              9
+            ],
+            "overhead": [
+              10,
+              10
+            ]
+          },
+          "all_recorded_first_surfaces_reproduced": 56
+        }
+      }
+    },
+    "glacier-tongue": {
+      "camera": "orthographic gallery, overhead and side",
+      "by_revision": {
+        "previous": {
+          "model": {
+            "path": "Assets/ShipConcepts/armor-drives-r198/glacier-tongue/refit/glacier-tongue.blend",
+            "sha256": "a3f4ba43e8492e0a8612c37187793a125c0915879a481a62225929f5a65325a7"
+          },
+          "hits_and_total_per_view": {
+            "painting": [
+              24,
+              60
+            ],
+            "side": [
+              2,
+              5
+            ],
+            "overhead": [
+              6,
+              8
+            ]
+          },
+          "all_recorded_first_surfaces_reproduced": 73
+        },
+        "editable": {
+          "model": {
+            "path": "Assets/ShipConcepts/upper-structures-r200/glacier-tongue/paired/glacier-tongue.blend",
+            "sha256": "4d1f567c61432d70f501924a7bd4205b1871682686a09a3d804c81c96c9ed7b5"
+          },
+          "hits_and_total_per_view": {
+            "painting": [
+              57,
+              60
+            ],
+            "side": [
+              3,
+              5
+            ],
+            "overhead": [
+              8,
+              8
+            ]
+          },
+          "all_recorded_first_surfaces_reproduced": 73
+        },
+        "exchange": {
+          "model": {
+            "path": "Assets/ShipConcepts/upper-structures-r200/glacier-tongue/paired/glacier-tongue.glb",
+            "sha256": "b699df184a2386e6bcefc55c9497d62fb18fe9ce68cc554912023787aedb120c"
+          },
+          "hits_and_total_per_view": {
+            "painting": [
+              57,
+              60
+            ],
+            "side": [
+              3,
+              5
+            ],
+            "overhead": [
+              8,
+              8
+            ]
+          },
+          "all_recorded_first_surfaces_reproduced": 73
+        }
+      }
+    }
+  },
+  "limits": "This checker tests marked pixels and stable mesh name prefixes. Unmarked shapes, visual appearance and hidden geometry require additional review.",
+  "verification": {
+    "total_marks_per_revision_across_both_ships": 129,
+    "model_files_checked": 6,
+    "first_surface_tests_compared": 387,
+    "confirmed": "Compared every first mesh, pixel coordinate and pass/miss result against the saved round 200 checks. Six model hashes matched the earlier record.",
+    "documentation": "The task index, general Blender guide and toolkit index link to the guide. Its relative file links resolve.",
+    "local_report_round": 201,
+    "context_checks": {
+      "Aquila": "passed",
+      "Asset Pipeline": {
+        "checks": 152,
+        "failures": [
+          "byte budget: HANDOFF.md"
+        ],
+        "shared_handoff_bytes": 8661,
+        "budget_bytes": 8000,
+        "before_this_update_bytes": 8662,
+        "modeling_task_index_has_working_direct_guide_link": true
+      }
+    }
+  }
+}

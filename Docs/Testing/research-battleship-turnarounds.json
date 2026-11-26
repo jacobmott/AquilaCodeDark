@@ -1,0 +1,256 @@
+{
+  "round": 190,
+  "local_date": "2026-11-25",
+  "verified_at_utc": "2026-11-26T04:52:29.179694+00:00",
+  "owner_approval": {
+    "source": "chat",
+    "selection": "Max quality · 24 credits total",
+    "maximum_generations_per_ship": 1
+  },
+  "provider": "Higgsfield",
+  "model": "GPT Image 2.6 Sunburst",
+  "job_type": "gpt_image_2_6",
+  "billing": {
+    "match_count": 2,
+    "other_matching_debits": 0,
+    "credits": 24.0,
+    "basis": "Matched signed-in debits by model, amount and creation time. Transaction rows omit job IDs."
+  },
+  "image_method": "One original painting per request. Each unmodified provider PNG was decoded and hashed. Each original crop matched its source pixel for pixel.",
+  "scale_method": "The artwork outlines were marked manually on a 1440 by 960 display grid. The old renders use a maximum per-channel difference above 18 from the top-left background pixel. Uniform scale matches bow-to-stern spans and each view is centered independently. Beam includes exposed fittings.",
+  "marks": "Docs/Plans/ShipHulls/turnaround-view-marks.json",
+  "previous_models": "Docs/Testing/research-battleship-upper-hulls.json",
+  "ships": {
+    "delta-tree": {
+      "name": "Delta Tree",
+      "source": {
+        "path": "Assets/ShipConcepts/sunburst-r144/58-delta-tree.png",
+        "sha256": "6628ed15b22fbf2990729eb8417b9babcb66cc8ebcb5635dad57c8776efeeac3"
+      },
+      "source_job_id": "14e02da3-eb12-4269-be91-894c10610b17",
+      "provider_job_id": "8370b745-d789-4746-bc8c-3c07f291ee9c",
+      "submitted_prompt_sha256": "1f26e2f48baec0cf34769d6b01390aa849d1b7558ca59210489763ce98a8302f",
+      "created_at": "2026-11-26T04:44:14.138922Z",
+      "delivered_px": [
+        3504,
+        2336
+      ],
+      "actual_settings": {
+        "resolution": "4k",
+        "quality": "max",
+        "aspect_ratio": "3:2",
+        "output_format": "png"
+      },
+      "catalog_request": "req_fe0d5eab137ed15709f99f26",
+      "quoted_credits": 12.0,
+      "sheet": {
+        "path": "Assets/ShipConcepts/turnaround-sheets-r190/delta-tree.png",
+        "bytes": 12386600,
+        "sha256": "91e1ba6d9ba572957f166e62ec377d631fecc4b675f5cdb2a64173690e17d87c"
+      },
+      "thumbnail": {
+        "path": "Assets/ShipConcepts/turnaround-sheets-r190/delta-tree/sheet-preview.webp",
+        "bytes": 227572,
+        "sha256": "6f74e59b4f990fbc6f587655d56053307bc39ec553fbe12c315b69033fc0afa0"
+      },
+      "comparison": {
+        "path": "Assets/ShipConcepts/turnaround-sheets-r190/delta-tree/model-comparison.webp",
+        "bytes": 231012,
+        "sha256": "560a8867ac9a0dc2cced5a460ded95984905697c72dec5a5d12b8a3009171aff"
+      },
+      "blender": {
+        "path": "Assets/ShipConcepts/turnaround-sheets-r190/delta-tree/delta-tree-references.blend",
+        "bytes": 23587744,
+        "sha256": "fd92eadb430e9b482bb75cc41639598eb1b8fd29e6425a27674e4e71b54f1902"
+      },
+      "library_check": {
+        "read_from": "delta-tree-references.blend",
+        "packed_images": 8,
+        "axis_plate_spans_m": {
+          "port": 1280.0,
+          "top": 1280.0
+        },
+        "opens_on_full_sheet": true
+      },
+      "panel_index": {
+        "path": "Assets/ShipConcepts/turnaround-sheets-r190/delta-tree/panels.json",
+        "bytes": 1787,
+        "sha256": "dc4518321bf2b4de81482380d716bd5a8ed4b10c5e0f200d5f3018722f4f992e"
+      },
+      "raw_crops_verified": 6,
+      "bow_width_divided_by_top_beam_on_sheet": 2.001,
+      "uniform_scale_model_comparisons": {
+        "port": {
+          "sheet_outline_crop_px": [
+            17,
+            44,
+            1670,
+            572
+          ],
+          "model_outline_image_px": [
+            44,
+            127,
+            1036,
+            455
+          ],
+          "sheet_cross_to_length": 0.3194,
+          "model_cross_to_length": 0.3306,
+          "source_model": {
+            "path": "Assets/ShipConcepts/hull-review-r187/bronze-observatory/angles/delta-tree-port.png",
+            "sha256": "ed0f58649260984f6e2367a148585c0577f1e92d70026fdefa9e06f79be386ee"
+          }
+        },
+        "top": {
+          "sheet_outline_crop_px": [
+            17,
+            9,
+            1670,
+            679
+          ],
+          "model_outline_image_px": [
+            31,
+            130,
+            990,
+            647
+          ],
+          "sheet_cross_to_length": 0.4053,
+          "model_cross_to_length": 0.5391,
+          "source_model": {
+            "path": "Assets/ShipConcepts/hull-review-r187/bronze-observatory/angles/delta-tree-overhead.png",
+            "sha256": "f6a72d114fc776ab14cecc62894cc94c78161da1965ba85ae89ae62e935efc75"
+          }
+        }
+      },
+      "confirmed": [
+        "The broad branch fan, bow glazing, round docks and three-tier engine flank recur. The open port doorway is capped on the starboard side."
+      ],
+      "limits": [
+        "Four engine tips span the top view. The stern has two columns of three illuminated outlets. The original shows the three vertical tiers but cannot decide the complete outlet arrangement.",
+        "Several panels reveal upper surfaces. Treat them as near-orthographic illustrations."
+      ],
+      "model_next": "Trace the deck perimeter and dock reach against the original painting before narrowing the fan or moving its stations."
+    },
+    "glacier-tongue": {
+      "name": "Glacier Tongue",
+      "source": {
+        "path": "Assets/ShipConcepts/sunburst-r144/41-glacier-tongue.png",
+        "sha256": "827baa1d6127c91fd36b21e0998ad7b013ddd7c8e7b109059bad03c61e86f0d1"
+      },
+      "source_job_id": "a2fa03e6-f0a8-4aa1-b040-cbe24b493215",
+      "provider_job_id": "d51624de-97fd-4f04-b006-9197ce28aa12",
+      "submitted_prompt_sha256": "59419dc42039c45fe55392083e4cdd158207491643f1e3529dc85ec33c0ea7c1",
+      "created_at": "2026-11-26T04:44:13.967796Z",
+      "delivered_px": [
+        3504,
+        2336
+      ],
+      "actual_settings": {
+        "resolution": "4k",
+        "quality": "max",
+        "aspect_ratio": "3:2",
+        "output_format": "png"
+      },
+      "catalog_request": "req_ed927fb73494b3fab5d3a2a1",
+      "quoted_credits": 12.0,
+      "sheet": {
+        "path": "Assets/ShipConcepts/turnaround-sheets-r190/glacier-tongue.png",
+        "bytes": 11075015,
+        "sha256": "4baacb3211d8eaa38ca8b4dc687d5e6e4b812aea14b696f92fed7e7d3e10075b"
+      },
+      "thumbnail": {
+        "path": "Assets/ShipConcepts/turnaround-sheets-r190/glacier-tongue/sheet-preview.webp",
+        "bytes": 171428,
+        "sha256": "f785b149fcb8afa07e28099832798500be60659339c814dd0368d0c340827ee3"
+      },
+      "comparison": {
+        "path": "Assets/ShipConcepts/turnaround-sheets-r190/glacier-tongue/model-comparison.webp",
+        "bytes": 203886,
+        "sha256": "2aa30df985f508afe51801c10e2c0cec6e953b1113e52d6948d13c075e4c0a94"
+      },
+      "blender": {
+        "path": "Assets/ShipConcepts/turnaround-sheets-r190/glacier-tongue/glacier-tongue-references.blend",
+        "bytes": 22370981,
+        "sha256": "eec509bc2a7823d1dc2a356a955172763adc559339d07a76342093aeb7ef01d6"
+      },
+      "library_check": {
+        "read_from": "glacier-tongue-references.blend",
+        "packed_images": 9,
+        "axis_plate_spans_m": {
+          "port": 1280.0,
+          "top": 1280.0
+        },
+        "opens_on_full_sheet": true
+      },
+      "panel_index": {
+        "path": "Assets/ShipConcepts/turnaround-sheets-r190/glacier-tongue/panels.json",
+        "bytes": 1853,
+        "sha256": "5aee452c0cbc23b55abcf16b9837023ef2a1770da938c1c96d32a669ebd0cec6"
+      },
+      "raw_crops_verified": 6,
+      "bow_width_divided_by_top_beam_on_sheet": 1.496,
+      "uniform_scale_model_comparisons": {
+        "port": {
+          "sheet_outline_crop_px": [
+            37,
+            44,
+            1655,
+            591
+          ],
+          "model_outline_image_px": [
+            44,
+            145,
+            1036,
+            456
+          ],
+          "sheet_cross_to_length": 0.3381,
+          "model_cross_to_length": 0.3135,
+          "source_model": {
+            "path": "Assets/ShipConcepts/hull-review-r187/stepped-crown/angles/glacier-tongue-port.png",
+            "sha256": "e3df7b55993784f0582ecacb554384527efb543bcd2314f30fd5a2da00ec0501"
+          }
+        },
+        "top": {
+          "sheet_outline_crop_px": [
+            39,
+            66,
+            1662,
+            606
+          ],
+          "model_outline_image_px": [
+            16,
+            137,
+            1006,
+            638
+          ],
+          "sheet_cross_to_length": 0.3327,
+          "model_cross_to_length": 0.5061,
+          "source_model": {
+            "path": "Assets/ShipConcepts/hull-review-r187/stepped-crown/angles/glacier-tongue-overhead.png",
+            "sha256": "ec59201a3f70a19091ddf8d824cafedcadc30a3e252d34175d58a656379014a2"
+          }
+        }
+      },
+      "confirmed": [
+        "Layered silver and deep-blue armor, roof arch and domes recur. The side views keep the open bay to port and plated starboard flank. The blade appears on opposite sides in bow and stern views."
+      ],
+      "limits": [
+        "With the nose left in both panels, the blade appears below the hull in both top and underside. A separate underside working copy flips vertically.",
+        "The top panel shows two complete connections to the blade and a short forward stub. Its seven rear outlets are inferred because the painting hides the stern."
+      ],
+      "model_next": "Compare the outboard blade’s sweep and the width of the blue pressure hull against the original. Preserve the side shown by the bay."
+    }
+  },
+  "delivery": {
+    "report_round": 190,
+    "paseo_workspace_round_verified": true,
+    "real_inbox": "reports/game-direction/inbox/20261126T015539Z.json",
+    "owner_choice_channel": "chat",
+    "report_downloads_matched": {
+      "provider_pngs": 2,
+      "sheet_previews": 2,
+      "same_length_comparisons": 2,
+      "packed_blender_libraries": 2,
+      "glacier_undersides": 2
+    }
+  }
+}
