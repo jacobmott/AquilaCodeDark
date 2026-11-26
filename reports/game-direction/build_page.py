@@ -1808,6 +1808,41 @@ def reference_matching_research(receipts):
     return page.entry(181, "Two more ways to match a ship from pictures", section, when="2026-11-25")
 
 
+def battleship_session_wrap(proof):
+    section = decide.recap(
+        "The Windows duel and both ships’ Blender tools are saved and pushed. The restart prompt is ready.",
+        [("Game", "Ship fitting, automatic combat and both playable bridges are saved."),
+         ("Blender", "Both ship recipes and the reusable modeling scripts are saved in Asset Pipeline."),
+         ("Art", "All 60 original concepts and both review models matched their recorded hashes."),
+         ("Windows", "The game was closed. The expedition still showed defeat with the helm on Hold."),
+         ("Research", "All three prompts were copied. No answers were saved when checked.")],
+        dict(did="Saved the session in both repositories and checked both remote branches.",
+             why="The next session can recover the playable game and the tools behind each ship.",
+             working="The browser build, 35 game model tests and the Blender sightline example passed.",
+             not_working="Delta’s lower stern and Glacier’s dock lighting still differ from the artwork.",
+             next="Use the saved prompt to resume when ready."))
+    commits = proof["repositories"]
+    details = table(["Repository", "Verified commit", "Contents"], [
+        ("Aquila Code Dark", f'<code>{escape(commits["AquilaCodeDark"]["commit"][:7])}</code>',
+         "Playable ships, combat, fitting, art records and game decisions."),
+        ("Asset Pipeline", f'<code>{escape(commits["asset-pipeline"]["commit"][:7])}</code>',
+         "Ship builders, materials, reference matching and six measured lessons.")])
+    details += ('<p>The editable scenes, textures, builds and save journals stay on this machine.</p>'
+                '<p><a href="battleship-restart.txt">Copy the restart prompt</a> · '
+                '<a href="battleship-publication.json">Read the publication receipt</a></p>')
+    section += decide.info_thread("aquila-direction-r182-wrap", "Both remote branches contain the session’s changes.",
+                                  short="Saved work and restart prompt", body_html=details)
+    labels = {"camera": "Camera matching", "geometry": "Editable hulls", "materials": "Materials and lighting"}
+    rows = [(f'<a href="{escape(job["request_url"], quote=True)}">{labels[job["topic"]]}</a>', "Copied. Awaiting answer.")
+            for job in proof["research"]]
+    section += decide.request("aquila-direction-r182-research", "When you have a Perplexity answer, save it in its matching request.",
+                              short="Save research answers when ready", info=table(["Request", "Last checked"], rows),
+                              reply="Which research results have you saved?", follows="aquila-direction-r181-research")
+    section += decide.whats_next("aquila-direction-r182-next", "Review a returned technique against Delta’s stern or Glacier’s dock.",
+                                 short="Resume after the handoff", follows="aquila-direction-r181-next")
+    return page.entry(182, "Game and ship modeling work saved", section, when=proof["local_date"])
+
+
 def main(output):
     out = Path(output)
     out.mkdir(parents=True, exist_ok=True)
@@ -7704,6 +7739,12 @@ def main(output):
     reference_research = ROOT / "Docs/Research/research-battleship-reference-matching-requests-v1.json"
     if reference_research.is_file():
         rounds = reference_matching_research(json.loads(reference_research.read_bytes())) + rounds
+    wrap_record = ROOT / "Docs/Testing/research-battleship-session-publication.json"
+    if wrap_record.is_file():
+        wrap = json.loads(wrap_record.read_bytes())
+        (out / "battleship-publication.json").write_bytes(wrap_record.read_bytes())
+        (out / "battleship-restart.txt").write_bytes((ROOT / wrap["handoff"]["saved_prompt"]).read_bytes())
+        rounds = battleship_session_wrap(wrap) + rounds
     (out / "live-fitting-checks.json").write_bytes((ROOT / "Docs/Testing/native-live-fitting.json").read_bytes())
     (out / "clear-fitting-checks.json").write_bytes((ROOT / "Docs/Testing/native-clear-fitting.json").read_bytes())
     (out / "round-model-checks.json").write_bytes((ROOT / "Docs/Testing/native-round-models.json").read_bytes())

@@ -1,0 +1,138 @@
+{
+  "schema": 1,
+  "round": 182,
+  "local_date": "2026-11-25",
+  "observed_utc": "2026-11-25T23:59:52.718871+00:00",
+  "repositories": {
+    "AquilaCodeDark": {
+      "parent": "e38dcf21b420622fb14c36601a9462ce2a93752d",
+      "commit": "9a1ec09f5e280bbd79817f0a85621126e7b15acf",
+      "branch": "main",
+      "upstream": "origin/main",
+      "published_paths": 257,
+      "remote_tip_at_verification": "9a1ec09f5e280bbd79817f0a85621126e7b15acf",
+      "verified_at_utc": "2026-11-25T23:57:52.333288+00:00",
+      "shared_index_reconciliation": {
+        "reconciled_owned_entries": 257,
+        "preserved_owned_conflicts": [],
+        "other_entries_preserved": true
+      },
+      "shared_staging_after_push": [],
+      "whitespace": "passed",
+      "hook": "passed",
+      "guard": {
+        "indexed_files": 829,
+        "failures": 0
+      },
+      "remaining_paths_after_content_push": 0
+    },
+    "asset-pipeline": {
+      "parent": "923f951e168ec224c6f086ac7d2c604d68960628",
+      "commit": "0cb03685172f051639c9743db6f0f0e4661e8db4",
+      "branch": "main",
+      "upstream": "origin/main",
+      "published_paths": 49,
+      "remote_tip_at_verification": "0cb03685172f051639c9743db6f0f0e4661e8db4",
+      "verified_at_utc": "2026-11-25T23:55:23.639462+00:00",
+      "shared_index_reconciliation": {
+        "reconciled_owned_entries": 49,
+        "preserved_owned_conflicts": [],
+        "other_entries_preserved": true
+      },
+      "shared_staging_after_push": [],
+      "whitespace": "passed",
+      "hook": "passed",
+      "guard": {
+        "selected_text_files_checked": 49,
+        "guard": "Project media hook runs on commit"
+      },
+      "remaining_paths_after_content_push": 514
+    }
+  },
+  "scope": {
+    "AquilaCodeDark": "Fitting, combat effects, ammunition, boarding, bridge duels, playable hull finishes, roster, reference assets manifest, art studies, project knowledge and report through round 181.",
+    "asset-pipeline": "Ship builders and surface recipes, Blender reference matching, example scripts, art goal and six measured lessons. Three shared files contain only the owned additions."
+  },
+  "verification": {
+    "checked_utc": "2026-11-25T23:57:13.364313+00:00",
+    "assets_matching_recorded_hashes": {
+      "roster_originals": 60,
+      "review_model_files": 14,
+      "model_count": 2,
+      "windows_package_files": 4
+    },
+    "journal": {
+      "revision": 151681,
+      "parent": 151680,
+      "phase": "Failed",
+      "helm": "Hold",
+      "linked": true,
+      "live_file_count": 151681,
+      "desktop_matches": true
+    },
+    "original_windows_pass": {
+      "packaged": 8,
+      "editor": 22,
+      "rerun_during_wrap": false
+    }
+  },
+  "processes": {
+    "checked_utc": "2026-11-25T23:58:04.7815166Z",
+    "listening": [
+      8776,
+      8953,
+      8964
+    ],
+    "game_processes": []
+  },
+  "research": [
+    {
+      "topic": "materials",
+      "id": "3e598ae1e05e4d48aa38438c52ebc298",
+      "state": "copied",
+      "saved_result_versions": 0,
+      "request_url": "http://127.0.0.1:8776/?project=aquila-code-dark#3e598ae1e05e4d48aa38438c52ebc298"
+    },
+    {
+      "topic": "camera",
+      "id": "629f66eb205049889648cc8466ffd508",
+      "state": "copied",
+      "saved_result_versions": 0,
+      "request_url": "http://127.0.0.1:8776/?project=aquila-code-dark#629f66eb205049889648cc8466ffd508"
+    },
+    {
+      "topic": "geometry",
+      "id": "d7914814e5f9481195e703c94518e404",
+      "state": "copied",
+      "saved_result_versions": 0,
+      "request_url": "http://127.0.0.1:8776/?project=aquila-code-dark#d7914814e5f9481195e703c94518e404"
+    }
+  ],
+  "checks": {
+    "angular_and_electron_development_build": "npm run build:dev passed",
+    "model_tests": "node --experimental-strip-types --test scripts/tests/*.test.mjs passed 35 of 35",
+    "repo_safety": "Six tests passed in .venv-tools. The system Python lacked botocore for one test.",
+    "materials": "Four sampler checks, four served comparison files, both exchange model hashes and the materials prompt hash passed.",
+    "blender": "Blender 5.2 offline factory-startup sightline example passed, including projection and first-hit checks.",
+    "startup": "Asset Pipeline passed 149 local startup checks. The final 8,089-byte Aquila checkpoint passed the route, link and size check.",
+    "report": "Round 182 opened in the existing Paseo workspace tab. All 181 earlier rounds remained in history. Both local HTTP downloads matched the project files.",
+    "source_bytes": "Git normalizes Asset Pipeline tool JSON to LF. End-of-file blank lines were removed from three first-pass builders and the boarding hull script. Historical hashes describe the recorded working copies.",
+    "native": "Round 172 eight packaged and 22 editor groups come from the earlier native run. Wrap verified four executable/package files by hash."
+  },
+  "local_only": [
+    "Editable scenes, GLBs, textures, concept images and comparison media",
+    "Windows builds and desktop shortcuts",
+    "Real save journals, private report inbox, raw logs"
+  ],
+  "authority": "This approval covers these session-owned Git changes in both repositories. No asset transfer, deployment, research execution, purchase, generation or external contact.",
+  "handoff": {
+    "file": "Docs/Handoffs/HANDOFF_2026-11-15_game-direction.md",
+    "saved_prompt": "Docs/Handoffs/PROMPT_2026-11-25_ship-art.txt",
+    "last_real_inbox": "reports/game-direction/inbox/20261125T193707Z.json",
+    "inbox_sha256": "8b5e1c656cd870008433bff84e31ca6a82474f0576dc7e982f438316b8e9891e",
+    "archive": "Docs/History/game-direction/20261125T235950Z.md",
+    "archived_sha256": "51007df1f19b29fc1db085f15922c7563a3ea2f981da5ce20a8e05ead4024a25",
+    "prompt_sha256": "5578f8b09e053065101a065b9c430451c177f8fd6c7f1183085f284ab3610bdc"
+  },
+  "final_records": "A subsequent Aquila commit contains this receipt, round 182 and the restart prompt. Git history supplies its identity."
+}

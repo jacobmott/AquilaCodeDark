@@ -1,0 +1,10 @@
+Aquila Code Dark at D:/OtherProjects/AquilaCodeDark. The Windows duel and both Blender workflows are saved on origin/main.
+Read AGENTS.md, Docs/TaskRoutes.md and Docs/Handoffs/HANDOFF_2026-11-15_game-direction.md in full.
+Report http://127.0.0.1:8953/?agentreport=1&paseoAgent=09c42e01-b201-4b15-8ad9-8a9f4ed3c740 (reports/game-direction/, round 182).
+Last real inbox read: reports/game-direction/inbox/20261125T193707Z.json. Later chat says both hulls look closer.
+1. Review any returned camera, hull or material research. All three prompts were copied; no answers at wrap.
+2. Compare Delta Tree’s lower stern and Glacier Tongue’s dock lighting against the art. Both review ships measure 1,280 m.
+3. Revisit the playable round 172 Windows duel. Round 179 is for comparison before any game replacement. Eight packaged checks and 22 editor groups passed earlier.
+Game closed at wrap. Recheck the expedition save before acting. Defeat, helm on Hold, revision 151681. Keep both journals intact.
+Editable Blender scenes and media stay local. Asset Pipeline holds the reusable scripts. D&B stays paused. The push approval is spent.
+Do not start any of this. Read, say where things stand, then wait.
