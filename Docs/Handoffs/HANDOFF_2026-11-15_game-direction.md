@@ -1,6 +1,6 @@
 # Aquila ship art and the Windows Combat Simulator
 
-November 26, 2026, round 201. Saved the transferable reference workflow in Asset Pipeline. Earlier wrap pushed `a3992ef` in Aquila and `0cb0368` in Asset Pipeline. Rounds 184–201 are local. [Decisions](../../reports/game-direction/DECISIONS.md) · [Prior publication](../Testing/research-battleship-session-publication.json) · [Previous checkpoint](../History/game-direction/20261126T182339Z.md) · [Archive hash](../History/game-direction/20261126T182339Z.json).
+November 26, 2026, round 202. Aquila ship records through round 201 reached `origin/main` at `529fe2b`. Asset Pipeline's scripts and guides reached `origin/main` at `67006bb`. This checkpoint and its restart prompt follow in the final Aquila wrap commit. [Push receipts and wrap checks](../Testing/research-battleship-reference-publication.json) · [Decisions](../../reports/game-direction/DECISIONS.md) · [Round 201 archive](../History/game-direction/20261126T184101Z.md) · [Archive hash](../History/game-direction/20261126T184101Z.json).
 
 ## Ship art and research
 
@@ -26,27 +26,18 @@ A standalone match starts fresh at one homeworld with one research battleship an
 
 ## Verification and authority
 
-Windows uses launcher Unreal 5.8.4. Earlier tests covered eight packaged checks and 22 editor groups. Round 200 replays matched all 168 meshes, faces, material slots and UVs. Both new local exports rotated, switched revisions and downloaded. Ten served files matched their hashes. Paseo displayed round 201. Recheck live game and ports on return. [Windows checks](../Testing/native-ship-finishes.json) · [Blender and viewer checks](../Testing/research-battleship-upper-works.json).
+Wrap verified six model files, both six-view sheets, ten pipeline sources, the 60 original concepts and three archived research reports by hash. An offline Blender 5.2 run reproduced the equipment case's nine corrected marks. Its rear fastener remains unresolved. Round 201 reproduced all 387 earlier ship results, including misses. The [Windows package](../Testing/native-ship-finishes.json) matched four hashes. Eight packaged checks and 22 editor groups passed in the earlier Unreal 5.8.4 run.
 
-Latest real inbox read was [the two round 184 likeness ratings](../../reports/game-direction/inbox/20261126T015539Z.json). At round 182 the expedition showed **Failed**, helm **Hold**, revision 151681, parent 151680. The tip, parent and three desktop journal files matched the round 179 record. Recheck current state before any launch. Preserve journals and launch without injected input.
+At wrap the game and Blender were closed. Local report 8953 and Research Console 8776 were listening. Ports 4200, 8952 and 8964 were inactive. The expedition tip and parent matched their saved hashes. Revision 151681, parent 151680, state **Failed**, helm **Hold**. All three desktop journal files matched. Recheck the current save before any launch. Preserve both journals and launch without injected input.
 
-Aquila holds the local artwork, models, report and checkpoint. Asset Pipeline holds reproducible scripts for the calibrated lens, first-surface sampling and skyline comparison. Asset Ledger captured eight local Blender runs in round 200. Other pipeline tasks have concurrent edits. Media, binaries, inbox and journals stay local. The push and two-sheet generation approvals are spent. New publication, transfer, deployment, paid generation, contact, purchase, filing or signup requires fresh approval.
+Latest [real inbox reply](../../reports/game-direction/inbox/20261126T015539Z.json) rated both round 184 studies closer. Later direction came through chat. Asset Pipeline preserved other tasks' edits. Its shared handoff measured 8,661 bytes against an 8,000-byte budget. The other 151 local checks passed. The [receipt](../Testing/research-battleship-reference-publication.json) records both published commits and the prior size overage.
+
+Images, native scenes, exports, raw returns, builds, private inbox and journals stay local. The sheet budget and this Git authorization are spent. New publication, transfer, deployment, paid generation, contact, purchase, filing or signup needs fresh direction.
 
 D&B waits for owner direction. Keep the home address private. Dedicated business address and dependable mail handling are priorities. Northwest leads. Regus Plaza 7000 is a conditional fallback. Four developers publicly list the same Austin suite. Zensoul names Northwest in Wyoming. These examples establish neither private verification nor this LLC’s eligibility. No provider, package or filing date was chosen. D&B supplied no specialist referral or case. Before an owner-requested retry, read the [publishing reference](../../knowledge/publishing-business.md) and [saved message](PROMPT_2026-11-18_dnb-follow-up.txt).
 
 ## Restart
 
-The [previous wrap prompt](PROMPT_2026-11-25_ship-art.txt) records round 182. The current prompt follows.
+The [copyable restart prompt](PROMPT_2026-11-26_ship-art.txt) contains the read order, live services and remaining choices. The [previous wrap](PROMPT_2026-11-25_ship-art.txt) remains available.
 
-```text
-Aquila Code Dark at D:/OtherProjects/AquilaCodeDark. The round 172 Windows duel and pre-wrap Blender workflows are on origin/main. Later art work is local.
-Read AGENTS.md, Docs/TaskRoutes.md and Docs/Handoffs/HANDOFF_2026-11-15_game-direction.md in full.
-Report http://127.0.0.1:8953/?agentreport=1&paseoAgent=09c42e01-b201-4b15-8ad9-8a9f4ed3c740 (reports/game-direction/, round 201).
-Last real inbox read: reports/game-direction/inbox/20261126T015539Z.json. Both round 184 ships rated closer. New direction came through chat.
-1. All three Perplexity reports were reviewed. The completed local tests and limits are in the linked research review.
-2. Round 201 saved the missing-shape workflow and a working example in Asset Pipeline. The models are from round 200. Glacier’s main dome is visible. Delta’s dish stays centered in the gallery and overhead comparisons. Glacier’s dish profile and Delta’s small instruments remain open. Asset Pipeline holds the reusable workflow. The 24-credit approval is spent.
-3. Windows still uses round 172. Review the exteriors before any game replacement. Earlier tests covered eight packaged checks and 22 editor groups.
-Game closed at wrap. Recheck the expedition save before acting. Defeat, helm on Hold, revision 151681. Keep both journals intact.
-Editable Blender scenes and media stay local. Asset Pipeline holds the reusable scripts. D&B stays paused. The push approval is spent.
 Do not start any of this. Read, say where things stand, then wait.
-```

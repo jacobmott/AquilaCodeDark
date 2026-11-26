@@ -1,0 +1,8 @@
+{
+  "source": "Docs/Handoffs/HANDOFF_2026-11-15_game-direction.md",
+  "archive": "Docs/History/game-direction/20261126T184101Z.md",
+  "saved_at_utc": "2026-11-26T18:41:01.009886+00:00",
+  "bytes": 9414,
+  "sha256": "131e409f28caf761407922631d0061e3d470585c3201f035b05381ff599295ad",
+  "reason": "Preserve round 201 exactly before recording the verified ship-art pushes and restart."
+}

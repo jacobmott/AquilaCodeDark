@@ -1,0 +1,11 @@
+Aquila Code Dark at D:/OtherProjects/AquilaCodeDark. Ship-art records and Asset Pipeline's Blender workflows are on origin/main in both repositories.
+Read AGENTS.md, Docs/TaskRoutes.md and Docs/Handoffs/HANDOFF_2026-11-15_game-direction.md in full.
+Report http://127.0.0.1:8953/?agentreport=1&paseoAgent=09c42e01-b201-4b15-8ad9-8a9f4ed3c740 (reports/game-direction/, round 202).
+Last real inbox read: reports/game-direction/inbox/20261126T015539Z.json. Later decisions came through chat.
+1. Review the round 200 exteriors. Glacier's side dish and Delta's small aerials and gaps above the drives remain open.
+2. Reuse the artwork-first checks in D:/OtherProjects/asset-pipeline/knowledge/reference-shape-review.md. Round 201 reproduced 387 marked results, including misses.
+3. Windows uses round 172. Eight packaged checks and 22 editor groups passed earlier. Owner review comes before replacing playable hulls.
+Both six-view sheets and editable ships stay local. The 24-credit sheet approval and this Git approval are spent.
+Report 8953 and Research Console 8776 were running. Game closed. Recheck the save before launch. Preserve both journals and launch without injected input.
+Last verified expedition: defeat, helm on Hold, revision 151681. D&B stays paused.
+Do not start any of this. Read, say where things stand, then wait.

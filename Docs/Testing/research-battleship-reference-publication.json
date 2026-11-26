@@ -1,0 +1,179 @@
+{
+  "schema": 1,
+  "round": 202,
+  "local_date": "2026-11-26",
+  "observed_at_utc": "2026-11-26T18:41:01.009886+00:00",
+  "repositories": {
+    "asset-pipeline": {
+      "parent": "2611cd537915e8c492e134c53c732dbe564eb087",
+      "commit": "67006bb3649be7542e18a129feb40cab74654a58",
+      "remote_tip_at_verification": "67006bb3649be7542e18a129feb40cab74654a58",
+      "verified_at_utc": "2026-11-26T18:38:14.540907+00:00",
+      "shared_staging_after_push": [],
+      "branch": "main",
+      "upstream": "origin/main",
+      "published_paths": 94,
+      "remaining_paths_after_content_push": 389,
+      "shared_index": {
+        "reconciled_owned_entries": 94,
+        "preserved_owned_conflicts": [],
+        "other_entries_preserved": true
+      },
+      "whitespace": "passed",
+      "hook": "passed",
+      "guard": {
+        "selected_text_files_checked": 94,
+        "guard": "Project media hook runs on commit"
+      }
+    },
+    "AquilaCodeDark": {
+      "parent": "a3992ef1fcbe51d1d26084bfb46c1784f5197d45",
+      "commit": "529fe2b094a5968e2067e8878da8e0e766ec6690",
+      "remote_tip_at_verification": "529fe2b094a5968e2067e8878da8e0e766ec6690",
+      "verified_at_utc": "2026-11-26T18:39:27.507492+00:00",
+      "shared_staging_after_push": [],
+      "branch": "main",
+      "upstream": "origin/main",
+      "published_paths": 72,
+      "remaining_paths_after_content_push": 0,
+      "shared_index": {
+        "reconciled_owned_entries": 72,
+        "preserved_owned_conflicts": [],
+        "other_entries_preserved": true
+      },
+      "whitespace": "passed",
+      "hook": "passed",
+      "guard": {
+        "indexed_files": 895,
+        "failures": 0
+      }
+    }
+  },
+  "scope": {
+    "AquilaCodeDark": "Rounds 183 through 201, three research returns and their review, six-view references, comparative ship studies, decisions, checks and report.",
+    "asset-pipeline": "Six-view preset, Blender ship builders, camera and finish tools, reference-feature inventory, equipment-case checker and measured lessons.",
+    "follow_up": "A final Aquila commit contains this receipt, archived checkpoint, restart prompt and round 202. Its identifier is in Git history."
+  },
+  "wrap_checks": {
+    "checked_utc": "2026-11-26T18:36:59.732166+00:00",
+    "assets_matching_recorded_hashes": {
+      "roster_originals": 60,
+      "review_model_files": 14,
+      "model_count": 2,
+      "windows_package_files": 4
+    },
+    "journal": {
+      "revision": 151681,
+      "parent": 151680,
+      "phase": "Failed",
+      "helm": "Hold",
+      "linked": true,
+      "live_file_count": 151681,
+      "desktop_matches": true
+    },
+    "original_windows_pass": {
+      "packaged": 8,
+      "editor": 22,
+      "rerun_during_wrap": false
+    },
+    "verified_at_utc": "2026-11-26T18:36:59.740159+00:00",
+    "ship_model_hashes": 6,
+    "pipeline_source_hashes": 10,
+    "character_sheets_verified": 2,
+    "research_return_hashes": 3,
+    "earlier_archive_pairs_verified": 19,
+    "blender_example": {
+      "executable": "C:\\Program Files\\Blender Foundation\\Blender 5.2\\blender.exe",
+      "front_before_after": [
+        [
+          0,
+          6
+        ],
+        [
+          6,
+          6
+        ]
+      ],
+      "top_before_after": [
+        [
+          1,
+          3
+        ],
+        [
+          3,
+          3
+        ]
+      ],
+      "unresolved": "rear fastener",
+      "rerun_at_wrap": true
+    }
+  },
+  "processes": {
+    "aquila_and_blender_processes": [],
+    "listeners": [
+      {
+        "port": 8953,
+        "pid": 1604
+      },
+      {
+        "port": 8776,
+        "pid": 29012
+      }
+    ],
+    "checked_utc": "2026-11-26T18:39:10.6337965Z"
+  },
+  "prior_evidence": {
+    "art": "Round 201 reproduced all 387 earlier per-pixel results including misses. Round 200 supplied the current editable and exchange models.",
+    "viewer": "Both selected ships rotated, switched revisions and downloaded in round 200.",
+    "windows": "Round 172 is playable. Eight packaged checks and 22 editor groups passed then. Wrap verified package hashes and journals."
+  },
+  "asset_pipeline_startup": {
+    "working_tree_checks": 152,
+    "working_tree_failures": [
+      "byte budget: HANDOFF.md"
+    ],
+    "working_tree_handoff_bytes": 8661,
+    "budget_bytes": 8000,
+    "handoff_bytes_in_parent_commit": 8918,
+    "handoff_bytes_in_published_commit": 8834,
+    "other_tasks": "Three mixed files were staged by owned hunk. Character, building-kit, machine and scratch paths remained outside this publication."
+  },
+  "decisions": {
+    "art": "Retain both studies for comparison before any game replacement. Begin feature inventories from the artwork and the gaps it shows.",
+    "open": "Glacier side-view dish, Delta small aerials and open sky above the far drives; conflicting top and stern reference widths and counts.",
+    "credits": "Two 4K Max Sunburst sheets, 3504 by 2336 delivered, 24 credits total. That approval is spent."
+  },
+  "local_only": [
+    "Reference paintings, six-view sheets, Blender scenes, exported models and textures",
+    "Downloads, report media, raw research and private report inbox",
+    "Windows builds and expedition journals"
+  ],
+  "handoff": {
+    "current_checkpoint": "Docs/Handoffs/HANDOFF_2026-11-15_game-direction.md",
+    "saved_prompt": "Docs/Handoffs/PROMPT_2026-11-26_ship-art.txt",
+    "prompt_sha256": "1c7aa2dd829cd9b516f029bb7747641897a6dd0311b41bebc92953e4ad69f2ae",
+    "archive": "Docs/History/game-direction/20261126T184101Z.md",
+    "archive_sha256": "131e409f28caf761407922631d0061e3d470585c3201f035b05381ff599295ad",
+    "last_real_inbox": "reports/game-direction/inbox/20261126T015539Z.json",
+    "inbox_sha256": "841012451defae3f2e4377f836bc5136a57e7c89cf5fdd3c52fe767e487f993f"
+  },
+  "authority": "This wrap covers session-owned Git changes in the two repositories. Any new spend, contact, transfer, publication or deployment needs fresh approval.",
+  "closeout_checks": {
+    "aquila_startup": {
+      "sizes": {
+        "AGENTS.md": 5104,
+        "Docs/TaskRoutes.md": 1466,
+        "HANDOFF.md": 427,
+        "Docs/Handoffs/HANDOFF_2026-11-15_game-direction.md": 8369
+      },
+      "failures": [],
+      "proves": "local files and routes only"
+    },
+    "published_pipeline_sources": 10,
+    "git_lf_normalization_only": [],
+    "isolated_blender_replay": "The equipment case ran again using only the published sources and nine marks passed.",
+    "archives": "All 19 earlier checkpoint archives matched their saved hashes in the Aquila content commit. The round 201 archive matched its original working bytes.",
+    "report": "Round 202 opened in the existing Paseo tab with 201 earlier rounds. The restart prompt and receipt were read from the local report server.",
+    "remaining_paths_detail": "An exact local inventory from the Asset Pipeline push is in .runtime/ship-wrap-r202/asset-pipeline-remaining.txt in Aquila."
+  }
+}

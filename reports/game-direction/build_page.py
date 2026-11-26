@@ -2704,6 +2704,35 @@ def ship_reference_workflow(proof):
     return page.entry(201,"A reusable check for missing shapes",section,when=proof["local_date"])
 
 
+def ship_art_session_wrap(proof):
+    section = decide.recap(
+        "Both repositories received the ship work. The restart prompt records what was checked and where to pick up.",
+        [("Aquila", "Saved the ship decisions, reference measurements and reviews."),
+         ("Asset Pipeline", "Saved the Blender builders, material tools and checks for missing shapes."),
+         ("Local art", "The editable ships, reference art and exports stay on this computer."),
+         ("Game save", "The expedition still shows defeat with the helm on Hold."),
+         ("Restart", "The prompt links the checkpoint and names the open ship details.")],
+        dict(did="Pushed the session's work and verified both remote branches.",
+             why="A fresh session can recover the decisions, tools and open work.",
+             working="The Blender example reproduced all nine corrected marks.",
+             not_working="Glacier’s side dish and Delta’s smaller fittings still differ from the art.",
+             next="Further ship work waits for your direction."))
+    rows = []
+    for key, label in (("AquilaCodeDark", "Aquila game"), ("asset-pipeline", "Asset Pipeline")):
+        repo = proof["repositories"][key]
+        rows.append((label, f'<code>{repo["commit"][:7]}</code>', str(repo["published_paths"])))
+    body = table(["Repository", "Verified ship commit", "Files"], rows)
+    body += "<p>Six model files and both reference sheets matched their recorded hashes.</p>"
+    body += "<p>The game stayed closed. Both save journals matched their earlier checks.</p>"
+    body += "<p>Asset Pipeline’s shared handoff still exceeds its size budget. Other projects’ edits stayed in their working copy.</p>"
+    body += '<p><a href="ship-art-restart.txt">Copy the restart prompt</a> · <a href="ship-art-publication.json">Read the push and verification record</a></p>'
+    section += decide.info_thread("aquila-direction-r202-wrap", "Both remote branches contain the ship work.", body,
+                                  short="Verified commits and restart", follows="aquila-direction-r201-method")
+    section += decide.whats_next("aquila-direction-r202-next", "The next session reads the checkpoint and waits for your choice.",
+                                 short="Wait for direction", follows="aquila-direction-r201-next")
+    return page.entry(202, "Ship work saved in both repositories", section, when=proof["local_date"])
+
+
 def ship_shape_coverage(out, proof):
     section = decide.recap(
         "Yes. We check each hull’s outline, proportions, openings and individual parts against its artwork. Some shapes still need work.",
@@ -8708,6 +8737,12 @@ def main(output):
     workflow = ROOT / "Docs/Testing/research-battleship-reference-workflow.json"
     if workflow.is_file():
         rounds = ship_reference_workflow(json.loads(workflow.read_bytes())) + rounds
+    ship_wrap = ROOT / "Docs/Testing/research-battleship-reference-publication.json"
+    if ship_wrap.is_file():
+        proof = json.loads(ship_wrap.read_bytes())
+        (out / "ship-art-publication.json").write_bytes(ship_wrap.read_bytes())
+        (out / "ship-art-restart.txt").write_bytes((ROOT / proof["handoff"]["saved_prompt"]).read_bytes())
+        rounds = ship_art_session_wrap(proof) + rounds
     (out / "live-fitting-checks.json").write_bytes((ROOT / "Docs/Testing/native-live-fitting.json").read_bytes())
     (out / "clear-fitting-checks.json").write_bytes((ROOT / "Docs/Testing/native-clear-fitting.json").read_bytes())
     (out / "round-model-checks.json").write_bytes((ROOT / "Docs/Testing/native-round-models.json").read_bytes())

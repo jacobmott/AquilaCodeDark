@@ -1,5 +1,9 @@
 # Ship exterior review decisions
 
+## Round 202 wrap request from chat
+
+Jake requested a session wrap, commit and push before compaction. It covered the Aquila ship-art work and its reusable Asset Pipeline tools through round 201. Art files and saves stay in their project folders. Further ship changes await direction. [Verified pushes and saved checks](../../Docs/Testing/research-battleship-reference-publication.json).
+
 ## Round 201 direction from chat
 
 Jake asked to save “techniques that catch things and that fix things” in Asset Pipeline before continuing the ships. The pipeline now has a general reference-image workflow, a reusable Blender checker and a separate equipment-case example. [Pipeline guide](<D:/OtherProjects/asset-pipeline/knowledge/reference-shape-review.md>) · [Verification](../../Docs/Testing/research-battleship-reference-workflow.json).
